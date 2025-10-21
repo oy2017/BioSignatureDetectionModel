@@ -19,22 +19,33 @@ pip install -r requirements.txt
 
 Once the environment is set up, you can run the data generation and evaluation scripts.
 
-#### H2 Data Generation and Evaluation
+#### Generate Multiverse Data
 
-To generate the H2 dataset and evaluate the model:
+Use the `generate_multiverse_data.py` script to generate datasets for different fill gases. Specify the fill gas as an argument (e.g., `H2` or `N2`).
 
 ```bash
 source venv/bin/activate
-python generate_h2_data.py
-python evaluate_h2_data.py
+python generate_multiverse_data.py H2
+# This will create 'multirex_spectra_H2.parquet'
+
+python generate_multiverse_data.py N2
+# This will create 'multirex_spectra_N2.parquet'
 ```
 
-#### N2 Data Generation and Evaluation
+#### Evaluate Data
 
-To generate the N2 dataset and evaluate the model:
+Use the `evaluate_random_forest.py` script to evaluate the generated datasets. Specify the fill gas as an argument (`H2` or `N2`).
+
+To evaluate the H2 dataset:
 
 ```bash
 source venv/bin/activate
-python generate_n2_data.py
-python evaluate_n2_data.py
+python evaluate_random_forest.py H2
+```
+
+To evaluate the N2 dataset:
+
+```bash
+source venv/bin/activate
+python evaluate_random_forest.py N2
 ```
