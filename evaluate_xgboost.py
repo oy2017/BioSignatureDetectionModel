@@ -3,7 +3,7 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
-from sklearn.ensemble import RandomForestClassifier
+from xgboost import XGBClassifier
 from sklearn.metrics import classification_report, confusion_matrix
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -17,14 +17,14 @@ if not os.path.exists(results_path):
     os.makedirs(results_path)
 
 # --- Add argument parser ---
-parser = argparse.ArgumentParser(description="Evaluate a dataset with a specified fill gas using Random Forest.")
+parser = argparse.ArgumentParser(description="Evaluate a dataset with a specified fill gas using XGBoost.")
 parser.add_argument("fill_gas", type=str, help="The fill gas for the atmosphere (e.g., H2, N2).")
 args = parser.parse_args()
 
-fill_gas = args.fill_gas.upper() # Convert to uppercase for consistency
+fill_gas = args.fill_gas.upper()
 
 # --- 1. Load and Prepare Data ---
-print(f"--- Loading and Preparing {fill_gas} Dataset for Random Forest ---")
+print(f"--- Loading and Preparing {fill_gas} Dataset for XGBoost ---")
 df = pd.read_parquet(f'multirex_spectra_{fill_gas}.parquet')
 df['label'] = df['biosignature'].apply(lambda x: 1 if x == 'yes' else 0)
 
@@ -45,7 +45,15 @@ pca = PCA(n_components=30)
 X_train_pca = pca.fit_transform(X_train_scaled)
 
 # --- 4. Train Classifier ---
-model = RandomForestClassifier(n_estimators=150, random_state=42, n_jobs=-1, class_weight='balanced')
+model = XGBClassifier(
+    n_estimators=150,
+    learning_rate=0.1,
+    max_depth=5,
+    random_state=42,
+    n_jobs=-1,
+    use_label_encoder=False,
+    eval_metric='logloss'
+)
 model.fit(X_train_pca, y_train)
 
 # --- 5. Apply Pipeline to Test Data ---
@@ -57,15 +65,15 @@ y_pred = model.predict(X_test_pca)
 
 # --- 7. Save and Display Results ---
 report_str = classification_report(y_test, y_pred, target_names=['Non-Bio (0)', 'Bio (1)'])
-with open(os.path.join(results_path, f'{fill_gas}_random_forest_report.txt'), 'w') as f:
+with open(os.path.join(results_path, f'{fill_gas}_xgboost_report.txt'), 'w') as f:
     f.write(report_str)
 
 cm = confusion_matrix(y_test, y_pred)
 plt.figure(figsize=(8, 6))
 sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
-plt.title(f'Confusion Matrix on {fill_gas} Dataset (Random Forest)')
-plt.savefig(os.path.join(results_path, f'{fill_gas}_random_forest_confusion_matrix.png'))
+plt.title(f'Confusion Matrix on {fill_gas} Dataset (XGBoost)')
+plt.savefig(os.path.join(results_path, f'{fill_gas}_xgboost_confusion_matrix.png'))
 plt.close()
 
-print(f"\n--- {fill_gas} Analysis Complete (Random Forest) ---")
+print(f"\n--- {fill_gas} Analysis Complete (XGBoost) ---")
 print(report_str)
