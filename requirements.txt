@@ -1,0 +1,11 @@
+git+https://github.com/oy2017/MultiREx-public.git@main#egg=MultiREx
+numpy
+pandas
+matplotlib
+tqdm
+joblib
+taurex
+gdown
+pyarrow
+scikit-learn
+seaborn
