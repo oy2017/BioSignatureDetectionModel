@@ -6,7 +6,8 @@ import pandas as pd
 # This script generates a multiverse of planetary systems with a user-defined fill gas.
 
 # --- User-defined settings ---
-N_UNIVERSES = 3000
+N_UNIVERSES_TRAIN = 3000
+N_UNIVERSES_TEST = 600
 N_OBSERVATIONS = 1
 SNR = 15
 
@@ -20,11 +21,18 @@ wn_grid = Physics.wavenumber_grid(wl_min, wl_max, resolution)
 # Add argument parser
 parser = argparse.ArgumentParser(description="Generate a multiverse dataset with a specified fill gas.")
 parser.add_argument("fill_gas", type=str, help="The fill gas for the atmosphere (e.g., H2, N2).")
+parser.add_argument("--purpose", type=str, choices=['train', 'test'], default='train', help="Purpose of the dataset: 'train' or 'test'.")
 args = parser.parse_args()
 
 fill_gas = args.fill_gas.upper() # Convert to uppercase for consistency
+purpose = args.purpose
 
-print(f"Generating a balanced {fill_gas} dataset with 5000 universes...")
+if purpose == 'train':
+    N_UNIVERSES = N_UNIVERSES_TRAIN
+    print(f"Generating a balanced {fill_gas} training dataset with {N_UNIVERSES} universes...")
+else:
+    N_UNIVERSES = N_UNIVERSES_TEST
+    print(f"Generating a balanced {fill_gas} testing dataset with {N_UNIVERSES} universes...")
 
 bio_threshold_ch4 = -6
 bio_threshold_o3 = -7
@@ -53,11 +61,17 @@ composition_profiles = {
     }
 }
 
+# Define proportions for the generation plan
+plan_proportions = {
+    "biosignature": 0.5,
+    "nonbio_ch4": 0.1666,
+    "nonbio_o3": 0.1666,
+    "nonbio_none": 0.1668,
+}
+
 generation_plan = [
-    {"name": "biosignature", "count": 1500},
-    {"name": "nonbio_ch4", "count": 500},
-    {"name": "nonbio_o3", "count": 500},
-    {"name": "nonbio_none", "count": 500},
+    {"name": name, "count": int(N_UNIVERSES * prop)}
+    for name, prop in plan_proportions.items()
 ]
 
 all_spectra = []
@@ -92,6 +106,9 @@ for item in generation_plan:
     profile_composition = composition_profiles[profile_name]
     count = item["count"]
     
+    if count == 0:
+        continue
+
     print(f"--- Generating {count} {fill_gas} planets for profile: {profile_name} ---")
     
     atmosphere = Atmosphere(
@@ -139,7 +156,7 @@ def check_biosignature(row):
         return 'no'
 
 spectra_df['biosignature'] = spectra_df.apply(check_biosignature, axis=1)
-output_filename = f"multirex_spectra_{fill_gas}.parquet" # Dynamic filename
+output_filename = f"multirex_spectra_{fill_gas}_{purpose}.parquet" # Dynamic filename
 spectra_df.to_parquet(output_filename)
 
-print(f"{fill_gas} dataset created and saved to {output_filename}")
+print(f"{fill_gas} {purpose} dataset created and saved to {output_filename}")
