@@ -10,3 +10,5 @@ pyarrow
 scikit-learn
 seaborn
 xgboost
+tensorflow
+lightgbm
