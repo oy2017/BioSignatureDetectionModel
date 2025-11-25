@@ -147,76 +147,110 @@ print(f"--- Building Model with input shape {input_shape} ---")
 
 if model_type == 'mlp':
     print("--- Using MLP (Dense) Architecture ---")
-    # Multi-Layer Perceptron (MLP) architecture, suitable for tabular or PCA-transformed data.
-    # It treats input features as independent, making it robust to features without spatial correlation.
+    # --- MLP (Multi-Layer Perceptron) Architecture ---
+    # An MLP is a classic feedforward neural network. It's highly effective for tabular or
+    # vector-like data where features are treated as independent, rather than having a spatial relationship.
+    # This makes it an excellent choice for PCA-transformed data, as principal components are uncorrelated.
+    # The overall structure is a stack of fully connected (Dense) layers that learn increasingly
+    # complex combinations of the input features to perform classification.
     model = Sequential([
-        # Flattens the 3D input (samples, timesteps, features) into 2D (samples, timesteps * features)
-        # for dense layers, as MLPs expect a 1D feature vector per sample.
+        # --- Input Layer ---
+        # The Flatten layer serves as the input layer for the MLP. It transforms the 3D input data
+        # (shape: [samples, num_pca_components, 1]) into a 2D vector (shape: [samples, num_pca_components]).
+        # This is a necessary step because Dense layers expect a 1D feature vector per sample.
         Flatten(input_shape=input_shape),
-        
-        # First Dense layer with 256 units. 'Dense' layers are fully connected layers.
+
+        # --- First Hidden Block ---
+        # This block is responsible for the initial high-level feature extraction.
+        # Dense(256): A fully connected layer with 256 neurons. Each neuron receives input from all
+        # neurons in the previous layer, allowing it to learn global patterns from the PCA components.
         Dense(256),
-        # Batch Normalization stabilizes and accelerates training by normalizing layer inputs.
+        # BatchNormalization: Standardizes the inputs to this layer for each batch. This helps to stabilize
+        # and accelerate the training process by mitigating the "internal covariate shift" problem.
         BatchNormalization(),
-        # ReLU (Rectified Linear Unit) activation function, introduces non-linearity.
+        # Activation('relu'): The Rectified Linear Unit is the activation function. It introduces non-linearity
+        # into the model, allowing it to learn more complex relationships than a simple linear model.
         Activation('relu'),
-        # Dropout layer, randomly sets a fraction (0.4) of input units to 0 at each update during training
-        # to prevent overfitting.
+        # Dropout(0.4): A regularization technique to prevent overfitting. During training, it randomly sets
+        # 40% of the neuron outputs in this layer to zero for each training batch. This forces the network
+        # to learn more robust features that are not overly reliant on any single neuron.
         Dropout(0.4),
-        
-        # Second Dense layer with 128 units.
+
+        # --- Second Hidden Block ---
+        # This block learns more abstract patterns by combining the features learned in the first block.
+        # The number of neurons (128) is reduced, creating a bottleneck that forces the model to learn
+        # a more compressed and meaningful representation of the data.
         Dense(128),
         BatchNormalization(),
         Activation('relu'),
         Dropout(0.4),
-        
-        # Third Dense layer with 64 units.
+
+        # --- Third Hidden Block ---
+        # A further reduction in dimensionality (64 neurons) to refine the learned features before the
+        # final classification decision.
         Dense(64),
         BatchNormalization(),
         Activation('relu'),
         Dropout(0.4),
-        
-        # Output layer with 1 unit and sigmoid activation for binary classification.
-        # Sigmoid outputs a probability between 0 and 1.
+
+        # --- Output Layer ---
+        # Dense(1, activation='sigmoid'): The final layer for binary classification.
+        # It has a single neuron that outputs a value between 0 and 1, representing the probability
+        # of the input sample belonging to the positive class ('Bio'). The 'sigmoid' activation function
+        # is essential for this, as it squashes the output into this probabilistic range.
         Dense(1, activation='sigmoid')
     ])
 else:
     print("--- Using CNN Architecture ---")
-    # 1D Convolutional Neural Network (CNN) architecture, suitable for sequential data like spectra.
-    # It excels at capturing local patterns (e.g., spectral features) through convolutional filters.
+    # --- 1D CNN (Convolutional Neural Network) Architecture ---
+    # A 1D CNN is designed for sequence data, where local patterns are important. In this context,
+    # it treats the sequence of PCA components as if it were a time series. The model learns to
+    # identify patterns in "neighborhoods" of adjacent PCA components.
+    # The architecture follows a standard pattern:
+    # 1. Convolutional Layers: To act as feature detectors.
+    # 2. Pooling Layers: To downsample and create translation invariance.
+    # 3. Dense Layers: To perform classification based on the detected features.
     model = Sequential([
-        # First 1D Convolutional layer.
-        # 'filters': 64 - Number of convolution filters (output dimensionality).
-        # 'kernel_size': 5 - Specifies the length of the 1D convolution window.
-        # 'input_shape': Defines the shape of the input data (timesteps, features).
-        # 'padding': 'same' - Ensures output length is the same as input length by padding.
+        # --- First Convolutional Block ---
+        # This block scans for low-level, local patterns in the input sequence of PCA components.
+        # Conv1D(filters=64, kernel_size=5, ...): The first convolutional layer.
+        # - filters=64: It learns 64 different feature detectors (or filters).
+        # - kernel_size=5: Each filter is a "window" that slides over 5 PCA components at a time.
+        # - padding='same': Ensures the output sequence has the same length as the input, which simplifies the architecture.
         Conv1D(filters=64, kernel_size=5, input_shape=input_shape, padding='same'),
         BatchNormalization(),
         Activation('relu'),
-        # MaxPooling1D reduces the dimensionality of the feature maps, reducing computational cost
-        # and providing a form of translation invariance. 'pool_size': 2 means taking the maximum
-        # over 2 elements.
+        # MaxPooling1D(pool_size=2): Downsamples the output of the Conv1D layer. It slides a window of size 2
+        # over the sequence and takes the maximum value. This makes the model more robust to the exact
+        # position of a feature and reduces the number of parameters for the next layer.
         MaxPooling1D(pool_size=2),
-        # Dropout layer with a rate of 0.3.
         Dropout(0.3),
-        
-        # Second 1D Convolutional layer with 128 filters.
+
+        # --- Second Convolutional Block ---
+        # This block learns higher-level patterns by looking at the features detected by the first block.
+        # Conv1D(filters=128, ...): It uses 128 filters to learn more complex combinations of the
+        # initial patterns.
         Conv1D(filters=128, kernel_size=5, padding='same'),
         BatchNormalization(),
         Activation('relu'),
         MaxPooling1D(pool_size=2),
         Dropout(0.3),
-        
-        # Flattens the 3D output of the convolutional layers into a 1D vector for the dense layers.
+
+        # --- Classification Head ---
+        # This part of the model takes the high-level features extracted by the convolutional blocks
+        # and performs the final classification.
+        # Flatten(): This layer acts as a bridge. It unrolls the 2D feature maps from the final pooling
+        # layer into a single long 1D vector, which can then be fed into the Dense layers.
         Flatten(),
-        # Dense layer with 100 units.
+        # Dense(100): A fully connected layer that learns to classify based on the flattened feature vector.
+        # It combines all the local patterns detected by the CNN into a final, global decision.
         Dense(100),
         BatchNormalization(),
         Activation('relu'),
-        # Dropout layer with a rate of 0.5.
         Dropout(0.5),
-        # Output Dense layer for binary classification.
-        Dense(1, activation='sigmoid') # Binary classification
+        # Dense(1, activation='sigmoid'): The final output layer, identical in function to the MLP's
+        # output layer, producing a binary probability.
+        Dense(1, activation='sigmoid')
     ])
 
 # Configure the model for training.
