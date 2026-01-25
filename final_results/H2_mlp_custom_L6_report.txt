@@ -1,0 +1,9 @@
+Layers: 512,512,256,128,64,32
+              precision    recall  f1-score   support
+
+     Non-Bio       0.87      0.80      0.83       298
+         Bio       0.81      0.89      0.85       300
+
+    accuracy                           0.84       598
+   macro avg       0.84      0.84      0.84       598
+weighted avg       0.84      0.84      0.84       598

@@ -1,0 +1,10 @@
+Best MLP Model Evaluation on 5 Sets (H2)
+==============================================
+Set 1: 0.8462
+Set 2: 0.8328
+Set 3: 0.8311
+Set 4: 0.8161
+Set 5: 0.8395
+
+Mean Accuracy: 0.8331
+Std Deviation: 0.0101

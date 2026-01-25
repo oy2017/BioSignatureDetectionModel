@@ -1,0 +1,15 @@
+Model Variance Report (5 Independent Test Sets)
+===============================================
+
+Model: MLP
+  Accuracy: 0.8378 (+/- 0.0077)
+  Precision: 0.7946 (+/- 0.0081)
+  Recall: 0.9127 (+/- 0.0068)
+  F1: 0.8495 (+/- 0.0068)
+
+Model: CNN
+  Accuracy: 0.7856 (+/- 0.0162)
+  Precision: 0.8430 (+/- 0.0188)
+  Recall: 0.7040 (+/- 0.0260)
+  F1: 0.7670 (+/- 0.0192)
+

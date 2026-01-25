@@ -1,0 +1,33 @@
+GridSearchCV Results for 3-Layer MLP (H2)
+==================================================
+Best CV Accuracy: 0.8395
+Best Parameters: {
+  "mlp__batch_size": 128,
+  "mlp__dropout_rate": 0.4,
+  "mlp__epochs": 100,
+  "mlp__learning_rate": 0.0005
+}
+
+Test Set Accuracy: 0.8294
+
+Full Grid Results (Top 10):
+Params: {'mlp__batch_size': 128, 'mlp__dropout_rate': 0.4, 'mlp__epochs': 100, 'mlp__learning_rate': 0.0005}, Mean Acc: 0.8395 (+/- 0.0393)
+Params: {'mlp__batch_size': 128, 'mlp__dropout_rate': 0.4, 'mlp__epochs': 50, 'mlp__learning_rate': 0.001}, Mean Acc: 0.8365 (+/- 0.0470)
+Params: {'mlp__batch_size': 128, 'mlp__dropout_rate': 0.5, 'mlp__epochs': 50, 'mlp__learning_rate': 0.001}, Mean Acc: 0.8358 (+/- 0.0333)
+Params: {'mlp__batch_size': 128, 'mlp__dropout_rate': 0.3, 'mlp__epochs': 50, 'mlp__learning_rate': 0.0005}, Mean Acc: 0.8332 (+/- 0.0437)
+Params: {'mlp__batch_size': 64, 'mlp__dropout_rate': 0.4, 'mlp__epochs': 100, 'mlp__learning_rate': 0.0005}, Mean Acc: 0.8305 (+/- 0.0287)
+Params: {'mlp__batch_size': 128, 'mlp__dropout_rate': 0.3, 'mlp__epochs': 50, 'mlp__learning_rate': 0.001}, Mean Acc: 0.8298 (+/- 0.0340)
+Params: {'mlp__batch_size': 128, 'mlp__dropout_rate': 0.5, 'mlp__epochs': 100, 'mlp__learning_rate': 0.0005}, Mean Acc: 0.8278 (+/- 0.0453)
+Params: {'mlp__batch_size': 64, 'mlp__dropout_rate': 0.5, 'mlp__epochs': 100, 'mlp__learning_rate': 0.0005}, Mean Acc: 0.8262 (+/- 0.0372)
+Params: {'mlp__batch_size': 128, 'mlp__dropout_rate': 0.3, 'mlp__epochs': 100, 'mlp__learning_rate': 0.001}, Mean Acc: 0.8258 (+/- 0.0145)
+Params: {'mlp__batch_size': 128, 'mlp__dropout_rate': 0.4, 'mlp__epochs': 100, 'mlp__learning_rate': 0.001}, Mean Acc: 0.8228 (+/- 0.0377)
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Non-Bio       0.89      0.75      0.81       298
+         Bio       0.79      0.91      0.84       300
+
+    accuracy                           0.83       598
+   macro avg       0.84      0.83      0.83       598
+weighted avg       0.84      0.83      0.83       598

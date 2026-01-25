@@ -1,0 +1,35 @@
+Simple Grid Search (Single Split) Results (H2)
+=====================================================
+Best Val Accuracy: 0.8517
+Best Parameters: {
+  "epochs": 100,
+  "batch_size": 128,
+  "learning_rate": 0.001,
+  "dropout_rate": 0.3
+}
+
+Test Set Accuracy: 0.8562
+
+Full Grid Results:
+Params: {'epochs': 100, 'batch_size': 128, 'learning_rate': 0.001, 'dropout_rate': 0.3}, Val Acc: 0.8517
+Params: {'epochs': 100, 'batch_size': 128, 'learning_rate': 0.001, 'dropout_rate': 0.5}, Val Acc: 0.8500
+Params: {'epochs': 100, 'batch_size': 128, 'learning_rate': 0.0005, 'dropout_rate': 0.5}, Val Acc: 0.8467
+Params: {'epochs': 100, 'batch_size': 64, 'learning_rate': 0.0005, 'dropout_rate': 0.5}, Val Acc: 0.8433
+Params: {'epochs': 100, 'batch_size': 128, 'learning_rate': 0.0005, 'dropout_rate': 0.4}, Val Acc: 0.8417
+Params: {'epochs': 100, 'batch_size': 128, 'learning_rate': 0.0005, 'dropout_rate': 0.3}, Val Acc: 0.8350
+Params: {'epochs': 100, 'batch_size': 64, 'learning_rate': 0.0005, 'dropout_rate': 0.4}, Val Acc: 0.8267
+Params: {'epochs': 100, 'batch_size': 128, 'learning_rate': 0.001, 'dropout_rate': 0.4}, Val Acc: 0.8217
+Params: {'epochs': 100, 'batch_size': 64, 'learning_rate': 0.001, 'dropout_rate': 0.3}, Val Acc: 0.8150
+Params: {'epochs': 100, 'batch_size': 64, 'learning_rate': 0.0005, 'dropout_rate': 0.3}, Val Acc: 0.8150
+Params: {'epochs': 100, 'batch_size': 64, 'learning_rate': 0.001, 'dropout_rate': 0.4}, Val Acc: 0.8117
+Params: {'epochs': 100, 'batch_size': 64, 'learning_rate': 0.001, 'dropout_rate': 0.5}, Val Acc: 0.7867
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Non-Bio       0.87      0.83      0.85       298
+         Bio       0.84      0.88      0.86       300
+
+    accuracy                           0.86       598
+   macro avg       0.86      0.86      0.86       598
+weighted avg       0.86      0.86      0.86       598

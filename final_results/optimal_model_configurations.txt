@@ -1,0 +1,41 @@
+Optimal Model Configurations
+============================
+Date: January 6, 2026
+Dataset: H2 Atmosphere Biosignatures
+
+1. XGBoost (Aggressive) - **Best Performer (~86.6%)**
+-----------------------------------------------------
+*   n_estimators: 300
+*   max_depth: 5
+*   learning_rate: 0.2
+*   subsample: 1.0
+*   eval_metric: 'logloss'
+*   Features: PCA Components 2-102 (Scaled)
+
+2. MLP (Deep & Wide) - **Robust Performer (~85.0%)**
+----------------------------------------------------
+*   Architecture: [512, 256, 128] -> Output(1)
+*   Hidden Activation: ReLU + BatchNormalization
+*   Dropout Rate: 0.4
+*   Optimizer: Adam (learning_rate=0.0005)
+*   Batch Size: 128
+*   Epochs: ~60 (with Early Stopping, Patience=10)
+*   Features: PCA Components 0-100 (Scaled)
+
+3. Random Forest (Tuned) - **Baseline (~83.6%)**
+------------------------------------------------
+*   n_estimators: 300
+*   max_depth: None
+*   min_samples_leaf: 1
+*   min_samples_split: 2
+*   class_weight: 'balanced'
+*   Features: PCA Components 2-102 (Scaled)
+
+4. CNN (ResNet) - **Underperformer on Small Data (~50%)**
+---------------------------------------------------------
+*   Architecture: Custom 1D ResNet (3 Residual Blocks: 32, 64, 128 filters)
+*   Kernel Size: 7
+*   Pooling: MaxPool + GlobalAverage
+*   Optimizer: Adam (learning_rate=0.0001)
+*   Features: Raw Spectra (Scaled)
+*   Note: Requires significantly more data or augmentation to converge effectively.
