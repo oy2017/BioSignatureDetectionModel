@@ -20,6 +20,12 @@ We developed a suite of tools to understand *where* models fail in physical spac
 *   **Chemical Distribution:** `plot_chemical_scatter_comparison.py` visualizes model errors against Log(CH4) and Log(O3) concentrations.
 *   **Physical Parameters:** `plot_comprehensive_error_analysis.py` creates a "physics dashboard" showing error rates against Star Temp, Planet Mass, and Planet Radius.
 
+### C. The Carbon Monoxide (CO) Check
+**Graph:** `error_vs_co_abundance.png`
+We specifically tested if CO, a common atmospheric gas with strong absorption features, acts as a "confounder" for our biosignature detection.
+*   **Finding:** The error rate remains flat (~10-15% for XGBoost) regardless of CO concentration (from Log -9 to -4).
+*   **Conclusion:** The models successfully distinguish biosignature gases (CH4/O3) from CO. High CO abundance does **not** trigger false positives or mask the signal.
+
 ## 3. Stability & Variance Testing
 To ensure results weren't due to random luck, we implemented rigorous stability testing.
 *   **Data Generation:** `generate_5_sets.py` fragments the original test set into 5 independent, shuffled versions.
