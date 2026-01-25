@@ -1,0 +1,38 @@
+Best Parameters found:
+{
+  "batch_size": 32,
+  "dropout_rate": 0.4,
+  "epochs": 30,
+  "hidden_layers": [
+    256,
+    128
+  ],
+  "learning_rate": 0.001
+}
+
+Best CV Accuracy: 0.8085
+Test Set Accuracy: 0.7023
+
+Full Grid Results:
+{'params': {'batch_size': 32, 'dropout_rate': 0.2, 'epochs': 30, 'hidden_layers': (256, 128), 'learning_rate': 0.001}, 'mean_cv_accuracy': np.float64(0.7243910431861877)}
+{'params': {'batch_size': 32, 'dropout_rate': 0.2, 'epochs': 30, 'hidden_layers': (256, 128, 64), 'learning_rate': 0.001}, 'mean_cv_accuracy': np.float64(0.7684351007143656)}
+{'params': {'batch_size': 32, 'dropout_rate': 0.2, 'epochs': 30, 'hidden_layers': (512, 256, 128, 64), 'learning_rate': 0.001}, 'mean_cv_accuracy': np.float64(0.7500834266344706)}
+{'params': {'batch_size': 32, 'dropout_rate': 0.4, 'epochs': 30, 'hidden_layers': (256, 128), 'learning_rate': 0.001}, 'mean_cv_accuracy': np.float64(0.808475136756897)}
+{'params': {'batch_size': 32, 'dropout_rate': 0.4, 'epochs': 30, 'hidden_layers': (256, 128, 64), 'learning_rate': 0.001}, 'mean_cv_accuracy': np.float64(0.7620954116185507)}
+{'params': {'batch_size': 32, 'dropout_rate': 0.4, 'epochs': 30, 'hidden_layers': (512, 256, 128, 64), 'learning_rate': 0.001}, 'mean_cv_accuracy': np.float64(0.8014681339263916)}
+{'params': {'batch_size': 64, 'dropout_rate': 0.2, 'epochs': 30, 'hidden_layers': (256, 128), 'learning_rate': 0.001}, 'mean_cv_accuracy': np.float64(0.7934601306915283)}
+{'params': {'batch_size': 64, 'dropout_rate': 0.2, 'epochs': 30, 'hidden_layers': (256, 128, 64), 'learning_rate': 0.001}, 'mean_cv_accuracy': np.float64(0.775442103544871)}
+{'params': {'batch_size': 64, 'dropout_rate': 0.2, 'epochs': 30, 'hidden_layers': (512, 256, 128, 64), 'learning_rate': 0.001}, 'mean_cv_accuracy': np.float64(0.7447447578112284)}
+{'params': {'batch_size': 64, 'dropout_rate': 0.4, 'epochs': 30, 'hidden_layers': (256, 128), 'learning_rate': 0.001}, 'mean_cv_accuracy': np.float64(0.8031364679336548)}
+{'params': {'batch_size': 64, 'dropout_rate': 0.4, 'epochs': 30, 'hidden_layers': (256, 128, 64), 'learning_rate': 0.001}, 'mean_cv_accuracy': np.float64(0.8054721355438232)}
+{'params': {'batch_size': 64, 'dropout_rate': 0.4, 'epochs': 30, 'hidden_layers': (512, 256, 128, 64), 'learning_rate': 0.001}, 'mean_cv_accuracy': np.float64(0.7887887954711914)}
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Non-Bio       0.89      0.46      0.60       298
+         Bio       0.64      0.95      0.76       300
+
+    accuracy                           0.70       598
+   macro avg       0.77      0.70      0.68       598
+weighted avg       0.77      0.70      0.68       598

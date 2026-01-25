@@ -1,0 +1,33 @@
+GridSearchCV with Early Stopping Results (H2)
+=========================================================
+Best CV Accuracy: 0.5342
+Best Parameters: {
+  "mlp__batch_size": 128,
+  "mlp__dropout_rate": 0.3,
+  "mlp__epochs": 100,
+  "mlp__learning_rate": 0.001
+}
+
+Test Set Accuracy: 0.5452
+
+Full Grid Results (Top 10):
+Params: {'mlp__batch_size': 128, 'mlp__dropout_rate': 0.3, 'mlp__epochs': 100, 'mlp__learning_rate': 0.001}, Mean Acc: 0.5342 (+/- 0.0111)
+Params: {'mlp__batch_size': 64, 'mlp__dropout_rate': 0.4, 'mlp__epochs': 100, 'mlp__learning_rate': 0.001}, Mean Acc: 0.5279 (+/- 0.0009)
+Params: {'mlp__batch_size': 128, 'mlp__dropout_rate': 0.3, 'mlp__epochs': 100, 'mlp__learning_rate': 0.0005}, Mean Acc: 0.5272 (+/- 0.0162)
+Params: {'mlp__batch_size': 128, 'mlp__dropout_rate': 0.5, 'mlp__epochs': 100, 'mlp__learning_rate': 0.001}, Mean Acc: 0.5255 (+/- 0.0016)
+Params: {'mlp__batch_size': 64, 'mlp__dropout_rate': 0.3, 'mlp__epochs': 100, 'mlp__learning_rate': 0.0005}, Mean Acc: 0.5252 (+/- 0.0084)
+Params: {'mlp__batch_size': 128, 'mlp__dropout_rate': 0.4, 'mlp__epochs': 100, 'mlp__learning_rate': 0.001}, Mean Acc: 0.5212 (+/- 0.0124)
+Params: {'mlp__batch_size': 64, 'mlp__dropout_rate': 0.4, 'mlp__epochs': 100, 'mlp__learning_rate': 0.0005}, Mean Acc: 0.5209 (+/- 0.0131)
+Params: {'mlp__batch_size': 64, 'mlp__dropout_rate': 0.3, 'mlp__epochs': 100, 'mlp__learning_rate': 0.001}, Mean Acc: 0.5132 (+/- 0.0057)
+Params: {'mlp__batch_size': 64, 'mlp__dropout_rate': 0.5, 'mlp__epochs': 100, 'mlp__learning_rate': 0.0005}, Mean Acc: 0.5108 (+/- 0.0054)
+Params: {'mlp__batch_size': 64, 'mlp__dropout_rate': 0.5, 'mlp__epochs': 100, 'mlp__learning_rate': 0.001}, Mean Acc: 0.5088 (+/- 0.0029)
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Non-Bio       0.72      0.14      0.24       298
+         Bio       0.53      0.94      0.68       300
+
+    accuracy                           0.55       598
+   macro avg       0.62      0.54      0.46       598
+weighted avg       0.62      0.55      0.46       598

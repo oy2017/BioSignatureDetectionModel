@@ -1,0 +1,11 @@
+Best Params: {'max_depth': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 300}
+Test Accuracy: 0.8377926421404682
+
+              precision    recall  f1-score   support
+
+           0       0.83      0.86      0.84       298
+           1       0.85      0.82      0.84       300
+
+    accuracy                           0.84       598
+   macro avg       0.84      0.84      0.84       598
+weighted avg       0.84      0.84      0.84       598

@@ -1,0 +1,39 @@
+Best MLP Model Full Statistics on 5 Sets (H2)
+==================================================
+Set 1:
+  Accuracy  : 0.8462
+  Precision : 0.8518
+  Recall    : 0.8462
+  F1-Score  : 0.8455
+
+Set 2:
+  Accuracy  : 0.8328
+  Precision : 0.8448
+  Recall    : 0.8328
+  F1-Score  : 0.8312
+
+Set 3:
+  Accuracy  : 0.8311
+  Precision : 0.8387
+  Recall    : 0.8311
+  F1-Score  : 0.8301
+
+Set 4:
+  Accuracy  : 0.8161
+  Precision : 0.8223
+  Recall    : 0.8161
+  F1-Score  : 0.8151
+
+Set 5:
+  Accuracy  : 0.8395
+  Precision : 0.8484
+  Recall    : 0.8395
+  F1-Score  : 0.8384
+
+Aggregate Stats:
+Metric          | Mean       | Std Dev   
+-----------------------------------------
+Accuracy        | 0.8331     | 0.0101
+Precision       | 0.8412     | 0.0104
+Recall          | 0.8331     | 0.0101
+F1-Score        | 0.8321     | 0.0101

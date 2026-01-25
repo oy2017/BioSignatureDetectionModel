@@ -1,0 +1,43 @@
+Flexible MLP GridSearchCV Results (H2)
+==============================================
+Best CV Accuracy: 0.8458
+Best Parameters: {
+  "mlp__batch_size": 128,
+  "mlp__dropout_rate": 0.3,
+  "mlp__epochs": 100,
+  "mlp__hidden_layers": [
+    256,
+    128,
+    64
+  ],
+  "mlp__learning_rate": 0.0005
+}
+
+Test Set Accuracy: 0.8278
+
+Full Grid Results (Top 15):
+Params: {'mlp__batch_size': 128, 'mlp__dropout_rate': 0.5, 'mlp__epochs': 100, 'mlp__hidden_layers': (512, 256, 128), 'mlp__learning_rate': 0.0005}, Mean Acc: 0.8458 (+/- 0.0374)
+Params: {'mlp__batch_size': 128, 'mlp__dropout_rate': 0.3, 'mlp__epochs': 100, 'mlp__hidden_layers': (256, 128, 64), 'mlp__learning_rate': 0.0005}, Mean Acc: 0.8458 (+/- 0.0372)
+Params: {'mlp__batch_size': 128, 'mlp__dropout_rate': 0.4, 'mlp__epochs': 100, 'mlp__hidden_layers': (256, 128, 64), 'mlp__learning_rate': 0.0005}, Mean Acc: 0.8432 (+/- 0.0413)
+Params: {'mlp__batch_size': 64, 'mlp__dropout_rate': 0.3, 'mlp__epochs': 100, 'mlp__hidden_layers': (256, 128), 'mlp__learning_rate': 0.001}, Mean Acc: 0.8425 (+/- 0.0158)
+Params: {'mlp__batch_size': 128, 'mlp__dropout_rate': 0.5, 'mlp__epochs': 100, 'mlp__hidden_layers': (128, 128, 64, 32), 'mlp__learning_rate': 0.001}, Mean Acc: 0.8382 (+/- 0.0328)
+Params: {'mlp__batch_size': 64, 'mlp__dropout_rate': 0.4, 'mlp__epochs': 100, 'mlp__hidden_layers': (256, 128, 64), 'mlp__learning_rate': 0.0005}, Mean Acc: 0.8342 (+/- 0.0312)
+Params: {'mlp__batch_size': 128, 'mlp__dropout_rate': 0.5, 'mlp__epochs': 100, 'mlp__hidden_layers': (128, 64, 32), 'mlp__learning_rate': 0.001}, Mean Acc: 0.8342 (+/- 0.0067)
+Params: {'mlp__batch_size': 128, 'mlp__dropout_rate': 0.3, 'mlp__epochs': 100, 'mlp__hidden_layers': (512, 256, 128), 'mlp__learning_rate': 0.0005}, Mean Acc: 0.8342 (+/- 0.0194)
+Params: {'mlp__batch_size': 128, 'mlp__dropout_rate': 0.5, 'mlp__epochs': 100, 'mlp__hidden_layers': (256, 128, 64), 'mlp__learning_rate': 0.001}, Mean Acc: 0.8338 (+/- 0.0421)
+Params: {'mlp__batch_size': 64, 'mlp__dropout_rate': 0.3, 'mlp__epochs': 100, 'mlp__hidden_layers': (256, 128), 'mlp__learning_rate': 0.0005}, Mean Acc: 0.8308 (+/- 0.0297)
+Params: {'mlp__batch_size': 128, 'mlp__dropout_rate': 0.3, 'mlp__epochs': 100, 'mlp__hidden_layers': (128, 128, 64, 32), 'mlp__learning_rate': 0.0005}, Mean Acc: 0.8305 (+/- 0.0246)
+Params: {'mlp__batch_size': 128, 'mlp__dropout_rate': 0.3, 'mlp__epochs': 100, 'mlp__hidden_layers': (128, 64, 32), 'mlp__learning_rate': 0.001}, Mean Acc: 0.8305 (+/- 0.0376)
+Params: {'mlp__batch_size': 128, 'mlp__dropout_rate': 0.3, 'mlp__epochs': 100, 'mlp__hidden_layers': (128, 64, 32), 'mlp__learning_rate': 0.0005}, Mean Acc: 0.8298 (+/- 0.0479)
+Params: {'mlp__batch_size': 128, 'mlp__dropout_rate': 0.3, 'mlp__epochs': 100, 'mlp__hidden_layers': (256, 128), 'mlp__learning_rate': 0.001}, Mean Acc: 0.8298 (+/- 0.0340)
+Params: {'mlp__batch_size': 128, 'mlp__dropout_rate': 0.4, 'mlp__epochs': 100, 'mlp__hidden_layers': (512, 256, 128), 'mlp__learning_rate': 0.0005}, Mean Acc: 0.8292 (+/- 0.0240)
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Non-Bio       0.89      0.75      0.81       298
+         Bio       0.78      0.91      0.84       300
+
+    accuracy                           0.83       598
+   macro avg       0.84      0.83      0.83       598
+weighted avg       0.84      0.83      0.83       598

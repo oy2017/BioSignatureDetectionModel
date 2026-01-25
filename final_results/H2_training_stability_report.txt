@@ -1,0 +1,14 @@
+Training Stability Report (H2)
+Architecture: [512, 256, 128], Batch=128, Drop=0.4, LR=0.0005
+=========================================================
+Run 1 (Seed 42): Acc=0.8495, F1=0.8490
+Run 2 (Seed 43): Acc=0.8462, F1=0.8448
+Run 3 (Seed 44): Acc=0.8629, F1=0.8629
+Run 4 (Seed 45): Acc=0.8579, F1=0.8576
+Run 5 (Seed 46): Acc=0.8478, F1=0.8475
+
+Aggregate Stats:
+Accuracy        | Mean: 0.8528 | Std: 0.0064
+Precision       | Mean: 0.8569 | Std: 0.0046
+Recall          | Mean: 0.8528 | Std: 0.0064
+F1-Score        | Mean: 0.8524 | Std: 0.0068
