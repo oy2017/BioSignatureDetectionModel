@@ -46,7 +46,7 @@ print("\nExplained variance for top components:")
 for i, variance in enumerate(explained_variance[:50]):
     print(f"  PC-{i+1}: {variance:.4f} (Cumulative: {cumulative_variance[i]:.4f})")
 
-# --- 6. Generate Scree Plot ---
+# --- 6. Generate Cumulative Explained Variance Plot ---
 plt.figure(figsize=(10, 6))
 plt.plot(range(1, len(cumulative_variance) + 1), cumulative_variance, marker='.', linestyle='--')
 plt.title(f'PCA Cumulative Explained Variance for {fill_gas} Dataset')
@@ -59,4 +59,19 @@ plt.legend(loc='best')
 
 plot_filename = f'{fill_gas}_pca_explained_variance.png'
 plt.savefig(plot_filename)
-print(f"\nScree plot saved to {plot_filename}")
+print(f"\nCumulative explained variance plot saved to {plot_filename}")
+
+# --- 7. Generate Traditional Scree Plot ---
+plt.figure(figsize=(10, 6))
+# Limiting to the first 50 components for better visualization
+num_components_to_plot = 50
+plt.plot(range(1, num_components_to_plot + 1), explained_variance[:num_components_to_plot], marker='o', linestyle='-')
+plt.title(f'Scree Plot for {fill_gas} Dataset (First {num_components_to_plot} Components)')
+plt.xlabel('Principal Component')
+plt.ylabel('Explained Variance Ratio')
+plt.xticks(np.arange(0, num_components_to_plot + 1, 5))
+plt.grid(True)
+
+scree_plot_filename = f'{fill_gas}_pca_scree_plot.png'
+plt.savefig(scree_plot_filename)
+print(f"Scree plot saved to {scree_plot_filename}")

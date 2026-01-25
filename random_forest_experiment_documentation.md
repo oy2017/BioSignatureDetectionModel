@@ -22,6 +22,13 @@ Random Forest (RF) served as the primary ensemble baseline. Extensive testing co
 ### A. Grid Search (Optimization)
 **Script:** `tune_rf_gridsearch.py`
 **Scope:** 108 Parameter Combinations
+
+**Search Space:**
+*   **n_estimators:** `[100, 200, 300]`
+*   **max_depth:** `[None, 10, 20, 30]`
+*   **min_samples_split:** `[2, 5, 10]`
+*   **min_samples_leaf:** `[1, 2, 4]`
+
 **Best Configuration:**
 *   `n_estimators`: **300**
 *   `max_depth`: **None** (Unconstrained)

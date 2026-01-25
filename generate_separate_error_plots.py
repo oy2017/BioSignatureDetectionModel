@@ -1,0 +1,200 @@
+import os
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import tensorflow as tf
+import re
+from sklearn.preprocessing import StandardScaler
+from sklearn.decomposition import PCA
+from sklearn.ensemble import RandomForestClassifier
+from xgboost import XGBClassifier
+from tensorflow.keras.models import load_model, Model
+from tensorflow.keras.layers import Input, Conv1D, MaxPooling1D, GlobalAveragePooling1D, Dense, Dropout, BatchNormalization, Activation, Add
+from tensorflow.keras.callbacks import EarlyStopping
+from tensorflow.keras.optimizers import Adam
+from sklearn.metrics import accuracy_score
+
+# --- Configuration ---
+FILL_GAS = "H2"
+SEED = 42
+RESULTS_DIR = "final_results"
+
+os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+np.random.seed(SEED)
+tf.random.set_seed(SEED)
+
+def get_data():
+    print("--- Loading Data ---")
+    df_train = pd.read_parquet(f'multirex_spectra_{FILL_GAS}_train.parquet')
+    df_test = pd.read_parquet(f'multirex_spectra_{FILL_GAS}_test.parquet')
+    
+    y_train = df_train['biosignature'].apply(lambda x: 1 if x == 'yes' else 0).values
+    y_test = df_test['biosignature'].apply(lambda x: 1 if x == 'yes' else 0).values
+    
+    float_pattern = re.compile(r"^-?\d+\.\d+$") 
+    spectral_cols = [col for col in df_train.columns if isinstance(col, float) or (isinstance(col, str) and float_pattern.match(col))]
+    spectral_cols_sorted = sorted(spectral_cols, key=float)
+    
+    X_train_raw = df_train[spectral_cols_sorted].values
+    X_test_raw = df_test[spectral_cols_sorted].values
+    
+    # Extract/Calculate Parameters
+    p_radius = df_test['p_radius'].values
+    s_radius = df_test['s radius'].values
+    transit_depth = (p_radius / (s_radius * 109.076))**2
+    
+    params_test = pd.DataFrame({
+        'Planet Temp': df_test['atm temperature'].values,
+        'Planet Mass': df_test['p_mass'].values,
+        'Planet Radius': df_test['p_radius'].values,
+        'Star Temp': df_test['s temperature'].values,
+        'Transit Depth': transit_depth,
+        'SMA': df_test['sma'].values,
+        'H2O Abundance': df_test['atm H2O'].values,
+        'CH4 Abundance': df_test['atm CH4'].values
+    })
+    
+    return X_train_raw, y_train, X_test_raw, y_test, params_test
+
+def get_pca_data(X_train_raw, X_test_raw, start=2, end=102):
+    print(f"--- Preparing PCA Data (Components {start}-{end}) ---")
+    scaler = StandardScaler()
+    X_tr_s = scaler.fit_transform(X_train_raw)
+    X_te_s = scaler.transform(X_test_raw)
+    
+    pca = PCA()
+    X_tr_pca_full = pca.fit_transform(X_tr_s)
+    X_te_pca_full = pca.transform(X_te_s)
+    
+    X_tr_pca = X_tr_pca_full[:, start:end]
+    X_te_pca = X_te_pca_full[:, start:end]
+    
+    scaler_pca = StandardScaler()
+    X_tr_final = scaler_pca.fit_transform(X_tr_pca)
+    X_te_final = scaler_pca.transform(X_te_pca)
+    
+    return X_tr_final, X_te_final
+
+def build_resnet(input_shape):
+    def residual_block(x, filters, kernel_size=7):
+        shortcut = x
+        x = Conv1D(filters=filters, kernel_size=kernel_size, padding='same')(x)
+        x = BatchNormalization()(x)
+        x = Activation('relu')(x)
+        x = Conv1D(filters=filters, kernel_size=kernel_size, padding='same')(x)
+        x = BatchNormalization()(x)
+        if shortcut.shape[-1] != filters:
+            shortcut = Conv1D(filters=filters, kernel_size=1, padding='same')(shortcut)
+        x = Add()([x, shortcut])
+        x = Activation('relu')(x)
+        return x
+
+    inputs = Input(shape=input_shape)
+    x = Conv1D(filters=32, kernel_size=7, padding='same')(inputs)
+    x = BatchNormalization()(x)
+    x = Activation('relu')(x)
+    x = residual_block(x, filters=32, kernel_size=7)
+    x = MaxPooling1D(pool_size=2)(x)
+    x = residual_block(x, filters=64, kernel_size=7)
+    x = MaxPooling1D(pool_size=2)(x)
+    x = residual_block(x, filters=128, kernel_size=7)
+    x = GlobalAveragePooling1D()(x)
+    x = Dense(64, activation='relu')(x)
+    x = Dropout(0.5)(x)
+    outputs = Dense(1, activation='sigmoid')(x)
+    
+    model = Model(inputs=inputs, outputs=outputs)
+    model.compile(optimizer=Adam(learning_rate=0.0001), loss='binary_crossentropy', metrics=['accuracy'])
+    return model
+
+def calculate_error_rates(y_true, y_pred, param_values, num_bins=10):
+    bins = np.linspace(param_values.min(), param_values.max(), num_bins + 1)
+    bin_centers = (bins[:-1] + bins[1:]) / 2
+    errors = []
+    for i in range(num_bins):
+        mask = (param_values >= bins[i]) & (param_values < bins[i+1])
+        if mask.sum() > 0:
+            errors.append(1 - accuracy_score(y_true[mask], y_pred[mask]))
+        else:
+            errors.append(np.nan)
+    return bin_centers, errors
+
+def main():
+    X_tr_raw, y_train, X_te_raw, y_test, params = get_data()
+    X_tr_pca, X_te_pca = get_pca_data(X_tr_raw, X_te_raw) # 2-102
+    
+    predictions = {}
+
+    # 1. MLP (Load Saved)
+    mlp_path = os.path.join(RESULTS_DIR, f'{FILL_GAS}_best_mlp_model.keras')
+    if os.path.exists(mlp_path):
+        print("--- Loading Pre-trained MLP ---")
+        mlp = load_model(mlp_path)
+        # Recreate 0-100 pipeline
+        X_tr_pca0, X_te_pca0 = get_pca_data(X_tr_raw, X_te_raw, start=0, end=100)
+        predictions['MLP (DeepWide)'] = (mlp.predict(X_te_pca0, verbose=0) > 0.5).astype(int).flatten()
+    
+    # 2. XGBoosts
+    print("--- Training XGBoost (Original) ---")
+    xgb1 = XGBClassifier(n_estimators=150, max_depth=5, learning_rate=0.1, random_state=SEED, n_jobs=-1, eval_metric='logloss')
+    xgb1.fit(X_tr_pca, y_train)
+    predictions['XGBoost (Original)'] = xgb1.predict(X_te_pca)
+    
+    print("--- Training XGBoost (Aggressive) ---")
+    xgb2 = XGBClassifier(n_estimators=300, max_depth=5, learning_rate=0.2, subsample=1.0, random_state=SEED, n_jobs=-1, eval_metric='logloss')
+    xgb2.fit(X_tr_pca, y_train)
+    predictions['XGBoost (Aggressive)'] = xgb2.predict(X_te_pca)
+    
+    # 3. Random Forests
+    print("--- Training Random Forest (Original) ---")
+    rf1 = RandomForestClassifier(n_estimators=150, max_depth=None, class_weight='balanced', random_state=SEED, n_jobs=-1)
+    rf1.fit(X_tr_pca, y_train)
+    predictions['Random Forest (Original)'] = rf1.predict(X_te_pca)
+    
+    print("--- Training Random Forest (Tuned) ---")
+    rf2 = RandomForestClassifier(n_estimators=300, max_depth=None, min_samples_leaf=1, min_samples_split=2, class_weight='balanced', random_state=SEED, n_jobs=-1)
+    rf2.fit(X_tr_pca, y_train)
+    predictions['Random Forest (Tuned)'] = rf2.predict(X_te_pca)
+    
+    # 4. CNN (ResNet)
+    print("--- Training CNN (ResNet) ---")
+    scaler_cnn = StandardScaler()
+    X_tr_cnn = scaler_cnn.fit_transform(X_tr_raw).reshape(-1, X_tr_raw.shape[1], 1)
+    X_te_cnn = scaler_cnn.transform(X_te_raw).reshape(-1, X_te_raw.shape[1], 1)
+    cnn = build_resnet(input_shape=(X_tr_raw.shape[1], 1))
+    cnn.fit(X_tr_cnn, y_train, epochs=30, batch_size=32, validation_split=0.1, 
+            callbacks=[EarlyStopping(patience=5, restore_best_weights=True)], verbose=0)
+    predictions['CNN (ResNet)'] = (cnn.predict(X_te_cnn, verbose=0) > 0.5).astype(int).flatten()
+
+    # --- Plotting ---
+    print("--- Generating Individual Plots ---")
+    if not os.path.exists(RESULTS_DIR): os.makedirs(RESULTS_DIR)
+
+    for p_name in params.columns:
+        plt.figure(figsize=(10, 6))
+        vals = params[p_name].values
+        
+        for m_name, preds in predictions.items():
+            centers, errors = calculate_error_rates(y_test, preds, vals)
+            sns.lineplot(x=centers, y=errors, label=m_name, marker='o', linewidth=2)
+        
+        plt.title(f'Error Rate vs {p_name}', fontsize=14, fontweight='bold')
+        plt.xlabel(p_name, fontsize=12)
+        plt.ylabel('Error Rate', fontsize=12)
+        if p_name == 'Transit Depth': plt.xscale('log')
+        plt.grid(True, alpha=0.3)
+        plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
+        plt.tight_layout()
+        
+        safe_name = p_name.lower().replace(' ', '_')
+        filename = os.path.join(RESULTS_DIR, f'error_vs_{safe_name}.png')
+        plt.savefig(filename, dpi=300)
+        plt.close()
+        print(f"Saved: {filename}")
+
+    print("\nAll plots generated successfully in 'final_results/'")
+
+if __name__ == "__main__":
+    main()
