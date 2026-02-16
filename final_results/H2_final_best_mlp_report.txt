@@ -2,13 +2,13 @@ Final Best MLP Model (DeepWide) for H2
 ==============================================
 Architecture: [512, 256, 128]
 Parameters: Batch=128, Drop=0.4, LR=0.0005
-Test Accuracy: 0.8495
+Test Accuracy: 0.8417
 
               precision    recall  f1-score   support
 
-     Non-Bio       0.89      0.80      0.84       298
-         Bio       0.82      0.90      0.86       300
+     Non-Bio       0.79      0.93      0.85       261
+         Bio       0.92      0.76      0.83       276
 
-    accuracy                           0.85       598
-   macro avg       0.85      0.85      0.85       598
-weighted avg       0.85      0.85      0.85       598
+    accuracy                           0.84       537
+   macro avg       0.85      0.84      0.84       537
+weighted avg       0.85      0.84      0.84       537

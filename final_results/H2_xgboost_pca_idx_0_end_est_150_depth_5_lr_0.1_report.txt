@@ -1,0 +1,8 @@
+              precision    recall  f1-score   support
+
+ Non-Bio (0)       0.89      0.91      0.90       261
+     Bio (1)       0.91      0.89      0.90       276
+
+    accuracy                           0.90       537
+   macro avg       0.90      0.90      0.90       537
+weighted avg       0.90      0.90      0.90       537

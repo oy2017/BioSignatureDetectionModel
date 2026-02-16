@@ -1,0 +1,36 @@
+Best Accuracy: 0.6108
+Best Parameters: {'filters': 32, 'kernel_size': 5, 'dropout_rate': 0.3, 'learning_rate': 0.001, 'batch_size': 32}
+
+All Results:
+{'filters': 32, 'kernel_size': 3, 'dropout_rate': 0.3, 'learning_rate': 0.001, 'batch_size': 32, 'accuracy': 0.5363128781318665}
+{'filters': 32, 'kernel_size': 3, 'dropout_rate': 0.3, 'learning_rate': 0.001, 'batch_size': 64, 'accuracy': 0.540037214756012}
+{'filters': 32, 'kernel_size': 3, 'dropout_rate': 0.3, 'learning_rate': 0.0005, 'batch_size': 32, 'accuracy': 0.517690896987915}
+{'filters': 32, 'kernel_size': 3, 'dropout_rate': 0.3, 'learning_rate': 0.0005, 'batch_size': 64, 'accuracy': 0.5214152932167053}
+{'filters': 32, 'kernel_size': 3, 'dropout_rate': 0.5, 'learning_rate': 0.001, 'batch_size': 32, 'accuracy': 0.5325884819030762}
+{'filters': 32, 'kernel_size': 3, 'dropout_rate': 0.5, 'learning_rate': 0.001, 'batch_size': 64, 'accuracy': 0.5139665007591248}
+{'filters': 32, 'kernel_size': 3, 'dropout_rate': 0.5, 'learning_rate': 0.0005, 'batch_size': 32, 'accuracy': 0.5232774615287781}
+{'filters': 32, 'kernel_size': 3, 'dropout_rate': 0.5, 'learning_rate': 0.0005, 'batch_size': 64, 'accuracy': 0.5158286690711975}
+{'filters': 32, 'kernel_size': 5, 'dropout_rate': 0.3, 'learning_rate': 0.001, 'batch_size': 32, 'accuracy': 0.6108007431030273}
+{'filters': 32, 'kernel_size': 5, 'dropout_rate': 0.3, 'learning_rate': 0.001, 'batch_size': 64, 'accuracy': 0.5158286690711975}
+{'filters': 32, 'kernel_size': 5, 'dropout_rate': 0.3, 'learning_rate': 0.0005, 'batch_size': 32, 'accuracy': 0.5270018577575684}
+{'filters': 32, 'kernel_size': 5, 'dropout_rate': 0.3, 'learning_rate': 0.0005, 'batch_size': 64, 'accuracy': 0.5139665007591248}
+{'filters': 32, 'kernel_size': 5, 'dropout_rate': 0.5, 'learning_rate': 0.001, 'batch_size': 32, 'accuracy': 0.5307262539863586}
+{'filters': 32, 'kernel_size': 5, 'dropout_rate': 0.5, 'learning_rate': 0.001, 'batch_size': 64, 'accuracy': 0.5139665007591248}
+{'filters': 32, 'kernel_size': 5, 'dropout_rate': 0.5, 'learning_rate': 0.0005, 'batch_size': 32, 'accuracy': 0.5139665007591248}
+{'filters': 32, 'kernel_size': 5, 'dropout_rate': 0.5, 'learning_rate': 0.0005, 'batch_size': 64, 'accuracy': 0.5381750464439392}
+{'filters': 64, 'kernel_size': 3, 'dropout_rate': 0.3, 'learning_rate': 0.001, 'batch_size': 32, 'accuracy': 0.5363128781318665}
+{'filters': 64, 'kernel_size': 3, 'dropout_rate': 0.3, 'learning_rate': 0.001, 'batch_size': 64, 'accuracy': 0.5344506502151489}
+{'filters': 64, 'kernel_size': 3, 'dropout_rate': 0.3, 'learning_rate': 0.0005, 'batch_size': 32, 'accuracy': 0.5623835921287537}
+{'filters': 64, 'kernel_size': 3, 'dropout_rate': 0.3, 'learning_rate': 0.0005, 'batch_size': 64, 'accuracy': 0.5344506502151489}
+{'filters': 64, 'kernel_size': 3, 'dropout_rate': 0.5, 'learning_rate': 0.001, 'batch_size': 32, 'accuracy': 0.5158286690711975}
+{'filters': 64, 'kernel_size': 3, 'dropout_rate': 0.5, 'learning_rate': 0.001, 'batch_size': 64, 'accuracy': 0.5251396894454956}
+{'filters': 64, 'kernel_size': 3, 'dropout_rate': 0.5, 'learning_rate': 0.0005, 'batch_size': 32, 'accuracy': 0.5195530652999878}
+{'filters': 64, 'kernel_size': 3, 'dropout_rate': 0.5, 'learning_rate': 0.0005, 'batch_size': 64, 'accuracy': 0.5139665007591248}
+{'filters': 64, 'kernel_size': 5, 'dropout_rate': 0.3, 'learning_rate': 0.001, 'batch_size': 32, 'accuracy': 0.5195530652999878}
+{'filters': 64, 'kernel_size': 5, 'dropout_rate': 0.3, 'learning_rate': 0.001, 'batch_size': 64, 'accuracy': 0.5270018577575684}
+{'filters': 64, 'kernel_size': 5, 'dropout_rate': 0.3, 'learning_rate': 0.0005, 'batch_size': 32, 'accuracy': 0.5325884819030762}
+{'filters': 64, 'kernel_size': 5, 'dropout_rate': 0.3, 'learning_rate': 0.0005, 'batch_size': 64, 'accuracy': 0.5158286690711975}
+{'filters': 64, 'kernel_size': 5, 'dropout_rate': 0.5, 'learning_rate': 0.001, 'batch_size': 32, 'accuracy': 0.5418994426727295}
+{'filters': 64, 'kernel_size': 5, 'dropout_rate': 0.5, 'learning_rate': 0.001, 'batch_size': 64, 'accuracy': 0.5437616109848022}
+{'filters': 64, 'kernel_size': 5, 'dropout_rate': 0.5, 'learning_rate': 0.0005, 'batch_size': 32, 'accuracy': 0.5344506502151489}
+{'filters': 64, 'kernel_size': 5, 'dropout_rate': 0.5, 'learning_rate': 0.0005, 'batch_size': 64, 'accuracy': 0.5288640856742859}
