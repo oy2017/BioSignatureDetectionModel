@@ -22,10 +22,12 @@ wn_grid = Physics.wavenumber_grid(wl_min, wl_max, resolution)
 parser = argparse.ArgumentParser(description="Generate a multiverse dataset with a specified fill gas.")
 parser.add_argument("fill_gas", type=str, help="The fill gas for the atmosphere (e.g., H2, N2).")
 parser.add_argument("--purpose", type=str, choices=['train', 'test'], default='train', help="Purpose of the dataset: 'train' or 'test'.")
+parser.add_argument("--suffix", type=str, default="", help="Optional suffix for the output filename (e.g., 'v2').")
 args = parser.parse_args()
 
 fill_gas = args.fill_gas.upper() # Convert to uppercase for consistency
 purpose = args.purpose
+suffix = args.suffix
 
 if purpose == 'train':
     N_UNIVERSES = N_UNIVERSES_TRAIN
@@ -83,8 +85,8 @@ star = Star(
 
 # --- Define planet parameters based on fill_gas ---
 if fill_gas == 'H2':
-    planet_radius_range = (5.0, 15.0)
-    planet_mass_range = (20.0, 300.0)
+    planet_radius_range = (1.0, 26.0)
+    planet_mass_range = (1.0, 300.0)
     # These ranges are chosen to represent physically plausible H2-dominated atmospheres
     # for super-Earths and mini-Neptunes, avoiding parameter space where H2 atmospheres
     # might be unstable or unrealistic for the given stellar parameters.
@@ -148,6 +150,35 @@ for item in generation_plan:
 print(f"\n--- Combining {fill_gas} datasets ---")
 spectra_df = pd.concat(all_spectra, ignore_index=True)
 
+# --- Check and Remove NaNs and Impossible Values ---
+# 1. Check for NaNs
+total_nans = spectra_df.isna().sum().sum()
+print(f"Total NaNs in dataset: {total_nans}")
+
+# 2. Check for values > 1.0 (physical impossibility)
+# We only check spectral columns (float columns)
+import re
+float_pattern = re.compile(r"^-?\d+\.\d+$")
+spectral_cols = [col for col in spectra_df.columns if isinstance(col, float) or (isinstance(col, str) and float_pattern.match(col))]
+rows_with_extreme = (spectra_df[spectral_cols] > 1.0).any(axis=1).sum()
+print(f"Rows with values > 1.0: {rows_with_extreme}")
+
+# Filter
+initial_rows = len(spectra_df)
+spectra_df = spectra_df.dropna() # Remove NaNs
+
+# Remove rows with > 1.0
+mask = (spectra_df[spectral_cols] <= 1.0).all(axis=1)
+spectra_df = spectra_df[mask]
+
+removed_rows = initial_rows - len(spectra_df)
+if removed_rows > 0:
+    print(f"Removed {removed_rows} invalid rows (NaNs or > 1.0).")
+else:
+    print("No invalid rows found.")
+
+print(f"Final dataset contains {len(spectra_df)} rows.")
+
 def check_biosignature(row):
     if (row.get('atm CH4', -99) >= bio_threshold_ch4 and
         row.get('atm O3', -99) >= bio_threshold_o3):
@@ -156,7 +187,13 @@ def check_biosignature(row):
         return 'no'
 
 spectra_df['biosignature'] = spectra_df.apply(check_biosignature, axis=1)
-output_filename = f"multirex_spectra_{fill_gas}_{purpose}.parquet" # Dynamic filename
+
+# Dynamic filename with optional suffix
+if suffix:
+    output_filename = f"multirex_spectra_{fill_gas}_{purpose}_{suffix}.parquet"
+else:
+    output_filename = f"multirex_spectra_{fill_gas}_{purpose}.parquet"
+
 spectra_df.to_parquet(output_filename)
 
 print(f"{fill_gas} {purpose} dataset created and saved to {output_filename}")
