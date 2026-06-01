@@ -21,8 +21,8 @@ for i in range(1, num_sets + 1):
     if os.path.exists(default_name):
         if os.path.exists(new_name):
             os.remove(new_name)
-        os.rename(default_name, new_name)
-        print(f"Saved test set to: {new_name}")
+        shutil.copy(default_name, new_name) # Copy instead of rename
+        print(f"Saved copy of test set to: {new_name}")
     else:
         print(f"Error: Expected output file {default_name} not found!")
         exit(1)

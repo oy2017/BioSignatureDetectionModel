@@ -31,6 +31,15 @@ spectral_cols = [col for col in df_train.columns if isinstance(col, float) or (i
 X_train_raw = df_train[spectral_cols]
 X_test_raw = df_test[spectral_cols]
 
+# --- Filter Invalid Values (> 1.0) ---
+train_mask = (X_train_raw <= 1.0).all(axis=1)
+test_mask = (X_test_raw <= 1.0).all(axis=1)
+print(f"Filtering out {len(X_train_raw) - train_mask.sum()} invalid rows from training set.")
+X_train_raw = X_train_raw[train_mask]
+y_train = y_train[train_mask]
+X_test_raw = X_test_raw[test_mask]
+y_test = y_test[test_mask]
+
 # --- 2. Preprocessing (Scaling + PCA) ---
 print("--- Preprocessing: Scaling ---")
 scaler = StandardScaler()

@@ -1,13 +1,13 @@
 Optimized Raw CNN Results
-Accuracy: 0.5456
+Accuracy: 0.5028
 Params: Filters=32, Kernel=5, Batch=64, InitLR=0.001
 Extras: GaussianNoise(0.05), ReduceLROnPlateau, 3 Conv Layers
 
               precision    recall  f1-score   support
 
- Non-Bio (0)       0.61      0.18      0.28       261
-     Bio (1)       0.53      0.89      0.67       276
+ Non-Bio (0)       0.55      0.13      0.21       270
+     Bio (1)       0.50      0.89      0.64       261
 
-    accuracy                           0.55       537
-   macro avg       0.57      0.54      0.47       537
-weighted avg       0.57      0.55      0.48       537
+    accuracy                           0.50       531
+   macro avg       0.52      0.51      0.43       531
+weighted avg       0.52      0.50      0.42       531

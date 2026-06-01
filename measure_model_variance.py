@@ -27,6 +27,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 FILL_GAS = "H2"
 TRAIN_FILE = f"multirex_spectra_{FILL_GAS}_train.parquet"
 TEST_FILES = [f"multirex_spectra_{FILL_GAS}_test_set_{i}.parquet" for i in range(1, 6)]
+RESULTS_DIR = "final_results"
 
 # --- Helper Functions ---
 def load_data(file_path):
@@ -84,28 +85,28 @@ model_mlp.fit(X_train_mlp, y_train, epochs=100, batch_size=128, validation_split
               callbacks=[EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)], verbose=0)
 
 # --- CNN ---
-print("--- Training Best CNN ---")
+print("--- Training Best CNN (Optimized) ---")
 cnn_input_shape = (100, 1)
 model_cnn = Sequential([
-    Conv1D(64, 5, input_shape=cnn_input_shape, padding='same'), BatchNormalization(), Activation('relu'), MaxPooling1D(2), Dropout(0.3),
-    Conv1D(128, 5, padding='same'), BatchNormalization(), Activation('relu'), MaxPooling1D(2), Dropout(0.3),
+    Conv1D(32, 3, input_shape=cnn_input_shape, padding='same'), BatchNormalization(), Activation('relu'), MaxPooling1D(2), Dropout(0.3),
+    Conv1D(64, 3, padding='same'), BatchNormalization(), Activation('relu'), MaxPooling1D(2), Dropout(0.3),
     Flatten(),
     Dense(100), BatchNormalization(), Activation('relu'), Dropout(0.5),
     Dense(1, activation='sigmoid')
 ])
-model_cnn.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=0.001), 
+model_cnn.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=0.0005), 
                   loss='binary_crossentropy', metrics=['accuracy'])
-model_cnn.fit(X_train_cnn, y_train, epochs=100, batch_size=64, validation_split=0.2,
+model_cnn.fit(X_train_cnn, y_train, epochs=100, batch_size=32, validation_split=0.2,
               callbacks=[EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)], verbose=0)
 
 # --- Random Forest ---
 print("--- Training Best Random Forest ---")
-model_rf = RandomForestClassifier(n_estimators=200, max_depth=None, random_state=SEED, n_jobs=-1, class_weight='balanced')
+model_rf = RandomForestClassifier(n_estimators=300, max_depth=None, min_samples_leaf=2, min_samples_split=5, random_state=SEED, n_jobs=-1, class_weight='balanced')
 model_rf.fit(X_train_clean, y_train)
 
 # --- XGBoost ---
 print("--- Training Best XGBoost ---")
-model_xgb = XGBClassifier(n_estimators=200, max_depth=5, learning_rate=0.1, random_state=SEED, n_jobs=-1, eval_metric='logloss')
+model_xgb = XGBClassifier(n_estimators=300, max_depth=7, learning_rate=0.05, subsample=0.8, random_state=SEED, n_jobs=-1, eval_metric='logloss')
 model_xgb.fit(X_train_clean, y_train)
 
 
@@ -134,6 +135,27 @@ for i, test_file in enumerate(TEST_FILES):
             'Recall': recall_score(y_test, y_pred, zero_division=0),
             'F1': f1_score(y_test, y_pred, zero_division=0)
         })
+        
+        # Save confusion matrix for the FIRST test set only (as a representative sample)
+        if i == 0:
+            import matplotlib.pyplot as plt
+            import seaborn as sns
+            from sklearn.metrics import confusion_matrix
+            
+            cm = confusion_matrix(y_test, y_pred)
+            plt.figure(figsize=(6, 5))
+            sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', cbar=False)
+            plt.title(f'{name} Confusion Matrix (Acc: {accuracy_score(y_test, y_pred):.4f})')
+            plt.ylabel('True Label')
+            plt.xlabel('Predicted Label')
+            plt.tight_layout()
+            
+            # Create a safe filename
+            safe_name = name.lower().replace(" ", "_")
+            filename = os.path.join(RESULTS_DIR, f'H2_best_{safe_name}_confusion_matrix.png')
+            plt.savefig(filename, dpi=300)
+            plt.close()
+            print(f"Saved confusion matrix: {filename}")
 
     # Predict MLP
     store_res('MLP', (model_mlp.predict(X_test_mlp) > 0.5).astype(int))
