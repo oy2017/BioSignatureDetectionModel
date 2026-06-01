@@ -90,12 +90,28 @@ with open(report_filename, 'w') as f:
     f.write(report_str)
 
 cm = confusion_matrix(y_test, y_pred)
+accuracy = np.trace(cm) / np.sum(cm)
+
 print("Confusion Matrix:")
 print(cm)
+
+# Create fractional and percentage labels
+row_sums = cm.sum(axis=1)
+labels = []
+for i in range(cm.shape[0]):
+    for j in range(cm.shape[1]):
+        count = cm[i, j]
+        total = row_sums[i]
+        percent = (count / total) * 100
+        labels.append(f"{percent:.1f}%\n({count}/{total})")
+labels = np.asarray(labels).reshape(cm.shape)
+
 plt.figure(figsize=(8, 6))
-sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
-plt.title(cm_title)
-plt.savefig(cm_filename)
+sns.heatmap(cm, annot=labels, fmt='', cmap='Blues', annot_kws={"size": 14})
+plt.title(f'XGBoost Confusion Matrix (Accuracy: {accuracy:.1%})', fontsize=16)
+plt.xlabel('Predicted Label', fontsize=14)
+plt.ylabel('True Label', fontsize=14)
+plt.savefig(cm_filename, bbox_inches='tight', dpi=300)
 plt.close()
 
 print(f"\n--- {fill_gas} Analysis Complete (XGBoost, PCA {pca_start_idx}-{pca_end_idx if pca_end_idx is not None else 'end'}, Est={n_estimators}, Depth={max_depth}, LR={learning_rate}) ---")

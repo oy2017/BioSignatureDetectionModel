@@ -1,11 +1,11 @@
-Best Params: {'learning_rate': 0.2, 'max_depth': 5, 'n_estimators': 300, 'subsample': 1.0}
-Test Accuracy: 0.8695652173913043
+Best Params: {'learning_rate': 0.05, 'max_depth': 7, 'n_estimators': 300, 'subsample': 0.8}
+Test Accuracy: 0.9152542372881356
 
               precision    recall  f1-score   support
 
-           0       0.86      0.88      0.87       298
-           1       0.88      0.86      0.87       300
+           0       0.92      0.91      0.92       270
+           1       0.91      0.92      0.91       261
 
-    accuracy                           0.87       598
-   macro avg       0.87      0.87      0.87       598
-weighted avg       0.87      0.87      0.87       598
+    accuracy                           0.92       531
+   macro avg       0.92      0.92      0.92       531
+weighted avg       0.92      0.92      0.92       531

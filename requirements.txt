@@ -12,3 +12,5 @@ seaborn
 xgboost
 tensorflow
 lightgbm
+corner
+psutil
