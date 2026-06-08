@@ -1,56 +1,41 @@
-# Summary of Model Tuning Experiments for H2 Biosignature Detection
+# Project Technical Summary: Biosignature Detection via Machine Learning
 
-## 1. Primary Finding: The Signal is Not in the Noise
+## 1. Overview of Methodology
+This project developed a machine learning pipeline to detect atmospheric biosignatures (methane and ozone disequilibrium) in high-dimensional exoplanet transmission spectra simulated at an Ariel-like resolving power of 200. The final pipeline utilizes Principal Component Analysis (PCA) for signal isolation and evaluates four primary architectures: XGBoost, Random Forest, Multi-Layer Perceptron (MLP), and 1D-Convolutional Neural Network (CNN).
 
-The most significant and counter-intuitive discovery from this series of experiments is that the principal components (PCs) that explain the vast majority of the data's variance are actively harmful to classification performance.
+## 2. Evolution of the Data Pipeline
 
-- **The first two PCs**, which account for over **99.9% of the explained variance**, result in a model that performs no better than a random guess (52% accuracy).
-- This indicates that the largest sources of variation in the spectral data—likely related to global parameters like stellar type or planet size—are not correlated with the presence of a biosignature. They are effectively **noise** for this classification task.
+### Phase 1: Exploratory Development
+Initial experiments used separate scripts for each model. A "Skip PC0-PC1" strategy was identified as critical for isolating chemical features from physical systematics. 
+*   **Result:** Early MLP and CNN models achieved ~83-87% accuracy.
+*   **Artifacts:** `evaluate_deep_learning.py`, `tune_mlp_gridsearch.py`.
 
-The key to building a successful model was to **ignore these high-variance components** and focus on the subsequent, lower-variance components which contain the subtle, discriminative **signal**.
+### Phase 2: Unified Master Pipeline & Bug Fix
+A rigorous audit of the Phase 1 scripts revealed a **StandardScaler Scaling Bug**. The old scripts applied a second `StandardScaler` to PCA subsets *after* slicing, which artificially inflated the amplitude of subtle chemical wiggles.
+*   **The Fix:** A unified Master Evaluation script (`run_master_5set_evaluation.py`) was implemented. It fit PCA once and extracted slices without redundant scaling, ensuring the models see physically realistic feature variances.
+*   **Discovery of Baseline Dependence:** Removing the scaling bug revealed that while XGBoost is **baseline-independent** (accuracy remained high without PC0/1), Neural Networks are **baseline-dependent**. Without PC0 and PC1 (planetary radius and temperature) to orient the gradient descent, MLP/CNN accuracy collapsed to ~55%.
 
----
+## 3. Final Model Configurations (GridSearch Winners)
 
-## 2. Feature Engineering: Optimizing the PCA Feature Set
+Through an exhaustive master grid search and 5-set validation, the following optimal configurations were locked for the final paper:
 
-Based on the primary finding, a series of experiments were conducted to identify the optimal set of principal components.
+| Model | PCA Subset | Hyperparameters |
+| :--- | :--- | :--- |
+| **XGBoost** | PC 2-101 | Est=300, Depth=5, LR=0.1, Subsample=0.8 |
+| **Random Forest** | PC 2-101 | Est=300, Depth=None, Leaf=2, Split=2 |
+| **MLP** | PC 0-101 | 256-128-64 neurons, Dropout=0.3, LR=0.0005, Batch=128 |
+| **1D-CNN** | PC 0-101 | 64/128 filters, Kernel=5, Dropout=0.3, LR=0.001, Batch=64 |
 
-### Key Conclusions:
-1.  **Removing the "Noise" is Critical:** Explicitly removing the first two principal components consistently improved model performance. For example, a Random Forest model using PCs 0-100 achieved 83% accuracy, while the same model using PCs 2-102 achieved 84% accuracy. This demonstrates that the first two PCs actively confuse the model even when a large number of signal-bearing components are present.
-2.  **More Signal is Better (to a point):** Performance scaled positively with the number of components used *after* the initial two. The optimal number was found to be **100**.
-3.  **Diminishing Returns:** Extending the number of components from 100 to 200 provided no performance benefit for the best model (XGBoost) and slightly degraded performance for the Random Forest model.
+## 4. Definitive Results (Table II)
+Evaluated across 5 independent test sets (N~550 each) using the rigorous pipeline:
 
-**Optimal Feature Set:** The best and most consistent results were achieved using the principal components from **index 2 to 102**.
+| Model Architecture | Accuracy | Precision | Recall | F1-Score |
+| :--- | :---: | :---: | :---: | :---: |
+| **XGBoost** | 88.59% (± 1.66%) | 87.93% (± 1.53%) | 89.55% (± 1.80%) | **88.73% (± 1.63%)** |
+| **Random Forest** | 86.69% (± 0.70%) | 87.03% (± 0.68%) | 86.33% (± 1.55%) | **86.67% (± 0.74%)** |
+| **MLP** | 88.17% (± 0.96%) | 87.78% (± 1.54%) | 88.82% (± 1.82%) | **88.28% (± 0.94%)** |
+| **CNN** | 81.86% (± 0.86%) | 87.04% (± 1.96%) | 75.07% (± 1.42%) | **80.59% (± 0.90%)** |
 
----
-
-## 3. Model Comparison and Hyperparameter Tuning
-
-With the optimal feature set identified, Random Forest and XGBoost models were tuned for comparison.
-
-### Random Forest
-- Using the optimal PCA set (2-102), the Random Forest model's accuracy jumped to **84%**.
-- After tuning `n_estimators` (optimal: 200) and `max_depth` (optimal: 20 or None), the peak performance reached **85% accuracy**.
-
-### XGBoost
-- The XGBoost model immediately demonstrated superior performance, achieving **86% accuracy** on the optimal PCA set with its default hyperparameters.
-- After tuning `n_estimators` (optimal: 200), `max_depth` (optimal: 5), and `learning_rate` (optimal: 0.1), the peak performance reached **87% accuracy**.
-
----
-
-## 4. Final Recommendation
-
-**The best-performing model is XGBoost, but only when applied to a carefully engineered feature set.**
-
-The critical takeaway for any future work on this dataset is the feature engineering strategy: the removal of the initial high-variance principal components is more important than the choice of model or its specific hyperparameters.
-
-### Best Overall Result:
-- **Model:** XGBoost
-- **Accuracy:** **0.87**
-- **Macro Avg F1-score:** **0.87**
-
-### Command to Reproduce Best Result:
-This command encapsulates the optimal feature selection and hyperparameter configuration.
-```bash
-source venv/bin/activate && python3 evaluate_xgboost.py H2 --pca_start_idx=2 --pca_end_idx=102 --n_estimators=200 --max_depth=5 --learning_rate=0.1
-```
+## 5. Physical Insights for the Paper
+*   **Pearson Correlation:** Confirmed PC0 is a proxy for Planetary Radius ($r=0.961$) and PC1 captures Temperature. Both have near-zero correlation with chemical targets.
+*   **Model Robustness:** XGBoost is recommended for the Ariel mission because it can detect biosignatures strictly from relative chemical morphology, making it immune to the absolute continuum errors common in real telescope data. MLP, while equally accurate, is more fragile due to its dependence on the absolute baseline.
