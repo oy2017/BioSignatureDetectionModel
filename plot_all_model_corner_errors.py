@@ -37,58 +37,75 @@ X_test_raw = df_test[cols].values
 y_test = df_test['label'].values
 
 # --- Preprocessing (PCA) ---
-scaler = StandardScaler()
-X_train_s = scaler.fit_transform(X_train_raw)
-X_test_s = scaler.transform(X_test_raw)
+scaler_raw = StandardScaler()
+X_train_s = scaler_raw.fit_transform(X_train_raw)
+X_test_s = scaler_raw.transform(X_test_raw)
 
-pca = PCA()
-X_train_p = pca.fit_transform(X_train_s)
-X_test_p = pca.transform(X_test_s)
+# Ensure reproducible PCA
+pca = PCA(n_components=102, random_state=42)
+X_train_p_full = pca.fit_transform(X_train_s)
+X_test_p_full = pca.transform(X_test_s)
 
 # Feature Sets
-X_train_clean = X_train_p[:, 2:102] # For XGB, RF, CNN
-X_test_clean = X_test_p[:, 2:102]
-X_train_mlp = X_train_p[:, 0:100] # For MLP
-X_test_mlp = X_test_p[:, 0:100]
-X_train_cnn = X_train_clean.reshape(X_train_clean.shape[0], X_train_clean.shape[1], 1)
-X_test_cnn = X_test_clean.reshape(X_test_clean.shape[0], X_test_clean.shape[1], 1)
+# 1. Trees use PC 2-101 (100 components)
+X_train_tree = X_train_p_full[:, 2:102]
+X_test_tree = X_test_p_full[:, 2:102]
+scaler_tree = StandardScaler()
+X_train_tree = scaler_tree.fit_transform(X_train_tree)
+X_test_tree = scaler_tree.transform(X_test_tree)
 
+# 2. Neural Networks use PC 0-101 (102 components)
+X_train_nn = X_train_p_full[:, 0:102]
+X_test_nn = X_test_p_full[:, 0:102]
+scaler_nn = StandardScaler()
+X_train_nn = scaler_nn.fit_transform(X_train_nn)
+X_test_nn = scaler_nn.transform(X_test_nn)
+
+# Shuffle training data for all models
+X_train_tree, y_train_tree = shuffle(X_train_tree, y_train, random_state=42)
+X_train_nn, y_train_nn = shuffle(X_train_nn, y_train, random_state=42)
 
 # --- Model Training Functions ---
 def train_and_predict_xgb():
     print("--- Training XGBoost ---")
-    model = XGBClassifier(n_estimators=300, max_depth=7, learning_rate=0.05, subsample=0.8, random_state=42, n_jobs=-1, eval_metric='logloss')
-    model.fit(X_train_clean, y_train)
-    return model.predict(X_test_clean)
+    model = XGBClassifier(n_estimators=150, max_depth=5, learning_rate=0.1, random_state=42, n_jobs=-1, eval_metric='logloss')
+    model.fit(X_train_tree, y_train_tree)
+    return model.predict(X_test_tree)
 
 def train_and_predict_rf():
     print("--- Training Random Forest ---")
-    model = RandomForestClassifier(n_estimators=300, max_depth=None, min_samples_leaf=2, min_samples_split=5, random_state=42, n_jobs=-1)
-    model.fit(X_train_clean, y_train)
-    return model.predict(X_test_clean)
+    model = RandomForestClassifier(n_estimators=300, min_samples_split=5, min_samples_leaf=2, max_depth=None, random_state=42, n_jobs=-1)
+    model.fit(X_train_tree, y_train_tree)
+    return model.predict(X_test_tree)
 
 def train_and_predict_mlp():
     print("--- Training MLP ---")
     model = Sequential([
-        Flatten(input_shape=(100,)), Dense(256), BatchNormalization(), Activation('relu'), Dropout(0.3),
-        Dense(128), BatchNormalization(), Activation('relu'), Dropout(0.3),
-        Dense(64), BatchNormalization(), Activation('relu'), Dropout(0.3),
+        Input(shape=(102,)),
+        Dense(512), BatchNormalization(), Activation('relu'), Dropout(0.4),
+        Dense(256), BatchNormalization(), Activation('relu'), Dropout(0.4),
+        Dense(128), BatchNormalization(), Activation('relu'), Dropout(0.4),
         Dense(1, activation='sigmoid')
     ])
-    model.compile(optimizer='adam', loss='binary_crossentropy')
-    model.fit(X_train_mlp, y_train, epochs=100, batch_size=128, verbose=0)
-    return (model.predict(X_test_mlp, verbose=0) > 0.5).astype(int).flatten()
+    model.compile(optimizer=Adam(learning_rate=0.0005), loss='binary_crossentropy')
+    es = EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
+    model.fit(X_train_nn, y_train_nn, epochs=100, batch_size=128, validation_split=0.2, callbacks=[es], verbose=0)
+    return (model.predict(X_test_nn, verbose=0) > 0.5).astype(int).flatten()
 
 def train_and_predict_cnn():
     print("--- Training CNN ---")
     model = Sequential([
-        Conv1D(32, 3, input_shape=(100, 1), padding='same'), BatchNormalization(), Activation('relu'), MaxPooling1D(2), Dropout(0.3),
-        Conv1D(64, 3, padding='same'), BatchNormalization(), Activation('relu'), MaxPooling1D(2), Dropout(0.3),
-        Flatten(), Dense(100), BatchNormalization(), Activation('relu'), Dropout(0.5), Dense(1, activation='sigmoid')
+        Input(shape=(102, 1)),
+        Conv1D(filters=64, kernel_size=5, padding='same'), BatchNormalization(), Activation('relu'), MaxPooling1D(pool_size=2), Dropout(0.3),
+        Conv1D(filters=128, kernel_size=5, padding='same'), BatchNormalization(), Activation('relu'), MaxPooling1D(pool_size=2), Dropout(0.3),
+        Flatten(),
+        Dense(100), BatchNormalization(), Activation('relu'), Dropout(0.5),
+        Dense(1, activation='sigmoid')
     ])
-    model.compile(optimizer='adam', loss='binary_crossentropy')
-    model.fit(X_train_cnn, y_train, epochs=100, batch_size=32, verbose=0)
-    return (model.predict(X_test_cnn, verbose=0) > 0.5).astype(int).flatten()
+    model.compile(optimizer=Adam(learning_rate=0.001), loss='binary_crossentropy')
+    es = EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
+    model.fit(X_train_nn.reshape(-1, 102, 1), y_train_nn, epochs=100, batch_size=64, validation_split=0.2, callbacks=[es], verbose=0)
+    return (model.predict(X_test_nn.reshape(-1, 102, 1), verbose=0) > 0.5).astype(int).flatten()
 
 # --- Main Loop ---
 models_to_run = {

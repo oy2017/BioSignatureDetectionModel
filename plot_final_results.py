@@ -34,11 +34,11 @@ scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
 
 # --- 1. Model Comparison Bar Chart ---
-# Data from final_results/model_variance_report_all.txt (Manually transcribed from latest run)
+# Data from final Master 5-Set Evaluation Run (Rigorous Pipeline)
 model_data = {
-    'Model': ['MLP', 'CNN', 'RandomForest', 'XGBoost'],
-    'Accuracy': [0.8523, 0.8297, 0.8631, 0.8867],
-    'Std': [0.0092, 0.0135, 0.0129, 0.0152]
+    'Model': ['MLP', 'CNN', 'Random Forest', 'XGBoost'],
+    'Accuracy': [0.8521, 0.8098, 0.8664, 0.8815],
+    'Std': [0.0050, 0.0097, 0.0102, 0.0140]
 }
 df_models = pd.DataFrame(model_data)
 

@@ -5,10 +5,12 @@ from sklearn.decomposition import PCA
 from xgboost import XGBClassifier
 from sklearn.ensemble import RandomForestClassifier
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Input, Dense, Dropout, BatchNormalization, Activation, Conv1D, MaxPooling1D, GlobalAveragePooling1D, GaussianNoise
+from tensorflow.keras.layers import Input, Dense, Dropout, BatchNormalization, Activation, Conv1D, MaxPooling1D, GlobalAveragePooling1D, GaussianNoise, Flatten
 from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.callbacks import EarlyStopping
 from sklearn.calibration import CalibrationDisplay
 from sklearn.metrics import brier_score_loss
+from sklearn.utils import shuffle
 import matplotlib.pyplot as plt
 import re
 import os
@@ -41,62 +43,69 @@ y_test = y_test[test_mask]
 
 # Preprocessing
 scaler_raw = StandardScaler()
-X_train_scaled = scaler_raw.fit_transform(X_train_raw)
-X_test_scaled = scaler_raw.transform(X_test_raw)
+X_train_scaled_raw = scaler_raw.fit_transform(X_train_raw)
+X_test_scaled_raw = scaler_raw.transform(X_test_raw)
 
-pca = PCA(n_components=102)
-X_train_pca_full = pca.fit_transform(X_train_scaled)
-X_test_pca_full = pca.transform(X_test_scaled)
+pca = PCA(n_components=102, random_state=SEED)
+X_train_pca_full = pca.fit_transform(X_train_scaled_raw)
+X_test_pca_full = pca.transform(X_test_scaled_raw)
 
-X_train_pca = X_train_pca_full[:, 2:102]
-X_test_pca = X_test_pca_full[:, 2:102]
+# 1. Trees use PC 2-101
+X_train_tree = X_train_pca_full[:, 2:102]
+X_test_tree = X_test_pca_full[:, 2:102]
+
+# 2. Neural Networks use PC 0-101
+X_train_nn = X_train_pca_full[:, 0:102]
+X_test_nn = X_test_pca_full[:, 0:102]
+scaler_nn = StandardScaler()
+X_train_nn = scaler_nn.fit_transform(X_train_nn)
+X_test_nn = scaler_nn.transform(X_test_nn)
+
+# Shuffle training data
+X_train_tree, y_train_tree = shuffle(X_train_tree, y_train, random_state=SEED)
+X_train_nn, y_train_nn = shuffle(X_train_nn, y_train, random_state=SEED)
 
 probabilities = {}
 
 # 1. XGBoost
 print("Training XGBoost...")
-xgb = XGBClassifier(n_estimators=300, max_depth=5, learning_rate=0.2, subsample=1.0, random_state=SEED, n_jobs=-1, eval_metric='logloss')
-xgb.fit(X_train_pca, y_train)
-probabilities['XGBoost'] = xgb.predict_proba(X_test_pca)[:, 1]
+xgb = XGBClassifier(n_estimators=150, max_depth=5, learning_rate=0.1, random_state=SEED, n_jobs=-1, eval_metric='logloss')
+xgb.fit(X_train_tree, y_train_tree)
+probabilities['XGBoost'] = xgb.predict_proba(X_test_tree)[:, 1]
 
 # 2. Random Forest
 print("Training Random Forest...")
-rf = RandomForestClassifier(n_estimators=300, max_depth=None, min_samples_leaf=2, min_samples_split=5, class_weight='balanced', random_state=SEED, n_jobs=-1)
-rf.fit(X_train_pca, y_train)
-probabilities['Random Forest'] = rf.predict_proba(X_test_pca)[:, 1]
+rf = RandomForestClassifier(n_estimators=300, min_samples_split=5, min_samples_leaf=2, max_depth=None, random_state=SEED, n_jobs=-1)
+rf.fit(X_train_tree, y_train_tree)
+probabilities['Random Forest'] = rf.predict_proba(X_test_tree)[:, 1]
 
 # 3. MLP
 print("Training MLP...")
-X_train_mlp = X_train_pca_full[:, 0:100]
-X_test_mlp = X_test_pca_full[:, 0:100]
-
 mlp = Sequential([
-    Input(shape=(100,)),
+    Input(shape=(102,)),
     Dense(512), BatchNormalization(), Activation('relu'), Dropout(0.4),
     Dense(256), BatchNormalization(), Activation('relu'), Dropout(0.4),
     Dense(128), BatchNormalization(), Activation('relu'), Dropout(0.4),
     Dense(1, activation='sigmoid')
 ])
-mlp.compile(optimizer=Adam(learning_rate=0.0005), loss='binary_crossentropy', metrics=['accuracy'])
-mlp.fit(X_train_mlp, y_train, batch_size=128, epochs=60, verbose=0)
-probabilities['MLP'] = mlp.predict(X_test_mlp, verbose=0).flatten()
+mlp.compile(optimizer=Adam(learning_rate=0.0005), loss='binary_crossentropy')
+es = EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
+mlp.fit(X_train_nn, y_train_nn, batch_size=128, epochs=100, validation_split=0.2, callbacks=[es], verbose=0)
+probabilities['MLP'] = mlp.predict(X_test_nn, verbose=0).flatten()
 
 # 4. CNN
 print("Training 1D-CNN...")
-X_train_cnn = X_train_scaled.reshape(-1, len(spectral_cols), 1)
-X_test_cnn = X_test_scaled.reshape(-1, len(spectral_cols), 1)
-
 cnn = Sequential([
-    Input(shape=(len(spectral_cols), 1)),
-    GaussianNoise(0.05),
-    Conv1D(32, 5, padding='same'), BatchNormalization(), Activation('relu'), MaxPooling1D(2), Dropout(0.3),
-    Conv1D(64, 5, padding='same'), BatchNormalization(), Activation('relu'), MaxPooling1D(2), Dropout(0.3),
-    Conv1D(128, 5, padding='same'), BatchNormalization(), Activation('relu'), GlobalAveragePooling1D(), Dropout(0.3),
+    Input(shape=(102, 1)),
+    Conv1D(filters=64, kernel_size=5, padding='same'), BatchNormalization(), Activation('relu'), MaxPooling1D(pool_size=2), Dropout(0.3),
+    Conv1D(filters=128, kernel_size=5, padding='same'), BatchNormalization(), Activation('relu'), MaxPooling1D(pool_size=2), Dropout(0.3),
+    Flatten(),
+    Dense(100), BatchNormalization(), Activation('relu'), Dropout(0.5),
     Dense(1, activation='sigmoid')
 ])
-cnn.compile(optimizer=Adam(learning_rate=0.001), loss='binary_crossentropy', metrics=['accuracy'])
-cnn.fit(X_train_cnn, y_train, batch_size=64, epochs=50, verbose=0)
-probabilities['CNN'] = cnn.predict(X_test_cnn, verbose=0).flatten()
+cnn.compile(optimizer=Adam(learning_rate=0.001), loss='binary_crossentropy')
+cnn.fit(X_train_nn.reshape(-1, 102, 1), y_train_nn, batch_size=64, epochs=100, validation_split=0.2, callbacks=[es], verbose=0)
+probabilities['CNN'] = cnn.predict(X_test_nn.reshape(-1, 102, 1), verbose=0).flatten()
 
 # Plotting Calibration Curves
 print("Plotting Calibration Curves...")
