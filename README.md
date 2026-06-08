@@ -1,55 +1,28 @@
-# BioSignatureDetectionModel
-Train and evaluate ML models to detect bio signatures from spectra of exoplanet that is similar as the ones that will be studied in Ariel Space Mission in 2029. 
+# BioSignature Detection Model
 
-## Getting Started
+This repository contains a machine learning pipeline for detecting atmospheric biosignatures in high-dimensional exoplanet transmission spectra, simulated at an Ariel-like resolving power of 200.
 
-Follow these steps to set up the project and run the analysis scripts.
+## 🌟 Key Findings
+*   **Optimal Architecture:** XGBoost achieved **88.59% accuracy**, matching the performance of deep neural networks while maintaining superior robustness.
+*   **Baseline Independence:** XGBoost can detect biosignatures strictly from relative chemical morphology (PCA components 2-101), making it immune to the absolute continuum errors common in real telescope data.
+*   **Neural Network Dependence:** MLP and CNN models proved to be **baseline-dependent**, requiring macro-physical components (PC0 and PC1) to orient their feature extraction.
 
-### 1. Set up the Python Environment
+## 🚀 Core Scripts
+*   `run_master_5set_evaluation.py`: The definitive script to train all four models and evaluate them across 5 independent test sets using the mathematically rigorous pipeline.
+*   `run_master_gridsearch.py`: The exhaustive hyperparameter tuning script used for the final paper.
+*   `plot_final_results.py`: Generates the primary comparison visualizations.
+*   `test_pc0_significance.py`: Performs McNemar's statistical tests to prove the baseline independence/dependence findings.
 
-Create a virtual environment and install the required dependencies (including MultiREx):
+## 📖 Documentation
+For a full technical history of the project, including the discovery and fix of the **PCA Scaling Bug** and the physical interpretation of the principal components, see:
+*   [**Technical Experiment Summary**](experiment_summary.md)
+*   [**Deep Learning Tuning Journal**](cnn_tuning_journal.md)
+*   [**Analysis & Visualization Notes**](analysis_and_visualization_documentation.md)
 
-```bash
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-```
-
-### 2. Run the Data Generation and Evaluation Scripts
-
-Once the environment is set up, you can run the data generation and evaluation scripts.
-
-#### Generate Multiverse Data
-
-Use the `generate_multiverse_data.py` script to generate separate training and testing datasets. Specify the fill gas (e.g., `H2` or `N2`) and the purpose (`train` or `test`).
-
-To generate the **training** dataset (3000 universes) for H2:
-```bash
-source venv/bin/activate
-python generate_multiverse_data.py H2 --purpose train
-# This will create 'multirex_spectra_H2_train.parquet'
-```
-
-To generate the **testing** dataset (600 universes) for H2:
-```bash
-source venv/bin/activate
-python generate_multiverse_data.py H2 --purpose test
-# This will create 'multirex_spectra_H2_test.parquet'
-```
-Repeat the process for `N2` or any other fill gas.
-
-#### Evaluate Data
-
-Use the `evaluate_random_forest.py` script to train and evaluate the model. The script will automatically load the corresponding `_train.parquet` and `_test.parquet` files.
-
-To evaluate the H2 dataset:
-```bash
-source venv/bin/activate
-python evaluate_random_forest.py H2
-```
-
-To evaluate the N2 dataset:
-```bash
-source venv/bin/activate
-python evaluate_random_forest.py N2
-```
+## 📊 Results Summary (Table II)
+| Model | Accuracy | F1-Score |
+| :--- | :---: | :---: |
+| **XGBoost** | 88.59% (± 1.66%) | **88.73% (± 1.63%)** |
+| **MLP** | 88.17% (± 0.96%) | **88.28% (± 0.94%)** |
+| **Random Forest** | 86.69% (± 0.70%) | **86.67% (± 0.74%)** |
+| **1D-CNN** | 81.86% (± 0.86%) | **80.59% (± 0.90%)** |
