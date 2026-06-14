@@ -14,7 +14,7 @@ SNR = 15
 # --- Define Wavelength Grid ---
 wl_min = 0.5
 wl_max = 7.8
-resolution = 200
+resolution = 550
 wn_grid = Physics.wavenumber_grid(wl_min, wl_max, resolution)
 
 # --- Stratified Generation of a Balanced Dataset ---

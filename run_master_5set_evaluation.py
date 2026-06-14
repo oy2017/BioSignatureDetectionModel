@@ -72,7 +72,7 @@ def build_mlp(input_dim):
         model.add(Activation('relu'))
         model.add(Dropout(0.3))
     model.add(Dense(1, activation='sigmoid'))
-    model.compile(optimizer=Adam(learning_rate=0.0005), loss='binary_crossentropy', metrics=['accuracy'])
+    model.compile(optimizer=Adam(learning_rate=0.001), loss='binary_crossentropy', metrics=['accuracy'])
     return model
 
 def build_cnn(input_dim):
@@ -85,7 +85,7 @@ def build_cnn(input_dim):
         Dense(100), BatchNormalization(), Activation('relu'), Dropout(0.5),
         Dense(1, activation='sigmoid')
     ])
-    model.compile(optimizer=Adam(learning_rate=0.001), loss='binary_crossentropy', metrics=['accuracy'])
+    model.compile(optimizer=Adam(learning_rate=0.0005), loss='binary_crossentropy', metrics=['accuracy'])
     return model
 
 def save_cm(y_true, y_pred, name, acc):
@@ -126,7 +126,7 @@ def evaluate():
             
         # Train with Final Best Architectures
         if name == 'XGBoost':
-            model = XGBClassifier(n_estimators=300, max_depth=3, learning_rate=0.1, subsample=0.8, use_label_encoder=False, eval_metric='logloss', random_state=SEED, n_jobs=-1)
+            model = XGBClassifier(n_estimators=200, max_depth=5, learning_rate=0.2, subsample=0.8, use_label_encoder=False, eval_metric='logloss', random_state=SEED, n_jobs=-1)
             model.fit(X_train, y_train)
         elif name == 'Random Forest':
             model = RandomForestClassifier(n_estimators=300, min_samples_split=2, min_samples_leaf=2, max_depth=None, random_state=SEED, n_jobs=-1)
@@ -138,7 +138,7 @@ def evaluate():
         elif name == 'CNN':
             model = build_cnn(102)
             es = EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
-            model.fit(X_train.reshape(-1, 102, 1), y_train, epochs=100, batch_size=64, validation_split=0.2, callbacks=[es], verbose=0)
+            model.fit(X_train.reshape(-1, 102, 1), y_train, epochs=100, batch_size=128, validation_split=0.2, callbacks=[es], verbose=0)
 
         # Evaluate on 5 sets
         metrics = {'acc': [], 'prec': [], 'rec': [], 'f1': []}

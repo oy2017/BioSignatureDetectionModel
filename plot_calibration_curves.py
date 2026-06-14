@@ -74,7 +74,7 @@ probabilities = {}
 
 # 1. XGBoost
 print("Training XGBoost...")
-xgb = XGBClassifier(n_estimators=300, max_depth=3, learning_rate=0.1, subsample=0.8, random_state=SEED, n_jobs=-1, eval_metric='logloss')
+xgb = XGBClassifier(n_estimators=200, max_depth=5, learning_rate=0.2, subsample=0.8, use_label_encoder=False, eval_metric='logloss', random_state=SEED, n_jobs=-1)
 xgb.fit(X_train_final, y_train)
 probabilities['XGBoost'] = xgb.predict_proba(X_test_final)[:, 1]
 
@@ -89,17 +89,17 @@ print("Training MLP...")
 def build_mlp():
     model = Sequential([
         Input(shape=(102,)),
-        Dense(256), BatchNormalization(), Activation('relu'), Dropout(0.3),
-        Dense(128), BatchNormalization(), Activation('relu'), Dropout(0.3),
-        Dense(64), BatchNormalization(), Activation('relu'), Dropout(0.3),
+        Dense(512), BatchNormalization(), Activation('relu'), Dropout(0.2),
+        Dense(256), BatchNormalization(), Activation('relu'), Dropout(0.2),
+        Dense(128), BatchNormalization(), Activation('relu'), Dropout(0.2),
         Dense(1, activation='sigmoid')
     ])
-    model.compile(optimizer=Adam(learning_rate=0.0005), loss='binary_crossentropy')
+    model.compile(optimizer=Adam(learning_rate=0.001), loss='binary_crossentropy')
     return model
 
 mlp = build_mlp()
 es = EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
-mlp.fit(X_train_final, y_train, batch_size=128, epochs=200, validation_split=0.2, callbacks=[es], verbose=0)
+mlp.fit(X_train_final, y_train, batch_size=64, epochs=200, validation_split=0.2, callbacks=[es], verbose=0)
 probabilities['MLP'] = mlp.predict(X_test_final, verbose=0).flatten()
 
 # 4. CNN
