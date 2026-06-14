@@ -83,13 +83,13 @@ def build_mlp():
 def build_cnn():
     model = Sequential([
         Input(shape=(102, 1)),
-        Conv1D(64, kernel_size=5, padding='same'), BatchNormalization(), Activation('relu'), MaxPooling1D(2), Dropout(0.3),
-        Conv1D(128, kernel_size=5, padding='same'), BatchNormalization(), Activation('relu'), MaxPooling1D(2), Dropout(0.3),
+        Conv1D(filters=32, kernel_size=5, padding='same'), BatchNormalization(), Activation('relu'), MaxPooling1D(2), Dropout(0.3),
+        Conv1D(filters=64, kernel_size=5, padding='same'), BatchNormalization(), Activation('relu'), MaxPooling1D(2), Dropout(0.3),
         Flatten(),
         Dense(100), BatchNormalization(), Activation('relu'), Dropout(0.5),
         Dense(1, activation='sigmoid')
     ])
-    model.compile(optimizer=Adam(learning_rate=0.001), loss='binary_crossentropy')
+    model.compile(optimizer=Adam(learning_rate=0.0005), loss='binary_crossentropy')
     return model
 
 def main():
@@ -105,7 +105,7 @@ def main():
     # 1. MLP
     print("--- Training MLP ---")
     mlp = build_mlp()
-    mlp.fit(X_tr_pca, y_train_shuf, epochs=100, batch_size=64, validation_split=0.2, callbacks=[es], verbose=0)
+    mlp.fit(X_tr_pca, y_train_shuf, epochs=100, batch_size=128, validation_split=0.2, callbacks=[es], verbose=0)
     predictions['MLP'] = (mlp.predict(X_te_pca, verbose=0) > 0.5).astype(int).flatten()
     
     # 2. XGBoost
@@ -123,7 +123,7 @@ def main():
     # 4. CNN
     print("--- Training CNN ---")
     cnn = build_cnn()
-    cnn.fit(X_tr_pca.reshape(-1, 102, 1), y_train_shuf, epochs=100, batch_size=64, validation_split=0.2, callbacks=[es], verbose=0)
+    cnn.fit(X_tr_pca.reshape(-1, 102, 1), y_train_shuf, epochs=100, batch_size=128, validation_split=0.2, callbacks=[es], verbose=0)
     predictions['CNN'] = (cnn.predict(X_te_pca.reshape(-1, 102, 1), verbose=0) > 0.5).astype(int).flatten()
 
     # --- Plotting ---
