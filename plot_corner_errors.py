@@ -35,20 +35,20 @@ X_test_raw = df_test[cols].values
 y_test = df_test['label'].values
 
 # --- Preprocessing (PCA) ---
-scaler = StandardScaler()
-X_train_s = scaler.fit_transform(X_train_raw)
-X_test_s = scaler.transform(X_test_raw)
+scaler_raw = StandardScaler()
+X_train_s = scaler_raw.fit_transform(X_train_raw)
+X_test_s = scaler_raw.transform(X_test_raw)
 
-pca = PCA()
-X_train_p = pca.fit_transform(X_train_s)
-X_test_p = pca.transform(X_test_s)
+pca = PCA(n_components=102, random_state=42)
+X_train_p_full = pca.fit_transform(X_train_s)
+X_test_p_full = pca.transform(X_test_s)
 
-X_train_final = X_train_p[:, PCA_START:PCA_END]
-X_test_final = X_test_p[:, PCA_START:PCA_END]
+X_train_final = X_train_p_full[:, PCA_START:PCA_END]
+X_test_final = X_test_p_full[:, PCA_START:PCA_END]
 
 # --- Train Best Model (XGBoost) ---
-print("--- Training Best Model (XGBoost) ---")
-model = XGBClassifier(n_estimators=300, max_depth=7, learning_rate=0.05, subsample=0.8, random_state=42, n_jobs=-1, eval_metric='logloss')
+print("--- Training Final XGBoost ---")
+model = XGBClassifier(n_estimators=150, max_depth=5, learning_rate=0.1, random_state=42, n_jobs=-1, eval_metric='logloss')
 model.fit(X_train_final, y_train)
 
 # --- Make Predictions and Identify Errors ---
@@ -57,32 +57,41 @@ y_pred = model.predict(X_test_final)
 correct_mask = (y_pred == y_test)
 incorrect_mask = ~correct_mask
 
-# Extract physical parameters
-params_correct = df_test[correct_mask][PARAMS_TO_PLOT].values
-params_incorrect = df_test[incorrect_mask][PARAMS_TO_PLOT].values
+def generate_corner(mask_correct, mask_incorrect, params, labels, filename):
+    params_correct = df_test[mask_correct][params].values
+    params_incorrect = df_test[mask_incorrect][params].values
+    
+    print(f"--- Generating Corner Plot: {filename} ---")
+    figure = plt.figure(figsize=(12, 12))
+    
+    # Plot Correct Predictions (Background Contours, NO DOTS)
+    corner.corner(params_correct, fig=figure, labels=labels, color='navy', 
+                  plot_contours=True, plot_datapoints=False, plot_density=True, smooth=1.0, 
+                  hist_kwargs={'density': True, 'color': 'navy'})
+                  
+    # Plot Incorrect Predictions (Foreground Contours AND DOTS)
+    corner.corner(params_incorrect, fig=figure, labels=labels, color='crimson', 
+                  plot_contours=True, plot_datapoints=True, plot_density=False, smooth=1.0, 
+                  data_kwargs={'alpha': 0.9, 'ms': 4.0}, # Make dots highly visible
+                  hist_kwargs={'density': True, 'color': 'crimson'})
+    
+    from matplotlib.lines import Line2D
+    legend_elements = [Line2D([0], [0], color='navy', lw=4, label='Correct'), Line2D([0], [0], color='crimson', lw=4, label='Incorrect')]
+    plt.legend(handles=legend_elements, loc='upper right', fontsize=14)
+    
+    plt.savefig(os.path.join(RESULTS_DIR, filename), dpi=300, bbox_inches='tight')
+    plt.close()
 
-# --- Generate Corner Plot ---
-print("--- Generating Corner Plot ---")
-figure = plt.figure(figsize=(15, 15))
+# 1. Physical Parameters
+generate_corner(correct_mask, incorrect_mask, 
+                ['p_radius', 'p_mass', 's temperature', 'atm temperature'],
+                ['Radius (R_earth)', 'Mass (M_earth)', 'Star Temp (K)', 'Atm Temp (K)'],
+                'corner_plot_physical.png')
 
-# Plot Correct Predictions (Blue)
-corner.corner(params_correct, fig=figure, labels=LABELS,
-              color='navy', plot_contours=True, smooth=1.0, 
-              hist_kwargs={'density': True, 'color': 'navy'})
+# 2. Chemical Parameters
+generate_corner(correct_mask, incorrect_mask,
+                ['atm CH4', 'atm O3'],
+                ['log(CH4)', 'log(O3)'],
+                'corner_plot_chemical.png')
 
-# Plot Incorrect Predictions (Red)
-corner.corner(params_incorrect, fig=figure, labels=LABELS,
-              color='crimson', plot_contours=True, smooth=1.0,
-              hist_kwargs={'density': True, 'color': 'crimson'})
-
-# Custom Legend
-from matplotlib.lines import Line2D
-legend_elements = [Line2D([0], [0], color='navy', lw=4, label='Correct Predictions'),
-                   Line2D([0], [0], color='crimson', lw=4, label='Incorrect Predictions')]
-plt.legend(handles=legend_elements, loc='upper right', fontsize=14)
-
-plt.suptitle("Corner Plot of Physical Parameters vs. Prediction Errors (XGBoost)", fontsize=20)
-plt.savefig(os.path.join(RESULTS_DIR, 'corner_plot_errors.png'), dpi=300)
-plt.close()
-
-print(f"Plot saved to: {os.path.join(RESULTS_DIR, 'corner_plot_errors.png')}")
+print(f"Plots saved to: {RESULTS_DIR}")

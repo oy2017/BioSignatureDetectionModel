@@ -8,9 +8,10 @@ import re
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.utils import shuffle
 from xgboost import XGBClassifier
-from tensorflow.keras.models import load_model, Model
-from tensorflow.keras.layers import Input, Conv1D, MaxPooling1D, GlobalAveragePooling1D, Dense, Dropout, BatchNormalization, Activation, Add
+from tensorflow.keras.models import load_model, Model, Sequential
+from tensorflow.keras.layers import Input, Conv1D, MaxPooling1D, GlobalAveragePooling1D, Dense, Dropout, BatchNormalization, Activation, Add, Flatten
 from tensorflow.keras.callbacks import EarlyStopping
 from tensorflow.keras.optimizers import Adam
 from sklearn.metrics import accuracy_score
@@ -49,13 +50,13 @@ def get_data():
     
     return X_train_raw, y_train, X_test_raw, y_test, params_test
 
-def get_pca_data(X_train_raw, X_test_raw, start=2, end=102):
-    print(f"--- Preparing PCA Data (Components {start}-{end}) ---")
+def get_pca_data(X_train_raw, X_test_raw, start=0, end=102):
+    print(f"--- Preparing PCA Data (Components {start}-{end-1}) ---")
     scaler = StandardScaler()
     X_tr_s = scaler.fit_transform(X_train_raw)
     X_te_s = scaler.transform(X_test_raw)
     
-    pca = PCA()
+    pca = PCA(n_components=102, random_state=42)
     X_tr_pca_full = pca.fit_transform(X_tr_s)
     X_te_pca_full = pca.transform(X_te_s)
     
@@ -68,74 +69,62 @@ def get_pca_data(X_train_raw, X_test_raw, start=2, end=102):
     
     return X_tr_final, X_te_final
 
-def build_resnet(input_shape):
-    def residual_block(x, filters, kernel_size=7):
-        shortcut = x
-        x = Conv1D(filters=filters, kernel_size=kernel_size, padding='same')(x)
-        x = BatchNormalization()(x)
-        x = Activation('relu')(x)
-        x = Conv1D(filters=filters, kernel_size=kernel_size, padding='same')(x)
-        x = BatchNormalization()(x)
-        if shortcut.shape[-1] != filters:
-            shortcut = Conv1D(filters=filters, kernel_size=1, padding='same')(shortcut)
-        x = Add()([x, shortcut])
-        x = Activation('relu')(x)
-        return x
+def build_mlp():
+    model = Sequential([
+        Input(shape=(102,)),
+        Dense(256), BatchNormalization(), Activation('relu'), Dropout(0.3),
+        Dense(128), BatchNormalization(), Activation('relu'), Dropout(0.3),
+        Dense(64), BatchNormalization(), Activation('relu'), Dropout(0.3),
+        Dense(1, activation='sigmoid')
+    ])
+    model.compile(optimizer=Adam(learning_rate=0.0005), loss='binary_crossentropy')
+    return model
 
-    inputs = Input(shape=input_shape)
-    x = Conv1D(filters=32, kernel_size=7, padding='same')(inputs)
-    x = BatchNormalization()(x)
-    x = Activation('relu')(x)
-    x = residual_block(x, filters=32, kernel_size=7)
-    x = MaxPooling1D(pool_size=2)(x)
-    x = residual_block(x, filters=64, kernel_size=7)
-    x = MaxPooling1D(pool_size=2)(x)
-    x = residual_block(x, filters=128, kernel_size=7)
-    x = GlobalAveragePooling1D()(x)
-    x = Dense(64, activation='relu')(x)
-    x = Dropout(0.5)(x)
-    outputs = Dense(1, activation='sigmoid')(x)
-    
-    model = Model(inputs=inputs, outputs=outputs)
-    model.compile(optimizer=Adam(learning_rate=0.0001), loss='binary_crossentropy', metrics=['accuracy'])
+def build_cnn():
+    model = Sequential([
+        Input(shape=(102, 1)),
+        Conv1D(64, kernel_size=5, padding='same'), BatchNormalization(), Activation('relu'), MaxPooling1D(2), Dropout(0.3),
+        Conv1D(128, kernel_size=5, padding='same'), BatchNormalization(), Activation('relu'), MaxPooling1D(2), Dropout(0.3),
+        Flatten(),
+        Dense(100), BatchNormalization(), Activation('relu'), Dropout(0.5),
+        Dense(1, activation='sigmoid')
+    ])
+    model.compile(optimizer=Adam(learning_rate=0.001), loss='binary_crossentropy')
     return model
 
 def main():
     X_tr_raw, y_train, X_te_raw, y_test, params = get_data()
-    X_tr_pca, X_te_pca = get_pca_data(X_tr_raw, X_te_raw) # 2-102
+    X_tr_pca, X_te_pca = get_pca_data(X_tr_raw, X_te_raw) # Unified 0-102
+    
+    # Shuffle
+    X_tr_pca, y_train_shuf = shuffle(X_tr_pca, y_train, random_state=SEED)
     
     predictions = {}
+    es = EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
 
-    # 1. MLP (Load Saved)
-    mlp_path = os.path.join(RESULTS_DIR, f'{FILL_GAS}_best_mlp_model.keras')
-    if os.path.exists(mlp_path):
-        print("--- Loading Best MLP ---")
-        mlp = load_model(mlp_path)
-        # Recreate 0-100 pipeline for MLP
-        X_tr_pca0, X_te_pca0 = get_pca_data(X_tr_raw, X_te_raw, start=0, end=100)
-        predictions['MLP (DeepWide)'] = (mlp.predict(X_te_pca0, verbose=0) > 0.5).astype(int).flatten()
+    # 1. MLP
+    print("--- Training MLP ---")
+    mlp = build_mlp()
+    mlp.fit(X_tr_pca, y_train_shuf, epochs=100, batch_size=128, validation_split=0.2, callbacks=[es], verbose=0)
+    predictions['MLP'] = (mlp.predict(X_te_pca, verbose=0) > 0.5).astype(int).flatten()
     
-    # 2. XGBoost (Aggressive)
-    print("--- Training XGBoost (Aggressive) ---")
-    xgb = XGBClassifier(n_estimators=300, max_depth=5, learning_rate=0.2, subsample=1.0, random_state=SEED, n_jobs=-1, eval_metric='logloss')
-    xgb.fit(X_tr_pca, y_train)
-    predictions['XGBoost (Aggressive)'] = xgb.predict(X_te_pca)
+    # 2. XGBoost
+    print("--- Training XGBoost ---")
+    xgb = XGBClassifier(n_estimators=300, max_depth=3, learning_rate=0.1, subsample=0.8, random_state=SEED, n_jobs=-1, eval_metric='logloss')
+    xgb.fit(X_tr_pca, y_train_shuf)
+    predictions['XGBoost'] = xgb.predict(X_te_pca)
     
-    # 3. Random Forest (Tuned)
-    print("--- Training Random Forest (Tuned) ---")
-    rf = RandomForestClassifier(n_estimators=300, max_depth=None, min_samples_leaf=1, min_samples_split=2, class_weight='balanced', random_state=SEED, n_jobs=-1)
-    rf.fit(X_tr_pca, y_train)
-    predictions['Random Forest (Tuned)'] = rf.predict(X_te_pca)
+    # 3. Random Forest
+    print("--- Training Random Forest ---")
+    rf = RandomForestClassifier(n_estimators=300, min_samples_split=2, min_samples_leaf=2, max_depth=None, random_state=SEED, n_jobs=-1)
+    rf.fit(X_tr_pca, y_train_shuf)
+    predictions['Random Forest'] = rf.predict(X_te_pca)
     
-    # 4. CNN (ResNet)
-    print("--- Training CNN (ResNet) ---")
-    scaler_cnn = StandardScaler()
-    X_tr_cnn = scaler_cnn.fit_transform(X_tr_raw).reshape(-1, X_tr_raw.shape[1], 1)
-    X_te_cnn = scaler_cnn.transform(X_te_raw).reshape(-1, X_te_raw.shape[1], 1)
-    cnn = build_resnet(input_shape=(X_tr_raw.shape[1], 1))
-    cnn.fit(X_tr_cnn, y_train, epochs=30, batch_size=32, validation_split=0.1, 
-            callbacks=[EarlyStopping(patience=5, restore_best_weights=True)], verbose=0)
-    predictions['CNN (ResNet)'] = (cnn.predict(X_te_cnn, verbose=0) > 0.5).astype(int).flatten()
+    # 4. CNN
+    print("--- Training CNN ---")
+    cnn = build_cnn()
+    cnn.fit(X_tr_pca.reshape(-1, 102, 1), y_train_shuf, epochs=100, batch_size=64, validation_split=0.2, callbacks=[es], verbose=0)
+    predictions['CNN'] = (cnn.predict(X_te_pca.reshape(-1, 102, 1), verbose=0) > 0.5).astype(int).flatten()
 
     # --- Plotting ---
     print("--- Generating Comparison Scatter Plots ---")
@@ -163,13 +152,13 @@ def main():
                    color='red', alpha=0.8, label='Error', s=30)
         
         # Draw Threshold Lines
-        ax.axvline(x=CH4_THRESH, color='black', linestyle='--', alpha=0.6, label='CH4 Threshold')
-        ax.axhline(y=O3_THRESH, color='black', linestyle='--', alpha=0.6, label='O3 Threshold')
+        ax.axvline(x=CH4_THRESH, color='black', linestyle='--', alpha=0.6)
+        ax.axhline(y=O3_THRESH, color='black', linestyle='--', alpha=0.6)
         
-        ax.set_title(f'{model_name} Error Distribution', fontsize=14, fontweight='bold')
-        ax.set_xlabel('log(CH4)', fontsize=12)
-        ax.set_ylabel('log(O3)', fontsize=12)
-        ax.legend(loc='upper left')
+        ax.set_title(f'{model_name} Error Distribution', fontsize=16, fontweight='bold')
+        ax.set_xlabel('log(CH4)', fontsize=14)
+        ax.set_ylabel('log(O3)', fontsize=14)
+        ax.legend(loc='upper left', fontsize=12)
         
     plt.tight_layout()
     output_filename = os.path.join(RESULTS_DIR, 'model_comparison_chemical_scatter.png')
