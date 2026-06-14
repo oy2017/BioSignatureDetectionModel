@@ -68,7 +68,9 @@ def main():
     args = parser.parse_args()
     
     fill_gas = "H2"
-    pca_components = 100
+    pca_components = 102
+    start_idx = 2
+    end_idx = 102
     batch_size = 128
     
     # --- 1. Load Data ---
@@ -87,14 +89,14 @@ def main():
     X_test_raw = df_test[spectral_cols].values
 
     # --- 2. Preprocessing ---
-    print("--- Preprocessing: Scaling -> PCA -> Scaling ---")
+    print(f"--- Preprocessing: Scaling -> PCA ({start_idx}-{end_idx-1}) -> Scaling ---")
     scaler_raw = StandardScaler()
     X_train_scaled = scaler_raw.fit_transform(X_train_raw)
     X_test_scaled = scaler_raw.transform(X_test_raw)
 
     pca = PCA(n_components=pca_components)
-    X_train_pca = pca.fit_transform(X_train_scaled)
-    X_test_pca = pca.transform(X_test_scaled)
+    X_train_pca = pca.fit_transform(X_train_scaled)[:, start_idx:end_idx]
+    X_test_pca = pca.transform(X_test_scaled)[:, start_idx:end_idx]
 
     scaler_pca = StandardScaler()
     X_train_final = scaler_pca.fit_transform(X_train_pca)
@@ -105,7 +107,7 @@ def main():
 
     # --- 3. Train Best Model ---
     print(f"--- Training Best Model (DeepWide) ---")
-    model = create_best_model(input_dim=pca_components)
+    model = create_best_model(input_dim=(end_idx - start_idx))
     
     early_stopping = EarlyStopping(
         monitor='val_loss', 

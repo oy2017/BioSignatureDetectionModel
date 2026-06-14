@@ -70,9 +70,9 @@ def build_mlp(input_dim):
         model.add(Dense(units))
         model.add(BatchNormalization())
         model.add(Activation('relu'))
-        model.add(Dropout(0.2)) # Exhaustive winner
+        model.add(Dropout(0.3))
     model.add(Dense(1, activation='sigmoid'))
-    model.compile(optimizer=Adam(learning_rate=0.001), loss='binary_crossentropy', metrics=['accuracy'])
+    model.compile(optimizer=Adam(learning_rate=0.0005), loss='binary_crossentropy', metrics=['accuracy'])
     return model
 
 def build_cnn(input_dim):
@@ -90,11 +90,27 @@ def build_cnn(input_dim):
 
 def save_cm(y_true, y_pred, name, acc):
     cm = confusion_matrix(y_true, y_pred)
-    plt.figure(figsize=(6, 5))
-    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=['Non-Bio', 'Bio'], yticklabels=['Non-Bio', 'Bio'])
+    
+    # Calculate row totals to generate fractions
+    row_sums = cm.sum(axis=1)
+    
+    # Create custom string labels for each cell
+    labels = np.empty_like(cm).astype(str)
+    for i in range(cm.shape[0]):
+        for j in range(cm.shape[1]):
+            count = cm[i, j]
+            total = row_sums[i]
+            percentage = (count / total) * 100 if total > 0 else 0
+            labels[i, j] = f"{percentage:.1f}%\n({count}/{total})"
+            
+    plt.figure(figsize=(7, 6))
+    sns.heatmap(cm, annot=labels, fmt='', cmap='Blues', 
+                xticklabels=['Non-Bio (0)', 'Bio (1)'], 
+                yticklabels=['Non-Bio (0)', 'Bio (1)'],
+                annot_kws={"size": 14})
     # Title removed per reviewer request
-    plt.ylabel('Actual')
-    plt.xlabel('Predicted')
+    plt.ylabel('True Label', fontsize=14)
+    plt.xlabel('Predicted Label', fontsize=14)
     plt.savefig(f'final_results/CM_{name.replace(" ", "_")}.png', dpi=300, bbox_inches='tight')
     plt.close()
 
@@ -105,12 +121,10 @@ def evaluate():
 
     for name in models_to_run:
         print(f"--- Training & Evaluating {name} ---")
-        if name in ['XGBoost', 'Random Forest']:
-            X_train, y_train, test_sets = get_data(2, 102) # Trees skip PC0/1
-        else:
-            X_train, y_train, test_sets = get_data(0, 102) # NNs use PC0/1
+        # UNIFIED PIPELINE: ALL models use 0-101
+        X_train, y_train, test_sets = get_data(0, 102) 
             
-        # Train with Best Exhaustive GridSearch Params
+        # Train with Final Best Architectures
         if name == 'XGBoost':
             model = XGBClassifier(n_estimators=300, max_depth=3, learning_rate=0.1, subsample=0.8, use_label_encoder=False, eval_metric='logloss', random_state=SEED, n_jobs=-1)
             model.fit(X_train, y_train)
@@ -120,11 +134,11 @@ def evaluate():
         elif name == 'MLP':
             model = build_mlp(102)
             es = EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
-            model.fit(X_train, y_train, epochs=100, batch_size=32, validation_split=0.2, callbacks=[es], verbose=0)
+            model.fit(X_train, y_train, epochs=200, batch_size=128, validation_split=0.2, callbacks=[es], verbose=0)
         elif name == 'CNN':
             model = build_cnn(102)
             es = EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
-            model.fit(X_train.reshape(-1, 102, 1), y_train, epochs=100, batch_size=32, validation_split=0.2, callbacks=[es], verbose=0)
+            model.fit(X_train.reshape(-1, 102, 1), y_train, epochs=100, batch_size=64, validation_split=0.2, callbacks=[es], verbose=0)
 
         # Evaluate on 5 sets
         metrics = {'acc': [], 'prec': [], 'rec': [], 'f1': []}

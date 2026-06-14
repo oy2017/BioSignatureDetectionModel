@@ -50,62 +50,75 @@ pca = PCA(n_components=102, random_state=SEED)
 X_train_pca_full = pca.fit_transform(X_train_scaled_raw)
 X_test_pca_full = pca.transform(X_test_scaled_raw)
 
-# 1. Trees use PC 2-101
-X_train_tree = X_train_pca_full[:, 2:102]
-X_test_tree = X_test_pca_full[:, 2:102]
+# Preprocessing
+scaler_raw = StandardScaler()
+X_train_scaled_raw = scaler_raw.fit_transform(X_train_raw)
+X_test_scaled_raw = scaler_raw.transform(X_test_raw)
 
-# 2. Neural Networks use PC 0-101
-X_train_nn = X_train_pca_full[:, 0:102]
-X_test_nn = X_test_pca_full[:, 0:102]
-scaler_nn = StandardScaler()
-X_train_nn = scaler_nn.fit_transform(X_train_nn)
-X_test_nn = scaler_nn.transform(X_test_nn)
+pca = PCA(n_components=102, random_state=SEED)
+X_train_pca_full = pca.fit_transform(X_train_scaled_raw)
+X_test_pca_full = pca.transform(X_test_scaled_raw)
+
+# UNIFIED 0-101 PIPELINE
+X_train_processed = X_train_pca_full[:, 0:102]
+X_test_processed = X_test_pca_full[:, 0:102]
+
+scaler_pca = StandardScaler()
+X_train_final = scaler_pca.fit_transform(X_train_processed)
+X_test_final = scaler_pca.transform(X_test_processed)
 
 # Shuffle training data
-X_train_tree, y_train_tree = shuffle(X_train_tree, y_train, random_state=SEED)
-X_train_nn, y_train_nn = shuffle(X_train_nn, y_train, random_state=SEED)
+X_train_final, y_train = shuffle(X_train_final, y_train, random_state=SEED)
 
 probabilities = {}
 
 # 1. XGBoost
 print("Training XGBoost...")
-xgb = XGBClassifier(n_estimators=150, max_depth=5, learning_rate=0.1, random_state=SEED, n_jobs=-1, eval_metric='logloss')
-xgb.fit(X_train_tree, y_train_tree)
-probabilities['XGBoost'] = xgb.predict_proba(X_test_tree)[:, 1]
+xgb = XGBClassifier(n_estimators=300, max_depth=3, learning_rate=0.1, subsample=0.8, random_state=SEED, n_jobs=-1, eval_metric='logloss')
+xgb.fit(X_train_final, y_train)
+probabilities['XGBoost'] = xgb.predict_proba(X_test_final)[:, 1]
 
 # 2. Random Forest
 print("Training Random Forest...")
-rf = RandomForestClassifier(n_estimators=300, min_samples_split=5, min_samples_leaf=2, max_depth=None, random_state=SEED, n_jobs=-1)
-rf.fit(X_train_tree, y_train_tree)
-probabilities['Random Forest'] = rf.predict_proba(X_test_tree)[:, 1]
+rf = RandomForestClassifier(n_estimators=300, min_samples_split=2, min_samples_leaf=2, max_depth=None, random_state=SEED, n_jobs=-1)
+rf.fit(X_train_final, y_train)
+probabilities['Random Forest'] = rf.predict_proba(X_test_final)[:, 1]
 
 # 3. MLP
 print("Training MLP...")
-mlp = Sequential([
-    Input(shape=(102,)),
-    Dense(512), BatchNormalization(), Activation('relu'), Dropout(0.4),
-    Dense(256), BatchNormalization(), Activation('relu'), Dropout(0.4),
-    Dense(128), BatchNormalization(), Activation('relu'), Dropout(0.4),
-    Dense(1, activation='sigmoid')
-])
-mlp.compile(optimizer=Adam(learning_rate=0.0005), loss='binary_crossentropy')
+def build_mlp():
+    model = Sequential([
+        Input(shape=(102,)),
+        Dense(256), BatchNormalization(), Activation('relu'), Dropout(0.3),
+        Dense(128), BatchNormalization(), Activation('relu'), Dropout(0.3),
+        Dense(64), BatchNormalization(), Activation('relu'), Dropout(0.3),
+        Dense(1, activation='sigmoid')
+    ])
+    model.compile(optimizer=Adam(learning_rate=0.0005), loss='binary_crossentropy')
+    return model
+
+mlp = build_mlp()
 es = EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
-mlp.fit(X_train_nn, y_train_nn, batch_size=128, epochs=100, validation_split=0.2, callbacks=[es], verbose=0)
-probabilities['MLP'] = mlp.predict(X_test_nn, verbose=0).flatten()
+mlp.fit(X_train_final, y_train, batch_size=128, epochs=200, validation_split=0.2, callbacks=[es], verbose=0)
+probabilities['MLP'] = mlp.predict(X_test_final, verbose=0).flatten()
 
 # 4. CNN
 print("Training 1D-CNN...")
-cnn = Sequential([
-    Input(shape=(102, 1)),
-    Conv1D(filters=64, kernel_size=5, padding='same'), BatchNormalization(), Activation('relu'), MaxPooling1D(pool_size=2), Dropout(0.3),
-    Conv1D(filters=128, kernel_size=5, padding='same'), BatchNormalization(), Activation('relu'), MaxPooling1D(pool_size=2), Dropout(0.3),
-    Flatten(),
-    Dense(100), BatchNormalization(), Activation('relu'), Dropout(0.5),
-    Dense(1, activation='sigmoid')
-])
-cnn.compile(optimizer=Adam(learning_rate=0.001), loss='binary_crossentropy')
-cnn.fit(X_train_nn.reshape(-1, 102, 1), y_train_nn, batch_size=64, epochs=100, validation_split=0.2, callbacks=[es], verbose=0)
-probabilities['CNN'] = cnn.predict(X_test_nn.reshape(-1, 102, 1), verbose=0).flatten()
+def build_cnn():
+    model = Sequential([
+        Input(shape=(102, 1)),
+        Conv1D(filters=32, kernel_size=5, padding='same'), BatchNormalization(), Activation('relu'), MaxPooling1D(pool_size=2), Dropout(0.3),
+        Conv1D(filters=64, kernel_size=5, padding='same'), BatchNormalization(), Activation('relu'), MaxPooling1D(pool_size=2), Dropout(0.3),
+        Flatten(),
+        Dense(100), BatchNormalization(), Activation('relu'), Dropout(0.5),
+        Dense(1, activation='sigmoid')
+    ])
+    model.compile(optimizer=Adam(learning_rate=0.001), loss='binary_crossentropy')
+    return model
+
+cnn = build_cnn()
+cnn.fit(X_train_final.reshape(-1, 102, 1), y_train, batch_size=32, epochs=100, validation_split=0.2, callbacks=[es], verbose=0)
+probabilities['CNN'] = cnn.predict(X_test_final.reshape(-1, 102, 1), verbose=0).flatten()
 
 # Plotting Calibration Curves
 print("Plotting Calibration Curves...")
