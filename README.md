@@ -7,6 +7,32 @@ This repository contains the complete codebase, data generation scripts, and sta
 *   **Baseline Independence:** Through PCA ablation, we proved that neural networks are physically fragile—relying heavily on the broad physical continuum (Radius/Temperature)—whereas XGBoost successfully isolates the chemical absorption structure.
 *   **Probability Calibration:** XGBoost demonstrated exceptional "out-of-the-box" calibration (Brier Score = 0.0719) compared to the overconfident neural networks, establishing it as the superior operational tool for prioritizing costly Tier 4 phase-curve observations.
 
+## ⚙️ Installation & Setup
+
+To run this pipeline, ensure you have Python 3.9+ installed. We recommend using a virtual environment.
+
+### 1. Install Dependencies
+Install the required libraries using pip and the provided `requirements.txt`. Note that this will automatically install **MultiREx** and **TauREx 3** from their respective repositories.
+
+```bash
+# Clone the repository
+git clone https://github.com/oy2017/BioSignatureDetectionModel.git
+cd BioSignatureDetectionModel
+
+# Create and activate a virtual environment (optional but recommended)
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install all packages
+pip install -r requirements.txt
+```
+
+### 2. Verify MultiREx Installation
+You can verify that the radiative transfer engine is correctly installed by running:
+```bash
+python -c "import multirex; print(f'MultiREx version: {multirex.__version__}')"
+```
+
 ## 🛠️ Reproducibility Guide
 
 To reproduce the exact findings, tables, and figures reported in the manuscript, execute the following pipeline in order:
