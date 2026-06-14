@@ -63,7 +63,7 @@ X_train_final, y_train = shuffle(X_train_final, y_train, random_state=42)
 # --- Model Training Functions ---
 def train_and_predict_xgb():
     print("--- Training XGBoost ---")
-    model = XGBClassifier(n_estimators=300, max_depth=3, learning_rate=0.1, subsample=0.8, random_state=42, n_jobs=-1, eval_metric='logloss')
+    model = XGBClassifier(n_estimators=200, max_depth=5, learning_rate=0.2, subsample=0.8, random_state=42, n_jobs=-1, eval_metric='logloss')
     model.fit(X_train_final, y_train)
     return model.predict(X_test_final)
 
@@ -82,7 +82,7 @@ def train_and_predict_mlp():
         Dense(64), BatchNormalization(), Activation('relu'), Dropout(0.3),
         Dense(1, activation='sigmoid')
     ])
-    model.compile(optimizer=Adam(learning_rate=0.0005), loss='binary_crossentropy')
+    model.compile(optimizer=Adam(learning_rate=0.001), loss='binary_crossentropy')
     es = EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
     model.fit(X_train_final, y_train, epochs=100, batch_size=128, validation_split=0.2, callbacks=[es], verbose=0)
     return (model.predict(X_test_final, verbose=0) > 0.5).astype(int).flatten()
@@ -91,15 +91,15 @@ def train_and_predict_cnn():
     print("--- Training CNN ---")
     model = Sequential([
         Input(shape=(102, 1)),
+        Conv1D(filters=32, kernel_size=5, padding='same'), BatchNormalization(), Activation('relu'), MaxPooling1D(pool_size=2), Dropout(0.3),
         Conv1D(filters=64, kernel_size=5, padding='same'), BatchNormalization(), Activation('relu'), MaxPooling1D(pool_size=2), Dropout(0.3),
-        Conv1D(filters=128, kernel_size=5, padding='same'), BatchNormalization(), Activation('relu'), MaxPooling1D(pool_size=2), Dropout(0.3),
         Flatten(),
         Dense(100), BatchNormalization(), Activation('relu'), Dropout(0.5),
         Dense(1, activation='sigmoid')
     ])
-    model.compile(optimizer=Adam(learning_rate=0.001), loss='binary_crossentropy')
+    model.compile(optimizer=Adam(learning_rate=0.0005), loss='binary_crossentropy')
     es = EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
-    model.fit(X_train_final.reshape(-1, 102, 1), y_train, epochs=100, batch_size=64, validation_split=0.2, callbacks=[es], verbose=0)
+    model.fit(X_train_final.reshape(-1, 102, 1), y_train, epochs=100, batch_size=128, validation_split=0.2, callbacks=[es], verbose=0)
     return (model.predict(X_test_final.reshape(-1, 102, 1), verbose=0) > 0.5).astype(int).flatten()
 
 # --- Main Loop ---

@@ -1,6 +1,7 @@
 import os
 import subprocess
 import shutil
+import sys
 
 fill_gas = "H2"
 num_sets = 5
@@ -9,10 +10,10 @@ print(f"--- Generating {num_sets} Independent Test Sets for {fill_gas} ---")
 
 for i in range(1, num_sets + 1):
     print(f"\n[Generation {i}/{num_sets}]")
-    
+
     # Run the generation script
     # We rely on it producing 'multirex_spectra_H2_test.parquet'
-    subprocess.run(["python", "generate_multiverse_data.py", fill_gas, "--purpose", "test"], check=True)
+    subprocess.run([sys.executable, "generate_multiverse_data.py", fill_gas, "--purpose", "test"], check=True)
     
     # Rename the output file
     default_name = f"multirex_spectra_{fill_gas}_test.parquet"

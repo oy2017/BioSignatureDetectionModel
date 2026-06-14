@@ -72,12 +72,12 @@ def get_pca_data(X_train_raw, X_test_raw, start=0, end=102):
 def build_mlp():
     model = Sequential([
         Input(shape=(102,)),
-        Dense(256), BatchNormalization(), Activation('relu'), Dropout(0.3),
-        Dense(128), BatchNormalization(), Activation('relu'), Dropout(0.3),
-        Dense(64), BatchNormalization(), Activation('relu'), Dropout(0.3),
+        Dense(512), BatchNormalization(), Activation('relu'), Dropout(0.2),
+        Dense(256), BatchNormalization(), Activation('relu'), Dropout(0.2),
+        Dense(128), BatchNormalization(), Activation('relu'), Dropout(0.2),
         Dense(1, activation='sigmoid')
     ])
-    model.compile(optimizer=Adam(learning_rate=0.0005), loss='binary_crossentropy')
+    model.compile(optimizer=Adam(learning_rate=0.001), loss='binary_crossentropy')
     return model
 
 def build_cnn():
@@ -105,12 +105,12 @@ def main():
     # 1. MLP
     print("--- Training MLP ---")
     mlp = build_mlp()
-    mlp.fit(X_tr_pca, y_train_shuf, epochs=100, batch_size=128, validation_split=0.2, callbacks=[es], verbose=0)
+    mlp.fit(X_tr_pca, y_train_shuf, epochs=100, batch_size=64, validation_split=0.2, callbacks=[es], verbose=0)
     predictions['MLP'] = (mlp.predict(X_te_pca, verbose=0) > 0.5).astype(int).flatten()
     
     # 2. XGBoost
     print("--- Training XGBoost ---")
-    xgb = XGBClassifier(n_estimators=300, max_depth=3, learning_rate=0.1, subsample=0.8, random_state=SEED, n_jobs=-1, eval_metric='logloss')
+    xgb = XGBClassifier(n_estimators=200, max_depth=5, learning_rate=0.2, subsample=0.8, random_state=SEED, n_jobs=-1, eval_metric='logloss')
     xgb.fit(X_tr_pca, y_train_shuf)
     predictions['XGBoost'] = xgb.predict(X_te_pca)
     
