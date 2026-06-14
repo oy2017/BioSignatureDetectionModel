@@ -11,6 +11,6 @@ scikit-learn
 seaborn
 xgboost
 tensorflow
-lightgbm
+statsmodels
 corner
 psutil
