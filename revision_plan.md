@@ -230,6 +230,10 @@ The control holds training-set size fixed and removes only the distribution shif
 
 Two things to state alongside it. The near-threshold bin is where the residual error concentrates, which explains part of the 11% overall error rate as a property of the labelling rather than of the model — connect this to the §4.3 error-clustering result. And the mean-probability column is a second, independent piece of evidence for the calibration claim in §4.4: the model's confidence tracks the actual ambiguity of the label.
 
+**The same table cuts the other way, and the manuscript must say so first.** 64.8% of the test set lies a dex or more from the cutoff, where accuracy is 95.25%. Those are comparisons between atmospheres differing by a factor of ten or more in the deciding abundance — chemically large differences, and correspondingly easy calls. A reviewer reading this table can fairly say that the 88.92% headline is weighted toward well-separated cases, and that performance in the regime where the distinction is genuinely hard is far weaker. That is a true statement about the benchmark. It follows from the generation design — abundances drawn uniformly across several decades of log abundance — not from the margin analysis; the analysis only makes it visible.
+
+Concede it in the same breath as the finding. Presenting "errors concentrate where labels are arbitrary" while omitting "and the headline is correspondingly weighted toward easy separations" reads as spin to anyone holding the table, and Reviewer 1 has already shown he reads closely. Stating both costs nothing and converts a discoverable weakness into evidence of careful self-assessment. The difficulty distribution also belongs in the §3 Assumptions subsection (R2-4) as a stated property of the design.
+
 #### Threshold sensitivity — results
 
 `final_results/H2_threshold_sensitivity.{txt,csv}`. Both cutoffs moved together, data relabelled, pipeline retrained from scratch at each setting; spectra unchanged.
@@ -554,7 +558,8 @@ Add after §3.1 or at the end of §3. State each assumption, why it is reasonabl
 | 1D spherically symmetric atmospheres | TauREx standard; tractable | Omits limb asymmetry and 3D structure; likely optimistic |
 | Gaussian noise at fixed SNR = 15 | Follows Duque-Castaño et al. | Real noise is correlated; the sweep shows correlated noise costs ~5 more points at equal SNR |
 | Uniform R = 200 across all channels | Approximates Ariel Tier 3 upper end | The real instrument is heterogeneous; optimistic |
-| Fixed CH₄/O₃ abundance thresholds | Follows prior work | Labels near the threshold are arbitrary; see the margin analysis once run |
+| Fixed CH₄/O₃ abundance thresholds | Follows prior work | Labels near the threshold are arbitrary: within 0.25 dex the classifier does not beat a majority-class baseline (§4.3). Moving both cutoffs by ±0.5 dex changes accuracy by under 2 points, so the headline is not an artefact of the specific values |
+| Abundances drawn uniformly over several decades of log abundance | Spans the physically plausible range; avoids concentrating the sample at one composition | **Sets the difficulty distribution**: 64.8% of test planets lie ≥1 dex from the labelling cutoff, where accuracy is 95.3%, so overall accuracy is weighted toward well-separated cases (§4.3). Not an estimate of performance on a realistic population |
 | Enforced 50/50 class balance | Prevents majority-class bias | Not the expected occurrence rate; accuracy is not a mission yield estimate |
 | H₂-dominated composition | Larger scale height, stronger signal | Optimistic relative to high-mean-molecular-weight atmospheres |
 | No clouds or hazes in training | Not exposed by MultiREx until this work; the fork now supports a grey deck and a Lee-Mie haze | **Most consequential omission, now quantified for two prescriptions** — an untrained-for deck at 10⁴ Pa costs 14 accuracy points and nearly doubles the Brier score; an untrained-for haze is worse still at matched muting once optically significant, costing up to 8 points more than the equivalent deck (§4.5) |
@@ -617,7 +622,11 @@ This section was **not** attacked and is your interpretability contribution. Kee
 
 > "Classification accuracy depends strongly on how far a planet's abundances lie from the labelling cutoff. Binning the test set by that distance, accuracy rises from 61.9% within 0.25 dex of the cutoff to 95.3% at distances beyond one dex. Because class balance varies between bins, each bin is compared against its own majority-class baseline: in the nearest bin the classifier does not exceed that baseline at all, and its mean predicted probability is 0.515. Within a quarter-dex of the cutoff the labelling separates atmospheres that are physically near-identical, so no spectrum can recover the distinction; the errors concentrated there reflect the arbitrariness of a threshold convention rather than a limitation of the classifier. This regime accounts for 8.8% of the test set."
 
-Pair it with the existing error-clustering discussion, which describes the same effect qualitatively. Note the honest framing: this does **not** claim the model is better than the headline number suggests — it identifies which part of the residual error is attributable to the labelling convention.
+Immediately follow it with the counterpart concession — do not leave this to the reader to notice:
+
+> "The converse also follows. Because abundances are drawn uniformly across several decades, 64.8% of test planets lie at least one dex from the cutoff, where the deciding abundance differs by more than an order of magnitude between the classes. Overall accuracy is therefore weighted toward well-separated cases, and the headline figure should be read alongside this breakdown rather than in place of it: the method separates chemically distinct atmospheres reliably, and approaches the labelling convention's own resolution limit as the distinction narrows."
+
+Pair both with the existing error-clustering discussion, which describes the same effect qualitatively. Note the honest framing: this does **not** claim the model is better than the headline number suggests — it identifies which part of the residual error is attributable to the labelling convention, and simultaneously identifies which part of the headline is attributable to easy cases.
 
 ## §4.4 Calibration — add one caveat — serves R1-3
 
