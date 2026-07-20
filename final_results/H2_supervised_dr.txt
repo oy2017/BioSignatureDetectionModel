@@ -1,0 +1,39 @@
+Supervised dimensionality reduction vs variance-ranked PCA
+
+PCA selects directions by explained variance (unsupervised); PLS and LDA
+select by association with the label (supervised). If variance rank were
+the right criterion, PCA would not be beaten at low component counts.
+
+Method            n comp          accuracy        F1     Brier
+--------------------------------------------------------------
+PCA + XGBoost          2     52.13% ±1.80%   53.06%    0.2803
+PLS-DA (linear)        2     55.47% ±1.01%   63.11%    0.2445
+PLS + XGBoost          2     60.70% ±3.15%   63.10%    0.2478
+PCA + XGBoost          5     72.72% ±3.12%   73.04%    0.1826
+PLS-DA (linear)        5     61.43% ±1.58%   69.99%    0.2350
+PLS + XGBoost          5     72.23% ±1.38%   72.55%    0.1852
+PCA + XGBoost         10     80.00% ±2.62%   80.41%    0.1395
+PLS-DA (linear)       10     71.89% ±1.04%   76.45%    0.2055
+PLS + XGBoost         10     79.62% ±2.66%   79.80%    0.1368
+PCA + XGBoost         20     81.92% ±1.92%   82.39%    0.1264
+PLS-DA (linear)       20     72.45% ±0.46%   76.92%    0.1992
+PLS + XGBoost         20     83.24% ±2.07%   83.53%    0.1185
+PCA + XGBoost         50     85.33% ±1.37%   85.60%    0.1042
+PLS-DA (linear)       50     73.82% ±0.44%   78.04%    0.1940
+PLS + XGBoost         50     87.25% ±1.62%   87.42%    0.0918
+PCA + XGBoost        102     88.92% ±0.94%   88.87%    0.0802
+PLS-DA (linear)      102     73.93% ±0.36%   78.14%    0.1936
+PLS + XGBoost        102     88.59% ±1.78%   88.74%    0.0831
+LDA (raw bins)         1     63.58% ±1.82%   72.65%    0.2337
+LDA (102 PCs)          1     68.22% ±1.04%   75.04%    0.2270
+
+========================================================================
+Supervised vs unsupervised projection at matched dimensionality,
+holding the classifier fixed (XGBoost). (PCA + XGBoost at 102 = 88.92%)
+
+  n=2    supervised proj (PLS+XGB) 60.70%   unsupervised proj (PCA+XGB) 52.13%   diff +8.57%   [linear PLS-DA 55.47%]
+  n=5    supervised proj (PLS+XGB) 72.23%   unsupervised proj (PCA+XGB) 72.72%   diff -0.49%   [linear PLS-DA 61.43%]
+  n=10   supervised proj (PLS+XGB) 79.62%   unsupervised proj (PCA+XGB) 80.00%   diff -0.37%   [linear PLS-DA 71.89%]
+  n=20   supervised proj (PLS+XGB) 83.24%   unsupervised proj (PCA+XGB) 81.92%   diff +1.32%   [linear PLS-DA 72.45%]
+  n=50   supervised proj (PLS+XGB) 87.25%   unsupervised proj (PCA+XGB) 85.33%   diff +1.92%   [linear PLS-DA 73.82%]
+  n=102  supervised proj (PLS+XGB) 88.59%   unsupervised proj (PCA+XGB) 88.92%   diff -0.33%   [linear PLS-DA 73.93%]
