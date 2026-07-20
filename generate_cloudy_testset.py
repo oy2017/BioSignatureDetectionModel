@@ -102,12 +102,15 @@ def generate_one_level(cloud_pressure, n_universes, wn_grid):
 
 
 def clean_and_label(df):
-    """Identical cleaning and labelling to generate_multiverse_data.py."""
+    """Cleaning and labelling as in generate_multiverse_data.py, with dropna
+    restricted to the spectral columns: the Mie-capable fork reports
+    'atm cloud_model' as None (-> NaN) when the grey deck is used via
+    cloud_pressure, and a blanket dropna() would silently delete every row."""
     fp = re.compile(r"^-?\d+\.\d+$")
     spectral = [c for c in df.columns
                 if isinstance(c, float) or (isinstance(c, str) and fp.match(c))]
     before = len(df)
-    df = df.dropna()
+    df = df.dropna(subset=spectral)
     df = df[(df[spectral] <= 1.0).all(axis=1)]
     df = df.copy()
     df["biosignature"] = np.where(

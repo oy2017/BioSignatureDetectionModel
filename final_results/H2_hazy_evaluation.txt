@@ -1,0 +1,37 @@
+Frozen pipeline evaluated on hazy atmospheres (LeeMie, r=0.1um, Q0=40)
+
+The training set contains no aerosols. Feature amplitude is the median
+per-spectrum wavelength scatter relative to the clear training data,
+measured identically to the cloudy evaluation.
+
+test set                feat amp   XGB acc  XGB Brier   MLP acc  MLP Brier
+--------------------------------------------------------------------------
+clear (no haze)            1.00x    88.92%     0.0802    79.67%     0.1331
+haze 2.0e+05 m^-3          0.86x    85.37%     0.1103    80.68%     0.1439
+haze 2.0e+06 m^-3          0.74x    79.63%     0.1450    65.74%     0.2676
+haze 3.0e+07 m^-3          0.58x    67.10%     0.2566    55.95%     0.3646
+haze 2.4e+08 m^-3          0.50x    63.25%     0.2565    63.81%     0.2645
+haze 1.0e+10 m^-3          0.30x    60.37%     0.2694    64.95%     0.2570
+
+========================================================================
+Degradation from the clear baseline (XGBoost 88.92%):
+
+  haze 2.0e+05 m^-3       85.37%  (-3.55%)
+  haze 2.0e+06 m^-3       79.63%  (-9.29%)
+  haze 3.0e+07 m^-3       67.10%  (-21.82%)
+  haze 2.4e+08 m^-3       63.25%  (-25.67%)
+  haze 1.0e+10 m^-3       60.37%  (-28.55%)
+
+========================================================================
+Deck vs haze at matched feature suppression (XGBoost):
+
+haze set                  amp  haze acc  deck acc @ same amp  difference
+------------------------------------------------------------------------
+haze 2.0e+05 m^-3       0.86x    85.37%               79.24%      +6.12%
+haze 2.0e+06 m^-3       0.74x    79.63%               75.39%      +4.24%
+haze 3.0e+07 m^-3       0.58x    67.10%               72.61%      -5.51%
+haze 2.4e+08 m^-3       0.50x    63.25%               71.47%      -8.23%
+haze 1.0e+10 m^-3       0.30x    60.37%               65.49%      -5.12%
+
+A positive difference means the haze harms less than a grey deck
+that mutes the features by the same amount.
