@@ -86,18 +86,18 @@ Highest-value missing items, ranked by return against effort: **cloud and haze p
 
 `generate_cloudy_testset.py` builds five test sets at fixed cloud-top pressures; `evaluate_cloudy.py` runs them through the frozen pipeline. The training set contains no clouds, so this is a distribution shift produced by different forward-model physics rather than by perturbing existing spectra.
 
-| Cloud top | Feature amplitude | XGBoost | Brier |
-| :-- | --: | --: | --: |
-| clear | 1.00x | 88.92% | 0.0802 |
-| 1e5 Pa | 0.92x | 81.03% (-7.9) | 0.1318 |
-| 1e4 Pa | 0.73x | 74.90% (-14.0) | 0.1788 |
-| 1e3 Pa | 0.50x | 71.43% (-17.5) | 0.2092 |
-| 1e2 Pa | 0.27x | 64.74% (-24.2) | 0.2701 |
-| 1e1 Pa | 0.03x | 55.35% (-33.6) | 0.3507 |
+| Cloud top | Feature amplitude | XGBoost | Brier | MLP (mean ± σ over 5 restarts) |
+| :-- | --: | --: | --: | --: |
+| clear | 1.00x | 88.92% | 0.0802 | 77.0% ± 1.7 |
+| 1e5 Pa | 0.92x | 81.03% (-7.9) | 0.1318 | 77.2% ± 1.7 |
+| 1e4 Pa | 0.73x | 74.90% (-14.0) | 0.1788 | 70.5% ± 1.5 |
+| 1e3 Pa | 0.50x | 71.43% (-17.5) | 0.2092 | 63.4% ± 1.9 |
+| 1e2 Pa | 0.27x | 64.74% (-24.2) | 0.2701 | 60.0% ± 2.3 |
+| 1e1 Pa | 0.03x | 55.35% (-33.6) | 0.3507 | 51.8% ± 1.2 |
 
 **Clouds are the largest single source of degradation in this work**, exceeding every instrumental systematic tested — the worst of those, correlated noise at SNR 5, cost 22 points, while a deck at 1e2 Pa costs 24.
 
-Two caveats to carry into the manuscript. At 1e1 Pa the feature amplitude is 0.03x, so the spectra are effectively featureless and chance-level accuracy reflects the absence of retrievable signal rather than a failure of the classifier; the informative range is 1e5 to 1e3 Pa. And the MLP column in the output file is unstable across restarts (clear baseline varied 76.4-80.7% over three runs) and should be averaged before quoting; XGBoost reproduces at 88.92% every run.
+Two caveats to carry into the manuscript. At 1e1 Pa the feature amplitude is 0.03x, so the spectra are effectively featureless and chance-level accuracy reflects the absence of retrievable signal rather than a failure of the classifier; the informative range is 1e5 to 1e3 Pa. And single MLP training runs are not quotable — the clear baseline varies by several points between identically-configured runs (76.4–80.7% observed) — so the MLP values in the table above are **means ± one standard deviation over five training restarts** (`evaluate_aerosol_mlp_restarts.py` → `final_results/H2_aerosol_mlp_restarts.{txt,csv}`; the single-run column in `H2_cloudy_evaluation.csv` is superseded). Any quoted MLP number must carry the ± and say it is a restart average. XGBoost is deterministic (88.92% every run) and needs no averaging.
 
 #### Hazes — results
 
@@ -105,20 +105,20 @@ Two caveats to carry into the manuscript. At 1e1 Pa the feature amplitude is 0.0
 
 The blocker recorded in the previous session was a unit mismatch, not broken plumbing. `lee_mie_mix_ratio` **is** in `fitting_parameters()` (the recorded lead was wrong); it is an absolute particle number density in particles/m³, not a fractional mixing ratio — `LeeMieContribution.contribute()` passes unit density, so values of 1e-8 to 1e0 produce optical depths of order 1e-11, bit-identical to cloud-free. The informative range is ~1e5–1e12 m⁻³. (`FlatMieContribution` has the mirror-image trap: its `flat_mix_ratio` is a per-molecule cross-section in m², informative near 1e-33–1e-26, and its `flat_topP=-1` default crashes on a `log10(-1)` NaN in this TauREx version — it works with an explicit positive `topP`, verified in isolation, but no dataset was generated from it.)
 
-| Density (m⁻³) | Feature amplitude | XGBoost | Brier | Deck at same amplitude |
-| :-- | --: | --: | --: | :-- |
-| clear | 1.00x | 88.92% | 0.0802 | — |
-| 2e5 | 0.86x | 85.37% (−3.6) | 0.1103 | 79.24% → haze **+6.1** |
-| 2e6 | 0.74x | 79.63% (−9.3) | 0.1450 | 75.39% → haze **+4.2** |
-| 3e7 | 0.58x | 67.10% (−21.8) | 0.2566 | 72.61% → haze **−5.5** |
-| 2.4e8 | 0.50x | 63.25% (−25.7) | 0.2565 | 71.47% → haze **−8.2** |
-| 1e10 | 0.30x | 60.37% (−28.6) | 0.2694 | 65.49% → haze **−5.1** |
+| Density (m⁻³) | Feature amplitude | XGBoost | Brier | Deck at same amplitude | MLP (mean ± σ over 5 restarts) |
+| :-- | --: | --: | --: | :-- | --: |
+| clear | 1.00x | 88.92% | 0.0802 | — | 77.0% ± 1.7 |
+| 2e5 | 0.86x | 85.37% (−3.6) | 0.1103 | 79.24% → haze **+6.1** | 77.5% ± 1.7 |
+| 2e6 | 0.74x | 79.63% (−9.3) | 0.1450 | 75.39% → haze **+4.2** | 64.6% ± 2.2 |
+| 3e7 | 0.58x | 67.10% (−21.8) | 0.2566 | 72.61% → haze **−5.5** | 54.2% ± 1.6 |
+| 2.4e8 | 0.50x | 63.25% (−25.7) | 0.2565 | 71.47% → haze **−8.2** | 62.2% ± 3.7 |
+| 1e10 | 0.30x | 60.37% (−28.6) | 0.2694 | 65.49% → haze **−5.1** | 59.6% ± 3.9 |
 
 **The pre-registered prediction is refuted beyond the optically thin regime.** The prediction (recorded below before the experiment ran) was that a haze, acting principally as a continuum tilt the classifier ignores, should degrade performance considerably less than a grey deck at equal feature suppression. That holds only for thin hazes (amplitude ≥ ~0.74x, where the haze costs 4–6 points less than the deck) and **reverses** at moderate optical depth: from ~0.6x down, the haze costs 5–8 points *more* than the deck at matched muting.
 
 Wavelength-resolved amplitudes explain the reversal. At matched 0.50x overall suppression, the haze crushes the 0.5–1 µm band to 0.05x of clear while leaving 1–7.8 µm at 0.79–1.06x; the deck spreads suppression far more evenly (0.09/0.29/0.72/0.85 across the same bands). Two consequences: the haze selectively erases the short-wavelength O₃ information (the Chappuis band near 0.6 µm — see the "unverified physics risk" note below, now directly relevant), and it imposes a steep blue continuum shape the training distribution never contained. The haze set *retains more* long-wavelength structure than the deck set at matched amplitude yet classifies *worse*, so the degradation is driven by the unfamiliar continuum shape and the loss of blue-band features rather than by overall information loss. The premise that an optically significant chromatic haze is "a PC1-like tilt" is what failed: the baseline-offset immunity (a pure PC0 mode) does not generalise to multiplicative, wavelength-dependent opacity.
 
-Caveats mirroring the grey-deck ones: the MLP column is again unstable and non-monotonic across levels (80.7% → 65.7% → 56.0% → 63.8% → 65.0%) and should be averaged over restarts or omitted; quote XGBoost. Matching at the population-median amplitude hides that suppression is far more heterogeneous across planets for the haze than for the deck (paired calibration runs showed per-planet suppression at a fixed density varying by tens of points with planet size), so "equal muting" holds at the median, not per planet.
+Caveats mirroring the grey-deck ones. The MLP values in the table are **means ± one standard deviation over five training restarts** (`evaluate_aerosol_mlp_restarts.py` → `final_results/H2_aerosol_mlp_restarts.{txt,csv}`; the single-run column in `H2_hazy_evaluation.csv` is superseded), and any quoted MLP number must carry the ± and say it is a restart average — single runs vary by several points. Averaging makes the cloudy MLP column cleanly monotonic, but the hazy dip at 3.0e7 m⁻³ **survives averaging** (54.2% ± 1.6 against 62.2% ± 3.7 at the denser 2.4e8 level), so the MLP's hazy response is genuinely non-monotonic in both density and amplitude — worth stating rather than smoothing over, since it underlines that the whitened network fails less predictably under chromatic aerosols than the tree ensemble. Separately, matching at the population-median amplitude hides that suppression is far more heterogeneous across planets for the haze than for the deck (paired calibration runs showed per-planet suppression at a fixed density varying by tens of points with planet size), so "equal muting" holds at the median, not per planet.
 
 **Outstanding for this axis:** nothing blocking — two prescriptions (grey deck, Lee-Mie haze) are generated, verified and evaluated. Next steps for R1-3 overall, ranked by return: an **independent radiative transfer code** (petitRADTRANS is open-source Python and a genuine alternative — days of work, not months), then **transfer learning H2→N2** (he names it explicitly; requires regenerating N2 at 550 bins, since the existing files are 200-bin).
 
@@ -593,7 +593,7 @@ Then the applicability statement, which is the useful scientific output:
 
 (This replaces the pre-haze version of the applicability statement, which described only the deck and predicted hazes would be the benign case.)
 
-**Do not quote the MLP column without averaging.** Its cloud-free baseline varied 76.4–80.7% across three runs; XGBoost reproduces at 88.92% every run. Either average the MLP over restarts or report XGBoost only.
+**Quote the MLP only as a restart average, stated as such.** Single training runs vary by several points (cloud-free baseline 76.4–80.7% across runs); restart-averaged values (mean ± σ over five retrainings) are in `final_results/H2_aerosol_mlp_restarts.{txt,csv}`. If the manuscript reports the MLP, use wording of the form: "MLP figures are means ± one standard deviation over five training restarts; individual runs vary by several accuracy points, whereas the gradient-boosted trees are deterministic." XGBoost reproduces at 88.92% every run and needs no such treatment.
 
 **Then the haze comparison** — the reviewer asked for prescriptions, plural, and named hazes. Content from `final_results/H2_hazy_evaluation.txt` and `hazy_generalisation.png`. Present the haze after the deck, framed as a test of a prediction the deck result motivated:
 
@@ -603,7 +603,7 @@ Then the applicability statement, which is the useful scientific output:
 
 The prediction's fate should be stated plainly — it was made in advance, derived from §4.2, and the experiment refuted it outside the thin-haze regime. Reporting that sequence (prediction, test, partial refutation, mechanism) is exactly the experimental-validation posture Reviewer 1 asked the work to adopt, and it sharpens the applicability statement: the pipeline tolerates thin hazes better than thin decks, but high-altitude or dense chromatic aerosols are the worst case tested, not the benign one.
 
-**Do not quote the hazy MLP column without averaging either** — it is non-monotonic across haze levels (80.7% → 65.7% → 56.0% → 63.8% → 65.0%), a larger instability than in the cloudy evaluation.
+**The hazy MLP is non-monotonic even after averaging** — restart means run 77.5% → 64.6% → 54.2% → 62.2% → 59.6% across the five densities, with the dip at 3.0e7 m⁻³ well outside the restart scatter (±1.6 vs ±3.7 at the neighbouring level). Report it as a restart average with that non-monotonicity stated, or report XGBoost only; do not present a single MLP run.
 
 **State the limits of the study in the same subsection**, not only in §5: these are parametric models of systematics rather than instrument-derived; about 2 of the seven requested validation axes are covered; and perturbed or reconfigured spectra from a given code remain spectra from that code.
 

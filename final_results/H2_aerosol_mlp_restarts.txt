@@ -1,0 +1,20 @@
+Whitened MLP on aerosol test sets, 5 training restarts
+
+Same frozen preprocessing and architecture as evaluate_cloudy.py /
+evaluate_hazy.py; each restart differs only in initialisation and
+training-order seed. Quote mean +/- sd - single runs vary by several
+accuracy points. XGBoost is deterministic and needs no averaging.
+
+test set               MLP acc mean  acc sd  Brier mean  Brier sd   individual restarts
+---------------------------------------------------------------------------------------
+clear (5 test sets)          77.04%   1.72%      0.1430    0.0041   76.7% 77.5% 80.0% 74.8% 76.2%
+cloud top 1e+05 Pa           77.24%   1.71%      0.1474    0.0073   78.3% 76.6% 79.9% 75.0% 76.4%
+cloud top 1e+04 Pa           70.50%   1.48%      0.1871    0.0061   69.0% 71.5% 72.4% 68.6% 71.1%
+cloud top 1e+03 Pa           63.38%   1.87%      0.2299    0.0172   63.5% 64.6% 64.6% 59.7% 64.6%
+cloud top 1e+02 Pa           60.00%   2.34%      0.2600    0.0172   59.5% 63.6% 59.7% 56.3% 60.8%
+cloud top 1e+01 Pa           51.77%   1.15%      0.2945    0.0137   51.1% 51.5% 54.1% 51.1% 51.1%
+haze 2.0e+05 m^-3            77.45%   1.65%      0.1540    0.0065   78.2% 76.5% 79.7% 74.9% 77.9%
+haze 2.0e+06 m^-3            64.59%   2.21%      0.2685    0.0193   67.4% 61.5% 64.8% 62.8% 66.5%
+haze 3.0e+07 m^-3            54.16%   1.62%      0.3529    0.0278   54.5% 52.8% 52.2% 56.9% 54.5%
+haze 2.4e+08 m^-3            62.16%   3.65%      0.2609    0.0370   61.2% 62.1% 64.9% 66.6% 56.0%
+haze 1.0e+10 m^-3            59.60%   3.86%      0.2803    0.0348   63.5% 58.3% 64.8% 55.2% 56.1%
