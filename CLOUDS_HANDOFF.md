@@ -7,7 +7,8 @@ reproducible.
 ## Goal
 
 Reviewer 1 asked for *different cloud and haze prescriptions*, plural, naming hazes
-specifically. A grey deck is done and verified. Hazes are not, and hazes are the
+specifically. His exact wording is in `revision/scholastica_reviews_verbatim.txt`
+(gitignored, local-only) — see the R1-3 passage. A grey deck is done and verified. Hazes are not, and hazes are the
 scientifically interesting case — see the prediction at the bottom.
 
 Current honest coverage of R1-3: **about 1.5 of 7 axes.**

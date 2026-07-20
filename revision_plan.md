@@ -630,8 +630,12 @@ system-wide. `~/tfenv` was bootstrapped via `uv` with a standalone CPython 3.10.
 Prefer patching it over recreating it. Temporary scratch directories are wiped
 between sessions, so nothing durable should live there.
 
-**Verbatim reviewer comments** are in `revision/reviewer_response_tracking.md`, which
-is gitignored and local-only, with `Scholastica.pdf` as the source. Both stay out of
+**Verbatim reviewer comments** are in two gitignored, local-only files, with
+`Scholastica.pdf` as the source. `revision/scholastica_reviews_verbatim.txt` is a
+clean extraction of the reviews as written, with an ID map at the top showing which
+passage each comment ID refers to — read this one when you need the exact wording.
+`revision/reviewer_response_tracking.md` interleaves the same text with the response
+plan and evidence. Both stay out of
 the repository because peer review correspondence is confidential; the response
 document submitted to the editor quotes each comment in full from that file.
 
