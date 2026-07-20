@@ -22,16 +22,19 @@ Design notes:
 
   * The particle density (lee_mie_mix_ratio, particles/m3 - an absolute number
     density, NOT a fractional mixing ratio; values below ~1e4 are optically
-    invisible) is held FIXED within each batch, and the four levels were
-    calibrated in a paired clear-vs-hazy experiment so their population
-    feature suppression matches the four informative grey-deck levels
-    (0.92 / 0.73 / 0.50 / 0.27 of clear amplitude). Matching the muting level
-    is the point: at equal suppression, any performance difference between
-    deck and haze is attributable to the wavelength dependence alone.
+    invisible) is held FIXED within each batch. The five levels were
+    calibrated in a paired clear-vs-hazy experiment to span the grey deck's
+    informative suppression range; the generated sets measured
+    0.86 / 0.74 / 0.58 / 0.50 / 0.30 of clear amplitude, against the deck's
+    0.92 / 0.73 / 0.50 / 0.27. Comparing at matched muting is the point: at
+    equal suppression, performance differences between deck and haze isolate
+    the wavelength dependence of the opacity - though the two prescriptions
+    also differ in vertical structure, so the isolation is approximate.
 
-  * Particle radius 0.1 um and Q0 = 40 are fixed (Lee et al. 2013 fiducial
-    soot-like values); the haze fills the whole atmospheric column. Only the
-    density varies between levels.
+  * Particle radius 0.1 um and Q0 = 40 are fixed (the TauREx defaults for
+    this contribution, radius aside); the haze fills the whole atmospheric
+    column, a simplification - real photochemical hazes are altitude-confined.
+    Only the density varies between levels.
 
   * Suppression saturates near 0.3x at high density because the haze's own
     wavelength-dependent opacity imposes a spectral slope of its own; unlike
