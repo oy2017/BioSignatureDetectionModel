@@ -618,7 +618,22 @@ Tense and person consistency. The manuscript currently uses first-person plural 
 
 ## Working notes
 
-**Reproduction environment.** All results verified under the manuscript's pinned versions (Python 3.10, TensorFlow 2.21.0, scikit-learn 1.7.2, XGBoost 3.2.0). Random Forest reproduces at 86.51% ± 1.96%, matching Table 3 exactly.
+**Reproduction environment.** Use `~/tfenv/bin/python` for everything. It is pinned
+to the manuscript's versions — Python 3.10, TensorFlow 2.21.0, scikit-learn 1.7.2,
+XGBoost 3.2.0 — and Random Forest reproduces at 86.51% ± 1.96%, matching Table 3
+exactly. It also carries the cloud-capable MultiREx fork and PyMuPDF for reading the
+review and manuscript PDFs, and has pip available.
+
+This matters because the environment cannot be rebuilt casually: the system Python
+is 3.14, which has no TensorFlow wheels, and there is no pip or sudo available
+system-wide. `~/tfenv` was bootstrapped via `uv` with a standalone CPython 3.10.
+Prefer patching it over recreating it. Temporary scratch directories are wiped
+between sessions, so nothing durable should live there.
+
+**Verbatim reviewer comments** are in `revision/reviewer_response_tracking.md`, which
+is gitignored and local-only, with `Scholastica.pdf` as the source. Both stay out of
+the repository because peer review correspondence is confidential; the response
+document submitted to the editor quotes each comment in full from that file.
 
 **XGBoost run-to-run variance.** `subsample=0.8` means sampled rows depend on training-row ordering even at fixed `random_state`; accuracy moves roughly 0.4 percentage points across shuffles. Consider reporting a mean over restarts rather than a single run.
 
