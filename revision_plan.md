@@ -459,7 +459,7 @@ Defensible **only if** the Abstract scopes it clearly. "Biosignature candidate t
 
 > "All spectra derive from a single radiative transfer code, and class labels are a deterministic function of the abundances used to generate them, so this work characterises achievable performance under idealised conditions rather than demonstrating biosignature detection."
 
-> "Under injected observational systematics the pipeline tolerates calibration-type errors but degrades under correlated noise, losing 13 accuracy points at an effective SNR of 10."
+> "Under injected observational systematics the pipeline tolerates calibration-type errors but degrades under correlated noise, losing 13 accuracy points at an effective SNR of 10. Untrained-for aerosols are more damaging still: an optically thick cloud deck or photochemical haze degrades accuracy monotonically with altitude and density, bounding the method's applicability to atmospheres whose aerosols leave most of the spectral feature amplitude intact."
 
 ## §1 Introduction — serves R1-1, R1-4
 
@@ -589,7 +589,9 @@ Then the ceiling caveat, which stops a reader misreading the bottom row as gross
 
 Then the applicability statement, which is the useful scientific output:
 
-> "Taken together these results bound the conditions under which the method is usable: performance is close to the cloud-free baseline for deep decks, retains most of its advantage over chance down to roughly 10³ Pa, and is not meaningful for atmospheres with high-altitude cloud or haze layers."
+> "Taken together these results bound the conditions under which the method is usable. Performance stays within about ten points of the cloud-free baseline for the deepest decks (10⁵ Pa, eight points) and for thin hazes (feature amplitudes of 0.86x and 0.74x, four and nine points). At moderate muting the two prescriptions diverge: a deck at 10³ Pa retains roughly half of the accuracy margin over chance, while a haze of equal overall muting retains about a third. Below feature amplitudes of roughly 0.3x, neither aerosol leaves enough diagnostic structure for meaningful classification. Usability therefore depends not only on how strongly an aerosol mutes the features but on how chromatic its opacity is, and dense photochemical haze is the least favourable case tested."
+
+(This replaces the pre-haze version of the applicability statement, which described only the deck and predicted hazes would be the benign case.)
 
 **Do not quote the MLP column without averaging.** Its cloud-free baseline varied 76.4–80.7% across three runs; XGBoost reproduces at 88.92% every run. Either average the MLP over restarts or report XGBoost only.
 
@@ -613,7 +615,7 @@ The prediction's fate should be stated plainly — it was made in advance, deriv
 
 **Remove** the promotion of the PCA feature-engineering story to "a central finding" — it is not among the stated contributions and is now withdrawn.
 
-**Add** the robustness findings and an explicit limitations paragraph naming: single radiative transfer code; labels derived from generation parameters rather than retrieval; no clouds or hazes; 1D atmospheres; parametric rather than instrument-derived systematics. Name cross-simulator validation and retrieval-derived labels as the required next steps.
+**Add** the robustness findings and an explicit limitations paragraph naming: single radiative transfer code; labels derived from generation parameters rather than retrieval; no aerosols in the training data (their out-of-distribution cost is now quantified in §4.5, but training with aerosols was not attempted); 1D atmospheres; parametric rather than instrument-derived systematics. Name cross-simulator validation and retrieval-derived labels as the required next steps.
 
 ## Acknowledgments — new section (R2-2)
 
