@@ -1,0 +1,11 @@
+Octave-band occlusion on the frozen pipeline (XGBoost, clear test sets)
+
+O3 subset: n=1808 (CH4 >= -6.0, label = O3 >= -7.0);  CH4 subset: n=1790
+
+condition           bins   overall  O3 subset  CH4 subset
+----------------------------------------------------------
+unmasked               -    88.91%     87.89%      87.26%
+mask 0.5-1.0 um      139    82.09%     81.80%      82.74%
+mask 1.0-2.0 um      139    66.00%     64.77%      59.94%
+mask 2.0-4.0 um      138    68.00%     79.26%      71.28%
+mask 3.9-7.8 um      139    54.28%     34.13%      39.22%
