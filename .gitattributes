@@ -1,0 +1,13 @@
+# Normalize text files to LF in the repository. Without this, files saved with
+# CRLF by Windows editors appear as fully-modified against the LF blobs stored
+# in git, producing hundreds of phantom changes in `git status`.
+* text=auto
+
+# Explicit binary markers. Auto-detection handles these, but a misclassified
+# binary would be corrupted by line-ending conversion, so be certain.
+*.png      binary
+*.pdf      binary
+*.parquet  binary
+*.keras    binary
+*.lnk      binary
+.DS_Store  binary
