@@ -1,0 +1,39 @@
+Whitening necessity across principal-component ranges
+Repeats per condition: 3   Test sets: 5
+XGBoost is an invariance control: its whitened and unwhitened rows
+should agree, since tree splits are unaffected by per-feature rescaling.
+
+Model        PC range    n  whitened          accuracy                F1
+------------------------------------------------------------------------
+MLP           [0:102)  102      True     78.76% ±2.17%     80.37% ±1.89%
+MLP           [0:102)  102     False     75.80% ±5.63%     80.27% ±3.64%
+MLP           [2:102)  100      True     78.94% ±2.35%     81.89% ±1.80%
+MLP           [2:102)  100     False     79.49% ±2.18%     81.23% ±1.94%
+MLP           [5:102)   97      True     76.15% ±1.93%     79.96% ±1.43%
+MLP           [5:102)   97     False     78.33% ±3.52%     80.24% ±2.21%
+MLP          [10:102)   92      True     77.67% ±2.23%     80.18% ±1.22%
+MLP          [10:102)   92     False     76.16% ±1.98%     77.71% ±3.15%
+CNN           [0:102)  102      True     75.07% ±1.23%     78.85% ±0.93%
+CNN           [0:102)  102     False     66.80% ±2.30%     69.38% ±6.68%
+CNN           [2:102)  100      True     75.80% ±1.42%     79.02% ±1.51%
+CNN           [2:102)  100     False     67.21% ±3.15%     59.93% ±12.13%
+CNN           [5:102)   97      True     75.26% ±1.79%     78.23% ±1.41%
+CNN           [5:102)   97     False     68.67% ±1.80%     66.45% ±6.01%
+CNN          [10:102)   92      True     73.65% ±1.67%     74.51% ±3.97%
+CNN          [10:102)   92     False     59.93% ±2.71%     70.34% ±1.11%
+XGBoost       [0:102)  102      True     88.24% ±1.56%     88.21% ±1.78%
+XGBoost       [0:102)  102     False     88.24% ±1.56%     88.21% ±1.78%
+XGBoost       [2:102)  100      True     88.19% ±1.33%     88.22% ±1.53%
+XGBoost       [2:102)  100     False     88.19% ±1.33%     88.22% ±1.53%
+XGBoost       [5:102)   97      True     88.05% ±1.86%     88.13% ±2.08%
+XGBoost       [5:102)   97     False     88.05% ±1.86%     88.13% ±2.08%
+XGBoost      [10:102)   92      True     86.56% ±1.85%     86.67% ±2.03%
+XGBoost      [10:102)   92     False     86.56% ±1.85%     86.67% ±2.03%
+
+Key comparisons (MLP):
+  whitened, all components  [0:102): 78.76%
+  UNwhitened, [2:102):                79.49%  (+0.73% vs whitened baseline)
+  UNwhitened, [5:102):                78.33%  (-0.43% vs whitened baseline)
+  UNwhitened, [10:102):               76.16%  (-2.61% vs whitened baseline)
+
+If an unwhitened row matches the whitened baseline, the whitening step can be dropped from the pipeline entirely.
