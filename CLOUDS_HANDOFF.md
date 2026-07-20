@@ -80,6 +80,26 @@ cloud_model={"type": "lee_mie",  "radius": 0.1, "q": 40,
    (0.92 / 0.73 / 0.50 / 0.27 of clear amplitude) so the two prescriptions are
    compared at equal muting and only the wavelength dependence differs.
 
+## When the haze result exists, update FOUR places
+
+`revision_plan.md` serves two deliverables at once — the paper is written from the
+rewrite instructions, organised by manuscript section, while the editor's
+comment-indexed response document is assembled from the R1-n sections. A new result
+belongs in both halves, and they do not update each other.
+
+This was already missed once: the cloud results were written into the R1-3 response
+section and the rewrite instructions were left describing only the injected-
+systematics sweep, so the writing half of the document did not know clouds existed.
+
+| # | Location | What to change |
+| :-- | :-- | :-- |
+| 1 | `revision_plan.md` → R1-3 → "Clouds — results" | Add the haze results table alongside the grey-deck one |
+| 2 | `revision_plan.md` → R1-3 → coverage table, row 3 | Update status, and the "about 1.5 of seven axes" figure in the section header **and** in the document header near the status table |
+| 3 | `revision_plan.md` → `## §4 — new Robustness subsection` → "Clouds" block | Add draft text for the haze result; replace the closing prediction paragraph with what the experiment actually found |
+| 4 | `revision_plan.md` → `## §3 — new Assumptions subsection` → "No clouds or hazes in training" row | Update, since hazes would no longer be untested |
+
+Also update this file, and delete it once hazes are done and nothing is outstanding.
+
 ## Two traps that cost real time here
 
 **Verify through `explore_multiverse`, never through `generate_spectrum`.** The
