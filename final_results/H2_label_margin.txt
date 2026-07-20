@@ -1,0 +1,31 @@
+Accuracy against distance to the labelling threshold
+
+Margin is the dex distance to the nearest label flip: for positive
+planets the smaller excess over the two thresholds, for negative
+planets the larger deficit (both gases must rise to flip the label).
+
+Overall accuracy: 88.91%  (n = 2697)
+
+Class balance varies between bins, so accuracy is reported against the
+majority-class baseline for that bin - the score obtainable with no
+spectral information at all.
+
+margin (dex)          n  positives   accuracy   majority    gain   mean p
+------------------------------------------------------------------------
+0 - 0.25            236      64.4%     61.86%     64.41%  -2.54%    0.515
+0.25 - 0.5          258      67.1%     75.97%     67.05%  +8.91%    0.586
+0.5 - 1             454      62.1%     85.90%     62.11% +23.79%    0.593
+1 - 2               908      50.2%     94.82%     50.22% +44.60%    0.521
+> 2                 841      35.0%     95.72%     65.04% +30.68%    0.388
+
+Planets within 0.25 dex of the threshold: 236 (8.8% of the test set), accuracy 61.86% against a 64.41% majority baseline (-2.54%)
+Planets at least 1 dex from the threshold:  1749 (64.8%), accuracy 95.25% against a 57.12% majority baseline (+38.14%)
+
+Near-threshold labels distinguish atmospheres that differ by less
+than the labelling tolerance. In the smallest-margin bin the
+classifier does not beat the majority-class baseline at all, so it
+recovers no usable information there - which reflects the
+arbitrariness of the cutoff rather than a failure of the model.
+Predicted probabilities in that bin average 0.5, i.e. the model
+reports its own uncertainty correctly rather than guessing
+confidently.

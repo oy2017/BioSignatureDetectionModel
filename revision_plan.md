@@ -13,7 +13,7 @@ Comment IDs (R1-n, R2-n) are stable across this file, commit messages, and the r
 | R1-1 | Claims exceed what the experiments show (umbrella) | — | ☐ |
 | R1-2 | Study is confined to a single simulator | ◐ | ☐ |
 | R1-3 | No demonstration of robustness under domain shift | ◐ | ☐ |
-| R1-4 | Positive class is a labelling rule, not a detection | ☐ | ☐ |
+| R1-4 | Positive class is a labelling rule, not a detection | ◐ | ☐ |
 | R1-5 | PCA interpretation unsupported by the mathematics | ☑ | ☐ |
 | R1-6 | Whitening does not selectively amplify chemistry | ☑ | ☐ |
 | R1-7 | Variance-ordering rationale is self-contradictory | ◐ | ☐ |
@@ -26,7 +26,7 @@ Comment IDs (R1-n, R2-n) are stable across this file, commit messages, and the r
 | R2-5 | Avoid conclusions beyond what the data supports | ☐ | ☐ |
 | R2-6 | Tense and person consistency | ☐ | ☐ |
 
-☑ complete ◐ partial ☐ open — **2 of 15 analyses complete, 5 partial, 0 manuscript sections rewritten.**
+☑ complete ◐ partial ☐ open — **2 of 15 analyses complete, 6 partial, 0 manuscript sections rewritten.**
 
 Scored against what each reviewer *explicitly asked for*, not against what was
 convenient to run. Two items were previously marked complete in error and have
@@ -205,16 +205,48 @@ The control holds training-set size fixed and removes only the distribution shif
 
 *Summary:* Labels come from fixed abundance thresholds applied to simulation inputs. Real observations require retrieval, which introduces uncertainty, parameter degeneracy, stellar context, and abiotic alternatives. Retrieval-derived abundances **or probabilistic labels** would strengthen relevance.
 
+**Status:** ◐ PARTIAL — `analyze_label_margin.py`, `analyze_threshold_sensitivity.py`. **Items 1–3 done; 4 optional, 5 out of reach this cycle.**
+
 **Plan:**
-1. Rename the task honestly throughout — the largest part of the fix, and free.
-2. Threshold sensitivity: relabel at ±0.25 and ±0.5 dex; report the class-balance shift.
-3. Margin analysis: bin test planets by distance to the decision boundary and plot accuracy per bin. Expect chance-level performance near the boundary, demonstrating that near-threshold labels are arbitrary rather than that the model fails. Connects directly to the existing §4.3 error-clustering result.
-4. Detectability weighting: compute scale height from planet radius, mass, and temperature; flag planets whose feature amplitude falls below the SNR=15 noise floor. These are labelled positive but carry no detectable signal.
-5. Optional, high impact: run retrieval on 50–100 spectra and plot posterior width against true injected abundance.
+1. ☑ Rename the task honestly throughout — the largest part of the fix, and free. Instructions in the rewrite section below.
+2. ☑ Threshold sensitivity: relabel at ±0.25 and ±0.5 dex; report the class-balance shift.
+3. ☑ Margin analysis: accuracy binned by distance to the labelling threshold.
+4. ☐ Optional — detectability weighting: compute scale height from planet radius, mass, and temperature; flag planets whose feature amplitude falls below the assumed noise floor. Deprioritised: the reviewer did not request it, §4.5's aerosol curve already demonstrates the same amplitude-versus-accuracy relationship, and the comparison depends on a noise level the datasets do not carry. If done, report only the fraction of positives below the assumed floor, as one sentence in §3 and §5.
+5. ☐ Out of reach — retrieval on 50–100 spectra with posterior width against injected abundance. Concede explicitly, as with R1-2's cross-simulator request: retrieval on the full benchmark is months of compute and would replace the benchmark rather than revise it.
+
+#### Margin analysis — results
+
+`final_results/H2_label_margin.{txt,csv}`, figure `label_margin.png`. Margin is the dex distance to the nearest label flip: for positives the smaller excess over the two cutoffs, for negatives the larger deficit (both gases must rise for the label to change). Class balance varies between bins, so accuracy is reported against each bin's majority-class baseline — the score obtainable with no spectral information at all.
+
+| Margin (dex) | n | Positives | Accuracy | Majority baseline | Gain |
+| :-- | --: | --: | --: | --: | --: |
+| 0 – 0.25 | 236 | 64.4% | 61.86% | 64.41% | **−2.54** |
+| 0.25 – 0.5 | 258 | 67.1% | 75.97% | 67.05% | +8.91 |
+| 0.5 – 1 | 454 | 62.1% | 85.90% | 62.11% | +23.79 |
+| 1 – 2 | 908 | 50.2% | 94.82% | 50.22% | +44.60 |
+| > 2 | 841 | 35.0% | 95.72% | 65.04% | +30.68 |
+
+**Within 0.25 dex of the cutoff the classifier recovers no usable information at all** — it does not beat the majority baseline (−2.5 points), and its mean predicted probability there is 0.515, i.e. it reports its own uncertainty correctly rather than guessing confidently. At a dex or more from the cutoff it reaches 95.25%. This is the reviewer's own objection, measured: labels within a quarter-dex of an arbitrary cutoff separate atmospheres that are physically near-identical, and no spectrum can recover that distinction. 8.8% of the test set sits in that regime.
+
+Two things to state alongside it. The near-threshold bin is where the residual error concentrates, which explains part of the 11% overall error rate as a property of the labelling rather than of the model — connect this to the §4.3 error-clustering result. And the mean-probability column is a second, independent piece of evidence for the calibration claim in §4.4: the model's confidence tracks the actual ambiguity of the label.
+
+#### Threshold sensitivity — results
+
+`final_results/H2_threshold_sensitivity.{txt,csv}`. Both cutoffs moved together, data relabelled, pipeline retrained from scratch at each setting; spectra unchanged.
+
+| Shift | CH₄ / O₃ cutoff | Test positives | Accuracy | Majority baseline | Gain |
+| :-- | :-- | --: | --: | --: | --: |
+| −0.50 | −6.50 / −7.50 | 56.6% | 86.99% | 56.58% | +30.40 |
+| −0.25 | −6.25 / −7.25 | 53.4% | 88.17% | 53.43% | +34.74 |
+| 0 | −6.00 / −7.00 | 50.3% | 88.91% | 50.32% | +38.60 |
+| +0.25 | −5.75 / −6.75 | 44.7% | 88.69% | 55.32% | +33.37 |
+| +0.50 | −5.50 / −6.50 | 38.3% | 87.84% | 61.74% | +26.10 |
+
+**Accuracy varies by under 2 points across a full dex of cutoff movement** (86.99–88.91%), so the headline number is not an artefact of the particular cutoffs chosen. The gain over the majority baseline peaks at the original cutoffs (+38.6) and falls to +26.1 at +0.5 dex — expected, since the generation plan enforces class balance at the original values and shifted labellings are progressively unbalanced. Report the gain column, not raw accuracy, when comparing across shifts; a reviewer who sees only raw accuracy at +0.5 dex (87.84% against a 61.74% baseline) could otherwise read stability where the task has genuinely become easier to fake.
 
 *Note:* the Introduction already concedes that biosignatures require geological, atmospheric, and stellar context, while the label ignores all three. Align the two.
 
-**Where:** §3.1 (labelling convention statement), §4.3 (margin analysis once run), §5 (limitations).
+**Where:** Title and Abstract (task naming), §1 (task framing), §3.1 (labelling convention statement), §4.3 (margin analysis), §4.4 (the mean-probability corroboration), §5 (limitations).
 
 ### R1-5 — PCA interpretation unsupported ☑
 
@@ -465,15 +497,37 @@ Defensible **only if** the Abstract scopes it clearly. "Biosignature candidate t
 
 ## §1 Introduction — serves R1-1, R1-4
 
-**Task framing.** Wherever the task is described as "distinguishing between biosignature and non-biosignature environments", restate it as recovering a predefined abundance-threshold labelling. The Introduction already concedes that biosignatures require geological, atmospheric and stellar context — align the description of the label with that concession rather than leaving them contradictory (R1-4).
+**Task framing.** Wherever the task is described as "distinguishing between biosignature and non-biosignature environments", restate it as recovering a predefined abundance-threshold labelling. The Introduction already concedes that biosignatures require geological, atmospheric and stellar context — align the description of the label with that concession rather than leaving them contradictory (R1-4). The full renaming pass is specified in "Task renaming" below; do it once, globally, before editing individual sections, so later edits are written in the new vocabulary rather than converted afterwards.
 
 **Contributions.** The three stated contributions (R = 200 regime; controlled like-for-like comparison; calibration as a first-class criterion) are still accurate. Add a fourth: robustness characterisation under injected systematics. Do **not** list the PCA interpretation as a contribution — it never was one, and it is now withdrawn.
 
-## §3.1 Dataset — serves R1-4, R1-2
+## Task renaming — serves R1-4, R1-1, R2-5
 
-Add an explicit statement after the labelling rule (R1-4):
+**Do this first, globally.** The single largest part of the R1-4 response, and it costs nothing but words. The task is the recovery of a predefined abundance-threshold labelling from synthetic spectra; the manuscript currently describes it as biosignature detection. Every later section should be written in the corrected vocabulary rather than converted afterwards.
+
+Replace throughout — the left column is what to search for, the right what to say instead:
+
+| Current phrasing | Replace with |
+| :-- | :-- |
+| "distinguishing between biosignature and non-biosignature environments" | "recovering a predefined abundance-threshold labelling" |
+| "biosignature detection" | "biosignature-candidate labelling" / "threshold-label recovery" |
+| "detecting biosignatures in spectra" | "classifying spectra by an abundance-threshold rule" |
+| "biosignature planets" | "planets labelled positive under the CH₄/O₃ threshold rule" |
+| "identifies biosignatures" | "recovers the labelling convention" |
+
+Keep "biosignature" only where it refers to the underlying *scientific concept* (the Introduction's motivation, the CH₄/O₃ disequilibrium rationale, the discussion of what real detection would require). Remove it wherever it describes *what the model does*.
+
+Two supporting statements to add. In §3.1, after the labelling rule (R1-4):
 
 > "Because the labels are computed directly from the abundances supplied to the forward model, the classification task is the recovery of a predefined labelling convention from spectra, not the inference of abundances from observations. Ariel will require the latter, via retrieval, with the attendant uncertainty, parameter degeneracy and abiotic alternatives."
+
+And, once the threshold-sensitivity result is included (§3.1 or §4.3):
+
+> "The particular cutoffs are a convention inherited from prior work rather than a physical boundary. Moving both cutoffs together by up to half a dex and relabelling changes overall accuracy by less than two points (86.99% to 88.91%), so the reported performance is not an artefact of the specific values chosen; the advantage over a majority-class baseline is largest at the original cutoffs, where the class balance enforced by the generation plan holds."
+
+## §3.1 Dataset — serves R1-4, R1-2
+
+Covered by the two statements in "Task renaming" above; add them after the labelling rule.
 
 ## §3.2 Preprocessing — reframe whitening — serves R1-6, R1-7
 
@@ -559,7 +613,11 @@ Note for whoever writes this: the useful comparison is `PLS + XGBoost` against `
 
 ## §4.3 Error Analysis — keep, and strengthen — serves R1-4
 
-This section was **not** attacked and is your interpretability contribution. Keep it. Once the margin analysis for R1-4 is run, add the quantitative version: accuracy binned by distance to the decision boundary, showing that near-threshold performance approaches chance because the labels there are arbitrary, not because the model fails.
+This section was **not** attacked and is your interpretability contribution. Keep it, and add the margin analysis (`final_results/H2_label_margin.txt`, figure `label_margin.png`) as its quantitative counterpart:
+
+> "Classification accuracy depends strongly on how far a planet's abundances lie from the labelling cutoff. Binning the test set by that distance, accuracy rises from 61.9% within 0.25 dex of the cutoff to 95.3% at distances beyond one dex. Because class balance varies between bins, each bin is compared against its own majority-class baseline: in the nearest bin the classifier does not exceed that baseline at all, and its mean predicted probability is 0.515. Within a quarter-dex of the cutoff the labelling separates atmospheres that are physically near-identical, so no spectrum can recover the distinction; the errors concentrated there reflect the arbitrariness of a threshold convention rather than a limitation of the classifier. This regime accounts for 8.8% of the test set."
+
+Pair it with the existing error-clustering discussion, which describes the same effect qualitatively. Note the honest framing: this does **not** claim the model is better than the headline number suggests — it identifies which part of the residual error is attributable to the labelling convention.
 
 ## §4.4 Calibration — add one caveat — serves R1-3
 

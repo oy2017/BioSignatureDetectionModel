@@ -1,0 +1,22 @@
+Sensitivity of performance to the abundance cutoff
+
+Both cutoffs are moved together by the stated shift and the data
+relabelled; the spectra are unchanged. The majority baseline is the
+accuracy obtainable with no spectral information, and moves because
+shifting the cutoff unbalances the classes.
+
+ shift (dex)    CH4 / O3 cutoff  train pos  test pos   accuracy   majority    gain      F1    Brier
+------------------------------------------------------------------------------------------------
+       -0.50      -6.50 / -7.50      56.2%     56.6%     86.99%     56.58% +30.40%   0.886   0.0944
+       -0.25      -6.25 / -7.25      53.1%     53.4%     88.17%     53.43% +34.74%   0.890   0.0872
+       +0.00      -6.00 / -7.00      50.4%     50.3%     88.91%     50.32% +38.60%   0.889   0.0802
+       +0.25      -5.75 / -6.75      44.1%     44.7%     88.69%     55.32% +33.37%   0.871   0.0822
+       +0.50      -5.50 / -6.50      37.5%     38.3%     87.84%     61.74% +26.10%   0.834   0.0867
+
+Accuracy across the range: 86.99% to 88.91% (spread 1.93% points).
+Gain over the majority baseline: 26.10% to 38.60%.
+
+Class balance is enforced at the original cutoffs by the
+generation plan, so shifted labellings are progressively
+unbalanced; the gain column is therefore the meaningful
+comparison, not raw accuracy.
