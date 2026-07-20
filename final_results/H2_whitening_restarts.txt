@@ -1,0 +1,65 @@
+Whitened vs unwhitened MLP under the domain-shift sweep, 5 training restarts each
+
+Same frozen preprocessing and perturbations as domain_shift_sweep.py; only network training varies between restarts. Differences are paired within restarts.
+
+--- white noise ---
+  strength         whitened       unwhitened   W - U (paired)
+        15   79.34% ±2.12%   75.74% ±2.49%   +3.59% ±3.09%
+        12   69.08% ±1.21%   74.71% ±2.67%   -5.63% ±2.14%
+        10   64.91% ±1.06%   73.81% ±2.59%   -8.90% ±1.82%
+         8   61.64% ±0.67%   72.26% ±2.49%  -10.62% ±2.00%
+         5   57.00% ±0.32%   68.00% ±1.99%  -11.00% ±1.74%
+headroom lost  W 76% ±1%   U 30% ±3%
+
+--- correlated noise ---
+  strength         whitened       unwhitened   W - U (paired)
+        15   79.34% ±2.12%   75.74% ±2.49%   +3.59% ±3.09%
+        12   69.41% ±1.10%   72.88% ±2.46%   -3.47% ±2.11%
+        10   64.58% ±1.01%   70.72% ±2.17%   -6.14% ±1.96%
+         8   61.27% ±0.90%   68.46% ±2.18%   -7.19% ±1.80%
+         5   56.62% ±0.28%   63.03% ±1.55%   -6.41% ±1.36%
+headroom lost  W 77% ±1%   U 49% ±5%
+
+--- gain ramp ---
+  strength         whitened       unwhitened   W - U (paired)
+       0.0   79.34% ±2.12%   75.74% ±2.49%   +3.59% ±3.09%
+      0.25   79.22% ±1.92%   75.71% ±2.53%   +3.52% ±3.01%
+       0.5   79.00% ±2.07%   75.82% ±2.61%   +3.18% ±3.17%
+       1.0   78.23% ±2.01%   75.65% ±2.60%   +2.57% ±2.74%
+       2.0   75.36% ±2.31%   74.59% ±2.48%   +0.77% ±2.63%
+headroom lost  W 14% ±5%   U 5% ±2%
+
+--- baseline offset ---
+  strength         whitened       unwhitened   W - U (paired)
+       0.0   79.34% ±2.12%   75.74% ±2.49%   +3.59% ±3.09%
+      0.25   79.33% ±2.13%   75.74% ±2.49%   +3.58% ±3.08%
+       0.5   79.32% ±2.12%   75.78% ±2.50%   +3.54% ±3.04%
+       1.0   79.33% ±2.11%   75.79% ±2.51%   +3.54% ±3.05%
+       2.0   79.34% ±2.09%   75.80% ±2.48%   +3.54% ±2.98%
+headroom lost  W -0% ±0%   U -0% ±0%
+
+--- resolution loss ---
+  strength         whitened       unwhitened   W - U (paired)
+         0   79.34% ±2.12%   75.74% ±2.49%   +3.59% ±3.09%
+       200   73.04% ±1.25%   75.05% ±2.91%   -2.01% ±1.81%
+       150   64.00% ±1.03%   70.50% ±3.60%   -6.50% ±3.56%
+       100   66.78% ±1.14%   70.11% ±2.80%   -3.34% ±2.75%
+        75   60.75% ±1.43%   65.75% ±2.45%   -4.99% ±2.38%
+headroom lost  W 63% ±3%   U 39% ±6%
+
+--- stellar contamination ---
+  strength         whitened       unwhitened   W - U (paired)
+       0.0   79.34% ±2.12%   75.74% ±2.49%   +3.59% ±3.09%
+      0.25   79.33% ±2.14%   75.64% ±2.81%   +3.69% ±3.10%
+       0.5   78.06% ±2.00%   75.07% ±2.90%   +2.99% ±3.11%
+       1.0   74.46% ±2.04%   73.32% ±2.97%   +1.14% ±3.03%
+       2.0   64.87% ±2.44%   69.73% ±2.41%   -4.86% ±2.15%
+headroom lost  W 49% ±8%   U 24% ±3%
+
+White-noise crossover (first strength where unwhitened leads), per restart:
+  restart 1: SNR 12
+  restart 2: SNR 12
+  restart 3: SNR 12
+  restart 4: SNR 12
+  restart 5: SNR 15
+

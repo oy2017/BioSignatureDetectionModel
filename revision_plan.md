@@ -314,7 +314,7 @@ Linear methods for comparison: PLS-DA plateaus at 73.93%, LDA reaches 68.22% on 
 
 *Summary:* On real observations, low-variance components will also hold detector artifacts, calibration residuals, and contamination. Since whitening amplifies all of them equally, it may amplify noise rather than signal outside the simulator.
 
-**Status:** ◐ PARTIAL — `domain_shift_sweep.py`. **His hypothesis is confirmed, but not by the method he requested.**
+**Status:** ◐ PARTIAL — `domain_shift_sweep.py`, `domain_shift_mlp_restarts.py`. **His hypothesis is confirmed, but not by the method he requested.**
 
 He asked for "experiments on independent simulation environments and, where possible, observational spectra to determine whether whitening genuinely improves out-of-distribution generalization." Neither exists. The evidence below comes from within-simulator perturbations, which is meaningful support for the hypothesis but is not the out-of-distribution test he specified. Say so plainly in the response rather than presenting this as a complete answer.
 
@@ -328,21 +328,21 @@ An earlier version compared the whitened MLP against unwhitened XGBoost, but tho
 | MLP (whitened) | 0–101 | **yes** | the manuscript's neural pipeline |
 | MLP (unwhitened) | 0–101 | **no** | identical in every way except whitening |
 
-The two MLP rows share architecture, hyperparameters, seed, and component set, and differ **only** in whether the post-PCA `StandardScaler` is applied. Any difference in their degradation is therefore attributable to whitening itself.
+The two MLP rows share architecture, hyperparameters, component set and (within each restart) training seed, and differ **only** in whether the post-PCA `StandardScaler` is applied. Any difference in their degradation is therefore attributable to whitening itself.
 
 #### Result 1 — the curves cross (requires no normalisation)
 
-The cleanest evidence needs no statistical adjustment at all. Whitening *helps* on clean data and *hurts* under perturbation, so the two curves cross:
+The cleanest evidence needs no statistical adjustment at all. Whitening *helps* on clean data and *hurts* under perturbation, so the two curves cross. Values are means ± σ over **five training restarts of each network** (`domain_shift_mlp_restarts.py` → `final_results/H2_whitening_restarts.{txt,csv}`; differences are paired within restarts):
 
-| White noise | MLP whitened | MLP unwhitened |
-| :-- | --: | --: |
-| SNR 15 (clean) | **77.35%** | 70.75% |
-| SNR 12 | 68.39% | **69.79%** ← crossover |
-| SNR 10 | 64.47% | **69.34%** |
-| SNR 8 | 61.69% | **68.63%** |
-| SNR 5 | 57.18% | **66.19%** |
+| White noise | MLP whitened | MLP unwhitened | W − U (paired) |
+| :-- | --: | --: | --: |
+| SNR 15 (clean) | **79.3% ± 2.1** | 75.7% ± 2.5 | +3.6 ± 3.1 |
+| SNR 12 | 69.1% ± 1.2 | **74.7% ± 2.7** ← crossover | −5.6 ± 2.1 |
+| SNR 10 | 64.9% ± 1.1 | **73.8% ± 2.6** | −8.9 ± 1.8 |
+| SNR 8 | 61.6% ± 0.7 | **72.3% ± 2.5** | −10.6 ± 2.0 |
+| SNR 5 | 57.0% ± 0.3 | **68.0% ± 2.0** | −11.0 ± 1.7 |
 
-Whitening starts 6.6 points ahead and ends 9.0 points behind. The same crossover appears in the resolution-loss and stellar-contamination panels.
+Whitening starts 3.6 ± 3.1 points ahead — a clean-data benefit that is itself marginal once training variability is accounted for (the original single-run figure of 6.6 caught the unwhitened network on a low draw) — and ends 11.0 ± 1.7 points behind. The crossover lands by SNR 12 in four of five restarts; in the fifth the whitened network never led at all. The same crossover appears in the resolution-loss and stellar-contamination panels.
 
 #### Result 2 — degradation as a fraction of headroom above chance
 
@@ -350,12 +350,14 @@ Models with a lower clean baseline have less room to fall, so raw point-drops ar
 
 | Perturbation family | XGBoost | MLP whitened | MLP unwhitened | verdict |
 | :-- | --: | --: | --: | :-- |
-| White noise | 39% | **74%** | 22% | whitening worse (+52%) |
-| Correlated noise | 57% | **75%** | 46% | whitening worse (+29%) |
-| Resolution loss | 39% | **67%** | 38% | whitening worse (+28%) |
-| Stellar contamination | 14% | **47%** | 21% | whitening worse (+25%) |
-| Gain ramp | 7% | **10%** | 1% | whitening worse (+10%) |
+| White noise | 39% | **76% ± 1** | 30% ± 3 | whitening worse |
+| Correlated noise | 57% | **77% ± 1** | 49% ± 5 | whitening worse |
+| Resolution loss | 39% | **63% ± 3** | 39% ± 6 | whitening worse |
+| Stellar contamination | 14% | **49% ± 8** | 24% ± 3 | whitening worse |
+| Gain ramp | 7% | **14% ± 5** | 5% ± 2 | whitening worse |
 | Baseline offset | 0% | 0% | 0% | no difference |
+
+(MLP columns are restart means ± σ; the XGBoost column is deterministic and unchanged from the original sweep.)
 
 Whitening reduces robustness in **5 of 6 families**. The sole exception is baseline offset, which is the one perturbation no model responds to at all (see R1-3), so it carries no information either way.
 
@@ -367,13 +369,13 @@ Reviewer 1 argued that whitening cannot distinguish chemically meaningful low-va
 
 #### What it does for the paper
 
-The trade-off is now quantified: **whitening buys +6.6 accuracy points on clean data and costs 2–3× more robustness headroom under perturbation.**
+The trade-off is now quantified with error bars: **whitening buys 3.6 ± 3.1 accuracy points on clean data — a marginal benefit — and costs 1.6–2.8× more robustness headroom under perturbation across the five families with a measurable effect.**
 
 It also strengthens the XGBoost recommendation rather than weakening the paper. XGBoost uses no whitening at all (demonstrated bit-identical with and without it, see R1-6), is the most accurate model, and is the most robust in absolute terms in every family tested. The recommendation now rests on three legs instead of two: accuracy, calibration, and robustness.
 
 #### Caveat
 
-The unwhitened MLP has a lower clean baseline (70.75% vs 77.35%), so the headroom normalisation in Result 2 is a modelling choice a reader could question. Result 1 — the raw crossover — does not depend on it, and both point the same way. Both networks are also **single training runs**, and this document's own measurements say that matters: run-to-run scatter is ±1.7 points for the whitened architecture (aerosol restart study) and **±5.63 points for the unwhitened all-components configuration** (R1-6, `test_whitening_necessity.py`) — so the combined scatter on any whitened-minus-unwhitened difference is roughly ±6 points, and the 9.0-point final gap is not comfortably outside it. All six perturbation families were evaluated on the same single pair of trained networks, so the five-of-six pattern is six views of one training draw, not six independent replicates. What genuinely supports the conclusion is the direction: it matches the mechanism, and the headroom analysis and the crossover point the same way. In the manuscript, present the whitened-vs-unwhitened comparison qualitatively (whitening helps clean, hurts perturbed), give magnitudes as observed in one controlled pair, and do not quote a precise crossover SNR — at SNR 12 the two curves differ by 1.4 points, far inside single-run scatter. **If the whitening-robustness result is to be featured prominently, rerun the sweep's two MLP arms over ~5 restarts first** so the gap and crossover carry error bars; until then it is a concession supported by a single controlled comparison, and should be worded as such.
+The unwhitened MLP has a lower clean baseline (75.7% vs 79.3% restart means), so the headroom normalisation in Result 2 is a modelling choice a reader could question. Result 1 — the raw crossover — does not depend on it, and both point the same way. The single-training-run weakness that originally affected this section has been **fixed by the restart study**: both networks were retrained five times (`domain_shift_mlp_restarts.py`) and every quoted number is now a restart mean ± σ with differences paired within restarts. The restart study changed the story in one place worth stating in the response: the clean-data advantage of whitening is 3.6 ± 3.1 points, half the original single-run figure and marginal against its own scatter — which makes the concession stronger, since whitening now buys little even where it is supposed to help. Quote the crossover as "by SNR 12 in four of five restarts", not as a fixed SNR.
 
 **Where:** §3.2 (whitening reframing), §4.1, new §4.5 Robustness subsection (the controlled whitened-vs-unwhitened result).
 
@@ -573,7 +575,7 @@ Cover, in order: the method (models trained once, whole preprocessing chain froz
 
 **On whitening, concede plainly** (R1-8):
 
-> "A controlled comparison in which two otherwise identical networks differ only in whether this standardisation is applied shows that it reduces robustness. The standardised network begins 6.6 accuracy points ahead on clean data and ends 9.0 points behind at an effective SNR of 5, the curves crossing at SNR 12; normalised by headroom above chance it degrades faster in five of six perturbation families. This supports the concern that rescaling every low-variance component equally raises the weight of components dominated by systematics as much as those carrying signal."
+> "A controlled comparison in which two otherwise identical networks differ only in whether this standardisation is applied — each trained five times to average over initialisation — shows that it reduces robustness. Averaged over restarts, the standardised network begins 3.6 ± 3.1 accuracy points ahead on clean data and ends 11.0 ± 1.7 points behind at an effective signal-to-noise ratio of 5, with the curves crossing by SNR 12 in four of five restarts; normalised by headroom above chance, it degrades 1.6–2.8 times faster in every perturbation family with a measurable effect. This supports the concern that rescaling every low-variance component equally raises the weight of components dominated by systematics as much as those carrying signal — and the clean-data benefit that motivated the standardisation is itself marginal once training variability is accounted for."
 
 ### Clouds — the strongest result in this subsection
 
