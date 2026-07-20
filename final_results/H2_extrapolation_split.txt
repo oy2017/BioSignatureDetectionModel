@@ -1,0 +1,12 @@
+Out-of-envelope generalisation, radius split at 15.0 R_earth
+  train n=1588, test n=1108
+  positive rate: in-envelope 50.6%, out-of-envelope 50.1%
+
+  EXTRAPOLATION  train R<=15.0, test R>15.0 : acc 75.81%  F1 74.38%  Brier 0.1750
+  CONTROL        random split, same n=1588   : acc 84.13%  Brier 0.1162   (mean of 5 draws)
+
+  Extrapolation penalty net of sample size: -8.32% accuracy, +0.0588 Brier
+
+The control holds training-set size fixed and only removes the
+distribution shift, so the difference between the two rows is the
+cost of predicting outside the training envelope.

@@ -11,13 +11,13 @@ Comment IDs (R1-n, R2-n) are stable across this file, commit messages, and the r
 | ID | Concern | Analysis | Manuscript |
 | :-- | :-- | :-- | :-- |
 | R1-1 | Claims exceed what the experiments show (umbrella) | — | ☐ |
-| R1-2 | Study is confined to a single simulator | ☐ | ☐ |
-| R1-3 | No demonstration of robustness under domain shift | ☐ | ☐ |
+| R1-2 | Study is confined to a single simulator | ◐ | ☐ |
+| R1-3 | No demonstration of robustness under domain shift | ☑ | ☐ |
 | R1-4 | Positive class is a labelling rule, not a detection | ☐ | ☐ |
 | R1-5 | PCA interpretation unsupported by the mathematics | ☑ | ☐ |
 | R1-6 | Whitening does not selectively amplify chemistry | ☑ | ☐ |
 | R1-7 | Variance-ordering rationale is self-contradictory | ◐ | ☐ |
-| R1-8 | Whitening may reduce robustness on real data | ☐ | ☐ |
+| R1-8 | Whitening may reduce robustness on real data | ☑ | ☐ |
 | R1-9 | Recommends major revision (umbrella) | — | ☐ |
 | R2-1 | Verify reference links resolve correctly | ◐ | ☐ |
 | R2-2 | Add Acknowledgments; disclose all assistance | ☐ | ☐ |
@@ -26,7 +26,7 @@ Comment IDs (R1-n, R2-n) are stable across this file, commit messages, and the r
 | R2-5 | Avoid conclusions beyond what the data supports | ☐ | ☐ |
 | R2-6 | Tense and person consistency | ☐ | ☐ |
 
-☑ complete ◐ partial ☐ open — **3 of 15 analyses done, 0 manuscript sections rewritten.**
+☑ complete ◐ partial ☐ open — **5 of 15 analyses done, 0 manuscript sections rewritten.**
 
 > The reviewer noted explicitly that these are matters of experimental validation rather than presentation. A rewrite-only response will not be sufficient; the revision needs new experiments alongside narrowed claims.
 
@@ -54,7 +54,84 @@ Comment IDs (R1-n, R2-n) are stable across this file, commit messages, and the r
 
 *Summary:* Real Ariel data will carry instrumental systematics, correlated noise, stellar contamination, clouds and hazes, and 3D structure, none of which the 1D fixed-SNR simulation includes. Requests validation under realistic domain shift across seven specific axes.
 
-**Plan:** Six of the seven requested axes are reachable — alternative opacity sources, cloud/haze prescriptions, a stellar contamination proxy, varying resolution and SNR, injected instrumental systematics, and domain-shift experiments against perturbed variants. Only the independent radiative transfer code is not. Train on the clean distribution, evaluate on perturbed test sets, report degradation honestly.
+**Status:** ☑ ANALYSIS COMPLETE — `domain_shift_sweep.py`
+
+#### What was run
+
+Six perturbation families applied to the five held-out test sets, each swept over five strengths. Outputs: `final_results/H2_domain_shift_sweep.{csv,txt}`, `domain_shift_accuracy.png`, `domain_shift_calibration.png`.
+
+```bash
+python domain_shift_sweep.py                      # perturbation sweep
+python domain_shift_sweep.py --mode extrapolation # out-of-envelope split
+```
+
+#### Method — the five things that make this a valid domain-shift test
+
+1. **Models are trained once on the clean training set and never retrained.** The model is fixed; only the test distribution moves. Retraining on perturbed data would be data augmentation — a different experiment.
+2. **The whole preprocessing chain is frozen.** The raw `StandardScaler`, the 102-component PCA basis, and the post-PCA scaler are all fit on clean training data only and applied unchanged to every perturbed set. Refitting any of them on perturbed data would silently invalidate the result.
+3. **Only test sets are perturbed**, at the raw transit-depth stage, before any scaling. Values are not clipped to [0,1] — real observations are not clipped, and clipping would hide the failure mode.
+4. **Strengths are anchored to the physical noise floor of the data**, not to arbitrary multiples of spectral scatter (see the correction note below).
+5. **Calibration is reported alongside accuracy.** The manuscript claims *calibrated* triage, so a model whose accuracy survives while its Brier score collapses has still failed for the stated purpose.
+
+The noise floor is measured per spectrum with a successive-difference estimator: astrophysical structure is smooth between adjacent wavelength bins while injected noise is not, so `std(diff(spectrum))/sqrt(2)` isolates the noise. Measured median is 1.04e-4 in transit depth against a total wavelength scatter of 8.11e-4 — **only 15.8% of the spectral scatter is noise.**
+
+#### CORRECTION — the first run of this experiment was wrong
+
+Recorded because it changes how the numbers should be read, and because the corrected result is materially different.
+
+The initial sweep anchored strengths to each spectrum's *total* wavelength scatter. Since only 15.8% of that is noise, a nominal "0.25 sigma" perturbation was really 1.6× the existing noise — dropping effective SNR from 15 to 8 — and the top of each sweep corresponded to SNR ≈ 1.2, where no method could work. That run reported catastrophic degradation (e.g. gain ramp −16.4 points) which was an artefact of testing physically absurd conditions.
+
+Two further defects were fixed at the same time:
+
+- **The resolution family had no true zero point.** Degradation was simulated by interpolating onto a coarser grid and back, but double linear interpolation low-pass filters the spectrum even when the target grid matches the input — so the nominal no-op (R=200 on an R=199 grid) already cost 7.6 points. Replaced with flux-conserving binning (averaging within log-spaced bins), which reduces the native-resolution penalty to 2.6 points and gives the family a genuine baseline.
+- **The extrapolation split confounded sample size with distribution shift.** Training on R_p ≤ 15 uses 1588 of 2696 planets, so part of the measured drop was simply less training data. A matched-size control was added.
+
+#### Results — XGBoost (the recommended pipeline)
+
+Clean baseline: **88.92% accuracy, Brier 0.0802.**
+
+| Perturbation | Strength | Accuracy | Brier |
+| :-- | :-- | --: | --: |
+| Baseline offset | 2× noise floor | 88.73% (−0.2) | 0.0802 |
+| Gain ramp | 1× noise floor | 88.51% (−0.4) | 0.0834 |
+| Gain ramp | 2× noise floor | 86.21% (−2.7) | 0.0971 |
+| Stellar contamination | 1× noise floor | 87.29% (−1.6) | 0.0900 |
+| Stellar contamination | 2× noise floor | 83.40% (−5.5) | 0.1189 |
+| Resolution | R = 200 (native) | 86.32% (−2.6) | 0.0970 |
+| Resolution | R = 100 | 78.39% (−10.5) | 0.1620 |
+| Resolution | R = 75 | 73.68% (−15.2) | 0.1970 |
+| White noise | SNR 15 → 10 | 80.68% (−8.2) | 0.1389 |
+| White noise | SNR 15 → 5 | 73.86% (−15.1) | 0.1903 |
+| Correlated noise | SNR 15 → 10 | 75.57% (−13.4) | 0.1842 |
+| Correlated noise | SNR 15 → 5 | 66.89% (−22.0) | 0.2502 |
+
+#### Findings
+
+**Calibration-type systematics are largely tolerated.** Gain drift, baseline offsets and stellar contamination at amplitudes comparable to the noise floor cost under two accuracy points. This is a substantive, positive answer to a large part of R1-3 and should be stated as such.
+
+**Photon noise degrades gracefully.** Losing a third of the SNR costs 8 points — a reportable sensitivity, not a collapse.
+
+**Correlated noise is markedly worse than white noise at identical effective SNR** — 75.6% vs 80.7% at SNR 10. Real instrumental noise is correlated, so this is the most operationally important vulnerability found, and it is specific rather than a blanket fragility claim.
+
+**Baseline offset produces no degradation at all**, which independently corroborates R1-5. PC0 is a near-perfect proxy for mean transit depth (r = 0.9998) and carries no label information (AUC 0.506). An additive baseline offset moves only PC0, so a model that ignores PC0 must be immune to it — and it is. Two unrelated analyses agreeing. This also validates the harness: the one perturbation predicted harmless is measured as harmless.
+
+#### Out-of-envelope generalisation (partial answer to R1-2)
+
+`final_results/H2_extrapolation_split.txt`. Train on R_p ≤ 15 R⊕, test on R_p > 15 — predicting outside the training envelope.
+
+| Condition | Accuracy | Brier |
+| :-- | --: | --: |
+| Extrapolation (train R≤15, test R>15) | 75.81% | 0.1750 |
+| Control (random split, same n = 1588) | 84.13% | 0.1162 |
+| Full training set, in-distribution | 88.92% | 0.0802 |
+
+The control holds training-set size fixed and removes only the distribution shift, averaged over 5 random draws. Of the naive 13-point gap, roughly **4.8 points is reduced training data and 8.3 points is the genuine extrapolation penalty.**
+
+#### Caveats to state in the manuscript
+
+- These are **parametric models of systematics, not real instrument data.** The correlated-noise correlation length (Gaussian kernel, sigma = 8 bins) and the stellar-contamination wavelength dependence (a 1/λ trend, not a spot model) are plausible choices, not calibrated ones.
+- Everything remains **inside TauREx.** Perturbed TauREx spectra are still TauREx spectra. This does not answer R1-2 in full; only an independent radiative transfer code would.
+- The resolution family perturbs an already-generated R=199 grid rather than regenerating at lower resolution, so it conflates resampling with true resolution loss, though flux-conserving binning minimises this.
 
 **Where:** _(pending — new results subsection + Limitations)_
 
@@ -127,9 +204,66 @@ Comment IDs (R1-n, R2-n) are stable across this file, commit messages, and the r
 
 *Summary:* On real observations, low-variance components will also hold detector artifacts, calibration residuals, and contamination. Since whitening amplifies all of them equally, it may amplify noise rather than signal outside the simulator.
 
-**Plan:** Run the R1-3 perturbation sweep with whitened-MLP and unwhitened-XGBoost side by side and report which degrades faster. Be prepared for this to confirm the reviewer — if whitening degrades under injected systematics, report it. The recommended model does not use whitening, so the recommendation stands either way.
+**Status:** ☑ ANALYSIS COMPLETE — `domain_shift_sweep.py`. **The reviewer's hypothesis is confirmed.**
 
-**Where:** _(pending)_
+#### Experimental design — why this isolates whitening
+
+An earlier version compared the whitened MLP against unwhitened XGBoost, but those two differ in **both** architecture and whitening, so any difference was uninterpretable. The sweep now trains three models on identical frozen PCA features:
+
+| Model | Components | Whitened | Role |
+| :-- | :-- | :-- | :-- |
+| XGBoost | 0–101 | no | recommended pipeline; scale-invariant control |
+| MLP (whitened) | 0–101 | **yes** | the manuscript's neural pipeline |
+| MLP (unwhitened) | 0–101 | **no** | identical in every way except whitening |
+
+The two MLP rows share architecture, hyperparameters, seed, and component set, and differ **only** in whether the post-PCA `StandardScaler` is applied. Any difference in their degradation is therefore attributable to whitening itself.
+
+#### Result 1 — the curves cross (requires no normalisation)
+
+The cleanest evidence needs no statistical adjustment at all. Whitening *helps* on clean data and *hurts* under perturbation, so the two curves cross:
+
+| White noise | MLP whitened | MLP unwhitened |
+| :-- | --: | --: |
+| SNR 15 (clean) | **77.35%** | 70.75% |
+| SNR 12 | 68.39% | **69.79%** ← crossover |
+| SNR 10 | 64.47% | **69.34%** |
+| SNR 8 | 61.69% | **68.63%** |
+| SNR 5 | 57.18% | **66.19%** |
+
+Whitening starts 6.6 points ahead and ends 9.0 points behind. The same crossover appears in the resolution-loss and stellar-contamination panels.
+
+#### Result 2 — degradation as a fraction of headroom above chance
+
+Models with a lower clean baseline have less room to fall, so raw point-drops are not directly comparable. Normalising by each model's headroom above 50%:
+
+| Perturbation family | XGBoost | MLP whitened | MLP unwhitened | verdict |
+| :-- | --: | --: | --: | :-- |
+| White noise | 39% | **74%** | 22% | whitening worse (+52%) |
+| Correlated noise | 57% | **75%** | 46% | whitening worse (+29%) |
+| Resolution loss | 39% | **67%** | 38% | whitening worse (+28%) |
+| Stellar contamination | 14% | **47%** | 21% | whitening worse (+25%) |
+| Gain ramp | 7% | **10%** | 1% | whitening worse (+10%) |
+| Baseline offset | 0% | 0% | 0% | no difference |
+
+Whitening reduces robustness in **5 of 6 families**. The sole exception is baseline offset, which is the one perturbation no model responds to at all (see R1-3), so it carries no information either way.
+
+#### Interpretation
+
+Reviewer 1 argued that whitening cannot distinguish chemically meaningful low-variance structure from detector artifacts and calibration residuals, and so would amplify both. A controlled experiment supports exactly that. Whitening rescales every low-variance component to unit variance regardless of content, which raises the weight of components dominated by noise and systematics as much as those carrying signal.
+
+**This should be conceded and reported as a finding, not argued against.** Running the reviewer's own proposed test and confirming his hypothesis is a considerably stronger response than disputing it.
+
+#### What it does for the paper
+
+The trade-off is now quantified: **whitening buys +6.6 accuracy points on clean data and costs 2–3× more robustness headroom under perturbation.**
+
+It also strengthens the XGBoost recommendation rather than weakening the paper. XGBoost uses no whitening at all (demonstrated bit-identical with and without it, see R1-6), is the most accurate model, and is the most robust in absolute terms in every family tested. The recommendation now rests on three legs instead of two: accuracy, calibration, and robustness.
+
+#### Caveat
+
+The unwhitened MLP has a lower clean baseline (70.75% vs 77.35%), so the headroom normalisation in Result 2 is a modelling choice a reader could question. Result 1 — the raw crossover — does not depend on it, and both point the same way.
+
+**Where:** _(pending — §3.2, §4.1, and a robustness subsection)_
 
 ### R1-9 — Overall recommendation
 
