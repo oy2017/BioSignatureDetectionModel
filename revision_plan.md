@@ -480,7 +480,7 @@ Add after §3.1 or at the end of §3. State each assumption, why it is reasonabl
 | Fixed CH₄/O₃ abundance thresholds | Follows prior work | Labels near the threshold are arbitrary; see the margin analysis once run |
 | Enforced 50/50 class balance | Prevents majority-class bias | Not the expected occurrence rate; accuracy is not a mission yield estimate |
 | H₂-dominated composition | Larger scale height, stronger signal | Optimistic relative to high-mean-molecular-weight atmospheres |
-| No clouds or hazes | Not exposed by MultiREx | **Most consequential omission** — clouds mute features and mimic low abundance |
+| No clouds or hazes in training | Not exposed by MultiREx until this work; the fork now supports a grey deck | **Most consequential omission, now quantified** — an untrained-for deck at 10⁴ Pa costs 14 accuracy points and nearly doubles the Brier score (§4.5) |
 
 ## §4.1 Overall Performance — serves R1-5, R2-3
 
@@ -554,7 +554,31 @@ Cover, in order: the method (models trained once, whole preprocessing chain froz
 
 > "A controlled comparison in which two otherwise identical networks differ only in whether this standardisation is applied shows that it reduces robustness. The standardised network begins 6.6 accuracy points ahead on clean data and ends 9.0 points behind at an effective SNR of 5, the curves crossing at SNR 12; normalised by headroom above chance it degrades faster in five of six perturbation families. This supports the concern that rescaling every low-variance component equally raises the weight of components dominated by systematics as much as those carrying signal."
 
-**State the limits of the study in the same subsection**, not only in §5: these are parametric models of systematics rather than instrument-derived; one of the seven requested validation axes is fully covered; and perturbed spectra from a given code remain spectra from that code.
+### Clouds — the strongest result in this subsection
+
+Content from `final_results/H2_cloudy_evaluation.txt` and `cloudy_generalisation.png`. Present clouds **after** the injected systematics, because the comparison is the point: clouds are worse than anything else tested, and they are the most physically likely to be present.
+
+Explain the setup first — the deck is added to the forward model itself rather than applied to finished spectra, so this is different physics rather than a perturbation, and the classifiers never saw a cloud in training:
+
+> "Clouds were introduced into the forward model as an optically thick grey deck at fixed cloud-top pressures, with the classifiers trained only on cloud-free spectra. Performance degrades monotonically with cloud-top altitude: 81.0% for a deck at 10⁵ Pa, 74.9% at 10⁴ Pa and 71.4% at 10³ Pa, against 88.9% on cloud-free test data, while the Brier score rises from 0.080 to 0.209 across the same range. Clouds are the largest single source of degradation examined here, exceeding every instrumental systematic tested."
+
+Then the ceiling caveat, which stops a reader misreading the bottom row as gross incompetence:
+
+> "Below approximately 10² Pa the deck suppresses feature amplitude to under a third of its cloud-free value, and at 10¹ Pa to three per cent. Accuracy approaches chance in this regime because the spectra retain almost no diagnostic structure, which reflects the absence of retrievable signal rather than a specific failure of the classifier. The informative range for this comparison is 10⁵ to 10³ Pa."
+
+Then the applicability statement, which is the useful scientific output:
+
+> "Taken together these results bound the conditions under which the method is usable: performance is close to the cloud-free baseline for deep decks, retains most of its advantage over chance down to roughly 10³ Pa, and is not meaningful for atmospheres with high-altitude cloud or haze layers."
+
+**Do not quote the MLP column without averaging.** Its cloud-free baseline varied 76.4–80.7% across three runs; XGBoost reproduces at 88.92% every run. Either average the MLP over restarts or report XGBoost only.
+
+**State the haze gap explicitly** — the reviewer asked for prescriptions, plural, and named hazes:
+
+> "One cloud prescription was tested: a grey, wavelength-independent deck of infinite optical depth. Photochemical hazes, whose opacity varies with wavelength according to particle size, were not modelled. Because the classifier is insensitive to the leading principal components, which capture mean transit depth and continuum slope, a haze acting principally as a continuum tilt may degrade performance considerably less than the grey deck tested here. This remains untested and is the clearest next step."
+
+That final sentence is a falsifiable prediction derived from §4.2 rather than a hedge, and it is worth keeping even once the haze experiment is run — as a hypothesis the result then confirms or refutes.
+
+**State the limits of the study in the same subsection**, not only in §5: these are parametric models of systematics rather than instrument-derived; about 1.5 of the seven requested validation axes are covered; and perturbed or reconfigured spectra from a given code remain spectra from that code.
 
 ## §5 Conclusion — serves R1-1, R1-2, R1-5, R2-5
 
