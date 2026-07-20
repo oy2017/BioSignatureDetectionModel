@@ -1,16 +1,38 @@
-git+https://github.com/oy2017/MultiREx-public.git@main#egg=MultiREx
+# Python 3.10 is required.
+# TensorFlow 2.21.0 publishes wheels for cp310-cp313 only; the manuscript
+# reports Python 3.10.6.
+#
+# Versions below are pinned to those reported in the manuscript. This matters:
+# results are sensitive to them. XGBoost in particular returns measurably
+# different accuracies across major releases (3.3.x vs the pinned 3.2.0), and
+# because the model uses subsample=0.8, accuracy also shifts by roughly 0.4
+# percentage points with training-row ordering even at a fixed random_state.
+# XGBoost metrics are therefore best reported as a mean over several restarts
+# rather than from a single run.
+
+# --- Radiative transfer / synthetic spectrum generation ---
+# Pinned to the commit that main resolved to during data generation. The
+# upstream repository publishes no tags; verify this corresponds to
+# MultiREx v0.3.1 as reported in the manuscript.
+git+https://github.com/oy2017/MultiREx-public.git@9b80cd5b6ea30dc4292981fddcdb6d9bcb382679#egg=MultiREx
+taurex==3.3.2
+
+# --- Machine learning ---
+scikit-learn==1.7.2
+xgboost==3.2.0
+tensorflow==2.21.0
+scikeras==0.13.0
+
+# --- Scientific stack and utilities ---
 numpy
 pandas
-matplotlib
-tqdm
-joblib
-taurex
-gdown
 pyarrow
-scikit-learn
+scipy
+matplotlib
 seaborn
-xgboost
-tensorflow
 statsmodels
 corner
+tqdm
+joblib
+gdown
 psutil

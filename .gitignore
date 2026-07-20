@@ -1,2 +1,8 @@
 venv/
 failed_parameters.log
+__pycache__/
+*.pyc
+
+# Peer-review correspondence (not for public distribution)
+Scholastica.pdf
+feedback.pdf
