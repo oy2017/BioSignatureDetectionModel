@@ -496,7 +496,9 @@ So DACE is easy to *obtain* and non-trivial to *use*: the conversion pipeline is
 
 *Summary:* Labels come from fixed abundance thresholds applied to simulation inputs. Real observations require retrieval, which introduces uncertainty, parameter degeneracy, stellar context, and abiotic alternatives. Retrieval-derived abundances **or probabilistic labels** would strengthen relevance.
 
-**Status:** ◐ PARTIAL — `analyze_label_margin.py`, `analyze_threshold_sensitivity.py`. **Items 1–3 done; 4 optional, 5 out of reach this cycle.**
+**Status:** ◐ PARTIAL — `analyze_label_margin.py`, `analyze_threshold_sensitivity.py`.
+
+**The response, in one paragraph.** The reviewer is right that the positive class is a labelling convention, not a detection, and the response concedes this rather than contesting it. The concession is made concrete in two ways. First, the task is renamed throughout the paper — from "biosignature detection" to recovery of an abundance-threshold labelling — so the manuscript stops claiming more than the experiment shows; this is the largest part of the fix and it is free. Second, two analyses on the existing data characterise how much the labelling convention actually governs the result: a threshold-sensitivity test showing the headline accuracy does not depend on the particular cutoff chosen, and a margin analysis showing the classifier extracts no information for planets near the cutoff, where the label is genuinely arbitrary. What the response does **not** do is make the labels observationally meaningful — that would require retrieval-derived abundances, which is out of reach this cycle and is named as the primary next step. The reviewer's suggestion of probabilistic labels is addressed in spirit by the margin analysis (near-threshold planets are shown to be intrinsically ambiguous) rather than by relabelling. The five items below implement this: item 1 is the renaming, items 2–3 the two analyses, item 4 an optional extension, item 5 the conceded retrieval work.
 
 **Plan:**
 1. ☑ Rename the task honestly throughout — the largest part of the fix, and free. Instructions in the rewrite section below.
