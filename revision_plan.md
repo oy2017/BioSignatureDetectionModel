@@ -194,25 +194,40 @@ anomaly.
 
 #### Aerosols against the instrumental systematics
 
-**Aerosols are the most damaging shift examined in this work.** Excluding the 1e1 Pa deck as featureless (0.03x
-amplitude, where near-chance accuracy reflects absent signal rather than the
-aerosol out-damaging anything):
+**Do not make a superlative claim here.** Reviewer 1 asked for "different cloud
+and haze prescriptions" and nothing else on this axis; he never asks for a
+ranking across shift types, and axis 3 is already complete on the strength of
+having two prescriptions generated, verified and evaluated. A "largest single
+source of degradation" claim is volunteered, and it is the only claim in this
+document that required correcting an internal inconsistency to survive — the
+informative-range boundary had to be moved from 1e3 to 1e2 Pa before the figure
+supporting it fell inside the stated range. It earns nothing against R1-3 and
+costs scrutiny.
 
-| shift | cost |
-| :-- | --: |
-| correlated noise at SNR 5 (drift-free, from the sweep) | −22.00 |
-| worst grey deck (1e2 Pa) | **−25.25** |
-| worst photochemical haze (1.0e10 m⁻³) | **−25.61** |
+The comparison is still worth reporting, in the form the data supports without
+a ranking:
 
-Both families exceed the worst instrumental systematic tested, so *"aerosols are
-the largest single source of degradation in this work, exceeding every
-instrumental systematic tested"* is supportable. **Quote the margin with it:**
-the deck clears correlated noise by 3.3 points and the haze by 3.6, against an
-XGBoost run-to-run scatter of about 0.4 points. That is a real margin but a
-narrow one, and both figures come from the muted end of the range (0.30x and
-0.25x feature amplitude), so state the amplitude alongside them. Writing the
-claim without those two qualifiers is what would invite challenge — though the honest framing remains that the two families are comparable
-to each other rather than the deck being clearly milder.
+| shift | cost | at feature amplitude |
+| :-- | --: | --: |
+| correlated noise at SNR 5 (from the sweep) | −22.0 | — |
+| grey deck, 1e2 Pa | −25.3 | 0.30x |
+| photochemical haze, 1.0e10 m⁻³ | −25.6 | 0.25x |
+
+> "Aerosol degradation at strong muting is comparable in magnitude to the most
+> damaging instrumental systematic tested, with an optically thick deck and a
+> dense haze each costing about 25 accuracy points against 22 for correlated
+> noise at an effective signal-to-noise ratio of 5."
+
+That sentence is safe: it survives whether or not a reader accepts the 1e2 Pa
+point as informative, it does not depend on a 3-point margin, and it still makes
+the operationally useful point that aerosols matter at least as much as
+instrument noise. The earlier version — which claimed aerosols exceed *every*
+systematic — rests on margins of 3.3 and 3.6 points measured at the muted end of
+the range, against an XGBoost run-to-run scatter of about 0.4. Defensible, but
+not worth defending for a claim nobody asked for.
+
+The 1e1 Pa deck stays excluded on the stated criterion: 2.3 points above chance
+against 13.7 at 1e2 Pa.
 
 Two further things the paired data sharpens. The thinnest haze is now
 **entirely harmless** (−0.04, with 70 planets lost and 69 gained — pure noise),
@@ -993,11 +1008,13 @@ Content from `final_results/H2_cloudy_evaluation.txt` and `cloudy_generalisation
 
 Explain the setup first — the deck is added to the forward model itself rather than applied to finished spectra, so this is different physics rather than a perturbation, and the classifiers never saw a cloud in training:
 
-> "Clouds were introduced into the forward model as an optically thick grey deck at fixed cloud-top pressures, with the classifiers trained only on cloud-free spectra. The held-out test planets were re-rendered with the deck added and nothing else altered, so each cloudy spectrum is paired with a cloud-free spectrum of the same planet. Performance degrades monotonically with cloud-top altitude: 86.6% for a deck at 10⁵ Pa, 78.4% at 10⁴ Pa, 71.6% at 10³ Pa and 63.7% at 10² Pa, against 88.9% cloud-free, while the Brier score rises from 0.080 to 0.271 across the same range. This exceeds every instrumental systematic tested; aerosols are the most damaging distribution shift examined in this work."
+> "Clouds were introduced into the forward model as an optically thick grey deck at fixed cloud-top pressures, with the classifiers trained only on cloud-free spectra. The held-out test planets were re-rendered with the deck added and nothing else altered, so each cloudy spectrum is paired with a cloud-free spectrum of the same planet. Performance degrades monotonically with cloud-top altitude: 86.6% for a deck at 10⁵ Pa, 78.4% at 10⁴ Pa, 71.6% at 10³ Pa and 63.7% at 10² Pa, against 88.9% cloud-free, while the Brier score rises from 0.080 to 0.271 across the same range. Aerosol degradation at strong muting is comparable in magnitude to the most damaging instrumental systematic tested, which cost 22 accuracy points."
 
 **Note on the comparator.** These figures are measured on the committed test planets re-rendered with the aerosol, so each aerosol spectrum is paired with a cloud-free spectrum of the same planet and the 88.91% baseline is a within-planet comparator. The claim that aerosols exceed every instrumental systematic **does hold** on the paired data - the deck at 10² Pa costs 25.3 points and the densest haze 25.6, against correlated noise's 22.0 - but quote the 10² Pa deck, not the 10¹ Pa one, which is featureless.
 
-> "The most damaging shifts examined in this work are aerosols: a dense photochemical haze costs 25.6 accuracy points at the highest density tested and an optically thick grey deck 25.3 points at 10² Pa, against 22.0 for the worst instrumental systematic. The two prescriptions are comparable to each other in the worst case, and differ mainly in how the damage scales with optical depth."
+> "At strong muting the two aerosol prescriptions cost comparable amounts — 25.6 accuracy points for the densest haze and 25.3 for an optically thick grey deck, at feature amplitudes of 0.25 and 0.30 of the cloud-free value — placing them alongside the 22.0 points lost to correlated noise at an effective signal-to-noise ratio of 5. They differ mainly in how the damage scales with optical depth rather than in the magnitude reached."
+
+**No superlative.** The reviewer asked for cloud and haze prescriptions, not a ranking across shift types; a "most damaging" claim is volunteered, rests on 3-point margins at the muted end of the range, and is the one claim in this work that needed an internal boundary corrected to survive. State comparable magnitude and stop.
 
 Then the ceiling caveat, which stops a reader misreading the bottom row as gross incompetence:
 
