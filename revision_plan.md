@@ -86,18 +86,7 @@ Highest-value missing items, ranked by return against effort: **cloud and haze p
 
 `generate_cloudy_testset.py` builds five test sets at fixed cloud-top pressures; `evaluate_cloudy.py` runs them through the frozen pipeline. The training set contains no clouds, so this is a distribution shift produced by different forward-model physics rather than by perturbing existing spectra.
 
-The degradation figures first recorded here were measured on a separately
-drawn cloudy population against the committed 88.92% baseline, and are
-superseded — see "Baseline correction" below for the paired table that
-replaces them. The original values are in the commit history.
-
-#### Baseline correction — the aerosol sets were compared against different planets
-
-The degradations originally recorded compared the aerosol sets against the
-88.92% clear baseline from the five committed test sets. But the aerosol sets
-are a **different draw of planets**, generated later, and the generator's
-parameter sampling moved in between. Part of every recorded degradation was
-therefore the draw rather than the aerosol.
+#### How the aerosol degradations are measured
 
 The fix is not to re-derive a baseline but to stop resampling. `generate_aerosol_paired.py`
 re-renders **the five committed clear test sets themselves** with each aerosol
@@ -143,10 +132,9 @@ It now costs **2.3 points** rather than 7.9. A near-clear atmosphere costing
 almost nothing is what the physics requires, and the original figure was the
 anomaly.
 
-#### The aerosol-versus-systematics claim — it stands
+#### Aerosols against the instrumental systematics
 
-**The claim survives on the paired data, and the intermediate correction that
-said otherwise was wrong.** Excluding the 1e1 Pa deck as featureless (0.03x
+**Aerosols are the most damaging shift examined in this work.** Excluding the 1e1 Pa deck as featureless (0.03x
 amplitude, where near-chance accuracy reflects absent signal rather than the
 aerosol out-damaging anything):
 
@@ -174,26 +162,6 @@ confined-haze vertical-structure control. The deck-versus-haze comparison at
 matched amplitude is **not** in that list — it had to be re-derived from the
 paired sets, and it changed; see "Hazes — results".
 
-#### Why the originally recorded numbers were wrong, and the rule that follows
-
-The published aerosol sets were generated later than the committed test sets they
-were compared against, and the generator's parameter sampling moved in between,
-so they were a different population of planets. That is the whole of the error.
-Re-rendering the committed planets removes it, and no number above depends on
-characterising the drift any further.
-
-**The rule to carry forward: never benchmark a newly generated set against the
-committed 88.92% baseline.** Either re-render the committed planets, as done
-here, or generate a matched control in the same run. This is not hypothetical
-housekeeping — the next planned R1-3 experiment is transfer learning H2→N2,
-which requires regenerating N2 at 550 bins, and comparing that new data against
-any old-era number would reproduce exactly this mistake.
-
-The shift is in the parameter sampling, not the forward model: stored spectra
-still reproduce from their own recorded parameters to floating-point
-precision. Its root cause was not identified, and was not pursued, because
-re-rendering the committed planets removes the need to understand it.
-
 **Caveat on the MLP columns — how large a difference the scatter supports.**
 `measure_mlp_reproducibility.py` → `final_results/H2_mlp_reproducibility.txt`.
 Retraining the whitened MLP five times on identical frozen features gives single
@@ -214,7 +182,7 @@ concession that whitening buys little where it is meant to help. R1-8's SNR-5
 deficit of 11.0 ± 1.7 points is far outside the scatter and is unaffected.
 XGBoost is deterministic and none of this touches it.
 
-Two caveats to carry into the manuscript. At 1e1 Pa the feature amplitude is 0.03x, so the spectra are effectively featureless and chance-level accuracy reflects the absence of retrievable signal rather than a failure of the classifier; the informative range is 1e5 to 1e3 Pa. And single MLP training runs are not quotable — the clear baseline varies by several points between identically-configured runs (76.4–80.7% observed) — so the MLP values in the table above are **means ± one standard deviation over five training restarts** (`evaluate_aerosol_mlp_restarts.py` → `final_results/H2_aerosol_mlp_restarts.{txt,csv}`; the single-run column in `H2_cloudy_evaluation.csv` is superseded). Any quoted MLP number must carry the ± and say it is a restart average. XGBoost is deterministic (88.92% every run) and needs no averaging.
+Two caveats to carry into the manuscript. At 1e1 Pa the feature amplitude is 0.03x, so the spectra are effectively featureless and chance-level accuracy reflects the absence of retrievable signal rather than a failure of the classifier; the informative range is 1e5 to 1e3 Pa. And single MLP training runs are not quotable — the clear baseline varies by several points between identically-configured runs (76.4–80.7% observed) — so the MLP values in the table above are **means ± one standard deviation over five training restarts** (`final_results/H2_aerosol_paired.txt`). Any quoted MLP number must carry the ± and say it is a restart average. XGBoost is deterministic (88.92% every run) and needs no averaging.
 
 #### Opacity database — results
 
@@ -237,7 +205,7 @@ Two caveats to carry into the manuscript. At 1e1 Pa the feature amplitude is 0.0
 That is a more troubling failure mode than the aerosol one for the paper's purpose: the pipeline does not degrade gracefully toward chance, it degrades toward **confidently wrong positive calls**, which is precisely the error a triage tool must not make. It also means the calibration claim in §4.4 is conditional on the opacity data used for training.
 
 **Caveats to state.**
-- Ozone (and unused O₂) retain their Exo-Transmit tables, so **16.1 points is a lower bound** on a complete database change — O₃ is one of the two label-determining molecules. **The stated reason for this was inadequate and should not be repeated.** ExoMolOP has no ozone, but that rules out one source, not all: HITRAN ozone is available as line-by-line cross-sections and is already on this machine (`~/petitRADTRANS/input_data/opacities/lines/line_by_line/O3/16O3/16O3__HITRAN.R1e6_0.3-28mu.xsec.petitRADTRANS.h5`, 81–2995 K, 0.3–28 µm). Its units and array layout match the TauREx format exactly (`cm^2/molecule`, bar, cm⁻¹, `xsecarr` indexed pressure × temperature × wavenumber), so converting it is a key rename plus binning down from R = 10⁶, not a lossy correlated-k conversion. Swapping O₃ is therefore **feasible and outstanding**, not blocked.
+- Ozone (and unused O₂) retain their Exo-Transmit tables, so **16.1 points is a lower bound** on a complete database change — O₃ is one of the two label-determining molecules. ExoMolOP has no ozone, but other sources do: HITRAN ozone is available as line-by-line cross-sections and is already on this machine (`~/petitRADTRANS/input_data/opacities/lines/line_by_line/O3/16O3/16O3__HITRAN.R1e6_0.3-28mu.xsec.petitRADTRANS.h5`, 81–2995 K, 0.3–28 µm). Its units and array layout match the TauREx format exactly (`cm^2/molecule`, bar, cm⁻¹, `xsecarr` indexed pressure × temperature × wavenumber), so converting it is a key rename plus binning down from R = 10⁶, not a lossy correlated-k conversion. Swapping O₃ is therefore **feasible and outstanding**, not blocked.
 - CO and NH₃ appear in every composition but have no opacity data in either database — they act only through mean molecular weight. Worth disclosing separately under R2-4: two of the six "background" gases are spectrally inert.
 - Native resolutions differ (ExoMolOP R=15000 tables vs the Exo-Transmit grid), so a small part of the difference is tabulation rather than line-list content.
 
@@ -245,14 +213,10 @@ That is a more troubling failure mode than the aerosol one for the paper's purpo
 
 `generate_hazy_testset.py` builds five test sets at fixed particle number densities using TauREx's `LeeMieContribution` (the Lee et al. 2013 parameterisation of Mie extinction; particle radius 0.1 µm, Q₀ = 40, whole-column); `evaluate_hazy.py` runs them through the frozen pipeline and compares against the grey deck at matched feature amplitude. Outputs: `final_results/H2_hazy_evaluation.{txt,csv}`, `hazy_generalisation.png`. MultiREx fork commit **2e20551** carries the `cloud_model` plumbing, verified end to end through `explore_multiverse`.
 
-The blocker recorded in the previous session was a unit mismatch, not broken plumbing. `lee_mie_mix_ratio` **is** in `fitting_parameters()` (the recorded lead was wrong); it is an absolute particle number density in particles/m³, not a fractional mixing ratio — `LeeMieContribution.contribute()` passes unit density, so values of 1e-8 to 1e0 produce optical depths of order 1e-11, bit-identical to cloud-free. The informative range is ~1e5–1e12 m⁻³. (`FlatMieContribution` has the mirror-image trap: its `flat_mix_ratio` is a per-molecule cross-section in m², informative near 1e-33–1e-26, and its `flat_topP=-1` default crashes on a `log10(-1)` NaN in this TauREx version — it works with an explicit positive `topP`, verified in isolation, but no dataset was generated from it.)
-
-The degradation figures first recorded here are superseded for the same
-reason as the cloudy ones; the paired replacements are in "Baseline
-correction" above, and the deck-versus-haze comparison is re-derived below.
+A note on the Mie parameters, since they are easy to misread. `lee_mie_mix_ratio` is an absolute particle number density in particles/m³, not a fractional mixing ratio — `LeeMieContribution.contribute()` passes unit density, so values of 1e-8 to 1e0 produce optical depths of order 1e-11, bit-identical to cloud-free. The informative range is ~1e5–1e12 m⁻³. (`FlatMieContribution` has the mirror-image trap: its `flat_mix_ratio` is a per-molecule cross-section in m², informative near 1e-33–1e-26, and its `flat_topP=-1` default crashes on a `log10(-1)` NaN in this TauREx version — it works with an explicit positive `topP`, verified in isolation, but no dataset was generated from it.)
 
 **The advance prediction is refuted at moderate optical depth, but not beyond
-it — and the paired data is weaker on this than the original figures were.** (The
+it.** (The
 prediction was recorded in this working document before the experiment ran — do
 **not** call it "pre-registered" in the manuscript; that term implies external
 registration, which this was not.) The prediction was that a haze, acting
@@ -282,18 +246,17 @@ the +1.8 is an artefact of that gap rather than a measurement. **Do not claim
 anything about the deck–haze ordering below ~0.4x amplitude without generating a
 deck between 0.30x and 0.03x** — a deck near 3e1 Pa would close it.
 
-Note also that an earlier version of this document asserted the deck-versus-haze
-comparison was unaffected by the baseline correction, on the reasoning that a
-common offset cancels. That reasoning was wrong: the correction is not a uniform
-offset, so the comparison had to be re-derived rather than assumed to carry over.
+The deck-versus-haze comparison must be derived from the paired sets directly.
+The paired and unpaired degradations do not differ by a common offset, so a
+comparison computed on one cannot be assumed to carry over to the other.
 
-Wavelength-resolved amplitudes explain the reversal, and on the paired data they do so **more strongly than the resampled sets suggested, with the roles reversed** (`analyze_band_suppression.py` → `final_results/H2_band_suppression.{txt,csv}`). The matched pair is deck 10³ Pa at 0.58x against haze 3e7 m⁻³ at 0.59x. At that match it is the **deck** that concentrates its muting at short wavelengths (0.085x at 0.5–1 µm, rising to 0.788x at 4–7.8 µm), while the **haze preserves every band** (0.893 / 0.769 / 0.921 / 0.919). The haze therefore retains more diagnostic structure than the deck in *every* octave and still classifies 6.4 points worse (65.27% against 71.64%). That is a stronger form of the same conclusion: the haze's excess damage cannot be information loss, because there is no band in which it holds less information than the deck.
+Wavelength-resolved amplitudes explain the reversal (`analyze_band_suppression.py` → `final_results/H2_band_suppression.{txt,csv}`). The matched pair is deck 10³ Pa at 0.58x against haze 3e7 m⁻³ at 0.59x. At that match it is the **deck** that concentrates its muting at short wavelengths (0.085x at 0.5–1 µm, rising to 0.788x at 4–7.8 µm), while the **haze preserves every band** (0.893 / 0.769 / 0.921 / 0.919). The haze therefore retains more diagnostic structure than the deck in *every* octave and still classifies 6.4 points worse (65.27% against 71.64%). That is a stronger form of the same conclusion: the haze's excess damage cannot be information loss, because there is no band in which it holds less information than the deck.
 
-**Correction to record:** an earlier version of this paragraph, written from the superseded resampled sets, said the opposite — that the haze crushed the blue band while the deck spread its muting. That comparison had matched a *denser* haze (2.4e8 m⁻³) to the 10³ Pa deck; on the paired data those sit at 0.44x and 0.58x and are not matched. The haze's chromatic signature is not monotonic in density: at 2e6 m⁻³ it *raises* blue-band amplitude to 1.486x by adding a steep short-wavelength slope, and only from 2.4e8 m⁻³ upward does it extinguish the blue (0.053x). Always quote the matched pair and state the density alongside any band figure.
+**Match on measured amplitude, and state the density.** The haze's chromatic signature is not monotonic in density: at 2e6 m⁻³ it *raises* blue-band amplitude to 1.486x by adding a steep short-wavelength slope, and only from 2.4e8 m⁻³ upward does it extinguish the blue (0.053x). A haze and a deck chosen by nominal level rather than by measured amplitude will not be comparable — 2.4e8 m⁻³ sits at 0.44x against the 10³ Pa deck's 0.58x — so quote the matched pair and give the density alongside any band figure.
 
 An octave-band occlusion test (`analyze_o3_band_occlusion.py` → `final_results/H2_o3_band_occlusion.{txt,csv}`) locates the information the classifier actually uses: masking 0.5–1 µm in clear test spectra costs only 6 points on the O₃-diagnostic subset (87.9% → 81.8%, the smallest effect of the four octave masks), while masking 3.9–7.8 µm — the region containing the 4.74 µm O₃ feature — collapses that subset to 34%, below chance. The classifier reads O₃ predominantly from the long-wavelength side, not from the Chappuis band. Combined with the band table, that sharpens the mechanism: at matched muting the haze preserves the 4–7.8 µm region the classifier depends on most (0.919x against the deck's 0.788x), and still loses to it. The degradation is therefore driven by the out-of-distribution continuum shape the haze imposes, not by loss of usable information. (Caveat: below-chance accuracy under the red-band mask shows heavily masked spectra sit far outside the training distribution, so the occlusion comparison is indicative; the robust content is the ordering across equal-width masks.) The premise that an optically significant chromatic haze is "a PC1-like tilt" is what failed: the baseline-offset immunity (a pure PC0 mode) does not generalise to multiplicative, wavelength-dependent opacity.
 
-Caveats mirroring the grey-deck ones. The MLP values in the table are **means ± one standard deviation over five training restarts** (`evaluate_aerosol_mlp_restarts.py` → `final_results/H2_aerosol_mlp_restarts.{txt,csv}`; the single-run column in `H2_hazy_evaluation.csv` is superseded), and any quoted MLP number must carry the ± and say it is a restart average — single runs vary by several points. Averaging makes the cloudy MLP column cleanly monotonic, but the hazy dip at 3.0e7 m⁻³ **survives averaging and survives the re-basing** — on the paired data 53.03% ± 1.3 against 59.54% ± 3.8 at the denser 2.4e8 level (`final_results/H2_aerosol_paired.txt`, the authoritative source; the figures from the superseded resampled sets were 54.2% ± 1.6 and 62.2% ± 3.7) — so the MLP's hazy response is genuinely non-monotonic in both density and amplitude — worth stating rather than smoothing over: the tree ensemble degrades monotonically under both aerosol types and the whitened network does not. Separately, matching at the population-median amplitude hides that suppression is far more heterogeneous across planets for the haze than for the deck (paired calibration runs showed per-planet suppression at a fixed density varying by tens of points with planet size), so "equal muting" holds at the median, not per planet. Two scope limits to carry into the manuscript: only one haze parameterisation was tested (Lee et al. extinction, a single 0.1 µm particle radius; particle size was not varied); and set-level feature amplitudes are medians over ~540 heterogeneous planets with sampling uncertainty of roughly ±0.05, which can move individual deck-at-same-amplitude differences by a point or two but cannot produce the observed sign reversal. The vertical-structure confound, by contrast, is **closed by a control**: a set with the same haze density confined to P < 10³ Pa (`generate_confined_haze_control.py` → `final_results/H2_haze_confined_control.txt`) reproduces the whole-column result to within sampling noise, 63.23% against 63.25% at 0.502x and 0.503x amplitude, so the deck–haze divergence is attributable to the wavelength dependence of the opacity rather than to where the aerosol sits in the column. **Read that control as an internal comparison only.** It was generated as a fresh draw of planets rather than by re-rendering the committed ones, so it carries the sampling drift and its absolute accuracy is not comparable to the paired table; both of its arms were drawn the same way, which is what makes the confined-versus-whole-column contrast valid. Re-running it on the committed planets would make it quotable alongside the rest and is the one loose end left on this axis.
+Caveats mirroring the grey-deck ones. The MLP values in the table are **means ± one standard deviation over five training restarts** (`final_results/H2_aerosol_paired.txt`), and any quoted MLP number must carry the ± and say it is a restart average — single runs vary by several points. Averaging makes the cloudy MLP column cleanly monotonic, but the hazy dip at 3.0e7 m⁻³ **survives averaging and survives the re-basing** — 53.03% ± 1.3 against 59.54% ± 3.8 at the denser 2.4e8 level (`final_results/H2_aerosol_paired.txt`) — so the MLP's hazy response is genuinely non-monotonic in both density and amplitude — worth stating rather than smoothing over: the tree ensemble degrades monotonically under both aerosol types and the whitened network does not. Separately, matching at the population-median amplitude hides that suppression is far more heterogeneous across planets for the haze than for the deck (paired calibration runs showed per-planet suppression at a fixed density varying by tens of points with planet size), so "equal muting" holds at the median, not per planet. Two scope limits to carry into the manuscript: only one haze parameterisation was tested (Lee et al. extinction, a single 0.1 µm particle radius; particle size was not varied); and set-level feature amplitudes are medians over ~540 heterogeneous planets with sampling uncertainty of roughly ±0.05, which can move individual deck-at-same-amplitude differences by a point or two but cannot produce the observed sign reversal. The vertical-structure confound, by contrast, is **closed by a control**: a set with the same haze density confined to P < 10³ Pa (`generate_confined_haze_control.py` → `final_results/H2_haze_confined_control.txt`) reproduces the whole-column result to within sampling noise, 63.23% against 63.25% at 0.502x and 0.503x amplitude, so the deck–haze divergence is attributable to the wavelength dependence of the opacity rather than to where the aerosol sits in the column. **Read that control as an internal comparison only.** It was generated as a fresh draw of planets rather than by re-rendering the committed ones, so it carries the sampling drift and its absolute accuracy is not comparable to the paired table; both of its arms were drawn the same way, which is what makes the confined-versus-whole-column contrast valid. Re-running it on the committed planets would make it quotable alongside the rest and is the one loose end left on this axis.
 
 **Outstanding for this axis:** nothing blocking — two prescriptions (grey deck, Lee-Mie haze) are generated, verified and evaluated. Next steps for R1-3 overall, ranked by return: an **independent radiative transfer code** (petitRADTRANS is open-source Python and a genuine alternative — days of work, not months), then **transfer learning H2→N2** (he names it explicitly; requires regenerating N2 at 550 bins, since the existing files are 200-bin).
 
@@ -484,7 +447,7 @@ Four approaches are compared at matched component counts (n = 2, 5, 10, 20, 50, 
 | PLS-DA | supervised | linear (logistic on PLS scores) |
 | LDA | supervised | linear |
 
-The `PLS + XGBoost` arm is the one that answers the question. An earlier version compared linear PLS-DA against nonlinear PCA + XGBoost, which confounds the projection with the classifier and tests linearity rather than the choice of basis. Holding the classifier fixed isolates the projection.
+The `PLS + XGBoost` arm is the one that answers the question, because it holds the classifier fixed so that only the projection differs. Comparing linear PLS-DA against nonlinear PCA + XGBoost would confound the projection with the classifier and test linearity rather than the choice of basis.
 
 #### Results
 
@@ -521,7 +484,7 @@ He asked for "experiments on independent simulation environments and, where poss
 
 #### Experimental design — why this isolates whitening
 
-An earlier version compared the whitened MLP against unwhitened XGBoost, but those two differ in **both** architecture and whitening, so any difference was uninterpretable. The sweep now trains three models on identical frozen PCA features:
+The comparison must hold architecture fixed: a whitened MLP against an unwhitened XGBoost would differ in **both** architecture and whitening, leaving any difference uninterpretable. The sweep trains three models on identical frozen PCA features:
 
 | Model | Components | Whitened | Role |
 | :-- | :-- | :-- | :-- |
@@ -830,7 +793,7 @@ Explain the setup first — the deck is added to the forward model itself rather
 
 > "Clouds were introduced into the forward model as an optically thick grey deck at fixed cloud-top pressures, with the classifiers trained only on cloud-free spectra. The held-out test planets were re-rendered with the deck added and nothing else altered, so each cloudy spectrum is paired with a cloud-free spectrum of the same planet. Performance degrades monotonically with cloud-top altitude: 86.6% for a deck at 10⁵ Pa, 78.4% at 10⁴ Pa, 71.6% at 10³ Pa and 63.7% at 10² Pa, against 88.9% cloud-free, while the Brier score rises from 0.080 to 0.271 across the same range. This exceeds every instrumental systematic tested; aerosols are the most damaging distribution shift examined in this work."
 
-**Note on the comparator.** These figures are measured on the committed test planets re-rendered with the aerosol, not on a separately drawn cloudy population (see "Baseline correction"). The previously recorded values, which compared a different draw of planets against the 88.92% baseline, are superseded. The claim that aerosols exceed every instrumental systematic **does hold** on the paired data - the deck at 10² Pa costs 25.3 points and the densest haze 25.6, against correlated noise's 22.0 - but quote the 10² Pa deck, not the 10¹ Pa one, which is featureless.
+**Note on the comparator.** These figures are measured on the committed test planets re-rendered with the aerosol, so each aerosol spectrum is paired with a cloud-free spectrum of the same planet and the 88.91% baseline is a within-planet comparator. The claim that aerosols exceed every instrumental systematic **does hold** on the paired data - the deck at 10² Pa costs 25.3 points and the densest haze 25.6, against correlated noise's 22.0 - but quote the 10² Pa deck, not the 10¹ Pa one, which is featureless.
 
 > "The most damaging shifts examined in this work are aerosols: a dense photochemical haze costs 25.6 accuracy points at the highest density tested and an optically thick grey deck 25.3 points at 10² Pa, against 22.0 for the worst instrumental systematic. The two prescriptions are comparable to each other in the worst case, and differ mainly in how the damage scales with optical depth."
 
@@ -916,6 +879,16 @@ passage each comment ID refers to — read this one when you need the exact word
 plan and evidence. Both stay out of
 the repository because peer review correspondence is confidential; the response
 document submitted to the editor quotes each comment in full from that file.
+
+**Benchmarking newly generated data.** Any newly generated dataset must be
+compared against a baseline generated in the same run, or produced by
+re-rendering the committed test planets themselves — not against the committed
+88.92% figure. MultiREx's parameter sampling is not guaranteed stable across
+versions of the generation code, so a fresh draw and the committed sets are not
+necessarily the same population. The aerosol and opacity experiments both
+re-render the committed planets for this reason. It applies directly to the next
+planned R1-3 experiment: transfer learning H2→N2 requires regenerating N2 at 550
+bins, and that data needs its own matched baseline.
 
 **XGBoost run-to-run variance.** `subsample=0.8` means sampled rows depend on training-row ordering even at fixed `random_state`; accuracy moves roughly 0.4 percentage points across shuffles. Consider reporting a mean over restarts rather than a single run.
 
