@@ -784,7 +784,7 @@ Defensible **only if** the Abstract scopes it clearly. "Biosignature candidate t
 
 **Add two sentences**, one on scope and one on robustness:
 
-> "All spectra derive from a single radiative transfer code, and class labels are a deterministic function of the abundances used to generate them, so this work characterises achievable performance under idealised conditions rather than demonstrating biosignature detection."
+> "Training data derives from a single radiative transfer code, and class labels are a deterministic function of the abundances used to generate them, so this work characterises achievable performance under idealised conditions rather than demonstrating biosignature detection. Evaluating the trained pipeline on spectra recomputed for the same planets with an independent radiative transfer code reduces accuracy by 4.1 percentage points, and substituting an alternative molecular opacity compilation reduces it by 16.1."
 
 > "Under injected observational systematics the pipeline tolerates calibration-type errors but degrades under correlated noise, losing 13 accuracy points at an effective SNR of 10. Untrained-for aerosols are more damaging still: an optically thick cloud deck or photochemical haze degrades the recommended pipeline's accuracy monotonically with cloud-top altitude and haze density, bounding the method's applicability to atmospheres whose aerosols leave most of the spectral feature amplitude intact."
 
@@ -934,6 +934,45 @@ Cover, in order: the method (models trained once, whole preprocessing chain froz
 
 > "A controlled comparison in which two otherwise identical networks differ only in whether this standardisation is applied — each trained five times to average over initialisation — shows that it reduces robustness. Averaged over restarts, the standardised network begins 3.6 ± 3.1 accuracy points ahead on clean data and ends 11.0 ± 1.7 points behind at an effective signal-to-noise ratio of 5, with the curves crossing by SNR 12 in four of five restarts; normalised by headroom above chance, it degrades 1.6–2.8 times faster in every perturbation family with a measurable effect. This supports the concern that rescaling every low-variance component equally raises the weight of components dominated by systematics as much as those carrying signal — and the clean-data benefit that motivated the standardisation is itself marginal once training variability is accounted for."
 
+### Independent radiative transfer code — present this before the opacity swap
+
+The two belong together and the order matters: the code result is the control
+that makes the opacity result interpretable. Content from
+`final_results/H2_exotransmit.txt`.
+
+> "To separate the influence of the radiative transfer implementation from that
+> of the underlying opacity data, transmission spectra were recomputed for the
+> held-out test planets with Exo-Transmit, an independently developed code
+> written in a different language and using a different solver. The molecular
+> cross sections were held fixed: the opacity tables used by the training
+> simulator originate from Exo-Transmit and were supplied to it unchanged, so
+> the radiative transfer implementation is the only quantity that differs. The
+> two codes agree closely on the spectra themselves, with a median per-planet
+> correlation of 0.997 and mean transit depths within 0.7%. Classification
+> accuracy falls from 88.9% to 84.8%, a reduction of 4.1 percentage points."
+
+Then the caveat, which must be stated because it accounts for much of the 4.1
+points and a reader comparing codes would want it:
+
+> "The two implementations differ in one physical assumption that cannot be
+> reconciled by configuration: Exo-Transmit treats gravity as constant through
+> the atmosphere, whereas the training simulator integrates hydrostatically with
+> gravity decreasing with altitude. Comparisons with all molecular opacity
+> disabled isolate this effect, showing mean transit depths agreeing to 0.4%
+> while spectral contrast differs by 4–12%, scaling with the atmospheric extent
+> relative to the planetary radius. The quoted reduction is therefore an upper
+> bound on the difference attributable to the numerical scheme alone."
+
+And the sentence that makes the pair worth reporting, to be placed after the
+opacity result below:
+
+> "Comparing the two experiments, substituting the opacity data costs four times
+> as much accuracy as substituting the radiative transfer code. The
+> transferability of this method is therefore limited principally by uncertainty
+> in molecular line lists rather than by the choice of forward model, which is a
+> constraint shared by any retrieval-based analysis of real observations rather
+> than an artefact of the simulation framework used here."
+
 ### Opacity database — the single-variable result
 
 Content from `final_results/H2_opacity_swap.{txt,csv}`. Place this **before** the aerosol results: it is the most tightly controlled experiment in the section (same code, same planets, only the opacity tables differ) and it establishes that the pipeline's failure mode is bias rather than signal loss, which frames how the aerosol degradations should be read.
@@ -990,7 +1029,13 @@ The prediction's fate should be stated plainly — it was made in advance, deriv
 
 **Remove** the promotion of the PCA feature-engineering story to "a central finding" — it is not among the stated contributions and is now withdrawn.
 
-**Add** the robustness findings and an explicit limitations paragraph naming: single radiative transfer code; labels derived from generation parameters rather than retrieval; no aerosols in the training data (their out-of-distribution cost is now quantified in §4.5, but training with aerosols was not attempted); 1D atmospheres; parametric rather than instrument-derived systematics. Name cross-simulator validation and retrieval-derived labels as the required next steps.
+**Add** the robustness findings and an explicit limitations paragraph naming: labels derived from generation parameters rather than retrieval; no aerosols in the training data (their out-of-distribution cost is now quantified in §4.5, but training with aerosols was not attempted); 1D atmospheres; parametric rather than instrument-derived systematics.
+
+**"Single radiative transfer code" must not appear in this list.** Training still uses one code, but evaluation no longer does, and the honest statement is stronger than the old concession because it carries numbers:
+
+> "The models are trained on spectra from a single radiative transfer code. Evaluated on spectra recomputed for the same planets with an independent code, accuracy falls from 88.9% to 84.8%; evaluated on spectra recomputed with an alternative molecular opacity compilation, it falls to 72.8%. Sensitivity to the choice of opacity data is therefore roughly four times the sensitivity to the choice of radiative transfer code, and the dominant transferability risk for this method lies in the molecular line lists rather than in the simulator."
+
+Name **retrieval-derived labels** as the single required next step. Cross-simulator validation is done and should not be listed as outstanding.
 
 ## Acknowledgments — new section (R2-2)
 
