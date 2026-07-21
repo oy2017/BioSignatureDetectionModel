@@ -258,6 +258,28 @@ An octave-band occlusion test (`analyze_o3_band_occlusion.py` → `final_results
 
 Caveats mirroring the grey-deck ones. The MLP values in the table are **means ± one standard deviation over five training restarts** (`final_results/H2_aerosol_paired.txt`), and any quoted MLP number must carry the ± and say it is a restart average — single runs vary by several points. Averaging makes the cloudy MLP column cleanly monotonic, but the hazy dip at 3.0e7 m⁻³ **survives averaging and survives the re-basing** — 53.03% ± 1.3 against 59.54% ± 3.8 at the denser 2.4e8 level (`final_results/H2_aerosol_paired.txt`) — so the MLP's hazy response is genuinely non-monotonic in both density and amplitude — worth stating rather than smoothing over: the tree ensemble degrades monotonically under both aerosol types and the whitened network does not. Separately, matching at the population-median amplitude hides that suppression is far more heterogeneous across planets for the haze than for the deck (paired calibration runs showed per-planet suppression at a fixed density varying by tens of points with planet size), so "equal muting" holds at the median, not per planet. Two scope limits to carry into the manuscript: only one haze parameterisation was tested (Lee et al. extinction, a single 0.1 µm particle radius; particle size was not varied); and set-level feature amplitudes are medians over ~540 heterogeneous planets with sampling uncertainty of roughly ±0.05, which can move individual deck-at-same-amplitude differences by a point or two but cannot produce the observed sign reversal. The vertical-structure confound, by contrast, is **closed by a control**: a set with the same haze density confined to P < 10³ Pa (`generate_confined_haze_control.py` → `final_results/H2_haze_confined_control.txt`) reproduces the whole-column result to within sampling noise, 63.23% against 63.25% at 0.502x and 0.503x amplitude, so the deck–haze divergence is attributable to the wavelength dependence of the opacity rather than to where the aerosol sits in the column. **Read that control as an internal comparison only.** It was generated as a fresh draw of planets rather than by re-rendering the committed ones, so it carries the sampling drift and its absolute accuracy is not comparable to the paired table; both of its arms were drawn the same way, which is what makes the confined-versus-whole-column contrast valid. Re-running it on the committed planets would make it quotable alongside the rest and is the one loose end left on this axis.
 
+#### A second opacity compilation — what DACE offers
+
+The DACE opacity database (Geneva; HELIOS-K calculator over ExoMol, HITEMP, HITRAN, Kurucz, NIST and VALD3 inputs) is the natural candidate for a second, independent swap. Its catalogue was queried directly (`opa-webapp.obsuksprd2.unige.ch/molecule/search`), and for the molecules that matter here it holds:
+
+| Molecule | Line lists in DACE | Used in the ExoMolOP arm |
+| :-- | :-- | :-- |
+| H₂O | POKAZATEL (v1, v2), CKYKKY, BT2 | POKAZATEL |
+| CH₄ | YT34to10, YT10to10, HITEMP2020 | YT34to10 |
+| CO₂ | UCL-4000, CDSD_4000, HITEMP2010 | UCL-4000 |
+| O₃ | **HITRAN2020 only** | — (retained Exo-Transmit) |
+| O₂ | HITRAN2020 only | — (unused) |
+
+Three things follow.
+
+**Ozone cannot be independently adjudicated.** DACE's only ozone is HITRAN2020, the same source as every other ozone tabulation in circulation. There is no third, independent O₃ line list to compare against — hot-atmosphere databases do not produce one, because ozone dissociates above roughly 500 K. Any ozone comparison is therefore Freedman/Lupu against HITRAN, and disagreement between them cannot be resolved by adding a third opinion. Treat the ozone tabulation as an irreducible uncertainty of the forward model and state it as such.
+
+**A DACE swap using POKAZATEL / YT34to10 / UCL-4000 would not be a second line-list test** — those are the same line lists the ExoMolOP arm already uses. It would instead isolate the *tabulation pipeline* (HELIOS-K against ExoMolOP's) with line lists held fixed, which is a genuinely useful control: it would partition the 16.1 points into line-list content versus processing choices. Worth doing precisely because it is a different question, and it is the cheaper of the two.
+
+**A genuinely independent second compilation** means choosing DACE's alternative lists: BT2 or CKYKKY for H₂O, HITEMP2020 for CH₄, CDSD_4000 for CO₂, plus HITRAN2020 for O₃ — the first arm to include ozone, which would remove the lower-bound caveat on the 16.1-point result.
+
+Practical notes for either: DACE distributes opacity **per unit mass (cm²/g)**, where TauREx expects cm²/molecule, so a conversion by molecular mass is required (σ = κ·M/N_A). Native files are 0.01 cm⁻¹ binary; the interpolated HDF5 export lets the temperature, pressure and wavenumber ranges be chosen at download time, which keeps the transfer small. The temperature grid spans 50–2900 K and pressures from 10⁻⁸ bar, both covering this work's ranges.
+
 **Outstanding for this axis:** nothing blocking — two prescriptions (grey deck, Lee-Mie haze) are generated, verified and evaluated. Next steps for R1-3 overall, ranked by return: an **independent radiative transfer code** (petitRADTRANS is open-source Python and a genuine alternative — days of work, not months), then **transfer learning H2→N2** (he names it explicitly; requires regenerating N2 at 550 bins, since the existing files are 200-bin).
 
 #### What was run
@@ -566,6 +588,14 @@ The unwhitened MLP has a lower clean baseline (75.7% vs 79.3% restart means), so
 ### R2-3 — Reference quality
 
 **Outstanding.** References 1 and 2 are bare undated NASA entries — replace or remove. Audit all 42 for direct support of the claims they are attached to. Add recent work alongside the foundational citations. Also delete the stray reference-manager artifact in §4.1 (`("Website," n.d.)` appears mid-sentence after the bootstrap p-value).
+
+**Required additions — the opacity data is uncited.** The molecular opacities underlying every spectrum in this work are the Exo-Transmit tables distributed with MultiREx, whose user manual states that use of the opacity data requires citing three papers. None of the three currently appears in the manuscript:
+
+- Freedman, R. S., Marley, M. S., & Lodders, K. (2008), *ApJS* **174**, 504
+- Freedman, R. S., Lustig-Yaeger, J., Fortney, J. J., et al. (2014), *ApJS* **214**, 25
+- Lupu, R. E., Zahnle, K., Marley, M. S., et al. (2014), *ApJ* **784**, 27
+
+Cite Kempton et al. (2017) for Exo-Transmit itself alongside them, and state in §3 which opacity compilation was used — the choice is not incidental, since §4.5 shows that substituting an alternative compilation costs 16.1 accuracy points. A reviewer checking reproducibility would expect the opacity source named.
 
 ### R2-4 — State all assumptions explicitly
 
