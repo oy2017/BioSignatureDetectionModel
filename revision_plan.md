@@ -74,9 +74,9 @@ Full method and per-set numbers for both are in R1-3, axes 1 and 2.
 
 #### Charge B — labels derived from the generation parameters
 
-Unchanged, and conceded. Both experiments above recompute the *spectra* from the same injected abundances; the CH₄/O₃ threshold rule never moves. Accuracy still demonstrates that a labelling convention is recoverable from spectra, not that abundances can be inferred from observations. Only retrieval-derived labels would address this, and that is out of reach this cycle — see R1-4, item 5.
+This charge is not touched by the forward-model work. Both experiments above recompute the *spectra* from the same injected abundances; the CH₄/O₃ threshold rule never moves. Accuracy still demonstrates that a labelling convention is recoverable from spectra, not that abundances can be inferred from observations.
 
-**Why the status stays ◐.** Charge B alone keeps it partial. This is the comment the reviewer called his most significant concern, so it is the worst one to mark complete on the strength of the forward-model half.
+**Plan.** Concede it directly. Retrieval-derived labels are the only thing that would address it, and running retrieval on the full benchmark is out of reach this cycle (§R1-4, item 5). State in §5 that the labels are a function of the generation parameters rather than of inferred abundances, and name retrieval-derived labelling as the required next step. The status stays ◐ because this half is unaddressed.
 
 **Where:** §3.1 (labelling statement, charge B), new §4 Robustness subsection (both cost figures, charge A), §5 (limitations — cross-simulator evaluation is done and should be reported with both numbers; retrieval-derived labels named as the remaining next step).
 
