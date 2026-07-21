@@ -1,0 +1,50 @@
+MLP reproducibility: what the five-restart convention does not measure
+
+WITHIN  = five seeds in one process. This is what every '+/- over five
+          restarts' figure in revision_plan.md reports.
+BETWEEN = one seed, five separate processes. Exactly zero if TensorFlow
+          were reproducible; anything here is invisible to the convention.
+
+  WITHIN   mean 79.48%   sd 1.85%   range 76.49%-82.23%
+  BETWEEN  mean 75.97%   sd 0.30%   range 75.63%-76.48%
+
+  pooled sd over all 10 trainings: 2.20%
+  full observed range:                 75.63%-82.23%
+
+  The dominant source is seed-to-seed variation.
+
+At a FIXED seed in a fresh process the network reproduces well
+(sd 0.30%), so TensorFlow nondeterminism is not the main
+issue. What dominates is ordinary seed-to-seed variation
+(sd 1.85%, range 5.7% across five seeds),
+which the five-restart convention DOES capture. The published +/-
+figures are therefore honest as error bars on the mean.
+
+The operative limit is instead how large a DIFFERENCE the scatter
+can support. With single-run values spanning 75.6%-82.2%, any MLP difference smaller than
+roughly 4% should not be argued from.
+
+Claims this bears on:
+
+  * R1-6, 'whitening is substitutable': 79.49% +/- 2.18% against
+    78.76% +/- 2.17%. The 0.73-point gap is far inside the scatter, so
+    the two are indistinguishable. The CONCLUSION is unaffected -
+    substitutability only requires them to be comparable, which they
+    are - but it must not be argued from the 0.73-point ordering.
+  * R1-8, 'whitening buys 3.6 +/- 3.1 points on clean data'. Already
+    called marginal; it sits at the edge of what the scatter supports,
+    which STRENGTHENS the concession that whitening buys little where
+    it is supposed to help.
+  * R1-8's SNR-5 deficit of 11.0 +/- 1.7 points is far outside the
+    scatter and is unaffected.
+
+Separately observed and NOT explained by this test: two whole-script
+runs of evaluate_aerosol_paired.py, same code and same seeds, returned
+clear-baseline means of 82.5% and 77.9%. Since a single training at a
+fixed seed reproduces to 0.30% here, that gap points at sequential
+trainings within one process being sensitive to CPU scheduling under
+varying machine load, rather than at seeding. Not chased further; the
+practical guidance above already covers it.
+
+XGBoost is deterministic and none of this touches it, which is a
+further argument for the tree ensemble as the recommended pipeline.

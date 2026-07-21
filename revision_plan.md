@@ -194,14 +194,25 @@ still reproduce from their own recorded parameters to floating-point
 precision. Its root cause was not identified, and was not pursued, because
 re-rendering the committed planets removes the need to understand it.
 
-**Caveat on the MLP columns.** Two runs of `evaluate_aerosol_paired.py`, with
-identical code and identical restart seeds, gave clear-baseline MLP means of
-82.5% ± 1.5 and 77.9% ± 2.7. TensorFlow on CPU is not bit-reproducible across
-processes, so the between-run spread exceeds the within-run restart spread. The
-five-restart σ therefore **understates** the true uncertainty on every MLP figure
-in this document, not only here. XGBoost is unaffected and reproduces exactly.
-Quote MLP values as approximate, and do not report differences between MLP
-numbers smaller than a few points as meaningful.
+**Caveat on the MLP columns — how large a difference the scatter supports.**
+`measure_mlp_reproducibility.py` → `final_results/H2_mlp_reproducibility.txt`.
+Retraining the whitened MLP five times on identical frozen features gives single
+-run accuracies spanning **75.6–82.2%**, a 5.7-point range, with a seed-to-seed
+sd of 1.85%. At a fixed seed in a fresh process the network reproduces to 0.30%,
+so this is ordinary initialisation variance rather than TensorFlow
+nondeterminism, and the published ± figures are honest error bars on the mean.
+
+What the scatter does limit is **differences**: any gap between two MLP numbers
+smaller than roughly **4 points should not be argued from**. That bears on two
+claims elsewhere in this document. R1-6's "whitening is substitutable" rests on
+79.49% ± 2.18% against 78.76% ± 2.17% — a 0.73-point gap well inside the
+scatter, so the two are indistinguishable; the conclusion survives, because
+substitutability only requires them to be comparable, but do not argue it from
+the ordering. R1-8's "whitening buys 3.6 ± 3.1 points on clean data" sits at the
+edge of what the scatter supports, which strengthens rather than weakens the
+concession that whitening buys little where it is meant to help. R1-8's SNR-5
+deficit of 11.0 ± 1.7 points is far outside the scatter and is unaffected.
+XGBoost is deterministic and none of this touches it.
 
 Two caveats to carry into the manuscript. At 1e1 Pa the feature amplitude is 0.03x, so the spectra are effectively featureless and chance-level accuracy reflects the absence of retrievable signal rather than a failure of the classifier; the informative range is 1e5 to 1e3 Pa. And single MLP training runs are not quotable — the clear baseline varies by several points between identically-configured runs (76.4–80.7% observed) — so the MLP values in the table above are **means ± one standard deviation over five training restarts** (`evaluate_aerosol_mlp_restarts.py` → `final_results/H2_aerosol_mlp_restarts.{txt,csv}`; the single-run column in `H2_cloudy_evaluation.csv` is superseded). Any quoted MLP number must carry the ± and say it is a restart average. XGBoost is deterministic (88.92% every run) and needs no averaging.
 
