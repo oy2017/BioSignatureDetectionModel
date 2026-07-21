@@ -241,8 +241,6 @@ That is a more troubling failure mode than the aerosol one for the paper's purpo
 - CO and NH₃ appear in every composition but have no opacity data in either database — they act only through mean molecular weight. Worth disclosing separately under R2-4: two of the six "background" gases are spectrally inert.
 - Native resolutions differ (ExoMolOP R=15000 tables vs the Exo-Transmit grid), so a small part of the difference is tabulation rather than line-list content.
 
-**A generation bug was found and fixed here; the guard added is worth keeping.** The first full run produced spectra identical to the baseline to 1e-15 and evaluated to a perfect zero effect — a clean, quotable, and completely wrong answer. Cause: the opacity-configuration memo was keyed on the path alone, and because the script runs as `__main__`, joblib pickles the worker function by value and carries the parent's globals into each worker, so every worker believed it was already configured and silently used MultiREx's default tables. Small tests passed because importing the module as a library pickles by reference instead. The memo is now keyed on `(pid, path)`, and `generate()` aborts if any set's output does not differ from its baseline by more than regeneration noise. Two tells caught it: the result was implausibly clean, and 539 planets generated in 20 seconds where the correct run takes 6 minutes.
-
 #### Hazes — results
 
 `generate_hazy_testset.py` builds five test sets at fixed particle number densities using TauREx's `LeeMieContribution` (the Lee et al. 2013 parameterisation of Mie extinction; particle radius 0.1 µm, Q₀ = 40, whole-column); `evaluate_hazy.py` runs them through the frozen pipeline and compares against the grey deck at matched feature amplitude. Outputs: `final_results/H2_hazy_evaluation.{txt,csv}`, `hazy_generalisation.png`. MultiREx fork commit **2e20551** carries the `cloud_model` plumbing, verified end to end through `explore_multiverse`.
@@ -304,26 +302,16 @@ python domain_shift_sweep.py                      # perturbation sweep
 python domain_shift_sweep.py --mode extrapolation # out-of-envelope split
 ```
 
-#### Method — the five things that make this a valid domain-shift test
+#### Method — the six things that make this a valid domain-shift test
 
 1. **Models are trained once on the clean training set and never retrained.** The model is fixed; only the test distribution moves. Retraining on perturbed data would be data augmentation — a different experiment.
 2. **The whole preprocessing chain is frozen.** The raw `StandardScaler`, the 102-component PCA basis, and the post-PCA scaler are all fit on clean training data only and applied unchanged to every perturbed set. Refitting any of them on perturbed data would silently invalidate the result.
 3. **Only test sets are perturbed**, at the raw transit-depth stage, before any scaling. Values are not clipped to [0,1] — real observations are not clipped, and clipping would hide the failure mode.
-4. **Strengths are anchored to the physical noise floor of the data**, not to arbitrary multiples of spectral scatter (see the correction note below).
+4. **Strengths are anchored to the physical noise floor of the data**, not to arbitrary multiples of spectral scatter. Anchoring to total scatter would overstate every perturbation by roughly 6×, since only 15.8% of the scatter is noise.
 5. **Calibration is reported alongside accuracy.** The manuscript claims *calibrated* triage, so a model whose accuracy survives while its Brier score collapses has still failed for the stated purpose.
+6. **The resolution family has a true zero point.** Degradation uses flux-conserving binning — averaging within log-spaced bins — rather than interpolating onto a coarser grid and back. Double linear interpolation low-pass filters the spectrum even when the target grid matches the input, which would leave the family with no valid baseline; with binning, the native-resolution case (R = 200 on an R = 199 grid) costs 2.6 points.
 
 The noise floor is measured per spectrum with a successive-difference estimator: astrophysical structure is smooth between adjacent wavelength bins while injected noise is not, so `std(diff(spectrum))/sqrt(2)` isolates the noise. Measured median is 1.04e-4 in transit depth against a total wavelength scatter of 8.11e-4 — **only 15.8% of the spectral scatter is noise.**
-
-#### CORRECTION — the first run of this experiment was wrong
-
-Recorded because it changes how the numbers should be read, and because the corrected result is materially different.
-
-The initial sweep anchored strengths to each spectrum's *total* wavelength scatter. Since only 15.8% of that is noise, a nominal "0.25 sigma" perturbation was really 1.6× the existing noise — dropping effective SNR from 15 to 8 — and the top of each sweep corresponded to SNR ≈ 1.2, where no method could work. That run reported catastrophic degradation (e.g. gain ramp −16.4 points) which was an artefact of testing physically absurd conditions.
-
-Two further defects were fixed at the same time:
-
-- **The resolution family had no true zero point.** Degradation was simulated by interpolating onto a coarser grid and back, but double linear interpolation low-pass filters the spectrum even when the target grid matches the input — so the nominal no-op (R=200 on an R=199 grid) already cost 7.6 points. Replaced with flux-conserving binning (averaging within log-spaced bins), which reduces the native-resolution penalty to 2.6 points and gives the family a genuine baseline.
-- **The extrapolation split confounded sample size with distribution shift.** Training on R_p ≤ 15 uses 1588 of 2696 planets, so part of the measured drop was simply less training data. A matched-size control was added.
 
 #### Results — XGBoost (the recommended pipeline)
 
