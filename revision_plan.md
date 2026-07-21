@@ -278,7 +278,15 @@ Three things follow.
 
 **A genuinely independent second compilation** means choosing DACE's alternative lists: BT2 or CKYKKY for H₂O, HITEMP2020 for CH₄, CDSD_4000 for CO₂, plus HITRAN2020 for O₃ — the first arm to include ozone, which would remove the lower-bound caveat on the 16.1-point result.
 
-Practical notes for either: DACE distributes opacity **per unit mass (cm²/g)**, where TauREx expects cm²/molecule, so a conversion by molecular mass is required (σ = κ·M/N_A). Native files are 0.01 cm⁻¹ binary; the interpolated HDF5 export lets the temperature, pressure and wavenumber ranges be chosen at download time, which keeps the transfer small. The temperature grid spans 50–2900 K and pressures from 10⁻⁸ bar, both covering this work's ranges.
+**Access and cost, measured rather than assumed.** The catalogue and download endpoints (`opa-webapp.obsuksprd2.unige.ch`) need no authentication; a download returns a tar of raw `float32` files named `Out_<wn_min>_<wn_max>_<T>_n<|log10 P|>.bin`, one per temperature–pressure pair, holding opacity in cm²/g at 0.01 cm⁻¹ spacing. Parsing is trivial. The work is everything after:
+
+- **Units.** cm²/g, where TauREx expects cm²/molecule — convert by σ = κ·M/N_A.
+- **Volume.** One H₂O file at one (T, P) is 16.8 MB, because 0.01 cm⁻¹ over 0–42000 cm⁻¹ is 4.2 million points. The `interpolate` endpoint chooses temperature and pressure points but does not coarsen the wavenumber grid, so a table with usable T–P coverage runs to roughly 1–2 GB per molecule and several GB overall.
+- **Rebinning.** Those 0.01 cm⁻¹ tables must be binned to something like ExoMolOP's R = 15000 before use, then written into TauREx's HDF5 layout (`bin_edges`, `p`, `t`, `xsecarr` as pressure × temperature × wavenumber).
+- **Ozone coverage.** DACE's O₃ is tabulated only over 0–7000 cm⁻¹ (λ ≥ 1.43 µm), so an ozone arm still leaves the 0.5–1.43 µm region empty — the same electronic-continuum limitation described under the physics-risk note. H₂O by contrast spans 0–42000 cm⁻¹.
+- **Grids.** Temperatures 50–2900 K, pressures from 10⁻⁸ bar — both cover this work's ranges.
+
+So DACE is easy to *obtain* and non-trivial to *use*: the conversion pipeline is a few hours of careful work, and its failure modes are silent. Validate any converted table the way the ExoMolOP arm was validated — regenerate committed planets with the original tables and require reproduction to floating-point precision — before trusting a single accuracy number from it.
 
 **Outstanding for this axis:** nothing blocking — two prescriptions (grey deck, Lee-Mie haze) are generated, verified and evaluated. Next steps for R1-3 overall, ranked by return: an **independent radiative transfer code** (petitRADTRANS is open-source Python and a genuine alternative — days of work, not months), then **transfer learning H2→N2** (he names it explicitly; requires regenerating N2 at 550 bins, since the existing files are 200-bin).
 
@@ -926,7 +934,9 @@ bins, and that data needs its own matched baseline.
 
 **Unverified physics risk — resolved, and the answer is a data limitation (2026-07-20).** The strongest ozone infrared band (9.6 μm) lies outside Ariel's 0.5–7.8 μm window; in-band detection was assumed to rely on the weak Chappuis band near 0.6 μm and a feature near 4.74 μm. The octave-occlusion test (`analyze_o3_band_occlusion.py`) showed classification runs predominantly through 4.74 µm: masking 0.5–1 µm costs 6 points on the O₃-diagnostic subset while masking 3.9–7.8 µm collapses it below chance.
 
-The reason turns out to be the opacity data, not the physics. **MultiREx's Exo-Transmit O₃ table contains no data below 1.73 µm** — the 0.5–1 µm octave is 0% covered and 1–2 µm only 10.7% covered, the remainder filled with a 1e-60 sentinel. The Chappuis band is absent from the simulated spectra entirely, so the classifier cannot use it and the occlusion result is explained mechanistically rather than as a statement about which real ozone feature is more diagnostic.
+The reason is the opacity data, and it is not specific to this simulator. **MultiREx's Exo-Transmit O₃ table contains no data below 1.73 µm** — the 0.5–1 µm octave is 0% covered and 1–2 µm only 10.7%, the remainder filled with a 1e-60 sentinel. Checking the alternatives shows the same limitation everywhere: DACE's ozone (HITRAN2020) is tabulated only over 0–7000 cm⁻¹, i.e. λ ≥ 1.43 µm, and petitRADTRANS's HITRAN ozone, though nominally spanning 0.3–28 µm, carries values of order 1e-43 cm² across the Chappuis region — negligible against 1e-19 cm² in the infrared.
+
+The common cause is physical rather than a defect in any one product: ozone's visible absorption is an electronic continuum, not a line spectrum, so it does not appear in line-list-derived opacity tables of the kind every exoplanet radiative transfer code uses. Obtaining it requires separate continuum cross-section data, which none of these products bundles.
 
 This belongs in the manuscript as a stated limitation of the forward model (§3 assumptions, and R1-3): simulated ozone is spectrally invisible shortward of 1.73 µm, which real ozone is not.
 
