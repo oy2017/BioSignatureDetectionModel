@@ -1,0 +1,30 @@
+Band-resolved feature suppression, paired aerosol sets
+
+Values are band feature amplitude relative to the clear training
+data. Measured on the paired sets (committed planets re-rendered
+with the aerosol), consistent with H2_aerosol_paired.txt.
+
+set               overall  0.5-1.0um  1.0-2.0um  2.0-4.0um  4.0-7.8um
+---------------------------------------------------------------------
+deck 1e5 Pa          0.94      0.857      0.925      0.952      0.937
+deck 1e4 Pa          0.83      0.426      0.652      0.875      0.899
+deck 1e3 Pa          0.58      0.085      0.326      0.719      0.788
+deck 1e2 Pa          0.30      0.011      0.096      0.468      0.568
+haze 2e5 m-3         0.95      0.981      1.000      0.974      0.950
+haze 2e6 m-3         0.79      1.486      0.964      0.968      0.940
+haze 3e7 m-3         0.59      0.893      0.769      0.921      0.919
+haze 2.4e8 m-3       0.44      0.053      0.750      0.792      0.899
+haze 1e10 m-3        0.25      0.000      0.003      0.252      0.689
+
+========================================================================
+The matched-amplitude pair is deck 1e3 Pa (0.58x) and haze 3e7 m-3
+(0.59x). At that match the deck concentrates its muting at short
+wavelengths (0.085x at 0.5-1um) while the haze preserves every band
+(0.77-0.92x) - yet the haze scores 65.27% against the deck's 71.64%.
+The haze retains more diagnostic structure in every band and still
+classifies worse, so its excess damage cannot be information loss.
+
+Note the haze's chromatic signature is not monotonic in density: at
+2e6 m-3 it raises blue-band amplitude above clear (1.486x) by adding
+a steep short-wavelength slope, and only at 2.4e8 and above does it
+extinguish the blue.
