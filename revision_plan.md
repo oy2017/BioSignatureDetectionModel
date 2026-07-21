@@ -456,7 +456,9 @@ Three things follow.
 
 So DACE is easy to *obtain* and non-trivial to *use*: the conversion pipeline is a few hours of careful work, and its failure modes are silent. Validate any converted table the way the ExoMolOP arm was validated — regenerate committed planets with the original tables and require reproduction to floating-point precision — before trusting a single accuracy number from it.
 
-**Outstanding for this axis:** nothing blocking — two prescriptions (grey deck, Lee-Mie haze) are generated, verified and evaluated. Next steps for R1-3 overall, ranked by return: an **independent radiative transfer code** (petitRADTRANS is open-source Python and a genuine alternative — days of work, not months), then **transfer learning H2→N2** (he names it explicitly; requires regenerating N2 at 550 bins, since the existing files are 200-bin).
+**Outstanding for this axis:** nothing blocking. Axis 2 is covered by the ExoMolOP swap in both arms. The optional extension is a DACE arm, in either of the two forms described above — same line lists, which would partition the 16.1 points into line-list content versus tabulation pipeline; or DACE's alternative lists plus HITRAN2020 ozone, which would be a genuinely independent second compilation.
+
+Next steps for R1-3 overall, ranked by return, are the three partial axes: a physical stellar spot/faculae contamination model (axis 4), instrumental systematics derived from Ariel's published noise model (axis 6), and transfer learning H₂→N₂ (axis 7 — he names it explicitly; requires regenerating N₂ at 550 bins, since the existing files are 200-bin). **The independent radiative transfer code is done** — Exo-Transmit, Experiment 4 — and must not be listed as outstanding.
 
 #### Caveats to state in the manuscript
 
@@ -877,13 +879,35 @@ Keep the tabular-data explanation and the small-sample caveat — both are sound
 
 This section currently argues that PC0/PC1 encode physics while PCs 2–101 encode chemistry. **That argument is withdrawn in full.** Reviewer 1 is correct that principal components are linear combinations of all wavelengths and do not map onto individual atmospheric processes.
 
-**Delete these:**
+All passages quoted in this section were checked against `Final Paper Manuscript (9).pdf` and match verbatim.
+
+**Delete these four.** The attribution runs through the whole subsection, not only the two sentences that state it most plainly — deleting fewer leaves the retracted claim standing in the section that is supposed to carry the retraction.
 
 > "Meanwhile, Principal Components 2 through 101 successfully capture these vital high-frequency chemical absorption features."
 
 > "By analyzing the component loadings and reconstructing the spectra, we determined that PC0 acts as a nearly perfect proxy for the mean transit depth (r = 0.9998) and PC1 captures the overall spectral slope. Thus, they encode broad physical properties like planetary radius and stellar continuum level rather than specific, high-frequency chemical absorption features."
 
-The r = 0.9998 measurement may be **retained as a descriptive fact**; what must go is the inference that it establishes chemistry is absent from PC0.
+> "Quantitative correlation analysis confirms that the first two principal components (PC0 and PC1) are physically tied to broad systematics rather than chemical features. Although these components explain approximately 98.41% of the total spectral variance, they showed practically zero quantitative correlation with the target biosignature labels (Pearson correlation coefficients of r = 0.0075 and r = -0.0235 respectively)."
+
+The third is the one the reviewer addressed directly: the Pearson coefficients are the evidence he rejected as insufficient, and the AUC analysis below replaces them. Removing the two conclusion sentences while leaving the correlation evidence in place would answer him only halfway.
+
+Fourth, the opening sentence of the subsection, which promotes the feature-engineering story to a finding (this also serves R1-1 and R2-5, and matches the parallel removal in §5):
+
+> "A central finding of this research is the undeniable importance of Principal Component Analysis (PCA) as both a dimensionality reduction and denoising step."
+
+Replace it with a plain statement of what the subsection establishes:
+
+> "Dimensionality reduction was necessary for the neural architectures, and the location of label-discriminative structure within the reduced space is characterised below."
+
+The r = 0.9998 measurement may be **retained as a descriptive fact** — PC0 is a near-perfect proxy for mean transit depth — provided it is not used to infer that chemistry is absent from PC0. If it is kept, state it as a description of PC0 alone and do not pair it with a claim about PCs 2–101.
+
+**Figure 3's caption carries the same attribution and must be rewritten**, otherwise the retracted claim survives in the figure legend after the body text is corrected. Current caption:
+
+> "Figure 3: PCA Scree Plot illustrating the explained variance ratio for the first 105 principal components on a logarithmic scale. The first two components (PC0 and PC1) account for 98.408% of the total variance but capture broad physical systematics. The next 100 components (indices 2–101) capture approximately 1.592% of the variance, representing the high-frequency chemical absorption features required for biosignature classification."
+
+Replacement:
+
+> "Figure 3: PCA scree plot showing the explained variance ratio for the first 105 principal components on a logarithmic scale. The first two components account for 98.408% of the total variance and the next 100 (indices 2–101) for approximately 1.592%. Explained variance does not track discriminative value: the two highest-variance components classify at chance when used alone, while the low-variance tail carries the label-discriminative structure (Section 4.2)."
 
 **Keep** the PCA-necessity ablation ladder (raw CNN 50.56% → PCA 64.51% → standardised 75.53%). Dimensionality reduction genuinely matters; what is withdrawn is the claim that the *variance ordering* is what makes it work.
 
