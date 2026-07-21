@@ -2,10 +2,17 @@
 Evaluate the frozen pipeline on opacity-swapped spectra (R1-3 axis 2).
 
 Answers Reviewer 1's request for validation against "alternative molecular
-opacity databases". H2O, CH4 and CO2 tables are replaced with ExoMol line
-lists (POKAZATEL, YT34to10, UCL-4000); O3 and O2 retain their Exo-Transmit
-tables because ExoMolOP provides no ozone opacity. O3 is label-determining,
-so the measured effect is a LOWER BOUND on a complete database change.
+opacity databases". Two arms:
+
+  default   H2O, CH4 and CO2 replaced with ExoMol line lists (POKAZATEL,
+            YT34to10, UCL-4000); O3 and O2 keep their Exo-Transmit tables.
+            The alternative compilation is internally coherent - ExoMol
+            spectroscopy throughout - which is why this is the primary result.
+
+  --o3      additionally replaces O3 with HITRAN cross sections converted
+            from petitRADTRANS (convert_hitran_o3_to_taurex.py). This covers
+            every spectrally active molecule, including both that define the
+            class label, at the cost of mixing source families.
 
 The comparison is paired: every swapped planet is the same planet as its
 baseline counterpart, regenerated with different opacity tables and nothing
@@ -39,6 +46,7 @@ N_COMPONENTS = 102
 TRAIN_FILE = "multirex_spectra_H2_train.parquet"
 BASE_FMT = "multirex_spectra_H2_test_set_{}.parquet"
 SWAP_FMT = "multirex_spectra_H2_opacityswap_set_{}.parquet"
+SWAP_O3_FMT = "multirex_spectra_H2_opacityswap_set_{}_o3.parquet"
 
 
 def spectral_cols(df):
@@ -75,10 +83,16 @@ def main():
         p = xgb.predict_proba(pca.transform(scaler_raw.transform(X)))[:, 1]
         return X, (df["biosignature"] == "yes").astype(int).values, p
 
+    import sys
+    fmt = SWAP_O3_FMT if "--o3" in sys.argv else SWAP_FMT
+    arm = "4-molecule (ExoMol H2O/CH4/CO2 + HITRAN O3)" if "--o3" in sys.argv \
+        else "3-molecule (ExoMol H2O/CH4/CO2, O3 unchanged)"
+    print(f"arm: {arm}\n")
+
     rows, pooled = [], {"y": [], "pb": [], "ps": []}
     for i in range(1, 6):
         base = pd.read_parquet(BASE_FMT.format(i))
-        swap = pd.read_parquet(SWAP_FMT.format(i))
+        swap = pd.read_parquet(fmt.format(i))
         # Pairing is by construction (same rows, same order); verify it held.
         assert len(base) == len(swap), f"set {i}: row count differs"
         assert np.allclose(base["p_radius"].values, swap["p_radius"].values), \
@@ -107,10 +121,12 @@ def main():
     lines = [
         "Frozen pipeline on opacity-swapped spectra (XGBoost)",
         "",
+        f"arm: {arm}",
+        "",
         "H2O -> ExoMol POKAZATEL, CH4 -> ExoMol YT34to10, CO2 -> ExoMol",
-        "UCL-4000; O3 and O2 retain their Exo-Transmit tables (ExoMolOP has no",
-        "ozone). O3 is label-determining, so this is a LOWER BOUND on the",
-        "effect of a complete opacity-database change.",
+        "UCL-4000. O2 always retains its Exo-Transmit table (unused by the",
+        "composition). O3 is unchanged in the default arm and replaced with",
+        "HITRAN under --o3.",
         "",
         "Paired: each swapped planet is the same planet as its baseline",
         "counterpart, regenerated with different opacity tables only.",
@@ -150,12 +166,13 @@ def main():
     out = "\n".join(lines)
     print(out)
     os.makedirs("final_results", exist_ok=True)
-    with open("final_results/H2_opacity_swap.txt", "w") as fh:
+    suffix = "_o3" if "--o3" in sys.argv else ""
+    with open(f"final_results/H2_opacity_swap{suffix}.txt", "w") as fh:
         fh.write(out + "\n")
     pd.DataFrame(rows, columns=["set", "n", "base_acc", "swap_acc", "base_brier",
                                 "swap_brier", "base_amp", "swap_amp",
                                 "flip_fraction", "median_prob_change"]).to_csv(
-        "final_results/H2_opacity_swap.csv", index=False)
+        f"final_results/H2_opacity_swap{suffix}.csv", index=False)
     print("\nWrote final_results/H2_opacity_swap.{txt,csv}")
 
 

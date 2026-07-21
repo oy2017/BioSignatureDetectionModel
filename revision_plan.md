@@ -332,22 +332,30 @@ weakening it.
 
 **This and the Exo-Transmit run are the two single-variable experiments in the R1-3 set**, and they are complementary: this one changes the opacity data with the code fixed, that one changes the code with the opacity data fixed. The radiative transfer code, atmospheric structure, geometry, wavelength grid, labelling rule and the planets themselves are all held fixed; only the molecular opacity data changes. Pairing is exact — every swapped planet is the same planet as its baseline counterpart, regenerated — so the comparison sidesteps the sampling drift entirely and can be made per planet rather than per distribution. The harness is validated by regenerating with the *original* tables, which reproduces the committed spectra to 1.2e-14 relative (`--validate`).
 
-| | Baseline (Exo-Transmit) | Swapped (ExoMol) |
-| :-- | --: | --: |
-| Accuracy | 88.91% | **72.82% (−16.1)** |
-| F1 | 0.889 | 0.758 |
-| Brier | 0.0802 | **0.2033** |
-| Median feature amplitude | 0.95x | 0.93x |
-| Predicted-positive rate | 49.5% | 61.8% |
+Two arms are reported. The **primary** arm replaces the three molecules ExoMolOP provides, keeping the alternative compilation internally coherent — ExoMol spectroscopy throughout. The **complete** arm additionally replaces O₃ with HITRAN cross sections converted from petitRADTRANS (`convert_hitran_o3_to_taurex.py`), covering every spectrally active molecule including both that define the label, at the cost of mixing source families.
 
-**Changing the opacity database costs 16.1 accuracy points and multiplies the Brier score by 2.5.** Individual predictions change for 26.8% of planets. These figures are directly comparable to the paired aerosol table — same 2697 committed planets, same 88.91% baseline, same frozen pipeline. On that scale the effect sits between a grey deck at 10⁴ Pa (−10.5) and one at 10³ Pa (−17.3). It is **smaller** than the worst instrumental systematic (correlated noise at SNR 5, −22.0) and smaller than the worst aerosol cases (−25.3 deck, −25.6 haze), so do not describe it as the largest degradation measured. Its significance is the mechanism below, not the magnitude.
+| | Baseline | Primary (ExoMol H₂O/CH₄/CO₂) | Complete (+ HITRAN O₃) |
+| :-- | --: | --: | --: |
+| Accuracy | 88.91% | **72.82% (−16.09)** | **66.04% (−22.88)** |
+| F1 | 0.889 | 0.758 | 0.640 |
+| Brier | 0.0802 | 0.2033 | 0.2529 |
+| Predicted-positive rate | 49.5% | 61.8% | 44.0% |
+| Predictions changed | — | 26.8% | 32.7% |
+
+(True positive rate 50.3%. Outputs: `final_results/H2_opacity_swap{,_o3}.{txt,csv}`.)
+
+**Changing the opacity data costs 16.1 accuracy points for a coherent alternative compilation, rising to 22.9 when ozone is replaced as well.** Report both. The primary figure is the one with a clean methodological rationale — a single alternative source of spectroscopy — while the complete figure is the honest bound, since it is the only arm in which both label-determining molecules move. Quoting only the primary number while describing ozone's exclusion as forced by data availability would not be accurate: an ozone swap is achievable and was run.
+
+On the paired scale, −16.1 sits between a grey deck at 10⁴ Pa (−10.5) and one at 10³ Pa (−17.3); −22.9 approaches the worst aerosol cases (−25.3 deck, −25.6 haze) and exceeds the worst instrumental systematic (correlated noise at SNR 5, −22.0). Neither figure should be called the largest degradation measured.
+
+**Ozone changes the sign of the bias.** The primary arm over-predicts the positive class (61.8% against a true 50.3%); the complete arm under-predicts it (44.0%), and of its 881 flipped predictions 450 are correct positives becoming negative. That is consistent with ozone being the other half of the `CH₄ ≥ −6 AND O₃ ≥ −7` rule: moving its opacity moves the inferred O₃ abundance, and the two label conditions push in opposite directions. Feature amplitude falls only from 0.95 to 0.84, so this remains a bias effect rather than signal loss.
 
 **The mechanism is a systematic false-positive bias, not signal loss.** Feature amplitude is essentially unchanged (0.95x → 0.93x), so this is not the muting effect that drives the aerosol results. Instead the predicted-positive rate rises from 49.5% to 61.8% against a true rate of 50.3%, and mean predicted probability rises from 0.497 to 0.602. Of the 722 flipped predictions, 417 are correct negatives that became positive against only 161 correct positives that became negative. Comparing the tables directly explains why: the ExoMol lists contain far more weak transitions, so between-line opacity is 2–3× higher while peak opacities are comparable (H₂O median 4.2e-28 → 1.4e-27 m², peaks 7.4e-23 → 1.6e-22). The extra absorption reads to the classifier as higher molecular abundance, so it over-calls the positive class while the label — computed from the injected abundances — is unchanged.
 
 That is a more troubling failure mode than the aerosol one for the paper's purpose: the pipeline does not degrade gracefully toward chance, it degrades toward **confidently wrong positive calls**, which is precisely the error a triage tool must not make. It also means the calibration claim in §4.4 is conditional on the opacity data used for training.
 
 **Caveats to state.**
-- Ozone (and unused O₂) retain their Exo-Transmit tables, so **16.1 points is a lower bound** on a complete database change — O₃ is one of the two label-determining molecules. ExoMolOP has no ozone, but other sources do: HITRAN ozone is available as line-by-line cross-sections and is already on this machine (`~/petitRADTRANS/input_data/opacities/lines/line_by_line/O3/16O3/16O3__HITRAN.R1e6_0.3-28mu.xsec.petitRADTRANS.h5`, 81–2995 K, 0.3–28 µm). Its units and array layout match the TauREx format exactly (`cm^2/molecule`, bar, cm⁻¹, `xsecarr` indexed pressure × temperature × wavenumber), so converting it is a key rename plus binning down from R = 10⁶, not a lossy correlated-k conversion. Swapping O₃ is therefore **feasible and outstanding**, not blocked.
+- O₂ retains its Exo-Transmit table throughout; it is absent from the composition and therefore inert. Ozone is unchanged in the primary arm and replaced in the complete arm, so no lower-bound caveat is needed — the bound is reported.
 - CO and NH₃ appear in every composition but have no opacity data in either database — they act only through mean molecular weight. Worth disclosing separately under R2-4: two of the six "background" gases are spectrally inert.
 - Native resolutions differ (ExoMolOP R=15000 tables vs the Exo-Transmit grid), so a small part of the difference is tabulation rather than line-list content.
 
@@ -745,6 +753,17 @@ The unwhitened MLP has a lower clean baseline (75.7% vs 79.3% restart means), so
 - Freedman, R. S., Lustig-Yaeger, J., Fortney, J. J., et al. (2014), *ApJS* **214**, 25
 - Lupu, R. E., Zahnle, K., Marley, M. S., et al. (2014), *ApJ* **784**, 27
 
+
+
+**Required additions — the alternative opacity data in §4.5.** The opacity-database experiment uses ExoMolOP cross sections, which carry their own citation requirements: the opacity product, and the line list behind each molecule. All four verified against DOI records:
+
+- Chubb, K. L., Rocchetto, M., Yurchenko, S. N., et al. (2021), *A&A* **646**, A21 — the ExoMolOP database itself (`10.1051/0004-6361/202038350`)
+- Polyansky, O. L., Kyuberis, A. A., Zobov, N. F., et al. (2018), *MNRAS* **480**, 2597 — H₂O POKAZATEL (`10.1093/mnras/sty1877`)
+- Yurchenko, S. N., Amundsen, D. S., Tennyson, J., & Waldmann, I. P. (2017), *A&A* **605**, A95 — CH₄ YT34to10 (`10.1051/0004-6361/201731026`)
+- Yurchenko, S. N., Mellor, T. M., Freedman, R. S., & Tennyson, J. (2020), *MNRAS* **496**, 5282 — CO₂ UCL-4000 (`10.1093/mnras/staa1874`)
+
+The first two of those DOIs are recorded in the downloaded files; the CO₂ file's DOI field contains the placeholder string `qqq`, so its reference was identified from the line-list name and confirmed independently. Do not take provenance metadata in opacity products on trust — the same placeholder appears in petitRADTRANS's CO₂ table.
+
 Cite Kempton et al. (2017) for Exo-Transmit itself alongside them, and state in §3 which opacity compilation was used — the choice is not incidental, since §4.5 shows that substituting an alternative compilation costs 16.1 accuracy points. A reviewer checking reproducibility would expect the opacity source named.
 
 ### R2-4 — State all assumptions explicitly
@@ -870,7 +889,7 @@ Add after §3.1 or at the end of §3. State each assumption, why it is reasonabl
 | Abundances drawn uniformly over several decades of log abundance | Spans the physically plausible range; avoids concentrating the sample at one composition | **Sets the difficulty distribution**: 64.8% of test planets lie ≥1 dex from the labelling cutoff, where accuracy is 95.3%, so overall accuracy is weighted toward well-separated cases (§4.3). Not an estimate of performance on a realistic population |
 | Enforced 50/50 class balance | Prevents majority-class bias | Not the expected occurrence rate; accuracy is not a mission yield estimate |
 | H₂-dominated composition | Larger scale height, stronger signal | Optimistic relative to high-mean-molecular-weight atmospheres |
-| A single set of molecular opacity tables (Exo-Transmit compilation, via MultiREx) | The tabulation shipped with the simulation package | **Load-bearing, now quantified** — replacing the H₂O/CH₄/CO₂ tables with ExoMol line lists costs 16.1 accuracy points and biases the model toward false positives (§4.5). Also note CO and NH₃ are present in every composition but have no opacity data in either compilation, so they act only through mean molecular weight |
+| A single set of molecular opacity tables (Exo-Transmit compilation, via MultiREx) | The tabulation shipped with the simulation package | **Load-bearing, now quantified** — replacing the H₂O/CH₄/CO₂ tables with ExoMol line lists costs 16.1 accuracy points; replacing ozone as well costs 22.9 (§4.5). The direction of the bias depends on which molecules move. Also note CO and NH₃ are present in every composition but have no opacity data in either compilation, so they act only through mean molecular weight |
 | No clouds or hazes in training | Not exposed by MultiREx until this work; the fork now supports a grey deck and a Lee-Mie haze | **Most consequential omission, now quantified for two prescriptions** — an untrained-for deck at 10⁴ Pa costs 10.5 accuracy points and nearly doubles the Brier score; an untrained-for haze is worse still at matched muting at moderate optical depth, by 6.4 points at 0.59x amplitude (§4.5). Degradations are measured on the committed planets themselves, re-rendered with the aerosol added, so the comparison is paired planet-by-planet — see "Baseline correction" |
 
 ## §4.1 Overall Performance — serves R1-5, R2-3
@@ -985,8 +1004,9 @@ points and a reader comparing codes would want it:
 And the sentence that makes the pair worth reporting, to be placed after the
 opacity result below:
 
-> "Comparing the two experiments, substituting the opacity data costs four times
-> as much accuracy as substituting the radiative transfer code. The
+> "Comparing the two experiments, substituting the opacity data costs four
+> times as much accuracy as substituting the radiative transfer code, and close
+> to six times when the ozone tabulation is replaced as well. The
 > transferability of this method is therefore limited principally by uncertainty
 > in molecular line lists rather than by the choice of forward model, which is a
 > constraint shared by any retrieval-based analysis of real observations rather
@@ -994,15 +1014,15 @@ opacity result below:
 
 ### Opacity database — the single-variable result
 
-Content from `final_results/H2_opacity_swap.{txt,csv}`. Place this **before** the aerosol results: it is the most tightly controlled experiment in the section (same code, same planets, only the opacity tables differ) and it establishes that the pipeline's failure mode is bias rather than signal loss, which frames how the aerosol degradations should be read.
+Content from `final_results/H2_opacity_swap.{txt,csv}`. Place this **before** the aerosol results: it is the most tightly controlled experiment in the section (same code, same planets, only the opacity tables differ) and it establishes that the pipeline's failure mode here is bias rather than signal loss, which frames how the aerosol degradations should be read.
 
-> "The molecular opacity data were replaced with an independent set of line lists — ExoMol POKAZATEL for H₂O, YT34to10 for CH₄ and UCL-4000 for CO₂ — and the forward model recomputed for the same test planets, holding the radiative transfer code, atmospheric structure, geometry and labelling rule fixed. Accuracy falls from 88.9% to 72.8% and the Brier score rises from 0.080 to 0.203, with individual predictions changing for 26.8% of planets. Ozone retains its original tabulation because the alternative compilation provides no ozone opacity; since ozone is one of the two label-determining molecules, this figure is a lower bound on the effect of a complete change of opacity data."
+> "The molecular opacity data were replaced with an independent set of line lists — ExoMol POKAZATEL for H₂O, YT34to10 for CH₄ and UCL-4000 for CO₂ — and the forward model recomputed for the same test planets, holding the radiative transfer code, atmospheric structure, geometry and labelling rule fixed. Accuracy falls from 88.9% to 72.8% and the Brier score rises from 0.080 to 0.203, with individual predictions changing for 26.8% of planets. The alternative compilation provides no ozone opacity, so this arm leaves ozone on its original tabulation and is internally coherent in its spectroscopy. Replacing ozone as well, using HITRAN cross sections, extends the substitution to every spectrally active molecule and to both species defining the class label: accuracy then falls to 66.0% and the Brier score to 0.253, with a third of predictions changing. The two figures bracket the sensitivity of this benchmark to its opacity data."
 
-> "The degradation is not a loss of spectral signal: median feature amplitude is essentially unchanged. It is a systematic bias. The predicted-positive rate rises from 49.5% to 61.8% against a true positive rate of 50.3%, and of the predictions that change, 417 are correct negatives becoming positive against 161 correct positives becoming negative. The alternative line lists include substantially more weak transitions, raising between-line opacity by a factor of two to three while leaving peak opacities comparable; the additional absorption is read by the classifier as higher molecular abundance, so it over-predicts the positive class. The classifier's mapping from spectral morphology to abundance is therefore inherited from the opacity data it was trained on, and does not transfer unchanged to an alternative compilation."
+> "The degradation is not a loss of spectral signal: median feature amplitude is essentially unchanged. It is a systematic bias, and its direction depends on which molecules are substituted. Replacing the three non-ozone absorbers raises the predicted-positive rate from 49.5% to 61.8% against a true rate of 50.3%, with 417 correct negatives becoming positive against 161 correct positives lost; replacing ozone as well reverses this, lowering the rate to 44.0% with 450 correct positives lost. The two species defining the class label enter it as a conjunction, so shifts in their inferred abundances move the decision in opposite directions. The alternative line lists include substantially more weak transitions, raising between-line opacity by a factor of two to three while leaving peak opacities comparable; the additional absorption is read by the classifier as higher molecular abundance, so it over-predicts the positive class. The classifier's mapping from spectral morphology to abundance is therefore inherited from the opacity data it was trained on, and does not transfer unchanged to an alternative compilation."
 
 Then state the consequence plainly, because it bears on the paper's central claim:
 
-> "For a triage application this is the more consequential failure mode. Under aerosols the method degrades toward chance, which is detectable; under a change of opacity data it degrades toward confident false positives, which is not. Calibration established on one opacity database should not be assumed to hold under another."
+> "For a triage application this is the more consequential failure mode. Under aerosols the method degrades toward chance, which is detectable in the predicted probabilities; under a change of opacity data it degrades toward confident but systematically biased calls, in a direction set by which molecules are affected and therefore not predictable in advance. Calibration established on one opacity compilation should not be assumed to hold under another."
 
 ### Clouds — the strongest result in this subsection
 

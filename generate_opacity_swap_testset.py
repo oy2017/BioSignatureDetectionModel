@@ -51,6 +51,7 @@ from joblib import Parallel, delayed
 TEST_FMT = "multirex_spectra_H2_test_set_{}.parquet"
 OUT_FMT = "multirex_spectra_H2_opacityswap_set_{}.parquet"
 EXOMOLOP_DIR = os.path.expanduser("~/exomolop")
+O3_DIR = os.path.expanduser("~/exomolop_o3")   # converted HITRAN ozone
 SWAP_DIR = os.path.expanduser("~/opacity_swap")
 GASES = ["H2O", "CO", "CO2", "NH3", "CH4", "O3"]
 WL_MIN, WL_MAX, RESOLUTION = 0.5, 7.8, 550
@@ -73,16 +74,21 @@ def original_opacity_dir():
     return os.path.join(os.path.dirname(multirex.__file__), "data")
 
 
-def build_swap_dir():
+def build_swap_dir(only=None, with_o3=False):
     """Symlink directory holding exactly one opacity file per molecule.
 
     Explicit symlinks rather than a two-entry search path, so there is no
     ambiguity about which file wins for a molecule present in both databases.
+
+    `only` restricts the swap to the named molecules, leaving the rest on
+    their original tables - used for the per-molecule ablation that
+    attributes the total effect to individual absorbers.
     """
     os.makedirs(SWAP_DIR, exist_ok=True)
     for f in os.listdir(SWAP_DIR):
         os.unlink(os.path.join(SWAP_DIR, f))
 
+    orig_dir = original_opacity_dir()
     swapped = {}
     for fn in os.listdir(EXOMOLOP_DIR):
         if not fn.endswith(".h5"):
@@ -91,12 +97,24 @@ def build_swap_dir():
             fn.split("__")[0])
         if mol is None:
             raise ValueError(f"unrecognised ExoMolOP file: {fn}")
+        if only is not None and mol not in only:
+            continue          # leave this molecule on its original table
         os.symlink(os.path.join(EXOMOLOP_DIR, fn), os.path.join(SWAP_DIR, fn))
         swapped[mol] = fn
 
-    orig = original_opacity_dir()
+    # Converted HITRAN ozone, if present and requested.
+    if with_o3 and os.path.isdir(O3_DIR):
+        for fn in os.listdir(O3_DIR):
+            if fn.endswith(".h5") and (only is None or "O3" in only):
+                os.symlink(os.path.join(O3_DIR, fn),
+                           os.path.join(SWAP_DIR, fn))
+                swapped["O3"] = fn
+
+    orig = orig_dir
     retained = {}
-    for mol in ("O3", "O2"):
+    for mol in ("O3", "O2", "H2O", "CH4", "CO2"):
+        if mol in swapped:
+            continue
         src = os.path.join(orig, f"opac{mol}.dat")
         if os.path.exists(src):
             os.symlink(src, os.path.join(SWAP_DIR, f"opac{mol}.dat"))
@@ -191,8 +209,8 @@ def validate(n_planets):
     return ok
 
 
-def generate():
-    path = build_swap_dir()
+def generate(only=None, tag="", with_o3=False):
+    path = build_swap_dir(only, with_o3)
     configure_opacities(path)
     from taurex.cache import OpacityCache
     print("molecules visible to TauREx:",
@@ -227,8 +245,9 @@ def generate():
         if bad.any():
             print(f"    dropping {bad.sum()} invalid rows")
             out = out[~bad]
-        out.to_parquet(OUT_FMT.format(i))
-        print(f"    wrote {OUT_FMT.format(i)} ({len(out)} rows)\n")
+        name = OUT_FMT.format(i).replace(".parquet", f"{tag}.parquet")
+        out.to_parquet(name)
+        print(f"    wrote {name} ({len(out)} rows)\n")
 
 
 def main():
@@ -239,11 +258,18 @@ def main():
                     help="generate the opacity-swapped test sets")
     ap.add_argument("--n", type=int, default=20,
                     help="planets per set for --validate")
+    ap.add_argument("--with-o3", action="store_true",
+                    help="also swap O3 to the converted HITRAN table")
+    ap.add_argument("--only", type=str, default=None,
+                    help="comma-separated molecules to swap (ablation), "
+                         "e.g. H2O; others keep their original tables")
     args = ap.parse_args()
     if args.validate:
         validate(args.n)
     elif args.generate:
-        generate()
+        only = args.only.split(",") if args.only else None
+        tag = f"_{args.only}" if args.only else ""
+        generate(only, tag + ('_o3' if args.with_o3 else ''), args.with_o3)
     else:
         ap.error("choose --validate or --generate")
 

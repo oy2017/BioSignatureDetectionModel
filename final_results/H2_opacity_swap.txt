@@ -1,9 +1,11 @@
 Frozen pipeline on opacity-swapped spectra (XGBoost)
 
+arm: 3-molecule (ExoMol H2O/CH4/CO2, O3 unchanged)
+
 H2O -> ExoMol POKAZATEL, CH4 -> ExoMol YT34to10, CO2 -> ExoMol
-UCL-4000; O3 and O2 retain their Exo-Transmit tables (ExoMolOP has no
-ozone). O3 is label-determining, so this is a LOWER BOUND on the
-effect of a complete opacity-database change.
+UCL-4000. O2 always retains its Exo-Transmit table (unused by the
+composition). O3 is unchanged in the default arm and replaced with
+HITRAN under --o3.
 
 Paired: each swapped planet is the same planet as its baseline
 counterpart, regenerated with different opacity tables only.
