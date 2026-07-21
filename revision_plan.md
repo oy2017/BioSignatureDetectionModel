@@ -28,13 +28,10 @@ Comment IDs (R1-n, R2-n) are stable across this file, commit messages, and the r
 
 ☑ complete ◐ partial ☐ open — **2 of 15 analyses complete, 6 partial, 0 manuscript sections rewritten.**
 
-Scored against what each reviewer *explicitly asked for*, not against what was
-convenient to run. Two items were previously marked complete in error and have
-been downgraded: R1-3 covers about 4 of seven requested axes, and R1-8's conclusion
-rests on within-simulator perturbations rather than the independent simulation
-environments and observational spectra he requested. An over-optimistic tracker
-is the specific thing that would let this be resubmitted with gaps the editor
-warned about.
+Status is scored against what each reviewer explicitly asked for. R1-3 covers
+about 4 of the seven requested axes; R1-8's evidence is within-simulator rather
+than the independent simulation environments and observational spectra he asked
+for, so both stay partial.
 
 > The reviewer noted explicitly that these are matters of experimental validation rather than presentation. A rewrite-only response will not be sufficient; the revision needs new experiments alongside narrowed claims.
 
@@ -269,9 +266,9 @@ The densest row cannot be compared at all. Interpolating deck accuracy at 0.25x
 requires spanning the gap between the deck at 0.30x and the deck at 0.03x, and
 the latter is the featureless set where accuracy collapses to chance for lack of
 signal. There is no non-featureless deck below 0.30x to interpolate against, so
-the +1.8 is an artefact of that gap rather than a measurement. **Do not claim
-anything about the deck–haze ordering below ~0.4x amplitude without generating a
-deck between 0.30x and 0.03x** — a deck near 3e1 Pa would close it.
+the +1.8 is an artefact of that gap rather than a measurement. **The comparison
+therefore supports no claim about the deck–haze ordering below ~0.4x amplitude**;
+closing it would require a deck between 0.30x and 0.03x (near 3e1 Pa).
 
 The deck-versus-haze comparison must be derived from the paired sets directly.
 The paired and unpaired degradations do not differ by a common offset, so a
@@ -518,9 +515,7 @@ So DACE is easy to *obtain* and non-trivial to *use*: the conversion pipeline is
 
 Two things to state alongside it. The near-threshold bin is where the residual error concentrates, which explains part of the 11% overall error rate as a property of the labelling rather than of the model — connect this to the §4.3 error-clustering result. And the mean-probability column is a second, independent piece of evidence for the calibration claim in §4.4: the model's confidence tracks the actual ambiguity of the label.
 
-**The same table cuts the other way, and the manuscript must say so first.** 64.8% of the test set lies a dex or more from the cutoff, where accuracy is 95.25%. Those are comparisons between atmospheres differing by a factor of ten or more in the deciding abundance — chemically large differences, and correspondingly easy calls. A reviewer reading this table can fairly say that the 88.92% headline is weighted toward well-separated cases, and that performance in the regime where the distinction is genuinely hard is far weaker. That is a true statement about the benchmark. It follows from the generation design — abundances drawn uniformly across several decades of log abundance — not from the margin analysis; the analysis only makes it visible.
-
-Concede it in the same breath as the finding. Presenting "errors concentrate where labels are arbitrary" while omitting "and the headline is correspondingly weighted toward easy separations" reads as spin to anyone holding the table, and Reviewer 1 has already shown he reads closely. Stating both costs nothing and converts a discoverable weakness into evidence of careful self-assessment. The difficulty distribution also belongs in the §3 Assumptions subsection (R2-4) as a stated property of the design.
+**The same table also bounds the headline.** 64.8% of the test set lies a dex or more from the cutoff, where accuracy is 95.25% — comparisons between atmospheres differing by more than a factor of ten in the deciding abundance, which are easy calls. The 88.92% headline is therefore weighted toward well-separated cases, and performance where the distinction is genuinely hard is much weaker. This follows from the generation design (abundances drawn uniformly across several decades of log abundance); the margin analysis makes it visible. Report both halves of the table together, and record the difficulty distribution in the §3 Assumptions subsection (R2-4).
 
 #### Threshold sensitivity — results
 
@@ -624,13 +619,13 @@ Linear methods for comparison: PLS-DA plateaus at 73.93%, LDA reaches 68.22% on 
 
 #### Three findings
 
-**At two components the supervised projection wins by 8.6 points.** This is the sharpest available demonstration that variance rank is the wrong selection criterion: constrained to two directions, the two highest-variance ones give chance-level performance while two label-informed directions give 60.7%.
+**At two components the supervised projection wins by 8.6 points.** This shows that variance rank is not the right selection criterion: constrained to two directions, the two highest-variance ones give chance-level performance while two label-informed directions give 60.7%.
 
 **Beyond roughly five components the two converge**, and at 102 they are indistinguishable. PCA is therefore not privileged — it is an adequate basis that retains the information once enough dimensions are kept, not a transformation that isolates anything.
 
 **The task is substantially nonlinear.** Both linear methods cap in the 63–74% range against 88.9% for the nonlinear classifier on the same features. This explains the tree-versus-network gap in §4.1 more directly than the retracted PCA interpretation did, and it is worth stating as a finding in its own right.
 
-**Still outstanding:** alternative feature weighting strategies. No work planned; consider whether to attempt it or state in the response that the other three ablations resolve the inconsistency he identified.
+**Still outstanding:** alternative feature weighting strategies, the fourth of his requested ablations. Not run. The other three ablations address the inconsistency he identified, so the response can rest on them.
 
 **Where:** §4.2 (supervised-DR comparison and the nonlinearity finding), §3.2 (the reframing of what PCA is doing).
 
