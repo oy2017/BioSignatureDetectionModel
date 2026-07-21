@@ -206,10 +206,12 @@ aerosol out-damaging anything):
 
 Both families exceed the worst instrumental systematic tested, so *"aerosols are
 the largest single source of degradation in this work, exceeding every
-instrumental systematic tested"* may be written as originally intended. The
-margin is now ~3 points for both families rather than the ~2 recorded for the
-deck, so the earlier warning not to lean on the deck comparison is no longer
-needed — though the honest framing remains that the two families are comparable
+instrumental systematic tested"* is supportable. **Quote the margin with it:**
+the deck clears correlated noise by 3.3 points and the haze by 3.6, against an
+XGBoost run-to-run scatter of about 0.4 points. That is a real margin but a
+narrow one, and both figures come from the muted end of the range (0.30x and
+0.25x feature amplitude), so state the amplitude alongside them. Writing the
+claim without those two qualifiers is what would invite challenge — though the honest framing remains that the two families are comparable
 to each other rather than the deck being clearly milder.
 
 Two further things the paired data sharpens. The thinnest haze is now
@@ -242,7 +244,7 @@ concession that whitening buys little where it is meant to help. R1-8's SNR-5
 deficit of 11.0 ± 1.7 points is far outside the scatter and is unaffected.
 XGBoost is deterministic and none of this touches it.
 
-Two caveats to carry into the manuscript. At 1e1 Pa the feature amplitude is 0.03x, so the spectra are effectively featureless and chance-level accuracy reflects the absence of retrievable signal rather than a failure of the classifier; the informative range is 1e5 to 1e3 Pa. And single MLP training runs are not quotable — the clear baseline varies by several points between identically-configured runs (76.4–80.7% observed) — so the MLP values in the table above are **means ± one standard deviation over five training restarts** (`final_results/H2_aerosol_paired.txt`). Any quoted MLP number must carry the ± and say it is a restart average. XGBoost is deterministic (88.92% every run) and needs no averaging.
+Two caveats to carry into the manuscript. At 1e1 Pa the feature amplitude is 0.03x and accuracy sits 2.3 points above chance, so those spectra are effectively featureless and the near-chance result reflects absent signal rather than a failure of the classifier. **The informative range is 1e5 to 1e2 Pa.** Use that boundary consistently: an earlier version of this document stopped the range at 1e3 Pa while the aerosol-versus-systematics claim was supported by the 1e2 Pa point, which a reviewer holding both statements could fairly call cherry-picking. The 1e2 Pa deck retains 13.7 points above chance against the 1e1 Pa deck's 2.3, so including it and excluding 1e1 Pa is the defensible cut. And single MLP training runs are not quotable — the clear baseline varies by several points between identically-configured runs (76.4–80.7% observed) — so the MLP values in the table above are **means ± one standard deviation over five training restarts** (`final_results/H2_aerosol_paired.txt`). Any quoted MLP number must carry the ± and say it is a restart average. XGBoost is deterministic (88.92% every run) and needs no averaging.
 
 #### Independent radiative transfer code — results
 
@@ -311,7 +313,7 @@ weakening it.
 
 `generate_opacity_swap_testset.py` regenerates the forward model for the **exact planets in the five committed clear test sets** with the H₂O, CH₄ and CO₂ opacity tables replaced by ExoMol line lists (POKAZATEL, YT34to10, UCL-4000, in TauREx format from ExoMolOP); `evaluate_opacity_swap.py` scores them against the frozen pipeline. Outputs: `final_results/H2_opacity_swap.{txt,csv}`.
 
-**This is the cleanest single-variable experiment in the R1-3 set.** The radiative transfer code, atmospheric structure, geometry, wavelength grid, labelling rule and the planets themselves are all held fixed; only the molecular opacity data changes. Pairing is exact — every swapped planet is the same planet as its baseline counterpart, regenerated — so the comparison sidesteps the sampling drift entirely and can be made per planet rather than per distribution. The harness is validated by regenerating with the *original* tables, which reproduces the committed spectra to 1.2e-14 relative (`--validate`).
+**This and the Exo-Transmit run are the two single-variable experiments in the R1-3 set**, and they are complementary: this one changes the opacity data with the code fixed, that one changes the code with the opacity data fixed. The radiative transfer code, atmospheric structure, geometry, wavelength grid, labelling rule and the planets themselves are all held fixed; only the molecular opacity data changes. Pairing is exact — every swapped planet is the same planet as its baseline counterpart, regenerated — so the comparison sidesteps the sampling drift entirely and can be made per planet rather than per distribution. The harness is validated by regenerating with the *original* tables, which reproduces the committed spectra to 1.2e-14 relative (`--validate`).
 
 | | Baseline (Exo-Transmit) | Swapped (ExoMol) |
 | :-- | --: | --: |
@@ -999,7 +1001,7 @@ Explain the setup first — the deck is added to the forward model itself rather
 
 Then the ceiling caveat, which stops a reader misreading the bottom row as gross incompetence:
 
-> "Below approximately 10² Pa the deck suppresses feature amplitude to under a third of its cloud-free value, and at 10¹ Pa to three per cent. Accuracy approaches chance in this regime because the spectra retain almost no diagnostic structure, which reflects the absence of retrievable signal rather than a specific failure of the classifier. The informative range for this comparison is 10⁵ to 10³ Pa."
+> "Below approximately 10² Pa the deck suppresses feature amplitude to under a third of its cloud-free value, and at 10¹ Pa to three per cent. Accuracy approaches chance in this regime because the spectra retain almost no diagnostic structure, which reflects the absence of retrievable signal rather than a specific failure of the classifier. The informative range for this comparison is 10⁵ to 10² Pa; at 10² Pa the classifier still scores 13.7 percentage points above chance, whereas at 10¹ Pa it scores 2.3."
 
 Then the applicability statement, which is the useful scientific output:
 
