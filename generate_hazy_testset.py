@@ -27,11 +27,8 @@ Design notes:
     informative suppression range; the generated sets measured
     0.86 / 0.74 / 0.58 / 0.50 / 0.30 of clear amplitude, against the deck's
     0.92 / 0.73 / 0.50 / 0.27. Comparing at matched muting is the point: at
-    equal suppression, performance differences between deck and haze isolate
-    the wavelength dependence of the opacity (a control with the haze
-    confined to P < 1e3 Pa reproduces the whole-column result, so vertical
-    structure does not drive the comparison - see
-    generate_confined_haze_control.py).
+    equal suppression, the performance difference between deck and haze is
+    measured with the overall muting held fixed.
 
   * Particle radius 0.1 um and Q0 = 40 are fixed (the TauREx defaults for
     this contribution, radius aside); the haze fills the whole atmospheric
