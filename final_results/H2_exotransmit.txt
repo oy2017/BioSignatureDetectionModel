@@ -1,0 +1,52 @@
+Frozen pipeline on Exo-Transmit spectra (independent code, identical opacities)
+
+Exo-Transmit is the code MultiREx's opacity tables come from; the .dat
+files are byte-identical. The radiative transfer implementation changes
+while every cross section stays the same file. Paired planet-by-planet
+against the committed clear test sets.
+
+Paired on 2697 of 2697 planets.
+Feature amplitude vs training set: TauREx 0.948x, Exo-Transmit 0.880x.
+Median per-planet spectral correlation: 0.9965.
+
+model                         TauREx   Exo-Transmit  change (pts)
+-----------------------------------------------------------------
+XGBoost                       88.91%         84.80%         -4.12
+MLP (5 restarts)          77.76% +/-1.4%     69.53% +/-0.8%         -8.23
+XGBoost Brier                 0.0802         0.1119       +0.0317
+
+=================================================================
+Code versus opacity data
+
+  change the OPACITY DATA, hold the code fixed (axis 2)   -16.09
+  change the CODE, hold the opacity data fixed (axis 1)    -4.12
+
+  The classifier is substantially more sensitive to which opacity
+  data is used than to which radiative transfer code evaluates it.
+  That is a statement about the physics inputs rather than about
+  simulator choice, and it is the useful form of the result: a
+  cross-code test alone would have conflated the two.
+
+=================================================================
+The difference that could not be matched
+
+  Exo-Transmit assumes constant gravity through the atmosphere;
+  TauREx integrates hydrostatically with gravity falling as altitude
+  rises. Rayleigh-only comparisons (all molecular opacity off, pure
+  H2) show mean transit depth agreeing to 0.4% - so geometry, mean
+  molecular weight and the radius convention are correct - while
+  spectral contrast differs by 4-12%, scaling with the atmosphere's
+  vertical extent relative to planet radius:
+
+     thickness/R 0.006 -> 3.7% contrast deficit
+     thickness/R 0.061 -> 7.1%
+     thickness/R 0.147 -> 11.9%
+
+  These atmospheres span 11-12 scale heights, so the top sits at up
+  to 0.15 planet radii where gravity is ~25% lower than at the base.
+  This is a genuine difference between the codes, not a setting: it
+  cannot be removed without editing Exo-Transmit's source, which
+  would defeat the point of using an independent implementation.
+  Report it as part of what 'different radiative transfer code'
+  means, and note that it inflates the measured difference relative
+  to a pure numerical-scheme comparison.
