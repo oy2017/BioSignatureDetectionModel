@@ -796,13 +796,22 @@ Defensible **only if** the Abstract scopes it clearly. "Biosignature candidate t
 
 Replace throughout — the left column is what to search for, the right what to say instead:
 
-| Current phrasing | Replace with |
-| :-- | :-- |
-| "distinguishing between biosignature and non-biosignature environments" | "recovering a predefined abundance-threshold labelling" |
-| "biosignature detection" | "biosignature-candidate labelling" / "threshold-label recovery" |
-| "detecting biosignatures in spectra" | "classifying spectra by an abundance-threshold rule" |
-| "biosignature planets" | "planets labelled positive under the CH₄/O₃ threshold rule" |
-| "identifies biosignatures" | "recovers the labelling convention" |
+Occurrence counts are from `Final Paper Manuscript (9).pdf`, so each row is a
+search that will actually hit:
+
+| Current phrasing | Occurrences | Replace with |
+| :-- | --: | :-- |
+| "distinguishing between biosignature and non-biosignature environments" | 1 | "recovering a predefined abundance-threshold labelling" |
+| "biosignature detection" | 3 | "biosignature-candidate labelling" / "threshold-label recovery" |
+
+The other phrasings considered for this table — "detecting biosignatures in
+spectra", "biosignature planets", "identifies biosignatures" — do not occur in
+the manuscript and need no pass.
+
+Related phrases that do occur and carry the retracted attribution, to be removed
+along with the passages quoted under §3.2, §4.1, §4.2 and §5 below: "chemically
+informative" (4), "chemically critical" (1), "chemically relevant" (1). The
+final check requires all three at zero.
 
 Keep "biosignature" only where it refers to the underlying *scientific concept* (the Introduction's motivation, the CH₄/O₃ disequilibrium rationale, the discussion of what real detection would require). Remove it wherever it describes *what the model does*.
 
