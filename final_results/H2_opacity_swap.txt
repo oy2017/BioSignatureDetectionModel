@@ -1,0 +1,31 @@
+Frozen pipeline on opacity-swapped spectra (XGBoost)
+
+H2O -> ExoMol POKAZATEL, CH4 -> ExoMol YT34to10, CO2 -> ExoMol
+UCL-4000; O3 and O2 retain their Exo-Transmit tables (ExoMolOP has no
+ozone). O3 is label-determining, so this is a LOWER BOUND on the
+effect of a complete opacity-database change.
+
+Paired: each swapped planet is the same planet as its baseline
+counterpart, regenerated with different opacity tables only.
+
+ set      n  base acc  swap acc   delta  base Brier  swap Brier      amp b/s  flipped
+--------------------------------------------------------------------------------------------
+   1    539    87.76%    70.32% -17.44%      0.0962      0.2237  0.98/0.96      30.1%
+   2    534    90.07%    76.40% -13.67%      0.0690      0.1829  0.84/0.79      23.0%
+   3    547    88.67%    72.03% -16.64%      0.0772      0.2048  1.07/1.03      27.2%
+   4    537    89.94%    72.07% -17.88%      0.0642      0.2085  0.88/0.90      27.2%
+   5    540    88.15%    73.33% -14.81%      0.0943      0.1965  0.98/0.95      26.3%
+--------------------------------------------------------------------------------------------
+ all   2697    88.91%    72.82% -16.09%      0.0802      0.2033                 26.8%
+
+========================================================================
+Pooled: accuracy 88.91% -> 72.82% (-16.09 points), F1 0.889 -> 0.758, Brier 0.0802 -> 0.2033
+Predicted-positive rate 49.5% -> 61.8% (true positive rate 50.3%); mean predicted probability 0.497 -> 0.602
+Individual predictions changed for 722 of 2697 planets (26.8%).
+Median |change| in predicted probability: 0.1368
+
+Of the planets whose prediction flipped:
+   161 were correct positives that became negative
+   417 were correct negatives that became positive
+    34 were incorrect positives that became correct
+   110 were incorrect negatives that became correct
