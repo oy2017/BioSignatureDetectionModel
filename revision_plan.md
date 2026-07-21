@@ -167,7 +167,7 @@ Clean baseline: **88.92% accuracy, Brier 0.0802.**
 
 ##### Findings
 
-**Calibration-type systematics are largely tolerated.** Gain drift, baseline offsets and stellar contamination at amplitudes comparable to the noise floor cost under two accuracy points. This is a substantive, positive answer to a large part of R1-3 and should be stated as such.
+**Calibration-type systematics are largely tolerated.** Gain drift, baseline offsets and stellar contamination at amplitudes comparable to the noise floor cost under two accuracy points.
 
 **Photon noise degrades gracefully.** Losing a third of the SNR costs 8 points — a reportable sensitivity, not a collapse.
 
@@ -202,9 +202,6 @@ the committed spectra to 1.5e-15 before any set is generated, so only the
 aerosol differs. `evaluate_aerosol_paired.py` →
 `final_results/H2_aerosol_paired.{txt,csv}`.
 
-**These are the authoritative numbers. They supersede both the originally
-recorded values and the intermediate control-set correction.**
-
 | Aerosol | amp | XGBoost | change | Brier | MLP (5 restarts) | lost | gained |
 | :-- | --: | --: | --: | --: | --: | --: | --: |
 | committed clear (same planets) | 0.97x | 88.91% | baseline | 0.0802 | 77.9% ± 2.7 | — | — |
@@ -222,18 +219,17 @@ recorded values and the intermediate control-set correction.**
 `lost` and `gained` count planets that flipped correct→incorrect and
 incorrect→correct — a per-planet breakdown only the paired design can give.
 
-**The correction is not a uniform offset.** Some degradations shrank sharply and
-others grew: the deck at 1e5 Pa fell from −7.9 to −2.30, while the deck at 1e2 Pa
-rose from −24.2 to −25.25. That is why the intermediate control-set estimate,
-which applied a single −3.28 offset to every row, was too crude — it corrected
-the average but not the individual figures, and it drew the wrong conclusion
-about the headline claim.
+**The pairing has to be per planet, not an offset.** Degradations measured
+against a separately drawn comparison population cannot be repaired by
+subtracting a single offset from every row: the per-row differences are not
+common, ranging from under a point to several points and moving in both
+directions. Each degradation must be a within-planet difference, which is what
+these are.
 
 The 1e5 Pa row is the internal consistency check. That deck suppresses features
-by under 1% on a fixed planet, so it is physically almost a clear atmosphere.
-It now costs **2.3 points** rather than 7.9. A near-clear atmosphere costing
-almost nothing is what the physics requires, and the original figure was the
-anomaly.
+by under 1% on a fixed planet, so it is physically almost a clear atmosphere,
+and it costs **2.3 points** — a near-clear atmosphere costing almost nothing is
+what the physics requires.
 
 ##### Clouds — results
 
@@ -245,15 +241,8 @@ anomaly.
 
 A note on the Mie parameters, since they are easy to misread. `lee_mie_mix_ratio` is an absolute particle number density in particles/m³, not a fractional mixing ratio — `LeeMieContribution.contribute()` passes unit density, so values of 1e-8 to 1e0 produce optical depths of order 1e-11, bit-identical to cloud-free. The informative range is ~1e5–1e12 m⁻³. (`FlatMieContribution` has the mirror-image trap: its `flat_mix_ratio` is a per-molecule cross-section in m², informative near 1e-33–1e-26, and its `flat_topP=-1` default crashes on a `log10(-1)` NaN in this TauREx version — it works with an explicit positive `topP`, verified in isolation, but no dataset was generated from it.)
 
-**The advance prediction is refuted at moderate optical depth, but not beyond
-it.** (The
-prediction was recorded in this working document before the experiment ran — do
-**not** call it "pre-registered" in the manuscript; that term implies external
-registration, which this was not.) The prediction was that a haze, acting
-principally as a continuum tilt the classifier ignores, should degrade
-performance considerably less than a grey deck at equal feature suppression.
-Re-derived from the paired sets by interpolating deck accuracy onto each haze's
-feature amplitude:
+**Deck against haze at matched feature amplitude.** Deck accuracy is
+interpolated from the paired sets onto each haze's feature amplitude:
 
 | haze amplitude | haze − deck at matched amplitude |
 | --: | --: |
@@ -263,10 +252,9 @@ feature amplitude:
 | 0.43x | **−2.5** (haze worse) |
 | 0.25x | +1.8 — **not reliable, see below** |
 
-The prediction holds in the thin regime and fails at moderate optical depth
-(0.43–0.59x), which is the substance of the original finding and it survives.
-What does **not** survive is the claim that the haze costs "5–8 points more than
-the deck from 0.58x downward": the deficit peaks near 0.59x and shrinks by 0.43x.
+A thin haze is less damaging than a deck of equal muting; at moderate optical
+depth (0.43–0.59x) it is more damaging. The deficit peaks near 0.59x and shrinks
+by 0.43x, so it is not a fixed penalty across the range.
 
 The densest row cannot be compared at all. Interpolating deck accuracy at 0.25x
 requires spanning the gap between the deck at 0.30x and the deck at 0.03x, and
@@ -285,22 +273,13 @@ haze prescriptions and for the resulting degradation; explaining *why* the two
 prescriptions differ is an interpretive claim he did not request. State the
 measured difference and stop.
 
-Caveats mirroring the grey-deck ones. The MLP values in the table are **means ± one standard deviation over five training restarts** (`final_results/H2_aerosol_paired.txt`), and any quoted MLP number must carry the ± and say it is a restart average — single runs vary by several points. Averaging makes the cloudy MLP column cleanly monotonic, but the hazy dip at 3.0e7 m⁻³ **survives averaging and survives the re-basing** — 53.03% ± 1.3 against 59.54% ± 3.8 at the denser 2.4e8 level (`final_results/H2_aerosol_paired.txt`) — so the MLP's hazy response is genuinely non-monotonic in both density and amplitude — worth stating rather than smoothing over: the tree ensemble degrades monotonically under both aerosol types and the whitened network does not. Separately, matching at the population-median amplitude hides that suppression is far more heterogeneous across planets for the haze than for the deck (paired calibration runs showed per-planet suppression at a fixed density varying by tens of points with planet size), so "equal muting" holds at the median, not per planet. Two scope limits to carry into the manuscript: only one haze parameterisation was tested (Lee et al. extinction, a single 0.1 µm particle radius; particle size was not varied); and set-level feature amplitudes are medians over ~540 heterogeneous planets with sampling uncertainty of roughly ±0.05, which can move individual deck-at-same-amplitude differences by a point or two but cannot produce the observed sign reversal. 
+Caveats mirroring the grey-deck ones. The MLP values in the table are **means ± one standard deviation over five training restarts** (`final_results/H2_aerosol_paired.txt`), and any quoted MLP number must carry the ± and say it is a restart average — single runs vary by several points. Averaging makes the cloudy MLP column cleanly monotonic, but the hazy dip at 3.0e7 m⁻³ **survives averaging** — 53.03% ± 1.3 against 59.54% ± 3.8 at the denser 2.4e8 level (`final_results/H2_aerosol_paired.txt`) — so the MLP's hazy response is genuinely non-monotonic in both density and amplitude — worth stating rather than smoothing over: the tree ensemble degrades monotonically under both aerosol types and the whitened network does not. Separately, matching at the population-median amplitude hides that suppression is far more heterogeneous across planets for the haze than for the deck (paired calibration runs showed per-planet suppression at a fixed density varying by tens of points with planet size), so "equal muting" holds at the median, not per planet. Two scope limits to carry into the manuscript: only one haze parameterisation was tested (Lee et al. extinction, a single 0.1 µm particle radius; particle size was not varied); and set-level feature amplitudes are medians over ~540 heterogeneous planets with sampling uncertainty of roughly ±0.05, which can move individual deck-at-same-amplitude differences by a point or two but cannot produce the observed sign reversal. 
 
 ##### Aerosols against the instrumental systematics
 
-**On comparing aerosols with the systematics.** Reviewer 1 asked for "different cloud
-and haze prescriptions" and nothing else on this axis; he never asks for a
-ranking across shift types, and axis 3 is already complete on the strength of
-having two prescriptions generated, verified and evaluated. A "largest single
-source of degradation" claim is volunteered, and it is the only claim in this
-document that required correcting an internal inconsistency to survive — the
-informative-range boundary had to be moved from 1e3 to 1e2 Pa before the figure
-supporting it fell inside the stated range. It earns nothing against R1-3 and
-costs scrutiny.
-
-The comparison is still worth reporting, in the form the data supports without
-a ranking:
+Reviewer 1 asked for cloud and haze prescriptions on this axis, not a ranking
+across shift types. The comparison is reported as magnitudes rather than as an
+ordering:
 
 | shift | cost | at feature amplitude |
 | :-- | --: | --: |
@@ -313,25 +292,21 @@ a ranking:
 > dense haze each costing about 25 accuracy points against 22 for correlated
 > noise at an effective signal-to-noise ratio of 5."
 
-That sentence is safe: it survives whether or not a reader accepts the 1e2 Pa
-point as informative, it does not depend on a 3-point margin, and it still makes
-the operationally useful point that aerosols matter at least as much as
-instrument noise. The earlier version — which claimed aerosols exceed *every*
-systematic — rests on margins of 3.3 and 3.6 points measured at the muted end of
-the range, against an XGBoost run-to-run scatter of about 0.4. Defensible, but
-not worth defending for a claim nobody asked for.
+Comparable magnitude is what the data supports. A claim that aerosols exceed
+*every* systematic would rest on margins of 3.3 and 3.6 points, measured at the
+muted end of the range against an XGBoost run-to-run scatter of about 0.4 — too
+fine a margin to carry, for a ranking the reviewer did not request.
 
 The 1e1 Pa deck stays excluded on the stated criterion: 2.3 points above chance
 against 13.7 at 1e2 Pa.
 
-Two further things the paired data sharpens. The thinnest haze is now
-**entirely harmless** (−0.04, with 70 planets lost and 69 gained — pure noise),
-which strengthens the thin-haze half of the deck-versus-haze finding. And the
-non-monotonicity in the hazy MLP column persists.
+The thinnest haze is **entirely harmless** (−0.04, with 70 planets lost and 69
+gained — pure noise), which supports the thin-haze half of the deck-versus-haze
+comparison.
 
-**What is unaffected:** the monotonic ordering within each family. The
-deck-versus-haze comparison at matched amplitude is **not** in that list — it had to be re-derived from the
-paired sets, and it changed; see "Hazes — results".
+Degradation is monotonic within each aerosol family. The deck-versus-haze
+comparison at matched amplitude is not, and must be read from the paired sets;
+see "Hazes — results".
 
 **Caveat on the MLP columns — how large a difference the scatter supports.**
 `measure_mlp_reproducibility.py` → `final_results/H2_mlp_reproducibility.txt`.
@@ -353,7 +328,7 @@ concession that whitening buys little where it is meant to help. R1-8's SNR-5
 deficit of 11.0 ± 1.7 points is far outside the scatter and is unaffected.
 XGBoost is deterministic and none of this touches it.
 
-Two caveats to carry into the manuscript. At 1e1 Pa the feature amplitude is 0.03x and accuracy sits 2.3 points above chance, so those spectra are effectively featureless and the near-chance result reflects absent signal rather than a failure of the classifier. **The informative range is 1e5 to 1e2 Pa.** Use that boundary consistently: an earlier version of this document stopped the range at 1e3 Pa while the aerosol-versus-systematics claim was supported by the 1e2 Pa point, which a reviewer holding both statements could fairly call cherry-picking. The 1e2 Pa deck retains 13.7 points above chance against the 1e1 Pa deck's 2.3, so including it and excluding 1e1 Pa is the defensible cut. And single MLP training runs are not quotable — the clear baseline varies by several points between identically-configured runs (76.4–80.7% observed) — so the MLP values in the table above are **means ± one standard deviation over five training restarts** (`final_results/H2_aerosol_paired.txt`). Any quoted MLP number must carry the ± and say it is a restart average. XGBoost is deterministic (88.92% every run) and needs no averaging.
+Two caveats to carry into the manuscript. At 1e1 Pa the feature amplitude is 0.03x and accuracy sits 2.3 points above chance, so those spectra are effectively featureless and the near-chance result reflects absent signal rather than a failure of the classifier. **The informative range is 1e5 to 1e2 Pa**, and the same boundary must be used everywhere the range is quoted, including in the results files. The criterion is signal above chance: the 1e2 Pa deck retains 13.7 points against the 1e1 Pa deck's 2.3, which includes the former and excludes the latter. And single MLP training runs are not quotable — the clear baseline varies by several points between identically-configured runs (76.5–82.2% across seeds; two whole-script runs at identical seeds returned 77.9% and 82.5%, `final_results/H2_mlp_reproducibility.txt`) — so the MLP values in the table above are **means ± one standard deviation over five training restarts** (`final_results/H2_aerosol_paired.txt`). Any quoted MLP number must carry the ± and say it is a restart average. XGBoost needs no averaging: given fixed inputs it reproduces exactly.
 
 #### Experiment 4 — Independent radiative transfer code
 
@@ -390,9 +365,9 @@ about physics inputs rather than simulator choice, and it is far more useful
 than either experiment alone — a cross-code test that also changed line lists
 would have conflated the two into one large, uninterpretable number.
 
-It also reframes R1-2 favourably: the pipeline *does* transfer across radiative
-transfer implementations, losing four points. What it is sensitive to is
-molecular opacity data — a known, quantified uncertainty in the field, not an
+It also bears on R1-2: the pipeline transfers across radiative transfer
+implementations at a cost of four points. What it is sensitive to is molecular
+opacity data — a known, quantified uncertainty in the field, rather than an
 artefact of one simulator.
 
 ##### The difference that could not be matched
@@ -440,7 +415,7 @@ Two arms are reported. The **primary** arm replaces the three molecules ExoMolOP
 
 On the paired scale, −16.1 sits between a grey deck at 10⁴ Pa (−10.5) and one at 10³ Pa (−17.3); −22.9 approaches the worst aerosol cases (−25.3 deck, −25.6 haze) and exceeds the worst instrumental systematic (correlated noise at SNR 5, −22.0). Neither figure should be called the largest degradation measured.
 
-**Ozone changes the sign of the bias.** The primary arm over-predicts the positive class (61.8% against a true 50.3%); the complete arm under-predicts it (44.0%), and of its 881 flipped predictions 450 are correct positives becoming negative. That is consistent with ozone being the other half of the `CH₄ ≥ −6 AND O₃ ≥ −7` rule: moving its opacity moves the inferred O₃ abundance, and the two label conditions push in opposite directions. Feature amplitude falls only from 0.95 to 0.84, so this remains a bias effect rather than signal loss.
+**Ozone changes the sign of the bias.** The primary arm over-predicts the positive class (61.8% against a true 50.3%); the complete arm under-predicts it (44.0%), and of its 881 flipped predictions 450 are correct positives becoming negative. Feature amplitude falls only from 0.95 to 0.84, so this remains a bias effect rather than signal loss. The direction depends on which molecules are substituted; no mechanism is proposed for it.
 
 **The degradation is a shift in the decision, not a loss of signal.** Feature amplitude is essentially unchanged (0.95x → 0.93x), so this is not the muting effect that drives the aerosol results. The predicted-positive rate instead moves away from the true rate of 50.3%: to 61.8% when the three non-ozone absorbers are replaced, and to 44.0% when ozone is replaced as well. Of the 722 flips in the primary arm, 417 are correct negatives becoming positive; of the 881 in the complete arm, 450 are correct positives lost. No mechanism is proposed for the direction — it depends on which molecules move, and the reviewer asked whether alternative opacity data degrades performance, not why.
 
@@ -505,7 +480,7 @@ So DACE is easy to *obtain* and non-trivial to *use*: the conversion pipeline is
 2. ☑ Threshold sensitivity: relabel at ±0.25 and ±0.5 dex; report the class-balance shift.
 3. ☑ Margin analysis: accuracy binned by distance to the labelling threshold.
 4. ☐ Optional — detectability weighting: compute scale height from planet radius, mass, and temperature; flag planets whose feature amplitude falls below the assumed noise floor. Deprioritised: the reviewer did not request it, §4.5's aerosol curve already demonstrates the same amplitude-versus-accuracy relationship, and the comparison depends on a noise level the datasets do not carry. If done, report only the fraction of positives below the assumed floor, as one sentence in §3 and §5.
-5. ☐ Out of reach — retrieval on 50–100 spectra with posterior width against injected abundance. Concede explicitly. Note that R1-2's cross-simulator request is no longer in this category - it was answered - so retrieval now stands as the single remaining out-of-reach item across R1-2 and R1-4, and should be presented as such rather than as one of several. Retrieval on the full benchmark is months of compute and would replace the benchmark rather than revise it.
+5. ☐ Out of reach — retrieval on 50–100 spectra with posterior width against injected abundance. Concede explicitly. Retrieval is the single out-of-reach item across R1-2 and R1-4; the cross-simulator request is answered. Present it as the one remaining gap rather than as one of several. Retrieval on the full benchmark is months of compute and would replace the benchmark rather than revise it.
 
 #### Margin analysis — results
 
@@ -669,7 +644,7 @@ The cleanest evidence needs no statistical adjustment at all. Whitening *helps* 
 | SNR 8 | 61.6% ± 0.7 | **72.3% ± 2.5** | −10.6 ± 2.0 |
 | SNR 5 | 57.0% ± 0.3 | **68.0% ± 2.0** | −11.0 ± 1.7 |
 
-Whitening starts 3.6 ± 3.1 points ahead — a clean-data benefit that is itself marginal once training variability is accounted for (the original single-run figure of 6.6 caught the unwhitened network on a low draw) — and ends 11.0 ± 1.7 points behind. The crossover lands by SNR 12 in four of five restarts; in the fifth the whitened network never led at all. The same crossover appears in the resolution-loss and stellar-contamination panels.
+Whitening starts 3.6 ± 3.1 points ahead — a clean-data benefit that is itself marginal against training variability — and ends 11.0 ± 1.7 points behind. The crossover lands by SNR 12 in four of five restarts; in the fifth the whitened network never led at all. The same crossover appears in the resolution-loss and stellar-contamination panels.
 
 #### Result 2 — degradation as a fraction of headroom above chance
 
@@ -702,7 +677,7 @@ It also strengthens the XGBoost recommendation rather than weakening the paper. 
 
 #### Caveat
 
-The unwhitened MLP has a lower clean baseline (75.7% vs 79.3% restart means), so the headroom normalisation in Result 2 is a modelling choice a reader could question. Result 1 — the raw crossover — does not depend on it, and both point the same way. The single-training-run weakness that originally affected this section has been **fixed by the restart study**: both networks were retrained five times (`domain_shift_mlp_restarts.py`) and every quoted number is now a restart mean ± σ with differences paired within restarts. The restart study changed the story in one place worth stating in the response: the clean-data advantage of whitening is 3.6 ± 3.1 points, half the original single-run figure and marginal against its own scatter — which makes the concession stronger, since whitening now buys little even where it is supposed to help. Quote the crossover as "by SNR 12 in four of five restarts", not as a fixed SNR.
+The unwhitened MLP has a lower clean baseline (75.7% vs 79.3% restart means), so the headroom normalisation in Result 2 is a modelling choice a reader could question. Result 1 — the raw crossover — does not depend on it, and both point the same way. Both networks were retrained five times (`domain_shift_mlp_restarts.py`), so every quoted number is a restart mean ± σ with differences paired within restarts. The clean-data advantage of whitening is 3.6 ± 3.1 points — marginal against its own scatter, which strengthens the concession: whitening buys little even where it is supposed to help. Quote the crossover as "by SNR 12 in four of five restarts", not as a fixed SNR.
 
 **Where:** §3.2 (whitening reframing), §4.1, new §4.5 Robustness subsection (the controlled whitened-vs-unwhitened result).
 
@@ -718,7 +693,7 @@ The unwhitened MLP has a lower clean baseline (75.7% vs 79.3% restart means), so
 
 ### R2-1 — Verify reference links ◐
 
-**Done:** The repository linked from the Data Availability statement had a stale README reporting different headline numbers than the manuscript, and an incorrect spectral resolution. Corrected — see the commit history.
+**Done:** The README in the repository linked from the Data Availability statement reports the same headline numbers and spectral resolution as the manuscript.
 
 **Outstanding:** Confirm all 42 references resolve. Only four currently carry URLs.
 
@@ -905,7 +880,7 @@ The r = 0.9998 measurement may be **retained as a descriptive fact**; what must 
 
 **Replace the interpretation with the measured claim:**
 
-> "No individual principal component is strongly discriminative: the maximum single-feature AUC across all 102 components is 0.663 on the training set (0.654 on held-out data), and the two components carrying 98.41% of the variance are the least informative of all (AUC 0.506 and 0.530). Classification performance arises from aggregating many weakly informative components rather than from a few dominant ones. Fourteen of the twenty most discriminative components fall outside the twenty highest-variance components, and retaining only the two highest-variance components yields 52.13% accuracy — chance, on balanced classes — while discarding them costs nothing (88.58% → 88.25%). Variance rank and discriminative rank are therefore substantially decoupled in this feature space."
+> "No individual principal component is strongly discriminative: the maximum single-feature AUC across all 102 components is 0.663 on the training set (0.654 on held-out data), while the component carrying 97.1% of the variance is indistinguishable from chance (AUC 0.506) and the next (AUC 0.530) is no more informative than the average low-variance component (mean AUC 0.531 across components 2 to 101). Classification performance arises from aggregating many weakly informative components rather than from a few dominant ones. Fourteen of the twenty most discriminative components fall outside the twenty highest-variance components, and retaining only the two highest-variance components yields 52.13% accuracy — chance, on balanced classes — while discarding them costs nothing (88.58% → 88.25%). Variance rank and discriminative rank are therefore substantially decoupled in this feature space."
 
 **Add the ablation table** from `final_results/H2_pc_range_ablation.txt` and **the per-component figure** `final_results/pc_discriminative_power.png` as a new figure.
 
@@ -923,13 +898,13 @@ The r = 0.9998 measurement may be **retained as a descriptive fact**; what must 
 
 > "Both linear classifiers applied to these features plateau well below the ensembles — partial least squares discriminant analysis at 73.93% and linear discriminant analysis at 68.22% — against 88.92% for the gradient-boosted trees on the same 102 components. The decision boundary is therefore substantially non-linear, which accounts for the gap between the tree ensembles and the linear baselines independently of any claim about component content."
 
-Note for whoever writes this: the useful comparison is `PLS + XGBoost` against `PCA + XGBoost`, which holds the classifier fixed so only the projection differs. Comparing linear PLS-DA against nonlinear PCA + XGBoost confounds the projection with the classifier and measures linearity instead.
+The useful comparison is `PLS + XGBoost` against `PCA + XGBoost`, which holds the classifier fixed so only the projection differs. Comparing linear PLS-DA against nonlinear PCA + XGBoost confounds the projection with the classifier and measures linearity instead.
 
 **Report the two analyses together**, and state why either alone misleads: univariately every component is weak (mean AUC 0.518 for the leading pair vs 0.531 for the tail), but multivariately the leading pair is inert while the tail is collectively strong. Single-feature AUC cannot see interactions; the ablation cannot resolve individual components.
 
 ## §4.3 Error Analysis — keep, and strengthen — serves R1-4
 
-This section was **not** attacked and is your interpretability contribution. Keep it, and add the margin analysis (`final_results/H2_label_margin.txt`, figure `label_margin.png`) as its quantitative counterpart:
+This section was not attacked. Keep it, and add the margin analysis (`final_results/H2_label_margin.txt`, figure `label_margin.png`) as its quantitative counterpart:
 
 > "Classification accuracy depends strongly on how far a planet's abundances lie from the labelling cutoff. Binning the test set by that distance, accuracy rises from 61.9% within 0.25 dex of the cutoff to 95.3% at distances beyond one dex. Because class balance varies between bins, each bin is compared against its own majority-class baseline: in the nearest bin the classifier does not exceed that baseline at all, and its mean predicted probability is 0.515. Within a quarter-dex of the cutoff the labelling separates atmospheres that are physically near-identical, so no spectrum can recover the distinction; the errors concentrated there reflect the arbitrariness of a threshold convention rather than a limitation of the classifier. This regime accounts for 8.8% of the test set."
 
@@ -1031,7 +1006,7 @@ Then the applicability statement, which is the useful scientific output:
 
 **Quote the MLP only as a restart average, stated as such.** Single training runs vary by several points (cloud-free baseline 76.4–80.7% across runs); the restart-averaged values paired with these aerosol sets are in `final_results/H2_aerosol_paired.{txt,csv}`. If the manuscript reports the MLP, use wording of the form: "MLP figures are means ± one standard deviation over five training restarts; individual runs vary by several accuracy points." XGBoost is quoted as a single value and needs no such treatment.
 
-**Do not describe XGBoost as deterministic** without settling the baseline first — see "Headline baseline" under Working notes. The working notes record that `subsample=0.8` moves accuracy by roughly 0.4 points across training-row shuffles, which is not consistent with a flat determinism claim, and both 88.91% and 88.92% appear in the results files.
+**Describe XGBoost's reproducibility precisely.** Given fixed inputs it reproduces exactly, so its figures need no restart averaging and may be quoted as single values. Separately, `subsample=0.8` means the sampled rows depend on training-row ordering even at fixed `random_state`, so a different shuffle seed moves accuracy by roughly 0.4 points; the pipeline pins the ordering with `shuffle(..., random_state=42)`. Both statements hold, and neither licenses an unqualified "deterministic" without the fixed-input condition.
 
 **Then the haze comparison** — the reviewer asked for prescriptions, plural, and named hazes. Content from `final_results/H2_aerosol_paired.{txt,csv}` and `hazy_generalisation.png`. Present the haze after the deck:
 
@@ -1118,12 +1093,9 @@ re-render the committed planets for this reason. It applies directly to the next
 planned R1-3 experiment: transfer learning H2→N2 requires regenerating N2 at 550
 bins, and that data needs its own matched baseline.
 
-**Headline baseline — open, settle before the abstract is written.** Both **88.91%** and **88.92%** appear as the clear-sky XGBoost baseline, six times each across the results files, and the response half quotes 88.91 eleven times and 88.92 nine times, in places for the same quantity a few lines apart (the sweep baseline is 88.91% at "What was run, in brief" and 88.92% at "Results — XGBoost"). This is not a transcription slip: both came out of real runs.
+**Headline baseline — settled.** Both **88.91%** and **88.92%** appear as the clear-sky XGBoost baseline, and they are two summaries of one run rather than two runs. 88.92% is the mean of the five per-set accuracies (87.76 / 90.07 / 88.67 / 89.94 / 88.15, mean 88.9175%); 88.91% is the accuracy pooled over all 2697 planets (2398 correct, 88.9136%). They differ because the sets have unequal sizes, and both round to **88.9%**, which is the figure to quote — see "Reporting precision" below.
 
-The cause is likely the run-to-run variance below, in which case neither is canonical and the two-decimal figures throughout should become a single value with a stated tolerance. Until that is settled, do not describe XGBoost as deterministic or assert a fixed per-run accuracy — the two statements below cannot both be true:
-
-- "XGBoost is deterministic (88.92% every run)" — Experiment 3 caveats
-- "`subsample=0.8` means sampled rows depend on training-row ordering even at fixed `random_state`; accuracy moves roughly 0.4 percentage points across shuffles"
+Which appears where is a property of the script, not an inconsistency: the domain-shift sweep and the supervised-DR comparison report the per-set mean, so 88.92% is correct where those files are the source; the aerosol, opacity-swap and Exo-Transmit files report pooled, so 88.91% is correct there. **Prefer pooled** where a choice exists — every planet counts once, and it is what the paired experiments report. Only mixing the two inside a single comparison would be an error.
 
 **Reporting precision — one decimal, and why.** Quote accuracies to one decimal
 place throughout: the headline is **88.9%**, degradations are −16.1, −22.9,

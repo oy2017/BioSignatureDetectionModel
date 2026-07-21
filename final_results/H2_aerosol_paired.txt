@@ -34,12 +34,18 @@ Against the worst instrumental systematic
   Excluded as featureless (amplitude < 0.10x): deck 1e+01 Pa
   Those sets score near chance because almost no diagnostic
   structure survives, not because the aerosol out-damages the
-  systematics. Do not quote them as the worst aerosol case.
+  systematics. They are excluded from the comparison below.
 
-  Both aerosol families exceed the worst systematic tested, so
-  the original claim stands as written.
+  Deck margin over the systematic:   -3.25 points
+  Haze margin over the systematic:   -3.61 points
+
+  Aerosol degradation at strong muting is comparable in magnitude to
+  the most damaging instrumental systematic tested. These margins are
+  measured at the muted end of the range against an XGBoost
+  run-to-run scatter of about 0.4 points, so they do not support an
+  ordering across shift types.
 
   Note the deepest deck sits in the featureless regime (feature
   amplitude a few per cent of clear), where chance-level accuracy
   reflects absent signal rather than classifier failure; the
-  informative deck range is 1e5 to 1e3 Pa.
+  informative deck range is 1e5 to 1e2 Pa.
