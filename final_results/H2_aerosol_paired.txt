@@ -1,0 +1,45 @@
+Aerosol degradation on the committed planets (paired, no draw confound)
+
+Each aerosol set is the five committed clear test sets re-rendered with
+the aerosol added and nothing else changed, so every aerosol spectrum
+has a committed clear spectrum for the identical planet. The baseline is
+therefore the committed clear data itself and the degradation is a
+within-planet difference.
+
+Models trained once on the committed training set. MLP figures are
+means +/- sd over 5 restarts. 'lost'/'gained' count planets
+that flipped correct->incorrect and incorrect->correct.
+
+test set                  amp   XGB acc   change    Brier          MLP acc    lost  gained
+------------------------------------------------------------------------------------------
+committed clear (same planets)  0.97x    88.91% (baseline)   0.0802     77.87% +/-2.7%       0       0
+deck 1e+05 Pa           0.94x    86.61%    -2.30   0.0975     76.27% +/-2.2%     105      43
+deck 1e+04 Pa           0.83x    78.38%   -10.53   0.1509     69.31% +/-1.9%     366      82
+deck 1e+03 Pa           0.58x    71.64%   -17.28   0.2117     63.82% +/-1.3%     579     113
+deck 1e+02 Pa           0.30x    63.66%   -25.25   0.2706     58.33% +/-1.4%     802     121
+deck 1e+01 Pa           0.03x    52.30%   -36.61   0.3624     52.13% +/-0.3%    1125     138
+haze 2.0e+05 m-3        0.95x    88.88%    -0.04   0.0841     75.65% +/-2.0%      70      69
+haze 2.0e+06 m-3        0.79x    81.97%    -6.95   0.1323     61.17% +/-1.3%     280      93
+haze 3.0e+07 m-3        0.59x    65.27%   -23.64   0.2782     53.03% +/-1.3%     759     122
+haze 2.4e+08 m-3        0.43x    64.94%   -23.98   0.2480     59.54% +/-3.8%     776     130
+haze 1.0e+10 m-3        0.25x    63.30%   -25.61   0.2640     63.06% +/-3.5%     855     165
+
+==========================================================================================
+Against the worst instrumental systematic
+
+  correlated noise at SNR 5 (from the sweep)    -22.00
+  worst grey deck   (deck 1e+02 Pa)         -25.25
+  worst haze        (haze 1.0e+10 m-3)    -25.61
+
+  Excluded as featureless (amplitude < 0.10x): deck 1e+01 Pa
+  Those sets score near chance because almost no diagnostic
+  structure survives, not because the aerosol out-damages the
+  systematics. Do not quote them as the worst aerosol case.
+
+  Both aerosol families exceed the worst systematic tested, so
+  the original claim stands as written.
+
+  Note the deepest deck sits in the featureless regime (feature
+  amplitude a few per cent of clear), where chance-level accuracy
+  reflects absent signal rather than classifier failure; the
+  informative deck range is 1e5 to 1e3 Pa.
