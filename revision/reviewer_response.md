@@ -4,6 +4,22 @@
 
 ---
 
+## Experiments not yet done (across all comments)
+
+Everything under R1-3, R1-4, R1-5 (the PCA feature space) is complete — all eight analyses the reviewer requested. The remaining outstanding experiments are:
+
+| # | Experiment | Comment | Why not done |
+| :-- | :-- | :-- | :-- |
+| 1 | Physical stellar spot / faculae contamination model | R1-1 (axis 4) | only a 1/λ proxy was run; a spot model is the next step |
+| 2 | Instrumental systematics from Ariel's published noise model | R1-1 (axis 6) | only plausible parametric forms were run; the instrument model is not available to this work |
+| 3 | Transfer learning H₂ → N₂ | R1-1 (axis 7) | the domain-shift half is covered; N₂ would need regenerating at 550 bins |
+| 4 | Retrieval-derived labels | R1-2 | months of compute on the full benchmark; a 50–100-spectrum sample is the middle option |
+| 5 | Whitening robustness on real observational spectra | R1-6 | no real Ariel data exists yet (the independent-code test *is* done) |
+
+Reviewer 2's items are writing and reference tasks, not experiments.
+
+---
+
 ## Reviewer 1
 
 > **Reading guide for the quotes below.** In each "Reviewer 1 wrote" block, his **main concern** is in **bold**, and every experiment or action he requested is tagged by what we did: ✅ done in full · ⚠️ partial · ❌ not done this cycle. Phrase colours — blue for the concern, green / amber / red for status — render in a markdown editor or an exported PDF; on GitHub the **bold** and the ✅ ⚠️ ❌ markers still show, but the text colour does not.
@@ -22,7 +38,7 @@
 
 **How this is addressed.** Three threads, each detailed below: new domain-shift experiments (R1-1), a conceded and reworded task definition backed by two analyses (R1-2), and a withdrawn PCA interpretation replaced by a measured result plus whitening ablations (R1-3 to R1-6).
 
-**For your input.** Scope wording for the title: insert "Synthetic" before "Exoplanet Transmission Spectra," or leave the title and carry the scoping in the first and last sentences of the abstract?
+**Questions for Mentor.** **Scope wording for the title: insert "Synthetic" before "Exoplanet Transmission Spectra," or leave the title and carry the scoping in the first and last sentences of the abstract?**
 
 ### R1-1 — Confined to a single simulator; robustness under domain shift
 
@@ -108,7 +124,7 @@ Holding training-set size fixed, the genuine extrapolation penalty is **−8.3 p
 
 **Status.** *Done in full — 4 of the 7 axes:* independent radiative transfer code (−4.1 points), alternative opacity data (−16.1, or −22.9 with ozone), cloud and haze prescriptions, and resolution/SNR. *Partial — 3 of the 7:* stellar contamination (a single 1/λ proxy, not a physical spot model), instrumental systematics (parametric forms, not Ariel's instrument model), and transfer learning (the domain-shift half is done; transfer learning itself was not run).
 
-**For your input.** Is presenting the four completed axes and naming the three partial ones as next steps sufficient for this cycle, or would you want any of the three attempted before resubmission?
+**Questions for Mentor.** **Is presenting the four completed axes and naming the three partial ones as next steps sufficient for this cycle, or would you want any of the three attempted before resubmission?**
 
 ### R1-2 — The positive class is a labelling rule, not a detection
 
@@ -149,7 +165,7 @@ Holding training-set size fixed, the genuine extrapolation penalty is **−8.3 p
 
 **Status.** *Done:* the task is renamed from "biosignature detection" to "recovery of an abundance-threshold labelling" — this rename **is** the concession. The two analyses are not a defence of the labelling rule; they measure how far it governs the result: threshold sensitivity shows accuracy stays within 2 points as both cutoffs move a full dex (so the headline is not an artefact of the chosen cutoff), and the margin analysis shows that within 0.25 dex of the cutoff the classifier beats no majority baseline (those labels are genuinely ambiguous). *Not done:* retrieval-derived labels — the one experiment he explicitly asks for here.
 
-**For your input.** Retrieval on the full benchmark is months of compute. A middle option is to run retrieval on a stratified sample of 50–100 spectra and report how often the retrieval-based label differs from the injected one. Attempt that this cycle, or concede retrieval as the primary next step?
+**Questions for Mentor.** Retrieval on the full benchmark is months of compute. A middle option is to run retrieval on a stratified sample of 50–100 spectra and report how often the retrieval-based label differs from the injected one. **Attempt that this cycle, or concede retrieval as the primary next step?**
 
 ### R1-3 to R1-5 — the PCA feature space (one connected finding)
 
@@ -213,7 +229,7 @@ Per-component discriminative power — no single component is strong, and the hi
 
 **Status.** *Withdrawn:* the manuscript's claim that PC0/PC1 encode physical structure while components 2–101 encode the chemical absorption features. *Replacement:* the preamble finding above. *All four of his requested analyses are now done* — the first round ran only reconstruction/removal; the loading-vector analysis, variance decomposition by parameter, and the CH₄/O₃ projection have since been added, and all three confirm that no component isolates a molecule.
 
-**For your input.** (1) Is withdrawing-and-replacing acceptable, or would you prefer we run his full set of four? (2) Keep the replacement claim, or simply retract the old claim without asserting a new one?
+**Questions for Mentor.** **(1) Is withdrawing-and-replacing acceptable, or would you prefer we run his full set of four? (2) Keep the replacement claim, or simply retract the old claim without asserting a new one?**
 
 ### R1-4 — Whitening does not selectively amplify chemistry
 
@@ -241,7 +257,7 @@ The key point for the paper: the *recommended* model, XGBoost, uses no whitening
 
 **Status.** *Conceded:* the claim that whitening amplifies chemistry, and the "chemically relevant" wording, are removed. *Shown by the experiment (not a defence of the old claim):* whitening is a plain optimisation step — XGBoost is identical with and without it, the MLP is equally good without it, only the CNN needs it — and the recommended model, XGBoost, uses none, so the concern does not touch the headline result.
 
-**For your input.** None — we believe the concession fully covers it.
+**Questions for Mentor.** None — we believe the concession fully covers it.
 
 ### R1-5 — Conceptual inconsistency in the variance-ordering rationale
 
@@ -280,7 +296,7 @@ Linear classifiers on the same features cap far lower — PLS-DA 73.9%, LDA 68.2
 
 **Status.** *Done — all four requested ablations:* whitening on/off, removal of leading principal components, supervised dimensionality reduction (PLS and LDA), and alternative feature weighting. Together they resolve the inconsistency: explained variance is unsupervised and does not track discriminative importance, so whitening away the variance ordering costs nothing and no weighting of it isolates a better signal.
 
-**For your input.** None outstanding for this comment.
+**Questions for Mentor.** None outstanding for this comment.
 
 ### R1-6 — Whitening may reduce robustness on real data
 
@@ -312,7 +328,7 @@ Linear classifiers on the same features cap far lower — PLS-DA 73.9%, LDA 68.2
 
 **Status.** *Done:* the controlled whitened-vs-unwhitened comparison confirms his hypothesis both under injected noise (the curves cross by SNR 12) and under an independent radiative transfer code (the whitened network loses 8.6 points to Exo-Transmit against the unwhitened network's 1.0). *Not done:* the observational-spectra part of his request, since no real Ariel data exists.
 
-**For your input.** The independent-simulation-environment test is now done. The only remaining part of his request is real observational spectra, which do not yet exist for Ariel — concede that as a limitation and next step?
+**Questions for Mentor.** The independent-simulation-environment test is now done. The only remaining part of his request is real observational spectra, which do not yet exist for Ariel — **concede that as a limitation and next step?**
 
 ---
 
@@ -324,7 +340,7 @@ Linear classifiers on the same features cap far lower — PLS-DA 73.9%, LDA 68.2
 
 > Please verify that all links to the references point to the correct source.
 
-**What we did / status.** In progress — auditing all 42 references (only four currently carry URLs). The public repository linked from the Data Availability statement has been corrected to report the same headline numbers and resolution as the manuscript. **For your input:** none.
+**What we did / status.** In progress — auditing all 42 references (only four currently carry URLs). The public repository linked from the Data Availability statement has been corrected to report the same headline numbers and resolution as the manuscript. **Questions for Mentor:** none.
 
 ### R2-2 — Acknowledgments and disclosure of assistance
 
@@ -332,7 +348,7 @@ Linear classifiers on the same features cap far lower — PLS-DA 73.9%, LDA 68.2
 
 > The authors must disclose and acknowledge any assistance received in the preparation of this manuscript, including but not limited to editorial, technical, analytical, or writing support. All such contributions must be clearly stated in the Acknowledgments section.
 
-**What we did / status.** The manuscript has no Acknowledgments section; one will be added. **For your input:** I need the list of contributions to disclose — any editorial, technical, analytical, or writing help, and any AI tools used in analysis or drafting. Can you confirm what to acknowledge?
+**What we did / status.** The manuscript has no Acknowledgments section; one will be added. **Questions for Mentor:** I need the list of contributions to disclose — any editorial, technical, analytical, or writing help, and any AI tools used in analysis or drafting. **Can you confirm what to acknowledge?**
 
 ### R2-3 — Reference quality
 
@@ -340,7 +356,7 @@ Linear classifiers on the same features cap far lower — PLS-DA 73.9%, LDA 68.2
 
 > Include enough recent references along with foundational ones. Ensure references directly support your claims. Avoid "padding." Use credible sources (peer-reviewed journals, reputable books, official reports).
 
-**What we did / status.** Two bare, undated web references will be replaced and the rest audited for direct support. The opacity data used to generate every spectrum was previously uncited; the required citations have been identified (Freedman et al. 2008 & 2014 and Lupu et al. 2014 for the base tables; Chubb et al. 2021, Polyansky et al. 2018, Yurchenko et al. 2017 & 2020 for the ExoMol line lists used in the new experiments; Kempton et al. 2017 for Exo-Transmit), all verified against DOI records. **For your input:** any specific references you want added or removed.
+**What we did / status.** Two bare, undated web references will be replaced and the rest audited for direct support. The opacity data used to generate every spectrum was previously uncited; the required citations have been identified (Freedman et al. 2008 & 2014 and Lupu et al. 2014 for the base tables; Chubb et al. 2021, Polyansky et al. 2018, Yurchenko et al. 2017 & 2020 for the ExoMol line lists used in the new experiments; Kempton et al. 2017 for Exo-Transmit), all verified against DOI records. **Questions for Mentor:** **any specific references you want added or removed?**
 
 ### R2-4 — State all assumptions explicitly
 
@@ -348,7 +364,7 @@ Linear classifiers on the same features cap far lower — PLS-DA 73.9%, LDA 68.2
 
 > All assumptions (including implicit assumptions) must be explicitly stated and clearly justified. The authors should explain why each assumption is reasonable and discuss its impact on the results and conclusions.
 
-**What we did / status.** An Assumptions subsection is planned, listing each with justification and likely effect: 1D atmospheres; Gaussian noise at fixed SNR 15; uniform R = 200; the fixed CH₄/O₃ thresholds; enforced 50/50 class balance; H₂-dominated composition; and the single molecular opacity compilation. Several of these connect directly to the R1-1 experiments (which now quantify their effect). **For your input:** none.
+**What we did / status.** An Assumptions subsection is planned, listing each with justification and likely effect: 1D atmospheres; Gaussian noise at fixed SNR 15; uniform R = 200; the fixed CH₄/O₃ thresholds; enforced 50/50 class balance; H₂-dominated composition; and the single molecular opacity compilation. Several of these connect directly to the R1-1 experiments (which now quantify their effect). **Questions for Mentor:** none.
 
 ### R2-5 — Avoid overreaching conclusions
 
@@ -356,7 +372,7 @@ Linear classifiers on the same features cap far lower — PLS-DA 73.9%, LDA 68.2
 
 > Avoid overreaching conclusions that extend beyond what is supported by the data and analysis.
 
-**What we did / status.** The same scope reduction as the Overview — presenting the work as a synthetic-data benchmark and the task as label recovery. This is the second reviewer independently flagging overreach. **For your input:** none beyond the title question in the Overview.
+**What we did / status.** The same scope reduction as the Overview — presenting the work as a synthetic-data benchmark and the task as label recovery. This is the second reviewer independently flagging overreach. **Questions for Mentor:** none beyond the title question in the Overview.
 
 ### R2-6 — Tense and person
 
@@ -364,4 +380,4 @@ Linear classifiers on the same features cap far lower — PLS-DA 73.9%, LDA 68.2
 
 > Verify that you have used past perfect tence [sic] and third person throughout the manuscript wherever applicable.
 
-**What we did / status.** A consistency pass converting the current first-person plural to third person and checking tense throughout. **For your input:** none.
+**What we did / status.** A consistency pass converting the current first-person plural to third person and checking tense throughout. **Questions for Mentor:** none.
