@@ -51,6 +51,44 @@ Each comment gives: the reviewer's exact words, what it asks for, what we did (w
 
 5. **Alternative molecular opacity data.** The H₂O, CH₄ and CO₂ tables are replaced with ExoMol line lists (POKAZATEL, YT34to10, UCL-4000), code and structure fixed, planets re-rendered and paired (harness validated to reproduce the originals to 1.2×10⁻¹⁴). Accuracy 88.9% → 72.8% (−16.1); additionally replacing ozone with HITRAN → 66.0% (−22.9). **This failure is a bias shift, not signal loss:** feature amplitude barely moves (0.95 → 0.93), but the predicted-positive rate moves from 49.5% to 61.8% (and to 44.0% with ozone replaced) against a true 50.3%. *Evidence:* [`generate_opacity_swap_testset.py`](../generate_opacity_swap_testset.py) → [`evaluate_opacity_swap.py`](../evaluate_opacity_swap.py) → [`H2_opacity_swap.txt`](../final_results/H2_opacity_swap.txt), [`H2_opacity_swap_o3.txt`](../final_results/H2_opacity_swap_o3.txt).
 
+#### Results — R1-1
+
+**Injected systematics** (XGBoost, worst strength per family; full sweep in [`H2_domain_shift_sweep.txt`](../final_results/H2_domain_shift_sweep.txt)):
+
+| Perturbation | Accuracy | Change | Brier |
+| :-- | --: | --: | --: |
+| Clean baseline | 88.9% | — | 0.080 |
+| Baseline offset | 88.7% | −0.2 | 0.080 |
+| Gain ramp | 86.2% | −2.7 | 0.097 |
+| Stellar contamination | 83.4% | −5.5 | 0.119 |
+| Resolution R 200→75 | 73.7% | −15.2 | 0.197 |
+| White noise SNR 15→5 | 73.9% | −15.1 | 0.190 |
+| Correlated noise SNR 15→5 | 66.9% | −22.0 | 0.250 |
+
+![Accuracy under each injected systematic versus perturbation strength](../final_results/domain_shift_accuracy.png)
+
+![Calibration (Brier score) under each injected systematic versus perturbation strength](../final_results/domain_shift_calibration.png)
+
+**Aerosols** (paired, XGBoost; [`H2_aerosol_paired.txt`](../final_results/H2_aerosol_paired.txt)). "amp" is median feature amplitude relative to a clear atmosphere:
+
+| Aerosol | amp | Accuracy | Change | Brier |
+| :-- | --: | --: | --: | --: |
+| Clear (baseline) | 0.97× | 88.9% | — | 0.080 |
+| Cloud deck 10⁵ Pa | 0.94× | 86.6% | −2.3 | 0.098 |
+| Cloud deck 10⁴ Pa | 0.83× | 78.4% | −10.5 | 0.151 |
+| Cloud deck 10³ Pa | 0.58× | 71.6% | −17.3 | 0.212 |
+| Cloud deck 10² Pa | 0.30× | 63.7% | −25.3 | 0.271 |
+| Haze 2×10⁶ m⁻³ | 0.79× | 82.0% | −7.0 | 0.132 |
+| Haze 1×10¹⁰ m⁻³ | 0.25× | 63.3% | −25.6 | 0.264 |
+
+**Independent code and alternative opacity data** ([`H2_exotransmit.txt`](../final_results/H2_exotransmit.txt), [`H2_opacity_swap.txt`](../final_results/H2_opacity_swap.txt)):
+
+| | Baseline | Exo-Transmit (code changed) | ExoMol opacity (3 molecules) | + HITRAN ozone |
+| :-- | --: | --: | --: | --: |
+| Accuracy | 88.9% | 84.8% (−4.1) | 72.8% (−16.1) | 66.0% (−22.9) |
+| Brier | 0.080 | 0.112 | 0.203 | 0.253 |
+| Predicted-positive rate (true 50.3%) | 49.5% | — | 61.8% | 44.0% |
+
 **Coverage of the seven axes.** "The seven axes" are the seven kinds of robustness test the reviewer explicitly lists in the last sentence of his comment above (independent code, alternative opacity, clouds/hazes, stellar contamination, resolution/SNR, instrument systematics, domain-shift/transfer-learning). Four are covered in full, three in part:
 
 | # | Axis the reviewer requested | Status | Covered by | Evidence |
@@ -82,6 +120,28 @@ Each comment gives: the reviewer's exact words, what it asks for, what we did (w
   - **Threshold sensitivity.** Both cutoffs are moved together by ±0.25 and ±0.5 dex, the data relabelled, and the pipeline retrained from scratch at each setting. Accuracy stays between 86.99% and 88.91% across a full dex of movement (spread < 2 points), so the headline is not an artefact of the particular cutoffs. *Evidence:* [`analyze_threshold_sensitivity.py`](../analyze_threshold_sensitivity.py) → [`H2_threshold_sensitivity.txt`](../final_results/H2_threshold_sensitivity.txt) ([csv](../final_results/H2_threshold_sensitivity.csv)).
   - **Margin analysis.** The test set is binned by dex distance to the nearest label flip. Within 0.25 dex of the cutoff (8.8% of the set) the classifier scores 61.9% against a 64.4% majority baseline — i.e. it recovers *no* usable information there — and its mean predicted probability is 0.515, meaning it correctly reports its own uncertainty. At ≥ 1 dex from the cutoff (64.8% of the set) it reaches 95.3%. This is the reviewer's objection, measured: near-threshold labels separate atmospheres that are physically near-identical. *Evidence:* [`analyze_label_margin.py`](../analyze_label_margin.py) → [`H2_label_margin.txt`](../final_results/H2_label_margin.txt) ([csv](../final_results/H2_label_margin.csv)), figure [`label_margin.png`](../final_results/label_margin.png).
 
+**Margin analysis** ([`H2_label_margin.txt`](../final_results/H2_label_margin.txt)) — accuracy by distance to the labelling cutoff, each bin scored against its own majority-class baseline:
+
+| Distance to cutoff (dex) | n | Accuracy | Majority baseline | Gain | Mean predicted prob. |
+| :-- | --: | --: | --: | --: | --: |
+| 0 – 0.25 | 236 | 61.9% | 64.4% | **−2.5** | 0.515 |
+| 0.25 – 0.5 | 258 | 76.0% | 67.1% | +8.9 | 0.586 |
+| 0.5 – 1 | 454 | 85.9% | 62.1% | +23.8 | 0.593 |
+| 1 – 2 | 908 | 94.8% | 50.2% | +44.6 | 0.521 |
+| > 2 | 841 | 95.7% | 65.0% | +30.7 | 0.388 |
+
+![Classification accuracy versus distance from the labelling threshold](../final_results/label_margin.png)
+
+**Threshold sensitivity** ([`H2_threshold_sensitivity.txt`](../final_results/H2_threshold_sensitivity.txt)) — move both cutoffs together, relabel, retrain from scratch:
+
+| Shift (dex) | CH₄ / O₃ cutoff | Accuracy | Majority baseline | Gain over baseline |
+| :-- | :-- | --: | --: | --: |
+| −0.50 | −6.50 / −7.50 | 87.0% | 56.6% | +30.4 |
+| −0.25 | −6.25 / −7.25 | 88.2% | 53.4% | +34.7 |
+| 0 (original) | −6.00 / −7.00 | 88.9% | 50.3% | +38.6 |
+| +0.25 | −5.75 / −6.75 | 88.7% | 55.3% | +33.4 |
+| +0.50 | −5.50 / −6.50 | 87.8% | 61.7% | +26.1 |
+
 **Not done.** Retrieval-derived labels — the one experiment he explicitly asks for here.
 
 **Status:** concession + two analyses complete; retrieval not attempted.
@@ -96,16 +156,30 @@ Each comment gives: the reviewer's exact words, what it asks for, what we did (w
 
 **What it means.** The paper's claim that leading components hold "physics" and later ones hold "chemistry" is unjustified, because each principal component mixes all wavelengths.
 
-**What we did.** We withdraw the interpretation rather than defend it, and replace it with a claim that is directly measurable, supported by two experiments:
+**What we did — withdraw the old claim, then replace it.** The reviewer is right that the old interpretation is not supported, so we do not defend it: we withdraw it. But withdrawing alone would leave the paper with no account of the feature space, and his underlying point — that chemistry is spread across many components rather than isolated in a few — is itself testable. So we replace the withdrawn claim with a weaker one that the data *does* support. **The two experiments below support this replacement claim, not the discarded one:**
 
 - **Per-component discriminative power.** For every one of the 102 components we compute its single-feature AUC (rank-based, so scale-invariant). No component is strongly discriminative — the maximum is 0.66 (at PC9). The two components carrying 98% of the variance are among the *least* informative (PC0 = 0.51, i.e. chance), and 14 of the 20 most discriminative components fall outside the 20 highest-variance ones. *Evidence:* [`analyze_pc_discriminative_power.py`](../analyze_pc_discriminative_power.py) → [`H2_pc_discriminative_power.txt`](../final_results/H2_pc_discriminative_power.txt) ([csv](../final_results/H2_pc_discriminative_power.csv)), figure [`pc_discriminative_power.png`](../final_results/pc_discriminative_power.png).
 - **Selective component removal.** PC0+PC1 alone classify at 52.1% (chance on balanced classes); removing them costs nothing (88.6% → 88.3%); and at matched dimensionality the low-variance components beat the high-variance ones (PCs 2–51 at 86.2% vs PCs 0–49 at 85.7%). *Evidence:* [`ablate_pc_ranges.py`](../ablate_pc_ranges.py) → [`H2_pc_range_ablation.txt`](../final_results/H2_pc_range_ablation.txt).
+
+Component-removal results ([`H2_pc_range_ablation.txt`](../final_results/H2_pc_range_ablation.txt)):
+
+| Components kept | % of variance | XGBoost accuracy |
+| :-- | --: | --: |
+| All 102 | ~100% | 88.6% |
+| Drop the two highest-variance (PCs 2–101) | 1.6% | 88.3% |
+| The two highest-variance only (PC0–PC1) | 98.4% | **52.1% (chance)** |
+| First 50 components (PCs 0–49) | ~100% | 85.7% |
+| Low-variance 50 (PCs 2–51) | 1.6% | **86.2%** |
+
+Per-component discriminative power — no single component is strong, and the highest-variance ones (shaded) sit at chance:
+
+![Single-feature AUC, mutual information, and explained variance for each of the 102 principal components](../final_results/pc_discriminative_power.png)
 
 **Replacement claim:** classification arises from aggregating many weakly informative components; variance rank and discriminative rank are substantially decoupled. This is exactly what the reviewer said should be true, and it is measured rather than asserted.
 
 **Not done.** Three of his four suggested analyses (loading-vector analysis, variance decomposition by parameter, CH₄/O₃ projection). All three would serve the physical attribution we are *withdrawing*, so we did the fourth (reconstruction/removal) and dropped the others.
 
-**Status:** withdrawal + two supporting experiments complete.
+**Status:** old interpretation withdrawn; the replacement claim is established by two completed experiments.
 
 **For your input.** (1) Is withdrawing-and-replacing acceptable, or would you prefer we run his full set of four? (2) Keep the replacement claim, or simply retract the old claim without asserting a new one?
 
@@ -117,7 +191,7 @@ Each comment gives: the reviewer's exact words, what it asks for, what we did (w
 
 **What it means.** The paper says whitening boosts chemically informative components; whitening in fact rescales every low-variance component equally regardless of content, so it cannot be selectively boosting chemistry.
 
-**What we did.** Concede it. Whitening will be described only as an optimisation step for the gradient-based models, with the "chemically relevant" language removed. Supporting evidence, from a single experiment that crosses component range × whitening on/off for each model:
+**What we did — concede, and show the concession costs nothing.** We concede the claim: whitening does not selectively amplify chemistry, and we stop describing it that way (the "chemically relevant" language is removed). The experiment below is not a defence of the old claim — it establishes what whitening *actually* does and shows the concession does not weaken the paper. It crosses component range × whitening on/off for each model:
 
 - **XGBoost is provably unaffected** — identical metrics with and without whitening at every range tested (as expected: tree splits are invariant to per-feature rescaling).
 - **For the MLP whitening is substitutable** — dropping the two highest-variance components and omitting whitening entirely gives 79.5% ± 2.2, against 78.8% ± 2.2 for the whitened full-component pipeline (statistically the same).
@@ -125,7 +199,7 @@ Each comment gives: the reviewer's exact words, what it asks for, what we did (w
 
 The key point for the paper: the *recommended* model, XGBoost, uses no whitening at all, so this concern does not reach the headline result. *Evidence:* [`test_whitening_necessity.py`](../test_whitening_necessity.py) → [`H2_whitening_necessity.txt`](../final_results/H2_whitening_necessity.txt).
 
-**Status:** conceded, with supporting experiment complete.
+**Status:** claim conceded; the experiment — what whitening actually does, and that the recommended model does not use it — is complete.
 
 **For your input.** None — we believe the concession fully covers it.
 
@@ -143,6 +217,17 @@ The key point for the paper: the *recommended* model, XGBoost, uses no whitening
 - **Removal of leading components** — [`ablate_pc_ranges.py`](../ablate_pc_ranges.py) (see R1-3).
 - **Supervised dimensionality reduction** — PLS and LDA compared against PCA at matched component counts, holding the classifier fixed. At two components a label-informed projection beats the two highest-variance principal components by 8.6 points (60.7% vs 52.1%); beyond about five components the two become indistinguishable, and at 102 they differ by 0.3. The linear methods cap at 73.9% (PLS-DA) and 68.2% (LDA), well below 88.9% — so PCA is an adequate basis, not a transformation that isolates anything, and the task is substantially non-linear. *Evidence:* [`supervised_dr_comparison.py`](../supervised_dr_comparison.py) → [`H2_supervised_dr.txt`](../final_results/H2_supervised_dr.txt) ([csv](../final_results/H2_supervised_dr.csv)).
 
+**Supervised vs unsupervised projection** at matched dimensionality, classifier held fixed ([`H2_supervised_dr.txt`](../final_results/H2_supervised_dr.txt)):
+
+| Components | PCA + XGBoost | PLS + XGBoost (supervised) | Difference |
+| --: | --: | --: | --: |
+| 2 | 52.1% | 60.7% | **+8.6** |
+| 5 | 72.7% | 72.2% | −0.5 |
+| 20 | 81.9% | 83.2% | +1.3 |
+| 102 | 88.9% | 88.6% | −0.3 |
+
+Linear classifiers on the same features cap far lower — PLS-DA 73.9%, LDA 68.2% against 88.9% for the nonlinear ensemble — so PCA is an adequate basis, not a transformation that isolates anything, and the task is substantially non-linear.
+
 **Not done.** The fourth suggested item, "alternative feature weighting strategies" — the other three already resolve the inconsistency he identified.
 
 **Status:** three of four ablations complete.
@@ -158,6 +243,15 @@ The key point for the paper: the *recommended* model, XGBoost, uses no whitening
 **What it means.** On real data the low-variance components also carry instrument noise and artifacts; since whitening amplifies all of them equally, it may amplify noise as much as signal. He wants this tested on independent environments and, if possible, real spectra.
 
 **What we did.** A controlled comparison in which two otherwise identical neural networks differ *only* in whether whitening is applied, each trained five times to average out initialisation, with the difference measured paired within each restart. Whitening gives a small advantage on clean data (+3.6 ± 3.1 points) but a larger penalty under perturbation (−11.0 ± 1.7 at effective SNR 5); the two curves cross by SNR 12 in four of the five restarts. Normalised by each model's headroom above chance, whitening degrades faster in five of six perturbation families. This confirms his hypothesis, and it reinforces the recommendation of XGBoost, which uses no whitening and is the most robust model in every family tested. *Evidence:* [`domain_shift_mlp_restarts.py`](../domain_shift_mlp_restarts.py) → [`H2_whitening_restarts.txt`](../final_results/H2_whitening_restarts.txt) ([csv](../final_results/H2_whitening_restarts.csv)); the MLP run-to-run scatter that justifies the five-restart averaging is characterised in [`measure_mlp_reproducibility.py`](../measure_mlp_reproducibility.py) → [`H2_mlp_reproducibility.txt`](../final_results/H2_mlp_reproducibility.txt).
+
+**Whitened vs unwhitened MLP** under white noise, means over 5 restarts, differences paired within restart ([`H2_whitening_restarts.txt`](../final_results/H2_whitening_restarts.txt)):
+
+| White noise | Whitened | Unwhitened | Whitened − Unwhitened |
+| :-- | --: | --: | --: |
+| SNR 15 (clean) | 79.3% | 75.7% | **+3.6** |
+| SNR 12 | 69.1% | 74.7% | −5.6 ← curves cross |
+| SNR 10 | 64.9% | 73.8% | −8.9 |
+| SNR 5 | 57.0% | 68.0% | **−11.0** |
 
 **Caveat we state plainly.** This evidence comes from perturbing spectra *within* the same simulator. It supports his hypothesis but is not the independent-environment / observational-spectra test he specifically named.
 
