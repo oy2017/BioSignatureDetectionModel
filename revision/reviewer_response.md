@@ -64,6 +64,16 @@
 
 ![Calibration (Brier score) under each injected systematic versus perturbation strength](../final_results/domain_shift_calibration.png)
 
+**Out-of-envelope generalisation** ([`H2_extrapolation_split.txt`](../final_results/H2_extrapolation_split.txt)) — train on small planets, test on large:
+
+| Condition | Accuracy | Brier |
+| :-- | --: | --: |
+| Extrapolation (train R ≤ 15 R⊕, test R > 15) | 75.8% | 0.175 |
+| Control (random split, same training-set size) | 84.1% | 0.116 |
+| Full training set (in-distribution) | 88.9% | 0.080 |
+
+Holding training-set size fixed, the genuine extrapolation penalty is **−8.3 points**; the rest of the naïve gap is just reduced training data.
+
 **Aerosols** (paired, XGBoost; [`H2_aerosol_paired.txt`](../final_results/H2_aerosol_paired.txt)). "amp" is median feature amplitude relative to a clear atmosphere:
 
 | Aerosol | amp | Accuracy | Change | Brier |
