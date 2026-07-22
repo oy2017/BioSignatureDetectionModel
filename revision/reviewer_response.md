@@ -25,7 +25,7 @@ Each comment gives: the reviewer's exact words, what it asks for, what we did (w
 
 **What it means.** The benchmark and statistics are sound; the objection is that the paper claims more than it shows — real detection and a physical reading of the PCA — and the fix is new experiments plus narrower claims.
 
-**How this is addressed.** Three threads, each detailed below: new domain-shift experiments (R1-1), a conceded and reworded task definition backed by two analyses (R1-2), and a withdrawn PCA interpretation replaced by a measured result plus whitening ablations (R1-3 to R1-6). The recommended headline number throughout is **88.9%** (the clean-baseline XGBoost accuracy on the five held-out test sets).
+**How this is addressed.** Three threads, each detailed below: new domain-shift experiments (R1-1), a conceded and reworded task definition backed by two analyses (R1-2), and a withdrawn PCA interpretation replaced by a measured result plus whitening ablations (R1-3 to R1-6).
 
 **For your input.** Scope wording for the title: insert "Synthetic" before "Exoplanet Transmission Spectra," or leave the title and carry the scoping in the first and last sentences of the abstract?
 
