@@ -106,7 +106,7 @@ Holding training-set size fixed, the genuine extrapolation penalty is **−8.3 p
 | 6 | More realistic instrumental systematics | ◐ partial | Experiment 1 — parametric forms, **not** Ariel's instrument model | [H2_domain_shift_sweep.txt](../final_results/H2_domain_shift_sweep.txt) |
 | 7 | Domain-shift **or** transfer-learning | ◐ partial | Experiments 1 & 2 — domain shift done; transfer learning not run | [H2_extrapolation_split.txt](../final_results/H2_extrapolation_split.txt) |
 
-**Status:** experiments complete for four of seven axes; three partial.
+**Status.** *Done in full — 4 of the 7 axes:* independent radiative transfer code (−4.1 points), alternative opacity data (−16.1, or −22.9 with ozone), cloud and haze prescriptions, and resolution/SNR. *Partial — 3 of the 7:* stellar contamination (a single 1/λ proxy, not a physical spot model), instrumental systematics (parametric forms, not Ariel's instrument model), and transfer learning (the domain-shift half is done; transfer learning itself was not run).
 
 **For your input.** Is presenting the four completed axes and naming the three partial ones as next steps sufficient for this cycle, or would you want any of the three attempted before resubmission?
 
@@ -147,9 +147,7 @@ Holding training-set size fixed, the genuine extrapolation penalty is **−8.3 p
 | +0.25 | −5.75 / −6.75 | 88.7% | 55.3% | +33.4 |
 | +0.50 | −5.50 / −6.50 | 87.8% | 61.7% | +26.1 |
 
-**Not done.** Retrieval-derived labels — the one experiment he explicitly asks for here.
-
-**Status:** concession + two analyses complete; retrieval not attempted.
+**Status.** *Done:* the task is renamed from "biosignature detection" to "recovery of an abundance-threshold labelling" — this rename **is** the concession. The two analyses are not a defence of the labelling rule; they measure how far it governs the result: threshold sensitivity shows accuracy stays within 2 points as both cutoffs move a full dex (so the headline is not an artefact of the chosen cutoff), and the margin analysis shows that within 0.25 dex of the cutoff the classifier beats no majority baseline (those labels are genuinely ambiguous). *Not done:* retrieval-derived labels — the one experiment he explicitly asks for here.
 
 **For your input.** Retrieval on the full benchmark is months of compute. A middle option is to run retrieval on a stratified sample of 50–100 spectra and report how often the retrieval-based label differs from the injected one. Attempt that this cycle, or concede retrieval as the primary next step?
 
@@ -182,9 +180,7 @@ Per-component discriminative power — no single component is strong, and the hi
 
 **Replacement claim:** classification arises from aggregating many weakly informative components; variance rank and discriminative rank are substantially decoupled. This is exactly what the reviewer said should be true, and it is measured rather than asserted.
 
-**Not done.** Three of his four suggested analyses (loading-vector analysis, variance decomposition by parameter, CH₄/O₃ projection). All three would serve the physical attribution we are *withdrawing*, so we did the fourth (reconstruction/removal) and dropped the others.
-
-**Status:** old interpretation withdrawn; the replacement claim is established by two completed experiments.
+**Status.** *Withdrawn:* the manuscript's claim that the two leading components (PC0, PC1) encode physical structure while components 2–101 encode the chemical absorption features. *Replacement, established by the two experiments above:* no individual component is strongly discriminative, classification arises from aggregating many weakly informative components, and variance rank is decoupled from discriminative rank. *Not done:* three of his four suggested analyses (loading-vector analysis, variance decomposition by parameter, CH₄/O₃ projection) — all three would have served the attribution we are withdrawing, so only the fourth (reconstruction/removal) was run.
 
 **For your input.** (1) Is withdrawing-and-replacing acceptable, or would you prefer we run his full set of four? (2) Keep the replacement claim, or simply retract the old claim without asserting a new one?
 
@@ -204,7 +200,7 @@ Per-component discriminative power — no single component is strong, and the hi
 
 The key point for the paper: the *recommended* model, XGBoost, uses no whitening at all, so this concern does not reach the headline result. *Evidence:* [`test_whitening_necessity.py`](../test_whitening_necessity.py) → [`H2_whitening_necessity.txt`](../final_results/H2_whitening_necessity.txt).
 
-**Status:** claim conceded; the experiment — what whitening actually does, and that the recommended model does not use it — is complete.
+**Status.** *Conceded:* the claim that whitening amplifies chemistry, and the "chemically relevant" wording, are removed. *Shown by the experiment (not a defence of the old claim):* whitening is a plain optimisation step — XGBoost is identical with and without it, the MLP is equally good without it, only the CNN needs it — and the recommended model, XGBoost, uses none, so the concern does not touch the headline result.
 
 **For your input.** None — we believe the concession fully covers it.
 
@@ -233,9 +229,7 @@ The key point for the paper: the *recommended* model, XGBoost, uses no whitening
 
 Linear classifiers on the same features cap far lower — PLS-DA 73.9%, LDA 68.2% against 88.9% for the nonlinear ensemble — so PCA is an adequate basis, not a transformation that isolates anything, and the task is substantially non-linear.
 
-**Not done.** The fourth suggested item, "alternative feature weighting strategies" — the other three already resolve the inconsistency he identified.
-
-**Status:** three of four ablations complete.
+**Status.** *Done — 3 of his 4 requested ablations:* whitening on/off, removal of leading principal components, and supervised dimensionality reduction (PLS and LDA). *Not done:* the fourth, alternative feature-weighting strategies — the other three already resolve the inconsistency he identified.
 
 **For your input.** Is resting on the three sufficient, or would you like the fourth (alternative feature weighting) included?
 
@@ -260,7 +254,7 @@ Linear classifiers on the same features cap far lower — PLS-DA 73.9%, LDA 68.2
 
 **Caveat we state plainly.** This evidence comes from perturbing spectra *within* the same simulator. It supports his hypothesis but is not the independent-environment / observational-spectra test he specifically named.
 
-**Status:** controlled experiment complete; the specific test he named (independent environments / real spectra) not done.
+**Status.** *Done:* a controlled whitened-vs-unwhitened comparison (five restarts, paired), which confirms his hypothesis — whitening helps on clean data and hurts under noise. *Not done as he specified:* his requested test was on independent simulation environments and, where possible, real spectra; ours is within-simulator perturbations only.
 
 **For your input.** Is the within-simulator evidence acceptable with the caveat stated, or would you want the whitening-robustness comparison re-run on the independent Exo-Transmit spectra we already generated for R1-1?
 
