@@ -290,7 +290,7 @@ Linear classifiers on the same features cap far lower — PLS-DA 73.9%, LDA 68.2
 
 **What it means.** On real data the low-variance components also carry instrument noise and artifacts; since whitening amplifies all of them equally, it may amplify noise as much as signal. He wants this tested on independent environments and, if possible, real spectra.
 
-**What we did.** A controlled comparison in which two otherwise identical neural networks differ *only* in whether whitening is applied, each trained five times to average out initialisation, with the difference measured paired within each restart. Whitening gives a small advantage on clean data (+3.6 ± 3.1 points) but a larger penalty under perturbation (−11.0 ± 1.7 at effective SNR 5); the two curves cross by SNR 12 in four of the five restarts. Normalised by each model's headroom above chance, whitening degrades faster in five of six perturbation families. This confirms his hypothesis, and it reinforces the recommendation of XGBoost, which uses no whitening and is the most robust model in every family tested. *Evidence:* [`domain_shift_mlp_restarts.py`](../domain_shift_mlp_restarts.py) → [`H2_whitening_restarts.txt`](../final_results/H2_whitening_restarts.txt) ([csv](../final_results/H2_whitening_restarts.csv)); the MLP run-to-run scatter that justifies the five-restart averaging is characterised in [`measure_mlp_reproducibility.py`](../measure_mlp_reproducibility.py) → [`H2_mlp_reproducibility.txt`](../final_results/H2_mlp_reproducibility.txt).
+**What we did.** A controlled comparison in which two otherwise identical neural networks differ *only* in whether whitening is applied, each trained five times to average out initialisation, with the difference measured paired within each restart. Whitening gives a small advantage on clean data (+3.6 ± 3.1 points) but a larger penalty under perturbation (−11.0 ± 1.7 at effective SNR 5); the two curves cross by SNR 12 in four of the five restarts. Normalised by each model's headroom above chance, whitening degrades faster in five of six perturbation families. This confirms his hypothesis, and it follows directly from the R1-3–R1-5 finding: whitening is content-blind — it rescales every low-variance component to unit variance regardless of what the component holds — so on data that differs from the training distribution it amplifies the newly-present noise and artefacts as readily as signal. It also reinforces the recommendation of XGBoost, which uses no whitening and is the most robust model in every family tested. *Evidence:* [`domain_shift_mlp_restarts.py`](../domain_shift_mlp_restarts.py) → [`H2_whitening_restarts.txt`](../final_results/H2_whitening_restarts.txt) ([csv](../final_results/H2_whitening_restarts.csv)); the MLP run-to-run scatter that justifies the five-restart averaging is characterised in [`measure_mlp_reproducibility.py`](../measure_mlp_reproducibility.py) → [`H2_mlp_reproducibility.txt`](../final_results/H2_mlp_reproducibility.txt).
 
 **Whitened vs unwhitened MLP** under white noise, means over 5 restarts, differences paired within restart ([`H2_whitening_restarts.txt`](../final_results/H2_whitening_restarts.txt)):
 
@@ -301,11 +301,18 @@ Linear classifiers on the same features cap far lower — PLS-DA 73.9%, LDA 68.2
 | SNR 10 | 64.9% | 73.8% | −8.9 |
 | SNR 5 | 57.0% | 68.0% | **−11.0** |
 
-**Caveat we state plainly.** This evidence comes from perturbing spectra *within* the same simulator. It supports his hypothesis but is not the independent-environment / observational-spectra test he specifically named.
+**Independent radiative transfer code.** We also ran the comparison as a genuine domain shift rather than an injected perturbation: the two MLPs, trained on clean TauREx, scored on the Exo-Transmit spectra of the same planets (an independently written code). The whitened network loses 8.6 points moving to the independent code while the unwhitened loses 1.0 — and on the independent code the unwhitened network is the more accurate of the two. The crossover therefore reproduces under a real change of forward model, which is the independent-simulation-environment test he named. *Evidence:* [`compare_whitening_exotransmit.py`](../compare_whitening_exotransmit.py) → [`H2_whitening_exotransmit.txt`](../final_results/H2_whitening_exotransmit.txt).
 
-**Status.** *Done:* a controlled whitened-vs-unwhitened comparison (five restarts, paired), which confirms his hypothesis — whitening helps on clean data and hurts under noise. *Not done as he specified:* his requested test was on independent simulation environments and, where possible, real spectra; ours is within-simulator perturbations only.
+| Model (5 restarts) | TauREx (clean) | Exo-Transmit (independent code) | Drop |
+| :-- | --: | --: | --: |
+| Whitened | 77.5% | 68.9% | **−8.6** |
+| Unwhitened | 72.9% | 71.9% | **−1.0** |
 
-**For your input.** Is the within-simulator evidence acceptable with the caveat stated, or would you want the whitening-robustness comparison re-run on the independent Exo-Transmit spectra we already generated for R1-1?
+**Caveat we state plainly.** The injected-noise evidence is within-simulator; the Exo-Transmit result above is the independent-simulation-environment test he named, and it shows the same effect. What remains undone is the observational-spectra half of his request — no real Ariel data exists yet.
+
+**Status.** *Done:* the controlled whitened-vs-unwhitened comparison confirms his hypothesis both under injected noise (the curves cross by SNR 12) and under an independent radiative transfer code (the whitened network loses 8.6 points to Exo-Transmit against the unwhitened network's 1.0). *Not done:* the observational-spectra part of his request, since no real Ariel data exists.
+
+**For your input.** The independent-simulation-environment test is now done. The only remaining part of his request is real observational spectra, which do not yet exist for Ariel — concede that as a limitation and next step?
 
 ---
 

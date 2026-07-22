@@ -1,0 +1,13 @@
+Whitening robustness under an independent radiative transfer code (R1-6)
+
+Two identical MLPs, differing only in whitening, trained on clean TauREx and
+scored on the TauREx clean test sets and on Exo-Transmit spectra of the same
+planets. Means +/- sd over 5 restarts (pooled accuracy).
+
+model            TauREx (clean)       Exo-Transmit    drop to indep. code
+--------------------------------------------------------------------------
+whitened           77.5% +/-0.9        68.9% +/-0.7                8.6 pts
+unwhitened         72.9% +/-6.4        71.9% +/-6.2                1.0 pts
+
+Drop moving to the independent code: whitened 8.6 pts, unwhitened 1.0 pts.
+Whitening loses more under the code shift, consistent with his hypothesis that a content-blind amplification of low-variance components hurts out-of-distribution.
