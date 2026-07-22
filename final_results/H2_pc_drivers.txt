@@ -1,0 +1,34 @@
+Principal components: loading shape and physical driver
+
+Preprocessing: StandardScaler -> PCA(102) on the training spectra.
+Loading shape: correlation (|r|) of each PC's loading vector with a flat
+mean-depth vector, a linear wavelength tilt, and the partial spectral
+imprint of each active molecule. Driver: the single generating parameter
+with the highest univariate R^2 against the PC score (that R^2 in %).
+
+  PC     var%  loading best-match (|r|)     top driver (R^2%)      2nd driver (R^2%)
+------------------------------------------------------------------------------------------------
+   0  97.149  flat/mean-depth (1.00)       p_mass (21)            atm base_pressure (14)
+   1   1.259  wavelength-tilt (0.64)       atm H2O (5)            p_radius (0)
+   2   0.811  CH4 (0.51)                   atm H2O (3)            p_mass (2)
+   3   0.389  CH4 (0.82)                   atm CH4 (5)            atm CO2 (2)
+   4   0.120  O3 (0.49)                    atm O3 (6)             atm CO2 (0)
+   5   0.078  CO2 (0.20)                   atm CO2 (2)            atm H2O (1)
+   6   0.075  wavelength-tilt (0.11)       p_radius (1)           s temperature (1)
+   7   0.026  wavelength-tilt (0.12)       atm temperature (1)    p_radius (0)
+   8   0.022  O3 (0.04)                    atm O3 (0)             p_radius (0)
+   9   0.012  wavelength-tilt (0.11)       atm O3 (1)             atm CH4 (0)
+
+Selected low-variance components of interest:
+  PC2   var 0.811%  driver atm H2O (R^2 3%)  loading ~ CH4
+  PC3   var 0.389%  driver atm CH4 (R^2 5%)  loading ~ CH4
+  PC4   var 0.120%  driver atm O3 (R^2 6%)  loading ~ O3
+  PC5   var 0.078%  driver atm CO2 (R^2 2%)  loading ~ CO2
+  PC9   var 0.012%  driver atm O3 (R^2 1%)  loading ~ wavelength-tilt
+
+Where each active molecule drives the variance (sum of R^2 over PCs,
+and how many PCs hold 90% of that):
+  atm H2O  : 90% of its driver footprint in 29 PCs; top: PC1(32%), PC2(19%), PC5(7%), PC13(3%)
+  atm CH4  : 90% of its driver footprint in 39 PCs; top: PC3(35%), PC2(7%), PC5(6%), PC12(5%)
+  atm CO2  : 90% of its driver footprint in 38 PCs; top: PC5(15%), PC3(14%), PC12(9%), PC64(4%)
+  atm O3   : 90% of its driver footprint in 32 PCs; top: PC4(38%), PC9(7%), PC12(6%), PC20(5%)

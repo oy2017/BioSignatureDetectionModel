@@ -1,0 +1,56 @@
+How CH4 and O3 absorption features project onto the 102 principal components
+
+Method: partial spectral response to each molecule (scaled space, controlling
+for the other active molecules and planet radius/temperature/pressure),
+projected onto the orthonormal PCA loading vectors. A response isolated in one
+component would give participation ratio ~1 and 100% share in that component;
+a response spread evenly over the tail gives a large participation ratio.
+
+PC0 + PC1 carry 98.41% of the spectral variance.
+
+--- CH4 ---
+  fraction of the CH4 imprint captured by the 102-component basis: 100.0%
+  participation ratio (effective # of components the imprint spreads over): 2.5
+  components needed to capture 50% of the imprint: 1
+  components needed to capture 90% of the imprint: 3
+  share in the two highest-variance components (PC0, PC1): 16.6%
+  share in the low-variance tail (PCs 2-101):             83.4%
+  top 8 components by share of the imprint (PC: share%, variance-rank%):
+     PC3     56.3%   (variance 0.389%)
+     PC2     24.1%   (variance 0.811%)
+     PC0     14.5%   (variance 97.149%)
+     PC1      2.0%   (variance 1.259%)
+     PC5      1.9%   (variance 0.078%)
+     PC4      0.7%   (variance 0.120%)
+     PC6      0.1%   (variance 0.075%)
+     PC12     0.1%   (variance 0.007%)
+
+--- O3 ---
+  fraction of the O3 imprint captured by the 102-component basis: 100.0%
+  participation ratio (effective # of components the imprint spreads over): 1.9
+  components needed to capture 50% of the imprint: 1
+  components needed to capture 90% of the imprint: 2
+  share in the two highest-variance components (PC0, PC1): 68.0%
+  share in the low-variance tail (PCs 2-101):             32.0%
+  top 8 components by share of the imprint (PC: share%, variance-rank%):
+     PC0     67.3%   (variance 97.149%)
+     PC4     27.8%   (variance 0.120%)
+     PC3      2.6%   (variance 0.389%)
+     PC1      0.8%   (variance 1.259%)
+     PC9      0.5%   (variance 0.012%)
+     PC6      0.5%   (variance 0.075%)
+     PC8      0.2%   (variance 0.022%)
+     PC12     0.2%   (variance 0.007%)
+
+Reading:
+  Each imprint concentrates in a few components (participation ratio ~2), not
+  spread evenly across the tail. But the original manuscript attribution -- PC0/PC1
+  purely physical, chemistry isolated in PCs 2-101 -- is refuted from both sides:
+  the O3 imprint sits mostly in PC0 (the highest-variance 'physical' component), and
+  the CH4 imprint sits mostly in PC2/PC3, not spread through all of 2-101.
+  Concentration of the imprint is NOT discriminative power: the components carrying
+  it (PC0 for O3 especially) are entangled with the dominant continuum/radius
+  variance, which is why no single component separates the threshold label
+  (max single-feature AUC 0.66; PC0 AUC 0.51) -- consistent with the per-component
+  AUC and ablation results.
+

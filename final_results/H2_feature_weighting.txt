@@ -1,0 +1,14 @@
+Alternative feature-weighting strategies on the 102 PCA components
+(classifier fixed; mean accuracy over the 5 held-out test sets)
+
+scheme          XGBoost       MLP (3 restarts)
+----------------------------------------------
+none             88.03%      76.69% +/- 3.3%
+whiten           87.92%      78.31% +/- 3.3%
+supervised       88.25%      76.01% +/- 0.7%
+variance         87.92%      59.41% +/- 5.8%
+
+XGBoost is identical across all schemes (scale-invariant to any per-feature
+weighting). For the MLP, whitening and supervised weighting are comparable and
+neither isolates a dramatically better signal -- consistent with whitening being
+optimisation conditioning, not signal selection.
