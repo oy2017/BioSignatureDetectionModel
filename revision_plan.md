@@ -4,21 +4,19 @@ Tracking the response to peer review for *A Calibrated PCA–Machine Learning Pi
 
 Reviewer comments are summarised here in the authors' own words. The verbatim text is kept outside this repository, as peer review correspondence is confidential; the response document submitted to the editor quotes each comment in full.
 
-Comment IDs (R1-n, R2-n) are stable across this file, commit messages, and the response document. To find the work behind any item: `git log --grep="R1-5"`.
+Comment IDs (R1-n, R2-n) are stable across this file, commit messages, and the response document. To find the work behind any item: `git log --grep="R1-5"`. Reviewer 1 wrote continuous prose, not numbered points; some IDs are grouped where the reviewer's own argument is continuous. R1-1 and R1-9 are his opening assessment and closing recommendation — framing, handled together in the Overview below. R1-2 (single simulator) has no standalone content: its forward-model charge is answered under R1-3 and its label charge under R1-4, so it is folded into both rather than kept separate.
 
 ## Status
 
 | ID | Concern | Analysis | Manuscript |
 | :-- | :-- | :-- | :-- |
-| R1-1 | Claims exceed what the experiments show (umbrella) | — | ☐ |
-| R1-2 | Study is confined to a single simulator | ◐ | ☐ |
-| R1-3 | No demonstration of robustness under domain shift | ◐ | ☐ |
-| R1-4 | Positive class is a labelling rule, not a detection | ◐ | ☐ |
+| R1-1 / R1-9 | Opening assessment & recommendation — framing, not a standalone concern | — | ☐ |
+| R1-2 + R1-3 | Confined to one simulator; no robustness under domain shift | ◐ | ☐ |
+| R1-4 | Positive class is a labelling rule (absorbs R1-2's label charge) | ◐ | ☐ |
 | R1-5 | PCA interpretation unsupported by the mathematics | ☑ | ☐ |
 | R1-6 | Whitening does not selectively amplify chemistry | ☑ | ☐ |
 | R1-7 | Variance-ordering rationale is self-contradictory | ◐ | ☐ |
 | R1-8 | Whitening may reduce robustness on real data | ◐ | ☐ |
-| R1-9 | Recommends major revision (umbrella) | — | ☐ |
 | R2-1 | Verify reference links resolve correctly | ◐ | ☐ |
 | R2-2 | Add Acknowledgments; disclose all assistance | ☐ | ☐ |
 | R2-3 | Reference quality; avoid padding | ☐ | ☐ |
@@ -26,7 +24,7 @@ Comment IDs (R1-n, R2-n) are stable across this file, commit messages, and the r
 | R2-5 | Avoid conclusions beyond what the data supports | ☐ | ☐ |
 | R2-6 | Tense and person consistency | ☐ | ☐ |
 
-☑ complete ◐ partial ☐ open — **2 of 15 analyses complete, 6 partial, 0 manuscript sections rewritten.**
+☑ complete ◐ partial ☐ open — **2 of 13 analyses complete, 5 partial, 0 manuscript sections rewritten.**
 
 Status is scored against what each reviewer explicitly asked for. R1-3 covers
 about 4 of the seven requested axes; R1-8's evidence is within-simulator rather
@@ -39,47 +37,25 @@ for, so both stay partial.
 
 ## Reviewer 1
 
-### R1-1 — Claims exceed what the experiments demonstrate
+### Overview — R1-1 (opening assessment) and R1-9 (recommendation)
 
-*Summary:* The benchmark and statistics are sound, but the work shows that a classifier can recover predefined labels inside one simulation framework — not that the method identifies biosignatures in real spectra, nor that the PCA interpretation is correct.
+Reviewer 1 opens by judging the central claims insufficiently supported — the work shows a classifier recovering predefined labels inside one simulation framework, not biosignature detection in real spectra nor a correct PCA interpretation — and closes by recommending major revision on the same grounds, stating that these are matters of experimental validation rather than presentation. These bracket the specific concerns R1-3 to R1-8; they are the frame, not separate items, so they are answered once here and carried through the itemised responses.
 
-**Plan:** Narrow the framing throughout. Present the work as a controlled benchmark of model families and calibration behaviour on synthetic spectra, and describe the task as recovering an abundance-threshold labelling.
+The response posture:
 
-**Where:** Title, Abstract (scope sentences), §1 (task framing and contributions), §5 (limitations).
+- **Concede the overreach and narrow the scope.** The work is presented as a controlled benchmark of model families, calibration and robustness on synthetic Ariel-like spectra, and the task as recovery of an abundance-threshold labelling — not a validated triage tool for the mission. Two reviewers flag overreach independently (this, and R2-5).
+- **Add the validation experiments requested.** An independent radiative transfer code, alternative molecular opacity data, cloud and haze prescriptions, and an injected-systematics sweep are run and reported (R1-3); the PCA interpretation is withdrawn and replaced with a measured claim (R1-5); the whitening ablations are done (R1-6, R1-7, R1-8).
+- **Name what remains out of reach:** retrieval-derived labels (R1-4) and three of the seven domain-shift axes (R1-3).
 
-### R1-2 — Confined to a single simulator ◐
+**Where:** Title, Abstract (scope sentences), §1 (task framing and contributions), §5 (limitations); cover letter (summary of what was and was not addressed).
 
-*Summary:* The study is developed, trained, validated and tested inside one
-synthetic ecosystem: every spectrum comes from TauREx/MultiREx, every label is
-derived from the same parameters that generated the spectra, and every
-evaluation uses spectra built under essentially identical modelling
-assumptions.
+### R1-2 + R1-3 — Confined to one simulator; no robustness under domain shift
 
-**Status:** ◐ PARTIAL — `generate_exotransmit_testset.py`, `evaluate_exotransmit.py`, `generate_opacity_swap_testset.py`, `evaluate_opacity_swap.py`. The comment makes two distinct charges, in different states; answer them separately.
+R1-2 and R1-3 are one continuous argument in the review: the study is confined to a single synthetic ecosystem (R1-2), so the authors "should demonstrate that the classifier remains robust under realistic domain shift" via a list of experiments (R1-3). R1-2's forward-model charge is answered by the experiments below; its second clause — that labels derive from the generation parameters — is a labelling concern and is answered under R1-4.
 
-#### Charge A — every spectrum comes from one forward model
+**The single-simulator charge (R1-2), answered.** Two of the experiments below change one component of the forward model while holding the rest fixed, evaluated on the 2697 committed held-out planets re-rendered rather than resampled, so each spectrum has a clear-sky counterpart for the identical planet. The independent radiative transfer code (Exo-Transmit, Experiment 4) costs 4.1 accuracy points; the alternative molecular opacity data (ExoMol/HITRAN line lists, Experiment 5) costs 16.1, or 22.9 with ozone replaced too. Training remains entirely within TauREx; only evaluation leaves it, which is exactly the reviewer's stated remedy — "experiments using spectra generated by independent radiative transfer codes, alternative molecular opacity databases". Full method and per-set numbers are in Experiments 4 and 5 below.
 
-Two experiments test this, each changing one component of the forward model and holding the other fixed. Both are evaluated on the 2697 committed held-out planets, re-rendered rather than resampled, so each perturbed spectrum has a clear-sky counterpart for the identical planet and the 88.91% baseline is a within-planet comparator.
-
-**Independent radiative transfer code.** Exo-Transmit (Kempton et al. 2017) is a different implementation in a different language with a different solver, and is the code MultiREx's opacity tables originally came from — the `.dat` files in `multirex/data` are byte-identical to `Exo_Transmit/Opac` (md5 verified). Running it therefore changes the radiative transfer while every cross section stays the same file. Accuracy 88.91% → **84.80% (−4.1)**. Most of the difference traces to Exo-Transmit assuming constant gravity where TauREx varies it with altitude — a hydrostatic bookkeeping difference rather than a disagreement about radiative transfer. `final_results/H2_exotransmit.{txt,csv}`.
-
-**Alternative molecular opacity data.** The H₂O, CH₄ and CO₂ tables are replaced with ExoMol line lists (POKAZATEL, YT34to10, UCL-4000) while the radiative transfer code, atmospheric structure and labelling rule stay fixed. Accuracy 88.91% → **72.82% (−16.1)**, or **66.04% (−22.9)** when ozone is also replaced with HITRAN. `final_results/H2_opacity_swap{,_o3}.{txt,csv}`.
-
-Full method and per-set numbers for both are in R1-3, axes 1 and 2.
-
-**What this supports:** the pipeline transfers across radiative transfer implementations at a cost of about four accuracy points, and loses about sixteen when the molecular opacity data changes. Training remains entirely within TauREx; only evaluation leaves it, which is what the reviewer's stated remedy asks for — "experiments using spectra generated by independent radiative transfer codes, alternative molecular opacity databases".
-
-#### Charge B — labels derived from the generation parameters
-
-This charge is not touched by the forward-model work. Both experiments above recompute the *spectra* from the same injected abundances; the CH₄/O₃ threshold rule never moves. Accuracy still demonstrates that a labelling convention is recoverable from spectra, not that abundances can be inferred from observations.
-
-**Plan.** Concede it directly. Retrieval-derived labels are the only thing that would address it, and running retrieval on the full benchmark is out of reach this cycle (§R1-4, item 5). State in §5 that the labels are a function of the generation parameters rather than of inferred abundances, and name retrieval-derived labelling as the required next step. The status stays ◐ because this half is unaddressed.
-
-**Where:** §3.1 (labelling statement, charge B), new §4 Robustness subsection (both cost figures, charge A), §5 (limitations — cross-simulator evaluation is done and should be reported with both numbers; retrieval-derived labels named as the remaining next step).
-
-### R1-3 — No demonstration of robustness under domain shift
-
-*Summary:* Real Ariel data will carry instrumental systematics, correlated noise, stellar contamination, clouds and hazes, and 3D structure, none of which the 1D fixed-SNR simulation includes. Requests validation under realistic domain shift across seven specific axes.
+*Summary (R1-3):* Real Ariel data will carry instrumental systematics, correlated noise, stellar contamination, clouds and hazes, and 3D structure, none of which the 1D fixed-SNR simulation includes. Requests validation under realistic domain shift across seven specific axes.
 
 **Status:** ◐ PARTIAL — `domain_shift_sweep.py`, `generate_cloudy_testset.py`, `evaluate_cloudy.py`, `generate_hazy_testset.py`, `evaluate_hazy.py`, `generate_opacity_swap_testset.py`, `evaluate_opacity_swap.py`. **About 4 of seven requested axes covered.**
 
@@ -299,6 +275,8 @@ Changing the opacity data costs 16.1 accuracy points for a coherent alternative 
 
 *Summary:* Labels come from fixed abundance thresholds applied to simulation inputs. Real observations require retrieval, which introduces uncertainty, parameter degeneracy, stellar context, and abiotic alternatives. Retrieval-derived abundances **or probabilistic labels** would strengthen relevance.
 
+**This also answers R1-2's second clause** — "every class label is derived directly from the same simulated atmospheric parameters." That is the same concern as this comment (labels come from the generation parameters, not from inference), with the same remedy, so it is answered here rather than under the single-simulator response. The renaming statement added to §3.1 states it directly: the labels are computed from the abundances supplied to the forward model, so the task is recovering a labelling convention from spectra, not inferring abundances from observations.
+
 **Status:** ◐ PARTIAL — `analyze_label_margin.py`, `analyze_threshold_sensitivity.py`.
 
 **The response, in one paragraph.** The reviewer is right that the positive class is a labelling convention, not a detection, and the response concedes this rather than contesting it. The concession is made concrete in two ways. First, the task is renamed throughout the paper — from "biosignature detection" to recovery of an abundance-threshold labelling — so the manuscript stops claiming more than the experiment shows; this is the largest part of the fix and it is free. Second, two analyses on the existing data characterise how much the labelling convention actually governs the result: a threshold-sensitivity test showing the headline accuracy does not depend on the particular cutoff chosen, and a margin analysis showing the classifier extracts no information for planets near the cutoff, where the label is genuinely arbitrary. What the response does **not** do is make the labels observationally meaningful — that would require retrieval-derived abundances, which is out of reach this cycle and is named as the primary next step. The reviewer's suggestion of probabilistic labels is addressed in spirit by the margin analysis (near-threshold planets are shown to be intrinsically ambiguous) rather than by relabelling. The four items below implement this: item 1 is the renaming, items 2–3 the two analyses, item 4 the conceded retrieval work.
@@ -307,7 +285,7 @@ Changing the opacity data costs 16.1 accuracy points for a coherent alternative 
 1. ☑ Rename the task honestly throughout — the largest part of the fix, and free. Instructions in the rewrite section below.
 2. ☑ Threshold sensitivity: relabel at ±0.25 and ±0.5 dex; report the class-balance shift.
 3. ☑ Margin analysis: accuracy binned by distance to the labelling threshold.
-4. ☐ Out of reach — retrieval on 50–100 spectra with posterior width against injected abundance. Concede explicitly. Retrieval is the single out-of-reach item across R1-2 and R1-4; the cross-simulator request is answered. Retrieval on the full benchmark is months of compute and would replace the benchmark rather than revise it.
+4. ☐ Out of reach — retrieval on 50–100 spectra with posterior width against injected abundance. Concede explicitly. Retrieval is the single out-of-reach item across the generalisation (R1-3) and labelling (R1-4) responses; the cross-simulator request is answered. Retrieval on the full benchmark is months of compute and would replace the benchmark rather than revise it.
 
 #### Margin analysis — results
 
@@ -507,12 +485,6 @@ It also strengthens the XGBoost recommendation rather than weakening the paper. 
 The unwhitened MLP has a lower clean baseline (75.7% vs 79.3% restart means), so the headroom normalisation in Result 2 is a modelling choice a reader could question. Result 1 — the raw crossover — does not depend on it, and both point the same way. Both networks were retrained five times (`domain_shift_mlp_restarts.py`), so every quoted number is a restart mean ± σ with differences paired within restarts. The clean-data advantage of whitening is 3.6 ± 3.1 points — marginal against its own scatter, which strengthens the concession: whitening buys little even where it is supposed to help. Quote the crossover as "by SNR 12 in four of five restarts", not as a fixed SNR.
 
 **Where:** §3.2 (whitening reframing), §4.1, new §4.5 Robustness subsection (the controlled whitened-vs-unwhitened result).
-
-### R1-9 — Overall recommendation
-
-*Summary:* Recommends major revision. The generalisation, PCA interpretation, and whitening questions all remain open, and are described as requiring experimental validation rather than rewriting.
-
-**Where:** cover letter (summary of what was and was not addressed), §5 (limitations).
 
 ---
 
