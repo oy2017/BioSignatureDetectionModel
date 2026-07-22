@@ -200,6 +200,14 @@ Per-component discriminative power — no single component is strong, and the hi
 
 The key point for the paper: the *recommended* model, XGBoost, uses no whitening at all, so this concern does not reach the headline result. *Evidence:* [`test_whitening_necessity.py`](../test_whitening_necessity.py) → [`H2_whitening_necessity.txt`](../final_results/H2_whitening_necessity.txt).
 
+**Whitening on / off, per model** ([`H2_whitening_necessity.txt`](../final_results/H2_whitening_necessity.txt)):
+
+| Model | Whitened (all 102 components) | Unwhitened | Effect of whitening |
+| :-- | --: | --: | :-- |
+| XGBoost | 88.2% | 88.2% (identical, every range) | none — provably unaffected |
+| MLP | 78.8% ± 2.2 | 79.5% ± 2.2 (drop PC0–PC1, no whitening) | substitutable |
+| CNN | 75.8% ± 1.4 | 67.2% ± 3.2 | still required |
+
 **Status.** *Conceded:* the claim that whitening amplifies chemistry, and the "chemically relevant" wording, are removed. *Shown by the experiment (not a defence of the old claim):* whitening is a plain optimisation step — XGBoost is identical with and without it, the MLP is equally good without it, only the CNN needs it — and the recommended model, XGBoost, uses none, so the concern does not touch the headline result.
 
 **For your input.** None — we believe the concession fully covers it.
