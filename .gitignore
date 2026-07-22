@@ -3,7 +3,8 @@ failed_parameters.log
 __pycache__/
 *.pyc
 
-# Peer-review correspondence (not for public distribution)
+# Peer-review source (kept local; the response docs in revision/ are tracked)
 Scholastica.pdf
 feedback.pdf
-revision/
+revision/scholastica_reviews_verbatim.txt
+revision/reviewer_response_tracking.md
