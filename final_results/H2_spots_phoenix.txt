@@ -1,0 +1,14 @@
+Stellar contamination with real PHOENIX spectra -- Transit Light Source Effect
+
+Frozen H2 pipeline, pooled over 2697 test planets. Clean baseline: 88.91%.
+Cool spots T_spot=0.85 T_eff; hot faculae T_fac=T_eff+100 K; PHOENIX solar Z.
+
+  case                           accuracy   change  flip c->i  feat.amp
+  clean (reference)                88.91%    +0.00          0   0.04196
+  cool spots f=2%                  85.69%    -3.23        171   0.03988
+  cool spots f=5%                  81.28%    -7.64        318   0.03699
+  cool spots f=10%                 73.93%   -14.98        526   0.03336
+  cool spots f=20%                 65.74%   -23.17        757   0.04453
+  faculae f=5%                     84.39%    -4.52        202   0.04290
+  faculae f=10%                    82.76%    -6.15        261   0.04405
+  spots 10% + faculae 5%           75.53%   -13.39        476   0.03361

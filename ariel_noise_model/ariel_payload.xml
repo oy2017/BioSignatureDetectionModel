@@ -1,0 +1,333 @@
+<root>
+    <!-- ============================================================
+         Ariel payload for ExoRad2, reconstructed from PUBLISHED parameters:
+           Tinetti et al. 2018 (Ariel Definition Study Report),
+           Mugnai et al. 2020 (ArielRad), Edwards et al. 2019.
+         This is NOT the consortium's official ArielRad instrument file
+         (that is not public). Channel wavelength ranges and resolving
+         powers are the published mission values; optical throughputs and
+         detector parameters are representative literature values, adopted
+         as stated below and used only to shape the wavelength-dependent
+         noise. A space telescope at L2: no atmospheric (skyFilter)
+         foreground; zodiacal + telescope thermal emission only.
+         ============================================================ -->
+    <ConfigPath> .
+        <comment>Main directory for the configuration files</comment>
+    </ConfigPath>
+    <fileName>ariel_payload</fileName>
+    <common>
+        <working_R> 6000 </working_R>
+        <sourceSpectrum>planck
+            <comment>Planck SED per target Teff (standard for a radiometric noise budget).</comment>
+        </sourceSpectrum>
+        <wl_min unit="micron">0.5</wl_min>
+        <wl_max unit="micron">7.8</wl_max>
+        <foreground> zodiacal
+                <zodiacFactor>2.5
+                    <comment>representative zodiacal level (Kelsall 1998 scaling)</comment>
+                </zodiacFactor>
+                <zodiacalMap> False </zodiacalMap>
+        </foreground>
+    </common>
+
+    <optics>
+        <ForceChannelWlEdge>True</ForceChannelWlEdge>
+        <Atel unit="m**2">0.64
+            <comment>Ariel effective collecting area (M1 1.1x0.73 m ellipse)</comment>
+        </Atel>
+        <opticalElement>M1
+            <type>surface</type>
+            <temperature unit='K'>55</temperature>
+            <emissivity>0.03</emissivity>
+            <reflectivity>0.9</reflectivity>
+        </opticalElement>
+        <opticalElement>M2
+            <type>surface</type>
+            <temperature unit='K'>55</temperature>
+            <emissivity>0.03</emissivity>
+            <reflectivity>0.9</reflectivity>
+        </opticalElement>
+        <opticalElement>M3
+            <type>surface</type>
+            <temperature unit='K'>55</temperature>
+            <emissivity>0.03</emissivity>
+            <reflectivity>0.9</reflectivity>
+        </opticalElement>
+    </optics>
+
+    <!-- ===================== VISPhot 0.50-0.55 um ===================== -->
+    <channel>VISPhot
+        <channelClass>Photometer</channelClass>
+        <wl_min unit="micron">0.50</wl_min>
+        <wl_max unit="micron">0.55</wl_max>
+        <Fnum_x unit="">15</Fnum_x>
+        <Fnum_y unit="">15</Fnum_y>
+        <NoiseX unit="">0.0</NoiseX>
+        <aperture>
+            <radius unit="">9.24</radius>
+            <apertureCorrection unit="">0.91</apertureCorrection>
+        </aperture>
+        <optics>
+            <opticalElement>filt
+                <type>filter</type>
+                <wl_min unit="micron">0.50</wl_min>
+                <wl_max unit="micron">0.55</wl_max>
+                <transmission>0.7</transmission>
+                <emissivity>0.03</emissivity>
+                <temperature unit='K'>60</temperature>
+                <use>transmission</use>
+            </opticalElement>
+            <opticalElement>optics
+                <type>optics box</type>
+                <temperature unit='K'>60</temperature>
+                <emissivity>1</emissivity>
+            </opticalElement>
+            <opticalElement>detector
+                <type>detector box</type>
+                <temperature unit='K'>42</temperature>
+                <emissivity>1</emissivity>
+            </opticalElement>
+        </optics>
+        <detector>
+            <delta_pix unit="micron">18.0</delta_pix>
+            <read_noise unit="count">10</read_noise>
+            <dark_current unit="count/s">1</dark_current>
+            <well_depth unit="count">100000</well_depth>
+            <f_well_depth unit="">1.0</f_well_depth>
+            <qe unit="">0.55</qe>
+            <wl_min unit="micron">0.4</wl_min>
+            <cut_off unit="micron">1.0</cut_off>
+            <freqNDR unit="Hz">0.</freqNDR>
+        </detector>
+    </channel>
+
+    <!-- ===================== FGS1 0.60-0.80 um ===================== -->
+    <channel>FGS1
+        <channelClass>Photometer</channelClass>
+        <wl_min unit="micron">0.60</wl_min>
+        <wl_max unit="micron">0.80</wl_max>
+        <Fnum_x unit="">15</Fnum_x>
+        <Fnum_y unit="">15</Fnum_y>
+        <NoiseX unit="">0.0</NoiseX>
+        <aperture>
+            <radius unit="">9.24</radius>
+            <apertureCorrection unit="">0.91</apertureCorrection>
+        </aperture>
+        <optics>
+            <opticalElement>filt
+                <type>filter</type>
+                <wl_min unit="micron">0.60</wl_min>
+                <wl_max unit="micron">0.80</wl_max>
+                <transmission>0.7</transmission>
+                <emissivity>0.03</emissivity>
+                <temperature unit='K'>60</temperature>
+                <use>transmission</use>
+            </opticalElement>
+            <opticalElement>optics
+                <type>optics box</type>
+                <temperature unit='K'>60</temperature>
+                <emissivity>1</emissivity>
+            </opticalElement>
+            <opticalElement>detector
+                <type>detector box</type>
+                <temperature unit='K'>42</temperature>
+                <emissivity>1</emissivity>
+            </opticalElement>
+        </optics>
+        <detector>
+            <delta_pix unit="micron">18.0</delta_pix>
+            <read_noise unit="count">10</read_noise>
+            <dark_current unit="count/s">1</dark_current>
+            <well_depth unit="count">100000</well_depth>
+            <f_well_depth unit="">1.0</f_well_depth>
+            <qe unit="">0.7</qe>
+            <wl_min unit="micron">0.5</wl_min>
+            <cut_off unit="micron">1.1</cut_off>
+            <freqNDR unit="Hz">0.</freqNDR>
+        </detector>
+    </channel>
+
+    <!-- ===================== FGS2 0.80-1.10 um ===================== -->
+    <channel>FGS2
+        <channelClass>Photometer</channelClass>
+        <wl_min unit="micron">0.80</wl_min>
+        <wl_max unit="micron">1.10</wl_max>
+        <Fnum_x unit="">15</Fnum_x>
+        <Fnum_y unit="">15</Fnum_y>
+        <NoiseX unit="">0.0</NoiseX>
+        <aperture>
+            <radius unit="">9.24</radius>
+            <apertureCorrection unit="">0.91</apertureCorrection>
+        </aperture>
+        <optics>
+            <opticalElement>filt
+                <type>filter</type>
+                <wl_min unit="micron">0.80</wl_min>
+                <wl_max unit="micron">1.10</wl_max>
+                <transmission>0.7</transmission>
+                <emissivity>0.03</emissivity>
+                <temperature unit='K'>60</temperature>
+                <use>transmission</use>
+            </opticalElement>
+            <opticalElement>optics
+                <type>optics box</type>
+                <temperature unit='K'>60</temperature>
+                <emissivity>1</emissivity>
+            </opticalElement>
+            <opticalElement>detector
+                <type>detector box</type>
+                <temperature unit='K'>42</temperature>
+                <emissivity>1</emissivity>
+            </opticalElement>
+        </optics>
+        <detector>
+            <delta_pix unit="micron">18.0</delta_pix>
+            <read_noise unit="count">15</read_noise>
+            <dark_current unit="count/s">1</dark_current>
+            <well_depth unit="count">100000</well_depth>
+            <f_well_depth unit="">1.0</f_well_depth>
+            <qe unit="">0.7</qe>
+            <wl_min unit="micron">0.7</wl_min>
+            <cut_off unit="micron">1.2</cut_off>
+            <freqNDR unit="Hz">0.</freqNDR>
+        </detector>
+    </channel>
+
+    <!-- ===================== NIRSpec 1.10-1.95 um, R=15 ===================== -->
+    <channel>NIRSpec
+        <channelClass>Spectrometer</channelClass>
+        <wl_min unit="micron">1.10</wl_min>
+        <wl_max unit="micron">1.95</wl_max>
+        <Fnum_x unit="">15</Fnum_x>
+        <Fnum_y unit="">20</Fnum_y>
+        <NoiseX unit="">0.0</NoiseX>
+        <targetR unit="">15.0</targetR>
+        <wlSolution>
+            <datafile>__ConfigPath__/nirspec_wlsol.csv</datafile>
+        </wlSolution>
+        <optics>
+            <opticalElement>filt
+                <type>filter</type>
+                <wl_min unit="micron">1.10</wl_min>
+                <wl_max unit="micron">1.95</wl_max>
+                <transmission>0.6</transmission>
+                <emissivity>0.03</emissivity>
+                <temperature unit='K'>60</temperature>
+                <use>transmission</use>
+            </opticalElement>
+            <opticalElement>optics
+                <type>optics box</type>
+                <temperature unit='K'>60</temperature>
+                <emissivity>1</emissivity>
+            </opticalElement>
+            <opticalElement>detector
+                <type>detector box</type>
+                <temperature unit='K'>42</temperature>
+                <emissivity>1</emissivity>
+            </opticalElement>
+        </optics>
+        <detector>
+            <delta_pix unit="micron">18.0</delta_pix>
+            <read_noise unit="count">15</read_noise>
+            <dark_current unit="count/s">1</dark_current>
+            <well_depth unit="count">100000</well_depth>
+            <f_well_depth unit="">1.0</f_well_depth>
+            <qe unit="">0.7</qe>
+            <wl_min unit="micron">1.0</wl_min>
+            <cut_off unit="micron">4.2</cut_off>
+            <freqNDR unit="Hz">0.</freqNDR>
+        </detector>
+    </channel>
+
+    <!-- ===================== AIRS-CH0 1.95-3.90 um, R=100 ===================== -->
+    <channel>AIRS-CH0
+        <channelClass>Spectrometer</channelClass>
+        <wl_min unit="micron">1.95</wl_min>
+        <wl_max unit="micron">3.90</wl_max>
+        <Fnum_x unit="">15</Fnum_x>
+        <Fnum_y unit="">20</Fnum_y>
+        <NoiseX unit="">0.0</NoiseX>
+        <targetR unit="">100.0</targetR>
+        <wlSolution>
+            <datafile>__ConfigPath__/airs0_wlsol.csv</datafile>
+        </wlSolution>
+        <optics>
+            <opticalElement>filt
+                <type>filter</type>
+                <wl_min unit="micron">1.95</wl_min>
+                <wl_max unit="micron">3.90</wl_max>
+                <transmission>0.6</transmission>
+                <emissivity>0.03</emissivity>
+                <temperature unit='K'>60</temperature>
+                <use>transmission</use>
+            </opticalElement>
+            <opticalElement>optics
+                <type>optics box</type>
+                <temperature unit='K'>60</temperature>
+                <emissivity>1</emissivity>
+            </opticalElement>
+            <opticalElement>detector
+                <type>detector box</type>
+                <temperature unit='K'>42</temperature>
+                <emissivity>1</emissivity>
+            </opticalElement>
+        </optics>
+        <detector>
+            <delta_pix unit="micron">18.0</delta_pix>
+            <read_noise unit="count">15</read_noise>
+            <dark_current unit="count/s">1</dark_current>
+            <well_depth unit="count">100000</well_depth>
+            <f_well_depth unit="">1.0</f_well_depth>
+            <qe unit="">0.7</qe>
+            <wl_min unit="micron">1.8</wl_min>
+            <cut_off unit="micron">4.2</cut_off>
+            <freqNDR unit="Hz">0.</freqNDR>
+        </detector>
+    </channel>
+
+    <!-- ===================== AIRS-CH1 3.90-7.80 um, R=30 ===================== -->
+    <channel>AIRS-CH1
+        <channelClass>Spectrometer</channelClass>
+        <wl_min unit="micron">3.90</wl_min>
+        <wl_max unit="micron">7.80</wl_max>
+        <Fnum_x unit="">15</Fnum_x>
+        <Fnum_y unit="">20</Fnum_y>
+        <NoiseX unit="">0.0</NoiseX>
+        <targetR unit="">30.0</targetR>
+        <wlSolution>
+            <datafile>__ConfigPath__/airs1_wlsol.csv</datafile>
+        </wlSolution>
+        <optics>
+            <opticalElement>filt
+                <type>filter</type>
+                <wl_min unit="micron">3.90</wl_min>
+                <wl_max unit="micron">7.80</wl_max>
+                <transmission>0.6</transmission>
+                <emissivity>0.03</emissivity>
+                <temperature unit='K'>60</temperature>
+                <use>transmission</use>
+            </opticalElement>
+            <opticalElement>optics
+                <type>optics box</type>
+                <temperature unit='K'>60</temperature>
+                <emissivity>1</emissivity>
+            </opticalElement>
+            <opticalElement>detector
+                <type>detector box</type>
+                <temperature unit='K'>42</temperature>
+                <emissivity>1</emissivity>
+            </opticalElement>
+        </optics>
+        <detector>
+            <delta_pix unit="micron">18.0</delta_pix>
+            <read_noise unit="count">15</read_noise>
+            <dark_current unit="count/s">10</dark_current>
+            <well_depth unit="count">100000</well_depth>
+            <f_well_depth unit="">1.0</f_well_depth>
+            <qe unit="">0.7</qe>
+            <wl_min unit="micron">3.8</wl_min>
+            <cut_off unit="micron">7.9</cut_off>
+            <freqNDR unit="Hz">0.</freqNDR>
+        </detector>
+    </channel>
+</root>

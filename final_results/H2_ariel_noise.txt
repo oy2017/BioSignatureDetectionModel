@@ -1,0 +1,12 @@
+Instrumental systematics from ExoRad2 with a published-parameter Ariel payload
+
+Frozen H2 pipeline, pooled over 2697 test planets. Clean baseline: 88.91%.
+ExoRad2 (Mugnai+2020) NSR shape; Ariel payload reconstructed from Tinetti+2018 / Mugnai+2020 (not the official ArielRad file). Colored vs white AT MATCHED median sigma.
+
+  median sigma       white acc  Ariel-colored  colored-white
+  SNR~30 5e-05         78.61%         77.78%         -0.83
+  SNR~15 1e-04         76.56%         75.29%         -1.27
+  SNR~7 2e-04          72.31%         72.41%         +0.10
+
+Median NSR color span across 0.5-7.8 um (max/min): 29.5x.
+Noise is concentrated in the AIRS bands (1.95-7.8 um) that carry CH4/CO2/H2O/O3.
