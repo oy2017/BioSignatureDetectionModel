@@ -1,0 +1,10 @@
+H2 -> N2 composition transfer (frozen H2-trained pipeline), 2697 paired planets
+
+  H2 test (baseline)   accuracy 88.91%   feature amp 0.0407
+  N2 test (transfer)   accuracy 56.28%   feature amp 0.0030
+  transfer penalty: -32.6 points; N2 features are 0.07x of H2
+
+The classifier trained on H2 does not transfer to N2 atmospheres: the higher
+mean molecular weight shrinks the scale height, muting every feature to a few
+percent of the H2 value, so the N2 spectra are effectively featureless and
+accuracy falls toward the majority-class baseline.
