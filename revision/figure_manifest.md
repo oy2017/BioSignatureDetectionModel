@@ -18,11 +18,5 @@ The clean, correctly-numbered figure set is in **`revision/figures/figure 1.png 
 
 ## Notes
 
-- The buggy `plots/figure 5.png` and the stale mis-numbered `final_results/figure 1–6.png` copies have been **deleted** (they were untracked). Use only `revision/figures/`.
-- **Dropped:** the standalone scree plot (`H2_pca_scree_plot_final.png`, from `generate_final_scree_plot.py`) — its explained-variance data is the top panel of Figure 3, so it is redundant.
-- **Figure 8 pending regen:** the title in `plot_calibration_curves.py` has been corrected (no longer says "Biosignature Detection"), but the current `calibration_curves.png` / `figure 8.png` still shows the old title. Re-run `plot_calibration_curves.py` and re-copy to `revision/figures/figure 8.png`. The MLP/CNN curves are stochastic (SEED = 42), so do this in the final coordinated figure pass to keep the curves consistent with the reported Brier scores.
-
-## Other pending items before submission
-- **Acknowledgments** — needs Owen/mentor input on assistance to disclose (editorial, technical, analytical, writing, and any AI tools).
-- **References** — carry over refs 1–42, apply the R2-3 fixes (refs 1/2, 9, 39) and add the new citations (Rackham 2018, Allard 2012, Mugnai 2020, Kempton 2017, Freedman 2008/2014, Lupu 2014, Chubb 2021, Polyansky 2018, Yurchenko 2017/2020, Jolliffe 1982, Grinsztajn 2022, Shwartz-Ziv & Armon 2022).
-- **Tense/person pass** (R2-6) — past tense, third person throughout, at final assembly.
+- The standalone scree plot (`H2_pca_scree_plot_final.png`, from `generate_final_scree_plot.py`) is not used — its explained-variance data is the top panel of Figure 3.
+- Figure 8 is rendered on a single test set (`multirex_spectra_H2_test.parquet`); its MLP and CNN are trained without a fixed TensorFlow seed, so the figure is one stochastic realisation and its own Brier values (XGBoost 0.090, RF 0.130, MLP 0.144, CNN 0.249) differ slightly from the reported five-set means quoted in the caption. The figure illustrates calibration shape; the caption quotes the canonical values.
