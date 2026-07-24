@@ -129,7 +129,7 @@ for model_name, probs in probabilities.items():
         y_test, probs, n_bins=10, name=model_name, ax=ax
     )
 
-ax.set_title("Calibration Curves (Reliability Diagrams) for Biosignature Detection")
+ax.set_title("Calibration Curves (Reliability Diagrams)")
 ax.grid(True, linestyle='--', alpha=0.7)
 
 output_path = 'final_results/calibration_curves.png'

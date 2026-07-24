@@ -574,7 +574,24 @@ Every entry in the Manuscript column above is still open. This section says exac
 
 Current: *A Calibrated PCA–Machine Learning Pipeline for Biosignature Candidate Triage in Exoplanet Transmission Spectra*
 
-Defensible **only if** the Abstract scopes it clearly. "Biosignature candidate triage" implies operational readiness the evidence does not support. Either add "Synthetic" before "Exoplanet Transmission Spectra", or leave it and carry the scoping in the first and last sentences of the Abstract. **Open decision — needs the mentor's agreement before the abstract is finalised**, since the two options put the scoping in different places.
+The title makes **two** over-claims the reviewers flagged, and they must be handled separately:
+
+1. **"…Exoplanet Transmission Spectra"** implies real data (R1-1, R1-2). Inserting **"Synthetic"** fixes this and is required either way.
+2. **"Biosignature Candidate Triage"** implies (a) operational readiness for prioritising real follow-up targets (R1-1, R2-5 — the overreach two reviewers independently flagged) and (b) biosignature *detection* rather than recovery of a threshold labelling convention (R1-4). Adding "Synthetic" does **not** address this second claim.
+
+So "Synthetic" alone is necessary but not sufficient: it is defensible **only in combination with** the Abstract's scoping sentences (the "labelling convention, not detection" and "in-domain triage, not Ariel-ready" sentences drafted above). Two options for the mentor, differing in whether the title stands accurately on its own:
+
+- **Option A (lightest) — insert "Synthetic", lean on the Abstract:**
+  > *A Calibrated PCA–Machine Learning Pipeline for Biosignature Candidate Triage in **Synthetic** Exoplanet Transmission Spectra*
+
+  Acceptable **only because** the Abstract now concedes the labelling framing and the in-domain limit up front. The title still reads as operational biosignature triage in isolation.
+
+- **Option B (self-contained accurate) — reframe the task so the title does not depend on the Abstract to rescue it:**
+  > *A Calibrated PCA–Machine Learning **Benchmark** for **Threshold-Based Biosignature Labelling** of **Synthetic** Exoplanet Transmission Spectra*
+
+  "Benchmark" removes the operational-readiness implication; "threshold-based … labelling" replaces "detection/triage". This is the framing recommended for the paper's scope in "Before starting, decide one thing" above.
+
+**Recommendation:** Option B. The reviewers' core complaint is over-claiming, so a title that is accurate without relying on the Abstract is the safer choice; Option A is acceptable but leaves the most-read line of the paper carrying an implication the body then has to walk back. **Open decision — needs the mentor's agreement before the Abstract is finalised**, since Option A puts more of the scoping burden on the Abstract's wording than Option B does.
 
 ## Abstract — serves R1-1, R1-5, R1-6, R2-5
 
@@ -757,7 +774,9 @@ The useful comparison is `PLS + XGBoost` against `PCA + XGBoost`, which holds th
 
 **Add the molecular-distribution analyses** — these directly answer the remaining three of Reviewer 1's four requested R1-5 analyses (loading-vector analysis, variance decomposition by physical parameter, and explicit CH₄/O₃ projection). From `final_results/H2_chem_projection.txt` and `H2_pc_drivers.txt`, figures `chem_projection.png` and `pc_loadings.png`:
 
-> "No principal component is dominated by a single molecule. Decomposing each component's variance by the physical parameter driving it, each spectrally active molecule's influence is spread across thirty to forty of the 102 components, and the component most associated with methane is only about 5% methane by variance. The loading vectors have interpretable gross shapes — the leading component is nearly flat (overall transit depth), the next carries a spectral slope, and several low-variance components resemble individual molecular bands — but the association is weak rather than a clean one-component-per-process assignment. Projecting the methane and ozone spectral imprints onto the components confirms this: neither is isolated in a dedicated component, and both overlap the overall-depth component because they shift the continuum level. Methane and ozone information is therefore distributed across many components and partly entangled with continuum structure, exactly as expected for orthogonal linear combinations of all wavelength channels."
+> "The molecular signals are not isolated in the low-variance 'chemistry' tail either. Projecting each molecule's spectral imprint onto the components shows the imprints are concentrated in only a few components (participation ratio ≈ 2), but not where the earlier interpretation placed them: 67% of the ozone imprint and about 15% of the methane imprint fall on PC0, the highest-variance component the earlier interpretation called purely physical, and the remainder sits in a handful of low-variance components (methane in PC2/PC3, ozone in PC4) rather than across all of PCs 2–101. No component is a clean single-molecule channel either: even the most methane-associated component (PC3) has only about 5% of its variance driven by methane, and the loading vectors, interpretable in gross shape, match no molecule cleanly. The earlier attribution — PC0/PC1 physical, chemistry in PCs 2–101 — is refuted from both sides."
+
+Note the two analyses measure different things and both are true: the *projection* (chem_projection.png) shows the imprint concentrated in ~2 components with heavy PC0 overlap; the *variance-driver footprint* (H2_pc_drivers.txt) shows each molecule drives variance across 30–40 components at individually low weight. Do NOT write that the projection "confirms" a spread — it shows concentration. The figure `chem_projection.png` (participation ratio 2–3, O3 67% in PC0) is the ground truth for the reviewer's requested CH₄/O₃-projection analysis and must not be contradicted by the prose.
 
 State the ozone reconciliation so a careful reviewer does not read a contradiction between the two analyses:
 
@@ -911,7 +930,7 @@ Caveat to state (R2-4 / §5): "The Ariel payload is reconstructed from published
 
 **Replace** the withdrawn PCA paragraph with the measured finding (backed by the eight PCA experiments):
 
-> "No principal component isolates the biosignature signal: the two components carrying 98.4% of the variance classify at chance and are removable without loss, and each molecule's influence is distributed across thirty to forty low-variance components rather than concentrated in any one. Classification succeeds by nonlinearly combining many individually weak components; the secondary standardisation is an optimisation step for the scale-sensitive neural networks, not a chemistry-selective operation, and the recommended model uses none."
+> "No principal component isolates the biosignature signal: the two components carrying 98.4% of the variance classify at chance and are removable without loss, and while each molecule's spectral imprint is concentrated in only a few components, those are not confined to the low-variance tail — 67% of the ozone imprint falls on the highest-variance component the earlier interpretation had called purely physical. Classification succeeds by nonlinearly combining many individually weak components; the secondary standardisation is an optimisation step for the scale-sensitive neural networks, not a chemistry-selective operation, and the recommended model uses none."
 
 **Add the robustness synthesis** — the three-mechanism claim tying the domain-shift results together (this is the tightened domain-shift claim, R1-3, stated once in the conclusion):
 
