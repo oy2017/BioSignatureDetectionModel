@@ -256,7 +256,7 @@ The classifier is characterised here as an in-domain triage tool, not a demonstr
 | Alternative opacity (ExoMol, + HITRAN O₃) | −16.1 (−22.9) | decision-threshold bias |
 | Clouds & hazes | −2.3 → −25.3 | feature-amplitude suppression |
 | Stellar contamination (BT-Settl/PHOENIX TLSE) | −3.2 → −23.2 | chromatic distortion |
-| Resolution / SNR (injected sweep) | up to −15.2 | correlated noise dominant |
+| Resolution / SNR (injected sweep) | up to −15.2 | features buried below the noise floor |
 | Instrument noise (ExoRad2 / Ariel) | ~1 beyond white | minor coloring penalty |
 | Out-of-envelope extrapolation | −8.3 | genuine extrapolation |
 
