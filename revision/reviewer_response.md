@@ -53,7 +53,7 @@ Reviewer 2's items are writing and reference tasks, not experiments.
 | :-- | :-- | --: | :-- |
 | 1 | Injected systematics (sweep) | up to −22.0 | correlated noise dominant; calibration errors < 2 |
 | 2 | Out-of-envelope (radius split) | −8.3 | genuine extrapolation penalty |
-| 3 | Clouds & hazes (paired) | −2.3 → −25.3 | **feature-amplitude suppression** |
+| 3 | Clouds & hazes (paired) | −2.3 → −25.6 | **feature-amplitude suppression** |
 | 4 | Independent RT code (Exo-Transmit) | −4.1 | numerical scheme (upper bound) |
 | 5 | Alternative opacity (ExoMol, +HITRAN O₃) | −16.1 (−22.9) | **decision-threshold bias** |
 | 6 | Stellar contamination (real PHOENIX) | −3.2 → −23.2 | **chromatic distortion** |

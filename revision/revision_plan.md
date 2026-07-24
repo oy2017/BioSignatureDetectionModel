@@ -806,7 +806,7 @@ Place after §4.4. This subsection carries the tightened domain-shift claim (R1-
 
 **Open the subsection with the tightened claim** (the domain-shift headline; every clause is backed by one of the seven experiments below):
 
-> "The classifier is characterised here as an in-domain triage tool, not a demonstration of biosignature detection on real observations. Across seven perturbation axes its accuracy degrades gracefully and traceably, through three mechanisms: suppression of feature amplitude (aerosols, high mean molecular weight), chromatic distortion (stellar contamination), and a shift of the decision threshold (alternative opacity data). Realistic instrument-noise coloring is a minor additional penalty, and the dominant noise vulnerability is time-correlated systematics."
+> "The classifier is characterised here as an in-domain triage tool, not a demonstration of biosignature detection on real observations. Across seven perturbation axes its accuracy degrades gracefully and traceably, through three mechanisms: suppression of feature amplitude (aerosols), chromatic distortion (stellar contamination), and a shift of the decision threshold (alternative opacity data). Realistic instrument-noise coloring is a minor additional penalty, and the dominant noise vulnerability is time-correlated systematics."
 
 **Then a seven-axis summary table** (each row links to the detailed result below or in the sweep):
 
@@ -814,9 +814,9 @@ Place after §4.4. This subsection carries the tightened domain-shift claim (R1-
 | :-- | --: | :-- |
 | Independent RT code (Exo-Transmit) | −4.1 | numerical scheme (upper bound) |
 | Alternative opacity (ExoMol, +HITRAN O₃) | −16.1 (−22.9) | decision-threshold bias |
-| Clouds & hazes | −2.3 → −25.3 | feature-amplitude suppression |
+| Clouds & hazes | −2.3 → −25.6 | feature-amplitude suppression |
 | Stellar contamination (BT-Settl/PHOENIX TLSE) | −3.2 → −23.2 | chromatic distortion |
-| Resolution / SNR (injected sweep) | up to −15.2 | correlated noise dominant |
+| Resolution / SNR (injected sweep) | up to −22.0 | correlated noise dominant |
 | Instrument noise (ExoRad2 / Ariel) | ~1 beyond white | minor coloring penalty |
 | Out-of-envelope extrapolation | −8.3 | genuine extrapolation |
 
@@ -934,7 +934,7 @@ Caveat to state (R2-4 / §5): "The Ariel payload is reconstructed from published
 
 **Add the robustness synthesis** — the three-mechanism claim tying the domain-shift results together (this is the tightened domain-shift claim, R1-3, stated once in the conclusion):
 
-> "Under domain shift the pipeline degrades gracefully and traceably rather than catastrophically, through three mechanisms: suppression of feature amplitude (aerosols, high mean molecular weight), chromatic distortion (stellar contamination), and a decision-threshold bias (alternative opacity data). Realistic Ariel instrument-noise coloring, modelled with a radiometric simulator, is a minor penalty of about one point beyond white noise."
+> "Under domain shift the pipeline degrades gracefully and traceably rather than catastrophically, through three mechanisms: suppression of feature amplitude (aerosols), chromatic distortion (stellar contamination), and a decision-threshold bias (alternative opacity data). Realistic Ariel instrument-noise coloring, modelled with a radiometric simulator, is a minor penalty of about one point beyond white noise."
 
 **Strengthen, do not delete, the existing error-analysis paragraph.** The current observation that failures cluster for planets with low scale heights or near the labelling thresholds is *supported* and is the same feature-amplitude-suppression mechanism — name it as such rather than leaving it as an isolated observation.
 
