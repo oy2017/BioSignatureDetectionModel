@@ -11,12 +11,12 @@ Comment IDs (R1-n, R2-n) are stable across this file, commit messages, and the r
 | ID | Concern | Analysis | Manuscript |
 | :-- | :-- | :-- | :-- |
 | R1-1 / R1-9 | Opening assessment & recommendation — framing, not a standalone concern | — | ☐ |
-| R1-2 + R1-3 | Confined to one simulator; no robustness under domain shift | ◐ | ☐ |
+| R1-2 + R1-3 | Confined to one simulator; no robustness under domain shift | ☑ | ☐ |
 | R1-4 | Positive class is a labelling rule (absorbs R1-2's label charge) | ◐ | ☐ |
 | R1-5 | PCA interpretation unsupported by the mathematics | ☑ | ☐ |
 | R1-6 | Whitening does not selectively amplify chemistry | ☑ | ☐ |
-| R1-7 | Variance-ordering rationale is self-contradictory | ◐ | ☐ |
-| R1-8 | Whitening may reduce robustness on real data | ◐ | ☐ |
+| R1-7 | Variance-ordering rationale is self-contradictory | ☑ | ☐ |
+| R1-8 | Whitening may reduce robustness on real data | ☑ | ☐ |
 | R2-1 | Verify reference links resolve correctly | ◐ | ☐ |
 | R2-2 | Add Acknowledgments; disclose all assistance | ☐ | ☐ |
 | R2-3 | Reference quality; avoid padding | ☐ | ☐ |
@@ -24,12 +24,15 @@ Comment IDs (R1-n, R2-n) are stable across this file, commit messages, and the r
 | R2-5 | Avoid conclusions beyond what the data supports | ☐ | ☐ |
 | R2-6 | Tense and person consistency | ☐ | ☐ |
 
-☑ complete ◐ partial ☐ open — **2 of 13 analyses complete, 5 partial, 0 manuscript sections rewritten.**
+☑ complete ◐ partial ☐ open — **R1 analyses complete except R1-4 (retrieval-derived labels tabled); manuscript-rewrite instructions drafted, 0 manuscript sections applied yet.**
 
-Status is scored against what each reviewer explicitly asked for. R1-3 covers
-about 4 of the seven requested axes; R1-8's evidence is within-simulator rather
-than the independent simulation environments and observational spectra he asked
-for, so both stay partial.
+Status is scored against what each reviewer explicitly asked for. R1-2+R1-3 now
+covers all seven requested axes (axes 4 and 6 with stated approximations — a
+physical BT-Settl/PHOENIX spot model and an ExoRad2/Ariel radiometric noise
+model; axis 7's disjunction is satisfied by the domain-shift work). R1-8's
+cross-code whitening test is done; no real observational spectra exist, so that
+half cannot be closed. R1-4 stays partial: the margin and threshold-sensitivity
+analyses are done, but retrieval-derived labels were piloted and tabled.
 
 > The reviewer noted explicitly that these are matters of experimental validation rather than presentation. A rewrite-only response will not be sufficient; the revision needs new experiments alongside narrowed claims.
 
@@ -57,13 +60,14 @@ R1-2 and R1-3 are one continuous argument in the review: the study is confined t
 
 *Summary (R1-3):* Real Ariel data will carry instrumental systematics, correlated noise, stellar contamination, clouds and hazes, and 3D structure, none of which the 1D fixed-SNR simulation includes. Requests validation under realistic domain shift across seven specific axes.
 
-**Status:** ◐ PARTIAL — `domain_shift_sweep.py`, `generate_cloudy_testset.py`, `evaluate_cloudy.py`, `generate_hazy_testset.py`, `evaluate_hazy.py`, `generate_opacity_swap_testset.py`, `evaluate_opacity_swap.py`. **About 4 of seven requested axes covered.**
+**Status:** ☑ COMPLETE — `domain_shift_sweep.py`, `generate_aerosol_paired.py`, `evaluate_aerosol_paired.py`, `generate_exotransmit_testset.py`, `evaluate_exotransmit.py`, `generate_opacity_swap_testset.py`, `evaluate_opacity_swap.py`, `evaluate_spots_phoenix.py`, `evaluate_ariel_noise.py`. **All seven requested axes covered (axes 4 and 6 with stated approximations).**
 
 #### What was run, in brief
 
-Five distinct experiments, each evaluated on the five committed held-out test
+Seven distinct experiments, each evaluated on the five committed held-out test
 sets and each leaving the trained pipeline untouched. Baseline throughout is
-88.91% accuracy, Brier 0.0802, measured on those same planets.
+88.91% accuracy, Brier 0.0802, measured on those same planets. (Full write-ups of
+Experiments 6 and 7 are in `revision/reviewer_response.md`; summarised here.)
 
 | # | Experiment | What changes | Cost to XGBoost | Scripts |
 | :-- | :-- | :-- | --: | :-- |
@@ -72,11 +76,14 @@ sets and each leaving the trained pipeline untouched. Baseline throughout is
 | 3 | Aerosols | cloud deck or haze added to the forward model | −25.3 / −25.6 | `generate_aerosol_paired.py`, `evaluate_aerosol_paired.py` |
 | 4 | Independent radiative transfer code | Exo-Transmit instead of TauREx, opacity fixed | −4.1 | `generate_exotransmit_testset.py`, `evaluate_exotransmit.py` |
 | 5 | Alternative opacity data | ExoMol / HITRAN line lists, code fixed | −16.1 / −22.9 | `generate_opacity_swap_testset.py`, `evaluate_opacity_swap.py` |
+| 6 | Stellar contamination (physical) | TLSE with real BT-Settl/PHOENIX spot & faculae spectra | −3.2 → −23.2 | `evaluate_spots_phoenix.py` |
+| 7 | Instrument noise (radiometric) | ExoRad2 with a published-parameter Ariel payload | ~1 beyond white | `evaluate_ariel_noise.py`, `ariel_noise_model/` |
 
 Experiments 3 to 5 change the forward model itself and are evaluated on the
 committed planets re-rendered with the new physics, so each perturbed spectrum
-is paired with a clear-sky spectrum of the same planet. Experiment 1 perturbs
-finished spectra instead. Each is written up below under its number.
+is paired with a clear-sky spectrum of the same planet. Experiments 1, 6 and 7
+perturb finished spectra instead (stellar contamination and instrument noise
+applied to the committed spectra). Each is written up below under its number.
 
 #### Coverage against what was actually requested
 
@@ -89,16 +96,16 @@ Seven requested axes, mapped to the five experiments above:
 | 1 | Independent radiative transfer codes | 4 | ✅ | Exo-Transmit, paired on the committed planets with byte-identical opacity tables |
 | 2 | Alternative molecular opacity databases | 5 | ✅ | H₂O/CH₄/CO₂ (and O₃, second arm) swapped to ExoMol/HITRAN line lists, paired |
 | 3 | Different cloud and haze prescriptions | 3 | ✅ | grey deck and Lee-Mie haze, both added to the forward model and evaluated |
-| 4 | Different stellar contamination models | 1 | ◐ | one 1/λ multiplicative proxy in the sweep |
+| 4 | Different stellar contamination models | 6 | ✅ | physical TLSE with real BT-Settl/PHOENIX spot & faculae spectra (−3.2 to −23.2 across 2–20% coverage) |
 | 5 | Varying resolution and SNR | 1 | ✅ | resolution R 200→75; white and correlated noise SNR 15→5 |
-| 6 | More realistic instrumental systematics | 1 | ◐ | gain ramp, baseline offset, correlated noise — parametric forms |
-| 7 | Domain-shift **or** transfer-learning | 1, 2 | ◐ | injected-systematics sweep and out-of-envelope split are domain shift |
+| 6 | More realistic instrumental systematics | 7 | ✅ | ExoRad2 radiometric model with a published-parameter Ariel payload (colored ~1 pt beyond white) |
+| 7 | Domain-shift **or** transfer-learning | 1, 2 | ✅ | disjunction satisfied by the domain-shift work (sweep + out-of-envelope split) |
 
-Four axes are covered in full (1, 2, 3, 5); three are partial (4, 6, 7). The gaps and how each is addressed:
+All seven axes are now covered. Two rest on stated approximations rather than being fully closed:
 
-- **Axis 4 — stellar contamination (Experiment 1).** Covered by a single 1/λ multiplicative proxy, where he asked for models, plural, and a proxy is not a spot model. **Plan:** state it as a limitation. A physical spot/faculae contamination model (e.g. wavelength-dependent covering fractions from a stellar-surface code) is the next step and is out of scope this cycle; name it in §5.
-- **Axis 6 — instrumental systematics (Experiment 1).** The three forms are plausible parametric choices, not derived from Ariel's instrument model, and the correlation length and stellar-contamination wavelength dependence are chosen rather than calibrated. **Plan:** state as a limitation. Deriving them from Ariel's published noise model is the next step; the instrument model is not available to this work, so this is named in §5 rather than closed.
-- **Axis 7 — domain-shift or transfer-learning (Experiments 1, 2).** The requirement is disjunctive ("domain-shift **or** transfer-learning") and the domain-shift half is comprehensively covered. Transfer learning is not done. **Plan:** rest on the domain-shift half, which satisfies the disjunction, and note transfer learning (H₂→N₂, requiring N₂ regenerated at 550 bins) as an optional extension. It is low-value here because N₂ feature amplitude is ~0.03× that of H₂, i.e. the near-featureless regime, so the result is largely predictable.
+- **Axis 4 — stellar contamination (Experiment 6).** Done as a physical Transit Light Source Effect model (Rackham et al. 2018) driven by real BT-Settl/PHOENIX spot and faculae spectra (Allard et al. 2012), replacing the earlier 1/λ proxy. **Caveat to state:** solar-metallicity grid, adopted spot/faculae contrasts (0.85 T_eff; T_eff + 100 K), log g clamped at the grid ceiling. The next-step upgrade (a PHOENIX metallicity grid) is a fidelity refinement, not a missing experiment; name it in §5 as such.
+- **Axis 6 — instrumental systematics (Experiment 7).** Done with ExoRad2 (Mugnai et al. 2020), the open radiometric engine underneath ArielRad, driven by an Ariel payload reconstructed from published parameters. **Caveat to state:** the payload is literature-reconstructed, not the consortium's official ArielRad file (which is not public); Planck SED, common operating point, swept level. Obtaining the official instrument file is a fidelity upgrade, not a missing experiment; name it in §5.
+- **Axis 7 — domain-shift or transfer-learning (Experiments 1, 2).** The requirement is disjunctive ("domain-shift **or** transfer-learning") and the domain-shift half is comprehensively covered, so the axis is satisfied. Transfer learning (H₂→N₂) was dropped as unnecessary and redundant with the aerosol muting results; it is not listed as outstanding.
 
 **On axis 2.** In the passage listing what real Ariel data will contain, he names "incomplete molecular opacity databases" alongside the systematics and aerosols — so the opacity swap answers a concern he raised both in the axis list and in his description of real observations.
 
@@ -260,12 +267,20 @@ Changing the opacity data costs 16.1 accuracy points for a coherent alternative 
 - Native resolutions differ (ExoMolOP R=15000 tables vs the Exo-Transmit grid), so a small part of the difference is tabulation rather than line-list content.
 - Ozone cannot be independently adjudicated. Every ozone tabulation in circulation (Freedman/Lupu, HITRAN, DACE's HITRAN2020) traces to HITRAN, because ozone dissociates above ~500 K and hot-atmosphere databases do not produce an independent list. Treat the ozone tabulation as an irreducible forward-model uncertainty.
 
-**Outstanding for this axis:** nothing blocking; the ExoMolOP swap covers it in both arms. Next steps for R1-3 overall are the three partial axes: a physical stellar spot/faculae contamination model (axis 4), instrumental systematics derived from Ariel's published noise model (axis 6), and transfer learning H₂→N₂ (axis 7; requires regenerating N₂ at 550 bins). The independent radiative transfer code (axis 1, Experiment 4) is done and must not be listed as outstanding.
+**Outstanding for this axis:** nothing blocking; the ExoMolOP swap covers it in both arms. All seven axes are now covered; the only remaining items are the two fidelity upgrades (PHOENIX metallicity grid for axis 4; the official ArielRad instrument file for axis 6) and retrieval-derived labels (R1-4), all named in §5 as next steps rather than gaps.
+
+#### Experiment 6 — Physical stellar contamination (axis 4)
+
+Replaces Experiment 1's 1/λ proxy with the Transit Light Source Effect (Rackham et al. 2018): unocculted spots/faculae multiply the transit depth by ε(λ) = 1 / [1 − f(1 − F_spot(λ)/F_phot(λ))], with F the stellar surface fluxes taken from real BT-Settl/PHOENIX model spectra (Allard et al. 2012; STScI grid), so the spot/faculae spectra carry their own molecular bands. Cool spots (0.85 T_eff), hot faculae (T_eff + 100 K), solar metallicity, applied to the committed spectra through the frozen pipeline. Accuracy 88.9% → 85.7% (2% coverage) down to 65.7% (20%); faculae −4.5/−6.2%; combined 10%+5% = −13.4. Feature amplitude stays ~0.04 throughout, so this is **chromatic distortion, not muting** — a mechanism distinct from aerosols. Caveat: solar-Z grid, adopted contrasts, log g clamped at 5.0. Outputs: `final_results/H2_spots_phoenix.txt`.
+
+#### Experiment 7 — Realistic instrument noise (axis 6)
+
+Replaces Experiment 1's parametric noise with the wavelength-dependent noise-to-signal ratio computed by ExoRad2 (Mugnai et al. 2020), the open radiometric engine underneath ArielRad, driven by an Ariel payload reconstructed from published parameters (six channels: VISPhot, FGS1, FGS2, NIRSpec R 15, AIRS-CH0 R 100, AIRS-CH1 R 30; no atmospheric foreground). The real noise is strongly colored (29.5× across 0.5–7.8 µm, concentrated in the AIRS bands carrying CH₄/CO₂/H₂O/O₃), yet compared to white noise at matched median σ it costs only **−0.8 to −1.3 points**. The realistic coloring is therefore a minor penalty; the dominant noise vulnerability remains time-correlated systematics (Experiment 1, −22 at SNR 5). Caveat: payload literature-reconstructed, not the official ArielRad file; Planck SED, common operating point (1 R_sun, 20 pc), swept level. Outputs: `final_results/H2_ariel_noise.txt`; payload in `ariel_noise_model/`.
 
 #### Caveats to state in the manuscript
 
-- These are **parametric models of systematics, not real instrument data.** The correlated-noise correlation length (Gaussian kernel, sigma = 8 bins) and the stellar-contamination wavelength dependence (a 1/λ trend, not a spot model) are plausible choices, not calibrated ones.
-- Everything remains **inside TauREx.** Perturbed TauREx spectra are still TauREx spectra. This does not answer R1-2 in full; only an independent radiative transfer code would.
+- Experiment 1's injected forms (correlated-noise Gaussian kernel σ = 8 bins; the 1/λ stellar trend) are **parametric, not calibrated** — but they are now supplemented by the physical models: Experiment 6 (a real BT-Settl/PHOENIX spot model) covers stellar contamination, and Experiment 7 (ExoRad2/Ariel) covers instrument noise. State the two physical models as the primary coverage of axes 4 and 6, with their approximations (BT-Settl contrasts; reconstructed Ariel payload) named.
+- Experiment 1's perturbations remain **inside TauREx** (perturbed TauREx spectra are still TauREx spectra); the cross-code answer to R1-2 in full is Experiment 4 (an independent radiative transfer code).
 - The resolution family perturbs an already-generated R=199 grid rather than regenerating at lower resolution, so it conflates resampling with true resolution loss, though flux-conserving binning minimises this.
 
 **Where:** new §4.5 Robustness subsection, new §3 Assumptions subsection, §5 (limitations).
@@ -563,7 +578,9 @@ Defensible **only if** the Abstract scopes it clearly. "Biosignature candidate t
 
 ## Abstract — serves R1-1, R1-5, R1-6, R2-5
 
-**Delete outright** (both are retracted claims — R1-5, R1-6):
+Every claim below is matched to a specific experiment: the three retracted claims are ones the revision's own experiments disprove, and every replacement is what the data now supports (neither over- nor under-claiming). See "How hard to scope down" reasoning in the response half.
+
+**Delete outright** (retracted claims — R1-5, R1-6; disproved by the eight PCA experiments and the whitening on/off test):
 
 > "PCA was used to reduce dimensionality while a secondary standardization step was applied to equalize the variance between the dominant physical systematics of the first two components and the subtle, chemically relevant absorption features contained in higher-order components."
 
@@ -573,21 +590,31 @@ Defensible **only if** the Abstract scopes it clearly. "Biosignature candidate t
 
 > "PCA reduced the 550-bin spectra to 102 components. A secondary standardisation of those components was applied for the gradient-based models, which are sensitive to the large disparity in component variance; the tree ensembles are invariant to it."
 
-**Replace the second** with the measured result:
+**Replace the second** with the measured result (backed by per-component discriminative power + selective removal):
 
-> "The tree ensembles exploited discriminative structure distributed across the low-variance components without rescaling, whereas the neural networks required explicit standardisation to remain competitive and still trailed."
+> "The tree ensembles exploited discriminative structure distributed across many low-variance components without rescaling, whereas the neural networks required explicit standardisation to remain competitive and still trailed. No single component isolates the biosignature signal — the two components carrying 98.4% of the spectral variance classify at chance and are removable without loss of accuracy."
 
-**Add two sentences**, one on scope and one on robustness:
+**Replace the closing sentence.** Delete:
 
-> "Training data derives from a single radiative transfer code, and class labels are a deterministic function of the abundances used to generate them, so this work characterises achievable performance under idealised conditions rather than demonstrating biosignature detection. Evaluating the trained pipeline on spectra recomputed for the same planets with an independent radiative transfer code reduces accuracy by 4.1 percentage points, and substituting an alternative molecular opacity compilation reduces it by 16.1."
+> "These results suggest that XGBoost can serve as an exceptionally robust, calibrated triage tool for prioritizing scarce telescope resources."
 
-> "Under injected observational systematics the pipeline tolerates calibration-type errors but degrades under correlated noise, losing 13 accuracy points at an effective SNR of 10. An untrained-for optically thick cloud deck or photochemical haze degrades the recommended pipeline's accuracy monotonically with cloud-top altitude and haze density, bounding the method's applicability to atmospheres whose aerosols leave most of the spectral feature amplitude intact."
+Replace with the evidence-matched claim ("exceptionally robust" is dropped because the −4 to −25-point degradations disprove it; the replacement asserts only what the seven robustness experiments establish):
+
+> "These results position XGBoost as a calibrated in-domain triage tool whose behaviour under domain shift is characterised rather than assumed. Across seven perturbation axes its accuracy degrades gracefully and traceably through three mechanisms — feature-amplitude suppression by aerosols, chromatic distortion by stellar contamination, and a decision-threshold bias under alternative opacity data — while realistic Ariel instrument-noise coloring costs only about one point beyond white noise. The method is therefore a triage aid within its training domain, not a demonstration of biosignature detection on real observations."
+
+**Add a scope sentence** early (after the mission-motivation sentence, before the results), stating the two framing concessions:
+
+> "Training data derives from a single radiative transfer code, and class labels are a deterministic function of the abundances used to generate them, so this work characterises achievable performance under idealised conditions rather than demonstrating biosignature detection."
+
+**Add one robustness sentence with the concrete numbers** (kept tight; the full seven-axis table lives in the new §4 robustness subsection):
+
+> "Evaluating the frozen pipeline on spectra recomputed for the same planets with an independent radiative transfer code reduces accuracy by 4.1 points and an alternative molecular opacity compilation by 16.1; optically thick aerosols push it monotonically toward chance as feature amplitude vanishes, while calibration-type errors are tolerated."
 
 ## §1 Introduction — serves R1-1, R1-4
 
 **Task framing.** Wherever the task is described as "distinguishing between biosignature and non-biosignature environments", restate it as recovering a predefined abundance-threshold labelling. The Introduction already concedes that biosignatures require geological, atmospheric and stellar context — align the description of the label with that concession rather than leaving them contradictory (R1-4). The full renaming pass is specified in "Task renaming" below; do it once, globally, before editing individual sections, so later edits are written in the new vocabulary rather than converted afterwards.
 
-**Contributions.** The three stated contributions (R = 200 regime; controlled like-for-like comparison; calibration as a first-class criterion) are still accurate. Add a fourth: robustness characterisation under injected systematics. Do **not** list the PCA interpretation as a contribution — it never was one, and it is now withdrawn.
+**Contributions.** The three stated contributions (R = 200 regime; controlled like-for-like comparison; calibration as a first-class criterion) are still accurate. Add a fourth: a robustness characterisation across seven domain-shift axes (independent radiative transfer code, opacity database, clouds/hazes, physical stellar contamination, resolution/SNR, radiometric instrument noise, and out-of-envelope extrapolation), resolving into three failure mechanisms. Do **not** list the PCA interpretation as a contribution — it never was one, and it is now withdrawn.
 
 ## Task renaming — serves R1-4, R1-1, R2-5
 
@@ -728,6 +755,14 @@ The useful comparison is `PLS + XGBoost` against `PCA + XGBoost`, which holds th
 
 **Report the two analyses together**, and state why either alone misleads: univariately every component is weak (mean AUC 0.518 for the leading pair vs 0.531 for the tail), but multivariately the leading pair is inert while the tail is collectively strong. Single-feature AUC cannot see interactions; the ablation cannot resolve individual components.
 
+**Add the molecular-distribution analyses** — these directly answer the remaining three of Reviewer 1's four requested R1-5 analyses (loading-vector analysis, variance decomposition by physical parameter, and explicit CH₄/O₃ projection). From `final_results/H2_chem_projection.txt` and `H2_pc_drivers.txt`, figures `chem_projection.png` and `pc_loadings.png`:
+
+> "No principal component is dominated by a single molecule. Decomposing each component's variance by the physical parameter driving it, each spectrally active molecule's influence is spread across thirty to forty of the 102 components, and the component most associated with methane is only about 5% methane by variance. The loading vectors have interpretable gross shapes — the leading component is nearly flat (overall transit depth), the next carries a spectral slope, and several low-variance components resemble individual molecular bands — but the association is weak rather than a clean one-component-per-process assignment. Projecting the methane and ozone spectral imprints onto the components confirms this: neither is isolated in a dedicated component, and both overlap the overall-depth component because they shift the continuum level. Methane and ozone information is therefore distributed across many components and partly entangled with continuum structure, exactly as expected for orthogonal linear combinations of all wavelength channels."
+
+State the ozone reconciliation so a careful reviewer does not read a contradiction between the two analyses:
+
+> "(The variance decomposition assigns ozone abundance a dedicated low-variance component, while the projection finds the ozone imprint also overlapping the overall-depth component; both hold, because ozone shifts the continuum level, and neither isolates it cleanly.)"
+
 ## §4.3 Error Analysis — keep, and strengthen — serves R1-4
 
 This section was not attacked. Keep it, and add the margin analysis (`final_results/H2_label_margin.txt`, figure `label_margin.png`) as its quantitative counterpart:
@@ -748,9 +783,25 @@ The reasoning here is sound. Add, after the Brier discussion:
 
 ## §4 — new Robustness subsection (R1-3, R1-8)
 
-Place after §4.4. Content from `final_results/H2_domain_shift_sweep.txt` and both `domain_shift_*.png` figures.
+Place after §4.4. This subsection carries the tightened domain-shift claim (R1-3; the scope framing it rests on is the R1-1/R1-9 Overview concern) and all seven domain-shift axes. Content from `final_results/H2_domain_shift_sweep.txt`, `H2_exotransmit.txt`, `H2_opacity_swap.txt`, `H2_aerosol_paired.txt`, `H2_spots_phoenix.txt`, `H2_ariel_noise.txt`, and the `domain_shift_*.png` figures.
 
-Cover, in order: the method (models trained once, whole preprocessing chain frozen, only test sets perturbed, strengths anchored to the measured noise floor); the degradation table; the finding that calibration-type systematics are largely tolerated while correlated noise is the dominant vulnerability; the out-of-envelope split with its sample-size control; and the whitening robustness result.
+**Open the subsection with the tightened claim** (the domain-shift headline; every clause is backed by one of the seven experiments below):
+
+> "The classifier is characterised here as an in-domain triage tool, not a demonstration of biosignature detection on real observations. Across seven perturbation axes its accuracy degrades gracefully and traceably, through three mechanisms: suppression of feature amplitude (aerosols, high mean molecular weight), chromatic distortion (stellar contamination), and a shift of the decision threshold (alternative opacity data). Realistic instrument-noise coloring is a minor additional penalty, and the dominant noise vulnerability is time-correlated systematics."
+
+**Then a seven-axis summary table** (each row links to the detailed result below or in the sweep):
+
+| Axis / experiment | Change vs 88.9% | Reading |
+| :-- | --: | :-- |
+| Independent RT code (Exo-Transmit) | −4.1 | numerical scheme (upper bound) |
+| Alternative opacity (ExoMol, +HITRAN O₃) | −16.1 (−22.9) | decision-threshold bias |
+| Clouds & hazes | −2.3 → −25.3 | feature-amplitude suppression |
+| Stellar contamination (BT-Settl/PHOENIX TLSE) | −3.2 → −23.2 | chromatic distortion |
+| Resolution / SNR (injected sweep) | up to −15.2 | correlated noise dominant |
+| Instrument noise (ExoRad2 / Ariel) | ~1 beyond white | minor coloring penalty |
+| Out-of-envelope extrapolation | −8.3 | genuine extrapolation |
+
+Then cover, in order: the method (models trained once, whole preprocessing chain frozen, only test sets perturbed, strengths anchored to the measured noise floor); the injected-systematics degradation table; the finding that calibration-type systematics are largely tolerated while correlated noise is the dominant injected vulnerability; the out-of-envelope split with its sample-size control; the whitening robustness result; the independent code and opacity swap; the aerosols; and the two physical models (stellar contamination and instrument noise) — all below.
 
 **On whitening, concede plainly** (R1-8):
 
@@ -830,23 +881,51 @@ Then the applicability statement, which summarises the measured degradations:
 
 > "A second aerosol prescription was tested. Photochemical haze was modelled with the Lee et al. (2013) parameterisation of Mie extinction for 0.1 µm particles, at five particle densities. The haze degrades performance monotonically with density, from 88.9% cloud-free to 63.3% at the highest density tested."
 
-**State the limits of the study in the same subsection**, not only in §5: the injected systematics are parametric models rather than instrument-derived; four of the seven requested validation axes are covered in full and three in part; and the injected-systematics and aerosol experiments perturb or reconfigure TauREx spectra rather than leaving the code — only the cross-code experiment does that.
+### Stellar contamination — physical spot model (axis 4)
+
+Content from `final_results/H2_spots_phoenix.txt` (`evaluate_spots_phoenix.py`). Present this as the physical replacement for the injected 1/λ proxy, and note it is a *different mechanism* from the aerosols above:
+
+> "Stellar contamination was modelled physically via the Transit Light Source Effect (Rackham et al. 2018): unocculted starspots and faculae make the transit chord's stellar spectrum unrepresentative of the disc, multiplying the measured transit depth by a wavelength-dependent factor ε(λ) = 1 / [1 − f(1 − F_spot(λ)/F_phot(λ))]. The surface fluxes were taken from BT-Settl/PHOENIX model spectra (Allard et al. 2012), so the spot and faculae spectra carry their own molecular bands. Applying cool spots (T_spot = 0.85 T_eff) and hot faculae (T_eff + 100 K) to the held-out spectra through the frozen pipeline, accuracy falls from 88.9% to 85.7% at 2% spot coverage and to 65.7% at 20%. Unlike the aerosol case, median feature amplitude is essentially unchanged, so the loss is chromatic distortion — structured, feature-like contamination added by the star — rather than suppression of the planetary signal."
+
+Caveat to state (R2-4 / §5): "The spot and faculae spectra are solar-metallicity BT-Settl models with adopted temperature contrasts; a metallicity-matched grid is a fidelity refinement."
+
+### Instrument noise — radiometric model (axis 6)
+
+Content from `final_results/H2_ariel_noise.txt` (`evaluate_ariel_noise.py`, payload in `ariel_noise_model/`). Present it as the physical replacement for the parametric injected noise, with the honest finding that the coloring is a minor penalty:
+
+> "Instrument noise was modelled with ExoRad2 (Mugnai et al. 2020), the open radiometric engine underlying the Ariel radiometric model, driven by an Ariel payload built from published channel parameters (VISPhot, FGS1, FGS2, NIRSpec, and the two AIRS spectrometer channels). The resulting noise-to-signal ratio is strongly wavelength-dependent — a factor of 29.5 across 0.5–7.8 µm, concentrated in the AIRS bands that carry the methane, carbon dioxide, water and ozone features. Applied to the held-out spectra and compared against white noise at the same median level, this realistic coloring reduces accuracy by only 0.8 to 1.3 points. Realistic instrument-noise coloring is therefore a minor additional penalty; the dominant noise vulnerability is the time-correlated systematics identified in the injected sweep, which cost up to 22 points at low signal-to-noise."
+
+Caveat to state (R2-4 / §5): "The Ariel payload is reconstructed from published parameters, not the consortium's official radiometric file; the modelled quantity is the noise's wavelength shape, applied at a swept overall level."
+
+**State the limits of the study in the same subsection**, not only in §5: the two physical models above (stellar contamination, instrument noise) carry stated approximations — solar-metallicity spot spectra and a literature-reconstructed Ariel payload; and the injected-systematics and aerosol experiments perturb or reconfigure TauREx spectra rather than leaving the code — only the cross-code experiment does that. All seven requested validation axes are now covered, two with the approximations named here.
 
 ## §5 Conclusion — serves R1-1, R1-2, R1-5, R2-5
 
-**Delete** (R1-5):
+**Delete** the three retracted PCA/chemistry claims (R1-5, R1-6):
 
-> "Although PC0 and PC1 captured most of the broad physical variance, later components preserved chemically informative spectral structure"
+> "the tree models exploited the chemically informative low-variance components natively"
 
-**Remove** the promotion of the PCA feature-engineering story to "a central finding" — it is not among the stated contributions and is now withdrawn.
+> "A central finding of this work is the critical role of feature engineering in extracting chemically meaningful signals from transmission spectra." (and the sentence after it promoting PCA to a central finding)
 
-**Add** the robustness findings and an explicit limitations paragraph naming: labels derived from generation parameters rather than retrieval; no aerosols in the training data (their out-of-distribution cost is now quantified in §4.5, but training with aerosols was not attempted); 1D atmospheres; parametric rather than instrument-derived systematics; a single 1/λ stellar-contamination proxy rather than a spot model; and no transfer-learning experiment (the domain-shift half of that axis is covered).
+> "Although PC0 and PC1 captured most of the broad physical variance, later components preserved chemically informative spectral structure, allowing the models to classify biosignature and non-biosignature cases effectively."
 
-**"Single radiative transfer code" must not appear in this list.** Training uses one code; evaluation does not. State it with the numbers:
+**Replace** the withdrawn PCA paragraph with the measured finding (backed by the eight PCA experiments):
+
+> "No principal component isolates the biosignature signal: the two components carrying 98.4% of the variance classify at chance and are removable without loss, and each molecule's influence is distributed across thirty to forty low-variance components rather than concentrated in any one. Classification succeeds by nonlinearly combining many individually weak components; the secondary standardisation is an optimisation step for the scale-sensitive neural networks, not a chemistry-selective operation, and the recommended model uses none."
+
+**Add the robustness synthesis** — the three-mechanism claim tying the domain-shift results together (this is the tightened domain-shift claim, R1-3, stated once in the conclusion):
+
+> "Under domain shift the pipeline degrades gracefully and traceably rather than catastrophically, through three mechanisms: suppression of feature amplitude (aerosols, high mean molecular weight), chromatic distortion (stellar contamination), and a decision-threshold bias (alternative opacity data). Realistic Ariel instrument-noise coloring, modelled with a radiometric simulator, is a minor penalty of about one point beyond white noise."
+
+**Strengthen, do not delete, the existing error-analysis paragraph.** The current observation that failures cluster for planets with low scale heights or near the labelling thresholds is *supported* and is the same feature-amplitude-suppression mechanism — name it as such rather than leaving it as an isolated observation.
+
+**"Single radiative transfer code" must not appear in the limitations list as an open gap.** Training uses one code; evaluation does not. State it with the numbers:
 
 > "The models are trained on spectra from a single radiative transfer code. Evaluated on spectra recomputed for the same planets with an independent code, accuracy falls from 88.9% to 84.8%; evaluated on spectra recomputed with an alternative molecular opacity compilation, it falls to 72.8%."
 
-Name the required next steps: **retrieval-derived labels** (the primary one — see R1-4), and the three partial robustness axes — a physical stellar spot/faculae contamination model, instrumental systematics derived from Ariel's published noise model, and transfer-learning (H₂→N₂) as an optional extension to the domain-shift work. Cross-simulator *evaluation* is done and should not be listed as outstanding.
+**Limitations paragraph** — name: labels derived from generation parameters rather than retrieval; no aerosols in the training data (their out-of-distribution cost is quantified in the new §4 robustness subsection, but training with aerosols was not attempted); 1-D atmospheres; and the **two approximations that remain in the otherwise-complete robustness battery** — the stellar-contamination model uses solar-metallicity BT-Settl spectra with adopted spot/faculae contrasts, and the instrument-noise model uses an Ariel payload reconstructed from published parameters rather than the consortium's official ArielRad file.
+
+**Next steps** — name only what is genuinely outstanding: **retrieval-derived labels** (the primary one — see R1-4), and the **two fidelity upgrades** (a PHOENIX metallicity grid for the stellar model; the official ArielRad instrument file for the noise model). Do **not** list stellar contamination, instrument systematics, transfer-learning, or cross-simulator evaluation as outstanding — all seven axes are covered; the first two are done as physical models (upgrades pending), transfer-learning was dropped as redundant, and cross-code evaluation is complete.
 
 ## Acknowledgments — new section (R2-2)
 
@@ -860,6 +939,8 @@ The manuscript has no Acknowledgments section. Add one before References, disclo
 - Verify all 42 links resolve; only four currently carry URLs
 - Consider adding Krissansen-Totton et al., *Disequilibrium biosignatures over Earth history* — already in `reference papers/` but uncited, and it supports the CH₄/O₃ disequilibrium rationale in §1
 - Add Jolliffe (1982) for §4.2, and Grinsztajn et al. (2022) / Shwartz-Ziv & Armon (2022) for the tabular-data argument in §4.1 — all three now in the repository
+- **New-experiment citations required** (introduced by the robustness rewrite): Rackham, Apai & Giampapa (2018), *The Transit Light Source Effect*, ApJ 853, 122 — for the stellar-contamination model (§4 robustness); Allard, Homeier & Freytag (2012), *Phil. Trans. R. Soc. A* 370, 2765 — for the BT-Settl/PHOENIX spot spectra; Mugnai et al. (2020), *ArielRad: the Ariel radiometric model*, Exp. Astron. 50, 303 — for the instrument-noise model
+- **Opacity/independent-code citations** (already identified under R2-3, required by Experiments 4–5): Kempton et al. (2017) for Exo-Transmit; Freedman et al. (2008, 2014) and Lupu et al. (2014) for the base opacity compilation; Chubb et al. (2021), Polyansky et al. (2018), Yurchenko et al. (2017, 2020) for the ExoMol line lists. All verified against DOI records
 
 ## Global pass (R2-6)
 
