@@ -199,8 +199,8 @@ No individual principal component is strongly discriminative: the maximum single
 | All 102 (PCs 0–101) | 100% | 88.58% |
 | Drop the two highest-variance (PCs 2–101) | 1.59% | 88.25% |
 | Two highest-variance only (PCs 0–1) | 98.41% | 52.13% (chance) |
-| Low-variance 50 (PCs 2–51) | 1.59% | 86.20% |
-| High-variance 50 (PCs 0–49) | ~99.9% | 85.70% |
+| Low-variance 50 (PCs 2–51) | 1.59% | 86.17% |
+| High-variance 50 (PCs 0–49) | ~99.9% | 85.65% |
 
 **Figure 3.** Explained variance ratio (top; log scale — PC0 and PC1 together 98.41%, PCs 2–101 the remaining 1.59%), single-feature AUC (middle), and mutual information (bottom) for each of the 102 principal components. The highest-variance components sit at chance while discriminative power is spread thinly across the low-variance tail, so variance rank and discriminative rank are decoupled. (This panel subsumes the former standalone scree plot.)
 
