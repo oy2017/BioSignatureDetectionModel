@@ -355,7 +355,9 @@ The synthetic spectroscopic datasets, the five independent testing sets, and the
 
 ## Acknowledgments
 
-*To be completed.*
+The author thanks Rachael Kaci, instructor of the Advanced Authentic Research (AAR) program at Henry M. Gunn High School, and research mentor Victoria Lloyd, for their guidance and feedback throughout this project.
+
+In the interest of transparency, the author discloses the following assistance: Anthropic's Claude Code was used to help implement portions of the Python analysis code and to manage the project's GitHub repository, and Google Gemini was used for proofreading and grammar correction of the manuscript. These tools were used under the author's direction; the author designed the study, conducted the analysis, interpreted the results, and is responsible for all content, having reviewed and validated all AI-assisted code and text.
 
 ## References
 
