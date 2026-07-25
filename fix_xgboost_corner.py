@@ -3,15 +3,21 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
+from sklearn.utils import shuffle
 from xgboost import XGBClassifier
 import corner
 import os
 import re
 
 # --- Configuration ---
+# Uses the headline pipeline of Section 4.1: all 102 components and the tuned
+# XGBoost configuration, evaluated on the five test sets pooled, so this figure
+# depicts the same model and the same planets as the error rates quoted in
+# Section 4.3 (see analyze_error_quintiles.py).
 FILL_GAS = "H2"
+SEED = 42
 TRAIN_FILE = f"multirex_spectra_{FILL_GAS}_train.parquet"
-TEST_FILE = f"multirex_spectra_{FILL_GAS}_test.parquet"
+TEST_FILES = [f"multirex_spectra_{FILL_GAS}_test_set_{i}.parquet" for i in range(1, 6)]
 RESULTS_DIR = "final_results/plots"
 PARAMS_TO_PLOT = ['p_radius', 'p_mass', 's temperature', 'atm temperature']
 LABELS = ['Planet Radius ($R_{\oplus}$)', 'Planet Mass ($M_{\oplus}$)', 'Star Temp (K)', 'Atmosphere Temp (K)']
@@ -22,13 +28,18 @@ if not os.path.exists(RESULTS_DIR):
 # --- Load and Prepare Data ---
 print("--- Loading and Preparing Data ---")
 df_train = pd.read_parquet(TRAIN_FILE)
-df_test = pd.read_parquet(TEST_FILE)
+df_test = pd.concat([pd.read_parquet(f) for f in TEST_FILES], ignore_index=True)
 
 df_train['label'] = df_train['biosignature'].apply(lambda x: 1 if x == 'yes' else 0)
 df_test['label'] = df_test['biosignature'].apply(lambda x: 1 if x == 'yes' else 0)
 
 float_pattern = re.compile(r"^-?\d+\.\d+$")
 cols = [c for c in df_train.columns if isinstance(c, float) or (isinstance(c, str) and float_pattern.match(c))]
+
+# Drop physically impossible transit depths, as in the main pipeline.
+df_train = df_train[(df_train[cols].values <= 1.0).all(axis=1)].reset_index(drop=True)
+df_test = df_test[(df_test[cols].values <= 1.0).all(axis=1)].reset_index(drop=True)
+print(f"    train {len(df_train)}   test {len(df_test)}")
 
 X_train_raw = df_train[cols].values
 y_train = df_train['label'].values
@@ -41,18 +52,18 @@ scaler = StandardScaler()
 X_train_s = scaler.fit_transform(X_train_raw)
 X_test_s = scaler.transform(X_test_raw)
 
-pca = PCA()
-X_train_p = pca.fit_transform(X_train_s)
-X_test_p = pca.transform(X_test_s)
-
-X_train_clean = X_train_p[:, 2:102] 
-X_test_clean = X_test_p[:, 2:102]
+pca = PCA(n_components=102, random_state=SEED)
+X_train_clean = pca.fit_transform(X_train_s)
+X_test_clean = pca.transform(X_test_s)
 
 # --- Train XGBoost ---
 print("--- Training XGBoost ---")
-model = XGBClassifier(n_estimators=300, max_depth=5, learning_rate=0.2, subsample=1.0, random_state=42, n_jobs=-1, eval_metric='logloss')
+X_train_clean, y_train = shuffle(X_train_clean, y_train, random_state=SEED)
+model = XGBClassifier(n_estimators=200, max_depth=5, learning_rate=0.2, subsample=0.8,
+                      random_state=SEED, n_jobs=-1, eval_metric='logloss')
 model.fit(X_train_clean, y_train)
 y_pred = model.predict(X_test_clean)
+print(f"    pooled test accuracy {100*(y_pred == y_test).mean():.2f}%")
 
 # --- Identify Errors ---
 correct_mask = (y_pred == y_test)
