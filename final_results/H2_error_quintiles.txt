@@ -1,0 +1,72 @@
+Error rate against physical parameters and feature amplitude
+
+Pooled test planets: 2697   overall accuracy: 88.58%
+Bins: 5 equal-count quintiles. XGBoost, all 102 components.
+
+--- atmospheric temperature (K) ---
+   quintile         low        high     n    error
+          1       500.5       846.6   540   14.63%
+          2       846.6        1262   539   10.58%
+          3        1262        1649   539    8.35%
+          4        1649        2030   539    9.28%
+          5        2030        2499   540   14.26%
+  shape: U-shaped  (worst 14.63%, best 8.35%)
+  corr(error, log value) = -0.024
+
+--- planet radius (R_earth) ---
+   quintile         low        high     n    error
+          1       1.006       5.316   540   15.74%
+          2       5.316       10.38   539   11.13%
+          3       10.38       15.13   539    8.72%
+          4       15.13       19.93   539    7.42%
+          5       19.93       25.99   540   14.07%
+  shape: U-shaped  (worst 15.74%, best 7.42%)
+  corr(error, log value) = -0.061
+
+--- planet mass (M_earth) ---
+   quintile         low        high     n    error
+          1        3.61       86.56   540   14.63%
+          2       86.56       138.2   539    9.65%
+          3       138.2         192   539   11.50%
+          4         192       245.9   539   11.13%
+          5       245.9         300   540   10.19%
+  shape: U-shaped  (worst 14.63%, best 9.65%)
+  corr(error, log value) = -0.033
+
+--- star temperature (K) ---
+   quintile         low        high     n    error
+          1        2501        3362   540   15.74%
+          2        3362        4363   539   11.50%
+          3        4363        5310   539    8.53%
+          4        5310        6285   539    7.24%
+          5        6285        7497   540   14.07%
+  shape: U-shaped  (worst 15.74%, best 7.24%)
+  corr(error, log value) = -0.045
+
+--- scale-height proxy T R^2 / M ---
+   quintile         low        high     n    error
+          1       1.884       199.1   540   15.74%
+          2       199.1       946.6   539   10.20%
+          3       946.6        2444   539    7.24%
+          4        2444        5228   539   10.76%
+          5        5228   3.087e+04   540   13.15%
+  shape: U-shaped  (worst 15.74%, best 7.24%)
+  corr(error, log value) = -0.043
+
+--- feature amplitude (spectral scatter) ---
+   quintile         low        high     n    error
+          1   1.347e-08   3.605e-05   540   14.81%
+          2   3.605e-05   0.0003385   539   10.95%
+          3   0.0003385    0.001365   539    7.98%
+          4    0.001365    0.006331   539   10.02%
+          5    0.006331      0.2668   540   13.33%
+  shape: U-shaped  (worst 14.81%, best 7.98%)
+  corr(error, log value) = -0.039
+
+Reading:
+  Every axis is U-shaped. The lowest quintile of feature amplitude carries
+  roughly double the error of the interior, which is the scale-height /
+  amplitude-suppression mechanism. But the highest quintile of temperature
+  and radius is nearly as bad, and the overall correlation between error
+  and log feature amplitude is weak, so amplitude suppression explains the
+  low-amplitude tail rather than the whole in-domain error budget.
