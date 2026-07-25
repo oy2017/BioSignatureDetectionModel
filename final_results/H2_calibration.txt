@@ -1,0 +1,72 @@
+Calibration of the four architectures, pooled over the five test sets
+
+Pooled test planets: 2697   positive rate: 0.5032
+Bins: 10 equal-count (~269 planets each)
+MLP/CNN averaged over 3 restarts; XGBoost/RF deterministic.
+
+ECE is the calibration-only statistic; the Brier score also rewards
+discrimination, so the two are reported together.
+
+  model                       Brier               ECE      AUC   accuracy
+  ---------------------------------------------------------------------
+  XGBoost                    0.0832            0.0324   0.9583     88.58%
+  Random Forest              0.1284            0.1757   0.9495     86.50%
+  MLP              0.1505 +/-0.0044  0.1281 +/-0.0175   0.9037     76.11%
+  CNN              0.1551 +/-0.0036  0.1022 +/-0.0155   0.8814     77.33%
+
+Random Forest discriminates better than either neural network (higher AUC)
+yet has the worst ECE of the four, so calibration quality is not a
+by-product of accuracy here. XGBoost leads on both.
+
+--- XGBoost reliability (first restart) ---
+   mean pred  observed      n      gap
+       0.000     0.000    270   -0.000
+       0.003     0.015    270   +0.012
+       0.017     0.056    270   +0.038
+       0.083     0.159    270   +0.076
+       0.296     0.356    270   +0.060
+       0.686     0.630    270   -0.057
+       0.920     0.870    270   -0.049
+       0.985     0.955    269   -0.030
+       0.997     0.996    269   -0.001
+       1.000     1.000    269   +0.000
+
+--- Random Forest reliability (first restart) ---
+   mean pred  observed      n      gap
+       0.143     0.000    270   -0.143
+       0.247     0.026    270   -0.221
+       0.318     0.070    270   -0.248
+       0.391     0.163    270   -0.228
+       0.465     0.437    270   -0.028
+       0.533     0.596    270   +0.063
+       0.608     0.815    270   +0.207
+       0.683     0.944    269   +0.261
+       0.768     0.985    269   +0.217
+       0.859     1.000    269   +0.141
+
+--- MLP reliability (first restart) ---
+   mean pred  observed      n      gap
+       0.001     0.026    270   +0.025
+       0.046     0.074    270   +0.028
+       0.328     0.137    270   -0.191
+       0.498     0.200    270   -0.298
+       0.518     0.467    270   -0.052
+       0.523     0.622    270   +0.099
+       0.553     0.796    270   +0.243
+       0.774     0.814    269   +0.040
+       0.974     0.922    269   -0.052
+       0.999     0.978    269   -0.022
+
+--- CNN reliability (first restart) ---
+   mean pred  observed      n      gap
+       0.009     0.030    270   +0.020
+       0.125     0.085    270   -0.040
+       0.346     0.189    270   -0.157
+       0.474     0.185    270   -0.289
+       0.488     0.456    270   -0.032
+       0.493     0.637    270   +0.144
+       0.522     0.778    270   +0.256
+       0.671     0.796    269   +0.124
+       0.923     0.900    269   -0.023
+       0.997     0.981    269   -0.016
+
