@@ -45,11 +45,11 @@ The Author
 **Response.** We took this list as the core of the revision. A new **Section 4.6 (Robustness under Domain Shift)** covers all seven requested axes, evaluating the frozen pipeline against the in-domain baseline; Table 5 summarises the axes and Tables 6–9 and Figure 9 give the detail:
 
 1. **Independent radiative transfer code** — Exo-Transmit (−4.1 points), with the opacity tables held byte-identical so that only the numerical scheme differs (49).
-2. **Alternative molecular opacity database** — ExoMol POKAZATEL / YT34to10 / UCL-4000, and separately HITRAN ozone (−16.1 / −22.9 points) (50–53).
-3. **Cloud and haze prescriptions** — a grey deck and a Lee–Mie haze, paired per planet (Table 7) (54).
-4. **Stellar contamination** — a physical Transit Light Source Effect model driven by BT-Settl/PHOENIX spot and faculae spectra (Table 8) (55, 56).
+2. **Alternative molecular opacity database** — ExoMol POKAZATEL / YT34to10 / UCL-4000, and separately HITRAN ozone (−16.1 / −22.9 points) (50–54).
+3. **Cloud and haze prescriptions** — a grey deck and a Lee–Mie haze, paired per planet (Table 7) (55).
+4. **Stellar contamination** — a physical Transit Light Source Effect model driven by BT-Settl/PHOENIX spot and faculae spectra (Table 8) (56, 57).
 5. **Resolution and signal-to-noise** — resolution degradation and white/correlated noise sweeps (Table 6).
-6. **Realistic instrumental systematics** — ExoRad2 with a published-parameter Ariel payload (Table 9) (57, 58).
+6. **Realistic instrumental systematics** — ExoRad2 with a published-parameter Ariel payload (Table 9) (58, 59).
 7. **Domain shift** — an out-of-envelope (planet-radius) extrapolation split (Section 4.6).
 
 We also characterise *how* the pipeline fails: the degradation is graceful and reduces to three measured mechanisms — feature-amplitude suppression, chromatic distortion, and a decision-threshold bias. We further re-ran the parameter-space error analysis of Section 4.3 under the injected white and correlated noise and found the added error spreads roughly uniformly across parameter space rather than concentrating on the already-marginal planets, so the clean-data error structure is not amplified by observational noise (Section 4.6). Two of the seven axes rest on stated approximations (solar-metallicity stellar spectra; a literature-reconstructed Ariel payload); we name these as fidelity refinements in Sections 3.5 and 5 rather than leaving them implicit.
