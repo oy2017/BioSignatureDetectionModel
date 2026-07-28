@@ -3,6 +3,10 @@ failed_parameters.log
 __pycache__/
 *.pyc
 
+# OS junk / shortcuts
+.DS_Store
+*.lnk
+
 # Peer-review source (kept local; the response docs in revision/ are tracked)
 Scholastica.pdf
 feedback.pdf
