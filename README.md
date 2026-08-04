@@ -1,4 +1,4 @@
-# A Calibrated, Robustness-Characterised PCA–Machine Learning Benchmark for Threshold-Based Biosignature Labelling of Synthetic Exoplanet Transmission Spectra
+# A Calibrated, Robustness-Characterized Machine-Learning Benchmark for Threshold-Based Biosignature Labeling of Synthetic Exoplanet Transmission Spectra
 
 This repository contains the complete codebase, data, and analysis scripts behind a benchmark of supervised classifiers for threshold-based biosignature *labelling* of synthetic exoplanet transmission spectra. The pipeline evaluates whether a model can recover a predefined $CH_4$ / $O_3$ abundance-threshold labelling from high-dimensional spectra simulated at Ariel Tier 3 benchmark resolution ($R \approx 200$), and — the focus of the revision — characterises how that classifier degrades under seven axes of domain shift.
 
