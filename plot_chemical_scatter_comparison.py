@@ -2,7 +2,6 @@ import os
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import seaborn as sns
 import tensorflow as tf
 import re
 from sklearn.preprocessing import StandardScaler
@@ -120,16 +119,17 @@ def main():
     rf.fit(X_tr_pca, y_train_shuf)
     predictions['Random Forest'] = rf.predict(X_te_pca)
     
-    # 4. CNN
-    print("--- Training CNN ---")
-    cnn = build_cnn()
-    cnn.fit(X_tr_pca.reshape(-1, 102, 1), y_train_shuf, epochs=100, batch_size=128, validation_split=0.2, callbacks=[es], verbose=0)
-    predictions['CNN'] = (cnn.predict(X_te_pca.reshape(-1, 102, 1), verbose=0) > 0.5).astype(int).flatten()
+    # The 1D-CNN panel is deliberately not plotted. This script retrains every
+    # model from scratch, and neural-network restarts land at different operating
+    # points (the manuscript documents a 5.7-point spread for the MLP). The CNN
+    # trained here converged to a low-recall solution that contradicted the
+    # high-recall 1D-CNN reported in Table 3, so the figure showed a model the
+    # paper does not report. Three panels, all stable across restarts, remain.
 
     # --- Plotting ---
     print("--- Generating Comparison Scatter Plots ---")
     
-    fig, axes = plt.subplots(2, 2, figsize=(16, 14))
+    fig, axes = plt.subplots(1, 3, figsize=(24, 7.5))
     axes = axes.flatten()
     
     # Thresholds

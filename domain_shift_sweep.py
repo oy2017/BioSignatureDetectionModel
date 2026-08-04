@@ -268,6 +268,22 @@ COLS = {"XGBoost (unwhitened)": "xgboost", "MLP (whitened)": "mlp_w",
         "MLP (unwhitened)": "mlp_u"}
 
 
+# Panel x-axis units differ by family: effective SNR, multiples of the measured
+# noise floor, or resolving power. Unlabelled axes made the sweep unreadable.
+XLABELS = {
+    "white noise":           "effective SNR",
+    "correlated noise":      "effective SNR",
+    "gain ramp":             "amplitude (x noise floor)",
+    "baseline offset":       "amplitude (x noise floor)",
+    "resolution loss":       "resolving power R (0 = unbinned R=200)",
+    "stellar contamination": "amplitude (x noise floor)",
+}
+
+# This panel is the parametric 1/lambda proxy, not the physical TLSE model whose
+# result the manuscript quotes; the titles collided without the qualifier.
+PANEL_TITLES = {"stellar contamination": "stellar contamination (1/\u03bb proxy)"}
+
+
 def make_figures(df):
     for metric, label, fname, low_better in [
         ("acc", "Accuracy", "domain_shift_accuracy.png", False),
@@ -282,7 +298,9 @@ def make_figures(df):
                         marker=MARKERS[name], markersize=5, label=name)
             ax.set_xticks(x)
             ax.set_xticklabels([f"{v:g}" for v in d.strength], fontsize=8)
-            ax.set_title(fam, fontsize=10, color=C_TEXT)
+            # The three families use different units, so each panel states its own.
+            ax.set_xlabel(XLABELS[fam], fontsize=8, color=C_MUTED)
+            ax.set_title(PANEL_TITLES.get(fam, fam), fontsize=10, color=C_TEXT)
             ax.grid(True, color=C_GRID, linewidth=0.6); ax.set_axisbelow(True)
             ax.tick_params(labelsize=8, colors=C_MUTED)
             for sp in ("top", "right"): ax.spines[sp].set_visible(False)
