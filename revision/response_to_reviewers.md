@@ -148,6 +148,12 @@ One scoping claim was corrected rather than softened. The manuscript had describ
 
 ## Additional changes not requested by the reviewers
 
+**The manuscript has been brought into line with the journal's formatting guidelines.**
+
+Several of these change the document's appearance and structure, so we list them rather than leave a reviewer to infer them from a comparison. A **Keywords** line of thirteen terms has been added after the abstract, which previously had none. The **abstract is now a single paragraph**, as the guidelines require; it was four, and the merge is accompanied by a trim that removed duplicated metrics (standard deviations, an F1 that restated its own accuracy, a Brier score that restated the calibration error quoted beside it) without dropping a claim. **Section 3 is retitled "Materials and Methods"** to match the required section structure. Heading emphasis now follows the guidelines by level: section number and title bold, subsection number bold with an italicised title, sub-subsection number plain with an italicised title. Figure titles are set left-justified at 10 pt below each figure and table titles left-justified at 12 pt above each table; tables now show only the rule beneath their column headings. The corresponding author's telephone has been added to the title block. Figures are additionally supplied as separate JPEG files, and the figure legends as their own document, alongside the manuscript.
+
+None of this alters a result, a number, or an interpretation.
+
 **Section 4.5 now quantifies the operating-point trade-off it previously only described.**
 
 The section argued that the decision threshold would be moved in deployment — lowered for a recall-first pass over the Tier 3 catalogue, raised when down-selecting for Tier 4 or retrieval — without saying what any of those choices cost. A new **Figure 9** reports the precision–recall curve for XGBoost on the pooled test sets with candidate operating points marked. Raising recall to 95% requires lowering the threshold to 0.18 and costs eight points of precision (81.0%); 99% recall requires 0.03 and costs twenty (69.0%).
