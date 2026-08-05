@@ -16,13 +16,15 @@ Thank you for the careful and genuinely constructive reviews. They substantially
 - **The whitening claims are corrected** and its role established by ablations, including a controlled test of whether it hurts robustness (Sections 3.2, 4.2, 4.6).
 - **A new Assumptions section (3.5)** states and justifies every modeling assumption, including the implicit ones: that the labels are a deterministic function of the generating abundances, that no photochemical or thermochemical model links CH₄ and O₃, and that every reported metric uses a fixed 0.5 decision threshold.
 - **A band-occlusion analysis (Section 4.3, Table 6)** identifies which spectral regions the fitted pipeline actually depends on.
+- **Section 4.5 now quantifies the operating-point trade-off** it previously only described, with a new **Figure 9** giving the precision cost of alternative decision thresholds, in domain and under an untrained-for cloud deck.
+- **A sampling limitation found during this revision is disclosed** in Section 3.1, and **Figure 6** has been re-drawn over the directions the grid actually samples independently. Neither affects the reported results; both are detailed at the end of this letter.
 - **The references are rebuilt and verified** — all 60 entries carry a working locator, and every DOI was resolved to confirm it points to the cited paper — the manuscript converted to third person and consistent past tense, and an Acknowledgments section added.
 - **Every figure was audited against the text**, which caught one panel that plotted a model the paper does not report; it has been removed and the figure regenerated.
 
 The single experiment we were unable to complete this cycle — retrieval-derived labels — is conceded explicitly and named as the primary next step.
 
 With appreciation,
-The Author
+Owen Yang
 
 ---
 
@@ -159,7 +161,3 @@ In checking the figure set against the delivered dataset, we found that the para
 The previous version of Figure 6 plotted four parameters drawn from only two of those directions, so three of its six panels were degenerate diagonals carrying no information. It now plots the independent directions — planet radius, planet mass, and the measured per-spectrum feature amplitude — and every panel is informative. The new version also makes the mechanism visible directly: amplitude rises with radius and falls with mass, as scale-height compression predicts, and the errors concentrate along the low-amplitude edge.
 
 We have verified that the coupling does not affect the reported results. It does not reach the labelling chemistry: CH₄ and O₃ abundances are uncorrelated with the coupled directions (|r| < 0.02), and a classifier given the bulk parameters alone, with no spectrum, performs at chance (51.9% against a 50.3% base rate). It constrains which parameter combinations are represented — combinations such as a large planet around a cool star do not occur — rather than the accuracy reported. Section 4.3 accordingly now states that a physical dependence attributed to one parameter is a statement about the sampled direction that parameter belongs to rather than about that parameter in isolation, and Section 2 notes that the grid spans a broad range of properties but with correlated combinations.
-
----
-
-*This response letter quotes the reviewers verbatim and is intended for the editor and reviewers. It is kept local to the project and is not part of the public code repository.*
