@@ -1,112 +1,147 @@
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.preprocessing import StandardScaler
-from sklearn.decomposition import PCA
-from xgboost import XGBClassifier
-from sklearn.metrics import PrecisionRecallDisplay, average_precision_score
-from sklearn.utils import shuffle
+"""Precision-recall curve and candidate operating points for the XGBoost triage filter.
+
+Section 4.5 argues that the decision threshold would be moved in deployment --
+lowered for a recall-first pass over the Tier 3 catalogue, raised when
+down-selecting for Tier 4 or retrieval. This makes that argument quantitative:
+it reports the precision cost of each operating point, in domain and under one
+domain shift.
+
+Rewritten from the original version, which predated the five-set validation
+framework: it read a single test file and used untuned hyperparameters. This
+version uses the same pooled five test sets, the same cleaning, and the same
+tuned configuration as Section 4.1 and Figure 6, so the numbers are comparable
+with the rest of the paper.
+"""
 import os
 import re
 
-# --- Configuration ---
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+from sklearn.decomposition import PCA
+from sklearn.metrics import average_precision_score, precision_recall_curve
+from sklearn.preprocessing import StandardScaler
+from sklearn.utils import shuffle
+from xgboost import XGBClassifier
+
 SEED = 42
-np.random.seed(SEED)
+FILL_GAS = "H2"
+TRAIN_FILE = f"multirex_spectra_{FILL_GAS}_train.parquet"
+TEST_FILES = [f"multirex_spectra_{FILL_GAS}_test_set_{i}.parquet" for i in range(1, 6)]
+SHIFT_FILE = f"multirex_spectra_{FILL_GAS}_paired_cloudy_1e4Pa.parquet"
+OUT = "final_results/plots/pr_curve_xgboost.png"
 
-def get_data():
-    print("--- Loading Data ---")
-    df_train = pd.read_parquet('multirex_spectra_H2_train.parquet')
-    df_test = pd.read_parquet('multirex_spectra_H2_test.parquet')
-    
-    y_train = df_train['biosignature'].apply(lambda x: 1 if x == 'yes' else 0).values
-    y_test = df_test['biosignature'].apply(lambda x: 1 if x == 'yes' else 0).values
-    
-    float_pattern = re.compile(r"^-?\d+\.\d+$") 
-    spectral_cols = [col for col in df_train.columns if isinstance(col, float) or (isinstance(col, str) and float_pattern.match(col))]
-    
-    X_train_raw = df_train[spectral_cols].values
-    X_test_raw = df_test[spectral_cols].values
-    
-    return X_train_raw, y_train, X_test_raw, y_test
+FLOAT_COL = re.compile(r"^-?\d+\.\d+$")
 
-def get_pca_data(X_train_raw, X_test_raw):
-    print(f"--- Preparing PCA Data (Components 0-101) ---")
-    scaler = StandardScaler()
-    X_tr_s = scaler.fit_transform(X_train_raw)
-    X_te_s = scaler.transform(X_test_raw)
-    
-    pca = PCA(n_components=102, random_state=SEED)
-    X_tr_pca = pca.fit_transform(X_tr_s)[:, 0:102]
-    X_te_pca = pca.transform(X_te_s)[:, 0:102]
-    
-    scaler_pca = StandardScaler()
-    X_tr_final = scaler_pca.fit_transform(X_tr_pca)
-    X_te_final = scaler_pca.transform(X_te_pca)
-    
-    return X_tr_final, X_te_final
+
+def label(df):
+    return df["biosignature"].apply(lambda x: 1 if x == "yes" else 0).values
+
 
 def main():
-    os.makedirs('final_results', exist_ok=True)
-    
-    X_tr_raw, y_train, X_te_raw, y_test = get_data()
-    X_train, X_test = get_pca_data(X_tr_raw, X_te_raw)
-    
-    # Shuffle Training Data
-    X_train, y_train = shuffle(X_train, y_train, random_state=SEED)
+    os.makedirs(os.path.dirname(OUT), exist_ok=True)
 
-    print("--- Training XGBoost ---")
-    xgb = XGBClassifier(n_estimators=300, max_depth=3, learning_rate=0.1, subsample=0.8, random_state=SEED, n_jobs=-1, eval_metric='logloss')
-    xgb.fit(X_train, y_train)
-    
-    # Get probabilities
-    y_score = xgb.predict_proba(X_test)[:, 1]
-    
-    # Calculate Average Precision
-    ap = average_precision_score(y_test, y_score)
-    print(f"Average Precision (AP): {ap:.4f}")
+    print("--- Loading data ---")
+    df_train = pd.read_parquet(TRAIN_FILE)
+    df_test = pd.concat([pd.read_parquet(f) for f in TEST_FILES], ignore_index=True)
+    cols = [c for c in df_train.columns
+            if isinstance(c, float) or (isinstance(c, str) and FLOAT_COL.match(c))]
 
-    print("--- Plotting Precision-Recall Curve ---")
-    plt.figure(figsize=(8, 6))
-    
-    display = PrecisionRecallDisplay.from_predictions(
-        y_test, y_score, name=f"XGBoost (AP = {ap:.2f})", color='darkorange', linewidth=2
-    )
-    
-    display.ax_.set_title("Precision-Recall Curve for XGBoost", fontsize=16, fontweight='bold')
-    display.ax_.set_xlabel("Recall (True Positive Rate)", fontsize=14)
-    display.ax_.set_ylabel("Precision (Positive Predictive Value)", fontsize=14)
-    display.ax_.grid(True, linestyle='--', alpha=0.7)
-    
-    # Add annotations for potential operational thresholds
-    # E.g., showing where we can get 95% recall
-    # We find the threshold closest to 95% recall
-    from sklearn.metrics import precision_recall_curve
-    precision, recall, thresholds = precision_recall_curve(y_test, y_score)
-    
-    # Find index where recall is closest to 0.95
-    idx_high_recall = np.argmin(np.abs(recall - 0.95))
-    thresh_hr = thresholds[idx_high_recall] if idx_high_recall < len(thresholds) else 0
-    prec_hr = precision[idx_high_recall]
-    rec_hr = recall[idx_high_recall]
-    
-    plt.plot(rec_hr, prec_hr, marker='o', markersize=8, color='red', label=f'High-Recall Mode\n(Thresh={thresh_hr:.2f}: Prec={prec_hr:.2f})')
-    
-    # Find index where precision is closest to 0.95
-    idx_high_prec = np.argmin(np.abs(precision - 0.95))
-    thresh_hp = thresholds[idx_high_prec] if idx_high_prec < len(thresholds) else 0
-    prec_hp = precision[idx_high_prec]
-    rec_hp = recall[idx_high_prec]
-    
-    plt.plot(rec_hp, prec_hp, marker='o', markersize=8, color='green', label=f'High-Precision Mode\n(Thresh={thresh_hp:.2f}: Rec={rec_hp:.2f})')
-    
-    plt.legend(loc='lower left', fontsize=11)
-    
-    plt.tight_layout()
-    output_path = os.path.join('final_results', 'pr_curve_xgboost.png')
-    plt.savefig(output_path, dpi=300)
-    plt.close()
-    
-    print(f"Plot saved to {output_path}")
+    # Same physically-impossible-depth cut as the main pipeline.
+    df_train = df_train[(df_train[cols].values <= 1.0).all(axis=1)].reset_index(drop=True)
+    df_test = df_test[(df_test[cols].values <= 1.0).all(axis=1)].reset_index(drop=True)
+    y_train, y_test = label(df_train), label(df_test)
+    print(f"    train {len(df_train)}   test {len(df_test)}   positive rate {y_test.mean():.4f}")
+
+    print("--- Preprocessing (frozen on training data) ---")
+    scaler = StandardScaler()
+    Xtr = scaler.fit_transform(df_train[cols].values)
+    pca = PCA(n_components=102, random_state=SEED)
+    Xtr = pca.fit_transform(Xtr)
+    post = StandardScaler()
+    Xtr = post.fit_transform(Xtr)
+
+    def project(df):
+        return post.transform(pca.transform(scaler.transform(df[cols].values)))
+
+    Xte = project(df_test)
+
+    print("--- Training XGBoost (tuned configuration of Table 2) ---")
+    Xtr, y_train = shuffle(Xtr, y_train, random_state=SEED)
+    model = XGBClassifier(n_estimators=200, max_depth=5, learning_rate=0.2, subsample=0.8,
+                          random_state=SEED, n_jobs=-1, eval_metric="logloss")
+    model.fit(Xtr, y_train)
+
+    score = model.predict_proba(Xte)[:, 1]
+    ap = average_precision_score(y_test, score)
+    print(f"    average precision {ap:.4f}   accuracy at 0.5 {100*((score>=0.5)==y_test).mean():.2f}%")
+
+    # Domain-shifted comparison: same planets, 1e4 Pa grey deck.
+    shift = None
+    if os.path.exists(SHIFT_FILE):
+        df_s = pd.read_parquet(SHIFT_FILE)
+        df_s = df_s[(df_s[cols].values <= 1.0).all(axis=1)].reset_index(drop=True)
+        y_s = label(df_s)
+        sc_s = model.predict_proba(project(df_s))[:, 1]
+        shift = (y_s, sc_s, average_precision_score(y_s, sc_s))
+        print(f"    cloud deck 1e4 Pa: average precision {shift[2]:.4f}")
+
+    def operating_points(y, s, targets=(0.90, 0.95, 0.99)):
+        """Precision and threshold at the highest-precision point meeting each recall target."""
+        prec, rec, thr = precision_recall_curve(y, s)
+        out = []
+        for t in targets:
+            ok = np.where(rec[:-1] >= t)[0]
+            i = ok[-1] if len(ok) else 0
+            out.append((t, thr[i], prec[i], rec[i]))
+        return out
+
+    print("\n--- Candidate operating points (in domain) ---")
+    print(f"{'target recall':>14} {'threshold':>11} {'precision':>11} {'recall':>9}")
+    for t, th, p, r in operating_points(y_test, score):
+        print(f"{t:>14.2f} {th:>11.3f} {100*p:>10.1f}% {100*r:>8.1f}%")
+    d = (score >= 0.5)
+    print(f"{'default 0.5':>14} {0.5:>11.3f} "
+          f"{100*(y_test[d].mean() if d.sum() else 0):>10.1f}% "
+          f"{100*(d[y_test==1].mean()):>8.1f}%")
+
+    if shift:
+        print("\n--- Same targets under a 1e4 Pa cloud deck ---")
+        for t, th, p, r in operating_points(shift[0], shift[1]):
+            print(f"{t:>14.2f} {th:>11.3f} {100*p:>10.1f}% {100*r:>8.1f}%")
+
+    print("\n--- Plotting ---")
+    fig, ax = plt.subplots(figsize=(7.2, 5.8))
+    prec, rec, _ = precision_recall_curve(y_test, score)
+    ax.plot(rec, prec, color="#1f4e79", lw=2.2, label=f"Clear (AP = {ap:.3f})")
+    if shift:
+        ps, rs, _ = precision_recall_curve(shift[0], shift[1])
+        ax.plot(rs, ps, color="#c0392b", lw=2.0, ls="--",
+                label=f"Cloud deck 10$^4$ Pa (AP = {shift[2]:.3f})")
+    ax.axhline(y_test.mean(), color="grey", lw=1, ls=":",
+               label=f"No-skill baseline ({y_test.mean():.3f})")
+
+    # Annotations sit in the empty lower-left region so they do not overlap either curve.
+    for (t, th, p, r), ytext in zip(operating_points(y_test, score, (0.95, 0.99)), (0.54, 0.40)):
+        ax.plot(r, p, "o", ms=8, color="#1f4e79", zorder=5)
+        ax.annotate(f"{t:.0%} recall at threshold {th:.2f}\nprecision {p:.0%}",
+                    xy=(r, p), xycoords="data",
+                    xytext=(0.04, ytext), textcoords="axes fraction",
+                    fontsize=9.5, ha="left", va="center",
+                    arrowprops=dict(arrowstyle="-", lw=0.8, color="#1f4e79",
+                                    connectionstyle="arc3,rad=-0.15"))
+
+    ax.set_xlabel("Recall", fontsize=12)
+    ax.set_ylabel("Precision", fontsize=12)
+    ax.set_xlim(0, 1.02)
+    ax.set_ylim(0.35, 1.02)
+    ax.grid(True, ls="--", alpha=0.5)
+    ax.legend(loc="lower left", fontsize=10, framealpha=0.95)
+    fig.tight_layout()
+    fig.savefig(OUT, dpi=300)
+    plt.close(fig)
+    print(f"Plot saved to {OUT}")
+
 
 if __name__ == "__main__":
     main()

@@ -10,7 +10,7 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Flatten, Dense, Dropout, BatchNormalization, Activation, Input, Conv1D, MaxPooling1D
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.callbacks import EarlyStopping
-from statsmodels.stats.contingency_tables import mcnemar
+from scipy.stats import chi2
 from sklearn.utils import shuffle
 import re
 import random
@@ -40,7 +40,10 @@ def get_data():
     X_train_final = scaler_pca.fit_transform(X_train_pca)
     X_train_final, y_train = shuffle(X_train_final, y_train, random_state=SEED)
     
-    df_test = pd.read_parquet('multirex_spectra_H2_test.parquet') # Use main test set for p-value
+    # Pooled five test sets, so the paired tests and Table 4's accuracies
+    # describe the same population.
+    df_test = pd.concat([pd.read_parquet(f'multirex_spectra_H2_test_set_{i}.parquet')
+                         for i in range(1, 6)], ignore_index=True)
     y_test = df_test['biosignature'].apply(lambda x: 1 if x == 'yes' else 0).values
     X_test_raw = df_test[spectral_cols].values
     X_test_scaled = scaler_raw.transform(X_test_raw)
@@ -57,39 +60,41 @@ def build_mlp():
         Dense(64), BatchNormalization(), Activation('relu'), Dropout(0.3),
         Dense(1, activation='sigmoid')
     ])
-    model.compile(optimizer=Adam(learning_rate=0.0005), loss='binary_crossentropy')
+    model.compile(optimizer=Adam(learning_rate=0.001), loss='binary_crossentropy')
     return model
 
 def build_cnn():
     model = Sequential([
         Input(shape=(102, 1)),
+        Conv1D(filters=32, kernel_size=5, padding='same'), BatchNormalization(), Activation('relu'), MaxPooling1D(pool_size=2), Dropout(0.3),
         Conv1D(filters=64, kernel_size=5, padding='same'), BatchNormalization(), Activation('relu'), MaxPooling1D(pool_size=2), Dropout(0.3),
-        Conv1D(filters=128, kernel_size=5, padding='same'), BatchNormalization(), Activation('relu'), MaxPooling1D(pool_size=2), Dropout(0.3),
         Flatten(),
         Dense(100), BatchNormalization(), Activation('relu'), Dropout(0.5),
         Dense(1, activation='sigmoid')
     ])
-    model.compile(optimizer=Adam(learning_rate=0.001), loss='binary_crossentropy')
+    model.compile(optimizer=Adam(learning_rate=0.0005), loss='binary_crossentropy')
     return model
 
-def get_pvalue(y_true, pred1, pred2):
-    table = [[0, 0], [0, 0]]
-    for i in range(len(y_true)):
-        correct1 = (pred1[i] == y_true[i])
-        correct2 = (pred2[i] == y_true[i])
-        if correct1 and correct2: table[0][0] += 1
-        elif correct1 and not correct2: table[0][1] += 1
-        elif not correct1 and correct2: table[1][0] += 1
-        elif not correct1 and not correct2: table[1][1] += 1
-    result = mcnemar(table, exact=False, correction=True)
-    return result.pvalue
+def get_counts(y_true, pred1, pred2):
+    """McNemar with continuity correction: returns (b, c, p).
+
+    b and c are the discordant counts -- planets one model gets right and the
+    other does not. The statistic depends on them alone, so reporting them
+    makes every p-value below checkable by hand.
+    """
+    c1 = (pred1 == y_true)
+    c2 = (pred2 == y_true)
+    b = int((c1 & ~c2).sum())
+    c = int((~c1 & c2).sum())
+    stat = (abs(b - c) - 1) ** 2 / (b + c) if (b + c) else 0.0
+    return b, c, chi2.sf(stat, 1)
 
 def main():
     X_train, y_train, X_test, y_test = get_data()
     es = EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
 
     print("Training XGBoost...")
-    xgb = XGBClassifier(n_estimators=300, max_depth=3, learning_rate=0.1, subsample=0.8, use_label_encoder=False, eval_metric='logloss', random_state=SEED, n_jobs=-1)
+    xgb = XGBClassifier(n_estimators=200, max_depth=5, learning_rate=0.2, subsample=0.8, eval_metric='logloss', random_state=SEED, n_jobs=-1)
     xgb.fit(X_train, y_train)
     p_xgb = xgb.predict(X_test)
 
@@ -105,14 +110,17 @@ def main():
 
     print("Training CNN...")
     cnn = build_cnn()
-    cnn.fit(X_train.reshape(-1, 102, 1), y_train, epochs=100, batch_size=64, validation_split=0.2, callbacks=[es], verbose=0)
+    cnn.fit(X_train.reshape(-1, 102, 1), y_train, epochs=100, batch_size=128, validation_split=0.2, callbacks=[es], verbose=0)
     p_cnn = (cnn.predict(X_test.reshape(-1, 102, 1), verbose=0) > 0.5).astype(int).flatten()
 
-    print("\n--- Pairwise McNemar P-Values ---")
-    print(f"XGBoost vs MLP: p = {get_pvalue(y_test, p_xgb, p_mlp):.4f}")
-    print(f"XGBoost vs RF:  p = {get_pvalue(y_test, p_xgb, p_rf):.4f}")
-    print(f"MLP vs RF:      p = {get_pvalue(y_test, p_mlp, p_rf):.4f}")
-    print(f"MLP vs CNN:     p = {get_pvalue(y_test, p_mlp, p_cnn):.4f}")
+    print(f"\n--- Pairwise McNemar tests (pooled n = {len(y_test)}) ---")
+    print(f"{'pair':<26}{'b':>5}{'c':>6}{'p':>11}")
+    for name, a, b_ in [("XGBoost vs Random Forest", p_xgb, p_rf),
+                        ("XGBoost vs MLP", p_xgb, p_mlp),
+                        ("Random Forest vs MLP", p_rf, p_mlp),
+                        ("MLP vs 1D-CNN", p_mlp, p_cnn)]:
+        b, c, p = get_counts(y_test, a, b_)
+        print(f"{name:<26}{b:>5}{c:>6}{p:>11.6f}")
 
 if __name__ == "__main__":
     main()
