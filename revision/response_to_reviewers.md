@@ -144,7 +144,13 @@ One scoping claim was corrected rather than softened. The manuscript had describ
 
 ---
 
-## Additional change not requested by the reviewers
+## Additional changes not requested by the reviewers
+
+**Section 4.5 now quantifies the operating-point trade-off it previously only described.**
+
+The section argued that the decision threshold would be moved in deployment — lowered for a recall-first pass over the Tier 3 catalogue, raised when down-selecting for Tier 4 or retrieval — without saying what any of those choices cost. A new **Figure 9** reports the precision–recall curve for XGBoost on the pooled test sets with candidate operating points marked. Raising recall to 95% requires lowering the threshold to 0.18 and costs eight points of precision (81.0%); 99% recall requires 0.03 and costs twenty (69.0%).
+
+The same figure overlays the held-out planets re-rendered with an untrained-for cloud deck at 10⁴ Pa, and that comparison produced a result worth reporting in its own right: the thresholds themselves move. Reaching 95% recall under the deck requires a cut at 0.07 rather than 0.18 and returns 67.4% precision rather than 81.0%. A threshold selected on clean synthetic spectra would therefore deliver neither the recall nor the precision it was chosen for. This is the operational counterpart of the calibration finding in Section 4.4, and it is now noted in the Conclusion.
 
 **Figure 6 has been re-drawn, and Section 3.1 now states a sampling limitation we found while preparing this revision.**
 
