@@ -2,9 +2,7 @@
 
 Owen Yang<sup>a</sup>
 
-<sup>a</sup> Henry M. Gunn High School, 780 Arastradero Rd, Palo Alto, CA 94306, USA.
-
-Corresponding author: Owen Yang. Tel.: +1 650 686 7813. E-mail: owenhyang@gmail.com
+<sup>a</sup> Henry M. Gunn High School, 780 Arastradero Rd, Palo Alto, CA 94306, USA. Tel.: +1 650 686 7813. E-mail: owenhyang@gmail.com
 
 ---
 
