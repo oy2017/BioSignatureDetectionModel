@@ -134,7 +134,7 @@ Each row carries three things the reviewer asked for: the assumption, why it is 
 
 **Response.** I appreciate that this concern was raised independently by both reviewers, and I have applied the same scope reduction described for Reviewer 1's opening (R1-1). The work is now presented as a synthetic-data benchmark and the task as label recovery, throughout the Abstract, Section 1, and Section 5, and the specific over-claims — including the physical/chemical PCA attribution and language such as "chemically informative" and "exceptionally robust" — have been removed.
 
-A further pass removed absolutist and self-approving wording throughout: guarantees of reproducibility and of class balance, claims of exceptional robustness, and two figure captions that asserted more than their figures showed.
+A further pass replaced absolutist and self-approving wording with plainer, measured statements — the claims themselves are retained where the evidence supports them, stated to the strength it supports — and corrected two figure captions that asserted more than their figures showed.
 
 One scoping claim was corrected rather than softened. The manuscript had described the classifier as a filter for the "sub-Jovian and temperate" members of Ariel's Tier 3 sample, but Table 1 shows the grid spans 500–2500 K with radii to 26 R⊕, which is neither. The claim is withdrawn and replaced with the grid's actual coverage, and the habitability framing that depended on it is removed from the Introduction and Conclusion (Sections 1, 3.5, 4.4, 5).
 
