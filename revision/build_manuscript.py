@@ -370,8 +370,10 @@ FIGCAP = re.compile(r"^\*\*Figure\s+\d+\.\*\*")
 
 
 def split_figures(blocks):
-    """JHSS packaging: figures ship as standalone PNGs and their legends as a
-    separate .docx, so neither belongs in the manuscript file."""
+    """Return (blocks without figures/captions, caption blocks).
+
+    Only the caption half is used now: the manuscript keeps its figures, and the
+    legends are emitted separately as JHSS requires."""
     body, legends = [], []
     for kind, payload in blocks:
         if kind == "img":
@@ -394,14 +396,15 @@ if __name__ == "__main__":
     which = sys.argv[1] if len(sys.argv) > 1 else "both"
     stem = os.path.splitext(os.path.basename(SRC))[0]
 
-    if which == "jhss":
-        body, legends = split_figures(blocks)
-        print(f"figures pulled out: {len(legends)} legends")
+    if which in ("docx", "both"):
+        print("docx ->", build_docx(blocks, f"{OUTDIR}/{stem}.docx"))
+    if which in ("pdf", "both"):
+        print("pdf  ->", build_pdf(blocks, f"{OUTDIR}/{stem}.pdf"))
+
+    # JHSS requires figure legends as their own file, alongside the manuscript
+    # (which keeps its figures) and the separate JPEGs. Emitted whenever the
+    # source actually contains figure captions.
+    _, legends = split_figures(blocks)
+    if legends:
         head = [("h", (1, "Figure legends"))]
-        print("docx ->", build_docx(body, f"{OUTDIR}/{stem}_JHSS.docx"))
         print("legends ->", build_docx(head + legends, f"{OUTDIR}/figure_legends.docx"))
-    else:
-        if which in ("docx", "both"):
-            print("docx ->", build_docx(blocks, f"{OUTDIR}/{stem}.docx"))
-        if which in ("pdf", "both"):
-            print("pdf  ->", build_pdf(blocks, f"{OUTDIR}/{stem}.pdf"))
