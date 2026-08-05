@@ -14,9 +14,9 @@ Thank you for the careful and genuinely constructive reviews. They substantially
 - **A new robustness section (4.6)** evaluates the frozen pipeline outside its training distribution across all seven domain-shift axes the reviewer requested.
 - **The PCA interpretation is withdrawn and replaced** with a measured, evidence-backed result, supported by the four analyses the reviewer asked for (Section 4.2).
 - **The whitening claims are corrected** and its role established by ablations, including a controlled test of whether it hurts robustness (Sections 3.2, 4.2, 4.6).
-- **A new Assumptions section (3.5)** states and justifies every modeling assumption, including the implicit ones: that the labels are a deterministic function of the generating abundances, that CH₄ and O₃ are drawn independently with no chemistry linking them, and that every reported metric uses a fixed 0.5 decision threshold.
+- **A new Assumptions section (3.5)** states and justifies every modeling assumption, including the implicit ones: that the labels are a deterministic function of the generating abundances, that no photochemical or thermochemical model links CH₄ and O₃, and that every reported metric uses a fixed 0.5 decision threshold.
 - **A band-occlusion analysis (Section 4.3, Table 6)** identifies which spectral regions the fitted pipeline actually depends on.
-- **The references are rebuilt and verified** — all 60 entries, every DOI resolved to its paper — the manuscript converted to third person and consistent past tense, and an Acknowledgments section added.
+- **The references are rebuilt and verified** — all 60 entries carry a working locator, and every DOI was resolved to confirm it points to the cited paper — the manuscript converted to third person and consistent past tense, and an Acknowledgments section added.
 - **Every figure was audited against the text**, which caught one panel that plotted a model the paper does not report; it has been removed and the figure regenerated.
 
 The single experiment we were unable to complete this cycle — retrieval-derived labels — is conceded explicitly and named as the primary next step.
