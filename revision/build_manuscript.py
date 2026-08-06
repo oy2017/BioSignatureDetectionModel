@@ -15,6 +15,10 @@ SRC = "/mnt/c/Users/owenh/BioSignatureDetectionModel/revision/revised_manuscript
 OUTDIR = "/mnt/c/Users/owenh/BioSignatureDetectionModel/revision"
 FIGROOT = OUTDIR
 DEJAVU = "/usr/share/fonts/truetype/dejavu"
+# JHSS requires Times New Roman. The PDF must render the same document as the
+# DOCX, so it uses the real Times faces; DejaVu is kept only as a glyph
+# fallback, since Times lacks U+2295 (the Earth-radius symbol in "R⊕").
+TIMES = "/mnt/c/Windows/Fonts"
 
 
 # ---------------------------------------------------------------- parsing
@@ -269,7 +273,8 @@ def build_docx(blocks, dest):
 # ---------------------------------------------------------------- pdf
 
 def build_pdf(blocks, dest):
-    from reportlab.lib.enums import TA_JUSTIFY, TA_CENTER
+    from reportlab.lib.enums import TA_JUSTIFY, TA_LEFT
+    from fontTools.ttLib import TTFont as TTLib
     from reportlab.lib.pagesizes import LETTER
     from reportlab.lib.styles import ParagraphStyle
     from reportlab.lib.units import inch
@@ -280,34 +285,52 @@ def build_pdf(blocks, dest):
                                     Table, TableStyle, KeepTogether)
     from PIL import Image as PILImage
 
+    pdfmetrics.registerFont(TTFont("TNR", f"{TIMES}/times.ttf"))
+    pdfmetrics.registerFont(TTFont("TNR-B", f"{TIMES}/timesbd.ttf"))
+    pdfmetrics.registerFont(TTFont("TNR-I", f"{TIMES}/timesi.ttf"))
+    pdfmetrics.registerFont(TTFont("TNR-BI", f"{TIMES}/timesbi.ttf"))
+    pdfmetrics.registerFontFamily("TNR", normal="TNR", bold="TNR-B",
+                                  italic="TNR-I", boldItalic="TNR-BI")
     pdfmetrics.registerFont(TTFont("DJ", f"{DEJAVU}/DejaVuSerif.ttf"))
-    pdfmetrics.registerFont(TTFont("DJ-B", f"{DEJAVU}/DejaVuSerif-Bold.ttf"))
-    pdfmetrics.registerFont(TTFont("DJS", f"{DEJAVU}/DejaVuSans.ttf"))
-    pdfmetrics.registerFont(TTFont("DJS-B", f"{DEJAVU}/DejaVuSans-Bold.ttf"))
-    pdfmetrics.registerFontFamily("DJ", normal="DJ", bold="DJ-B", italic="DJ", boldItalic="DJ-B")
 
-    body = ParagraphStyle("body", fontName="DJ", fontSize=9.4, leading=13.4,
-                          alignment=TA_JUSTIFY, spaceAfter=6)
-    title = ParagraphStyle("title", fontName="DJS-B", fontSize=16, leading=20,
-                           alignment=TA_CENTER, spaceAfter=14)
-    heads = {2: ParagraphStyle("h2", fontName="DJS-B", fontSize=12.5, leading=16,
+    # Glyphs Times lacks, rendered from DejaVu so they do not drop out. Word
+    # does this substitution itself, which is why the DOCX needs no equivalent.
+    times_cmap = set()
+    for _t in TTLib(f"{TIMES}/times.ttf")["cmap"].tables:
+        times_cmap |= set(_t.cmap)
+
+    # Sizes, spacing and indents below mirror build_docx exactly: Times New
+    # Roman 12, line spacing 1.15 (leading 13.8), 10 pt after each paragraph.
+    body = ParagraphStyle("body", fontName="TNR", fontSize=12, leading=13.8,
+                          alignment=TA_JUSTIFY, spaceAfter=10)
+    title = ParagraphStyle("title", fontName="TNR-B", fontSize=16, leading=19,
+                           alignment=TA_LEFT, spaceAfter=14)
+    heads = {2: ParagraphStyle("h2", fontName="TNR-B", fontSize=14, leading=17,
                                spaceBefore=13, spaceAfter=6),
-             3: ParagraphStyle("h3", fontName="DJS-B", fontSize=10.8, leading=14,
+             3: ParagraphStyle("h3", fontName="TNR-B", fontSize=13, leading=16,
                                spaceBefore=10, spaceAfter=5),
-             4: ParagraphStyle("h4", fontName="DJS-B", fontSize=9.8, leading=13,
+             4: ParagraphStyle("h4", fontName="TNR-B", fontSize=12, leading=15,
                                spaceBefore=8, spaceAfter=4)}
-    cellst = ParagraphStyle("cell", fontName="DJ", fontSize=6.9, leading=8.6)
-    cellhd = ParagraphStyle("cellh", fontName="DJS-B", fontSize=6.9, leading=8.6)
-    listst = ParagraphStyle("li", parent=body, leftIndent=16)
-    quotest = ParagraphStyle("quote", parent=body, leftIndent=22, rightIndent=14,
-                             textColor=colors.HexColor("#333333"), spaceBefore=4, spaceAfter=8)
+    figcap = ParagraphStyle("figcap", parent=body, fontSize=10, leading=11.5,
+                            alignment=TA_LEFT)
+    tabcap = ParagraphStyle("tabcap", parent=body, alignment=TA_LEFT)
+    cellst = ParagraphStyle("cell", fontName="TNR", fontSize=9, leading=11)
+    cellhd = ParagraphStyle("cellh", fontName="TNR-B", fontSize=9, leading=11)
+    listst = ParagraphStyle("li", parent=body, leftIndent=0.3 * inch)
+    quotest = ParagraphStyle("quote", parent=body, leftIndent=0.35 * inch,
+                             rightIndent=0.2 * inch, spaceBefore=4, spaceAfter=8)
+
+    def fallback(t):
+        """Wrap any character Times lacks in the fallback face."""
+        return "".join(c if ord(c) in times_cmap else f"<font name='DJ'>{c}</font>"
+                       for c in t)
 
     def esc(text):
         out = ""
         for t, b, it, sc in runs(text):
-            t = html.escape(t)
+            t = fallback(html.escape(t))
             if b:
-                t = f"<font name='DJ-B'>{t}</font>"
+                t = f"<b>{t}</b>"
             if it:
                 t = f"<i>{t}</i>"
             if sc == "super":
@@ -317,21 +340,29 @@ def build_pdf(blocks, dest):
             out += t
         return out
 
-    story, avail = [], LETTER[0] - 1.5 * inch
+    story, avail = [], LETTER[0] - 2 * inch          # 1 in margins, as in the DOCX
     for kind, payload in blocks:
         if kind == "h":
             lvl, txt = payload
             frag = ""
             for t, b, it in heading_parts(lvl, txt):
-                t = html.escape(t)
+                t = fallback(html.escape(t))
                 if b:
-                    t = f"<font name='DJS-B'>{t}</font>"
+                    t = f"<b>{t}</b>"
                 if it:
                     t = f"<i>{t}</i>"
                 frag += t
             story.append(Paragraph(frag, title if lvl == 1 else heads.get(min(lvl, 4), heads[4])))
         elif kind == "p":
-            story.append(Paragraph(esc(payload), body))
+            # Same rule as the DOCX: figure titles 10 pt left, table titles 12 pt
+            # left, everything else justified body text.
+            if re.match(r"\*\*Figure \d+\.\*\*", payload):
+                st = figcap
+            elif re.match(r"\*\*Table \d+\.\*\*", payload):
+                st = tabcap
+            else:
+                st = body
+            story.append(Paragraph(esc(payload), st))
         elif kind == "li":
             marker, txt = payload
             story.append(Paragraph(f"{html.escape(marker)} {esc(txt)}", listst))
@@ -343,9 +374,13 @@ def build_pdf(blocks, dest):
                 continue
             with PILImage.open(fp) as im:
                 w, h = im.size
-            scale = min(avail / w, (LETTER[1] - 2.6 * inch) / h)
+            # DOCX inserts figures at 6.2 in wide; match that, but shrink further
+            # if the image would not otherwise fit the text block height.
+            scale = min(6.2 * inch / w, avail / w, (LETTER[1] - 2.2 * inch) / h)
+            im = Image(fp, width=w * scale, height=h * scale)
+            im.hAlign = "CENTER"                      # DOCX centers figures
             story.append(Spacer(1, 5))
-            story.append(Image(fp, width=w * scale, height=h * scale))
+            story.append(im)
             story.append(Spacer(1, 5))
         elif kind == "table":
             rows = payload
@@ -353,9 +388,9 @@ def build_pdf(blocks, dest):
             data = [[Paragraph(esc(r[c] if c < len(r) else ""), cellhd if i == 0 else cellst)
                      for c in range(ncol)] for i, r in enumerate(rows)]
             t = Table(data, colWidths=[avail / ncol] * ncol, repeatRows=1)
+            # JHSS: hide every table line except the rule under the headings.
             t.setStyle(TableStyle([
-                ("GRID", (0, 0), (-1, -1), 0.25, colors.HexColor("#999999")),
-                ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#ededed")),
+                ("LINEBELOW", (0, 0), (-1, 0), 0.75, colors.black),
                 ("VALIGN", (0, 0), (-1, -1), "TOP"),
                 ("LEFTPADDING", (0, 0), (-1, -1), 3),
                 ("RIGHTPADDING", (0, 0), (-1, -1), 3),
@@ -366,8 +401,8 @@ def build_pdf(blocks, dest):
             story.append(Spacer(1, 8))
 
     SimpleDocTemplate(dest, pagesize=LETTER,
-                      leftMargin=0.75 * inch, rightMargin=0.75 * inch,
-                      topMargin=0.8 * inch, bottomMargin=0.8 * inch,
+                      leftMargin=1 * inch, rightMargin=1 * inch,
+                      topMargin=0.5 * inch, bottomMargin=0.5 * inch,
                       title="Revised manuscript").build(story)
     return dest
 
