@@ -166,6 +166,7 @@ def build_docx(blocks, dest):
     import docx
     from docx.shared import Pt, Inches, RGBColor
     from docx.enum.text import WD_ALIGN_PARAGRAPH
+    from docx.oxml.ns import qn
 
     doc = docx.Document()
 
@@ -182,8 +183,13 @@ def build_docx(blocks, dest):
             s = doc.styles[st]
             s.font.name = "Times New Roman"
             s.font.size = Pt(sz)
-            if st.startswith("Heading"):
+            if st.startswith("Heading") or st == "Title":
                 s.font.color.rgb = RGBColor(0, 0, 0)
+            # Word's default Title style carries a blue 1pt rule underneath it;
+            # drop any style-level border so no decorative bar is drawn.
+            pPr = s.element.get_or_add_pPr()
+            for bdr in pPr.findall(qn("w:pBdr")):
+                pPr.remove(bdr)
         except KeyError:
             pass
 
