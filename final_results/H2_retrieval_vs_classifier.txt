@@ -1,0 +1,12 @@
+Retrieval vs. classifier on 50 identical planets (25 positive, 25 negative; seed 42, pooled test sets)
+Retrieval: best-case (own forward model, nuisance params fixed at truth, clear-sky,
+SNR 15, npoints=100) -> the label disagreement below is a conservative lower bound.
+
+Retrieval-derived label vs truth: 94% agree with injected label   (positives 88%, negatives 100%)
+Classifier label        vs truth: 86% agree with injected label   (positives 80%, negatives 92%)
+Classifier vs retrieval label: 92% agree with each other
+
+Probabilistic labels: classifier probability vs retrieval posterior P+  Pearson r = 0.88 (p = 5.2e-17)
+
+CH4 recovery: median |err| 0.01 dex, truth in 68% CI 94% (ideal ~68%)
+O3 recovery: median |err| 0.02 dex, truth in 68% CI 94% (ideal ~68%)
