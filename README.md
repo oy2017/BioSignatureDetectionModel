@@ -61,7 +61,7 @@ Dependencies between commands: `evaluate_hazy.py` reads the CSV written by `eval
 - **Data generation** (`generate_*` scripts) is optional and requires external tools at machine-specific paths (Exo-Transmit, ExoMolOP/HITRAN opacity tables, a PHOENIX grid, ExoRad2, cloud/haze forks of MultiREx). Reproducing the paper's numbers does **not** require them.
 - The retrieval pilot (`retrieve_labels_balanced.py`) runs full nested-sampling retrievals; it takes hours. Its outputs are committed (`final_results/H2_retrieval_balanced.csv`), and `eval_retrieval_vs_classifier.py` reproduces the paper's Section 5 numbers from them in seconds.
 - Some strings in this mirror appear as `XXXX`: those are anonymized author identifiers (e.g., in the pinned MultiREx fork URL in `requirements.txt`). They do not affect the evaluation scripts, which run entirely on committed data.
-- Additional `analyze_*`/`plot_*` scripts beyond the map above are earlier diagnostics kept for provenance; they are not needed to reproduce the paper.
+- This mirror is curated to the files behind the paper; the full research history (per-configuration tuning reports and earlier diagnostic scripts) lives in the source repository.
 
 ## License
 
