@@ -1,0 +1,28 @@
+Recovery by training on the shifted physics, configuration ariel, pipeline norm_xgb
+Frozen: trained on clean spectra only (the paper's primary pipeline).
+Augmented: retrained on a training set where each planet carries a random strength
+of that axis (a third of planets left clean). Identical test planets and noise seeds.
+
+stellar spots:
+case               frozen  augmented    gain  % of gap
+tlse_spots02       86.18%     88.73%  +2.56       62%
+tlse_spots05       79.72%     88.08%  +8.37       79%
+tlse_spots10       72.40%     87.27% +14.87       83%
+tlse_spots20       64.41%     85.25% +20.84       80%
+clean              90.33%     88.94%  -1.39          
+
+haze:
+case               frozen  augmented    gain  % of gap
+haze_2p0e5         89.79%     89.01%  -0.78     -146%
+haze_2p0e6         82.57%     88.75%  +6.17       80%
+haze_3p0e7         61.50%     87.24% +25.74       89%
+haze_2p4e8         52.55%     83.98% +31.44       83%
+clean              90.33%     89.01%  -1.32          
+
+time-correlated noise:
+case               frozen  augmented    gain  % of gap
+SNR 12             83.52%     86.52%  +3.00       44%
+SNR 10             79.30%     83.55%  +4.25       39%
+SNR 8              72.09%     80.52%  +8.43       46%
+SNR 5              60.90%     70.79%  +9.89       34%
+clean              90.33%     88.66%  -1.68          

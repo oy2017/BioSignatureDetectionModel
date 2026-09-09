@@ -1,0 +1,39 @@
+Pairwise exact McNemar tests on the pooled test sets (n=9072), all model pairs.
+b = first model right / second wrong; c = the reverse.
+
+  raw_xgb    vs raw_rf    : b=  759 c=  730 p=4.681e-01
+  raw_xgb    vs pca_xgb   : b=  711 c= 1740 p=9.974e-99
+  raw_xgb    vs pca_rf    : b=  887 c= 1625 p=1.205e-49
+  raw_xgb    vs norm_xgb  : b=  404 c= 2016 p=1.758e-256
+  raw_xgb    vs norm_rf   : b=  436 c= 1934 p=4.233e-224
+  raw_xgb    vs norm_mlp  : b=  417 c= 2007 p=2.162e-248
+  raw_xgb    vs pcaw_mlp  : b= 1432 c= 1386 p=3.966e-01
+  raw_xgb    vs pca_mlp   : b= 1059 c= 1491 p=1.175e-17
+  raw_rf     vs pca_xgb   : b=  675 c= 1733 p=2.009e-106
+  raw_rf     vs pca_rf    : b=  817 c= 1584 p=5.021e-56
+  raw_rf     vs norm_xgb  : b=  383 c= 2024 p=1.727e-268
+  raw_rf     vs norm_rf   : b=  411 c= 1938 p=4.408e-236
+  raw_rf     vs norm_mlp  : b=  402 c= 2021 p=1.512e-258
+  raw_rf     vs pcaw_mlp  : b= 1419 c= 1402 p=7.632e-01
+  raw_rf     vs pca_mlp   : b= 1049 c= 1510 p=7.666e-20
+  pca_xgb    vs pca_rf    : b=  597 c=  306 p=2.120e-22
+  pca_xgb    vs norm_xgb  : b=  348 c=  931 p=1.025e-61
+  pca_xgb    vs norm_rf   : b=  412 c=  881 p=1.424e-39
+  pca_xgb    vs norm_mlp  : b=  349 c=  910 p=4.698e-58
+  pca_xgb    vs pcaw_mlp  : b= 1701 c=  626 p=5.312e-114
+  pca_xgb    vs pca_mlp   : b= 1299 c=  702 p=4.325e-41
+  pca_rf     vs norm_xgb  : b=  372 c= 1246 p=4.267e-110
+  pca_rf     vs norm_rf   : b=  422 c= 1182 p=2.671e-83
+  pca_rf     vs norm_mlp  : b=  378 c= 1230 p=4.044e-105
+  pca_rf     vs pcaw_mlp  : b= 1585 c=  801 p=7.105e-59
+  pca_rf     vs pca_mlp   : b= 1230 c=  924 p=4.626e-11
+  norm_xgb   vs norm_rf   : b=  290 c=  176 p=1.442e-07
+  norm_xgb   vs norm_mlp  : b=  276 c=  254 p=3.617e-01
+  norm_xgb   vs pcaw_mlp  : b= 2084 c=  426 p=4.085e-261
+  norm_xgb   vs pca_mlp   : b= 1496 c=  316 p=3.266e-183
+  norm_rf    vs norm_mlp  : b=  264 c=  356 p=2.515e-04
+  norm_rf    vs pcaw_mlp  : b= 2060 c=  516 p=3.704e-217
+  norm_rf    vs pca_mlp   : b= 1427 c=  361 p=1.468e-149
+  norm_mlp   vs pcaw_mlp  : b= 2104 c=  468 p=2.108e-246
+  norm_mlp   vs pca_mlp   : b= 1481 c=  323 p=8.411e-177
+  pcaw_mlp   vs pca_mlp   : b= 1237 c= 1715 p=1.389e-18

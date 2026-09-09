@@ -1,0 +1,17 @@
+Pearson correlations between delivered (post-cleaning) parameters
+n = 18156
+
+largest |r| pairs:
+  atm CH4              atm O3               r = +0.177
+  p_radius             s radius             r = +0.065
+  p_mass               p_radius             r = +0.060
+  s radius             p_mass               r = -0.032
+  atm temperature      p_mass               r = +0.030
+  p_mass               atm top_pressure     r = -0.025
+  s temperature        s mass               r = +0.020
+  atm temperature      p_radius             r = -0.020
+  s mass               p_radius             r = -0.019
+  atm NH3              atm H2O              r = -0.015
+
+max |r| = 0.177
+(old grid: radius / T_star / sma r >= 0.97; mass / R_star / P_base r >= 0.85)

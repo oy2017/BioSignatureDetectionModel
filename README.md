@@ -1,68 +1,77 @@
-# A Calibrated, Domain-Shift-Characterized Benchmark for Biosignature Triage of Synthetic Transmission Spectra
+# Which distribution shifts can you train away?
 
-Companion repository for the ML4PS 2026 submission *"When can a synthetic-trained biosignature triage classifier be trusted?"* It contains **all data (committed), all code, and all result files** behind every number in the paper: the training grid, five independent test sets, and — the benchmark's core — **paired re-renders of the same test planets under every domain-shift axis** (independent radiative-transfer code, alternative opacities, clouds/hazes, stellar contamination, instrument noise), so that future models can be evaluated like-for-like against the same shifts.
+Anonymized code and results for the ML4PS 2026 submission *"Which distribution shifts
+can you train away? A fidelity budget with a repair rule for simulator-trained spectral
+classifiers."*
 
-## 10-minute quickstart
+Every number in the paper is in a committed file here, so nothing has to be re-run to
+check a claim. Regenerating the spectra takes about ten minutes; the full pipeline takes
+about three hours on 22 cores.
 
-Python 3.10 required (TensorFlow pin). All evaluation commands below run on **committed data** — no data generation, no external tools (one exception, flagged below: re-running the stellar-contamination script needs a public PHOENIX download; its output is committed).
+## Claim → command → committed file
+
+| Paper claim | Command | File |
+| :-- | :-- | :-- |
+| §3 Representation dominates: 90.3 / 90.1 / 89.1 % normalized; 83.9 % PCA; 72.6 % raw; McNemar p = 0.36 | `python pipeline.py --config ariel` | `results/ariel_indomain.txt`, `ariel_summary.json` |
+| §3 Linear probe 85.4 %, two-band index 74.8 % | `python realism.py --config ariel` | `results/ariel_realism.txt` |
+| §3 Normalization gain tracks depth spread (+31.0 / +24.8 / +19.3 by radius band) | `python prevalence.py --config ariel` | `results/ariel_prevalence.txt`, `ariel_radius_bands.csv` |
+| §3 Per-channel offsets cost 10.6 points; global offset costs 0 | `python realism.py --config ariel` | `results/ariel_realism.txt` |
+| §4 Table 1, the fidelity budget (all rows) | `./run_shifts.sh` then `python evaluate_shifts.py --config ariel` | `results/ariel_shifts.txt`, `ariel_shifts.csv` |
+| §4 Correlated noise beats white at every kernel width; spot contrast sensitivity | `python sensitivity.py --config ariel` | `results/ariel_sensitivity.txt` |
+| §5 Repair rule: 79–89 % recovered for spots and haze, 34–46 % for correlated noise | `python augment.py --render` then `--fit` | `results/ariel_augment.txt`, `ariel_augment.csv` |
+| §6 Transfer: ρ = 0.973 / 0.962 / 0.881 across four pipelines | `python evaluate_shifts.py --config ariel --model {norm_mlp,norm_rf,pca_xgb}` | `results/ariel_{norm_mlp,norm_rf,pca_xgb}_shifts.csv` |
+| §6 Ranking inversion under strong haze (61.5 % vs 77.8 %) | same files | `results/ariel_*_shifts.csv` |
+| §7 Prevalence: 0.96 threshold holds 50 % precision at 1 % base rate | `python prevalence.py --config ariel` | `results/ariel_prevalence.txt` |
+| Figure | `python plots/fig4_fidelity_sweeps.py` | `results/figures/fig4_fidelity_sweeps.png` |
+| Resolution ladder (paper mentions the configuration only) | `python pipeline.py --config {r100,r200} --reuse-params` | `results/{r100,r200}_indomain.txt` |
+
+## Reproducing
 
 ```bash
 python3.10 -m venv venv && source venv/bin/activate
-pip install scikit-learn==1.7.2 xgboost==3.2.0 tensorflow==2.21.0 pandas pyarrow
-python evaluate_exotransmit.py     # ~2 min, CPU-only -> final_results/H2_exotransmit.txt
+pip install -r requirements.txt
+export OMP_NUM_THREADS=8          # XGBoost with 20 threads was ~100x slower under load
+
+python ariel_bins.py                                              # bin edges, 3 configurations
+python generate_grid.py --n-train 20000 --n-test 2000 --n-sets 5 --jobs 12
+python bin_spectra.py
+python pipeline.py --config ariel                                 # ~55 min: tuning + evaluation
+./run_shifts.sh                                                   # all re-renders
+python evaluate_shifts.py --config ariel
+python augment.py --render --jobs 6 && python augment.py --fit
+python realism.py --config ariel && python prevalence.py --config ariel
+python sensitivity.py --config ariel
+python plots/fig4_fidelity_sweeps.py
 ```
 
-Expected: XGBoost accuracy falls from 88.91% (in-domain, paired planets) to 84.80% under the independent RT code — the paper's Table 2, row 1, reproduced exactly (XGBoost is deterministic under the pinned versions; the MLP-restarts line varies slightly across machines). The five-package install above suffices for the deterministic results; add `scipy matplotlib seaborn statsmodels` for the plotting/analysis scripts, or use `requirements.txt` for the full pinned stack (its MultiREx line — needed only for data *generation* — points at an anonymized fork URL and will not install from this mirror).
+To check a number without regenerating anything, open the file named in the table.
+The frozen pipelines in `v2/models/` can score any spectrum directly.
 
-## Data
+## What is here, and what is not
 
-| File(s) | Contents |
-| :-- | :-- |
-| `multirex_spectra_H2_train.parquet` | 2,696 training spectra (R=200, 550 bins, SNR 15) |
-| `multirex_spectra_H2_test_set_{1..5}.parquet` | five independent test sets (~540 each) |
-| `multirex_spectra_H2_test.parquet` | single pooled test set (McNemar tests, a few older scripts) |
-| `multirex_spectra_H2_paired_{cloudy,hazy}_*.parquet` | aerosol re-renders of the committed test planets |
-| `multirex_spectra_H2_exotransmit_set_{1..5}.parquet` | independent-RT-code (Exo-Transmit) re-renders |
-| `multirex_spectra_H2_opacityswap_set_{1..5}[_o3].parquet` | alternative-opacity (ExoMol / +HITRAN O₃) re-renders |
-| `final_results/ariel_nsr_curves.npz` | ExoRad2/Ariel noise-to-signal curves |
+Committed: all code, every result file behind every number, the four figures, and the
+frozen pipelines for the four compared configurations.
 
-Labels: positive iff log X(CH₄) > −6 **and** log X(O₃) > −7, computed from the abundances supplied to the forward model (deterministic by construction; see paper Sections 2 and 5).
+Not committed: the spectra themselves (2.7 GB, rebuilt by `generate_grid.py` in about
+ten minutes) and the BT-Settl/PHOENIX stellar atlas (a public download from the STScI
+reference atlases, named in `shift_tlse.py`). Random-forest models are omitted because
+each is ~190 MB and regenerates from the tuned hyperparameters in
+`results/ariel_tuning.json`.
 
-## Claims → evidence map
-
-Every number in the paper traces to a committed result file, regenerated by the listed command.
-
-| Paper claim | Command | Output (committed) |
-| :-- | :-- | :-- |
-| **Table 1** — model comparison (acc/Brier over 5 test sets) | `python run_master_5set_evaluation.py` | metrics to stdout + `final_results/CM_*.png` |
-| **Table 1** — ECE / reliability curves | `python plot_calibration_curves.py` | `final_results/H2_calibration.txt`, `calibration_curves.png` |
-| XGBoost vs RF gap significant | `python run_pairwise_mcnemar.py` | McNemar tests, stdout |
-| **§2/§3** — raw-basis baselines: XGBoost 62.7% on raw bins; CNN at chance (50.3%) on raw spectra | `python eval_raw_vs_pca_xgboost.py` (~5 min); CNN report committed | `final_results/H2_raw_vs_pca_xgboost.txt`, `H2_raw_cnn_optimized_report.txt` |
-| **§3** — variance rank ≠ discriminative rank (98.4% / chance; max AUC 0.663) | `python analyze_pc_discriminative_power.py`; `python ablate_pc_ranges.py` | `final_results/H2_pc_discriminative_power.txt`, `H2_pc_range_ablation.txt` |
-| **§3** — whitening trades robustness for clean accuracy (5 restarts) | `python domain_shift_mlp_restarts.py`; `python compare_whitening_exotransmit.py` | `final_results/H2_whitening_restarts.txt`, `H2_whitening_exotransmit.txt` |
-| **Table 2** — independent RT code (−4.1) | `python evaluate_exotransmit.py` | `final_results/H2_exotransmit.txt` |
-| **Table 2** — alternative opacities (−16.1 / −22.9) | `python evaluate_opacity_swap.py [--o3]` | `final_results/H2_opacity_swap.txt`, `H2_opacity_swap_o3.txt` |
-| **Table 2** — clouds & hazes (−0.04 → −25.6), Brier degradation | `python evaluate_cloudy.py`, then `python evaluate_hazy.py`, `python evaluate_aerosol_paired.py` | `final_results/H2_aerosol_paired.txt`, `H2_cloudy_evaluation.txt`, `H2_hazy_evaluation.txt` |
-| **Table 2** — stellar contamination TLSE (−3.2 → −23.2) | `python evaluate_spots_phoenix.py` † | `final_results/H2_spots_phoenix.txt` |
-| **Table 2** — resolution/SNR sweep, correlated noise (−22.0); **Figure 1** | `python domain_shift_sweep.py` | `final_results/H2_domain_shift_sweep.txt`, `domain_shift_accuracy.png` |
-| **Table 2** — Ariel-colored vs white noise (≤1.3) | `python evaluate_ariel_noise.py` | `final_results/H2_ariel_noise.txt` |
-| **Table 2** — out-of-envelope extrapolation (−8.3 size-matched) | `python domain_shift_sweep.py --mode extrapolation` | `final_results/H2_extrapolation_split.txt` |
-| **§4** — 95%-recall threshold fails under shift | `python plot_precision_recall_curve.py` + cloudy outputs above | `final_results/plots/pr_curve_xgboost.png` |
-| **§4** — added noise near-uniform across quintiles | `python analyze_error_quintiles_noise.py` | `final_results/H2_error_quintiles_noise.txt` |
-| **§5** — retrieval pilot (94% / 92% / r=0.88) | `python retrieve_labels_balanced.py`, then `python eval_retrieval_vs_classifier.py` | `final_results/H2_retrieval_vs_classifier.txt`, `H2_retrieval_balanced.csv` |
-
-Dependencies between commands: `evaluate_hazy.py` reads the CSV written by `evaluate_cloudy.py` (run cloudy first); everything else is independent and runs in any order.
-
-† The one script that needs an external download: `evaluate_spots_phoenix.py` reads the solar-metallicity PHOENIX stellar atlas (`phoenixm00_*.fits`, STScI reference atlases: `archive.stsci.edu/hlsps/reference-atlases/cdbs/grid/phoenix/phoenixm00/`) from the directory named by the `PHOENIX_DIR` environment variable (default `./phoenix/`), and additionally requires `astropy`. Its committed output carries the paper's numbers regardless.
+Regenerating the *shifted* spectra additionally needs Exo-Transmit, the ExoMolOP tables,
+a converted HITRAN ozone table, and a Mie-capable MultiREx fork; each script names its
+own requirement in its docstring. None is needed to verify a number.
 
 ## Notes for reviewers
 
-- **Determinism:** XGBoost reproduces exactly given fixed inputs and the pinned package versions in `requirements.txt` (results are sensitive to them; XGBoost uses `subsample=0.8`, so prefer means over restarts if versions differ). MLP numbers are means over five training restarts.
-- **Data generation** (`generate_*` scripts) is optional and requires external tools at machine-specific paths (Exo-Transmit, ExoMolOP/HITRAN opacity tables, a PHOENIX grid, ExoRad2, cloud/haze forks of MultiREx). Reproducing the paper's numbers does **not** require them.
-- The retrieval pilot (`retrieve_labels_balanced.py`) runs full nested-sampling retrievals; it takes hours. Its outputs are committed (`final_results/H2_retrieval_balanced.csv`), and `eval_retrieval_vs_classifier.py` reproduces the paper's Section 5 numbers from them in seconds.
-- Some strings in this mirror appear as `XXXX`: those are anonymized author identifiers (e.g., in the pinned MultiREx fork URL in `requirements.txt`). They do not affect the evaluation scripts, which run entirely on committed data.
-- This mirror is curated to the files behind the paper; the full research history (per-configuration tuning reports and earlier diagnostic scripts) lives in the source repository.
-
-## License
-
-Code: MIT (see `LICENSE`). Committed synthetic datasets: CC BY 4.0. Generated with the open-source MultiREx + TauREx 3 stack; opacity data and stellar spectra retain their original licenses/citations (see paper references).
+- The shift protocol is paired per planet: every shifted spectrum is a re-render of a
+  specific test planet from its recorded parameters, and carries that planet's own noise
+  realization, with sigma taken from its *clean* spectrum so a suppressed atmosphere is
+  not also given less noise.
+- `evaluate_shifts.py --model <key>` re-scores any frozen pipeline against the identical
+  shifted data; this is how §6's transfer result is produced.
+- The grid is a stress-test box with independently drawn parameters, not an
+  astrophysical population. `results/independence.txt` reports the delivered
+  correlations (max |r| = 0.07 between bulk parameters).
+- Labels are a deterministic function of the injected abundances. The task is recovery
+  of a labeling convention; the chemistry is a vehicle.

@@ -14,7 +14,10 @@
 # Pinned to the commit that main resolved to during data generation. The
 # upstream repository publishes no tags; verify this corresponds to
 # MultiREx v0.3.1 as reported in the manuscript.
-git+https://github.com/oy2017/MultiREx-public.git@9b80cd5b6ea30dc4292981fddcdb6d9bcb382679#egg=MultiREx
+# MultiREx: install the Mie-capable fork (URL withheld for anonymous review; the
+# public MultiREx release suffices for everything except regenerating cloud/haze
+# spectra, whose outputs are committed under v2/data references in the README).
+multirex==0.3.1
 taurex==3.3.2
 
 # --- Machine learning ---
@@ -36,4 +39,3 @@ tqdm
 joblib
 gdown
 psutil
-astropy
