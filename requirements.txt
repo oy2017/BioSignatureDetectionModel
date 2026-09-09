@@ -36,3 +36,4 @@ tqdm
 joblib
 gdown
 psutil
+astropy

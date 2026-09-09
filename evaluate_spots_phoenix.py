@@ -41,8 +41,9 @@ from xgboost import XGBClassifier
 
 SEED = 42
 N_COMPONENTS = 102
-PHX_DIR = ("/tmp/claude-1000/-mnt-c-Users-owenh-behaviorbench-eval/"
-           "041ec91d-7980-4915-ae40-daa5bc4abb3f/scratchpad/phoenix")
+# Solar-metallicity PHOENIX atlas (phoenixm00_*.fits), STScI reference atlases:
+# archive.stsci.edu/hlsps/reference-atlases/cdbs/grid/phoenix/phoenixm00/
+PHX_DIR = os.environ.get("PHOENIX_DIR", "phoenix")
 TRAIN = "multirex_spectra_H2_train.parquet"
 TESTS = [f"multirex_spectra_H2_test_set_{i}.parquet" for i in range(1, 6)]
 OUT = "final_results/H2_spots_phoenix.txt"
