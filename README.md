@@ -15,9 +15,10 @@ three hours on 22 cores.
 | §2 18,156 training and 9,072 test spectra; parameters drawn independently, max \|r\| = 0.07 | `python generate_grid.py` | `results/independence.txt`, `results/generation.txt` |
 | §3 Table 1, the fidelity budget (all rows), against a clean baseline of 90.33 % | `./run_shifts.sh` then `python evaluate_shifts.py --config ariel` | `results/ariel_shifts.txt`, `ariel_shifts.csv` |
 | §3 Radius extrapolation costs 6.2 points against a matched control | same | `results/ariel_shifts.txt` (final block) |
-| §3 Correlated noise beats white at every kernel width, 14.7–19.7 vs 9.8; stellar cost 22.6–28.1 across spot contrast | `python sensitivity.py --config ariel` | `results/ariel_sensitivity.txt` |
 | §3 and §5 Per-channel offsets cost 10.6 points at 2× noise; a global offset costs 0.0 | `python realism.py --config ariel` | `results/ariel_realism.txt` |
 | §4 Repair table; 79–89 % recovered on six deterministic cases, 29–35 % on four stochastic ones, for at most 1.4 points of clean accuracy | `python augment.py --render` then `--fit`; `python augment_white.py` | `results/ariel_augment.txt`, `ariel_augment.csv`, `ariel_augment_white.txt` |
+| §4 Gain ramp, the axis that breaks the determinism/physics confound: deterministic but injected, 82.4 → 89.0 %, 84 % recovered | `python augment_ramp.py` | `results/ariel_augment_ramp.txt`, `ariel_augment_ramp.csv` |
+| §4 The cheap proxy fails: inverse-map R² is 0.73–0.91 on stochastic axes against 0.74–0.77 on deterministic ones, anti-correlating with what augmentation recovers | `python invertibility.py --config ariel` | `results/ariel_invertibility.txt`, `ariel_invertibility.csv` |
 | §5 Transfer: ρ = 0.944 sharing a representation, 0.846 sharing a model family, 0.846 sharing neither; Mann-Whitney p = 0.009 and 0.024; amplitude proxy ρ = 0.391 over 48 cases; magnitudes spread a median 8× across pipelines | `python transfer.py --config ariel` | `results/ariel_transfer.txt`, `ariel_transfer.csv` |
 | §5 Ranking inversion: 90.33 → 61.49 % normalized against 83.91 → 77.80 % PCA under haze 3×10⁷ m⁻³, raw 72.56 → 59.60 %; break-even at 28 % prevalence | `python evaluate_shifts.py --config ariel --model <key>` for each of the six cells, then `transfer.py` | `results/ariel_shifts.csv`, `ariel_{norm_rf,pca_xgb,pca_rf,raw_xgb,raw_rf}_shifts.csv` |
 | §5 In-domain: 72.6 % raw, 83.9 % PCA, 90.3 ± 0.4 % normalized; MLP 73.7 → 90.1 ± 0.3 %; three families within 1.3 points, top two tied at McNemar p = 0.36; logistic floor 85.4 ± 0.4 % | `python pipeline.py --config ariel` | `results/ariel_indomain.txt`, `ariel_summary.json` |
@@ -32,7 +33,7 @@ These ran but did not fit four pages, and are included because they bear on the 
 
 | Question | Command | File |
 | :-- | :-- | :-- |
-| Does a cheap invertibility measure predict what augmentation buys? It does not: the ridge inverse-map R² *anti*-correlates with recovered fraction (0.74–0.77 on deterministic axes at 80–89 % recovered, 0.73–0.91 on stochastic axes at 18–29 %). | `python invertibility.py --config ariel` | `results/ariel_invertibility.txt` |
+| Correlated noise beats white at every kernel width (14.7–19.7 vs 9.8), and the stellar cost varies only 22.6–28.1 across defensible spot contrasts. Cut from the paper for space; both defend numbers it still reports. | `python sensitivity.py --config ariel` | `results/ariel_sensitivity.txt` |
 | Does the result survive at other spectral resolutions? Accuracy is nearly flat from 102 to 550 bins. | `python pipeline.py --config {r100,r200} --reuse-params` | `results/{r100,r200}_indomain.txt` |
 | What precision survives a realistic base rate, and on realistic targets only? | `python prevalence.py --config ariel`, `python realism.py --config ariel` | `results/ariel_prevalence.txt`, `ariel_realism.txt` |
 | What does a 50 ppm absolute noise floor do to every conclusion? | `python pipeline.py --config ariel_abs50` | `results/ariel_abs50_indomain.txt` |
