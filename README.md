@@ -1,4 +1,4 @@
-# Did your model learn the physics, or the simulator?
+# Did your model learn the physics or the simulator?
 
 Anonymized code and results for the ML4PS 2026 submission *"Did your model learn the
 physics or the simulator? Intervening on a generative process, one ingredient at a
