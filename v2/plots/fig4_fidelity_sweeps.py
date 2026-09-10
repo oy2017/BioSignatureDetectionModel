@@ -64,13 +64,13 @@ def main():
     y = np.arange(len(vals))
     colours = [SERIES[1] if abs(v) >= 10 else SERIES[0] for _, v in vals]
     a.barh(y, [v for _, v in vals], color=colours, height=0.62)
-    a.set_yticks(y); a.set_yticklabels([l for l, _ in vals], fontsize=6.0); a.invert_yaxis()
+    a.set_yticks(y); a.set_yticklabels([l for l, _ in vals], fontsize=7.2); a.invert_yaxis()
     a.axvline(0, color=INK2, lw=0.8)
     for yi, (_, v) in zip(y, vals):
         if v <= -6:
-            a.text(v + 0.7, yi, f"{v:+.1f}", va="center", ha="left", fontsize=6.3, color=INK)
+            a.text(v + 0.7, yi, f"{v:+.1f}", va="center", ha="left", fontsize=7.2, color=INK)
         else:
-            a.text(v - 0.5, yi, f"{v:+.1f}", va="center", ha="right", fontsize=6.3, color=INK2)
+            a.text(v - 0.5, yi, f"{v:+.1f}", va="center", ha="right", fontsize=7.2, color=INK2)
     a.set_xlim(min(v for _, v in vals) * 1.1, 5)
     a.set_xlabel(f"Accuracy change vs clean {base:.1f}% (points)")
     a.grid(axis="y", visible=False); panel_label(a, "A")
@@ -95,10 +95,13 @@ def main():
         rho = spearmanr(r0, v).statistic
         b.scatter(rankdata(-r0), rankdata(-v), s=13, color=SERIES[ci], zorder=3,
                   edgecolor="white", linewidth=0.5, label=f"{label} (ρ={rho:.3f})")
-    b.set_xlim(0, len(common) + 1); b.set_ylim(0, len(common) + 1)
+    # A wide legend cannot fit either off-diagonal corner of a rank-rank plot without
+    # clipping the diagonal, so give it a blank band above the data instead.
+    b.set_xlim(0, len(common) + 1); b.set_ylim(0, (len(common) + 1) * 1.52)
+    b.set_yticks([t for t in (0, 10, 20, 30, 40) if t <= len(common)])
     b.set_xlabel("Loss rank, frozen pipeline")
     b.set_ylabel("Loss rank, other pipeline")
-    b.legend(loc="lower right", fontsize=5.8, handletextpad=0.3, borderpad=0.3,
+    b.legend(loc="upper left", fontsize=6.8, handletextpad=0.3, borderpad=0.3,
              labelspacing=0.25, framealpha=0.9, frameon=True)
     panel_label(b, "B")
     fig.tight_layout(w_pad=1.4)
