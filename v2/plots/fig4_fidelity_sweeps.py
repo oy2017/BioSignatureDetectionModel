@@ -30,9 +30,13 @@ ROWS = [
     ("ExoMol, 3 non-label gases", "exomol", "exomol"),
     ("Global offset, 2× noise", "baseline offset", "x2.0"),
 ]
-OTHERS = [("norm_mlp", "MLP, same features", 0),
-          ("norm_rf", "Random Forest, same features", 2),
-          ("pca_xgb", "XGBoost, PCA features", 1)]
+# Balanced grid: the frozen pipeline is XGBoost/normalized; these are the other
+# five cells of {XGBoost, random forest} x {normalized, PCA, raw}.
+OTHERS = [("norm_rf", "RF, normalized (same repr.)", 2),
+          ("pca_xgb", "XGBoost, PCA", 1),
+          ("pca_rf", "RF, PCA", 4),
+          ("raw_xgb", "XGBoost, raw", 3),
+          ("raw_rf", "RF, raw", 7)]
 
 
 def load(tag=None):
@@ -53,11 +57,11 @@ def main():
     vals = [(l, v) for l, v in vals if np.isfinite(v)]
     vals.sort(key=lambda t: t[1])
 
-    fig, (a, b) = figure(0.58, ncols=2, gridspec_kw={"width_ratios": [1.32, 1]})
+    fig, (a, b) = figure(0.46, ncols=2, gridspec_kw={"width_ratios": [1.32, 1]})
     y = np.arange(len(vals))
     colours = [SERIES[1] if abs(v) >= 10 else SERIES[0] for _, v in vals]
     a.barh(y, [v for _, v in vals], color=colours, height=0.62)
-    a.set_yticks(y); a.set_yticklabels([l for l, _ in vals], fontsize=6.6); a.invert_yaxis()
+    a.set_yticks(y); a.set_yticklabels([l for l, _ in vals], fontsize=6.0); a.invert_yaxis()
     a.axvline(0, color=INK2, lw=0.8)
     for yi, (_, v) in zip(y, vals):
         if v <= -6:
@@ -69,23 +73,31 @@ def main():
     a.grid(axis="y", visible=False); panel_label(a, "A")
 
     from scipy.stats import rankdata, spearmanr
-    ref = np.array([get(base_df, ax, c) for _, ax, c in ROWS])
-    ok0 = np.isfinite(ref)
-    rref = rankdata(-ref[ok0])
-    b.plot([0, ok0.sum() + 1], [0, ok0.sum() + 1], color=GRID, lw=0.9, ls=":", zorder=1)
-    for tag, label, ci in OTHERS:
-        d = load(tag)
-        if d is None:
-            continue
-        v = np.array([get(d, ax, c) for _, ax, c in ROWS])
-        ok = ok0 & np.isfinite(v)
-        rho = spearmanr(ref[ok], v[ok]).statistic
-        b.scatter(rankdata(-ref[ok]), rankdata(-v[ok]), s=26, color=SERIES[ci], zorder=3,
-                  edgecolor="white", linewidth=0.8, label=f"{label}  ρ = {rho:.2f}")
-    b.set_xlim(0, ok0.sum() + 1); b.set_ylim(0, ok0.sum() + 1)
-    b.set_xlabel("Rank of the loss, frozen pipeline")
-    b.set_ylabel("Rank of the loss, other pipeline")
-    b.legend(loc="upper left", fontsize=6.3); panel_label(b, "B")
+    # Correlations are computed on EVERY shared shift case, matching the text,
+    # not only the cases plotted in panel A.
+    def series(df):
+        d = df[(df["axis"] != "clean") & (df["axis"] != "extrapolation")]
+        return d.set_index(d["axis"] + "|" + d["case"])["d_acc"]
+    ref_all = series(base_df)
+    others = [(t, l, c, load(t)) for t, l, c in OTHERS]
+    others = [(t, l, c, d) for t, l, c, d in others if d is not None]
+    common = set(ref_all.index)
+    for _, _, _, d in others:
+        common &= set(series(d).index)
+    common = sorted(common)
+    r0 = ref_all[common]
+    b.plot([0, len(common) + 1], [0, len(common) + 1], color=GRID, lw=0.9, ls=":", zorder=1)
+    for tag, label, ci, d in others:
+        v = series(d)[common]
+        rho = spearmanr(r0, v).statistic
+        b.scatter(rankdata(-r0), rankdata(-v), s=13, color=SERIES[ci], zorder=3,
+                  edgecolor="white", linewidth=0.5, label=f"{label} (ρ={rho:.3f})")
+    b.set_xlim(0, len(common) + 1); b.set_ylim(0, len(common) + 1)
+    b.set_xlabel("Loss rank, frozen pipeline")
+    b.set_ylabel("Loss rank, other pipeline")
+    b.legend(loc="upper left", fontsize=5.8, handletextpad=0.3, borderpad=0.3,
+             labelspacing=0.25, framealpha=0.9, frameon=True)
+    panel_label(b, "B")
     fig.tight_layout(w_pad=1.4)
     save(fig, "fig4_fidelity_sweeps.png")
 

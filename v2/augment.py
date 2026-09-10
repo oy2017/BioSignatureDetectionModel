@@ -115,12 +115,22 @@ def shifted_test(case, cfg):
     return np.vstack(Xs), np.concatenate(ys)
 
 
-def corr_noise(X, rng, snr_eff):
+def corr_noise(X, rng, snr_eff, kind="correlated", Xnf=None, params=None, cen=None):
+    """Inject noise to a target effective SNR. sigma is the GENERATING sigma of
+    the clean spectra, not an adjacent-difference estimate of it: on the Ariel
+    layout, whose bins jump at channel boundaries, that estimator runs 1.46x high
+    and mislabels every level (evaluate_shifts.py carries the same fix)."""
     from scipy.ndimage import gaussian_filter1d
-    sig = np.diff(X, axis=1).std(axis=1, keepdims=True) / np.sqrt(2.0)
+    from noise import sigma_matrix
+    if Xnf is not None:
+        sig = np.median(sigma_matrix(Xnf, params["s temperature"].to_numpy(), cen), axis=1, keepdims=True)
+    else:
+        sig = np.diff(X, axis=1).std(axis=1, keepdims=True) / np.sqrt(2.0)
     m = np.sqrt((SNR / snr_eff) ** 2 - 1.0) if snr_eff < SNR else 0.0
     if m == 0:
         return X.copy()
+    if kind == "white":
+        return X + rng.normal(0, 1, X.shape) * sig * m
     z = gaussian_filter1d(rng.normal(0, 1, X.shape), sigma=3.0, axis=1)
     z /= z.std(axis=1, keepdims=True) + 1e-12
     return X + z * sig * m
@@ -176,13 +186,14 @@ def fit(cfg="ariel"):
         lines.append("")
 
     # ---- correlated noise: injected augmentation, no re-render
+    Xtr_nf = np.load(os.path.join(DATA, f"train_{cfg}.npy")).astype(float)
     rng = np.random.default_rng(SEED + 2)
     lev = rng.choice(CORR_SNR, size=len(ytr))
     Xa = Xtr_clean.copy()
     for s in CORR_SNR:
         m = lev == s
         if s < SNR:
-            Xa[m] = corr_noise(Xtr_clean[m], rng, s)
+            Xa[m] = corr_noise(Xtr_clean[m], rng, s, Xnf=Xtr_nf[m], params=Ptr[m].reset_index(drop=True), cen=cen)
     f_aug = Features(kind).fit(Xa)
     m_aug = make_xgb(params).fit(f_aug.transform(Xa), ytr)
     lines.append("time-correlated noise:")
@@ -190,9 +201,11 @@ def fit(cfg="ariel"):
     Xc, yc, _ = load_split("test1", cfg)
     for t in TESTS[1:]:
         X2, y2, _ = load_split(t, cfg); Xc = np.vstack([Xc, X2]); yc = np.concatenate([yc, y2])
+    Xc_nf = np.vstack([np.load(os.path.join(DATA, f"{t}_{cfg}.npy")) for t in TESTS]).astype(float)
+    Pc = pd.concat([load_split(t, cfg, noisy=False)[2] for t in TESTS], ignore_index=True)
     rng2 = np.random.default_rng(SEED + 3)
     for s in (12, 10, 8, 5):
-        Xs = corr_noise(Xc, rng2, s)
+        Xs = corr_noise(Xc, rng2, s, Xnf=Xc_nf, params=Pc, cen=cen)
         a_fr = metrics(yc, frozen_model.predict_proba(frozen_feats.transform(Xs))[:, 1])["accuracy"]
         a_au = metrics(yc, m_aug.predict_proba(f_aug.transform(Xs))[:, 1])["accuracy"]
         lines.append(f"{'SNR '+str(s):<16}{a_fr*100:8.2f}%{a_au*100:10.2f}%{(a_au-a_fr)*100:+7.2f}"

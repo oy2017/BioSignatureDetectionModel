@@ -169,21 +169,56 @@ def generate_split(name, n, seed, jobs, wl_native):
 
 
 def independence_report(df, path):
-    cols = ["p_radius", "p_mass", "atm temperature", "atm base_pressure",
-            "atm top_pressure", "s temperature", "s radius", "s mass", "sma"] + \
-           [f"atm {g}" for g in GASES]
-    c = df[cols].corr()
-    off = c.where(~np.eye(len(cols), dtype=bool))
-    worst = off.abs().stack().sort_values(ascending=False)
+    """Two groups, by design, and the report must not blur them.
+
+    Thirteen parameters are drawn independently. CH4 and O3 are NOT: they are drawn
+    from ranges chosen by a latent profile (biosignature 50%, the three non-bio
+    profiles 1/6 each) so the classes come out balanced. That stratification is the
+    whole reason r(CH4, O3) is nonzero, and quoting a single "max |r|" over all
+    fifteen hides which group it came from, so the two are reported separately
+    along with what the stratification buys and costs.
+    """
+    INDEP = ["p_radius", "p_mass", "atm temperature", "atm base_pressure",
+             "atm top_pressure", "s temperature", "s radius", "s mass", "sma"] + \
+            [f"atm {g}" for g in GASES if g not in ("CH4", "O3")]
+    LABEL = ["atm CH4", "atm O3"]
+    c = df[INDEP + LABEL].corr()
+
+    def worst_within(cols):
+        sub = c.loc[cols, cols]
+        off = sub.where(~np.eye(len(cols), dtype=bool))
+        return off.abs().stack().sort_values(ascending=False).drop_duplicates(), off
+
+    w_ind, off_ind = worst_within(INDEP)
+    r_label = float(c.loc["atm CH4", "atm O3"])
+    cross = c.loc[INDEP, LABEL].abs().stack().sort_values(ascending=False)
+
+    ch4, o3 = df["atm CH4"].to_numpy(), df["atm O3"].to_numpy()
+    pos = float(((ch4 > BIO_CH4) & (o3 > BIO_O3)).mean())
+    rng = np.random.default_rng(0)
+    indep_pos = float(np.mean([((ch4 > BIO_CH4) & (rng.permutation(o3) > BIO_O3)).mean()
+                               for _ in range(400)]))
+
     with open(path, "w") as f:
         f.write("Pearson correlations between delivered (post-cleaning) parameters\n")
         f.write(f"n = {len(df)}\n\n")
-        f.write("largest |r| pairs:\n")
-        for (a, b), v in worst.drop_duplicates().head(10).items():
-            f.write(f"  {a:<20s} {b:<20s} r = {off.loc[a, b]:+.3f}\n")
-        f.write(f"\nmax |r| = {worst.iloc[0]:.3f}\n")
+        f.write(f"GROUP 1: the {len(INDEP)} independently drawn parameters.\n")
+        f.write("  largest |r| pairs:\n")
+        for (a, b), _ in w_ind.head(6).items():
+            f.write(f"    {a:<20s} {b:<20s} r = {off_ind.loc[a, b]:+.3f}\n")
+        f.write(f"  max |r| = {w_ind.iloc[0]:.3f}\n\n")
+        f.write("GROUP 2: the two label gases, which are NOT independently drawn.\n")
+        f.write("  They are stratified by profile so the classes balance, which induces\n")
+        f.write(f"    r(log CH4, log O3) = {r_label:+.3f}\n")
+        f.write(f"  positive rate delivered                    {pos:.4f}\n")
+        f.write(f"  positive rate if the pair were independent {indep_pos:.4f}\n")
+        f.write("  The stratification also puts a third of all planets in the two\n")
+        f.write("  one-gas configurations, which are the confusable negatives.\n\n")
+        f.write("BETWEEN the groups (this is what would threaten attributing a\n")
+        f.write("sensitivity to one parameter, and it is negligible):\n")
+        f.write(f"  max |r| = {cross.iloc[0]:.3f}  ({cross.index[0][0]} / {cross.index[0][1]})\n\n")
         f.write("(old grid: radius / T_star / sma r >= 0.97; mass / R_star / P_base r >= 0.85)\n")
-    return worst.iloc[0]
+    return w_ind.iloc[0]
 
 
 def check_binning(wl_native):

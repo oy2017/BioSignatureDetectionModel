@@ -1,0 +1,44 @@
+Does the fidelity budget transfer? configuration ariel
+
+48 shared shift cases, six pipelines = 2 model families x 3 representations.
+Spearman correlation of the per-case accuracy loss, every pair of pipelines.
+
+pipeline A  pipeline B  relationship              rho
+norm_rf     pca_rf      same model family       0.907
+norm_xgb    pca_xgb     same model family       0.881
+norm_xgb    raw_xgb     same model family       0.855
+pca_xgb     raw_xgb     same model family       0.818
+norm_rf     raw_rf      same model family       0.815
+pca_rf      raw_rf      same model family       0.802
+pca_xgb     pca_rf      same representation     0.965
+norm_xgb    norm_rf     same representation     0.962
+raw_xgb     raw_rf      same representation     0.905
+norm_rf     pca_xgb     sharing neither         0.927
+norm_xgb    pca_rf      sharing neither         0.888
+pca_rf      raw_xgb     sharing neither         0.841
+norm_xgb    raw_rf      sharing neither         0.829
+norm_rf     raw_xgb     sharing neither         0.826
+pca_xgb     raw_rf      sharing neither         0.763
+
+physical proxy: Spearman(loss, surviving feature amplitude) = 0.391 (n = 48), so the ordering is not simply how much signal is left.
+
+same representation    n=3  mean rho 0.944   range 0.905-0.965
+same model family      n=6  mean rho 0.846   range 0.802-0.907
+sharing neither        n=6  mean rho 0.846   range 0.763-0.927
+
+same representation vs all other pairs:   Mann-Whitney U one-sided p = 0.0088   (n = 3 vs 12)
+same representation vs same model family: Mann-Whitney U one-sided p = 0.0238
+                                         permutation (20k) p = 0.0232
+                                         mean difference = +0.098
+
+
+Magnitude spread on the 28 cases costing at least 5 points to some pipeline:
+  the same shift costs a median 8.1x more for one pipeline than another (max 32x).
+  Between the two strongest pipelines alone it reaches 4.9x.
+
+Ranking inversion under haze 3e7: frozen 90.33 -> 61.49%, PCA 83.91 -> 77.80%.
+The two break even when 28% of a population carries that haze;
+below that fraction the in-domain ranking still wins.
+
+Sharing a model family agrees no better than sharing nothing (0.846 vs 0.846);
+the representation is what carries the budget.
