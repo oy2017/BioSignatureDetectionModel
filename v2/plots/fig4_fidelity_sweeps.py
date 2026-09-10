@@ -13,26 +13,29 @@ from style import GRID, INK, INK2, SERIES, figure, panel_label, save  # noqa: E4
 RES = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "results")
 
 ROWS = [
-    ("Haze 3×10⁷ m⁻³", "haze", "haze_3p0e7"),
-    ("Cloud deck 10² Pa", "cloud", "cloud_1e2Pa"),
-    ("Stellar spots 20 %", "tlse", "tlse_spots20"),
+    # Labels match Table 1 in the paper word for word wherever a row appears in both,
+    # so a reader matching a number across table and figure sees one name for it.
+    ("Haze, 3\u00d710\u2077 m\u207b\u00b3", "haze", "haze_3p0e7"),
+    ("Cloud deck, 10\u00b2 Pa", "cloud", "cloud_1e2Pa"),
+    ("Stellar spots, 20%", "tlse", "tlse_spots20"),
     ("Correlated noise, SNR 5", "correlated noise", "snr5"),
-    ("ExoMol + HITRAN O₃", "exomol", "exomol_o3"),
+    ("Alternative opacities + O\u2083 line list", "exomol", "exomol_o3"),
     ("White noise, SNR 5", "white noise", "snr5"),
     ("Absolute 200 ppm floor", "absolute noise", "200 ppm"),
-    ("Cloud deck 10³ Pa", "cloud", "cloud_1e3Pa"),
-    ("Stellar spots 5 %", "tlse", "tlse_spots05"),
-    ("Gain ramp, 2× noise", "gain ramp", "x2.0"),
-    ("Haze 2×10⁶ m⁻³", "haze", "haze_2p0e6"),
-    ("Faculae 10 %", "tlse", "tlse_fac10"),
-    ("Cloud deck 10⁴ Pa", "cloud", "cloud_1e4Pa"),
+    ("Cloud deck, 10\u00b3 Pa", "cloud", "cloud_1e3Pa"),
+    ("Stellar spots, 5%", "tlse", "tlse_spots05"),
+    ("Gain ramp, 2\u00d7 noise", "gain ramp", "x2.0"),
+    ("Haze, 2\u00d710\u2076 m\u207b\u00b3", "haze", "haze_2p0e6"),
+    ("Faculae, 10%", "tlse", "tlse_fac10"),
+    ("Cloud deck, 10\u2074 Pa", "cloud", "cloud_1e4Pa"),
     ("Independent RT code", "exotransmit", "exotransmit"),
-    ("ExoMol, 3 non-label gases", "exomol", "exomol"),
-    ("Global offset, 2× noise", "baseline offset", "x2.0"),
+    ("Alternative opacities, 3 non-label gases", "exomol", "exomol"),
+    ("Global additive offset, 2\u00d7 noise", "baseline offset", "x2.0"),
 ]
 # Balanced grid: the frozen pipeline is XGBoost/normalized; these are the other
 # five cells of {XGBoost, random forest} x {normalized, PCA, raw}.
-OTHERS = [("norm_rf", "RF, normalized (same repr.)", 2),
+# Short forms keep the legend clear of the data; the caption expands RF.
+OTHERS = [("norm_rf", "RF, normalized", 2),
           ("pca_xgb", "XGBoost, PCA", 1),
           ("pca_rf", "RF, PCA", 4),
           ("raw_xgb", "XGBoost, raw", 3),
@@ -69,7 +72,7 @@ def main():
         else:
             a.text(v - 0.5, yi, f"{v:+.1f}", va="center", ha="right", fontsize=6.3, color=INK2)
     a.set_xlim(min(v for _, v in vals) * 1.1, 5)
-    a.set_xlabel(f"Accuracy change vs clean {base:.1f} % (points)")
+    a.set_xlabel(f"Accuracy change vs clean {base:.1f}% (points)")
     a.grid(axis="y", visible=False); panel_label(a, "A")
 
     from scipy.stats import rankdata, spearmanr
@@ -95,7 +98,7 @@ def main():
     b.set_xlim(0, len(common) + 1); b.set_ylim(0, len(common) + 1)
     b.set_xlabel("Loss rank, frozen pipeline")
     b.set_ylabel("Loss rank, other pipeline")
-    b.legend(loc="upper left", fontsize=5.8, handletextpad=0.3, borderpad=0.3,
+    b.legend(loc="lower right", fontsize=5.8, handletextpad=0.3, borderpad=0.3,
              labelspacing=0.25, framealpha=0.9, frameon=True)
     panel_label(b, "B")
     fig.tight_layout(w_pad=1.4)
