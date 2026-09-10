@@ -58,8 +58,11 @@ def per_channel_offset(cfg, feats, model, strengths=(0.25, 0.5, 1.0, 2.0)):
     for s in strengths:
         off = rng.normal(0, 1, (len(X), len(CHANNELS))) * sig * s
         Xp = X + off[:, ch]
-        acc = metrics(y, model.predict_proba(feats.transform(Xp))[:, 1])["accuracy"]
-        rows.append(dict(strength=s, accuracy=acc, delta=(acc - base) * 100))
+        pr = model.predict_proba(feats.transform(Xp))[:, 1]
+        acc = metrics(y, pr)["accuracy"]
+        # same convention as evaluate_shifts.py, so the rate is comparable to Table 1
+        rows.append(dict(strength=s, accuracy=acc, delta=(acc - base) * 100,
+                         pos_rate=float((pr >= 0.5).mean())))
     return base, pd.DataFrame(rows)
 
 
@@ -139,9 +142,9 @@ def main():
     L += ["1. Additive offsets drawn INDEPENDENTLY PER CHANNEL (three photometers and three",
           "   spectrometers with their own zero points), against the global offset in Table 3",
           f"   which costs exactly nothing by construction. Clean baseline {base*100:.2f}%.", "",
-          f"   {'offset (x noise)':>17} {'accuracy':>10} {'delta':>8}"]
+          f"   {'offset (x noise)':>17} {'accuracy':>10} {'delta':>8} {'pred pos':>9}"]
     for _, r in df.iterrows():
-        L.append(f"   {r['strength']:>17.2f} {r['accuracy']*100:9.2f}% {r['delta']:+7.2f}")
+        L.append(f"   {r['strength']:>17.2f} {r['accuracy']*100:9.2f}% {r['delta']:+7.2f} {r['pos_rate']:9.3f}")
     L.append("")
 
     print("floors", flush=True)

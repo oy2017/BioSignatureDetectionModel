@@ -4,11 +4,11 @@ Realism checks, configuration ariel, pipeline norm_xgb
    spectrometers with their own zero points), against the global offset in Table 3
    which costs exactly nothing by construction. Clean baseline 90.33%.
 
-    offset (x noise)   accuracy    delta
-                0.25     90.06%   -0.28
-                0.50     88.81%   -1.52
-                1.00     86.21%   -4.12
-                2.00     79.78%  -10.55
+    offset (x noise)   accuracy    delta  pred pos
+                0.25     90.06%   -0.28     0.493
+                0.50     88.81%   -1.52     0.490
+                1.00     86.21%   -4.12     0.481
+                2.00     79.78%  -10.55     0.440
 
 2. Non-machine-learning and linear floors on the same five test sets.
 
