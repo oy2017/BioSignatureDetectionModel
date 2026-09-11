@@ -502,6 +502,16 @@ into a measurement**. Where it can, do that instead of disclosing it.
 
    `total_noise` in the radiometric table is the *relative* noise for a 1-hour
    integration (unit hr^½): σ_rel(t) = total_noise / √(t / 1 hr).
+
+   **Across all 21 host stars** (`v3/results/noise_curves_comparison.txt`): the
+   level ratio ExoSim2/ExoRad is **2.06–2.07 for every star** — one normalisation,
+   which the SNR convention sets anyway — but the *shape* agreement **degrades
+   monotonically toward cool hosts**: Spearman 0.985 at 7500 K, 0.973 at 5000 K,
+   0.915 at 3250 K, **0.800 at 2500 K**, with the 5–95 % ratio spread across bins
+   widening from 1.99–2.39 to 1.99–2.89. So the two noise models agree on
+   solar-type hosts and disagree on M dwarfs, and the ExoSim2 noise axis will
+   price the classifier's sensitivity to exactly that difference, concentrated on
+   the cool-host planets. That is a prediction the axis can now test.
 6. **Run the validation** and compare against the committed predictions.
 
 ## 8. Decisions already taken, not to be re-litigated
