@@ -1,0 +1,24 @@
+<root>
+    <fileName>payload_ariel_like</fileName>
+    <Telescope>Telescope
+        <config>__ConfigPath__/telescope.xml</config>
+    </Telescope>
+    <channel> VISPhot
+        <config>__ConfigPath__/VISPhot.xml</config>
+    </channel>
+    <channel> FGS1
+        <config>__ConfigPath__/FGS1.xml</config>
+    </channel>
+    <channel> FGS2
+        <config>__ConfigPath__/FGS2.xml</config>
+    </channel>
+    <channel> NIRSpec
+        <config>__ConfigPath__/NIRSpec.xml</config>
+    </channel>
+    <channel> AIRS0
+        <config>__ConfigPath__/AIRS0.xml</config>
+    </channel>
+    <channel> AIRS1
+        <config>__ConfigPath__/AIRS1.xml</config>
+    </channel>
+</root>

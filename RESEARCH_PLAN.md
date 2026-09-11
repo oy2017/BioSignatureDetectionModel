@@ -396,7 +396,7 @@ into a measurement**. Where it can, do that instead of disclosing it.
    | :-- | --: | :-- |
    | focal plane | 6 s | per-channel 128×128 focal planes, PSFs, efficiency curves |
    | radiometric | 2 s | **per-bin table**: wavelength, edges, transmission, QE, source signal, photon / dark / read / foreground noise, `total_noise` |
-   | sub-exposures | **≥ 30 min, superlinear** (chunk cost grew 3.5 s → 86 s; not swapping, 24 GB free) | 200 MB+ time-domain frames |
+   | sub-exposures | **> 36 min and still running, superlinear** (chunk cost grew 3.5 s → 160 s; not swapping, 24 GB free) | 520 MB and growing, time-domain frames |
    | NDRs | not reached in the session | non-destructive-read frames |
 
    Two facts decide the design. **A planet's transmission spectrum can be
@@ -443,7 +443,28 @@ into a measurement**. Where it can, do that instead of disclosing it.
    keyed by channel name (six columns/groups added, copies of the example's), and
    the spectrometer channels load a fixed-length aperture table sized for the
    example's bins, so they were switched to `EstimateApertures`. **This is a
-   reconstruction and the paper must call it one.**
+   reconstruction and the paper must call it one.** Full provenance and every
+   deviation from the shipped example are in `v3/exosim_payload/README.md`.
+
+   **Validated 2026-09-11.** With all six channels live (104 bins against the real
+   layout's 102), the per-bin noise-to-signal *shape* from ExoSim2's physics agrees
+   with the ExoRad curve v2 used at **Spearman 0.981 over all bins, +0.978 to
+   +0.987 within each channel**, for the same 6086 K star. The absolute level is a
+   **uniform factor 2.0–2.2 higher in every channel** — a normalisation offset from
+   the integration convention and placeholder throughputs, not a structural
+   disagreement; the study's SNR convention sets the level, so the shape is what
+   feeds the classifier and it agrees. Cost: ~46 s per host star (focal plane
+   19 s + radiometric 27 s).
+
+   One correction found on the way is physics, not placeholder: the ExoSim2
+   example sky includes an `earthsky` foreground — a MODTRAN atmospheric
+   transmission for a 38 km balloon line of sight, nonzero only 0.5–5.0 µm — that
+   multiplies into every path and silently zeroed AIRS-CH1. Ariel is in space; it
+   was removed. Anyone reusing the ExoSim2 example for a space mission must do
+   the same, and the paper should say so in a sentence.
+
+   `total_noise` in the radiometric table is the *relative* noise for a 1-hour
+   integration (unit hr^½): σ_rel(t) = total_noise / √(t / 1 hr).
 6. **Run the validation** and compare against the committed predictions.
 
 ## 8. Decisions already taken, not to be re-litigated
