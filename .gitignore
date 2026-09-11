@@ -39,3 +39,6 @@ v3/*.log
 v3/models/*_rf.joblib
 v3/models/*pca_mlp.keras
 v3/models/*pcaw_mlp.keras
+
+# runtime state of background jobs, never provenance
+v3/results/*.pid

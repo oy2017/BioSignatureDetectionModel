@@ -5,3 +5,4 @@
   cloud 1e2Pa: 0 failures, ptp ratio 0.320, 0.10 s/planet, 186 s -> test1_native_cloud_1e2Pa.npy
   cloud 1e1Pa: 0 failures, ptp ratio 0.071, 0.07 s/planet, 133 s -> test1_native_cloud_1e1Pa.npy
   haze 2p0e5: 0 failures, ptp ratio 0.999, 0.11 s/planet, 203 s -> test1_native_haze_2p0e5.npy
+  haze 2p0e6: 0 failures, ptp ratio 0.995, 0.10 s/planet, 187 s -> test1_native_haze_2p0e6.npy
