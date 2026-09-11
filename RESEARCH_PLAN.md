@@ -426,6 +426,17 @@ into a measurement**. Where it can, do that instead of disclosing it.
    ExoSim2 per-star curves are wired in as `shape="exosim"` in `noise.py` and as
    a third case in the noise-colouring family, so the consortium-simulator noise
    shape is priced against ExoRad's and white on the same planets.
+
+   **Shift axes as re-rendered for v3** (all five test splits, same planets):
+   stellar contamination and aerosols unchanged from v2; Exo-Transmit now with
+   CO as an absorber; alternative opacities now swap **four** molecules (H₂O,
+   CH₄, CO₂ and CO, all ExoMolOP). The v2 `exomol_o3` variant — a HITRAN ozone
+   line list — is **retired**: under the C/O label ozone is floored to nothing,
+   so that axis would measure a molecule the atmosphere no longer contains. Its
+   v3 analogue, "the line list of a label-bearing molecule", is the CO swap
+   inside the four-molecule case; if a per-molecule split is wanted later, run
+   the swap one molecule at a time. Axis 8 (quenched composition) is the new
+   re-rendered axis.
 5. **ExoSim2 spike — DONE 2026-09-11, and the plan changes as anticipated.**
    Measured on the shipped two-channel example target:
 
