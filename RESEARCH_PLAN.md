@@ -306,11 +306,25 @@ But one axis is weaker than the rest: the instrument systematics — gain ramp,
 offsets, smoothed-Gaussian correlated noise — are toy models **we invented**.
 That is the one place the circularity objection fully lands.
 
-**ExoSim2** (pip: `exosim` 2.0.1) is the Ariel consortium's own end-to-end
-instrument simulator: detector effects, pointing jitter, correlated noise in
-both time and wavelength, built on the current payload design by the group
-behind ExoRad 2. Pushing the same planets through it turns the weakest axis into
-the strongest, and generates two results whose answers are genuinely uncertain:
+**ExoSim2** (`arielmission-space/ExoSim2-public`, v2.2.1, needs Python ≥ 3.12;
+installed 2026-09-11 in `~/exosim2/venv`, working) is the Ariel consortium's own
+end-to-end instrument simulator: detector effects, pointing jitter, correlated
+noise in both time and wavelength, by the group behind ExoRad 2.
+
+**A limit found on 2026-09-11 that must be stated, not glossed:** the *Ariel
+payload configuration* itself is held in a restricted mission repository. The
+public code ships a generic photometer + spectrometer example. So what can be
+run is the consortium's **simulator physics** (detector, jitter, read noise,
+persistence, zodi, pointing) applied to an Ariel-like payload **reconstructed
+from published parameters** — the same status ExoRad had in v2 ("driven by an
+Ariel payload reconstructed from published parameters"). The instrument
+*effects* are authoritative and independently built; the *payload numbers* are
+ours, from the literature. Write it that way. It is still a far stronger
+alternative than a gain ramp we invented, because every systematic in it is
+someone else's model of a real detector — but it is not the mission's own file.
+
+Pushing the same planets through it turns the weakest axis into a much stronger
+one, and generates two results whose answers are genuinely uncertain:
 
 1. **Does a cheap in-simulation audit predict the loss against a full instrument
    chain?** The budget says systematics cost ~8 points and correlated noise ~11.
@@ -369,15 +383,48 @@ into a measurement**. Where it can, do that instead of disclosing it.
    MultiREx from `~/exotransmit_src/Opac/opacCO.dat` and verified live; the
    carbon-rich cut separates at 92.3 % against a 53.4 % bulk floor and holds in
    every temperature band. Gate passed.
-3. **Write the pre-registered prediction** for the ExoSim2 axes — draw-count
-   classification and expected repairability — and commit it before any of it
-   runs.
+3. **Pre-registered prediction — written and committed 2026-09-11**
+   (`v3/PREREGISTERED_PREDICTIONS.md`), before any ExoSim2-derived axis has been
+   run against the classifier.
 4. **Regenerate** the grid and re-run the analysis chain, including Axis 8
    (quenched versus equilibrium composition) so the chemistry idealisation is
    priced rather than disclosed.
-5. **ExoSim2 spike.** Install, run one target end-to-end, find out what it emits
-   and how long it takes. If it yields focal-plane time series needing a bespoke
-   extraction pipeline, the plan changes.
+5. **ExoSim2 spike — DONE 2026-09-11, and the plan changes as anticipated.**
+   Measured on the shipped two-channel example target:
+
+   | stage | runtime | product |
+   | :-- | --: | :-- |
+   | focal plane | 6 s | per-channel 128×128 focal planes, PSFs, efficiency curves |
+   | radiometric | 2 s | **per-bin table**: wavelength, edges, transmission, QE, source signal, photon / dark / read / foreground noise, `total_noise` |
+   | sub-exposures | **≥ 30 min, superlinear** (chunk cost grew 3.5 s → 86 s; not swapping, 24 GB free) | 200 MB+ time-domain frames |
+   | NDRs | not reached in the session | non-destructive-read frames |
+
+   Two facts decide the design. **A planet's transmission spectrum can be
+   injected directly**: `<rp>` in the sky XML accepts a file with columns
+   `Wavelength` and `rp/rs`, rebinned onto the instrument grid. **There is no
+   extraction step**: ExoSim2 stops at detector frames; the tools directory is
+   detector-calibration maps, and the consortium's own dataset paper offers a
+   *neural-network* baseline for time-series reduction, not a classical
+   extractor. Focal plane back to a spectrum would be *our* pipeline, sitting
+   between their physics and the classifier — a new confound.
+
+   **Resolution — split the axis in two:**
+   - **Noise axis, adopted.** Run `focalplane` + `radiometric` per planet with
+     the planet's own spectrum and star (2 s each; hundreds of planets in
+     minutes). Take ExoSim2's per-bin noise budget as σ(λ) and draw Ariel noise
+     from *it* instead of from the ExoRad curve. Every term in that budget is the
+     consortium's detector/optics model; nothing in it is ours except the
+     payload numbers (§5 caveat). Prediction: per-bin, per-planet redraws →
+     **unrepairable** (~one third recovered), same class as the v2 noise axes.
+   - **Systematics axis, bounded pilot only.** Jitter, persistence, read-out
+     structure live in the time-domain stages. At ≥ 30 min and 200 MB a planet
+     plus a bespoke extractor, this is **≤ 20 planets, after everything else,
+     and reported as a pilot** — or dropped with that sentence. Not hundreds.
+
+   Caveats found in the example radiometric output: `total_noise` is NaN for
+   the photometer channel, and `test1_noise`/`test2_noise` are placeholder terms
+   (20 and 30 in the example). An Ariel-like payload must set these from
+   published values or zero them explicitly, and the paper must say which.
 6. **Run the validation** and compare against the committed predictions.
 
 ## 8. Decisions already taken, not to be re-litigated
