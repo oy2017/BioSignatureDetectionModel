@@ -130,7 +130,7 @@ def build_swap_dir(variant):
             os.symlink(src, os.path.join(swap, f"opac{mol}.dat"))
             retained[mol] = f"opac{mol}.dat"
 
-    expected = {"exomol": {"H2O", "CH4", "CO2"}, "exomol_o3": {"H2O", "CH4", "CO2", "O3"}}
+    expected = {"exomol": {"H2O", "CH4", "CO2", "CO"}, "exomol_o3": {"H2O", "CH4", "CO2", "O3", "CO"}}   # v3: CO swapped too
     if set(swapped) != expected[variant]:
         raise RuntimeError(f"{variant}: swapped {sorted(swapped)}, expected {sorted(expected[variant])}")
     print(f"swap dir [{variant}] {swap}")
