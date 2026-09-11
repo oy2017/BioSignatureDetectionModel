@@ -1,0 +1,3 @@
+The author thanks Rachael Kaci, instructor of the Advanced Authentic Research program at Henry M. Gunn High School, and research mentor Victoria Lloyd, for their guidance and feedback throughout this project.
+
+AI-use disclosure: Anthropic's Claude Code was used, under the author's direction, to implement and run the data-generation, training, evaluation and plotting code, to assemble the reference list and the submission documents, and to draft and edit the manuscript text from the author's study design, results and outline. The author designed the study, chose the experiments, reviewed every result and every sentence, and is responsible for all content.

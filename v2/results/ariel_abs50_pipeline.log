@@ -1,0 +1,50 @@
+[ariel_abs50] train (18156, 102), tests [1813, 1822, 1823, 1793, 1821], positives 0.502
+[ariel_abs50] feature dims: {'raw': 102, 'pcaw': 17, 'pca': 17, 'norm': 102}
+raw_xgb    accuracy 73.20±1.48  precision 71.96±1.40  recall 76.18±1.50  f1 74.01±1.30  brier 0.1776±0.0063  ece 0.0659±0.0100  auc 0.8218±0.0108
+raw_rf     accuracy 72.41±0.51  precision 71.21±0.70  recall 75.39±0.62  f1 73.24±0.51  brier 0.1825±0.0025  ece 0.0592±0.0035  auc 0.8075±0.0076
+pca_xgb    accuracy 81.94±0.43  precision 81.22±0.60  recall 83.18±0.75  f1 82.19±0.38  brier 0.1253±0.0036  ece 0.0781±0.0044  auc 0.9220±0.0036
+pca_rf     accuracy 80.08±0.86  precision 79.42±0.98  recall 81.28±1.60  f1 80.33±0.97  brier 0.1287±0.0024  ece 0.0591±0.0051  auc 0.9060±0.0045
+norm_xgb   accuracy 86.99±0.36  precision 87.95±0.43  recall 85.78±0.67  f1 86.85±0.30  brier 0.0866±0.0011  ece 0.0419±0.0052  auc 0.9591±0.0011
+norm_rf    accuracy 85.90±0.70  precision 88.46±0.86  recall 82.62±1.09  f1 85.44±0.78  brier 0.0966±0.0018  ece 0.0633±0.0059  auc 0.9512±0.0030
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1788953945.708731  374211 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1788953945.710543  374211 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+I0000 00:00:1788953945.736285  374211 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1788953946.669339  374211 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1788953946.671352  374211 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+E0000 00:00:1788953947.083365  374211 cuda_executor.cc:1737] INTERNAL: CUDA Runtime error: Failed call to cudaGetRuntimeVersion: Error loading CUDA libraries. GPU will not be used.: Error loading CUDA libraries. GPU will not be used.
+W0000 00:00:1788953947.084245  374447 cuda_executor.cc:1755] Failed to determine cuDNN version (Note that this is expected if the application doesn't link the cuDNN plugin): INTERNAL: cuDNN error: CUDNN_STATUS_INTERNAL_ERROR
+W0000 00:00:1788953947.098736  374211 gpu_device.cc:2365] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+norm_mlp   accuracy 85.48±0.42  precision 85.49±0.58  recall 85.53±1.16  f1 85.50±0.58  brier 0.0896±0.0019  ece 0.0167±0.0037  auc 0.9509±0.0022   restarts acc 85.48±0.26 (n=3)
+pcaw_mlp   accuracy 71.26±0.67  precision 63.87±0.55  recall 98.11±0.32  f1 77.37±0.41  brier 0.1620±0.0034  ece 0.1174±0.0055  auc 0.8928±0.0062   restarts acc 71.26±0.38 (n=3)
+pca_mlp    accuracy 73.67±1.10  precision 71.36±1.11  recall 85.55±0.85  f1 76.36±0.92  brier 0.1623±0.0037  ece 0.1067±0.0097  auc 0.8727±0.0099   restarts acc 73.67±3.42 (n=3)
+In-domain study, configuration = ariel_abs50, SNR 15 (peak-to-peak convention), Ariel-shaped noise
+train n = 18156, test sets n = [1813, 1822, 1823, 1793, 1821]
+feature dimensions: {'raw': 102, 'pcaw': 17, 'pca': 17, 'norm': 102}
+
+raw_xgb    accuracy 73.20±1.48  precision 71.96±1.40  recall 76.18±1.50  f1 74.01±1.30  brier 0.1776±0.0063  ece 0.0659±0.0100  auc 0.8218±0.0108
+raw_rf     accuracy 72.41±0.51  precision 71.21±0.70  recall 75.39±0.62  f1 73.24±0.51  brier 0.1825±0.0025  ece 0.0592±0.0035  auc 0.8075±0.0076
+pca_xgb    accuracy 81.94±0.43  precision 81.22±0.60  recall 83.18±0.75  f1 82.19±0.38  brier 0.1253±0.0036  ece 0.0781±0.0044  auc 0.9220±0.0036
+pca_rf     accuracy 80.08±0.86  precision 79.42±0.98  recall 81.28±1.60  f1 80.33±0.97  brier 0.1287±0.0024  ece 0.0591±0.0051  auc 0.9060±0.0045
+norm_xgb   accuracy 86.99±0.36  precision 87.95±0.43  recall 85.78±0.67  f1 86.85±0.30  brier 0.0866±0.0011  ece 0.0419±0.0052  auc 0.9591±0.0011
+norm_rf    accuracy 85.90±0.70  precision 88.46±0.86  recall 82.62±1.09  f1 85.44±0.78  brier 0.0966±0.0018  ece 0.0633±0.0059  auc 0.9512±0.0030
+norm_mlp   accuracy 85.48±0.42  precision 85.49±0.58  recall 85.53±1.16  f1 85.50±0.58  brier 0.0896±0.0019  ece 0.0167±0.0037  auc 0.9509±0.0022   restarts acc 85.48±0.26 (n=3)
+pcaw_mlp   accuracy 71.26±0.67  precision 63.87±0.55  recall 98.11±0.32  f1 77.37±0.41  brier 0.1620±0.0034  ece 0.1174±0.0055  auc 0.8928±0.0062   restarts acc 71.26±0.38 (n=3)
+pca_mlp    accuracy 73.67±1.10  precision 71.36±1.11  recall 85.55±0.85  f1 76.36±0.92  brier 0.1623±0.0037  ece 0.1067±0.0097  auc 0.8727±0.0099   restarts acc 73.67±3.42 (n=3)
+
+Pairwise McNemar (exact) on pooled test sets: (b = A right/B wrong, c = A wrong/B right, p)
+  norm_xgb vs raw_xgb   : b= 1807 c=  555 p=9.89e-154
+  norm_xgb vs raw_rf    : b= 1855 c=  532 p=1.42e-170
+  norm_xgb vs pca_xgb   : b=  913 c=  455 p=1.02e-35
+  norm_xgb vs pca_rf    : b= 1072 c=  445 p=7.74e-60
+  norm_xgb vs norm_rf   : b=  365 c=  266 p=9.28e-05
+  norm_xgb vs norm_mlp  : b=  538 c=  420 p=1.54e-04
+  norm_xgb vs pcaw_mlp  : b= 2016 c=  620 p=4.84e-171
+  norm_xgb vs pca_mlp   : b= 2136 c=  626 p=1.74e-191
+Paired bootstrap F1 gap norm_xgb - norm_rf: 1.40 pts, 95% CI [0.85, 1.97]
+
+Best pipeline: norm_xgb  (frozen at models/ariel_abs50_norm_xgb.joblib)
+done in 192s

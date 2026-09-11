@@ -1,0 +1,4 @@
+[ariel] train (18040, 102), tests [1804, 1814, 1813, 1776, 1809], positives 0.502
+[ariel] feature dims: {'pcaw': 71, 'raw': 102, 'norm': 102, 'pca': 71}
+[ariel] tuned raw_xgb: {'n_estimators': 500, 'max_depth': 10, 'learning_rate': 0.1, 'subsample': 0.8} cv 0.8499 (287s)
+raw_xgb    accuracy 85.93±1.06  precision 83.14±1.86  recall 90.16±0.55  f1 86.50±0.95  brier 0.0944±0.0052  ece 0.0236±0.0058  auc 0.9443±0.0054

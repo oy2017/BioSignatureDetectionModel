@@ -1,0 +1,9 @@
+Loading MultiREx version 0.3.1
+swap dir [exomol] /home/owenhyang/opacity_swap_v3_exomol
+  swapped  CH4  -> 12C-1H4__YT34to10.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  CO   -> 12C-16O__Li2015.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  CO2  -> 12C-16O2__UCL-4000.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  H2O  -> 1H2-16O__POKAZATEL__R15000_0.3-50mu.xsec.TauREx.h5
+  retained O2   -> opacO2.dat
+  retained O3   -> opacO3.dat
+--- test1 [exomol]: 1804 planets, jobs=3, reduce=bin ---

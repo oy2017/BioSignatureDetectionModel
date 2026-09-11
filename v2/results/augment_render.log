@@ -1,0 +1,17 @@
+spots:
+  spots 0.00: 3653 planets
+  spots 0.02: 3659 planets
+  spots 0.05: 3685 planets
+  spots 0.10: 3632 planets
+  spots 0.20: 3527 planets
+haze:
+  haze 2.0e+05: 3573 planets, 0 failures
+  haze 2.0e+06: 3551 planets, 0 failures
+  haze 3.0e+07: 3652 planets, 0 failures
+  haze 2.4e+08: 3744 planets, 0 failures
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1

@@ -1,0 +1,29 @@
+Realism checks, configuration ariel, pipeline norm_xgb
+
+1. Additive offsets drawn INDEPENDENTLY PER CHANNEL (three photometers and three
+   spectrometers with their own zero points), against the global offset in Table 3
+   which costs exactly nothing by construction. Clean baseline 90.33%.
+
+    offset (x noise)   accuracy    delta  pred pos
+                0.25     90.06%   -0.28     0.493
+                0.50     88.81%   -1.52     0.490
+                1.00     86.21%   -4.12     0.481
+                2.00     79.78%  -10.55     0.440
+
+2. Non-machine-learning and linear floors on the same five test sets.
+
+   method                                    accuracy
+   logistic regression, normalized bins       85.37%±0.36
+   two-band index, data-chosen windows        74.84%±0.98
+   full pipeline                              90.33%±0.42
+
+   Bins most correlated with log CH4: 2.40, 2.47, 3.51, 3.55 um (max r = 0.75)
+   Bins most correlated with log O3:  2.49, 3.69, 5.52, 5.70 um (max r = 0.75)
+
+3. The frozen pipeline on the subset with mean transit depth below 3 % and
+   peak-to-peak feature amplitude below 300 ppm, the range of real Ariel targets.
+
+   planets retained: 2029 of 9072 (22.4 %), positive rate 0.492
+   accuracy on that subset: 89.78% ± 0.89
+   (full test sets: 90.33%)
+

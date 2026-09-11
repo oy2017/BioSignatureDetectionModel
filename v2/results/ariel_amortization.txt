@@ -1,0 +1,20 @@
+Does the classifier stay a proxy for retrieval when the simulator is wrong?
+
+80 planets retrieved under both conditions, scored by the frozen
+classifier on the identical arrays. Retrieval uses the generating forward model,
+so every disagreement below is a lower bound.
+
+condition   retrieval  classifier  they agree  both right agreed, wrong
+clean           95.0%       95.0%       92.5%       91.2%          1.4%
+haze            55.0%       61.3%       91.2%       53.8%         41.1%
+
+Retrieval loses 40.0 points, the classifier 33.7.
+Agreement between them falls from 92.5% to 91.2%.
+
+Agreement is not a validity check. The two methods agree almost as often under the
+haze as when clean, but the share of those agreements that are wrong rises from
+1.4% to 41.1%: they fail together, on the same planets.
+
+The accuracy difference between the two methods under the haze is not significant
+(McNemar exact p = 0.125, 1 planet vs 6), so the claim is that retrieval buys no
+robustness to an ingredient it does not model, not that the classifier beats it.

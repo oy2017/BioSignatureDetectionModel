@@ -1,0 +1,24 @@
+Label sensitivity and error structure, configuration ariel_abs50, pipeline norm_xgb
+
+1. Threshold sensitivity (both cutoffs moved together; spectra unchanged; model retrained)
+ shift  CH4/O3 cutoff train pos test pos  accuracy  majority    gain     F1   Brier
+ -0.50  -6.50/ -7.50      56.2%    56.3%    85.81%    56.32% +29.50% 0.875 0.0937
+ -0.25  -6.25/ -7.25      53.0%    53.0%    86.56%    52.99% +33.58% 0.873 0.0890
+ +0.00  -6.00/ -7.00      50.2%    50.1%    86.99%    50.08% +36.92% 0.869 0.0866
+ +0.25  -5.75/ -6.75      44.1%    44.0%    87.17%    56.03% +31.14% 0.849 0.0881
+ +0.50  -5.50/ -6.50      38.4%    38.2%    88.45%    61.78% +26.66% 0.839 0.0824
+
+2. Accuracy against margin to the nearest label flip (dex)
+    margin      n    pos  accuracy  majority    gain  mean p
+0.00-0.25    818  67.7%    66.14%    67.73%  -1.59%  0.562
+0.25-0.5     824  63.3%    82.04%    63.35% +18.69%  0.571
+0.50-1.0    1513  60.2%    85.00%    60.21% +24.79%  0.570
+1.00-2.0    3072  49.8%    90.79%    50.23% +40.56%  0.509
+2.00-       2845  36.1%    91.39%    63.90% +27.49%  0.403
+
+3. Error rate against feature amplitude (std of the noise-free binned depth) in quintiles
+  quintile 1: amplitude 2.00e-08-4.90e-05  error 38.02%  amp/noise median 0.20
+  quintile 2: amplitude 4.90e-05-3.12e-04  error 10.92%  amp/noise median 2.79
+  quintile 3: amplitude 3.12e-04-1.15e-03  error  5.62%  amp/noise median 12.13
+  quintile 4: amplitude 1.15e-03-4.36e-03  error  5.46%  amp/noise median 43.17
+  quintile 5: amplitude 4.37e-03-2.57e-01  error  5.01%  amp/noise median 253.34

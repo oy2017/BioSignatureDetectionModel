@@ -1,0 +1,26 @@
+Pearson correlations between delivered (post-cleaning) parameters
+n = 18156
+
+GROUP 1: the 13 independently drawn parameters.
+  largest |r| pairs:
+    p_radius             s radius             r = +0.065
+    p_mass               p_radius             r = +0.060
+    s radius             p_mass               r = -0.032
+    atm temperature      p_mass               r = +0.030
+    p_mass               atm top_pressure     r = -0.025
+    s temperature        s mass               r = +0.020
+  max |r| = 0.065
+
+GROUP 2: the two label gases, which are NOT independently drawn.
+  They are stratified by profile so the classes balance, which induces
+    r(log CH4, log O3) = +0.177
+  positive rate delivered                    0.5016
+  positive rate if the pair were independent 0.4454
+  The stratification also puts a third of all planets in the two
+  one-gas configurations, which are the confusable negatives.
+
+BETWEEN the groups (this is what would threaten attributing a
+sensitivity to one parameter, and it is negligible):
+  max |r| = 0.014  (atm temperature / atm O3)
+
+(old grid: radius / T_star / sma r >= 0.97; mass / R_star / P_base r >= 0.85)

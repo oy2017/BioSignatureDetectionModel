@@ -1,0 +1,61 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1788966597.780872  407529 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1788966597.782172  407529 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+I0000 00:00:1788966598.019713  407529 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1788966599.456492  407529 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1788966599.458302  407529 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+E0000 00:00:1788966601.821775  407529 cuda_executor.cc:1737] INTERNAL: CUDA Runtime error: Failed call to cudaGetRuntimeVersion: Error loading CUDA libraries. GPU will not be used.: Error loading CUDA libraries. GPU will not be used.
+W0000 00:00:1788966601.822460  407549 cuda_executor.cc:1755] Failed to determine cuDNN version (Note that this is expected if the application doesn't link the cuDNN plugin): INTERNAL: cuDNN error: CUDNN_STATUS_INTERNAL_ERROR
+W0000 00:00:1788966601.837381  407529 gpu_device.cc:2365] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+cloud          cloud_1e1Pa            acc  54.63 (-35.46) brier 0.4219 pos 0.051 amp 0.044 n=9072
+cloud          cloud_1e2Pa            acc  65.70 (-24.39) brier 0.2976 pos 0.172 amp 0.388 n=9072
+cloud          cloud_1e3Pa            acc  76.76 (-13.33) brier 0.1848 pos 0.292 amp 0.695 n=9072
+cloud          cloud_1e4Pa            acc  85.97 ( -4.12) brier 0.1006 pos 0.403 amp 0.910 n=9072
+cloud          cloud_1e5Pa            acc  89.66 ( -0.43) brier 0.0705 pos 0.460 amp 1.016 n=9072
+exomol         exomol                 acc  88.26 ( -1.83) brier 0.0791 pos 0.494 amp 0.967 n=9072
+exomol         exomol_o3              acc  73.03 (-17.06) brier 0.2187 pos 0.296 amp 0.914 n=9072
+exotransmit    exotransmit            acc  88.94 ( -1.15) brier 0.0754 pos 0.481 amp 0.930 n=9072
+haze           haze_1p0e10            acc  49.92 (-40.17) brier 0.5008 pos 0.000 amp 0.383 n=9071
+haze           haze_2p0e5             acc  89.57 ( -0.52) brier 0.0702 pos 0.456 amp 1.033 n=9072
+haze           haze_2p0e6             acc  82.15 ( -7.94) brier 0.1387 pos 0.348 amp 0.960 n=9071
+haze           haze_2p4e8             acc  50.18 (-39.91) brier 0.4973 pos 0.003 amp 0.631 n=9071
+haze           haze_3p0e7             acc  55.25 (-34.84) brier 0.4349 pos 0.055 amp 0.808 n=9071
+tlse           tlse_fac05             acc  88.53 ( -1.57) brier 0.0799 pos 0.513 amp 1.071 n=9072
+tlse           tlse_fac10             acc  86.18 ( -3.91) brier 0.0952 pos 0.545 amp 1.091 n=9072
+tlse           tlse_mixed             acc  72.83 (-17.26) brier 0.2411 pos 0.248 amp 0.998 n=9072
+tlse           tlse_spots02           acc  85.41 ( -4.68) brier 0.1073 pos 0.398 amp 1.030 n=9072
+tlse           tlse_spots05           acc  78.43 (-11.66) brier 0.1768 pos 0.314 amp 1.004 n=9072
+tlse           tlse_spots10           acc  70.46 (-19.63) brier 0.2639 pos 0.223 amp 0.993 n=9072
+tlse           tlse_spots20           acc  61.57 (-28.52) brier 0.3661 pos 0.126 amp 1.120 n=9072
+white noise    snr12                  acc  86.97 ( -3.12) brier 0.0893 pos 0.431 amp 1.101 n=9072
+white noise    snr10                  acc  82.79 ( -7.30) brier 0.1214 pos 0.384 amp 1.165 n=9072
+white noise    snr8                   acc  76.48 (-13.61) brier 0.1746 pos 0.312 amp 1.268 n=9072
+white noise    snr5                   acc  59.99 (-30.10) brier 0.3312 pos 0.122 amp 1.648 n=9072
+correlated noise snr12                  acc  81.78 ( -8.31) brier 0.1341 pos 0.427 amp 1.103 n=9072
+correlated noise snr10                  acc  76.31 (-13.78) brier 0.1873 pos 0.378 amp 1.157 n=9072
+correlated noise snr8                   acc  69.38 (-20.71) brier 0.2536 pos 0.316 amp 1.254 n=9072
+correlated noise snr5                   acc  59.23 (-30.86) brier 0.3598 pos 0.192 amp 1.619 n=9072
+gain ramp      x0.25                  acc  89.64 ( -0.45) brier 0.0691 pos 0.470 amp 1.044 n=9072
+gain ramp      x0.5                   acc  88.71 ( -1.38) brier 0.0744 pos 0.472 amp 1.048 n=9072
+gain ramp      x1.0                   acc  86.01 ( -4.08) brier 0.0953 pos 0.468 amp 1.072 n=9072
+gain ramp      x2.0                   acc  79.05 (-11.04) brier 0.1606 pos 0.442 amp 1.132 n=9072
+baseline offset x0.25                  acc  90.09 ( +0.00) brier 0.0674 pos 0.470 amp 1.049 n=9072
+baseline offset x0.5                   acc  90.09 ( +0.00) brier 0.0674 pos 0.470 amp 1.049 n=9072
+baseline offset x1.0                   acc  90.09 ( +0.00) brier 0.0674 pos 0.470 amp 1.049 n=9072
+baseline offset x2.0                   acc  90.09 ( +0.00) brier 0.0674 pos 0.470 amp 1.049 n=9072
+absolute noise 20 ppm                 acc  86.30 ( -3.79) brier 0.1123 pos 0.442 amp 1.001 n=9072
+absolute noise 50 ppm                 acc  83.13 ( -6.96) brier 0.1418 pos 0.404 amp 1.001 n=9072
+absolute noise 100 ppm                acc  80.60 ( -9.49) brier 0.1682 pos 0.373 amp 1.010 n=9072
+absolute noise 200 ppm                acc  76.80 (-13.29) brier 0.2035 pos 0.327 amp 1.053 n=9072
+noise colouring white snr15            acc  89.45 ( -0.64) brier 0.0710 pos 0.471 amp 1.043 n=9072
+noise colouring ariel snr15            acc  89.73 ( -0.36) brier 0.0676 pos 0.469 amp 1.054 n=9072
+noise colouring white snr10            acc  86.85 ( -3.24) brier 0.0895 pos 0.432 amp 1.098 n=9072
+noise colouring ariel snr10            acc  87.38 ( -2.71) brier 0.0842 pos 0.435 amp 1.106 n=9072
+noise colouring white snr7             acc  81.17 ( -8.92) brier 0.1379 pos 0.363 amp 1.196 n=9072
+noise colouring ariel snr7             acc  81.98 ( -8.11) brier 0.1273 pos 0.360 amp 1.200 n=9072
+noise colouring white snr5             acc  72.29 (-17.80) brier 0.2131 pos 0.260 amp 1.352 n=9072
+noise colouring ariel snr5             acc  72.82 (-17.27) brier 0.2074 pos 0.250 amp 1.372 n=9072
+

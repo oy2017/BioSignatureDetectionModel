@@ -1,0 +1,28 @@
+Prevalence and the normalization mechanism, configuration ariel, pipeline norm_xgb
+
+1. Precision at realistic base rates. The grid is balanced by construction, so every
+   accuracy in the paper assumes a 50 % prevalence. Recall and specificity are properties
+   of the classifier and do not change with prevalence; precision does.
+
+   threshold  recall  specif.    π=0.5    π=0.2    π=0.1   π=0.05   π=0.01
+       0.500   89.8%    90.9%    90.8%    71.1%    52.2%    34.1%     9.0%
+       0.215   95.0%    83.7%    85.3%    59.3%    39.3%    23.5%     5.6%
+       0.900   78.4%    98.1%    97.6%    91.1%    81.9%    68.2%    29.2%
+       0.990   66.8%    99.8%    99.6%    98.6%    96.8%    93.5%    73.5%
+
+   at π = 0.10, 50 % precision needs threshold 0.444 and retains 90.6 % recall
+   at π = 0.05, 50 % precision needs threshold 0.793 and retains 82.8 % recall
+   at π = 0.01, 50 % precision needs threshold 0.960 and retains 73.8 % recall
+
+2. Why per-spectrum normalization helps: the absolute-depth nuisance direction.
+   Raw vs normalized features trained and tested on radius-restricted populations,
+   training-set size held fixed at 4,000 planets per band.
+
+    radius (R_E)      raw   normalized      gap   depth span
+            1-26   63.05%       89.12%  +26.07      4.40 dex
+             1-6   57.93%       88.92%  +30.98      4.35 dex
+            6-12   64.06%       88.84%  +24.77      2.91 dex
+           12-20   70.53%       89.86%  +19.33      2.31 dex
+
+   The normalization advantage falls from +26.1 points on the full grid to
+   +19.3 on the narrowest band, tracking the shrinking spread of absolute transit depth.

@@ -1,0 +1,38 @@
+new  1 <- ms  1: Akeson, R. L., Chen, X., Ciardi, D., Crane, M., Good, J., Harbut, M., et al. (2013). The N
+new  2 <- ms  2: NASA Exoplanet Archive. (2020). Planetary Systems Table. NASA Exoplanet Science Institute 
+new  3 <- ms  3: National Academies of Sciences, Engineering, and Medicine. (2023). Pathways to Discovery i
+new  4 <- ms  4: Tinetti, G., Drossart, P., Eccleston, P., Hartogh, P., Heske, A., Leconte, J., et al. (201
+new  5 <- ms  5: European Space Agency. (2020). Ariel definition study report (Red Book). ESA/SCI(2020)1. h
+new  6 <- ms  6: Schwieterman, E. W., Kiang, N. Y., Parenteau, M. N., Harman, C. E., DasSarma, S., Fisher, 
+new  7 <- ms  7: Kiang, N. Y., Domagal-Goldman, S., Parenteau, M. N., Catling, D. C., Fujii, Y., Meadows, V
+new  8 <- ms  8: Edwards, B., & Tinetti, G. (2022). The Ariel target list: The impact of TESS and the poten
+new  9 <- ms  9: Edwards, B., Mugnai, L., Tinetti, G., Pascale, E., & Sarkar, S. (2019). An updated study o
+new 10 <- ms 19: Duque-Castaño, D. S., Zuluaga, J. I., & Flor-Torres, L. (2025). Machine-assisted classific
+new 11 <- ms 20: Al-Refaie, A. F., Changeat, Q., Waldmann, I. P., & Tinetti, G. (2021). TauREx 3: A fast, d
+new 12 <- ms 27: Kempton, E. M.-R., Lupu, R., Owusu-Asare, A., Slough, P., & Cale, B. (2017). Exo-Transmit:
+new 13 <- ms 28: Freedman, R. S., Marley, M. S., & Lodders, K. (2008). Line and mean opacities for ultracoo
+new 14 <- ms 29: Freedman, R. S., Lustig-Yaeger, J., Fortney, J. J., Lupu, R. E., Marley, M. S., & Lodders,
+new 15 <- ms 30: Lupu, R. E., Zahnle, K., Marley, M. S., Schaefer, L., Fegley, B., Morley, C., et al. (2014
+new 16 <- ms 31: Mugnai, L. V., Pascale, E., Edwards, B., Papageorgiou, A., & Sarkar, S. (2020). ArielRad: 
+new 17 <- ms 33: Breiman, L. (2001). Random forests. Machine Learning, 45(1), 5–32. https://doi.org/10.1023
+new 18 <- ms 34: Chen, T., & Guestrin, C. (2016). XGBoost: A scalable tree boosting system. Proceedings of 
+new 19 <- ms 37: Goodfellow, I., Bengio, Y., & Courville, A. (2016). Deep Learning. MIT Press. https://www.
+new 20 <- ms 38: Garvin, E. O., Bonse, M. J., Hayoz, J., Cugno, G., Spiller, J., Patapis, P. A., et al. (20
+new 21 <- ms 40: Kingma, D. P., & Ba, J. (2014). Adam: A method for stochastic optimization. arXiv preprint
+new 22 <- ms 42: Rackham, B. V., Apai, D., & Giampapa, M. S. (2018). The transit light source effect: False
+new 23 <- ms 15: Sing, D. K., Fortney, J. J., Nikolov, N., Wakeford, H. R., Kataria, T., Evans, T. M., et a
+new 24 <- ms 21: Grinsztajn, L., Oyallon, E., & Varoquaux, G. (2022). Why do tree-based models still outper
+new 25 <- ms 22: Shwartz-Ziv, R., & Armon, A. (2022). Tabular data: Deep learning is not all you need. Info
+new 26 <- ms 43: McNemar, Q. (1947). Note on the sampling error of the difference between correlated propor
+new 27 <- ms 44: Efron, B., & Tibshirani, R. J. (1993). An Introduction to the Bootstrap. New York: Chapman
+new 28 <- ms 45: Jolliffe, I. T. (1982). A note on the use of principal components in regression. Journal o
+new 29 <- ms 52: Niculescu-Mizil, A., & Caruana, R. (2005). Predicting good probabilities with supervised l
+new 30 <- ms 53: Polyansky, O. L., Kyuberis, A. A., Zobov, N. F., Tennyson, J., Yurchenko, S. N., & Lodi, L
+new 31 <- ms 54: Yurchenko, S. N., Amundsen, D. S., Tennyson, J., & Waldmann, I. P. (2017). A hybrid line l
+new 32 <- ms 55: Yurchenko, S. N., Mellor, T. M., Freedman, R. S., & Tennyson, J. (2020). ExoMol line lists
+new 33 <- ms 56: Chubb, K. L., Rocchetto, M., Yurchenko, S. N., Min, M., Waldmann, I. P., Barstow, J. K., e
+new 34 <- ms 57: Rothman, L. S., Gordon, I. E., Babikov, Y., Barbe, A., Chris Benner, D., Bernath, P. F., e
+new 35 <- ms 58: Lee, J.-M., Heng, K., & Irwin, P. G. J. (2013). Atmospheric retrieval analysis of the dire
+new 36 <- ms 59: Allard, F., Homeier, D., & Freytag, B. (2012). Models of very-low-mass stars, brown dwarfs
+new 37 <- ms 60: Mugnai, L. V., Bocchieri, A., & Pascale, E. (2023). ExoRad 2.0: The generic point source r
+new 38 <- ms 25: Mugnai, L. V., Yip, K. H., Bocchieri, A., Papageorgiou, A., Batista, V., Faucoz, O., et al

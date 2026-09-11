@@ -1,0 +1,3 @@
+condition,n,retrieval_acc,classifier_acc,agreement,both_correct,agreed_but_wrong
+clean,80,0.95,0.95,0.925,0.9125,0.013513513513513514
+haze,80,0.55,0.6125,0.9125,0.5375,0.410958904109589

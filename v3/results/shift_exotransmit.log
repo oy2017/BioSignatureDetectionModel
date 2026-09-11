@@ -1,0 +1,12 @@
+--- test1 ---
+  test1: 90/1804 done, 82 s elapsed, 0.91 s/planet effective, eta 1561 s
+  test1: 180/1804 done, 166 s elapsed, 0.92 s/planet effective, eta 1497 s
+  test1: 270/1804 done, 266 s elapsed, 0.99 s/planet effective, eta 1511 s
+  test1: 360/1804 done, 370 s elapsed, 1.03 s/planet effective, eta 1484 s
+  test1: 450/1804 done, 468 s elapsed, 1.04 s/planet effective, eta 1407 s
+  test1: 540/1804 done, 561 s elapsed, 1.04 s/planet effective, eta 1313 s
+  test1: 630/1804 done, 663 s elapsed, 1.05 s/planet effective, eta 1236 s
+  test1: 720/1804 done, 748 s elapsed, 1.04 s/planet effective, eta 1126 s
+  test1: 810/1804 done, 830 s elapsed, 1.02 s/planet effective, eta 1018 s
+  test1: 900/1804 done, 921 s elapsed, 1.02 s/planet effective, eta 925 s
+  test1: 990/1804 done, 1012 s elapsed, 1.02 s/planet effective, eta 832 s

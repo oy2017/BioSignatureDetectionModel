@@ -1,0 +1,30 @@
+clean: 80 planets to retrieve, 20 workers, cap 15000 calls
+[Parallel(n_jobs=20)]: Using backend LokyBackend with 20 concurrent workers.
+[Parallel(n_jobs=20)]: Done  32 tasks      | elapsed: 132.1min
+[Parallel(n_jobs=20)]: Done  58 out of  80 | elapsed: 184.4min remaining: 70.0min
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+[Parallel(n_jobs=20)]: Done  75 out of  80 | elapsed: 213.0min remaining: 14.2min
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+[Parallel(n_jobs=20)]: Done  80 out of  80 | elapsed: 222.6min finished
+
+clean: 80/80 succeeded in 223 min (median 49.6 min/planet)
+  retrieval label vs truth: 95%
+  wrote /mnt/c/Users/owenh/BioSignatureDetectionModel/v2/results/retrieval_clean.csv
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1

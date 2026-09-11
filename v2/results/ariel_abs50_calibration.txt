@@ -1,0 +1,22 @@
+Calibration, configuration ariel_abs50 (pooled test sets, n=9072, equal-count bins)
+
+  raw_xgb    ECE 0.0659  Brier 0.1776  AUC 0.8219  max |gap| 0.144
+  raw_rf     ECE 0.0548  Brier 0.1825  AUC 0.8075  max |gap| 0.090
+  pca_xgb    ECE 0.0785  Brier 0.1253  AUC 0.9220  max |gap| 0.215
+  pca_rf     ECE 0.0531  Brier 0.1287  AUC 0.9059  max |gap| 0.103
+  norm_xgb   ECE 0.0413  Brier 0.0866  AUC 0.9591  max |gap| 0.129
+  norm_rf    ECE 0.0635  Brier 0.0966  AUC 0.9512  max |gap| 0.158
+  norm_mlp   ECE 0.0115  Brier 0.0895  AUC 0.9512  max |gap| 0.048
+  pcaw_mlp   ECE 0.1233  Brier 0.1638  AUC 0.8887  max |gap| 0.340
+  pca_mlp    ECE 0.1089  Brier 0.1648  AUC 0.8765  max |gap| 0.306
+
+Operating thresholds, frozen norm_xgb
+  clean: AP 0.962, at threshold 0.5 precision 87.9% recall 85.8% accuracy 86.99%
+      recall >= 90%: threshold 0.368, precision 84.2%
+      recall >= 95%: threshold 0.210, precision 79.9%
+      recall >= 99%: threshold 0.054, precision 74.3%
+  cloud_1e4Pa: AP 0.953, at threshold 0.5 precision 88.0% recall 81.8% accuracy 85.28%
+      recall >= 90%: threshold 0.268, precision 81.1%
+      recall >= 95%: threshold 0.140, precision 77.4%
+      recall >= 99%: threshold 0.021, precision 70.8%
+  (cloud: 0 planets with failed re-render excluded)

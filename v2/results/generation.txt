@@ -1,0 +1,12 @@
+acceptance by mass decile (train):
+  decile 0: 0.502
+  decile 1: 0.875
+  decile 2: 0.946
+  decile 3: 0.955
+  decile 4: 0.953
+  decile 5: 0.969
+  decile 6: 0.969
+  decile 7: 0.967
+  decile 8: 0.973
+  decile 9: 0.970
+max |r| between delivered parameters: 0.177

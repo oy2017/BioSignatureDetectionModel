@@ -1,0 +1,59 @@
+[ariel] train (18156, 102), tests [1813, 1822, 1823, 1793, 1821], positives 0.502
+[ariel] feature dims: {'pca': 76, 'norm': 102, 'pcaw': 76, 'raw': 102}
+[ariel] tuned raw_xgb: {'n_estimators': 500, 'max_depth': 10, 'learning_rate': 0.2, 'subsample': 0.8} cv 0.7183 (173s)
+raw_xgb    accuracy 72.56±0.49  precision 71.39±0.70  recall 75.44±1.34  f1 73.35±0.78  brier 0.1810±0.0040  ece 0.0625±0.0080  auc 0.8120±0.0062
+[ariel] tuned raw_rf: {'n_estimators': 500, 'max_depth': None, 'min_samples_leaf': 1} cv 0.7084 (933s)
+raw_rf     accuracy 72.24±0.96  precision 70.81±1.09  recall 75.87±0.35  f1 73.25±0.71  brier 0.1866±0.0026  ece 0.0583±0.0050  auc 0.7990±0.0064
+[ariel] tuned pca_xgb: {'n_estimators': 500, 'max_depth': 10, 'learning_rate': 0.1, 'subsample': 0.8} cv 0.8366 (1186s)
+pca_xgb    accuracy 83.90±1.03  precision 83.65±1.55  recall 84.34±0.74  f1 83.99±1.07  brier 0.1188±0.0072  ece 0.0643±0.0103  auc 0.9248±0.0058
+[ariel] tuned pca_rf: {'n_estimators': 500, 'max_depth': 20, 'min_samples_leaf': 2} cv 0.8038 (1476s)
+pca_rf     accuracy 80.70±1.07  precision 80.23±1.73  recall 81.58±1.11  f1 80.89±1.07  brier 0.1558±0.0026  ece 0.1405±0.0096  auc 0.8942±0.0082
+[ariel] tuned norm_xgb: {'n_estimators': 500, 'max_depth': 10, 'learning_rate': 0.05, 'subsample': 0.8} cv 0.9048 (1689s)
+norm_xgb   accuracy 90.33±0.42  precision 90.81±0.52  recall 89.79±0.66  f1 90.29±0.38  brier 0.0686±0.0021  ece 0.0378±0.0048  auc 0.9750±0.0008
+[ariel] tuned norm_rf: {'n_estimators': 300, 'max_depth': 20, 'min_samples_leaf': 2} cv 0.8941 (2108s)
+norm_rf    accuracy 89.08±0.36  precision 90.55±0.48  recall 87.30±0.72  f1 88.89±0.39  brier 0.0797±0.0011  ece 0.0639±0.0047  auc 0.9672±0.0012
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1788952018.450637   92699 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1788952018.453213   92699 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+I0000 00:00:1788952018.482532   92699 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1788952019.492488   92699 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1788952019.494889   92699 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+E0000 00:00:1788952021.615203   92699 cuda_executor.cc:1737] INTERNAL: CUDA Runtime error: Failed call to cudaGetRuntimeVersion: Error loading CUDA libraries. GPU will not be used.: Error loading CUDA libraries. GPU will not be used.
+W0000 00:00:1788952021.616110   97293 cuda_executor.cc:1755] Failed to determine cuDNN version (Note that this is expected if the application doesn't link the cuDNN plugin): INTERNAL: cuDNN error: CUDNN_STATUS_INTERNAL_ERROR
+W0000 00:00:1788952021.630968   92699 gpu_device.cc:2365] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+[ariel] tuned norm_mlp: {'hidden': (512, 256, 128), 'dropout': 0.4, 'batch': 128} cv 0.8973 (2324s)
+norm_mlp   accuracy 90.14±0.34  precision 92.26±0.49  recall 87.68±0.66  f1 89.91±0.37  brier 0.0668±0.0023  ece 0.0124±0.0059  auc 0.9734±0.0015   restarts acc 90.14±0.14 (n=5)
+[ariel] tuned pcaw_mlp: {'hidden': (512, 256, 128), 'dropout': 0.4, 'batch': 128} cv 0.7629 (2614s)
+pcaw_mlp   accuracy 73.58±0.84  precision 67.30±0.85  recall 92.02±0.50  f1 77.73±0.52  brier 0.1657±0.0029  ece 0.1152±0.0040  auc 0.8712±0.0044   restarts acc 73.58±0.97 (n=5)
+[ariel] tuned pca_mlp: {'hidden': (256, 128, 64), 'dropout': 0.2, 'batch': 128} cv 0.7568 (2985s)
+pca_mlp    accuracy 73.71±0.89  precision 69.13±0.86  recall 89.43±0.53  f1 77.26±0.65  brier 0.1631±0.0029  ece 0.1110±0.0080  auc 0.8759±0.0071   restarts acc 73.71±2.96 (n=5)
+In-domain study, configuration = ariel, SNR 15 (peak-to-peak convention), Ariel-shaped noise
+train n = 18156, test sets n = [1813, 1822, 1823, 1793, 1821]
+feature dimensions: {'pca': 76, 'norm': 102, 'pcaw': 76, 'raw': 102}
+
+raw_xgb    accuracy 72.56±0.49  precision 71.39±0.70  recall 75.44±1.34  f1 73.35±0.78  brier 0.1810±0.0040  ece 0.0625±0.0080  auc 0.8120±0.0062
+raw_rf     accuracy 72.24±0.96  precision 70.81±1.09  recall 75.87±0.35  f1 73.25±0.71  brier 0.1866±0.0026  ece 0.0583±0.0050  auc 0.7990±0.0064
+pca_xgb    accuracy 83.90±1.03  precision 83.65±1.55  recall 84.34±0.74  f1 83.99±1.07  brier 0.1188±0.0072  ece 0.0643±0.0103  auc 0.9248±0.0058
+pca_rf     accuracy 80.70±1.07  precision 80.23±1.73  recall 81.58±1.11  f1 80.89±1.07  brier 0.1558±0.0026  ece 0.1405±0.0096  auc 0.8942±0.0082
+norm_xgb   accuracy 90.33±0.42  precision 90.81±0.52  recall 89.79±0.66  f1 90.29±0.38  brier 0.0686±0.0021  ece 0.0378±0.0048  auc 0.9750±0.0008
+norm_rf    accuracy 89.08±0.36  precision 90.55±0.48  recall 87.30±0.72  f1 88.89±0.39  brier 0.0797±0.0011  ece 0.0639±0.0047  auc 0.9672±0.0012
+norm_mlp   accuracy 90.14±0.34  precision 92.26±0.49  recall 87.68±0.66  f1 89.91±0.37  brier 0.0668±0.0023  ece 0.0124±0.0059  auc 0.9734±0.0015   restarts acc 90.14±0.14 (n=5)
+pcaw_mlp   accuracy 73.58±0.84  precision 67.30±0.85  recall 92.02±0.50  f1 77.73±0.52  brier 0.1657±0.0029  ece 0.1152±0.0040  auc 0.8712±0.0044   restarts acc 73.58±0.97 (n=5)
+pca_mlp    accuracy 73.71±0.89  precision 69.13±0.86  recall 89.43±0.53  f1 77.26±0.65  brier 0.1631±0.0029  ece 0.1110±0.0080  auc 0.8759±0.0071   restarts acc 73.71±2.96 (n=5)
+
+Pairwise McNemar (exact) on pooled test sets: (b = A right/B wrong, c = A wrong/B right, p)
+  norm_xgb vs raw_xgb   : b= 2016 c=  404 p=1.76e-256
+  norm_xgb vs raw_rf    : b= 2024 c=  383 p=1.73e-268
+  norm_xgb vs pca_xgb   : b=  931 c=  348 p=1.03e-61
+  norm_xgb vs pca_rf    : b= 1246 c=  372 p=4.27e-110
+  norm_xgb vs norm_rf   : b=  290 c=  176 p=1.44e-07
+  norm_xgb vs norm_mlp  : b=  276 c=  254 p=3.62e-01
+  norm_xgb vs pcaw_mlp  : b= 2084 c=  426 p=4.08e-261
+  norm_xgb vs pca_mlp   : b= 1496 c=  316 p=3.27e-183
+Paired bootstrap F1 gap norm_xgb - norm_mlp: 0.50 pts, 95% CI [-0.02, 1.01]
+
+Best pipeline: norm_xgb  (frozen at models/ariel_norm_xgb.joblib)
+done in 3069s

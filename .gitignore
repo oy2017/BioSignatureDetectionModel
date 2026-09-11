@@ -12,3 +12,30 @@ Scholastica.pdf
 feedback.pdf
 revision/scholastica_reviews_verbatim.txt
 revision/reviewer_response_tracking.md
+
+# v2 study: regenerable spectra (2.3 GB) and the downloadable stellar atlas.
+# Everything needed to check a number is committed under v2/results and v2/models.
+v2/data/
+v2/phoenix/
+v2/*.log
+# Random-forest models are ~190 MB each and fully regenerable from the tuned
+# hyperparameters in v2/results/*_tuning.json; the frozen primary pipelines
+# (norm_xgb) and the small MLP artefacts are committed.
+v2/models/*_rf.joblib
+v2/models/*pca_mlp.keras
+v2/models/*pcaw_mlp.keras
+
+# Superseded manuscript builds and review artefacts: kept on disk, not in history.
+nhsjs/old/
+*.bak
+*.preorder
+~$*
+GPTZero AI Scan*
+
+# v3 study: same policy as v2. Spectra are regenerable from generate_grid.py and the
+# shift scripts; the frozen primary pipelines and small MLP artefacts are committed.
+v3/data/
+v3/*.log
+v3/models/*_rf.joblib
+v3/models/*pca_mlp.keras
+v3/models/*pcaw_mlp.keras

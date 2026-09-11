@@ -1,0 +1,341 @@
+== tlse Tue Sep  8 22:44:49 PDT 2026
+PHOENIX nodes: 2000-8000 K (56 files)
+test1 spots02: median amplitude ratio 0.973, median eps 1.0063
+test1 spots05: median amplitude ratio 0.952, median eps 1.0158
+test1 spots10: median amplitude ratio 0.951, median eps 1.0321
+test1 spots20: median amplitude ratio 1.012, median eps 1.0663
+test1 fac05: median amplitude ratio 1.020, median eps 0.9979
+test1 fac10: median amplitude ratio 1.043, median eps 0.9959
+test1 mixed: median amplitude ratio 0.955, median eps 1.0291
+test2 spots02: median amplitude ratio 0.972, median eps 1.0063
+test2 spots05: median amplitude ratio 0.952, median eps 1.0158
+test2 spots10: median amplitude ratio 0.954, median eps 1.0321
+test2 spots20: median amplitude ratio 1.017, median eps 1.0664
+test2 fac05: median amplitude ratio 1.020, median eps 0.9979
+test2 fac10: median amplitude ratio 1.041, median eps 0.9958
+test2 mixed: median amplitude ratio 0.955, median eps 1.0290
+test3 spots02: median amplitude ratio 0.973, median eps 1.0062
+test3 spots05: median amplitude ratio 0.952, median eps 1.0157
+test3 spots10: median amplitude ratio 0.945, median eps 1.0319
+test3 spots20: median amplitude ratio 1.009, median eps 1.0659
+test3 fac05: median amplitude ratio 1.019, median eps 0.9980
+test3 fac10: median amplitude ratio 1.040, median eps 0.9960
+test3 mixed: median amplitude ratio 0.951, median eps 1.0288
+test4 spots02: median amplitude ratio 0.973, median eps 1.0062
+test4 spots05: median amplitude ratio 0.953, median eps 1.0156
+test4 spots10: median amplitude ratio 0.948, median eps 1.0317
+test4 spots20: median amplitude ratio 1.010, median eps 1.0654
+test4 fac05: median amplitude ratio 1.020, median eps 0.9980
+test4 fac10: median amplitude ratio 1.043, median eps 0.9960
+test4 mixed: median amplitude ratio 0.954, median eps 1.0287
+test5 spots02: median amplitude ratio 0.971, median eps 1.0061
+test5 spots05: median amplitude ratio 0.951, median eps 1.0154
+test5 spots10: median amplitude ratio 0.946, median eps 1.0313
+test5 spots20: median amplitude ratio 1.017, median eps 1.0647
+test5 fac05: median amplitude ratio 1.019, median eps 0.9980
+test5 fac10: median amplitude ratio 1.041, median eps 0.9961
+test5 mixed: median amplitude ratio 0.949, median eps 1.0284
+== exotransmit Tue Sep  8 22:45:29 PDT 2026
+--- test1 ---
+  test1: 90/1813 done, 39 s elapsed, 0.43 s/planet effective, eta 738 s
+  test1: 180/1813 done, 75 s elapsed, 0.42 s/planet effective, eta 685 s
+  test1: 270/1813 done, 113 s elapsed, 0.42 s/planet effective, eta 643 s
+  test1: 360/1813 done, 149 s elapsed, 0.41 s/planet effective, eta 601 s
+  test1: 450/1813 done, 183 s elapsed, 0.41 s/planet effective, eta 553 s
+  test1: 540/1813 done, 217 s elapsed, 0.40 s/planet effective, eta 511 s
+  test1: 630/1813 done, 253 s elapsed, 0.40 s/planet effective, eta 475 s
+  test1: 720/1813 done, 291 s elapsed, 0.40 s/planet effective, eta 442 s
+  test1: 810/1813 done, 330 s elapsed, 0.41 s/planet effective, eta 408 s
+  test1: 900/1813 done, 358 s elapsed, 0.40 s/planet effective, eta 363 s
+  test1: 990/1813 done, 379 s elapsed, 0.38 s/planet effective, eta 315 s
+  test1: 1080/1813 done, 399 s elapsed, 0.37 s/planet effective, eta 271 s
+  test1: 1170/1813 done, 421 s elapsed, 0.36 s/planet effective, eta 231 s
+  test1: 1260/1813 done, 459 s elapsed, 0.36 s/planet effective, eta 201 s
+  test1: 1350/1813 done, 496 s elapsed, 0.37 s/planet effective, eta 170 s
+  test1: 1440/1813 done, 535 s elapsed, 0.37 s/planet effective, eta 139 s
+  test1: 1530/1813 done, 573 s elapsed, 0.37 s/planet effective, eta 106 s
+  test1: 1620/1813 done, 612 s elapsed, 0.38 s/planet effective, eta 73 s
+  test1: 1710/1813 done, 651 s elapsed, 0.38 s/planet effective, eta 39 s
+  test1: 1800/1813 done, 690 s elapsed, 0.38 s/planet effective, eta 5 s
+  test1: 1813/1813 done, 695 s elapsed, 0.38 s/planet effective, eta 0 s
+test1: 1813 planets, 0 Exo-Transmit failures (NaN rows), jobs=6
+  per-planet wall clock inside a worker: median 2.2 s, mean 2.3 s, min 1.2 s, max 3.9 s
+  end-to-end: 695 s total = 0.38 s/planet effective (1813 timed)
+  projected for a 2,000-planet split at jobs=6: 13 min; five splits 1.1 h
+  wrote /mnt/c/Users/owenh/BioSignatureDetectionModel/v2/data/test1_native_exotransmit.npy  shape (1813, 2753)  NaN rows 0
+--- test2 ---
+  test2: 91/1822 done, 39 s elapsed, 0.43 s/planet effective, eta 749 s
+  test2: 182/1822 done, 79 s elapsed, 0.43 s/planet effective, eta 711 s
+  test2: 273/1822 done, 116 s elapsed, 0.43 s/planet effective, eta 660 s
+  test2: 364/1822 done, 154 s elapsed, 0.42 s/planet effective, eta 616 s
+  test2: 455/1822 done, 194 s elapsed, 0.43 s/planet effective, eta 582 s
+  test2: 546/1822 done, 235 s elapsed, 0.43 s/planet effective, eta 550 s
+  test2: 637/1822 done, 274 s elapsed, 0.43 s/planet effective, eta 510 s
+  test2: 728/1822 done, 315 s elapsed, 0.43 s/planet effective, eta 473 s
+  test2: 819/1822 done, 354 s elapsed, 0.43 s/planet effective, eta 434 s
+  test2: 910/1822 done, 391 s elapsed, 0.43 s/planet effective, eta 392 s
+  test2: 1001/1822 done, 428 s elapsed, 0.43 s/planet effective, eta 351 s
+  test2: 1092/1822 done, 464 s elapsed, 0.42 s/planet effective, eta 310 s
+  test2: 1183/1822 done, 501 s elapsed, 0.42 s/planet effective, eta 270 s
+  test2: 1274/1822 done, 537 s elapsed, 0.42 s/planet effective, eta 231 s
+  test2: 1365/1822 done, 572 s elapsed, 0.42 s/planet effective, eta 192 s
+  test2: 1456/1822 done, 609 s elapsed, 0.42 s/planet effective, eta 153 s
+  test2: 1547/1822 done, 646 s elapsed, 0.42 s/planet effective, eta 115 s
+  test2: 1638/1822 done, 682 s elapsed, 0.42 s/planet effective, eta 77 s
+  test2: 1729/1822 done, 718 s elapsed, 0.41 s/planet effective, eta 39 s
+  test2: 1820/1822 done, 755 s elapsed, 0.41 s/planet effective, eta 1 s
+  test2: 1822/1822 done, 756 s elapsed, 0.42 s/planet effective, eta 0 s
+test2: 1822 planets, 0 Exo-Transmit failures (NaN rows), jobs=6
+  per-planet wall clock inside a worker: median 2.5 s, mean 2.5 s, min 1.4 s, max 4.8 s
+  end-to-end: 756 s total = 0.42 s/planet effective (1822 timed)
+  projected for a 2,000-planet split at jobs=6: 14 min; five splits 1.2 h
+  wrote /mnt/c/Users/owenh/BioSignatureDetectionModel/v2/data/test2_native_exotransmit.npy  shape (1822, 2753)  NaN rows 0
+--- test3 ---
+  test3: 91/1823 done, 35 s elapsed, 0.39 s/planet effective, eta 674 s
+  test3: 182/1823 done, 70 s elapsed, 0.39 s/planet effective, eta 633 s
+  test3: 273/1823 done, 109 s elapsed, 0.40 s/planet effective, eta 616 s
+  test3: 364/1823 done, 144 s elapsed, 0.40 s/planet effective, eta 579 s
+  test3: 455/1823 done, 182 s elapsed, 0.40 s/planet effective, eta 546 s
+  test3: 546/1823 done, 219 s elapsed, 0.40 s/planet effective, eta 512 s
+  test3: 637/1823 done, 255 s elapsed, 0.40 s/planet effective, eta 475 s
+  test3: 728/1823 done, 292 s elapsed, 0.40 s/planet effective, eta 440 s
+  test3: 819/1823 done, 330 s elapsed, 0.40 s/planet effective, eta 404 s
+  test3: 910/1823 done, 366 s elapsed, 0.40 s/planet effective, eta 367 s
+  test3: 1001/1823 done, 402 s elapsed, 0.40 s/planet effective, eta 330 s
+  test3: 1092/1823 done, 439 s elapsed, 0.40 s/planet effective, eta 294 s
+  test3: 1183/1823 done, 474 s elapsed, 0.40 s/planet effective, eta 257 s
+  test3: 1274/1823 done, 512 s elapsed, 0.40 s/planet effective, eta 221 s
+  test3: 1365/1823 done, 549 s elapsed, 0.40 s/planet effective, eta 184 s
+  test3: 1456/1823 done, 585 s elapsed, 0.40 s/planet effective, eta 148 s
+  test3: 1547/1823 done, 623 s elapsed, 0.40 s/planet effective, eta 111 s
+  test3: 1638/1823 done, 658 s elapsed, 0.40 s/planet effective, eta 74 s
+  test3: 1729/1823 done, 693 s elapsed, 0.40 s/planet effective, eta 38 s
+  test3: 1820/1823 done, 730 s elapsed, 0.40 s/planet effective, eta 1 s
+  test3: 1823/1823 done, 731 s elapsed, 0.40 s/planet effective, eta 0 s
+test3: 1823 planets, 0 Exo-Transmit failures (NaN rows), jobs=6
+  per-planet wall clock inside a worker: median 2.4 s, mean 2.4 s, min 1.4 s, max 4.2 s
+  end-to-end: 731 s total = 0.40 s/planet effective (1823 timed)
+  projected for a 2,000-planet split at jobs=6: 13 min; five splits 1.1 h
+  wrote /mnt/c/Users/owenh/BioSignatureDetectionModel/v2/data/test3_native_exotransmit.npy  shape (1823, 2753)  NaN rows 0
+--- test4 ---
+  test4: 89/1793 done, 36 s elapsed, 0.41 s/planet effective, eta 694 s
+  test4: 178/1793 done, 73 s elapsed, 0.41 s/planet effective, eta 664 s
+  test4: 267/1793 done, 107 s elapsed, 0.40 s/planet effective, eta 614 s
+  test4: 356/1793 done, 143 s elapsed, 0.40 s/planet effective, eta 577 s
+  test4: 445/1793 done, 178 s elapsed, 0.40 s/planet effective, eta 540 s
+  test4: 534/1793 done, 214 s elapsed, 0.40 s/planet effective, eta 505 s
+  test4: 623/1793 done, 249 s elapsed, 0.40 s/planet effective, eta 468 s
+  test4: 712/1793 done, 284 s elapsed, 0.40 s/planet effective, eta 432 s
+  test4: 801/1793 done, 320 s elapsed, 0.40 s/planet effective, eta 396 s
+  test4: 890/1793 done, 355 s elapsed, 0.40 s/planet effective, eta 360 s
+  test4: 979/1793 done, 390 s elapsed, 0.40 s/planet effective, eta 324 s
+  test4: 1068/1793 done, 426 s elapsed, 0.40 s/planet effective, eta 289 s
+  test4: 1157/1793 done, 462 s elapsed, 0.40 s/planet effective, eta 254 s
+  test4: 1246/1793 done, 498 s elapsed, 0.40 s/planet effective, eta 219 s
+  test4: 1335/1793 done, 533 s elapsed, 0.40 s/planet effective, eta 183 s
+  test4: 1424/1793 done, 568 s elapsed, 0.40 s/planet effective, eta 147 s
+  test4: 1513/1793 done, 603 s elapsed, 0.40 s/planet effective, eta 112 s
+  test4: 1602/1793 done, 639 s elapsed, 0.40 s/planet effective, eta 76 s
+  test4: 1691/1793 done, 674 s elapsed, 0.40 s/planet effective, eta 41 s
+  test4: 1780/1793 done, 708 s elapsed, 0.40 s/planet effective, eta 5 s
+  test4: 1793/1793 done, 714 s elapsed, 0.40 s/planet effective, eta 0 s
+test4: 1793 planets, 0 Exo-Transmit failures (NaN rows), jobs=6
+  per-planet wall clock inside a worker: median 2.4 s, mean 2.4 s, min 1.4 s, max 4.0 s
+  end-to-end: 714 s total = 0.40 s/planet effective (1793 timed)
+  projected for a 2,000-planet split at jobs=6: 13 min; five splits 1.1 h
+  wrote /mnt/c/Users/owenh/BioSignatureDetectionModel/v2/data/test4_native_exotransmit.npy  shape (1793, 2753)  NaN rows 0
+--- test5 ---
+  test5: 91/1821 done, 40 s elapsed, 0.44 s/planet effective, eta 770 s
+  test5: 182/1821 done, 77 s elapsed, 0.42 s/planet effective, eta 696 s
+  test5: 273/1821 done, 112 s elapsed, 0.41 s/planet effective, eta 633 s
+  test5: 364/1821 done, 147 s elapsed, 0.40 s/planet effective, eta 589 s
+  test5: 455/1821 done, 183 s elapsed, 0.40 s/planet effective, eta 550 s
+  test5: 546/1821 done, 220 s elapsed, 0.40 s/planet effective, eta 513 s
+  test5: 637/1821 done, 257 s elapsed, 0.40 s/planet effective, eta 478 s
+  test5: 728/1821 done, 293 s elapsed, 0.40 s/planet effective, eta 439 s
+  test5: 819/1821 done, 331 s elapsed, 0.40 s/planet effective, eta 405 s
+  test5: 910/1821 done, 371 s elapsed, 0.41 s/planet effective, eta 372 s
+  test5: 1001/1821 done, 408 s elapsed, 0.41 s/planet effective, eta 334 s
+  test5: 1092/1821 done, 444 s elapsed, 0.41 s/planet effective, eta 297 s
+  test5: 1183/1821 done, 482 s elapsed, 0.41 s/planet effective, eta 260 s
+  test5: 1274/1821 done, 518 s elapsed, 0.41 s/planet effective, eta 223 s
+  test5: 1365/1821 done, 556 s elapsed, 0.41 s/planet effective, eta 186 s
+  test5: 1456/1821 done, 590 s elapsed, 0.41 s/planet effective, eta 148 s
+  test5: 1547/1821 done, 628 s elapsed, 0.41 s/planet effective, eta 111 s
+  test5: 1638/1821 done, 668 s elapsed, 0.41 s/planet effective, eta 75 s
+  test5: 1729/1821 done, 703 s elapsed, 0.41 s/planet effective, eta 37 s
+  test5: 1820/1821 done, 738 s elapsed, 0.41 s/planet effective, eta 0 s
+  test5: 1821/1821 done, 739 s elapsed, 0.41 s/planet effective, eta 0 s
+test5: 1821 planets, 0 Exo-Transmit failures (NaN rows), jobs=6
+  per-planet wall clock inside a worker: median 2.5 s, mean 2.4 s, min 1.4 s, max 4.5 s
+  end-to-end: 739 s total = 0.41 s/planet effective (1821 timed)
+  projected for a 2,000-planet split at jobs=6: 14 min; five splits 1.1 h
+  wrote /mnt/c/Users/owenh/BioSignatureDetectionModel/v2/data/test5_native_exotransmit.npy  shape (1821, 2753)  NaN rows 0
+== opacity Tue Sep  8 23:46:06 PDT 2026
+swap dir [exomol] /home/owenhyang/opacity_swap_v2_exomol
+  swapped  CH4  -> 12C-1H4__YT34to10.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  CO2  -> 12C-16O2__UCL-4000.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  H2O  -> 1H2-16O__POKAZATEL__R15000_0.3-50mu.xsec.TauREx.h5
+  retained O2   -> opacO2.dat
+  retained O3   -> opacO3.dat
+--- test1 [exomol]: 1813 planets, jobs=6, reduce=bin ---
+    823 s total, 0.45 s/planet (wall, jobs=6); 0 failures (NaN rows)
+    vs baseline: median rel diff 3.615e-03, max 1.009e+01; median Pearson r 0.924615, median mean-depth ratio 1.003501
+    wrote /mnt/c/Users/owenh/BioSignatureDetectionModel/v2/data/test1_native_exomol.npy (1813, 2753)
+
+swap dir [exomol_o3] /home/owenhyang/opacity_swap_v2_exomol_o3
+  swapped  CH4  -> 12C-1H4__YT34to10.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  CO2  -> 12C-16O2__UCL-4000.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  H2O  -> 1H2-16O__POKAZATEL__R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  O3   -> 16O3__HITRAN.R15000_0.3-28mu.xsec.TauREx.h5
+  retained O2   -> opacO2.dat
+--- test1 [exomol_o3]: 1813 planets, jobs=6, reduce=bin ---
+    963 s total, 0.53 s/planet (wall, jobs=6); 0 failures (NaN rows)
+    vs baseline: median rel diff 5.355e-03, max 7.633e+00; median Pearson r 0.873070, median mean-depth ratio 1.000902
+    wrote /mnt/c/Users/owenh/BioSignatureDetectionModel/v2/data/test1_native_exomol_o3.npy (1813, 2753)
+
+swap dir [exomol] /home/owenhyang/opacity_swap_v2_exomol
+  swapped  CH4  -> 12C-1H4__YT34to10.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  CO2  -> 12C-16O2__UCL-4000.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  H2O  -> 1H2-16O__POKAZATEL__R15000_0.3-50mu.xsec.TauREx.h5
+  retained O2   -> opacO2.dat
+  retained O3   -> opacO3.dat
+--- test2 [exomol]: 1822 planets, jobs=6, reduce=bin ---
+    877 s total, 0.48 s/planet (wall, jobs=6); 0 failures (NaN rows)
+    vs baseline: median rel diff 3.710e-03, max 5.472e+01; median Pearson r 0.924314, median mean-depth ratio 1.003579
+    wrote /mnt/c/Users/owenh/BioSignatureDetectionModel/v2/data/test2_native_exomol.npy (1822, 2753)
+
+swap dir [exomol_o3] /home/owenhyang/opacity_swap_v2_exomol_o3
+  swapped  CH4  -> 12C-1H4__YT34to10.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  CO2  -> 12C-16O2__UCL-4000.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  H2O  -> 1H2-16O__POKAZATEL__R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  O3   -> 16O3__HITRAN.R15000_0.3-28mu.xsec.TauREx.h5
+  retained O2   -> opacO2.dat
+--- test2 [exomol_o3]: 1822 planets, jobs=6, reduce=bin ---
+    908 s total, 0.50 s/planet (wall, jobs=6); 0 failures (NaN rows)
+    vs baseline: median rel diff 5.431e-03, max 5.474e+01; median Pearson r 0.873875, median mean-depth ratio 1.000850
+    wrote /mnt/c/Users/owenh/BioSignatureDetectionModel/v2/data/test2_native_exomol_o3.npy (1822, 2753)
+
+swap dir [exomol] /home/owenhyang/opacity_swap_v2_exomol
+  swapped  CH4  -> 12C-1H4__YT34to10.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  CO2  -> 12C-16O2__UCL-4000.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  H2O  -> 1H2-16O__POKAZATEL__R15000_0.3-50mu.xsec.TauREx.h5
+  retained O2   -> opacO2.dat
+  retained O3   -> opacO3.dat
+--- test3 [exomol]: 1823 planets, jobs=6, reduce=bin ---
+    855 s total, 0.47 s/planet (wall, jobs=6); 0 failures (NaN rows)
+    vs baseline: median rel diff 3.662e-03, max 1.098e+01; median Pearson r 0.926754, median mean-depth ratio 1.003207
+    wrote /mnt/c/Users/owenh/BioSignatureDetectionModel/v2/data/test3_native_exomol.npy (1823, 2753)
+
+swap dir [exomol_o3] /home/owenhyang/opacity_swap_v2_exomol_o3
+  swapped  CH4  -> 12C-1H4__YT34to10.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  CO2  -> 12C-16O2__UCL-4000.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  H2O  -> 1H2-16O__POKAZATEL__R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  O3   -> 16O3__HITRAN.R15000_0.3-28mu.xsec.TauREx.h5
+  retained O2   -> opacO2.dat
+--- test3 [exomol_o3]: 1823 planets, jobs=6, reduce=bin ---
+    918 s total, 0.50 s/planet (wall, jobs=6); 0 failures (NaN rows)
+    vs baseline: median rel diff 5.358e-03, max 9.254e+00; median Pearson r 0.877110, median mean-depth ratio 1.000696
+    wrote /mnt/c/Users/owenh/BioSignatureDetectionModel/v2/data/test3_native_exomol_o3.npy (1823, 2753)
+
+swap dir [exomol] /home/owenhyang/opacity_swap_v2_exomol
+  swapped  CH4  -> 12C-1H4__YT34to10.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  CO2  -> 12C-16O2__UCL-4000.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  H2O  -> 1H2-16O__POKAZATEL__R15000_0.3-50mu.xsec.TauREx.h5
+  retained O2   -> opacO2.dat
+  retained O3   -> opacO3.dat
+--- test4 [exomol]: 1793 planets, jobs=6, reduce=bin ---
+    853 s total, 0.48 s/planet (wall, jobs=6); 0 failures (NaN rows)
+    vs baseline: median rel diff 3.646e-03, max 2.040e+01; median Pearson r 0.926751, median mean-depth ratio 1.003297
+    wrote /mnt/c/Users/owenh/BioSignatureDetectionModel/v2/data/test4_native_exomol.npy (1793, 2753)
+
+swap dir [exomol_o3] /home/owenhyang/opacity_swap_v2_exomol_o3
+  swapped  CH4  -> 12C-1H4__YT34to10.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  CO2  -> 12C-16O2__UCL-4000.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  H2O  -> 1H2-16O__POKAZATEL__R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  O3   -> 16O3__HITRAN.R15000_0.3-28mu.xsec.TauREx.h5
+  retained O2   -> opacO2.dat
+--- test4 [exomol_o3]: 1793 planets, jobs=6, reduce=bin ---
+    892 s total, 0.50 s/planet (wall, jobs=6); 0 failures (NaN rows)
+    vs baseline: median rel diff 5.307e-03, max 2.040e+01; median Pearson r 0.873825, median mean-depth ratio 1.000726
+    wrote /mnt/c/Users/owenh/BioSignatureDetectionModel/v2/data/test4_native_exomol_o3.npy (1793, 2753)
+
+swap dir [exomol] /home/owenhyang/opacity_swap_v2_exomol
+  swapped  CH4  -> 12C-1H4__YT34to10.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  CO2  -> 12C-16O2__UCL-4000.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  H2O  -> 1H2-16O__POKAZATEL__R15000_0.3-50mu.xsec.TauREx.h5
+  retained O2   -> opacO2.dat
+  retained O3   -> opacO3.dat
+--- test5 [exomol]: 1821 planets, jobs=6, reduce=bin ---
+    875 s total, 0.48 s/planet (wall, jobs=6); 0 failures (NaN rows)
+    vs baseline: median rel diff 3.533e-03, max 2.101e+01; median Pearson r 0.927894, median mean-depth ratio 1.003250
+    wrote /mnt/c/Users/owenh/BioSignatureDetectionModel/v2/data/test5_native_exomol.npy (1821, 2753)
+
+swap dir [exomol_o3] /home/owenhyang/opacity_swap_v2_exomol_o3
+  swapped  CH4  -> 12C-1H4__YT34to10.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  CO2  -> 12C-16O2__UCL-4000.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  H2O  -> 1H2-16O__POKAZATEL__R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  O3   -> 16O3__HITRAN.R15000_0.3-28mu.xsec.TauREx.h5
+  retained O2   -> opacO2.dat
+--- test5 [exomol_o3]: 1821 planets, jobs=6, reduce=bin ---
+    896 s total, 0.49 s/planet (wall, jobs=6); 0 failures (NaN rows)
+    vs baseline: median rel diff 5.197e-03, max 1.306e+01; median Pearson r 0.880285, median mean-depth ratio 1.000617
+    wrote /mnt/c/Users/owenh/BioSignatureDetectionModel/v2/data/test5_native_exomol_o3.npy (1821, 2753)
+
+== aerosol Wed Sep  9 02:13:57 PDT 2026
+=== test1: 1813 planets ===
+  cloud 1e5Pa: 0 failures, ptp ratio 0.944, 0.05 s/planet, 92 s -> test1_native_cloud_1e5Pa.npy
+  cloud 1e4Pa: 0 failures, ptp ratio 0.760, 0.04 s/planet, 71 s -> test1_native_cloud_1e4Pa.npy
+  cloud 1e3Pa: 0 failures, ptp ratio 0.551, 0.04 s/planet, 68 s -> test1_native_cloud_1e3Pa.npy
+  cloud 1e2Pa: 0 failures, ptp ratio 0.326, 0.04 s/planet, 70 s -> test1_native_cloud_1e2Pa.npy
+  cloud 1e1Pa: 0 failures, ptp ratio 0.068, 0.04 s/planet, 67 s -> test1_native_cloud_1e1Pa.npy
+  haze 2p0e5: 0 failures, ptp ratio 0.999, 0.05 s/planet, 87 s -> test1_native_haze_2p0e5.npy
+  haze 2p0e6: 0 failures, ptp ratio 0.993, 0.05 s/planet, 86 s -> test1_native_haze_2p0e6.npy
+  haze 3p0e7: 0 failures, ptp ratio 0.928, 0.05 s/planet, 86 s -> test1_native_haze_3p0e7.npy
+  haze 2p4e8: 0 failures, ptp ratio 0.782, 0.05 s/planet, 86 s -> test1_native_haze_2p4e8.npy
+  haze 1p0e10: 0 failures, ptp ratio 0.573, 0.05 s/planet, 89 s -> test1_native_haze_1p0e10.npy
+=== test2: 1822 planets ===
+  cloud 1e5Pa: 0 failures, ptp ratio 0.942, 0.04 s/planet, 75 s -> test2_native_cloud_1e5Pa.npy
+  cloud 1e4Pa: 0 failures, ptp ratio 0.762, 0.04 s/planet, 68 s -> test2_native_cloud_1e4Pa.npy
+  cloud 1e3Pa: 0 failures, ptp ratio 0.552, 0.03 s/planet, 63 s -> test2_native_cloud_1e3Pa.npy
+  cloud 1e2Pa: 0 failures, ptp ratio 0.324, 0.04 s/planet, 67 s -> test2_native_cloud_1e2Pa.npy
+  cloud 1e1Pa: 0 failures, ptp ratio 0.065, 0.04 s/planet, 66 s -> test2_native_cloud_1e1Pa.npy
+  haze 2p0e5: 0 failures, ptp ratio 0.999, 0.05 s/planet, 89 s -> test2_native_haze_2p0e5.npy
+  haze 2p0e6: 0 failures, ptp ratio 0.992, 0.05 s/planet, 89 s -> test2_native_haze_2p0e6.npy
+  haze 3p0e7: 0 failures, ptp ratio 0.920, 0.05 s/planet, 83 s -> test2_native_haze_3p0e7.npy
+  haze 2p4e8: 0 failures, ptp ratio 0.773, 0.05 s/planet, 84 s -> test2_native_haze_2p4e8.npy
+  haze 1p0e10: 0 failures, ptp ratio 0.565, 0.05 s/planet, 84 s -> test2_native_haze_1p0e10.npy
+=== test3: 1823 planets ===
+  cloud 1e5Pa: 0 failures, ptp ratio 0.942, 0.04 s/planet, 73 s -> test3_native_cloud_1e5Pa.npy
+  cloud 1e4Pa: 0 failures, ptp ratio 0.760, 0.04 s/planet, 71 s -> test3_native_cloud_1e4Pa.npy
+  cloud 1e3Pa: 0 failures, ptp ratio 0.548, 0.03 s/planet, 63 s -> test3_native_cloud_1e3Pa.npy
+  cloud 1e2Pa: 0 failures, ptp ratio 0.322, 0.04 s/planet, 67 s -> test3_native_cloud_1e2Pa.npy
+  cloud 1e1Pa: 0 failures, ptp ratio 0.063, 0.03 s/planet, 62 s -> test3_native_cloud_1e1Pa.npy
+  haze 2p0e5: 0 failures, ptp ratio 0.999, 0.05 s/planet, 84 s -> test3_native_haze_2p0e5.npy
+  haze 2p0e6: 1 failures, ptp ratio 0.993, 0.05 s/planet, 86 s -> test3_native_haze_2p0e6.npy
+  haze 3p0e7: 1 failures, ptp ratio 0.925, 0.05 s/planet, 93 s -> test3_native_haze_3p0e7.npy
+  haze 2p4e8: 1 failures, ptp ratio 0.782, 0.05 s/planet, 90 s -> test3_native_haze_2p4e8.npy
+  haze 1p0e10: 1 failures, ptp ratio 0.571, 0.05 s/planet, 88 s -> test3_native_haze_1p0e10.npy
+=== test4: 1793 planets ===
+  cloud 1e5Pa: 0 failures, ptp ratio 0.939, 0.04 s/planet, 73 s -> test4_native_cloud_1e5Pa.npy
+  cloud 1e4Pa: 0 failures, ptp ratio 0.758, 0.04 s/planet, 69 s -> test4_native_cloud_1e4Pa.npy
+  cloud 1e3Pa: 0 failures, ptp ratio 0.547, 0.04 s/planet, 69 s -> test4_native_cloud_1e3Pa.npy
+  cloud 1e2Pa: 0 failures, ptp ratio 0.322, 0.04 s/planet, 65 s -> test4_native_cloud_1e2Pa.npy
+  cloud 1e1Pa: 0 failures, ptp ratio 0.068, 0.04 s/planet, 64 s -> test4_native_cloud_1e1Pa.npy
+  haze 2p0e5: 0 failures, ptp ratio 0.999, 0.05 s/planet, 91 s -> test4_native_haze_2p0e5.npy
+  haze 2p0e6: 0 failures, ptp ratio 0.992, 0.05 s/planet, 86 s -> test4_native_haze_2p0e6.npy
+  haze 3p0e7: 0 failures, ptp ratio 0.924, 0.05 s/planet, 91 s -> test4_native_haze_3p0e7.npy
+  haze 2p4e8: 0 failures, ptp ratio 0.786, 0.05 s/planet, 86 s -> test4_native_haze_2p4e8.npy
+  haze 1p0e10: 0 failures, ptp ratio 0.584, 0.05 s/planet, 87 s -> test4_native_haze_1p0e10.npy
+=== test5: 1821 planets ===
+  cloud 1e5Pa: 0 failures, ptp ratio 0.944, 0.04 s/planet, 77 s -> test5_native_cloud_1e5Pa.npy
+  cloud 1e4Pa: 0 failures, ptp ratio 0.761, 0.04 s/planet, 74 s -> test5_native_cloud_1e4Pa.npy
+  cloud 1e3Pa: 0 failures, ptp ratio 0.549, 0.04 s/planet, 68 s -> test5_native_cloud_1e3Pa.npy
+  cloud 1e2Pa: 0 failures, ptp ratio 0.321, 0.04 s/planet, 66 s -> test5_native_cloud_1e2Pa.npy
+  cloud 1e1Pa: 0 failures, ptp ratio 0.062, 0.03 s/planet, 62 s -> test5_native_cloud_1e1Pa.npy
+  haze 2p0e5: 0 failures, ptp ratio 0.999, 0.05 s/planet, 90 s -> test5_native_haze_2p0e5.npy
+  haze 2p0e6: 0 failures, ptp ratio 0.992, 0.05 s/planet, 88 s -> test5_native_haze_2p0e6.npy
+  haze 3p0e7: 0 failures, ptp ratio 0.925, 0.05 s/planet, 88 s -> test5_native_haze_3p0e7.npy
+  haze 2p4e8: 0 failures, ptp ratio 0.784, 0.05 s/planet, 85 s -> test5_native_haze_2p4e8.npy
+  haze 1p0e10: 0 failures, ptp ratio 0.572, 0.05 s/planet, 87 s -> test5_native_haze_1p0e10.npy
+== done Wed Sep  9 03:19:46 PDT 2026

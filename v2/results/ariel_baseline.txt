@@ -1,0 +1,13 @@
+Hand-built band-depth index vs the classifier, configuration ariel
+
+Bands (um): CH4a 3.15-3.45; CH4b 7.3-7.79; O3 4.6-4.85
+Cutoffs tuned on the training set: CH4 depth > 0.296, O3 depth > -0.120 (training accuracy 61.53%)
+
+method                            accuracy       F1
+index-2D                           61.49%±0.90        -
+index-ML                           66.04%±0.80   67.44%
+full pipeline                      90.33%±0.42   90.29%
+
+The full pipeline leads the hand-built index by 28.8 points and the
+same two band depths given to XGBoost by 24.3 points, so the advantage is
+the spectral detail beyond two band ratios, not the model alone.
