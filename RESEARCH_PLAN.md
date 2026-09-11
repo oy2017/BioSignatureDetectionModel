@@ -179,6 +179,34 @@ usable across the cool third of the grid or only above ~1200 K.
 If the measured cost is small, the objection is retired with a number instead of
 a paragraph. That is strictly better than disclosing it.
 
+**Implemented 2026-09-11** (`v3/generate_grid.py --mode quenched`). Because an
+isothermal model has no T–P profile, the chemistry step builds one: a Guillot
+(2010) radiative profile (κ_th = 10⁻² cm² g⁻¹, γ = 0.4, T_int = 100 K, f = ¼)
+**rescaled so its temperature at the 10 mbar reference equals the planet's T** —
+which makes the equilibrium composition there identical to the primary grid's
+by construction, so the axis isolates quenching alone — with a convective
+adiabat (T ∝ P^{2/7}) below the radiative–convective boundary, because that hot
+interior is where the CO carried up into cool atmospheres comes from. The
+Zahnle & Marley (2014) CO→CH₄ time, t_chem = 1.5×10⁻⁶ P⁻¹ exp(42000/T) s, is
+compared with t_mix = H²/K_zz at K_zz = 10⁹ cm² s⁻¹; the composition is frozen
+at the **shallowest** level where chemistry still keeps up and the spectrum is
+rendered isothermal with it. All profile parameters and K_zz are placeholders
+and are disclosed as such.
+
+Direction check on 40 planets, quenched minus equilibrium in dex (median):
+500–1000 K **CH₄ −2.85, CO +2.01, H₂O −1.04**; 1000–1500 K CH₄ −1.33, CO 0.00;
+1500–2500 K all ≈ 0. That is the textbook signature — CO carried up into cool
+atmospheres, nothing when hot — and it is what a referee will check first.
+
+Two wrong versions were built first and are worth recording. (1) Evaluating the
+baseline at the isothermal T but the quenched variant at the unanchored
+profile's temperature produced +4 dex CH₄ shifts for *hot* planets: a profile
+mismatch, not quenching. (2) Choosing the *deepest* equilibrating level as the
+quench point, once an adiabat existed, landed at ~1000 bar and thousands of
+kelvin, where FastChem correctly dissociates everything: every molecule fell
+8–12 dex. The quench point is the shallowest equilibrating level, and the
+search is capped at 100 bar.
+
 ## 4. What the contributions are
 
 **The product is a criterion and a procedure. The numbers are the worked

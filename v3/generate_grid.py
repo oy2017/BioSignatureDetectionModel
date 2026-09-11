@@ -25,7 +25,13 @@ from joblib import Parallel, delayed
 HERE = os.path.dirname(os.path.abspath(__file__))
 V2 = os.path.join(os.path.dirname(HERE), "v2")
 sys.path.insert(0, V2)
-from generate_grid import build_system, native_wavelengths, one_native, chunked, GASES, BULK  # noqa: E402
+# load v2's generator by path under its own name: importing it as `generate_grid` would
+# collide with this module whenever this file is imported rather than run
+import importlib.util  # noqa: E402
+_spec = importlib.util.spec_from_file_location("v2_generate_grid", os.path.join(V2, "generate_grid.py"))
+_v2 = importlib.util.module_from_spec(_spec); _spec.loader.exec_module(_v2)
+build_system, native_wavelengths, one_native, chunked, GASES, BULK = (
+    _v2.build_system, _v2.native_wavelengths, _v2.one_native, _v2.chunked, _v2.GASES, _v2.BULK)
 import pyfastchem  # noqa: E402
 
 DATA = os.path.join(HERE, "data")
@@ -46,31 +52,75 @@ class Chemistry:
         self.iC, self.iO = fc.getElementIndex("C"), fc.getElementIndex("O")
         self.metals = [i for i in range(fc.getElementNumber()) if fc.getElementSymbol(i) not in ("H", "He")]
 
-    def composition(self, T, co, mh, mode="equilibrium"):
-        if mode != "equilibrium":
-            raise NotImplementedError("Axis 8 (quenched) is a hook; implement before use")
+    def _equilibrium_at(self, T, P_bar, co, mh):
         ab = self.base.copy(); ab[self.metals] *= 10 ** mh; ab[self.iC] = ab[self.iO] * co
         self.fc.setElementAbundances(ab)
         inp, out = pyfastchem.FastChemInput(), pyfastchem.FastChemOutput()
-        inp.temperature, inp.pressure = [float(T)], [P_CHEM_BAR]
+        inp.temperature, inp.pressure = [float(T)], [float(P_bar)]
         self.fc.calcDensities(inp, out)
         nd = np.array(out.number_densities)[0]; tot = nd.sum()
         return {g: float(max(np.log10(max(nd[i] / tot, 1e-300)), LOG_FLOOR)) for g, i in self.idx.items()}
 
+    def composition(self, T, co, mh, mode="equilibrium", g_cgs=None):
+        """mode='equilibrium': FastChem at the isothermal T and P_CHEM_BAR (the primary grid).
+
+        mode='quenched' (Axis 8). Quenching is a property of the T-P profile, which an isothermal
+        model does not have, so the chemistry step builds one: a Guillot (2010) radiative profile
+        (kappa_th = 1e-2 cm^2/g, gamma = 0.4, T_int = 100 K, f = 1/4) RESCALED so that its temperature
+        at P_CHEM_BAR equals the planet's T -- which makes the equilibrium composition at that level
+        identical to the primary grid's by construction, so the axis isolates quenching alone -- with
+        a convective adiabat (T ~ P^(2/7), H2-dominated) below the radiative-convective boundary, since
+        that hot interior is where the CO carried up into cool atmospheres comes from. The CO->CH4
+        conversion time of Zahnle & Marley (2014), t_chem = 1.5e-6 P^-1 exp(42000/T) s (P in bar), is
+        compared with t_mix = H^2 / K_zz, K_zz = 1e9 cm^2/s, and the carbon/oxygen partitioning is
+        frozen at the shallowest level where chemistry still keeps up (the quench point). If that level
+        lies above P_CHEM_BAR the composition is unchanged. The spectrum is still rendered isothermal
+        with the quenched composition. The profile parameters and K_zz are standard placeholders and
+        are disclosed as such.
+        """
+        if mode == "equilibrium":
+            return self._equilibrium_at(T, P_CHEM_BAR, co, mh)
+        if mode != "quenched":
+            raise ValueError(mode)
+        if g_cgs is None:
+            raise ValueError("quenched mode needs the surface gravity g_cgs")
+        P = np.logspace(-4, 3, 300)                                     # bar, top to bottom
+        tau = 1e-2 * (P * 1e6) / g_cgs
+        gam, Tint, Teq, f = 0.4, 100.0, float(T), 0.25
+        Tp = (0.75 * Tint**4 * (2/3 + tau) + 0.75 * Teq**4 * f * (2/3 + 1/(gam*np.sqrt(3))
+              + (gam/np.sqrt(3) - 1/(gam*np.sqrt(3))) * np.exp(-gam*tau*np.sqrt(3)))) ** 0.25
+        Tp = Tp * (float(T) / np.interp(P_CHEM_BAR, P, Tp))          # anchor: T(P_CHEM_BAR) == T
+        # convective interior: follow the adiabat once the radiative gradient falls below it
+        dlnT = np.gradient(np.log(Tp), np.log(P)); ad = 2.0 / 7.0
+        deep = np.where((P > P_CHEM_BAR) & (dlnT < ad))[0]
+        if deep.size:
+            i0 = deep[0]; Tp[i0:] = Tp[i0] * (P[i0:] / P[i0]) ** ad
+        t_chem = 1.5e-6 / P * np.exp(42000.0 / Tp)
+        mu_mH = 2.3 * 1.6726e-24; H = 1.380649e-16 * Tp / (mu_mH * g_cgs)
+        t_mix = H**2 / 1e9
+        fast = (t_chem < t_mix) & (P >= P_CHEM_BAR) & (P <= 100.0)     # levels at/below the photosphere that equilibrate
+        if not fast.any():
+            return self._equilibrium_at(T, P_CHEM_BAR, co, mh)         # nothing equilibrates: no quench signal
+        # the quench point is the SHALLOWEST level where chemistry still keeps up: below it the gas
+        # is in equilibrium, above it the composition is frozen at this level's value and mixed up
+        iq = np.min(np.where(fast)[0])
+        return self._equilibrium_at(Tp[iq], P[iq], co, mh)
 
 def worker(rows, wl):
     import warnings; warnings.filterwarnings("ignore")
     return [one_native(r, wl) for r in rows]
 
 
-def make_split(name, seed, jobs, wl, limit=None):
+def make_split(name, seed, jobs, wl, limit=None, mode="equilibrium"):
     P = pd.read_parquet(os.path.join(V2, "data", f"{name}_params.parquet"))
     P = P[list(BULK) + ["atm fill_gas"]].copy() if "atm fill_gas" in P else P[list(BULK)].copy()
     if limit: P = P.iloc[:limit].copy()
     rng = np.random.default_rng(seed)
     P["co_ratio"] = rng.uniform(*CO_RANGE, len(P)); P["mh"] = rng.uniform(*MH_RANGE, len(P))
     chem = Chemistry(); t0 = time.time()
-    comp = [chem.composition(r["atm temperature"], r.co_ratio, r.mh) for _, r in P.iterrows()]
+    G = 6.674e-8 * (P["p_mass"].to_numpy() * 5.972e27) / (P["p_radius"].to_numpy() * 6.371e8) ** 2   # cgs
+    comp = [chem.composition(r["atm temperature"], r.co_ratio, r.mh, mode=mode, g_cgs=g)
+            for (_, r), g in zip(P.iterrows(), G)]
     for g in GASES: P[f"atm {g}"] = [c[g] for c in comp]
     P["atm fill_gas"] = "H2"; P["label_co"] = (P.co_ratio > CO_CUT).astype(int)
     print(f"{name}: chemistry for {len(P)} in {time.time()-t0:.1f} s", flush=True)
@@ -84,17 +134,19 @@ def make_split(name, seed, jobs, wl, limit=None):
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--splits", nargs="*", default=SPLITS)
-    ap.add_argument("--jobs", type=int, default=12); ap.add_argument("--smoke", type=int, default=0); a = ap.parse_args()
+    ap.add_argument("--jobs", type=int, default=12); ap.add_argument("--smoke", type=int, default=0)
+    ap.add_argument("--mode", default="equilibrium", choices=["equilibrium", "quenched"]); a = ap.parse_args()
     os.makedirs(DATA, exist_ok=True)
     wl = native_wavelengths(); np.save(os.path.join(DATA, "native_wl.npy"), wl)
     if a.smoke:
-        kept, X = make_split("test1", 3, min(a.jobs, 6), wl, limit=a.smoke)
+        kept, X = make_split("test1", 3, min(a.jobs, 6), wl, limit=a.smoke, mode=a.mode)
         print("smoke: log10 abundance medians", {g: round(float(kept[f"atm {g}"].median()), 2) for g in GASES})
         print("smoke: native spectrum shape", X.shape, "depth range", f"{X.min():.3e}-{X.max():.3e}")
         return
     for k, s in enumerate(a.splits):
-        kept, X = make_split(s, 100 + k, a.jobs, wl)
-        kept.to_parquet(os.path.join(DATA, f"{s}_params.parquet")); np.save(os.path.join(DATA, f"{s}_native.npy"), X)
+        kept, X = make_split(s, 100 + k, a.jobs, wl, mode=a.mode)
+        tag = "" if a.mode == "equilibrium" else f"_{a.mode}"
+        kept.to_parquet(os.path.join(DATA, f"{s}_params{tag}.parquet")); np.save(os.path.join(DATA, f"{s}_native{tag}.npy"), X)
 
 
 if __name__ == "__main__":
