@@ -187,8 +187,10 @@ def main():
         for s in (15, 10, 7, 5):
             Xw, _ = add_noise(Xnf_pool, Ppool, cen, snr=s, shape="white", seed=777 + s)
             Xa, _ = add_noise(Xnf_pool, Ppool, cen, snr=s, shape="ariel", seed=777 + s)
+            Xe, _ = add_noise(Xnf_pool, Ppool, cen, snr=s, shape="exosim", seed=777 + s)   # v3: consortium simulator shape
             record("noise colouring", f"white snr{s}", Xw, amp_of=Xnf_pool)
             record("noise colouring", f"ariel snr{s}", Xa, amp_of=Xnf_pool)
+            record("noise colouring", f"exosim snr{s}", Xe, amp_of=Xnf_pool)
 
     # ---- extrapolation (retrain by construction)
     lines = []

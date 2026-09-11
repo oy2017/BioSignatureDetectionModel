@@ -26,16 +26,19 @@ import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 NSR_NPZ = os.path.join(os.path.dirname(HERE), "ariel_noise_model", "ariel_nsr_curves.npz")
+# v3: the same curve structure from the Ariel consortium's ExoSim2 on the reconstructed
+# Ariel-like payload (v3/exosim_noise_grid.py); selected with shape="exosim"
+EXOSIM_NPZ = os.path.join(HERE, "results", "exosim_nsr_curves.npz")
 
 _cache = {}
 
 
-def nsr_shapes(centres):
+def nsr_shapes(centres, npz=NSR_NPZ):
     """Unit-median NSR shape per ExoRad Teff node, interpolated onto centres."""
-    key = tuple(np.round(centres, 6))
+    key = (npz, tuple(np.round(centres, 6)))
     if key in _cache:
         return _cache[key]
-    z = np.load(NSR_NPZ)
+    z = np.load(npz)
     teffs = z["teffs"]
     shapes = {}
     for T in teffs:
@@ -48,7 +51,7 @@ def nsr_shapes(centres):
 
 
 def sigma_matrix(X, tstar, centres, snr=15.0, shape="ariel", level_ppm=None):
-    """Per-bin noise sigma. shape: 'white' (flat, peak-to-peak/snr), 'ariel'
+    """Per-bin noise sigma. shape: 'white' (flat, peak-to-peak/snr), 'exosim' (ExoSim2-shaped, v3), 'ariel'
     (ExoRad-shaped, median = peak-to-peak/snr), 'ariel_abs' (ExoRad-shaped with
     an ABSOLUTE median level of level_ppm parts per million of transit depth,
     independent of the planet's feature amplitude: the realistic convention,
@@ -60,7 +63,7 @@ def sigma_matrix(X, tstar, centres, snr=15.0, shape="ariel", level_ppm=None):
         base = (X.max(axis=1) - X.min(axis=1)) / snr          # (n,)
     if shape == "white":
         return np.repeat(base[:, None], X.shape[1], axis=1)
-    teffs, shapes = nsr_shapes(np.asarray(centres, dtype=float))
+    teffs, shapes = nsr_shapes(np.asarray(centres, dtype=float), EXOSIM_NPZ if shape == "exosim" else NSR_NPZ)
     node = teffs[np.argmin(np.abs(teffs[None, :] - np.asarray(tstar)[:, None]), axis=1)]
     S = np.vstack([shapes[int(t)] for t in node])
     return base[:, None] * S

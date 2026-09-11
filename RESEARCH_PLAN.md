@@ -417,9 +417,15 @@ into a measurement**. Where it can, do that instead of disclosing it.
 3. **Pre-registered prediction — written and committed 2026-09-11**
    (`v3/PREREGISTERED_PREDICTIONS.md`), before any ExoSim2-derived axis has been
    run against the classifier.
-4. **Regenerate** the grid and re-run the analysis chain, including Axis 8
-   (quenched versus equilibrium composition) so the chemistry idealisation is
-   priced rather than disclosed.
+4. **Regenerate — DONE 2026-09-11** (`v3/generate_grid.py`, `v3/data/`, 289 MB,
+   gitignored like v2's). 27,056 planets rendered (99.1–99.6 % per split), the
+   same bulk draws and splits as v2, label balance 0.48–0.52 on every split,
+   max |r| = 0.066 among C/O, [M/H] and the bulk parameters. Clean spectra binned
+   to all three configurations. Tuning (`pipeline.py --config ariel`) and the
+   Axis 8 quenched re-render of the five test splits launched the same day. The
+   ExoSim2 per-star curves are wired in as `shape="exosim"` in `noise.py` and as
+   a third case in the noise-colouring family, so the consortium-simulator noise
+   shape is priced against ExoRad's and white on the same planets.
 5. **ExoSim2 spike — DONE 2026-09-11, and the plan changes as anticipated.**
    Measured on the shipped two-channel example target:
 

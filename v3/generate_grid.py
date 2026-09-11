@@ -115,8 +115,19 @@ def make_split(name, seed, jobs, wl, limit=None, mode="equilibrium"):
     P = pd.read_parquet(os.path.join(V2, "data", f"{name}_params.parquet"))
     P = P[list(BULK) + ["atm fill_gas"]].copy() if "atm fill_gas" in P else P[list(BULK)].copy()
     if limit: P = P.iloc[:limit].copy()
-    rng = np.random.default_rng(seed)
-    P["co_ratio"] = rng.uniform(*CO_RANGE, len(P)); P["mh"] = rng.uniform(*MH_RANGE, len(P))
+    if mode == "equilibrium":
+        rng = np.random.default_rng(seed)
+        P["co_ratio"] = rng.uniform(*CO_RANGE, len(P)); P["mh"] = rng.uniform(*MH_RANGE, len(P))
+    else:
+        # a shifted variant must be the SAME planets with the SAME chemistry parameters: reuse the
+        # equilibrium run's stored draws rather than redrawing, so the pairing cannot drift
+        E = pd.read_parquet(os.path.join(DATA, f"{name}_params.parquet"))
+        assert len(E) <= len(P), f"{name}: equilibrium params longer than the bulk table"
+        key = list(BULK)
+        M = P[key].round(9).merge(E[key + ["co_ratio", "mh"]].round(9), on=key, how="left")
+        if M["co_ratio"].isna().any():
+            raise RuntimeError(f"{name}: could not pair {int(M['co_ratio'].isna().sum())} planets with the equilibrium run")
+        P["co_ratio"] = M["co_ratio"].to_numpy(); P["mh"] = M["mh"].to_numpy()
     chem = Chemistry(); t0 = time.time()
     G = 6.674e-8 * (P["p_mass"].to_numpy() * 5.972e27) / (P["p_radius"].to_numpy() * 6.371e8) ** 2   # cgs
     comp = [chem.composition(r["atm temperature"], r.co_ratio, r.mh, mode=mode, g_cgs=g)
@@ -143,8 +154,8 @@ def main():
         print("smoke: log10 abundance medians", {g: round(float(kept[f"atm {g}"].median()), 2) for g in GASES})
         print("smoke: native spectrum shape", X.shape, "depth range", f"{X.min():.3e}-{X.max():.3e}")
         return
-    for k, s in enumerate(a.splits):
-        kept, X = make_split(s, 100 + k, a.jobs, wl, mode=a.mode)
+    for s in a.splits:
+        kept, X = make_split(s, 100 + SPLITS.index(s), a.jobs, wl, mode=a.mode)
         tag = "" if a.mode == "equilibrium" else f"_{a.mode}"
         kept.to_parquet(os.path.join(DATA, f"{s}_params{tag}.parquet")); np.save(os.path.join(DATA, f"{s}_native{tag}.npy"), X)
 
