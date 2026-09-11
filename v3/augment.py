@@ -145,7 +145,13 @@ def fit(cfg="ariel"):
     Xtr_clean, _, _ = load_split("train", cfg)
     cen = centres(cfg)
     Ptr = pd.read_parquet(os.path.join(DATA, "train_params.parquet"))
-    clean_ref = 0.9033
+    # v3: the clean reference is the frozen pipeline's own accuracy on the pooled clean test sets,
+    # not a number carried over from another grid
+    _Xc, _yc, _ = load_split("test1", cfg)
+    for _t in TESTS[1:]:
+        _X2, _y2, _ = load_split(_t, cfg); _Xc = np.vstack([_Xc, _X2]); _yc = np.concatenate([_yc, _y2])
+    clean_ref = metrics(_yc, frozen_model.predict_proba(frozen_feats.transform(_Xc))[:, 1])["accuracy"]
+    print(f"clean reference (frozen pipeline, pooled tests): {clean_ref*100:.2f}%", flush=True)
     lines = [f"Recovery by training on the shifted physics, configuration {cfg}, pipeline {best}",
              "Frozen: trained on clean spectra only (the paper's primary pipeline).",
              "Augmented: retrained on a training set where each planet carries a random strength",

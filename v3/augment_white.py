@@ -7,7 +7,7 @@ HERE=os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0,HERE)
 from common import DATA, MODELS, RESULTS, SEED, SNR, TESTS, Features, load_split, metrics
 from pipeline import make_xgb
 from augment import corr_noise
-cfg="ariel"; CLEAN=0.9033
+cfg="ariel"; CLEAN=None   # v3: measured below from the frozen pipeline, not carried over from another grid
 best=json.load(open(os.path.join(RESULTS,f"{cfg}_best.json")))["best"]
 fr=joblib.load(os.path.join(MODELS,f"{cfg}_{best}.joblib"))
 ff,fm,params=fr["features"],fr["model"],fr["params"]; kind=best.split("_")[0]
@@ -19,6 +19,7 @@ Xtr_nf=_np.load(_os.path.join(DATA,f"train_{cfg}.npy")).astype(float)
 Xc=np.vstack([load_split(t,cfg)[0] for t in TESTS]); yc=np.concatenate([load_split(t,cfg)[1] for t in TESTS])
 Xc_nf=np.vstack([np.load(os.path.join(DATA,f"{t}_{cfg}.npy")) for t in TESTS]).astype(float)
 Pc=pd.concat([load_split(t,cfg,noisy=False)[2] for t in TESTS],ignore_index=True)
+CLEAN=metrics(yc,fm.predict_proba(ff.transform(Xc))[:,1])["accuracy"]; print(f"clean reference (frozen pipeline): {CLEAN*100:.2f}%",flush=True)
 L=["White-noise augmentation (second stochastic axis)","",
    f"{'case':<12}{'frozen':>9}{'augmented':>11}{'gain':>8}{'% of gap':>10}"]
 rng=np.random.default_rng(SEED+7)

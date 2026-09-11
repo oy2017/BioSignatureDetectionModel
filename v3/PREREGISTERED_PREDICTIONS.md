@@ -51,3 +51,28 @@ bespoke extraction to a per-bin transit depth. Only if run; see plan §7 item 5.
 Any ExoSim2-derived axis whose measured recovered fraction lands in the band
 the rule forbids for its draw count: a per-bin-redraw axis recovering > 60 %, or
 a one-draw axis recovering < 40 %. Either outcome is reported as-is.
+
+## Axis 8: quenched composition (added 2026-09-11, before any augmentation on it)
+
+Construction: the same test planets re-rendered with their carbon/oxygen partitioning
+frozen at the quench level of an anchored Guillot profile with a convective adiabat
+(`v3/generate_grid.py --mode quenched`; RESEARCH_PLAN.md section 3, Axis 8). Every planet's
+shifted spectrum is a deterministic function of its parameters: no random draw enters.
+
+Draw count per spectrum: **0** (a deterministic re-render, like stellar contamination
+and haze in v2).
+
+**Prediction: repairable. Augmenting the training set with quenched spectra recovers
+more than 60 % of the loss — in the same class as the v2 physics axes (79-89 %).**
+
+Why this is a real test: the rule was established on perturbations that change the
+spectrum's *shape* through added or scaled features. Quenching changes *which
+molecules are present* — it moves carbon between CH4 and CO — so the shifted spectra
+sit in a different chemical regime, not a distorted version of the same one. If the
+draw-count rule is about the perturbation's degrees of freedom and not about the kind
+of physics, it should still hold here. If augmentation recovers < 40 %, the rule is
+wrong for composition shifts and this file says so.
+
+Secondary prediction, from the chemistry: the cost of this axis before repair will be
+concentrated on planets cooler than ~1000 K, where quenching moves CH4 and CO by dex,
+and near zero above 1500 K, where nothing changes.

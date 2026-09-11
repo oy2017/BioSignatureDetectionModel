@@ -36,7 +36,7 @@ from noise import sigma_matrix  # noqa: E402
 from pipeline import make_xgb  # noqa: E402
 
 CFG = "ariel"
-CLEAN = 0.9033
+CLEAN = None   # v3: set at run time from the frozen pipeline's clean accuracy (was a v2 constant)
 STRENGTHS = [0.0, 0.5, 1.0, 2.0]      # multiples of the noise level, as in the budget
 TEST_STRENGTHS = [0.5, 1.0, 2.0]
 
@@ -72,6 +72,8 @@ def main():
     yc = np.concatenate([load_split(t, CFG)[1] for t in TESTS])
     Xc_nf = np.vstack([np.load(os.path.join(DATA, f"{t}_{CFG}.npy")) for t in TESTS]).astype(float)
     Pc = pd.concat([load_split(t, CFG, noisy=False)[2] for t in TESTS], ignore_index=True)
+    CLEAN = metrics(yc, fm.predict_proba(ff.transform(Xc))[:, 1])["accuracy"]     # v3: measured, not carried over
+    print(f"clean reference (frozen pipeline): {CLEAN*100:.2f}%", flush=True)
 
     # augmented training set: each planet at a random ramp strength, a quarter clean
     rng = np.random.default_rng(SEED + 11)
