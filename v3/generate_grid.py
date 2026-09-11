@@ -32,6 +32,7 @@ _spec = importlib.util.spec_from_file_location("v2_generate_grid", os.path.join(
 _v2 = importlib.util.module_from_spec(_spec); _spec.loader.exec_module(_v2)
 build_system, native_wavelengths, one_native, chunked, GASES, BULK = (
     _v2.build_system, _v2.native_wavelengths, _v2.one_native, _v2.chunked, _v2.GASES, _v2.BULK)
+FILL_GAS, WL_MIN, WL_MAX = _v2.FILL_GAS, _v2.WL_MIN, _v2.WL_MAX      # the shift scripts import these too
 import pyfastchem  # noqa: E402
 
 DATA = os.path.join(HERE, "data")
@@ -119,15 +120,11 @@ def make_split(name, seed, jobs, wl, limit=None, mode="equilibrium"):
         rng = np.random.default_rng(seed)
         P["co_ratio"] = rng.uniform(*CO_RANGE, len(P)); P["mh"] = rng.uniform(*MH_RANGE, len(P))
     else:
-        # a shifted variant must be the SAME planets with the SAME chemistry parameters: reuse the
-        # equilibrium run's stored draws rather than redrawing, so the pairing cannot drift
+        # a shifted variant must be the SAME planets with the SAME chemistry parameters, in the same
+        # order: the equilibrium run's params file IS the planet list (it already dropped the few
+        # planets whose clean render failed), so take it directly rather than re-pairing
         E = pd.read_parquet(os.path.join(DATA, f"{name}_params.parquet"))
-        assert len(E) <= len(P), f"{name}: equilibrium params longer than the bulk table"
-        key = list(BULK)
-        M = P[key].round(9).merge(E[key + ["co_ratio", "mh"]].round(9), on=key, how="left")
-        if M["co_ratio"].isna().any():
-            raise RuntimeError(f"{name}: could not pair {int(M['co_ratio'].isna().sum())} planets with the equilibrium run")
-        P["co_ratio"] = M["co_ratio"].to_numpy(); P["mh"] = M["mh"].to_numpy()
+        P = E[list(BULK) + ["co_ratio", "mh"]].copy().reset_index(drop=True)
     chem = Chemistry(); t0 = time.time()
     G = 6.674e-8 * (P["p_mass"].to_numpy() * 5.972e27) / (P["p_radius"].to_numpy() * 6.371e8) ** 2   # cgs
     comp = [chem.composition(r["atm temperature"], r.co_ratio, r.mh, mode=mode, g_cgs=g)
@@ -138,7 +135,15 @@ def make_split(name, seed, jobs, wl, limit=None, mode="equilibrium"):
     rows = [P.iloc[i].to_dict() for i in range(len(P))]; t0 = time.time()
     out = Parallel(n_jobs=jobs)(delayed(worker)(c, wl) for c in chunked(rows, 50))
     specs = [s for c in out for s in c]; ok = np.array([s is not None for s in specs])
-    X = np.vstack([s for s in specs if s is not None]); kept = P[ok].reset_index(drop=True)
+    if mode == "equilibrium":
+        X = np.vstack([s for s in specs if s is not None]); kept = P[ok].reset_index(drop=True)
+    else:
+        # keep every row aligned with the equilibrium split; a failed re-render is a NaN row,
+        # which evaluate_shifts treats as "not valid" for that planet
+        X = np.full((len(P), len(wl)), np.nan, dtype=np.float32)
+        for i, sp in enumerate(specs):
+            if sp is not None: X[i] = sp
+        kept = P
     print(f"{name}: {ok.sum()}/{len(P)} rendered ({100*ok.mean():.1f}%), label balance {kept.label_co.mean():.3f}, {time.time()-t0:.0f} s", flush=True)
     return kept, X
 
