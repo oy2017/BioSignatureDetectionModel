@@ -409,10 +409,16 @@ into a measurement**. Where it can, do that instead of disclosing it.
    between their physics and the classifier — a new confound.
 
    **Resolution — split the axis in two:**
-   - **Noise axis, adopted.** Run `focalplane` + `radiometric` per planet with
-     the planet's own spectrum and star (2 s each; hundreds of planets in
-     minutes). Take ExoSim2's per-bin noise budget as σ(λ) and draw Ariel noise
-     from *it* instead of from the ExoRad curve. Every term in that budget is the
+   - **Noise axis, adopted — and simpler than first written.** The planet
+     spectrum is consumed only in the sub-exposure stage (`EstimatePlanetarySignal`
+     runs there); `focalplane` + `radiometric` see the **star** alone. So the
+     per-bin noise budget is a function of the host star (T_eff, radius,
+     distance) and integration time, not of the planet — the same structure as
+     the ExoRad curves v2 keyed by T_eff (`ariel_noise_model/ariel_nsr_curves.npz`).
+     Build it as a grid over host-star T_eff (and distance if it matters), 2 s
+     per point, and draw each planet's noise from the curve for its star. Take
+     ExoSim2's per-bin noise budget as σ(λ) and draw Ariel noise from *it*
+     instead of from the ExoRad curve. Every term in that budget is the
      consortium's detector/optics model; nothing in it is ours except the
      payload numbers (§5 caveat). Prediction: per-bin, per-planet redraws →
      **unrepairable** (~one third recovered), same class as the v2 noise axes.
@@ -425,6 +431,19 @@ into a measurement**. Where it can, do that instead of disclosing it.
    the photometer channel, and `test1_noise`/`test2_noise` are placeholder terms
    (20 and 30 in the example). An Ariel-like payload must set these from
    published values or zero them explicitly, and the paper must say which.
+
+   **Ariel-like payload built 2026-09-11** (`~/exosim2/ariel/`, six channels
+   from the published Tier 3 layout: VISPhot 0.50–0.60, FGS1 0.60–0.80, FGS2
+   0.80–1.10 photometers; NIRSpec 1.10–1.95 R = 15; AIRS-CH0 1.95–3.90 R = 100;
+   AIRS-CH1 3.90–7.80 R = 30; A_tel = 0.63 m² from ArielRad). Everything else —
+   mirror reflectivities, QE curves, dead-pixel and non-linearity maps, optics
+   temperatures, apertures — is the ExoSim2 *example* payload reused as a
+   placeholder, because the real files are in the restricted repository. Three
+   things had to change to make six channels run: the QE table and QE map are
+   keyed by channel name (six columns/groups added, copies of the example's), and
+   the spectrometer channels load a fixed-length aperture table sized for the
+   example's bins, so they were switched to `EstimateApertures`. **This is a
+   reconstruction and the paper must call it one.**
 6. **Run the validation** and compare against the committed predictions.
 
 ## 8. Decisions already taken, not to be re-litigated
