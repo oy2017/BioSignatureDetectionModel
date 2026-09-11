@@ -15,7 +15,7 @@ import sys
 import numpy as np
 import pandas as pd
 
-V2 = "/mnt/c/Users/owenh/BioSignatureDetectionModel/v2"
+V2 = os.path.dirname(os.path.abspath(__file__))   # resolve beside this file, like the other scripts
 sys.path.insert(0, V2)
 os.chdir(V2)
 from bin_spectra import bin_native  # noqa: E402
