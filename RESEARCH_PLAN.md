@@ -123,7 +123,10 @@ metallicity as a proxy.
    only; CO acts through mean molecular weight alone. At high temperature carbon
    sits in CO, so without CO opacity a C/O label measures an invisible molecule.
    ExoMolOP has CO. This is a configuration change for the regeneration, but it
-   is not optional.
+   is not optional. **Done 2026-09-11:** Exo-Transmit's `opacCO.dat` added to
+   MultiREx for the primary grid and the Exo-Transmit axis; the ExoMolOP CO table
+   (`12C-16O__Li2015.R15000_0.3-50mu.xsec.TauREx.h5`, 365 MB) fetched from
+   exomol.com for the alternative-opacities axis, so that axis swaps CO too.
 2. **The temperature confound must be checked, not assumed away.** Under
    equilibrium the CH₄/CO transition is driven by temperature as much as by C/O,
    so the spectral signature of C/O changes character across 500–2500 K. The risk
