@@ -76,6 +76,12 @@ compound_spots20_haze3e7   all  86.05%
     mahalanobis  keep   1.0%  accepted  97.85%  declined  85.92%  AUROC(error) 0.669  AUROC(shift) 0.994
     pca_recon    keep   6.8%  accepted  95.93%  declined  85.32%  AUROC(error) 0.660  AUROC(shift) 0.976
     knn          keep   0.7%  accepted  98.51%  declined  85.95%  AUROC(error) 0.618  AUROC(shift) 0.996
+absorbers                  all  71.68%
+    margin       keep  85.7%  accepted  73.32%  declined  61.86%  AUROC(error) 0.681  AUROC(shift) 0.506
+    ensemble     keep  76.3%  accepted  80.34%  declined  43.85%  AUROC(error) 0.844  AUROC(shift) 0.600
+    mahalanobis  keep  61.4%  accepted  94.40%  declined  35.60%  AUROC(error) 0.904  AUROC(shift) 0.720
+    pca_recon    keep  59.8%  accepted  94.54%  declined  37.72%  AUROC(error) 0.908  AUROC(shift) 0.705
+    knn          keep  65.3%  accepted  92.75%  declined  32.08%  AUROC(error) 0.888  AUROC(shift) 0.696
 white_snr8                 all  91.93%
     margin       keep  83.8%  accepted  97.17%  declined  64.77%  AUROC(error) 0.901  AUROC(shift) 0.610
     ensemble     keep  60.2%  accepted  98.14%  declined  82.53%  AUROC(error) 0.844  AUROC(shift) 0.761
@@ -103,10 +109,10 @@ correlated_snr5            all  83.67%
 
 Over the shifted cases (clean excluded):
 score        mean accepted worst accepted mean coverage mean AUROC(err)
-ensemble            96.86%         93.46%         59.5%           0.783
-margin              94.61%         89.24%         83.9%           0.855
-pca_recon           93.25%         84.20%         34.7%           0.553
-mahalanobis         92.27%         82.29%         26.6%           0.527
-knn                 91.16%         79.55%         31.6%           0.497
+pca_recon           93.33%         84.20%         36.3%           0.575
+mahalanobis         92.41%         82.29%         28.8%           0.550
+ensemble            95.83%         80.34%         60.5%           0.787
+knn                 91.27%         79.55%         33.7%           0.521
+margin              93.28%         73.32%         84.0%           0.844
 
-Without declining anything the worst shifted-case accuracy is 83.67%.
+Without declining anything the worst shifted-case accuracy is 71.68%.
