@@ -275,6 +275,12 @@ Quenched variant (`--mode quenched`; quenching raises HCN to ~5e-5 and C2H2 to ~
 carbon-rich planets): frozen screen **67.2 %, carbon-rich planets 36.2 %**, predicted-positive
 rate 0.19. Worse than the equilibrium variant, as the chemistry predicts.
 
+On the randomized screen the same inversion holds and is the only place in the whole envelope
+where a decline rule earns *positive* credit against the clean selective baseline: Mahalanobis
++0.0 / +4.2 and k-NN +0.2 / +4.9 points on the equilibrium / quenched absorber cases (accepted
+93.6–98.4 % at 42–66 % coverage), while the margin and the ensemble sit at −13 to −22. Every
+distorted-known-physics axis has negative credit for every score.
+
 **Is the omission ours or the field's?** The Ariel Data Challenge's Atmospheric Big Challenge
 database — 105,887 TauREx forward models, the training set behind ~23,000 ML submissions —
 states (Changeat & Yip 2023, §2.2): "The trace gases are H2O, CH4, CO, CO2 and NH3." The 2023
