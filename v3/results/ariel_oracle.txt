@@ -8,6 +8,8 @@ white noise       snr8          stochastic      91.45%     92.97%  92.87%       
 correlated noise  snr8          stochastic      89.04%     92.34%  92.28%       +3.56       48%       102%
 white noise       snr5          stochastic      87.93%     91.12%  91.05%       +4.79       40%       102%
 correlated noise  snr5          stochastic      83.70%     89.78%  91.67%       +4.17       50%        76%
+white noise       snr5 (aug incl. SNR 5)stochastic      87.93%     91.24%  91.05%       +4.79       42%       106%
+correlated noise  snr5 (aug incl. SNR 5)stochastic      83.70%     90.51%  91.67%       +4.17       56%        85%
 gain ramp         x1.0          deterministic   93.44%     95.05%  95.37%       +0.47       67%        83%
 gain ramp         x2.0          deterministic   90.65%     94.65%  95.47%       +0.37       77%        83%
 stellar spots     tlse_spots10  deterministic   89.36%     94.27%  94.31%       +1.53       76%        99%
