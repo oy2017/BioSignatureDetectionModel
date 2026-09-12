@@ -41,10 +41,18 @@ def log_edges(lo, hi, R):
     return np.exp(np.linspace(np.log(lo), np.log(hi), n + 1))
 
 
-def ariel_edges():
+def tier_channels(r_nir, r_ch0, r_ch1):
+    """The same six channels at another tier's binning. ArielRad's tier prescriptions
+    (Mugnai et al. 2020; Edwards & Tinetti 2022): Tier 1 R ~ 1 / 3 / 1 and Tier 2
+    R ~ 10 / 50 / 10 for NIRSpec / AIRS-CH0 / AIRS-CH1; photometers unchanged."""
+    return [(n, lo, hi, {"NIRSpec": r_nir, "AIRS-CH0": r_ch0, "AIRS-CH1": r_ch1}.get(n, R))
+            for n, lo, hi, R in ARIEL_CHANNELS]
+
+
+def ariel_edges(channels=None):
     edges = []
     channel = []
-    for name, lo, hi, R in ARIEL_CHANNELS:
+    for name, lo, hi, R in (channels or ARIEL_CHANNELS):
         e = np.array([lo, hi]) if R is None else log_edges(lo, hi, R)
         if edges:
             e = e[1:]           # share the boundary with the previous channel
@@ -53,7 +61,7 @@ def ariel_edges():
     edges = np.array(edges)
     # channel label per bin
     labels = []
-    for name, lo, hi, R in ARIEL_CHANNELS:
+    for name, lo, hi, R in (channels or ARIEL_CHANNELS):
         n = 1 if R is None else len(log_edges(lo, hi, R)) - 1
         labels.extend([name] * n)
     assert len(labels) == len(edges) - 1
@@ -85,10 +93,14 @@ def configurations():
     ae, al = ariel_edges()
     r100 = uniform_R_edges(100)
     r200 = centres_to_edges(multirex_550_centres())
+    t1e, t1l = ariel_edges(tier_channels(1, 3, 1))
+    t2e, t2l = ariel_edges(tier_channels(10, 50, 10))
     out = {
         "ariel": {"edges": ae.tolist(), "channel": al},
         "r100": {"edges": r100.tolist()},
         "r200": {"edges": r200.tolist()},
+        "tier1": {"edges": t1e.tolist(), "channel": t1l},
+        "tier2": {"edges": t2e.tolist(), "channel": t2l},
     }
     for k, v in out.items():
         e = np.array(v["edges"])
