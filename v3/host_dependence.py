@@ -61,7 +61,7 @@ def main():
     sh = df[df.case != "clean"]
     ratio = sh.groupby("band").loss.mean()
     L += ["", "mean loss over shifted cases, by band: " + ", ".join(f"{b} {ratio[b]:+.2f}" for b, _, _ in BANDS)]
-    spot_rows = sh[sh.case.str.startswith("tlse_spots")]; other = sh[~sh.case.str.startswith("tlse")]
+    spot_rows = sh[sh.case.str.startswith("tlse_spots")]; other = sh[~sh.case.str.startswith("tlse") & ~sh.case.str.startswith("compound")]
     L += [f"stellar-contamination cases only: M {spot_rows[spot_rows.band.str.startswith('M')].loss.mean():+.2f}"
           f" vs F+ {spot_rows[spot_rows.band.str.startswith('F')].loss.mean():+.2f};"
           f" every other axis: M {other[other.band.str.startswith('M')].loss.mean():+.2f} vs F+ {other[other.band.str.startswith('F')].loss.mean():+.2f}"]
