@@ -1,0 +1,112 @@
+Can the screen tell when it is outside its simulator? configuration ariel, frozen pipeline norm_xgb
+Decline threshold: 10% of CLEAN test planets declined, per score; never tuned on a shifted set.
+
+For each case: accuracy of all planets, then per score the coverage kept, accepted-set accuracy,
+and the AUROC of the score for ranking the screen's own errors (0.5 = uninformative).
+
+clean                      all  95.84%
+    margin       keep  90.0%  accepted  98.85%  declined  68.74%  AUROC(error) 0.941  AUROC(shift) 0.500
+    ensemble     keep  90.0%  accepted  97.46%  declined  81.26%  AUROC(error) 0.879  AUROC(shift) 0.500
+    mahalanobis  keep  90.0%  accepted  95.42%  declined  99.67%  AUROC(error) 0.403  AUROC(shift) 0.500
+    pca_recon    keep  90.0%  accepted  95.59%  declined  98.12%  AUROC(error) 0.467  AUROC(shift) 0.500
+    knn          keep  90.0%  accepted  95.42%  declined  99.67%  AUROC(error) 0.396  AUROC(shift) 0.500
+cloud_1e3Pa                all  91.10%
+    margin       keep  75.7%  accepted  97.93%  declined  69.83%  AUROC(error) 0.892  AUROC(shift) 0.644
+    ensemble     keep  54.8%  accepted  97.27%  declined  83.64%  AUROC(error) 0.790  AUROC(shift) 0.723
+    mahalanobis  keep  15.6%  accepted  91.35%  declined  91.06%  AUROC(error) 0.562  AUROC(shift) 0.949
+    pca_recon    keep  25.7%  accepted  92.61%  declined  90.58%  AUROC(error) 0.570  AUROC(shift) 0.910
+    knn          keep  29.3%  accepted  90.87%  declined  91.20%  AUROC(error) 0.560  AUROC(shift) 0.910
+cloud_1e4Pa                all  94.79%
+    margin       keep  85.5%  accepted  98.56%  declined  72.53%  AUROC(error) 0.916  AUROC(shift) 0.569
+    ensemble     keep  77.5%  accepted  97.48%  declined  85.53%  AUROC(error) 0.820  AUROC(shift) 0.622
+    mahalanobis  keep  57.7%  accepted  94.18%  declined  95.62%  AUROC(error) 0.459  AUROC(shift) 0.791
+    pca_recon    keep  63.1%  accepted  94.78%  declined  94.80%  AUROC(error) 0.511  AUROC(shift) 0.745
+    knn          keep  65.0%  accepted  93.96%  declined  96.32%  AUROC(error) 0.434  AUROC(shift) 0.742
+haze_3p0e7                 all  92.97%
+    margin       keep  89.9%  accepted  96.46%  declined  61.99%  AUROC(error) 0.887  AUROC(shift) 0.581
+    ensemble     keep  71.1%  accepted  96.60%  declined  84.04%  AUROC(error) 0.748  AUROC(shift) 0.780
+    mahalanobis  keep  27.1%  accepted  90.67%  declined  93.82%  AUROC(error) 0.345  AUROC(shift) 0.900
+    pca_recon    keep  30.9%  accepted  91.67%  declined  93.55%  AUROC(error) 0.405  AUROC(shift) 0.887
+    knn          keep  36.6%  accepted  88.28%  declined  95.68%  AUROC(error) 0.327  AUROC(shift) 0.855
+haze_2p4e8                 all  91.27%
+    margin       keep  79.2%  accepted  96.95%  declined  69.72%  AUROC(error) 0.860  AUROC(shift) 0.743
+    ensemble     keep  20.4%  accepted  93.46%  declined  90.71%  AUROC(error) 0.450  AUROC(shift) 0.944
+    mahalanobis  keep   3.6%  accepted  91.05%  declined  91.28%  AUROC(error) 0.413  AUROC(shift) 0.987
+    pca_recon    keep   6.8%  accepted  92.46%  declined  91.18%  AUROC(error) 0.465  AUROC(shift) 0.974
+    knn          keep   5.5%  accepted  86.97%  declined  91.52%  AUROC(error) 0.381  AUROC(shift) 0.980
+tlse_spots10               all  89.36%
+    margin       keep  89.9%  accepted  92.77%  declined  59.01%  AUROC(error) 0.836  AUROC(shift) 0.545
+    ensemble     keep  74.8%  accepted  96.71%  declined  67.50%  AUROC(error) 0.863  AUROC(shift) 0.655
+    mahalanobis  keep  50.8%  accepted  94.26%  declined  84.30%  AUROC(error) 0.709  AUROC(shift) 0.743
+    pca_recon    keep  60.6%  accepted  93.82%  declined  82.51%  AUROC(error) 0.691  AUROC(shift) 0.699
+    knn          keep  52.0%  accepted  94.36%  declined  83.96%  AUROC(error) 0.705  AUROC(shift) 0.747
+tlse_spots20               all  86.12%
+    margin       keep  86.2%  accepted  89.76%  declined  63.42%  AUROC(error) 0.783  AUROC(shift) 0.596
+    ensemble     keep  63.7%  accepted  95.99%  declined  68.83%  AUROC(error) 0.810  AUROC(shift) 0.754
+    mahalanobis  keep  33.7%  accepted  94.77%  declined  81.73%  AUROC(error) 0.743  AUROC(shift) 0.836
+    pca_recon    keep  42.8%  accepted  94.04%  declined  80.20%  AUROC(error) 0.720  AUROC(shift) 0.797
+    knn          keep  32.8%  accepted  94.93%  declined  81.83%  AUROC(error) 0.733  AUROC(shift) 0.849
+tlse_mixed                 all  89.81%
+    margin       keep  90.1%  accepted  93.29%  declined  58.02%  AUROC(error) 0.844  AUROC(shift) 0.540
+    ensemble     keep  76.2%  accepted  96.80%  declined  67.47%  AUROC(error) 0.867  AUROC(shift) 0.641
+    mahalanobis  keep  53.6%  accepted  94.15%  declined  84.79%  AUROC(error) 0.700  AUROC(shift) 0.729
+    pca_recon    keep  63.4%  accepted  93.72%  declined  83.03%  AUROC(error) 0.682  AUROC(shift) 0.683
+    knn          keep  54.5%  accepted  94.14%  declined  84.60%  AUROC(error) 0.693  AUROC(shift) 0.731
+exotransmit                all  90.10%
+    margin       keep  91.4%  accepted  93.98%  declined  48.58%  AUROC(error) 0.913  AUROC(shift) 0.526
+    ensemble     keep  74.9%  accepted  97.29%  declined  68.65%  AUROC(error) 0.890  AUROC(shift) 0.612
+    mahalanobis  keep  52.8%  accepted  87.65%  declined  92.83%  AUROC(error) 0.452  AUROC(shift) 0.802
+    pca_recon    keep  52.9%  accepted  89.97%  declined  90.23%  AUROC(error) 0.518  AUROC(shift) 0.792
+    knn          keep  65.3%  accepted  86.92%  declined  96.07%  AUROC(error) 0.366  AUROC(shift) 0.737
+exomol                     all  85.10%
+    margin       keep  65.5%  accepted  94.66%  declined  66.99%  AUROC(error) 0.831  AUROC(shift) 0.635
+    ensemble     keep  44.0%  accepted  96.63%  declined  76.04%  AUROC(error) 0.768  AUROC(shift) 0.709
+    mahalanobis  keep   3.5%  accepted  86.86%  declined  85.04%  AUROC(error) 0.677  AUROC(shift) 0.979
+    pca_recon    keep  15.4%  accepted  92.01%  declined  83.85%  AUROC(error) 0.721  AUROC(shift) 0.952
+    knn          keep  13.6%  accepted  85.69%  declined  85.01%  AUROC(error) 0.539  AUROC(shift) 0.948
+quenched                   all  98.24%
+    margin       keep  97.8%  accepted  98.89%  declined  68.56%  AUROC(error) 0.905  AUROC(shift) 0.443
+    ensemble     keep  95.7%  accepted  98.81%  declined  85.60%  AUROC(error) 0.844  AUROC(shift) 0.487
+    mahalanobis  keep  76.6%  accepted  98.03%  declined  98.91%  AUROC(error) 0.418  AUROC(shift) 0.576
+    pca_recon    keep  80.1%  accepted  98.13%  declined  98.66%  AUROC(error) 0.451  AUROC(shift) 0.576
+    knn          keep  77.4%  accepted  98.05%  declined  98.87%  AUROC(error) 0.414  AUROC(shift) 0.581
+compound_spots20_haze3e7   all  86.05%
+    margin       keep  81.1%  accepted  90.22%  declined  68.21%  AUROC(error) 0.738  AUROC(shift) 0.713
+    ensemble     keep  32.0%  accepted  95.77%  declined  81.48%  AUROC(error) 0.642  AUROC(shift) 0.931
+    mahalanobis  keep   1.0%  accepted  97.85%  declined  85.92%  AUROC(error) 0.669  AUROC(shift) 0.994
+    pca_recon    keep   6.8%  accepted  95.93%  declined  85.32%  AUROC(error) 0.660  AUROC(shift) 0.976
+    knn          keep   0.7%  accepted  98.51%  declined  85.95%  AUROC(error) 0.618  AUROC(shift) 0.996
+white_snr8                 all  91.93%
+    margin       keep  83.8%  accepted  97.17%  declined  64.77%  AUROC(error) 0.901  AUROC(shift) 0.610
+    ensemble     keep  60.2%  accepted  98.14%  declined  82.53%  AUROC(error) 0.844  AUROC(shift) 0.761
+    mahalanobis  keep   0.0%  accepted 100.00%  declined  91.92%  AUROC(error) 0.435  AUROC(shift) 0.998
+    pca_recon    keep   0.3%  accepted  96.67%  declined  91.91%  AUROC(error) 0.463  AUROC(shift) 0.997
+    knn          keep  14.5%  accepted  95.49%  declined  91.32%  AUROC(error) 0.419  AUROC(shift) 0.954
+white_snr5                 all  87.57%
+    margin       keep  74.9%  accepted  95.27%  declined  64.59%  AUROC(error) 0.850  AUROC(shift) 0.698
+    ensemble     keep  35.7%  accepted  98.04%  declined  81.75%  AUROC(error) 0.781  AUROC(shift) 0.887
+    mahalanobis  keep   0.0%  accepted    nan%  declined  87.57%  AUROC(error) 0.439  AUROC(shift) 1.000
+    pca_recon    keep   0.0%  accepted 100.00%  declined  87.57%  AUROC(error) 0.462  AUROC(shift) 1.000
+    knn          keep   0.0%  accepted    nan%  declined  87.57%  AUROC(error) 0.411  AUROC(shift) 0.999
+correlated_snr8            all  89.24%
+    margin       keep  86.2%  accepted  93.94%  declined  59.92%  AUROC(error) 0.865  AUROC(shift) 0.576
+    ensemble     keep  68.0%  accepted  97.29%  declined  72.17%  AUROC(error) 0.858  AUROC(shift) 0.724
+    mahalanobis  keep  21.5%  accepted  88.65%  declined  89.40%  AUROC(error) 0.432  AUROC(shift) 0.926
+    pca_recon    keep  49.0%  accepted  88.80%  declined  89.67%  AUROC(error) 0.481  AUROC(shift) 0.803
+    knn          keep  25.3%  accepted  88.57%  declined  89.47%  AUROC(error) 0.413  AUROC(shift) 0.919
+correlated_snr5            all  83.67%
+    margin       keep  81.1%  accepted  89.24%  declined  59.71%  AUROC(error) 0.800  AUROC(shift) 0.654
+    ensemble     keep  43.3%  accepted  96.70%  declined  73.73%  AUROC(error) 0.773  AUROC(shift) 0.850
+    mahalanobis  keep   1.9%  accepted  82.29%  declined  83.70%  AUROC(error) 0.448  AUROC(shift) 0.991
+    pca_recon    keep  22.5%  accepted  84.20%  declined  83.52%  AUROC(error) 0.495  AUROC(shift) 0.916
+    knn          keep   2.0%  accepted  79.55%  declined  83.76%  AUROC(error) 0.436  AUROC(shift) 0.992
+
+Over the shifted cases (clean excluded):
+score        mean accepted worst accepted mean coverage mean AUROC(err)
+ensemble            96.86%         93.46%         59.5%           0.783
+margin              94.61%         89.24%         83.9%           0.855
+pca_recon           93.25%         84.20%         34.7%           0.553
+mahalanobis         92.27%         82.29%         26.6%           0.527
+knn                 91.16%         79.55%         31.6%           0.497
+
+Without declining anything the worst shifted-case accuracy is 83.67%.

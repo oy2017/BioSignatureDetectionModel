@@ -1,0 +1,36 @@
+white noise       snr8          stochastic    frozen  85.73  aug  86.55  oracle  86.52  vs-clean    18%  vs-oracle   104%  irreducible +3.81
+correlated noise  snr8          stochastic    frozen  79.84  aug  83.55  oracle  84.48  vs-clean    35%  vs-oracle    80%  irreducible +5.85
+white noise       snr5          stochastic    frozen  77.46  aug  81.14  oracle  82.42  vs-clean    29%  vs-oracle    74%  irreducible +7.91
+correlated noise  snr5          stochastic    frozen  69.03  aug  75.63  oracle  81.08  vs-clean    31%  vs-oracle    55%  irreducible +9.25
+white noise       snr5 in-range stochastic    frozen  77.46  aug  82.50  oracle  82.42  vs-clean    39%  vs-oracle   102%  irreducible +7.91
+correlated noise  snr5 in-range stochastic    frozen  69.03  aug  78.86  oracle  81.08  vs-clean    46%  vs-oracle    82%  irreducible +9.25
+gain ramp         x1.0          deterministic frozen  87.65  aug  89.43  oracle  89.62  vs-clean    66%  vs-oracle    90%  irreducible +0.72
+gain ramp         x2.0          deterministic frozen  82.42  aug  89.03  oracle  89.76  vs-clean    84%  vs-oracle    90%  irreducible +0.57
+stellar spots     tlse_spots10  deterministic frozen  72.40  aug  87.27  oracle  87.51  vs-clean    83%  vs-oracle    98%  irreducible +2.82
+stellar spots     tlse_spots20  deterministic frozen  64.41  aug  85.25  oracle  85.38  vs-clean    80%  vs-oracle    99%  irreducible +4.95
+  haze render: 18156 planets, 2 failures, 867 s
+haze              haze_3p0e7    deterministic frozen  61.50  aug  87.24  oracle  88.51  vs-clean    89%  vs-oracle    95%  irreducible +1.82
+Oracle ceilings for the repair tests, configuration ariel, pipeline norm_xgb
+
+oracle = trained only at the test strength; irreducible = clean minus oracle (points the shift
+removes for any training); vs-oracle = share of the recoverable loss that mixed-strength augmentation got.
+
+axis              case          kind            frozen  augmented  oracle  irreducible  vs clean  vs oracle
+white noise       snr8          stochastic      85.73%     86.55%  86.52%       +3.81       18%       104%
+correlated noise  snr8          stochastic      79.84%     83.55%  84.48%       +5.85       35%        80%
+white noise       snr5          stochastic      77.46%     81.14%  82.42%       +7.91       29%        74%
+correlated noise  snr5          stochastic      69.03%     75.63%  81.08%       +9.25       31%        55%
+white noise       snr5 (aug incl. SNR 5)stochastic      77.46%     82.50%  82.42%       +7.91       39%       102%
+correlated noise  snr5 (aug incl. SNR 5)stochastic      69.03%     78.86%  81.08%       +9.25       46%        82%
+gain ramp         x1.0          deterministic   87.65%     89.43%  89.62%       +0.72       66%        90%
+gain ramp         x2.0          deterministic   82.42%     89.03%  89.76%       +0.57       84%        90%
+stellar spots     tlse_spots10  deterministic   72.40%     87.27%  87.51%       +2.82       83%        98%
+stellar spots     tlse_spots20  deterministic   64.41%     85.25%  85.38%       +4.95       80%        99%
+haze              haze_3p0e7    deterministic   61.50%     87.24%  88.51%       +1.82       89%        95%
+
+deterministic, vs oracle: 90-99%   stochastic, vs oracle: 55-104%   (OVERLAPPING: the rule does not survive the ceiling correction)
+irreducible loss, deterministic: +0.57 to +4.95 pts; stochastic: +3.81 to +9.25 pts
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
