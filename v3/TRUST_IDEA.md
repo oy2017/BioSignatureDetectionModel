@@ -299,8 +299,12 @@ Checks before the word "finding" (§2b rule):
     ML screens. Passes.
 (b) implementation — abundances from the same FastChem call that produced the training
     gases (asserted equal to 1e-6); Exo-Transmit HCN/C2H2 tables cover the temperature range;
-    abundances constant with altitude, as for every other gas. Pending: the quenched variant
-    (rendering) and the oracle.
+    abundances constant with altitude, as for every other gas. Quenched variant done (worse,
+    as predicted). **Oracle done: a screen trained with HCN and C2H2 in the forward model scores
+    95.90 % on the absorber test set — the loss is 100 % reducible and the irreducible part is
+    −0.06 points, i.e. the repaired screen is marginally better than the original was on its own
+    data.** So: not absorbable by randomizing other ingredients (75 %), confidently wrong for the
+    margin rule, caught by distance scores, fully fixed by adding the species. (b) passes.
 (c) mechanism — known chemistry (C/O > 1 → HCN, C2H2) plus the measured band overlap. Passes.
 
 ## 5. Decision gates (cheap first; each has a kill criterion)
