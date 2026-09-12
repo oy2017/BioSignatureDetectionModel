@@ -650,6 +650,13 @@ detected them. New here: the question posed quantitatively for a mission screen,
 axes with held-out evaluation, the absorb-or-detect framing, the envelope as product, and —
 if Test 4 runs — a label-free gap measurement on real JWST spectra. No method is new; say so.
 
+**Status 2026-09-12: compute complete.** Every test in this section has run; outcomes against
+the expectations above are in `v3/TRUST_IDEA.md` §4b–4e (consolidated table in §4e). Two
+expectations failed (randomized ≥ 90 % of ceilings: 36–83 %; compounding super-additive: it is
+sub-additive), one was wrong in sign (cool-host noise-shape cost: none), the trade-off and the
+detector predictions held, and the held-out programme produced the headline: the HCN/C2H2
+omission shared with the Ariel Data Challenge grid. Next: paper outline and venue.
+
 **Carried over.** The quenching result (§3, Axis 8) stays as a grid-design finding. The
 decomposition total = irreducible + reducible (oracle.py) replaces the repair rule and feeds
 Test 1's ceilings.

@@ -10,7 +10,7 @@ stellar spots     tlse_spots10  deterministic frozen  89.36  aug  94.27  oracle 
 stellar spots     tlse_spots20  deterministic frozen  86.12  aug  92.80  oracle  93.01  vs-clean    69%  vs-oracle    97%  irreducible +2.83
 haze              haze_3p0e7    deterministic frozen  92.97  aug  94.91  oracle  95.30  vs-clean    68%  vs-oracle    83%  irreducible +0.54
 exotransmit       exotransmit   deterministic frozen  90.10  oracle  95.29  irreducible +0.55  (no mixed augmentation for this axis: the oracle IS the augmentation)
-  exomol: no training re-render on disk, oracle skipped
+exomol            exomol        deterministic frozen  85.10  oracle  94.31  irreducible +1.53  (no mixed augmentation for this axis: the oracle IS the augmentation)
 absorbers         absorbers     deterministic frozen  71.68  oracle  95.90  irreducible -0.06  (no mixed augmentation for this axis: the oracle IS the augmentation)
 Oracle ceilings for the repair tests, configuration ariel, pipeline norm_xgb
 
@@ -30,6 +30,7 @@ stellar spots     tlse_spots10  deterministic   89.36%     94.27%  94.31%       
 stellar spots     tlse_spots20  deterministic   86.12%     92.80%  93.01%       +2.83       69%        97%
 haze              haze_3p0e7    deterministic   92.97%     94.91%  95.30%       +0.54       68%        83%
 exotransmit       exotransmit   deterministic   90.10%     95.29%  95.29%       +0.55       90%       nan%
+exomol            exomol        deterministic   85.10%     94.31%  94.31%       +1.53       86%       nan%
 absorbers         absorbers     deterministic   71.68%     95.90%  95.90%       -0.06      100%       nan%
 
 deterministic, vs oracle: 83-99%   stochastic, vs oracle: 76-107%   (OVERLAPPING: the rule does not survive the ceiling correction)

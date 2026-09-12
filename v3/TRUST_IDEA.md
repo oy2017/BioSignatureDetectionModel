@@ -316,6 +316,48 @@ Checks before the word "finding" (§2b rule):
 - **HCN + C2H2**: frozen 71.68 %, oracle 95.90 %, irreducible −0.06 — fully reducible (§4c).
 - **ExoMol tables**: training render in progress; the oracle row follows automatically.
 
+## 4e. Consolidated: what the programme found (compute complete 2026-09-12)
+
+Frozen = clean-trained Tier-3 screen (95.84 % clean). Loss in points. Irreducible = clean minus
+the oracle trained at the test condition. Randomized = the jointly randomized screen (95.12 %
+clean). Detect = which decline rule ranks the screen's errors (AUROC ≥ 0.85) — confidence
+(margin / ensemble disagreement) or distance (Mahalanobis / k-NN / PCA). Fix = what removes the
+loss.
+
+| mismatch | frozen loss | irreducible | randomized loss | detect | fix |
+|---|---|---|---|---|---|
+| cloud deck 1e3 Pa | 4.7 | — | 3.4 | confidence | train on it |
+| haze 3e7 | 2.9 | 0.5 | 1.9 | confidence | train on it (83 % of ceiling single-axis) |
+| spots 20 % | 9.7 | 2.8 | 4.3 | confidence | train on it (97 %); **M-dwarf hosts lose 19** |
+| spots + haze compound | 9.8 | — | 5.2 | confidence | sub-additive; randomization helps |
+| white noise SNR 5 | 8.3 | 4.8 | 5.4 | confidence | mostly irreducible: better observation |
+| correlated noise SNR 5 | 12.6 | 4.2 | 9.0 | confidence | idem; in-range augmentation 85 % of ceiling |
+| gain ramp ×2 | 5.2 | 0.4 | — | confidence | train on it |
+| other RT code (Exo-Transmit) | 5.8 | 0.6 | 6.2 (no help) | confidence | only training on that code (90 % reducible) |
+| other opacity tables (ExoMol) | 10.7 | 1.5 | 7.0 | confidence + distance (shift AUROC 0.98) | training on them (86 % reducible) |
+| quenched chemistry | **−2.4 (gain)** | — | −2.4 | invisible (nothing to detect) | none needed; robust to K_zz 1e7–1e11 |
+| **missing HCN + C2H2** | **24.2** (carbon-rich planets at chance) | **−0.1** | 20.8 (no help) | **distance only** (margin confidently wrong) | **add the species: 95.9 %** |
+| HCN + C2H2, quenched | 28.6 | — | 20.5 | distance only | idem |
+
+Context rows: at Tier-1 binning (7 bins) the frozen screen is 88.1 % clean, 84.3 % at SNR 7,
+60.6 % under haze 3e7 and 50.1 % under the compound; on Ariel's 965 known targets under the
+mission's noise definition it is 95.2 % (Tier 3), 92.2 % (Tier 2), 78.5 % (Tier 1; M-dwarf
+hosts 54 %), with 43 % of targets outside the training box (mass cap, host radius, T < 500 K).
+
+Decline rules (threshold fixed on clean data): on every distorted-known-physics axis every rule
+has negative credit against the clean selective baseline (ensemble mean −4); only on the novel-
+absorber axes do the distance rules earn positive credit (+0 to +5). Randomizing an axis into
+training blinds the distance alarm to it (spots 20 %: 0.84 → 0.51) and leaves never-trained axes
+visible (ExoMol 0.98, SNR 5 1.00).
+
+**The answer to "can you trust it?", in three sentences.** For the mismatches you modelled, a
+randomized grid plus a confidence-based decline rule gets you to the mid-90s at 60–90 %
+coverage, with the residual set by information the shift destroyed. For a mismatch you did not
+model, nothing you do with the training set helps and the screen is confidently wrong; a
+distance-based novelty alarm catches it, and fixing the forward model removes it entirely.
+The standard Ariel ML grid has such an omission today, and it puts a carbon-rich screen at
+chance on the planets it exists to find.
+
 ## 5. Decision gates (cheap first; each has a kill criterion)
 
 - **G1 — detect (done).** Kill if no score ranks errors above AUROC 0.7 under re-rendered
