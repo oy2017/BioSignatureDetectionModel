@@ -83,7 +83,10 @@ implementation choices it rests on; (c) an independent mechanism predicts it.
   accurate under quench. (b) Not yet checked: the result rests on one K_zz (1e9), one
   profile construction and a 100-bar search cap. Required before the word "finding":
   a K_zz sweep (1e7–1e11) on the test splits and a comparison of our quench levels against a
-  published kinetics benchmark. (c) Mechanism is independent and known: deep C/O > 1
+  published kinetics benchmark. **K_zz sweep done (`kzz_eval.py`): the gain is 98.0–98.3 % overall
+  and +8.7 to +9.0 points on the 500–1000 K band at every K_zz from 1e7 to 1e11; the cool-planet
+  H2O label separation is −3.0 to −3.4 dex throughout (equilibrium: −0.3). Robust to K_zz.**
+  Still untested: the anchored-Guillot-plus-adiabat profile construction and the 100-bar cap. (c) Mechanism is independent and known: deep C/O > 1
   chemistry depletes H2O by orders of magnitude (Madhusudhan 2012; Moses 2013) and quenching
   carries it up; the label separation we measure (0.3 → 3.3 dex in H2O below 1000 K) is
   that mechanism. So (c) passes, (a) passes narrowly, (b) is pending.

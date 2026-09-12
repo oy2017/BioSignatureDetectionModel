@@ -1,0 +1,13 @@
+Quenching vs K_zz, frozen screen norm_xgb, configuration ariel; clean accuracy 95.84%
+
+  K_zz      all      T 500-1000     T 1000-1500     T 1500-2500  dH2O cool (dex)  dCH4 cool
+   1e7   98.04%   97.36 (+8.74)   97.33 (-0.39)   98.78 (+0.05)            -2.95       3.26
+   1e8   98.13%   97.57 (+8.96)   97.33 (-0.39)   98.85 (+0.11)            -3.16       3.46
+   1e9   98.24%   97.44 (+8.83)   97.63 (-0.09)   98.99 (+0.25)            -3.30       3.62
+  1e10   98.26%   97.48 (+8.87)   97.72 (+0.00)   98.97 (+0.23)            -3.39       3.70
+  1e11   98.29%   97.53 (+8.91)   97.63 (-0.09)   99.06 (+0.32)            -3.41       3.72
+
+equilibrium reference, cool planets: dH2O -0.31 dex, dCH4 0.72 dex
+
+Numbers in parentheses: change from the clean accuracy of the same temperature band.
+The claim 'quenching helps' holds at a given K_zz if the all-planet change is positive and the cool band gains most.

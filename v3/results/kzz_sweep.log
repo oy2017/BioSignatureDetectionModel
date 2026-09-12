@@ -1,0 +1,28 @@
+=== kzz 1e7 22:10:30
+test3: chemistry for 1813 in 15.0 s
+test3: 1813/1813 rendered (100.0%), label balance 0.520, 126 s
+test4: chemistry for 1776 in 14.8 s
+test4: 1776/1776 rendered (100.0%), label balance 0.494, 127 s
+test5: chemistry for 1809 in 13.6 s
+test5: 1809/1809 rendered (100.0%), label balance 0.489, 125 s
+=== kzz 1e8 22:23:18
+test3: chemistry for 1813 in 17.5 s
+test3: 1813/1813 rendered (100.0%), label balance 0.520, 172 s
+test4: chemistry for 1776 in 17.3 s
+test4: 1776/1776 rendered (100.0%), label balance 0.494, 141 s
+test5: chemistry for 1809 in 9.5 s
+test5: 1809/1809 rendered (100.0%), label balance 0.489, 99 s
+=== kzz 1e10 22:38:40
+test3: chemistry for 1813 in 12.8 s
+test3: 1813/1813 rendered (100.0%), label balance 0.520, 88 s
+test4: chemistry for 1776 in 11.6 s
+test4: 1776/1776 rendered (100.0%), label balance 0.494, 142 s
+test5: chemistry for 1809 in 16.8 s
+test5: 1809/1809 rendered (100.0%), label balance 0.489, 129 s
+=== kzz 1e11 22:49:29
+test3: chemistry for 1813 in 10.7 s
+test3: 1813/1813 rendered (100.0%), label balance 0.520, 96 s
+test4: chemistry for 1776 in 10.9 s
+test4: 1776/1776 rendered (100.0%), label balance 0.494, 106 s
+test5: chemistry for 1809 in 11.6 s
+test5: 1809/1809 rendered (100.0%), label balance 0.489, 102 s
