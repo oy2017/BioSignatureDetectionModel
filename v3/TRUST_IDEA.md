@@ -268,6 +268,21 @@ known spectrum does not. That gives the detection half of the paper a structure 
 disappointment: per-planet confidence for the mismatches you modelled, distance for the ones
 you did not.
 
+Quenched variant (`--mode quenched`; quenching raises HCN to ~5e-5 and C2H2 to ~1.5e-4 on the
+carbon-rich planets): frozen screen **67.2 %, carbon-rich planets 36.2 %**, predicted-positive
+rate 0.19. Worse than the equilibrium variant, as the chemistry predicts.
+
+**Is the omission ours or the field's?** The Ariel Data Challenge's Atmospheric Big Challenge
+database — 105,887 TauREx forward models, the training set behind ~23,000 ML submissions —
+states (Changeat & Yip 2023, §2.2): "The trace gases are H2O, CH4, CO, CO2 and NH3." The 2023
+challenge inherited the same procedure and its seven targets are radius, temperature and those
+five abundances. No HCN, no C2H2. Ardévol Martínez et al. (2022) omit both in their
+free-chemistry training models and include both only in their equilibrium-chemistry models;
+Márquez-Neila et al. (2018) included HCN for WFC3. So the standard Ariel ML training grid has
+exactly the omission that puts a carbon-rich screen at chance. That makes this a field-level
+result for Ariel ML, not a local bug — provided the paper states the obvious mitigation: add
+the species, which the oracle (running) will price.
+
 Checks before the word "finding" (§2b rule):
 (a) literature phrased as the negation — Ardévol Martínez 2022 tested an *added* absorber
     (AlO) on a retrieval CNN and found it robust; ours is the opposite outcome for a
