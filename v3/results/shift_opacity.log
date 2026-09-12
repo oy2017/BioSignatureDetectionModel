@@ -19,3 +19,39 @@ swap dir [exomol] /home/owenhyang/opacity_swap_v3_exomol
   retained O2   -> opacO2.dat
   retained O3   -> opacO3.dat
 --- test2 [exomol]: 1814 planets, jobs=3, reduce=bin ---
+    1762 s total, 0.97 s/planet (wall, jobs=3); 0 failures (NaN rows)
+    vs baseline: median rel diff 6.406e-03, max 1.183e+02; median Pearson r 0.800188, median mean-depth ratio 1.006362
+    wrote /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/test2_native_exomol.npy (1814, 2753)
+
+swap dir [exomol] /home/owenhyang/opacity_swap_v3_exomol
+  swapped  CH4  -> 12C-1H4__YT34to10.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  CO   -> 12C-16O__Li2015.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  CO2  -> 12C-16O2__UCL-4000.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  H2O  -> 1H2-16O__POKAZATEL__R15000_0.3-50mu.xsec.TauREx.h5
+  retained O2   -> opacO2.dat
+  retained O3   -> opacO3.dat
+--- test3 [exomol]: 1813 planets, jobs=3, reduce=bin ---
+    1548 s total, 0.85 s/planet (wall, jobs=3); 0 failures (NaN rows)
+    vs baseline: median rel diff 6.266e-03, max 1.474e+01; median Pearson r 0.808114, median mean-depth ratio 1.006341
+    wrote /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/test3_native_exomol.npy (1813, 2753)
+
+swap dir [exomol] /home/owenhyang/opacity_swap_v3_exomol
+  swapped  CH4  -> 12C-1H4__YT34to10.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  CO   -> 12C-16O__Li2015.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  CO2  -> 12C-16O2__UCL-4000.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  H2O  -> 1H2-16O__POKAZATEL__R15000_0.3-50mu.xsec.TauREx.h5
+  retained O2   -> opacO2.dat
+  retained O3   -> opacO3.dat
+--- test4 [exomol]: 1776 planets, jobs=3, reduce=bin ---
+    1484 s total, 0.84 s/planet (wall, jobs=3); 0 failures (NaN rows)
+    vs baseline: median rel diff 6.261e-03, max 1.278e+01; median Pearson r 0.797419, median mean-depth ratio 1.006457
+    wrote /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/test4_native_exomol.npy (1776, 2753)
+
+swap dir [exomol] /home/owenhyang/opacity_swap_v3_exomol
+  swapped  CH4  -> 12C-1H4__YT34to10.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  CO   -> 12C-16O__Li2015.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  CO2  -> 12C-16O2__UCL-4000.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  H2O  -> 1H2-16O__POKAZATEL__R15000_0.3-50mu.xsec.TauREx.h5
+  retained O2   -> opacO2.dat
+  retained O3   -> opacO3.dat
+--- test5 [exomol]: 1809 planets, jobs=3, reduce=bin ---
