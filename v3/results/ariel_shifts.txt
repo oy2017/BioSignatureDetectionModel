@@ -1,64 +1,75 @@
-Domain shift, configuration ariel, frozen pipeline norm_xgb; clean paired baseline 95.84% (Brier 0.0304, n=9016)
+Domain shift, configuration ariel, frozen pipeline norm_xgb; clean paired baseline 96.47% (Brier 0.0264, n=9016)
 
 axis             case                       acc   d_acc   brier    ece    pos  flip-  flip+    amp
-clean            reference                95.84   +0.00  0.0304  0.012  0.517      0      0  1.000
-cloud            cloud_1e1Pa              62.02  -33.82  0.2586  0.178  0.394   3192    143  0.026
-cloud            cloud_1e2Pa              82.99  -12.85  0.1182  0.092  0.427   1286    127  0.286
-cloud            cloud_1e3Pa              91.10   -4.74  0.0639  0.042  0.483    524     97  0.572
-cloud            cloud_1e4Pa              94.79   -1.05  0.0394  0.016  0.502    195    100  0.804
-cloud            cloud_1e5Pa              95.74   -0.10  0.0318  0.010  0.513     54     45  0.945
-exomol           exomol                   85.10  -10.74  0.1079  0.125  0.396   1110    142  0.864
-exotransmit      exotransmit              90.10   -5.75  0.0807  0.080  0.422    702    184  0.887
-haze             haze_1p0e10              57.58  -38.27  0.3541  0.326  0.140   3690    240  0.474
-haze             haze_2p0e5               95.74   -0.10  0.0313  0.015  0.521     27     18  0.987
-haze             haze_2p0e6               95.00   -0.84  0.0374  0.027  0.534    121     45  0.947
-haze             haze_2p4e8               91.27   -4.57  0.0647  0.022  0.529    520    108  0.779
-haze             haze_3p0e7               92.97   -2.87  0.0560  0.052  0.558    341     82  0.894
-quenched         quenched                 98.24   +2.40  0.0152  0.010  0.514     49    265  0.993
-tlse             tlse_fac05               95.11   -0.73  0.0377  0.019  0.509    136     70  1.017
-tlse             tlse_fac10               93.80   -2.04  0.0482  0.029  0.499    274     90  1.039
-tlse             tlse_mixed               89.81   -6.03  0.0853  0.068  0.477    684    140  0.962
-tlse             tlse_spots02             94.27   -1.57  0.0451  0.029  0.507    233     91  0.982
-tlse             tlse_spots05             91.96   -3.88  0.0664  0.053  0.492    471    121  0.967
-tlse             tlse_spots10             89.36   -6.48  0.0898  0.070  0.473    726    142  0.965
-tlse             tlse_spots20             86.12   -9.72  0.1198  0.096  0.435   1035    159  1.082
-white noise      snr12                    94.14   -1.70  0.0434  0.024  0.509    261    108  1.000
-white noise      snr10                    93.28   -2.56  0.0511  0.028  0.498    352    121  1.000
-white noise      snr8                     91.32   -4.53  0.0649  0.039  0.490    532    124  1.000
-white noise      snr5                     87.58   -8.26  0.0935  0.070  0.453    889    144  1.000
-correlated noise snr12                    93.58   -2.26  0.0515  0.036  0.508    336    132  1.000
-correlated noise snr10                    91.43   -4.41  0.0690  0.052  0.499    538    140  1.000
-correlated noise snr8                     89.53   -6.31  0.0858  0.065  0.479    738    169  1.000
-correlated noise snr5                     83.20  -12.64  0.1355  0.123  0.438   1294    154  1.000
-gain ramp        x0.25                    95.70   -0.14  0.0322  0.011  0.515     79     66  0.996
-gain ramp        x0.5                     95.09   -0.75  0.0359  0.016  0.513    169    101  1.009
-gain ramp        x1.0                     93.63   -2.21  0.0504  0.037  0.508    332    133  1.010
-gain ramp        x2.0                     90.56   -5.28  0.0786  0.061  0.494    614    138  1.034
-baseline offset  x0.25                    95.84   +0.00  0.0304  0.012  0.517      0      0  1.000
-baseline offset  x0.5                     95.84   +0.00  0.0304  0.012  0.517      0      0  1.000
-baseline offset  x1.0                     95.84   +0.00  0.0304  0.012  0.517      0      0  1.000
-baseline offset  x2.0                     95.84   +0.00  0.0304  0.012  0.517      0      0  1.000
-absolute noise   20 ppm                   91.97   -3.87  0.0568  0.031  0.512    520    171  1.000
-absolute noise   50 ppm                   90.37   -5.47  0.0689  0.040  0.500    668    175  1.000
-absolute noise   100 ppm                  87.78   -8.06  0.0838  0.054  0.492    902    175  1.000
-absolute noise   200 ppm                  85.09  -10.75  0.1024  0.067  0.483   1137    168  1.000
-noise colouring  white snr15              93.66   -2.19  0.0458  0.028  0.510    361    164  1.000
-noise colouring  ariel snr15              95.79   -0.06  0.0309  0.010  0.516    188    183  1.000
-noise colouring  exosim snr15             95.63   -0.21  0.0311  0.009  0.515    199    180  1.000
-noise colouring  white snr10              92.52   -3.32  0.0578  0.034  0.498    458    159  1.000
-noise colouring  ariel snr10              94.45   -1.39  0.0410  0.020  0.496    303    178  1.000
-noise colouring  exosim snr10             94.34   -1.50  0.0417  0.019  0.493    311    176  1.000
-noise colouring  white snr7               89.87   -5.97  0.0759  0.051  0.477    698    160  1.000
-noise colouring  ariel snr7               92.46   -3.38  0.0565  0.037  0.473    484    179  1.000
-noise colouring  exosim snr7              92.32   -3.52  0.0579  0.039  0.469    495    178  1.000
-noise colouring  white snr5               87.61   -8.23  0.0917  0.070  0.453    923    181  1.000
-noise colouring  ariel snr5               90.46   -5.38  0.0714  0.054  0.454    667    182  1.000
-noise colouring  exosim snr5              90.34   -5.50  0.0728  0.057  0.450    679    183  1.000
-extrapolation    radius>15 vs control     95.39   -0.45  0.0354  0.025    nan      0      0    nan
+clean            reference                96.47   +0.00  0.0264  0.010  0.515      0      0  1.000
+absorbers        absorbers                71.93  -24.55  0.2633  0.247  0.257   2271     58  1.024
+absorbers        absorbers_quenched       66.46  -30.01  0.3160  0.320  0.182   2977    271  1.007
+cloud            cloud_1e1Pa              63.69  -32.79  0.2518  0.172  0.537   3056    100  0.027
+cloud            cloud_1e2Pa              85.46  -11.01  0.1031  0.053  0.500   1081     88  0.293
+cloud            cloud_1e3Pa              92.44   -4.04  0.0553  0.018  0.512    429     65  0.582
+cloud            cloud_1e4Pa              95.15   -1.32  0.0359  0.010  0.511    173     54  0.813
+cloud            cloud_1e5Pa              96.35   -0.12  0.0279  0.007  0.511     42     31  0.950
+compound         compound_spots10_haze2e6_snr10   88.23   -8.24  0.1008  0.082  0.527    866    123  0.955
+compound         compound_spots10_haze3e7   87.64   -8.83  0.1031  0.075  0.549    904    108  1.044
+compound         compound_spots10_haze3e7_snr8   87.64   -8.83  0.1031  0.075  0.549    904    108  1.044
+compound         compound_spots20_haze3e7   85.40  -11.07  0.1185  0.096  0.526   1120    122  1.332
+compound         compound_spots20_haze3e7_snr8   85.40  -11.07  0.1185  0.096  0.526   1120    122  1.332
+exomol           exomol                   80.57  -15.91  0.1443  0.174  0.335   1586    152  0.885
+exotransmit      exotransmit              89.98   -6.49  0.0838  0.084  0.423    728    143  0.896
+haze             haze_1p0e10              61.32  -35.15  0.2907  0.230  0.314   3341    172  0.482
+haze             haze_2p0e5               96.31   -0.17  0.0276  0.015  0.520     33     18  0.986
+haze             haze_2p0e6               94.70   -1.77  0.0417  0.040  0.545    218     58  0.938
+haze             haze_2p4e8               88.10   -8.37  0.0959  0.103  0.614    841     86  0.778
+haze             haze_3p0e7               90.35   -6.12  0.0826  0.089  0.594    635     83  0.882
+quenched         quenched                 98.30   +1.83  0.0145  0.010  0.515     53    218  0.999
+quenched         quenched_kzz10           98.27   +1.80  0.0136  0.006  0.510     68    230  0.980
+quenched         quenched_kzz11           98.27   +1.80  0.0142  0.009  0.502     91    253  0.956
+quenched         quenched_kzz7            97.93   +1.45  0.0170  0.016  0.520     58    189  1.010
+quenched         quenched_kzz8            98.11   +1.64  0.0158  0.014  0.518     52    200  1.005
+tlse             tlse_fac05               94.60   -1.87  0.0411  0.026  0.482    253     84  1.018
+tlse             tlse_fac10               93.00   -3.47  0.0564  0.046  0.465    415    102  1.034
+tlse             tlse_mixed               89.17   -7.30  0.0918  0.079  0.518    778    120  0.963
+tlse             tlse_spots02             93.97   -2.51  0.0491  0.031  0.531    308     82  0.977
+tlse             tlse_spots05             91.49   -4.98  0.0718  0.052  0.528    552    103  0.958
+tlse             tlse_spots10             88.79   -7.69  0.0959  0.083  0.517    816    123  0.966
+tlse             tlse_spots20             85.48  -10.99  0.1236  0.115  0.501   1126    135  1.081
+white noise      snr12                    94.67   -1.81  0.0397  0.019  0.511    261     98  1.000
+white noise      snr10                    93.64   -2.83  0.0487  0.027  0.507    345     90  1.000
+white noise      snr8                     92.16   -4.31  0.0605  0.035  0.503    489    100  1.000
+white noise      snr5                     88.76   -7.71  0.0854  0.061  0.479    803    108  1.000
+correlated noise snr12                    93.33   -3.14  0.0530  0.036  0.511    397    114  1.000
+correlated noise snr10                    91.36   -5.11  0.0707  0.054  0.502    579    118  1.000
+correlated noise snr8                     89.14   -7.33  0.0883  0.064  0.485    796    135  1.000
+correlated noise snr5                     82.94  -13.53  0.1390  0.123  0.459   1342    122  1.000
+gain ramp        x0.25                    96.50   +0.02  0.0267  0.009  0.514     47     49  0.993
+gain ramp        x0.5                     96.26   -0.21  0.0287  0.010  0.514     96     77  1.003
+gain ramp        x1.0                     95.34   -1.13  0.0350  0.012  0.515    193     91  1.004
+gain ramp        x2.0                     93.57   -2.91  0.0497  0.022  0.521    380    118  1.032
+baseline offset  x0.25                    96.47   +0.00  0.0264  0.010  0.515      0      0  1.000
+baseline offset  x0.5                     96.47   +0.00  0.0264  0.010  0.515      0      0  1.000
+baseline offset  x1.0                     96.47   +0.00  0.0264  0.010  0.515      0      0  1.000
+baseline offset  x2.0                     96.47   +0.00  0.0264  0.010  0.515      0      0  1.000
+absolute noise   20 ppm                   93.17   -3.31  0.0504  0.021  0.526    455    157  1.000
+absolute noise   50 ppm                   91.30   -5.17  0.0639  0.029  0.524    623    157  1.000
+absolute noise   100 ppm                  88.91   -7.56  0.0785  0.041  0.531    828    146  1.000
+absolute noise   200 ppm                  85.66  -10.81  0.1004  0.057  0.533   1118    143  1.000
+noise colouring  white snr15              94.31   -2.16  0.0435  0.024  0.509    335    140  1.000
+noise colouring  ariel snr15              96.35   -0.12  0.0277  0.009  0.515    168    157  1.000
+noise colouring  exosim snr15             96.37   -0.10  0.0278  0.009  0.514    167    158  1.000
+noise colouring  white snr10              93.06   -3.42  0.0534  0.031  0.506    443    135  1.000
+noise colouring  ariel snr10              95.47   -1.00  0.0335  0.012  0.510    241    151  1.000
+noise colouring  exosim snr10             95.43   -1.04  0.0340  0.013  0.509    240    146  1.000
+noise colouring  white snr7               90.55   -5.92  0.0711  0.043  0.491    673    139  1.000
+noise colouring  ariel snr7               93.22   -3.25  0.0493  0.028  0.502    435    142  1.000
+noise colouring  exosim snr7              93.22   -3.25  0.0496  0.027  0.500    434    141  1.000
+noise colouring  white snr5               88.72   -7.75  0.0837  0.055  0.481    842    143  1.000
+noise colouring  ariel snr5               92.13   -4.35  0.0578  0.027  0.505    529    137  1.000
+noise colouring  exosim snr5              92.01   -4.46  0.0586  0.027  0.502    539    137  1.000
+extrapolation    radius>15 vs control     96.03   -0.44  0.0298  0.019    nan      0      0    nan
 
 Out-of-envelope extrapolation, radius split at 15.0 R_earth (train n=10812, test n=7228)
   The control trains on a random subset of the SAME size drawn from the whole grid
   and is tested on the SAME large planets, so only the training distribution differs.
-  extrapolation: acc 95.39%  Brier 0.0354
-  control (random training draw, same n, same test planets, mean of 5): acc 98.35%  Brier 0.0130
-  penalty net of sample size: -2.96 points, Brier +0.0225
+  extrapolation: acc 96.03%  Brier 0.0298
+  control (random training draw, same n, same test planets, mean of 5): acc 98.53%  Brier 0.0114
+  penalty net of sample size: -2.50 points, Brier +0.0184

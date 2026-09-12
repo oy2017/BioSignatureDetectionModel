@@ -5,15 +5,15 @@ spectrum, fitted and scored on disjoint halves of the pooled test planets.
 pct_recovered: the augmentation gain already measured for the same case.
 
 axis                    kind             linear  nonlin  recovered
-stellar spots 20%       deterministic     0.720   0.792        69%
-stellar spots 10%       deterministic     0.767   0.802        76%
-haze 3e7                deterministic     0.787   0.806        68%
-haze 2e6                deterministic     0.806   0.812        64%
-correlated noise SNR 8  stochastic        0.926   0.941        n/a
-correlated noise SNR 5  stochastic        0.894   0.922        n/a
-white noise SNR 8       stochastic        0.863   0.853        35%
-white noise SNR 5       stochastic        0.790   0.793        40%
+stellar spots 20%       deterministic     0.718   0.790        68%
+stellar spots 10%       deterministic     0.766   0.801        67%
+haze 3e7                deterministic     0.787   0.805        75%
+haze 2e6                deterministic     0.805   0.812        60%
+correlated noise SNR 8  stochastic        0.926   0.941        48%
+correlated noise SNR 5  stochastic        0.894   0.921        47%
+white noise SNR 8       stochastic        0.862   0.853        29%
+white noise SNR 5       stochastic        0.789   0.792        28%
 
-Spearman(R2_inv, recovered) = -0.543   Pearson = -0.566   (n = 6)
-deterministic: linear 0.720-0.806, nonlinear 0.792-0.812, recovered 64-76%
-stochastic:    linear 0.790-0.863, nonlinear 0.793-0.853, recovered 35-40%
+Spearman(R2_inv, recovered) = -0.310   Pearson = -0.322   (n = 8)
+deterministic: linear 0.718-0.805, nonlinear 0.790-0.812, recovered 60-75%
+stochastic:    linear 0.789-0.926, nonlinear 0.792-0.941, recovered 28-48%

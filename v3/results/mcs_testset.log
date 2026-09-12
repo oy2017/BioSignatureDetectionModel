@@ -6,8 +6,10 @@
   outside on s radius: 12.1%  (range 0.119-6.52 vs box 0.1-1.7)
   outside on s mass: 2.5%  (range 0.0898-2.77 vs box 0.1-1.7)
   outside on sma: 1.6%  (range 0.00432-2.16 vs box 0.01-0.5)
-chemistry 6 s
-rendered 965/977 in 159 s; label balance 0.50
+chemistry 2 s
+rendered 965/977 in 41 s; label balance 0.50
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
 Loading MultiREx version 0.3.1
 Loading MultiREx version 0.3.1
 Loading MultiREx version 0.3.1

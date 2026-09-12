@@ -1,9 +1,9 @@
-clean reference (frozen pipeline): 95.84%
+clean reference (frozen pipeline): 96.47%
 White-noise augmentation (second stochastic axis)
 
 case           frozen  augmented    gain  % of gap
-SNR 12         93.97%     94.11%  +0.14        8%
-SNR 10         92.80%     93.67%  +0.87       28%
-SNR 8          91.45%     92.97%  +1.52       35%
-SNR 5          87.93%     91.12%  +3.18       40%
-clean          95.84%     95.47%  -0.37
+SNR 12         94.24%     94.65%  +0.41       18%
+SNR 10         93.19%     94.18%  +0.99       30%
+SNR 8          92.05%     93.32%  +1.28       29%
+SNR 5          89.29%     91.30%  +2.02       28%
+clean          96.47%     96.08%  -0.39

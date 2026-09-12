@@ -6,9 +6,9 @@ swap dir [exomol] /home/owenhyang/opacity_swap_v3_exomol
   swapped  H2O  -> 1H2-16O__POKAZATEL__R15000_0.3-50mu.xsec.TauREx.h5
   retained O2   -> opacO2.dat
   retained O3   -> opacO3.dat
---- test1 [exomol]: 1804 planets, jobs=3, reduce=bin ---
-    2237 s total, 1.24 s/planet (wall, jobs=3); 0 failures (NaN rows)
-    vs baseline: median rel diff 6.251e-03, max 1.947e+01; median Pearson r 0.798542, median mean-depth ratio 1.006225
+--- test1 [exomol]: 1804 planets, jobs=4, reduce=bin ---
+    787 s total, 0.44 s/planet (wall, jobs=4); 0 failures (NaN rows)
+    vs baseline: median rel diff 6.167e-03, max 1.944e+01; median Pearson r 0.806203, median mean-depth ratio 1.005739
     wrote /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/test1_native_exomol.npy (1804, 2753)
 
 swap dir [exomol] /home/owenhyang/opacity_swap_v3_exomol
@@ -18,9 +18,9 @@ swap dir [exomol] /home/owenhyang/opacity_swap_v3_exomol
   swapped  H2O  -> 1H2-16O__POKAZATEL__R15000_0.3-50mu.xsec.TauREx.h5
   retained O2   -> opacO2.dat
   retained O3   -> opacO3.dat
---- test2 [exomol]: 1814 planets, jobs=3, reduce=bin ---
-    1762 s total, 0.97 s/planet (wall, jobs=3); 0 failures (NaN rows)
-    vs baseline: median rel diff 6.406e-03, max 1.183e+02; median Pearson r 0.800188, median mean-depth ratio 1.006362
+--- test2 [exomol]: 1814 planets, jobs=4, reduce=bin ---
+    812 s total, 0.45 s/planet (wall, jobs=4); 0 failures (NaN rows)
+    vs baseline: median rel diff 6.325e-03, max 1.181e+02; median Pearson r 0.807029, median mean-depth ratio 1.006016
     wrote /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/test2_native_exomol.npy (1814, 2753)
 
 swap dir [exomol] /home/owenhyang/opacity_swap_v3_exomol
@@ -30,9 +30,9 @@ swap dir [exomol] /home/owenhyang/opacity_swap_v3_exomol
   swapped  H2O  -> 1H2-16O__POKAZATEL__R15000_0.3-50mu.xsec.TauREx.h5
   retained O2   -> opacO2.dat
   retained O3   -> opacO3.dat
---- test3 [exomol]: 1813 planets, jobs=3, reduce=bin ---
-    1548 s total, 0.85 s/planet (wall, jobs=3); 0 failures (NaN rows)
-    vs baseline: median rel diff 6.266e-03, max 1.474e+01; median Pearson r 0.808114, median mean-depth ratio 1.006341
+--- test3 [exomol]: 1813 planets, jobs=4, reduce=bin ---
+    839 s total, 0.46 s/planet (wall, jobs=4); 0 failures (NaN rows)
+    vs baseline: median rel diff 6.194e-03, max 1.471e+01; median Pearson r 0.813376, median mean-depth ratio 1.006085
     wrote /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/test3_native_exomol.npy (1813, 2753)
 
 swap dir [exomol] /home/owenhyang/opacity_swap_v3_exomol
@@ -42,9 +42,9 @@ swap dir [exomol] /home/owenhyang/opacity_swap_v3_exomol
   swapped  H2O  -> 1H2-16O__POKAZATEL__R15000_0.3-50mu.xsec.TauREx.h5
   retained O2   -> opacO2.dat
   retained O3   -> opacO3.dat
---- test4 [exomol]: 1776 planets, jobs=3, reduce=bin ---
-    1484 s total, 0.84 s/planet (wall, jobs=3); 0 failures (NaN rows)
-    vs baseline: median rel diff 6.261e-03, max 1.278e+01; median Pearson r 0.797419, median mean-depth ratio 1.006457
+--- test4 [exomol]: 1776 planets, jobs=4, reduce=bin ---
+    817 s total, 0.46 s/planet (wall, jobs=4); 0 failures (NaN rows)
+    vs baseline: median rel diff 6.180e-03, max 1.276e+01; median Pearson r 0.804353, median mean-depth ratio 1.006140
     wrote /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/test4_native_exomol.npy (1776, 2753)
 
 swap dir [exomol] /home/owenhyang/opacity_swap_v3_exomol
@@ -54,11 +54,24 @@ swap dir [exomol] /home/owenhyang/opacity_swap_v3_exomol
   swapped  H2O  -> 1H2-16O__POKAZATEL__R15000_0.3-50mu.xsec.TauREx.h5
   retained O2   -> opacO2.dat
   retained O3   -> opacO3.dat
---- test5 [exomol]: 1809 planets, jobs=3, reduce=bin ---
-    1012 s total, 0.56 s/planet (wall, jobs=3); 0 failures (NaN rows)
-    vs baseline: median rel diff 6.271e-03, max 4.384e+01; median Pearson r 0.809746, median mean-depth ratio 1.006172
+--- test5 [exomol]: 1809 planets, jobs=4, reduce=bin ---
+    812 s total, 0.45 s/planet (wall, jobs=4); 0 failures (NaN rows)
+    vs baseline: median rel diff 6.200e-03, max 3.996e+01; median Pearson r 0.815911, median mean-depth ratio 1.005875
     wrote /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/test5_native_exomol.npy (1809, 2753)
 
+swap dir [exomol] /home/owenhyang/opacity_swap_v3_exomol
+  swapped  CH4  -> 12C-1H4__YT34to10.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  CO   -> 12C-16O__Li2015.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  CO2  -> 12C-16O2__UCL-4000.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  H2O  -> 1H2-16O__POKAZATEL__R15000_0.3-50mu.xsec.TauREx.h5
+  retained O2   -> opacO2.dat
+  retained O3   -> opacO3.dat
+--- train [exomol]: 18040 planets, jobs=4, reduce=bin ---
+    7675 s total, 0.43 s/planet (wall, jobs=4); 0 failures (NaN rows)
+    vs baseline: median rel diff 6.101e-03, max 5.437e+01; median Pearson r 0.808127, median mean-depth ratio 1.005605
+    wrote /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/train_native_exomol.npy (18040, 2753)
+
+Loading MultiREx version 0.3.1
 Loading MultiREx version 0.3.1
 Loading MultiREx version 0.3.1
 Loading MultiREx version 0.3.1

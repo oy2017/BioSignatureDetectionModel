@@ -1,56 +1,67 @@
-Domain shift, configuration ariel, frozen pipeline raw_xgb; clean paired baseline 85.93% (Brier 0.0944, n=9016)
+Domain shift, configuration ariel, frozen pipeline raw_xgb; clean paired baseline 86.54% (Brier 0.0944, n=9016)
 
 axis             case                       acc   d_acc   brier    ece    pos  flip-  flip+    amp
-clean            reference                85.93   +0.00  0.0944  0.018  0.542      0      0  1.000
-cloud            cloud_1e1Pa              55.21  -30.71  0.2703  0.150  0.333   3335    566  0.026
-cloud            cloud_1e2Pa              69.30  -16.63  0.1943  0.097  0.388   1969    470  0.286
-cloud            cloud_1e3Pa              77.76   -8.16  0.1449  0.075  0.446   1062    326  0.572
-cloud            cloud_1e4Pa              82.64   -3.28  0.1141  0.039  0.498    468    172  0.804
-cloud            cloud_1e5Pa              85.29   -0.63  0.0988  0.019  0.535     96     39  0.945
-exomol           exomol                   77.24   -8.68  0.1474  0.081  0.423   1053    270  0.864
-exotransmit      exotransmit              85.69   -0.23  0.0963  0.024  0.506    268    247  0.887
-haze             haze_1p0e10              53.13  -32.80  0.2905  0.174  0.244   3539    582  0.474
-haze             haze_2p0e5               85.91   -0.01  0.0953  0.020  0.547     20     19  0.987
-haze             haze_2p0e6               85.07   -0.85  0.1017  0.042  0.568    161     84  0.947
-haze             haze_2p4e8               79.77   -6.16  0.1474  0.059  0.585    828    273  0.779
-haze             haze_3p0e7               82.78   -3.15  0.1236  0.101  0.608    466    182  0.894
-quenched         quenched                 92.11   +6.19  0.0581  0.029  0.525    104    662  0.993
-tlse             tlse_fac05               85.90   -0.02  0.0953  0.020  0.531    185    183  1.017
-tlse             tlse_fac10               85.76   -0.17  0.0962  0.019  0.522    284    269  1.039
-tlse             tlse_mixed               84.59   -1.33  0.1028  0.036  0.563    641    521  0.962
-tlse             tlse_spots02             85.64   -0.29  0.0964  0.023  0.550    319    293  0.982
-tlse             tlse_spots05             85.50   -0.42  0.0981  0.030  0.560    482    444  0.967
-tlse             tlse_spots10             84.52   -1.41  0.1037  0.042  0.568    653    526  0.965
-tlse             tlse_spots20             82.68   -3.25  0.1172  0.054  0.574    821    528  1.082
-white noise      snr12                    85.64   -0.29  0.0961  0.020  0.539    185    159  1.000
-white noise      snr10                    85.41   -0.51  0.0966  0.020  0.540    230    184  1.000
-white noise      snr8                     85.24   -0.69  0.0988  0.020  0.540    304    242  1.000
-white noise      snr5                     84.73   -1.20  0.1033  0.021  0.524    442    334  1.000
-correlated noise snr12                    85.65   -0.28  0.0968  0.018  0.540    191    166  1.000
-correlated noise snr10                    85.37   -0.55  0.0983  0.021  0.537    281    231  1.000
-correlated noise snr8                     84.78   -1.14  0.1033  0.018  0.530    378    275  1.000
-correlated noise snr5                     82.23   -3.69  0.1228  0.031  0.505    717    384  1.000
-gain ramp        x0.25                    85.78   -0.14  0.0946  0.020  0.542     58     45  0.996
-gain ramp        x0.5                     85.75   -0.18  0.0956  0.021  0.544    102     86  1.009
-gain ramp        x1.0                     85.70   -0.22  0.0960  0.021  0.542    163    143  1.010
-gain ramp        x2.0                     85.48   -0.44  0.0969  0.017  0.540    268    228  1.034
-baseline offset  x0.25                    86.16   +0.23  0.0942  0.019  0.541     53     74  1.000
-baseline offset  x0.5                     85.79   -0.13  0.0958  0.020  0.541    112    100  1.000
-baseline offset  x1.0                     85.73   -0.20  0.0955  0.018  0.540    194    176  1.000
-baseline offset  x2.0                     85.71   -0.21  0.0961  0.020  0.541    275    256  1.000
-absolute noise   20 ppm                   84.96   -0.96  0.1006  0.031  0.532    414    327  1.000
-absolute noise   50 ppm                   84.69   -1.23  0.1037  0.027  0.524    540    429  1.000
-absolute noise   100 ppm                  83.36   -2.56  0.1114  0.030  0.513    668    437  1.000
-absolute noise   200 ppm                  81.84   -4.08  0.1232  0.040  0.511    830    462  1.000
-noise colouring  white snr15              85.67   -0.26  0.0962  0.016  0.541    247    224  1.000
-noise colouring  ariel snr15              85.77   -0.16  0.0960  0.019  0.541    217    203  1.000
-noise colouring  exosim snr15             85.80   -0.12  0.0959  0.019  0.541    214    203  1.000
-noise colouring  white snr10              85.77   -0.16  0.0958  0.017  0.539    276    262  1.000
-noise colouring  ariel snr10              85.64   -0.29  0.0955  0.016  0.538    266    240  1.000
-noise colouring  exosim snr10             85.66   -0.27  0.0957  0.017  0.538    263    239  1.000
-noise colouring  white snr7               85.03   -0.90  0.1006  0.016  0.530    377    296  1.000
-noise colouring  ariel snr7               85.29   -0.63  0.0987  0.016  0.534    332    275  1.000
-noise colouring  exosim snr7              85.50   -0.42  0.0987  0.016  0.533    325    287  1.000
-noise colouring  white snr5               84.25   -1.67  0.1064  0.019  0.525    505    354  1.000
-noise colouring  ariel snr5               84.84   -1.09  0.1032  0.018  0.527    431    333  1.000
-noise colouring  exosim snr5              84.88   -1.04  0.1031  0.019  0.527    426    332  1.000
+clean            reference                86.54   +0.00  0.0944  0.035  0.541      0      0  1.000
+absorbers        absorbers                70.70  -15.84  0.2195  0.170  0.376   1475     47  1.024
+absorbers        absorbers_quenched       74.69  -11.85  0.1924  0.169  0.341   1752    684  1.007
+cloud            cloud_1e1Pa              56.06  -30.48  0.2824  0.178  0.399   3272    524  0.027
+cloud            cloud_1e2Pa              70.05  -16.48  0.1963  0.111  0.427   1893    407  0.293
+cloud            cloud_1e3Pa              78.83   -7.71  0.1423  0.065  0.476    969    274  0.582
+cloud            cloud_1e4Pa              84.12   -2.42  0.1113  0.039  0.516    355    137  0.813
+cloud            cloud_1e5Pa              85.88   -0.65  0.0985  0.036  0.535     89     30  0.950
+compound         compound_spots10_haze2e6_snr10   84.05   -2.48  0.1127  0.069  0.584    754    530  0.955
+compound         compound_spots10_haze3e7   81.93   -4.60  0.1333  0.117  0.617    919    504  1.044
+compound         compound_spots10_haze3e7_snr8   81.93   -4.60  0.1333  0.117  0.617    919    504  1.044
+compound         compound_spots20_haze3e7   80.28   -6.26  0.1453  0.119  0.616   1059    495  1.332
+compound         compound_spots20_haze3e7_snr8   80.28   -6.26  0.1453  0.119  0.616   1059    495  1.332
+exomol           exomol                   79.17   -7.36  0.1421  0.081  0.463    883    219  0.885
+exotransmit      exotransmit              85.98   -0.55  0.0967  0.036  0.519    268    218  0.896
+haze             haze_1p0e10              53.27  -33.26  0.2990  0.198  0.335   3514    515  0.482
+haze             haze_2p0e5               86.36   -0.18  0.0954  0.038  0.547     32     16  0.986
+haze             haze_2p0e6               85.41   -1.12  0.1030  0.050  0.567    181     80  0.938
+haze             haze_2p4e8               79.99   -6.54  0.1460  0.101  0.617    834    244  0.778
+haze             haze_3p0e7               83.11   -3.43  0.1256  0.104  0.612    495    186  0.882
+quenched         quenched                 92.54   +6.00  0.0539  0.012  0.525    123    664  0.999
+quenched         quenched_kzz10           92.39   +5.86  0.0540  0.010  0.521    146    674  0.980
+quenched         quenched_kzz11           92.45   +5.91  0.0540  0.012  0.513    177    710  0.956
+quenched         quenched_kzz7            92.39   +5.86  0.0561  0.016  0.532    101    629  1.010
+quenched         quenched_kzz8            92.46   +5.92  0.0547  0.014  0.529    113    647  1.005
+tlse             tlse_fac05               86.20   -0.33  0.0957  0.037  0.526    197    167  1.018
+tlse             tlse_fac10               86.31   -0.22  0.0950  0.036  0.521    309    289  1.034
+tlse             tlse_mixed               85.23   -1.31  0.1029  0.049  0.566    658    540  0.963
+tlse             tlse_spots02             85.91   -0.62  0.0968  0.040  0.549    357    301  0.977
+tlse             tlse_spots05             85.68   -0.85  0.0999  0.046  0.560    529    452  0.958
+tlse             tlse_spots10             84.84   -1.70  0.1045  0.053  0.567    691    538  0.966
+tlse             tlse_spots20             83.33   -3.21  0.1204  0.063  0.571    828    539  1.081
+white noise      snr12                    86.04   -0.50  0.0959  0.036  0.541    187    142  1.000
+white noise      snr10                    85.86   -0.68  0.0974  0.035  0.538    250    189  1.000
+white noise      snr8                     85.89   -0.64  0.0974  0.034  0.537    313    255  1.000
+white noise      snr5                     84.63   -1.91  0.1068  0.036  0.522    514    342  1.000
+correlated noise snr12                    85.85   -0.69  0.0976  0.037  0.538    230    168  1.000
+correlated noise snr10                    85.70   -0.83  0.0986  0.037  0.532    322    247  1.000
+correlated noise snr8                     85.02   -1.52  0.1050  0.041  0.526    438    301  1.000
+correlated noise snr5                     82.26   -4.27  0.1268  0.056  0.510    774    389  1.000
+gain ramp        x0.25                    86.38   -0.16  0.0947  0.036  0.540     61     47  0.993
+gain ramp        x0.5                     86.11   -0.42  0.0949  0.036  0.540    116     78  1.003
+gain ramp        x1.0                     86.15   -0.39  0.0958  0.035  0.539    175    140  1.004
+gain ramp        x2.0                     85.95   -0.59  0.0962  0.035  0.540    270    217  1.032
+baseline offset  x0.25                    86.54   +0.00  0.0944  0.036  0.540     71     71  1.000
+baseline offset  x0.5                     86.29   -0.24  0.0955  0.037  0.540    115     93  1.000
+baseline offset  x1.0                     85.95   -0.59  0.0964  0.040  0.537    208    155  1.000
+baseline offset  x2.0                     86.19   -0.34  0.0949  0.036  0.539    297    266  1.000
+absolute noise   20 ppm                   85.03   -1.51  0.1050  0.054  0.528    466    330  1.000
+absolute noise   50 ppm                   84.83   -1.71  0.1081  0.054  0.519    573    419  1.000
+absolute noise   100 ppm                  83.41   -3.13  0.1186  0.062  0.514    700    418  1.000
+absolute noise   200 ppm                  82.22   -4.31  0.1270  0.070  0.511    826    437  1.000
+noise colouring  white snr15              86.31   -0.22  0.0944  0.037  0.538    264    244  1.000
+noise colouring  ariel snr15              86.22   -0.31  0.0945  0.037  0.539    246    218  1.000
+noise colouring  exosim snr15             86.25   -0.29  0.0946  0.037  0.539    244    218  1.000
+noise colouring  white snr10              86.05   -0.49  0.0959  0.034  0.537    325    281  1.000
+noise colouring  ariel snr10              86.22   -0.31  0.0947  0.034  0.537    295    267  1.000
+noise colouring  exosim snr10             86.18   -0.35  0.0951  0.034  0.537    295    263  1.000
+noise colouring  white snr7               85.58   -0.95  0.1001  0.033  0.528    409    323  1.000
+noise colouring  ariel snr7               85.75   -0.79  0.0976  0.034  0.529    356    285  1.000
+noise colouring  exosim snr7              85.86   -0.68  0.0976  0.032  0.528    353    292  1.000
+noise colouring  white snr5               84.95   -1.59  0.1030  0.031  0.524    542    399  1.000
+noise colouring  ariel snr5               85.38   -1.15  0.0995  0.030  0.527    469    365  1.000
+noise colouring  exosim snr5              85.43   -1.11  0.0991  0.030  0.526    464    364  1.000
