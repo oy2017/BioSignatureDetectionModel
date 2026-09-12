@@ -42,6 +42,7 @@ def nsr_shapes(centres, npz=NSR_NPZ):
     teffs = z["teffs"]
     shapes = {}
     for T in teffs:
+        T = int(T)                                     # the ExoSim2 archive stores teffs as floats; keys are integer-named
         wl, nsr = z[f"wl_{T}"], z[f"nsr_{T}"]
         o = np.argsort(wl)
         s = np.interp(centres, wl[o], nsr[o])          # flat extrapolation at the ends

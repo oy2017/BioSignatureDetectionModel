@@ -55,3 +55,10 @@ swap dir [exomol] /home/owenhyang/opacity_swap_v3_exomol
   retained O2   -> opacO2.dat
   retained O3   -> opacO3.dat
 --- test5 [exomol]: 1809 planets, jobs=3, reduce=bin ---
+    1012 s total, 0.56 s/planet (wall, jobs=3); 0 failures (NaN rows)
+    vs baseline: median rel diff 6.271e-03, max 4.384e+01; median Pearson r 0.809746, median mean-depth ratio 1.006172
+    wrote /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/test5_native_exomol.npy (1809, 2753)
+
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
