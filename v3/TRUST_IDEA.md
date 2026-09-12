@@ -185,6 +185,35 @@ margin) — and judged against the clean selective baseline (S2). The pre-regist
 expectation that "distance-based scores detect re-rendered physics" was right about
 detection and wrong about usefulness.
 
+## 4b. Results from the second batch (2026-09-11, evening; frozen clean-trained screen unless stated)
+
+- **Host dependence** (`host_dependence.py`): stellar contamination is the only axis whose
+  cost depends on the host — M dwarfs lose 13.2 points averaged over spot cases (19 at 20 %)
+  vs 2.8 for F stars; every other axis is flat across host type, *including* the ExoSim2
+  noise-shape divergence on cool hosts, which I predicted would cost and does not (+0.8 vs
+  −0.1 at SNR 15). Expected physics (Rackham 2018) for spots; a failed prediction for the noise.
+- **Tier binning** (`tier_screen.py`): at Tier 2 (51 bins) the screen is nearly as good as at
+  Tier 3 (95.4 vs 95.8 clean) but loses more under the opacity swap (72 vs 85) and the compound
+  (78 vs 86). At **Tier 1 (7 bins), where triage would actually happen, the screen is at 88 %
+  clean, 84 % at SNR 7, 61 % under haze 3e7 and 50 % — chance — under spots+haze.** Every
+  envelope number quoted so far is a Tier-3 number; the paper must give Tier 1 alongside.
+- **Ariel's real targets** (`mcs_testset.py`, `mcs_eval.py`; 965 known MCS planets, C/O drawn):
+  only 57 % lie inside the training box — 29 % exceed the grid's 300 M_E mass cap (hot
+  Jupiters), 12 % have hosts above 1.7 R_sun, 9 % are cooler than 500 K. Under the mission's
+  own noise definition (Tier-2 SNR 7 on the 5-scale-height modulation, ExoSim2 shape) the
+  screen scores 95.2 % at Tier-3 binning, 92.2 % at Tier 2 and **78.5 % at Tier 1 (M-dwarf
+  hosts 54 %)**. The M-dwarf deficit appears with no spots at all: it is the cool, small
+  planets around M dwarfs sitting in the 500–1000 K band where the label is hardest, not the
+  star. Out-of-box targets score no worse than in-box ones (95.7 vs 94.9), so the box edges
+  are not where the screen breaks. The achieved SNR on the planets' real amplitudes under the
+  mission convention is median 16 (10–90 %: 11–25), so the study's SNR-15 convention is close
+  to Tier-2 reality for this population. The distance-based decline rules, fixed on grid data,
+  would decline 24–26 % of real targets under the mission noise convention vs 7–8 % under the
+  grid's — they react to the noise convention, exactly as S11 warned.
+
+Pre-registered expectations for the randomized grid (plan §9) were committed before these
+runs and are unchanged; the randomized analysis is queued behind its render.
+
 ## 5. Decision gates (cheap first; each has a kill criterion)
 
 - **G1 — detect (done).** Kill if no score ranks errors above AUROC 0.7 under re-rendered
