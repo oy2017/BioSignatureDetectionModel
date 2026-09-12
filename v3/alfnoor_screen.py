@@ -126,7 +126,7 @@ def tier1_sigma(P, cen, factor=1.0):
     return factor * (P["modulation_5H"].to_numpy() / 7.0)[:, None] * S
 
 
-def do_fit():
+def do_fit(noise_factor=1.0):
     from sklearn.neighbors import KNeighborsClassifier
     from sklearn.neural_network import MLPClassifier
     from sklearn.ensemble import RandomForestClassifier
@@ -145,16 +145,16 @@ def do_fit():
     for f in (0.10, 0.20):
         cases[f"spots{int(f*100)}"] = cases["clean"] * T.contamination(Tst, logg, f, 0.0)
     rng = np.random.default_rng(SEED + 405)
-    Xtr = bin_native(Xtr_n, wl, edges); Xtr = Xtr + rng.normal(0, 1, Xtr.shape) * tier1_sigma(Ptr, cen)
+    Xtr = bin_native(Xtr_n, wl, edges); Xtr = Xtr + rng.normal(0, 1, Xtr.shape) * tier1_sigma(Ptr, cen, noise_factor)
     binned = {k: bin_native(v, wl, edges) for k, v in cases.items()}
-    sig = tier1_sigma(Pte, cen); eps = rng.normal(0, 1, sig.shape)
+    sig = tier1_sigma(Pte, cen, noise_factor); eps = rng.normal(0, 1, sig.shape)
     noisy = {k: v + eps * sig for k, v in binned.items()}
     noisy["noise_x2"] = binned["clean"] + eps * 2 * sig; noisy["noise_x3"] = binned["clean"] + eps * 3 * sig
     norm = lambda X: (X - X.mean(1, keepdims=True)) / (X.std(1, keepdims=True) + 1e-12)
     Ztr = norm(Xtr); Z = {k: norm(v) for k, v in noisy.items()}
     makers = {"KNN": lambda: KNeighborsClassifier(5), "MLP": lambda: MLPClassifier((100,), max_iter=1000, random_state=SEED),
               "RFC": lambda: RandomForestClassifier(random_state=SEED, n_jobs=8), "SVC": lambda: SVC()}
-    rows, L = [], ["Mugnai et al. 2021 Tier-1 molecular screen, rebuilt (POP-III train, POP-I test, 7 points, requirement noise)",
+    rows, L = [], [f"Mugnai et al. 2021 Tier-1 molecular screen, rebuilt (POP-III train, POP-I test, 7 points, requirement noise x {noise_factor})",
                    f"train {len(Ztr)} spectra, test {len(Pte)} planets; their Table 6 at 1e-4: CH4 82-86, CO2 79-83, H2O 71-78, NH3 82-87 %", ""]
     for th_name, th in THRESH.items():
         L.append(f"=== threshold: abundance > {th_name}")
@@ -175,15 +175,16 @@ def do_fit():
     L += ["", "Deviations from Mugnai et al. 2021: forward model MultiREx/TauREx 3 with Exo-Transmit tables (theirs: TauREx 3 with ExoMol k-tables);",
           "noise shape from ExoSim2 rather than ArielRad, level set by the Tier-1 requirement per target; 965 known MCS planets (2026 list)",
           "rather than their 1000 (2019 list incl. TESS predictions); training spectra noised once, not resampled per epoch."]
-    open(os.path.join(RESULTS, "alfnoor_screen.txt"), "w").write("\n".join(L) + "\n")
-    df.to_csv(os.path.join(RESULTS, "alfnoor_screen.csv"), index=False); print("\n".join(L))
+    tag = "" if noise_factor == 1.0 else f"_noise{noise_factor:g}"
+    open(os.path.join(RESULTS, f"alfnoor_screen{tag}.txt"), "w").write("\n".join(L) + "\n")
+    df.to_csv(os.path.join(RESULTS, f"alfnoor_screen{tag}.csv"), index=False); print("\n".join(L))
 
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--render", action="store_true"); ap.add_argument("--fit", action="store_true")
-    ap.add_argument("--jobs", type=int, default=8); a = ap.parse_args()
+    ap.add_argument("--jobs", type=int, default=8); ap.add_argument("--noise-factor", type=float, default=1.0); a = ap.parse_args()
     if a.render: do_render(a.jobs)
-    if a.fit: do_fit()
+    if a.fit: do_fit(a.noise_factor)
 
 
 if __name__ == "__main__":
