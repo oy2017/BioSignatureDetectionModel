@@ -390,6 +390,26 @@ distance-based novelty alarm catches it, and fixing the forward model removes it
 The standard Ariel ML grid has such an omission today, and it puts a carbon-rich screen at
 chance on the planets it exists to find.
 
+## 4f. Second object under test: the consortium's own Tier-1 screen (added 2026-09-12)
+
+Decision: the primary object under test becomes a faithful rebuild of the Tier-1 molecular
+classifiers of Mugnai et al. 2021 (AJ 162, 288; Alfnoor is not public, so rebuilt from the
+text: POP-III training population, POP-I test, 7 Tier-1 points, requirement noise, labels
+abundance > 1e-5/1e-4/1e-3, zero-mean unit-variance inputs, scikit-learn default k-NN / MLP /
+random forest / SVC). Our C/O screen stays as the science-target case. `alfnoor_screen.py`.
+
+Pre-registered expectations, written before the fit runs:
+- Reproduction: within ±5 points of their Table 6 at the 1e-4 threshold (CH4 82–86, CO2
+  79–83, H2O 71–78, NH3 82–87 %). A larger miss is a deviation to explain, not to hide; the
+  listed deviations are the forward model's opacity tables and the noise shape.
+- Spots: the Tier-1 H2O and CH4 classifiers lose ≥ 10 points at 20 % coverage, concentrated on
+  M-dwarf hosts, as for our screen.
+- Haze 3e7: ≥ 10 points on every molecule at seven points (our Tier-1 C/O screen lost 27).
+- Unmodelled HCN + C2H2 at 1e-7–1e-4: the CH4 classifier's accuracy falls (false positives from
+  the 3.0–3.3 µm overlap) by ≥ 5 points; the others by less. If the CH4 classifier is unaffected,
+  the absorber result is label-specific and the paper says so.
+- Noise ×2: ≥ 10 points on every molecule.
+
 ## 5. Decision gates (cheap first; each has a kill criterion)
 
 - **G1 — detect (done).** Kill if no score ranks errors above AUROC 0.7 under re-rendered
