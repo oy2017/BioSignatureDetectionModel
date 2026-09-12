@@ -40,3 +40,96 @@ test1: 1804 planets, 0 Exo-Transmit failures (NaN rows), jobs=4
   test2: 1080/1814 done, 985 s elapsed, 0.91 s/planet effective, eta 669 s
   test2: 1170/1814 done, 1062 s elapsed, 0.91 s/planet effective, eta 585 s
   test2: 1260/1814 done, 1137 s elapsed, 0.90 s/planet effective, eta 500 s
+  test2: 1350/1814 done, 1213 s elapsed, 0.90 s/planet effective, eta 417 s
+  test2: 1440/1814 done, 1291 s elapsed, 0.90 s/planet effective, eta 335 s
+  test2: 1530/1814 done, 1369 s elapsed, 0.89 s/planet effective, eta 254 s
+  test2: 1620/1814 done, 1449 s elapsed, 0.89 s/planet effective, eta 174 s
+  test2: 1710/1814 done, 1526 s elapsed, 0.89 s/planet effective, eta 93 s
+  test2: 1800/1814 done, 1605 s elapsed, 0.89 s/planet effective, eta 12 s
+  test2: 1814/1814 done, 1617 s elapsed, 0.89 s/planet effective, eta 0 s
+test2: 1814 planets, 0 Exo-Transmit failures (NaN rows), jobs=4
+  per-planet wall clock inside a worker: median 3.4 s, mean 3.5 s, min 2.4 s, max 6.9 s
+  end-to-end: 1617 s total = 0.89 s/planet effective (1814 timed)
+  projected for a 2,000-planet split at jobs=4: 30 min; five splits 2.5 h
+  wrote /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/test2_native_exotransmit.npy  shape (1814, 2753)  NaN rows 0
+--- test3 ---
+  test3: 90/1813 done, 79 s elapsed, 0.88 s/planet effective, eta 1517 s
+  test3: 180/1813 done, 156 s elapsed, 0.87 s/planet effective, eta 1413 s
+  test3: 270/1813 done, 231 s elapsed, 0.86 s/planet effective, eta 1321 s
+  test3: 360/1813 done, 302 s elapsed, 0.84 s/planet effective, eta 1219 s
+  test3: 450/1813 done, 376 s elapsed, 0.84 s/planet effective, eta 1139 s
+  test3: 540/1813 done, 449 s elapsed, 0.83 s/planet effective, eta 1058 s
+  test3: 630/1813 done, 522 s elapsed, 0.83 s/planet effective, eta 980 s
+  test3: 720/1813 done, 600 s elapsed, 0.83 s/planet effective, eta 910 s
+  test3: 810/1813 done, 678 s elapsed, 0.84 s/planet effective, eta 840 s
+  test3: 900/1813 done, 755 s elapsed, 0.84 s/planet effective, eta 765 s
+  test3: 990/1813 done, 832 s elapsed, 0.84 s/planet effective, eta 692 s
+  test3: 1080/1813 done, 911 s elapsed, 0.84 s/planet effective, eta 619 s
+  test3: 1170/1813 done, 989 s elapsed, 0.84 s/planet effective, eta 543 s
+  test3: 1260/1813 done, 1069 s elapsed, 0.85 s/planet effective, eta 469 s
+  test3: 1350/1813 done, 1146 s elapsed, 0.85 s/planet effective, eta 393 s
+  test3: 1440/1813 done, 1226 s elapsed, 0.85 s/planet effective, eta 318 s
+  test3: 1530/1813 done, 1293 s elapsed, 0.84 s/planet effective, eta 239 s
+  test3: 1620/1813 done, 1359 s elapsed, 0.84 s/planet effective, eta 162 s
+  test3: 1710/1813 done, 1425 s elapsed, 0.83 s/planet effective, eta 86 s
+  test3: 1800/1813 done, 1492 s elapsed, 0.83 s/planet effective, eta 11 s
+  test3: 1813/1813 done, 1502 s elapsed, 0.83 s/planet effective, eta 0 s
+test3: 1813 planets, 0 Exo-Transmit failures (NaN rows), jobs=4
+  per-planet wall clock inside a worker: median 3.3 s, mean 3.3 s, min 2.1 s, max 4.4 s
+  end-to-end: 1502 s total = 0.83 s/planet effective (1813 timed)
+  projected for a 2,000-planet split at jobs=4: 28 min; five splits 2.3 h
+  wrote /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/test3_native_exotransmit.npy  shape (1813, 2753)  NaN rows 0
+--- test4 ---
+  test4: 88/1776 done, 66 s elapsed, 0.75 s/planet effective, eta 1260 s
+  test4: 176/1776 done, 131 s elapsed, 0.75 s/planet effective, eta 1195 s
+  test4: 264/1776 done, 198 s elapsed, 0.75 s/planet effective, eta 1133 s
+  test4: 352/1776 done, 265 s elapsed, 0.75 s/planet effective, eta 1072 s
+  test4: 440/1776 done, 330 s elapsed, 0.75 s/planet effective, eta 1003 s
+  test4: 528/1776 done, 396 s elapsed, 0.75 s/planet effective, eta 937 s
+  test4: 616/1776 done, 465 s elapsed, 0.75 s/planet effective, eta 875 s
+  test4: 704/1776 done, 534 s elapsed, 0.76 s/planet effective, eta 813 s
+  test4: 792/1776 done, 601 s elapsed, 0.76 s/planet effective, eta 747 s
+  test4: 880/1776 done, 668 s elapsed, 0.76 s/planet effective, eta 680 s
+  test4: 968/1776 done, 735 s elapsed, 0.76 s/planet effective, eta 613 s
+  test4: 1056/1776 done, 800 s elapsed, 0.76 s/planet effective, eta 546 s
+  test4: 1144/1776 done, 866 s elapsed, 0.76 s/planet effective, eta 478 s
+  test4: 1232/1776 done, 931 s elapsed, 0.76 s/planet effective, eta 411 s
+  test4: 1320/1776 done, 997 s elapsed, 0.76 s/planet effective, eta 344 s
+  test4: 1408/1776 done, 1062 s elapsed, 0.75 s/planet effective, eta 278 s
+  test4: 1496/1776 done, 1127 s elapsed, 0.75 s/planet effective, eta 211 s
+  test4: 1584/1776 done, 1193 s elapsed, 0.75 s/planet effective, eta 145 s
+  test4: 1672/1776 done, 1259 s elapsed, 0.75 s/planet effective, eta 78 s
+  test4: 1760/1776 done, 1326 s elapsed, 0.75 s/planet effective, eta 12 s
+  test4: 1776/1776 done, 1339 s elapsed, 0.75 s/planet effective, eta 0 s
+test4: 1776 planets, 0 Exo-Transmit failures (NaN rows), jobs=4
+  per-planet wall clock inside a worker: median 3.0 s, mean 3.0 s, min 2.2 s, max 3.7 s
+  end-to-end: 1339 s total = 0.75 s/planet effective (1776 timed)
+  projected for a 2,000-planet split at jobs=4: 25 min; five splits 2.1 h
+  wrote /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/test4_native_exotransmit.npy  shape (1776, 2753)  NaN rows 0
+--- test5 ---
+  test5: 90/1809 done, 71 s elapsed, 0.79 s/planet effective, eta 1351 s
+  test5: 180/1809 done, 138 s elapsed, 0.77 s/planet effective, eta 1248 s
+  test5: 270/1809 done, 207 s elapsed, 0.77 s/planet effective, eta 1180 s
+  test5: 360/1809 done, 273 s elapsed, 0.76 s/planet effective, eta 1099 s
+  test5: 450/1809 done, 342 s elapsed, 0.76 s/planet effective, eta 1034 s
+  test5: 540/1809 done, 409 s elapsed, 0.76 s/planet effective, eta 962 s
+  test5: 630/1809 done, 478 s elapsed, 0.76 s/planet effective, eta 895 s
+  test5: 720/1809 done, 546 s elapsed, 0.76 s/planet effective, eta 826 s
+  test5: 810/1809 done, 614 s elapsed, 0.76 s/planet effective, eta 758 s
+  test5: 900/1809 done, 682 s elapsed, 0.76 s/planet effective, eta 689 s
+  test5: 990/1809 done, 749 s elapsed, 0.76 s/planet effective, eta 620 s
+  test5: 1080/1809 done, 816 s elapsed, 0.76 s/planet effective, eta 551 s
+  test5: 1170/1809 done, 883 s elapsed, 0.76 s/planet effective, eta 483 s
+  test5: 1260/1809 done, 947 s elapsed, 0.75 s/planet effective, eta 413 s
+  test5: 1350/1809 done, 998 s elapsed, 0.74 s/planet effective, eta 339 s
+  test5: 1440/1809 done, 1050 s elapsed, 0.73 s/planet effective, eta 269 s
+  test5: 1530/1809 done, 1103 s elapsed, 0.72 s/planet effective, eta 201 s
+  test5: 1620/1809 done, 1159 s elapsed, 0.72 s/planet effective, eta 135 s
+  test5: 1710/1809 done, 1211 s elapsed, 0.71 s/planet effective, eta 70 s
+  test5: 1800/1809 done, 1264 s elapsed, 0.70 s/planet effective, eta 6 s
+  test5: 1809/1809 done, 1269 s elapsed, 0.70 s/planet effective, eta 0 s
+test5: 1809 planets, 0 Exo-Transmit failures (NaN rows), jobs=4
+  per-planet wall clock inside a worker: median 3.0 s, mean 2.8 s, min 1.8 s, max 3.4 s
+  end-to-end: 1269 s total = 0.70 s/planet effective (1809 timed)
+  projected for a 2,000-planet split at jobs=4: 23 min; five splits 1.9 h
+  wrote /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/test5_native_exotransmit.npy  shape (1809, 2753)  NaN rows 0
