@@ -237,6 +237,15 @@ rescues it. Only fixing the forward model can — which the oracle (training ren
 C2H2, running) will show, and which will probably make the screen *better* than before,
 since HCN and C2H2 are carbon-rich markers.
 
+Detection on this axis inverts the pattern seen everywhere else (`trust_detect.py`, frozen
+screen): the distance scores, useless for ranking errors on distorted-known-physics axes,
+rank them well here (Mahalanobis / PCA / k-NN error AUROC 0.89–0.91; accepted 92.8–94.5 %
+at 60–65 % coverage), while the margin fails (0.68: the screen is confidently wrong). A new
+absorber makes a spectrum *novel*, so distance from the training cloud is error; a distorted
+known spectrum does not. That gives the detection half of the paper a structure instead of a
+disappointment: per-planet confidence for the mismatches you modelled, distance for the ones
+you did not.
+
 Checks before the word "finding" (§2b rule):
 (a) literature phrased as the negation — Ardévol Martínez 2022 tested an *added* absorber
     (AlO) on a retrieval CNN and found it robust; ours is the opposite outcome for a
