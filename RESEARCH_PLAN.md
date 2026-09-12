@@ -253,6 +253,12 @@ deserves it.
   together as a single count-based, falsifiable prediction, tested it against
   named rivals, or measured it on a scientific simulator. That is the claim; the
   roots must be cited so it reads as unification, not discovery.
+- **What counts as a contribution (settled 2026-09-11):** two items only — the
+  repair rule and the quenching result. The budget is the vehicle and a usable
+  artifact, described in Methods and Results, not claimed. Pre-registration is
+  not a contribution at all: it is the evidence procedure for the rule, reported
+  in one Methods paragraph with the commit hash, and kept out of the abstract's
+  claims.
 - **C/O**: regressed by random forest on equilibrium grids for JWST
   (Guzmán-Mesa et al. 2020); no published binary carbon-rich screen found, but
   do not write "first".
