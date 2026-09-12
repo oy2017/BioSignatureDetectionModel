@@ -410,6 +410,30 @@ Pre-registered expectations, written before the fit runs:
   the absorber result is label-specific and the paper says so.
 - Noise ×2: ≥ 10 points on every molecule.
 
+## 4g. The NH3 episode and the full re-run (2026-09-12)
+
+Rebuilding the consortium's Tier-1 screen exposed a limitation of our own forward model: MultiREx
+ships no NH3 opacity table, so NH3 in every v2 and v3 render acted through mean molecular weight
+only. This was a documented v2 simplification, matched in the Exo-Transmit axis, not a silent bug —
+but a paper whose headline is "the simulator omitted a species" cannot itself omit one. The
+Exo-Transmit `opacNH3.dat` was added (NH3 at 1e-3 now adds 300–500 ppm in its 1.5 / 2.0 / 3.0 /
+6.1 µm bands for a hot Jupiter), the Exo-Transmit axis carries NH3 too, and **every v3 number in
+§4a–4f is superseded by the re-run launched 2026-09-12 08:32 (`rerun_all.sh`; ~10 h)**. The
+NH3-less run is archived in `results_noNH3/`, `data_noNH3/`, `models_noNH3/`. Expectation: the
+qualitative map holds; cool-planet numbers (500–1000 K, where NH3 is abundant) move.
+
+Stress-test lesson S13: *audit your own forward model's species list against the same standard
+you apply to others, before the headline is written.* The protocol caught it, but late.
+
+Alfnoor rebuild, first pass (NH3-less, so provisional): CH4 and H2O reach their Table 6 only at
+one half to one quarter of the requirement noise (75–78 % at the requirement vs their 82–87 %);
+CO2 sits at the majority-class rate at every noise level (60 % vs their 79–83 %) although our
+forward model does produce the 4.3 µm band (1029 ppm at 1e-3) — its imprint is diluted in the single
+3.9–7.8 µm Tier-1 point; NH3 at chance was our artifact. Mismatch costs on their screen at the
+requirement noise: haze 3e7 −13 to −16 (CH4, H2O), spots 20 % −11 to −14, noise ×2 −7 to −10,
+unmodelled HCN + C2H2 −1 to −2 (pre-registered ≥ 5 on CH4: **not met** at this noise level).
+All to be re-read after the NH3 run.
+
 ## 5. Decision gates (cheap first; each has a kill criterion)
 
 - **G1 — detect (done).** Kill if no score ranks errors above AUROC 0.7 under re-rendered
