@@ -1,0 +1,14 @@
+977 known targets; inside the training box on every bulk parameter: 56.6%
+  outside on p_radius: 2.3%  (range 0.549-23.4 vs box 1-26)
+  outside on p_mass: 29.1%  (range 0.07-8.9e+03 vs box 1-300)
+  outside on atm temperature: 8.6%  (range 172-4.05e+03 vs box 500-2.5e+03)
+  outside on s temperature: 1.1%  (range 2.57e+03-1.02e+04 vs box 2.5e+03-7.5e+03)
+  outside on s radius: 12.1%  (range 0.119-6.52 vs box 0.1-1.7)
+  outside on s mass: 2.5%  (range 0.0898-2.77 vs box 0.1-1.7)
+  outside on sma: 1.6%  (range 0.00432-2.16 vs box 0.01-0.5)
+chemistry 6 s
+rendered 965/977 in 159 s; label balance 0.50
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1

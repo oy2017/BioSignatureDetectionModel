@@ -1,0 +1,6 @@
+train: 18040 spectra -> ariel 102, r100 275, r200 550, tier1 7, tier2 51
+test1: 1804 spectra -> ariel 102, r100 275, r200 550, tier1 7, tier2 51
+test2: 1814 spectra -> ariel 102, r100 275, r200 550, tier1 7, tier2 51
+test3: 1813 spectra -> ariel 102, r100 275, r200 550, tier1 7, tier2 51
+test4: 1776 spectra -> ariel 102, r100 275, r200 550, tier1 7, tier2 51
+test5: 1809 spectra -> ariel 102, r100 275, r200 550, tier1 7, tier2 51
