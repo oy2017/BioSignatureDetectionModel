@@ -35,8 +35,7 @@ CASES = [("cloud_1e5Pa", "aero", True), ("cloud_1e4Pa", "aero", True), ("cloud_1
          ("tlse_spots02", "spots", True), ("tlse_spots05", "spots", True), ("tlse_spots10", "spots", True),
          ("tlse_spots20", "spots", True), ("tlse_mixed", "spots", False), ("tlse_fac10", "spots", False),
          ("quenched", "quench", True), ("exotransmit", "code", False), ("exomol", "opacity", False),
-         ("compound_spots10_haze3e7", "compound", True), ("compound_spots20_haze3e7", "compound", True),
-         ("compound_spots20_haze3e7_snr8", "compound", True)]
+         ("compound_spots10_haze3e7", "compound", True), ("compound_spots20_haze3e7", "compound", True)]
 NOISE = [("white", 12, True), ("white", 8, True), ("white", 5, True), ("correlated", 12, True), ("correlated", 8, True), ("correlated", 5, True)]
 HELD_OUT = {"aero": "no_aero", "spots": "no_spots", "quench": "no_quench", "noise": "no_noise"}
 
@@ -160,11 +159,20 @@ def main():
     if len(inr):
         frac = ((inr.full - inr.frozen) / (inr.oracle - inr.frozen).where((inr.oracle - inr.frozen) > 0.005)).dropna() * 100
         L.append(f"in-range cases with an oracle: full reaches {frac.min():.0f}-{frac.max():.0f}% of the ceiling (n = {len(frac)})")
+    L.append("")
+    L.append("Held-out axes, IN-RANGE cases only: mean loss (points vs the frozen clean accuracy) of the frozen screen, of the")
+    L.append("variant trained without that axis, and of the full randomized screen; transfer = share of full's loss reduction")
+    L.append("that the held-out variant achieves without ever seeing the axis.")
     for axis, v in HELD_OUT.items():
-        g = df[(df.axis == axis) & (df.case != "clean")]
+        g = df[(df.axis == axis) & (df.case != "clean") & df.in_range]
         if len(g):
-            L.append(f"held-out {axis:<7}: frozen loss {((c.frozen - g.frozen)*100).mean():+.2f} -> held-out variant loss {((c.frozen - g[v])*100).mean():+.2f} (mean over {len(g)} cases)"
-                     f" ; transfer = {100*((g[v]-g.frozen)/(g.full-g.frozen).where((g.full-g.frozen).abs()>0.002)).dropna().mean():.0f}% of what full achieves")
+            lf, lh, lfull = ((c.frozen - g.frozen) * 100).mean(), ((c.frozen - g[v]) * 100).mean(), ((c.frozen - g.full) * 100).mean()
+            tr = (lf - lh) / (lf - lfull) * 100 if abs(lf - lfull) > 0.05 else np.nan
+            L.append(f"  held-out {axis:<7}: frozen {lf:+6.2f}  without-axis {lh:+6.2f}  full {lfull:+6.2f}   transfer {tr:5.0f}%   ({len(g)} cases)")
+    for axis in ("code", "opacity"):
+        g = df[df.axis == axis]
+        for _, r in g.iterrows():
+            L.append(f"  never trained {r.case:<12}: frozen {(c.frozen - r.frozen)*100:+6.2f}  randomized {(c.frozen - r.full)*100:+6.2f}")
     L += ["", "Absorb/detect trade-off (Mahalanobis shift AUROC; margin error AUROC), frozen -> full:"]
     for _, t in tdf.iterrows():
         L.append(f"  {t.case:<30} shift {t.frozen_auroc_shift:.3f} -> {t.full_auroc_shift:.3f}   error {t.frozen_auroc_error:.3f} -> {t.full_auroc_error:.3f}")
