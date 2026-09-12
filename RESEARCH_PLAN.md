@@ -227,6 +227,39 @@ yields an interpretable ranking, **not** as a lookup table other groups can cite
 numbers from. Presenting it as the latter invites the obvious objection and
 deserves it.
 
+### Prior-art check (2026-09-11, web search; cite all of these)
+
+- **Ardévol Martínez et al. 2022 (A&A 662, A108)** is the closest precedent and
+  the one a referee will name: a retrieval CNN trained with noisy copies, then
+  tested on spectra with an added absorber (AlO), a removed absorber (TiO/VO) and
+  unocculted star spots — three mismatch axes on one frozen model, with nested
+  sampling as the comparison. They priced; they did not repair, and the axes were
+  not chosen to separate deterministic from stochastic. Our budget is the
+  eight-axis, same-planets, Ariel-layout version of their §5 — completeness, not
+  method. Say so in the related-work paragraph.
+- **Barstow et al. 2020 (MNRAS 493, 4884)**: retrieval-code intercomparison;
+  forward-model choice priced for classical retrieval.
+- **Ariel Data Challenge 2024 dataset (arXiv:2605.03719)**: ExoSim2 + TauREx
+  simulated observations with a deliberate train/test shift in the *instrumental*
+  noise and systematics, explicitly for stress-testing ML detrending. Instrument
+  axes only; no chemistry, cloud or opacity shift. Our axes are complementary.
+- **2026 review (arXiv:2606.23766, §4.2)** names "calibration under instrument
+  mismatch" and low-S/N out-of-distribution spectra (Gebhard et al. 2023; Orsini
+  et al. 2025) as open problems; physics-side mismatch is not discussed.
+- **Repair rule, ML side**: the two halves have classical roots — input-noise
+  augmentation is Tikhonov regularisation (Bishop 1995), so it cannot teach
+  invariance to a particular realisation; transformation augmentation is
+  group-averaging that does (Chen, Dobriban & Lee 2020). Nobody has put the two
+  together as a single count-based, falsifiable prediction, tested it against
+  named rivals, or measured it on a scientific simulator. That is the claim; the
+  roots must be cited so it reads as unification, not discovery.
+- **C/O**: regressed by random forest on equilibrium grids for JWST
+  (Guzmán-Mesa et al. 2020); no published binary carbon-rich screen found, but
+  do not write "first".
+- **Quenching vs an equilibrium-trained ML model**: nothing found. Moses et al.
+  2013 is the chemistry reference for why quenching enhances CH4/HCN/C2H2 and
+  depletes H2O at C/O > 1.
+
 ### 4.1 The audit method (useful, not surprising)
 
 Freeze one screen, re-render the same planets with one simulator ingredient
