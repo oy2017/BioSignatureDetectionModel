@@ -590,6 +590,70 @@ into a measurement**. Where it can, do that instead of disclosing it.
    recovers 65 %. Three scripts that had v2 bands typed in now read the live
    CSVs.
 
+## 9. The question the paper now centres on: can you trust it? (adopted 2026-09-11)
+
+**Question.** Can a screen trained on a simulator be deployed on Ariel data — whose physics
+will differ from the simulator in ways both anticipated and not — with a stated accuracy,
+when no Ariel data exists to validate it on?
+
+**Definition of trust used here.** On test data whose physics differs from the training
+simulator, the planets the screen *accepts* are classified at a stated accuracy and the rest
+are *declined*. Trust is therefore two capabilities — absorb the anticipated mismatch, detect
+the unanticipated — and one product, a trust envelope: accepted-set accuracy and coverage per
+mismatch axis at a decline threshold fixed on clean data alone.
+
+**Test 1 — absorb (anticipated mismatch).** One randomized training grid (`--mode randomized`):
+every planet drawn with random haze density, cloud-deck pressure, spot coverage, noise level,
+and quenched-or-equilibrium chemistry, jointly. Compared on identical shifted test planets
+against the clean-trained screen, the single-axis augmented screens (v3 augment*.py) and the
+per-case oracles (v3 oracle.py). Tested on each axis alone and on compounds built from
+existing renders (spots × haze × low SNR on the same planet; `compound.py`).
+*Pre-registered expectations:* the randomized screen reaches ≥ 90 % of each single-axis
+oracle; its clean cost is < 1 point; the clean-trained screen's compound loss exceeds the sum
+of its single losses (super-additive) and the randomized screen's does not. Any of the three
+failing is reported as such.
+
+**Test 2 — detect (unanticipated mismatch).** Leave-one-axis-out: the randomized grid is
+rebuilt without one ingredient (opacity tables, Exo-Transmit code, quenching, spots) and
+tested on it. Two measurements: (a) whether robustness transfers to the unseen axis (accuracy
+vs the clean-trained screen); (b) whether an out-of-distribution score flags the planets it
+gets wrong. Scores compared (`trust_detect.py`): predicted-probability margin (baseline),
+ensemble disagreement across norm_xgb / norm_rf / norm_mlp, Mahalanobis distance in the
+normalized-feature space, PCA reconstruction error, k-NN distance to the training set.
+Metric: accepted-set accuracy vs coverage per axis; error-detection AUROC.
+*Pre-registered expectations:* the probability margin is the worst detector under every
+re-rendered shift; distance-based scores detect re-rendered physics (opacity, Exo-Transmit,
+spots ≥ 10 %) but not noise-level shifts; and the absorb/detect trade-off is real — the more
+an axis is randomized into training, the less detectable it becomes. The leave-one-axis-out
+robustness transfer is the prediction I am least sure of; I expect partial transfer
+(randomized beats clean on the unseen axis) for aerosols↔spots and none for opacity.
+
+**Test 3 — the trust envelope (deliverable).** Decline threshold fixed at a clean-data
+quantile (10 % declined on clean), never tuned on shifted sets. One table: for every axis
+including the held-out ones, accepted-set accuracy and coverage. A row that is neither
+absorbed nor detected is a negative result and goes in the table as such.
+
+**Test 4 — real spectra, label-free (stretch).** Published JWST transmission spectra
+(NIRSpec PRISM, 0.6–5.3 µm) binned onto the overlapping Ariel channels; only the OOD score is
+run. The accepted fraction is a label-free measurement of the simulator-to-reality gap.
+Failure mode to state in advance: rejecting everything would indicate noise/systematics
+mismatch, not physics.
+
+**Novelty, as checked 2026-09-11 (cite these).** Domain randomization is the robotics
+sim-to-real recipe (survey arXiv:2009.13303), unused on astronomical spectra. Held-out-
+corruption evaluation and selective prediction are standard ML protocols. Misspecification
+detection for simulation-trained inference is active in cosmology (arXiv:2507.13495,
+2508.05744, 2305.15871) and has not been asked of exoplanet atmospheres, where the mismatch is
+physics. The Ariel Data Challenge 2024 dataset (arXiv:2605.03719) shifts instrument noise only;
+Ardévol Martínez et al. 2022 priced three physics mismatches and neither absorbed nor
+detected them. New here: the question posed quantitatively for a mission screen, physics-side
+axes with held-out evaluation, the absorb-or-detect framing, the envelope as product, and —
+if Test 4 runs — a label-free gap measurement on real JWST spectra. No method is new; say so.
+
+**Carried over.** The quenching result (§3, Axis 8) stays as a grid-design finding. The
+decomposition total = irreducible + reducible (oracle.py) replaces the repair rule and feeds
+Test 1's ceilings.
+
 ## 8. Decisions already taken, not to be re-litigated
 
 - Paper 1 (NHSJS) carries no retrieval results; the retrieval work is paper 2.
