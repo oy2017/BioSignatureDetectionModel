@@ -214,6 +214,28 @@ detection and wrong about usefulness.
 Pre-registered expectations for the randomized grid (plan §9) were committed before these
 runs and are unchanged; the randomized analysis is queued behind its render.
 
+## 4b′. Randomized grid vs the pre-registered expectations (plan §9), 2026-09-11 late
+
+- Clean cost −0.72 points: **as predicted** (< 1).
+- Reaches 36–83 % of the single-axis ceilings (n = 7 in-range cases with an oracle):
+  **prediction (≥ 90 %) failed.** Joint randomization pays a capacity price that single-axis
+  augmentation (83–107 % of ceiling) did not.
+- Compounds: sub-additive on the frozen screen (already known); the randomized screen gains
+  3.6–4.6 points on them.
+- Held-out transfer, in-range cases only: spots **9 %** (robustness to contamination does not
+  come from anything else), noise **60 %** (physics randomization partly buys noise
+  robustness), aerosols undetermined (in-range aerosol costs are ~2 points, inside the
+  randomized screen's own clean offset), opacity tables +3.7 points without ever being trained
+  (10.7 → 7.0 loss), Exo-Transmit none (5.8 → 6.2).
+- Absorb/detect trade-off: **confirmed and sharp.** The Mahalanobis shift alarm goes blind on
+  randomized axes (spots 20 %: AUROC 0.84 → 0.51; haze 3e7: 0.90 → 0.63; compound: 0.99 →
+  0.36) and stays intact on never-trained axes (opacity 0.98 → 0.98; SNR 5 noise 1.00 →
+  1.00); the margin's error ranking *improves* under randomization (spots 20 %: 0.78 → 0.91).
+- Envelope v1 (ensemble rule, 10 % clean decline): every in-range case ≥ 94.8 % accepted, but
+  coverage 61–66 % at SNR 5, and the credit against the clean selective baseline is negative
+  everywhere (mean −3.7): the decline rule buys back part of the reliability, not all. Gate G5
+  (≥ 93 % at ≥ 70 % coverage) passes on accuracy and fails on coverage for the SNR-5 cases.
+
 ## 4c. The missing-absorber result (2026-09-11, late) — candidate headline, with its checks
 
 `shift_absorbers.py` re-renders the test planets with HCN and C2H2 added at their FastChem
