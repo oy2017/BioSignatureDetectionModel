@@ -12,3 +12,31 @@
   test1: 990/1804 done, 1012 s elapsed, 1.02 s/planet effective, eta 832 s
   test1: 1080/1804 done, 1101 s elapsed, 1.02 s/planet effective, eta 738 s
   test1: 1170/1804 done, 1198 s elapsed, 1.02 s/planet effective, eta 649 s
+  test1: 1260/1804 done, 1294 s elapsed, 1.03 s/planet effective, eta 559 s
+  test1: 1350/1804 done, 1383 s elapsed, 1.02 s/planet effective, eta 465 s
+  test1: 1440/1804 done, 1471 s elapsed, 1.02 s/planet effective, eta 372 s
+  test1: 1530/1804 done, 1560 s elapsed, 1.02 s/planet effective, eta 279 s
+  test1: 1620/1804 done, 1651 s elapsed, 1.02 s/planet effective, eta 188 s
+  test1: 1710/1804 done, 1738 s elapsed, 1.02 s/planet effective, eta 96 s
+  test1: 1800/1804 done, 1826 s elapsed, 1.01 s/planet effective, eta 4 s
+  test1: 1804/1804 done, 1830 s elapsed, 1.01 s/planet effective, eta 0 s
+test1: 1804 planets, 0 Exo-Transmit failures (NaN rows), jobs=4
+  per-planet wall clock inside a worker: median 3.8 s, mean 4.0 s, min 2.5 s, max 7.2 s
+  end-to-end: 1830 s total = 1.01 s/planet effective (1804 timed)
+  projected for a 2,000-planet split at jobs=4: 34 min; five splits 2.8 h
+  wrote /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/test1_native_exotransmit.npy  shape (1804, 2753)  NaN rows 0
+--- test2 ---
+  test2: 90/1814 done, 92 s elapsed, 1.02 s/planet effective, eta 1759 s
+  test2: 180/1814 done, 176 s elapsed, 0.98 s/planet effective, eta 1596 s
+  test2: 270/1814 done, 259 s elapsed, 0.96 s/planet effective, eta 1481 s
+  test2: 360/1814 done, 338 s elapsed, 0.94 s/planet effective, eta 1364 s
+  test2: 450/1814 done, 414 s elapsed, 0.92 s/planet effective, eta 1254 s
+  test2: 540/1814 done, 498 s elapsed, 0.92 s/planet effective, eta 1174 s
+  test2: 630/1814 done, 578 s elapsed, 0.92 s/planet effective, eta 1087 s
+  test2: 720/1814 done, 659 s elapsed, 0.92 s/planet effective, eta 1002 s
+  test2: 810/1814 done, 745 s elapsed, 0.92 s/planet effective, eta 924 s
+  test2: 900/1814 done, 825 s elapsed, 0.92 s/planet effective, eta 838 s
+  test2: 990/1814 done, 908 s elapsed, 0.92 s/planet effective, eta 756 s
+  test2: 1080/1814 done, 985 s elapsed, 0.91 s/planet effective, eta 669 s
+  test2: 1170/1814 done, 1062 s elapsed, 0.91 s/planet effective, eta 585 s
+  test2: 1260/1814 done, 1137 s elapsed, 0.90 s/planet effective, eta 500 s

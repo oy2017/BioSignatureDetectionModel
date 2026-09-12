@@ -2,3 +2,5 @@
 [ariel] feature dims: {'pcaw': 71, 'raw': 102, 'norm': 102, 'pca': 71}
 [ariel] tuned raw_xgb: {'n_estimators': 500, 'max_depth': 10, 'learning_rate': 0.1, 'subsample': 0.8} cv 0.8499 (287s)
 raw_xgb    accuracy 85.93±1.06  precision 83.14±1.86  recall 90.16±0.55  f1 86.50±0.95  brier 0.0944±0.0052  ece 0.0236±0.0058  auc 0.9443±0.0054
+[ariel] tuned raw_rf: {'n_estimators': 300, 'max_depth': None, 'min_samples_leaf': 1} cv 0.8565 (1893s)
+raw_rf     accuracy 86.19±1.17  precision 82.63±1.79  recall 91.65±1.17  f1 86.90±1.16  brier 0.0946±0.0057  ece 0.0380±0.0061  auc 0.9432±0.0061

@@ -7,3 +7,15 @@ swap dir [exomol] /home/owenhyang/opacity_swap_v3_exomol
   retained O2   -> opacO2.dat
   retained O3   -> opacO3.dat
 --- test1 [exomol]: 1804 planets, jobs=3, reduce=bin ---
+    2237 s total, 1.24 s/planet (wall, jobs=3); 0 failures (NaN rows)
+    vs baseline: median rel diff 6.251e-03, max 1.947e+01; median Pearson r 0.798542, median mean-depth ratio 1.006225
+    wrote /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/test1_native_exomol.npy (1804, 2753)
+
+swap dir [exomol] /home/owenhyang/opacity_swap_v3_exomol
+  swapped  CH4  -> 12C-1H4__YT34to10.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  CO   -> 12C-16O__Li2015.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  CO2  -> 12C-16O2__UCL-4000.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  H2O  -> 1H2-16O__POKAZATEL__R15000_0.3-50mu.xsec.TauREx.h5
+  retained O2   -> opacO2.dat
+  retained O3   -> opacO3.dat
+--- test2 [exomol]: 1814 planets, jobs=3, reduce=bin ---
