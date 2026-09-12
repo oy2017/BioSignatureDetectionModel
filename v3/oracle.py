@@ -147,6 +147,27 @@ def main():
         Xs, ys = shifted_test("haze_3p0e7", CFG)
         record("haze", "haze_3p0e7", "deterministic", Xs, f_o, m_o)
 
+    # --- deterministic, re-rendered with another code / other opacity tables, when the training
+    # re-render exists (shift_exotransmit.py --splits train; shift_opacity.py --splits train)
+    for case, fname, axis in (("exotransmit", "train_native_exotransmit.npy", "exotransmit"),
+                              ("exomol", "train_native_exomol.npy", "exomol")):
+        p_tr = os.path.join(DATA, fname)
+        if not os.path.exists(p_tr):
+            print(f"  {case}: no training re-render on disk, oracle skipped", flush=True); continue
+        Y = np.load(p_tr).astype(np.float64); ok = np.all(np.isfinite(Y), axis=1)
+        Y = np.where(ok[:, None], Y, Xtr_native)
+        f_o, m_o = fit_on_native(Y)
+        Xs, ys = shifted_test(case, CFG)
+        a_or = metrics(yc, m_o.predict_proba(f_o.transform(Xs))[:, 1])["accuracy"]
+        a_fr = metrics(yc, fm.predict_proba(ff.transform(Xs))[:, 1])["accuracy"]
+        # the single-axis augmentation for these axes is the oracle itself (no strength to mix), so the
+        # row reports the ceiling and the irreducible part; 'augmented' is left as the oracle
+        rows.append(dict(axis=axis, case=case, kind="deterministic", clean=clean, frozen=a_fr, augmented=a_or, oracle=a_or,
+                         pct_vs_clean=(a_or - a_fr) / (clean - a_fr) * 100 if clean - a_fr > 0.005 else np.nan,
+                         pct_vs_oracle=np.nan, irreducible=(clean - a_or) * 100))
+        print(f"{axis:<18}{case:<14}{'deterministic':<14}frozen {a_fr*100:6.2f}  oracle {a_or*100:6.2f}  irreducible {(clean-a_or)*100:+5.2f}"
+              f"  (no mixed augmentation for this axis: the oracle IS the augmentation)", flush=True)
+
     df = pd.DataFrame(rows)
     det = df[df.kind == "deterministic"].pct_vs_oracle.dropna(); sto = df[df.kind == "stochastic"].pct_vs_oracle.dropna()
     L = ["Oracle ceilings for the repair tests, configuration ariel, pipeline " + best, "",

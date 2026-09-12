@@ -62,6 +62,8 @@ class Chemistry:
         nd = np.array(out.number_densities)[0]; tot = nd.sum()
         return {g: float(max(np.log10(max(nd[i] / tot, 1e-300)), LOG_FLOOR)) for g, i in self.idx.items()}
 
+    kzz = 1e9   # cm^2/s; overridden by --kzz for the robustness sweep
+
     def composition(self, T, co, mh, mode="equilibrium", g_cgs=None):
         """mode='equilibrium': FastChem at the isothermal T and P_CHEM_BAR (the primary grid).
 
@@ -98,7 +100,7 @@ class Chemistry:
             i0 = deep[0]; Tp[i0:] = Tp[i0] * (P[i0:] / P[i0]) ** ad
         t_chem = 1.5e-6 / P * np.exp(42000.0 / Tp)
         mu_mH = 2.3 * 1.6726e-24; H = 1.380649e-16 * Tp / (mu_mH * g_cgs)
-        t_mix = H**2 / 1e9
+        t_mix = H**2 / self.kzz
         fast = (t_chem < t_mix) & (P >= P_CHEM_BAR) & (P <= 100.0)     # levels at/below the photosphere that equilibrate
         if not fast.any():
             return self._equilibrium_at(T, P_CHEM_BAR, co, mh)         # nothing equilibrates: no quench signal
@@ -112,7 +114,7 @@ def worker(rows, wl):
     return [one_native(r, wl) for r in rows]
 
 
-def make_split(name, seed, jobs, wl, limit=None, mode="equilibrium"):
+def make_split(name, seed, jobs, wl, limit=None, mode="equilibrium", kzz=1e9):
     P = pd.read_parquet(os.path.join(V2, "data", f"{name}_params.parquet"))
     P = P[list(BULK) + ["atm fill_gas"]].copy() if "atm fill_gas" in P else P[list(BULK)].copy()
     if limit: P = P.iloc[:limit].copy()
@@ -125,7 +127,7 @@ def make_split(name, seed, jobs, wl, limit=None, mode="equilibrium"):
         # planets whose clean render failed), so take it directly rather than re-pairing
         E = pd.read_parquet(os.path.join(DATA, f"{name}_params.parquet"))
         P = E[list(BULK) + ["co_ratio", "mh"]].copy().reset_index(drop=True)
-    chem = Chemistry(); t0 = time.time()
+    chem = Chemistry(); chem.kzz = float(kzz); t0 = time.time()
     G = 6.674e-8 * (P["p_mass"].to_numpy() * 5.972e27) / (P["p_radius"].to_numpy() * 6.371e8) ** 2   # cgs
     comp = [chem.composition(r["atm temperature"], r.co_ratio, r.mh, mode=mode, g_cgs=g)
             for (_, r), g in zip(P.iterrows(), G)]
@@ -151,7 +153,9 @@ def make_split(name, seed, jobs, wl, limit=None, mode="equilibrium"):
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--splits", nargs="*", default=SPLITS)
     ap.add_argument("--jobs", type=int, default=12); ap.add_argument("--smoke", type=int, default=0)
-    ap.add_argument("--mode", default="equilibrium", choices=["equilibrium", "quenched"]); a = ap.parse_args()
+    ap.add_argument("--mode", default="equilibrium", choices=["equilibrium", "quenched"])
+    ap.add_argument("--kzz", type=float, default=1e9, help="eddy diffusion (cm^2/s) for the quenched mode; non-default values tag the output")
+    a = ap.parse_args()
     os.makedirs(DATA, exist_ok=True)
     wl = native_wavelengths(); np.save(os.path.join(DATA, "native_wl.npy"), wl)
     if a.smoke:
@@ -160,8 +164,8 @@ def main():
         print("smoke: native spectrum shape", X.shape, "depth range", f"{X.min():.3e}-{X.max():.3e}")
         return
     for s in a.splits:
-        kept, X = make_split(s, 100 + SPLITS.index(s), a.jobs, wl, mode=a.mode)
-        tag = "" if a.mode == "equilibrium" else f"_{a.mode}"
+        kept, X = make_split(s, 100 + SPLITS.index(s), a.jobs, wl, mode=a.mode, kzz=a.kzz)
+        tag = "" if a.mode == "equilibrium" else f"_{a.mode}" + ("" if a.kzz == 1e9 else f"_kzz{int(round(np.log10(a.kzz)))}")
         kept.to_parquet(os.path.join(DATA, f"{s}_params{tag}.parquet")); np.save(os.path.join(DATA, f"{s}_native{tag}.npy"), X)
 
 
