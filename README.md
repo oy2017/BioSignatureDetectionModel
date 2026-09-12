@@ -16,8 +16,7 @@ fixing the forward model repairs it — and the field's standard Ariel training 
 molecules that put a carbon-rich screen at chance on the very planets it exists to find. The
 deliverable is a reliability table a mission can act on, a scripted procedure anyone can run
 on their own screen, and the general lesson: *a model validated only on the world that built
-it has not been validated.* Numbers are being regenerated (see Status); the qualitative map is
-the result.
+it has not been validated.* Numbers: `v3/TRUST_IDEA.md` §4h.
 
 ## Why this matters, from the beginning
 
@@ -123,8 +122,7 @@ shifted sets. The map has three regions, and they are the result:
    put a carbon-rich screen at chance on the planets it exists to find.
 
 Numbers for every row are in [`v3/TRUST_IDEA.md`](v3/TRUST_IDEA.md) (consolidated table
-§4e). **They are being regenerated** — see *Status* — and should not be quoted until the
-re-run finishes.
+§4h, regenerated 2026-09-12 with NH₃ absorbing; the earlier run is archived beside it).
 
 ## Two screens under test
 
@@ -165,12 +163,13 @@ earlier "repair rule" of ours to be an artefact of the wrong denominator; it is 
 
 ## Status (2026-09-12)
 
-A full regeneration is running (`v3/rerun_all.sh`, ~10 h). Rebuilding the consortium's
-screen exposed that our own forward model carried NH₃ through mean molecular weight only —
-a documented simplification inherited from the earlier study, but indefensible in a paper
-whose headline is an omitted species. The NH₃ opacity table is now in, and every v3 number
-is being recomputed. The previous run is archived in `v3/results_noNH3/`. The qualitative
-map is expected to hold; cool-planet numbers are expected to move.
+Compute complete. Rebuilding the consortium's screen exposed that our own forward model had
+carried NH₃ through mean molecular weight only — a documented simplification inherited from
+the earlier study, but indefensible in a paper whose headline is an omitted species. The NH₃
+opacity table was added and every v3 number regenerated (`v3/rerun_all.sh`, 0 failures); the
+previous run is archived in `v3/results_noNH3/`. Every qualitative statement of the map
+survived; haze and opacity-table costs rose, the contamination host gap narrowed. Next: the
+paper outline and venue.
 
 ## What is and is not new
 

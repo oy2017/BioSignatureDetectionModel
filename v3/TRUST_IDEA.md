@@ -418,7 +418,7 @@ only. This was a documented v2 simplification, matched in the Exo-Transmit axis,
 but a paper whose headline is "the simulator omitted a species" cannot itself omit one. The
 Exo-Transmit `opacNH3.dat` was added (NH3 at 1e-3 now adds 300–500 ppm in its 1.5 / 2.0 / 3.0 /
 6.1 µm bands for a hot Jupiter), the Exo-Transmit axis carries NH3 too, and **every v3 number in
-§4a–4f is superseded by the re-run launched 2026-09-12 08:32 (`rerun_all.sh`; ~10 h)**. The
+§4a–4f is superseded by the re-run of 2026-09-12 (`rerun_all.sh`, completed 15:22; results in §4h)**. The
 NH3-less run is archived in `results_noNH3/`, `data_noNH3/`, `models_noNH3/`. Expectation: the
 qualitative map holds; cool-planet numbers (500–1000 K, where NH3 is abundant) move.
 
@@ -433,6 +433,74 @@ forward model does produce the 4.3 µm band (1029 ppm at 1e-3) — its imprint i
 requirement noise: haze 3e7 −13 to −16 (CH4, H2O), spots 20 % −11 to −14, noise ×2 −7 to −10,
 unmodelled HCN + C2H2 −1 to −2 (pre-registered ≥ 5 on CH4: **not met** at this noise level).
 All to be re-read after the NH3 run.
+
+## 4h. REGENERATED RESULTS with NH3 absorbing (rerun_all.sh, 2026-09-12 08:32–15:22, 0 failures) — these supersede §4a–4f
+
+Frozen clean-trained Tier-3 screen: **96.47 %** clean (norm_xgb; normalization again +4 to +10
+over PCA/raw). Randomized screen 95.41 % clean. Losses in points vs the frozen clean accuracy.
+
+| mismatch | frozen loss | irreducible | randomized loss | detect (error AUROC) | fix |
+|---|---|---|---|---|---|
+| cloud deck 1e3 Pa | 4.0 | — | 3.7 | confidence (0.90) | train on it |
+| haze 3e7 | 6.1 | 1.3 | 2.8 | confidence (0.89) | train on it (95 % of ceiling single-axis) |
+| spots 20 % | 11.0 | 3.5 | 4.8 | confidence (0.85) | train on it (100 %); **M hosts lose 16, FGK 9** |
+| spots + haze compound | 11.1 | — | 5.9 | confidence | sub-additive (−6 vs sum); randomization helps |
+| white noise SNR 5 | 7.5 | 4.8 | 5.6 | confidence (0.87) | mostly irreducible → observation |
+| correlated noise SNR 5 | 12.3 | 4.6 | 9.3 | confidence (0.80) | idem; in-range augmentation 86 % of ceiling |
+| gain ramp ×2 | 2.7 | 0.3 | — | confidence | train on it |
+| other RT code (Exo-Transmit) | 6.5 | 1.0 | 6.3 (no help) | confidence (0.91) | only training on that code (85 % reducible) |
+| other opacity tables (ExoMol) | **15.9** | 1.8 | 7.4 (randomization helps, never trained) | confidence + distance (shift 0.98) | training on them (88 % reducible) |
+| quenched chemistry | **−1.8 (gain)** | — | −1.8 | nothing to detect | none; K_zz 1e7–1e11 all +5.9 to +6.7 on cool planets |
+| **missing HCN + C2H2** | **24.5** (carbon-rich at chance) | **0.0** | 20.7 (no help) | **distance only** (0.90–0.92; margin 0.66) | **add the species → 96.4 %** |
+| HCN + C2H2, quenched | 30.0 | — | 20.8 | distance only (0.93–0.96) | idem |
+
+Envelope (randomized screen, ensemble rule, 10 % clean decline): in-range worst accepted
+94.9 % (correlated SNR 5) at 65 % coverage; credit vs the clean selective baseline negative
+on every distorted axis (mean −4.1), positive only for quenched (+2.8) and — with the distance
+rules — on the quenched-absorber axis (+3.7 / +4.3); margin rule: worst in-range 91.2 % at
+88 % coverage. Out-of-range edges visible (cloud 10 Pa 72 % at 21 % coverage).
+
+Absorb/detect trade-off: randomizing an axis blinds the Mahalanobis alarm to it — spots 20 %
+0.84 → 0.51, haze 3e7 0.91 → 0.64, compound 1.00 → 0.35 — while never-trained axes stay
+visible (ExoMol 0.98 → 0.98, SNR 5 1.00 → 1.00); the margin's error ranking improves under
+randomization (spots 20 %: 0.85 → 0.91). **Holds.**
+
+Randomized grid vs pre-registration: clean cost **−1.06** (predicted < 1: marginal miss);
+reaches **31–83 %** of single-axis ceilings (predicted ≥ 90 %: miss). Held-out transfer,
+in-range: aerosols 40 %, spots 23 %, noise 49 %; never-trained ExoMol tables 15.9 → 7.4
+(substantial transfer), Exo-Transmit none.
+
+Tier binning: Tier 1 (7 points) **88.7 % clean, 84.1 % at SNR 7, 60.3 % under haze 3e7,
+50.1 % under spots + haze** — chance. Tier 2: 96.0 clean but 71.1 under the opacity swap.
+
+Ariel's known targets (965, MCS 2026-05-11): 56.9 % inside the training box. Under the
+mission's Tier-2 noise definition: 94.2 % (Tier-3 binning), 93.1 % (Tier 2), **79.2 % (Tier 1;
+M-dwarf hosts 60.1 %)**; achieved SNR on the planets' own amplitudes median 15.6. Distance
+rules fixed on grid data would decline 27–30 % of real targets under mission noise (9–11 %
+under grid noise).
+
+Host dependence: contamination is still the only host-dependent axis, but the gap narrowed
+with NH3 absorbing — spots cases M +11.0 vs F +6.8 (was 13.2 vs 2.8); spots 20 %: M −16.2,
+K −9.2, G −9.2, F −8.6. Every other axis flat (M 5.1 vs F 5.2).
+
+Consortium Tier-1 screen rebuilt (Mugnai 2021), 1e-4 threshold, requirement noise: CH4
+70–72 % (theirs 82–87), H2O 63–69 (71–78), CO2 60 = majority rate (79–83), NH3 76–78
+(82–87; 82 at half the noise). NH3 now reproduces within 5 points at half noise; CO2 does
+not reproduce at any noise level (its 4.3 µm band is diluted in the single 3.9–7.8 µm point
+of our Tier-1 layout; their binning of CH1 may differ). Mismatch on their screen: haze 3e7
+−8 to −17, spots 20 % −6 to −13, noise ×2 −5 to −8, cloud 1e2 Pa −6 to −16, **unmodelled
+HCN + C2H2 −0.2 to −1.1**. Pre-registered "≥ 5 points on CH4" **not met**: the absorber
+result is label-specific — it breaks a carbon-rich screen, not a molecule-presence screen,
+because the added bands mimic water for the former and add nothing the latter keys on.
+
+Axis 8: forward direction still a gain (96.47 → 98.30; cool planets 90.9 → 97.5); reverse
+(train quenched, deploy equilibrium) costs 10.1 points, 72 % recovered by mixing. Cut
+sensitivity: learnability peaks at C/O = 1 (96.5 % vs 85.7 % at 1.26).
+
+What changed from the NH3-less run: haze costs doubled (2.9 → 6.1 at 3e7), the opacity-table
+cost rose (10.7 → 15.9) and now partly transfers from randomization, the contamination host
+gap narrowed (10 → 4 points), the consortium screen's H2O classifier got harder and its NH3
+classifier became reproducible. Every qualitative statement of the map survived.
 
 ## 5. Decision gates (cheap first; each has a kill criterion)
 
