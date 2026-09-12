@@ -18,6 +18,39 @@ accuracy and coverage per mismatch, at a decline rule fixed on clean data). The 
 example is a carbon-rich (C/O > 1) screen on the Ariel layout with FastChem chemistry and
 consortium-simulator noise; the eight mismatch axes are the community's known ones.
 
+## 1b. Who this is for, what decision it informs, and why now
+
+**Who.** Three groups, in order of how directly they can act on it.
+1. *Teams building Ariel's target-ranking and triage tools* (the consortium's Tier-2 selection
+   and the Ariel Data Challenge community). Their decision: whether an ML screen may enter the
+   ranking at all, and if so with what decline rule and under which forward-model ingredients
+   it has been shown to hold. Today that decision is made on in-simulator accuracy alone.
+2. *Anyone training ML retrievals on simulator grids* (NPE/FMPE/CNN retrievals on TauREx or
+   petitRADTRANS). Their posteriors are as simulator-bound as our screen, and the same
+   protocol — ceilings, held-out axes, selective accuracy against the clean selective
+   baseline — applies unchanged. What transfers is the protocol, not our numbers.
+3. *Grid builders.* Two design rules come out with evidence: randomize the ingredients you are
+   unsure of (and here is what it costs in-domain), and train on equilibrium chemistry because
+   quenching makes the C/O label easier, not harder.
+
+**What the work gives them that they do not have.** A worked, reproducible answer to "what
+happens when the simulator is wrong" — which mismatches a screen can absorb, which it can
+flag, which it can do neither with (the expected hole: opacity tables) — and a table format a
+mission can put requirements against. The numbers are specific to our screen, label and
+simulator; they are an existence proof and a template, and the paper says so.
+
+**Why it is worth doing now.** Ariel launches in 2029 and its triage pipelines are being
+chosen now; mis-ranked Tier-2/3 time is irreversible mission time. The ML-retrieval literature
+is growing fast with in-simulator validation only; nobody has put physics mismatch, ceilings
+and held-out axes in one place. The marginal cost to us is low: the grid, eight rendered
+axes, the ExoSim2 payload and the oracle machinery exist; the remaining work is one
+randomized render and the held-out runs.
+
+**What it does not do.** It does not validate a screen on real data (none exists), it does
+not make a screen robust to mismatches outside the axis set, and its specific accuracies do
+not transfer to another label or simulator. It makes the question answerable and answers it
+once, with controls.
+
 ## 2. What is new — ranked, with what is NOT new beside each
 
 | # | Claim | Not new | New |
