@@ -18,6 +18,38 @@ accuracy and coverage per mismatch, at a decline rule fixed on clean data). The 
 example is a carbon-rich (C/O > 1) screen on the Ariel layout with FastChem chemistry and
 consortium-simulator noise; the eight mismatch axes are the community's known ones.
 
+## 1a. The motivation, as verified against sources (2026-09-12)
+
+Three claims carry the motivation; each was checked rather than asserted.
+
+1. *Simulator-trained ML screens for Ariel are being developed.* **Supported, by the consortium
+   itself.** Mugnai et al. 2021 (AJ 162, 288, "Alfnoor") present "a strategy to select candidate
+   planets for reobservation in Ariel's higher resolution Tier" from Tier-1 spectra, propose a
+   band metric to classify planets by composition without retrieval, and in their §II.5 / §III.3
+   train and compare four ML classifiers (k-NN, MLP, random forest, SVC) on simulated Tier-1
+   spectra, reaching 64–89 % per molecule. The Ariel Data Challenges (2019–2025, ~23,000
+   submissions) exist so that "the Ariel team [has] the best data analysis methods at the launch
+   of the mission." Do NOT write "triage pipelines are being chosen now" as fact — the tier
+   assignment itself is by ArielRad SNR (Edwards et al. 2019); what is true is that the
+   consortium has proposed ML classification of Tier-1 spectra for re-observation selection and
+   is selecting methods pre-launch.
+2. *They are judged only in-simulator.* **Supported.** Mugnai et al. validate on spectra from
+   the same TauREx 3 / ArielRad pipeline and say so: "we don't focus on the consistency of the
+   atmospheric models used to build the population. The spectra generated will only be used as
+   'transmission spectral shapes' to test our methods against." The ADC training sets are
+   likewise scored on held-out spectra of the same forward model.
+3. *No one has mapped where such a screen can be trusted.* **Supported, within what a search
+   can show.** Ardévol Martínez et al. 2022 priced three mismatches on a retrieval CNN without
+   remedy or detection; the ADC 2024 dataset (arXiv:2605.03719) shifts instrument noise only;
+   misspecification detection for simulation-trained inference exists in cosmology
+   (arXiv:2507.13495, 2508.05744) and not for exoplanet screens; the 2026 review
+   (arXiv:2606.23766, §4.2) lists robustness under mismatch as open and does not mention
+   physics-side mismatch at all. Nothing found that combines physics mismatch axes, ceilings,
+   held-out axes, absorption and detection, Tier-1 binning and the mission target list.
+
+The consequence claim — mis-ranked Tier-2/3 time is irreversible — is reasoning, not a citation;
+state it as such.
+
 ## 1b. Who this is for, what decision it informs, and why now
 
 **Who.** Three groups, in order of how directly they can act on it.
@@ -55,7 +87,7 @@ once, with controls.
 
 | # | Claim | Not new | New |
 |---|---|---|---|
-| 1 | A reliability envelope for a simulator-trained exoplanet screen, measured under physics mismatch with held-out axes | Selective prediction, OOD detection, held-out-corruption protocols (all standard ML); misspecification detection for SBI in cosmology (2025) | Asked of exoplanet screens at all; physics-side axes (chemistry, aerosols, opacities, contamination) rather than instrument noise; the envelope as a mission deliverable |
+| 1 | A reliability envelope for a simulator-trained exoplanet screen, measured under physics mismatch with held-out axes | Selective prediction, OOD detection, held-out-corruption protocols (all standard ML); misspecification detection for SBI in cosmology (2025); the screen itself — Mugnai et al. 2021 already trained ML classifiers on simulated Tier-1 Ariel spectra | Asked of exoplanet screens at all; physics-side axes (chemistry, aerosols, opacities, contamination) rather than instrument noise; the envelope as a mission deliverable |
 | 2 | Shift detection ≠ error detection (pilot result, §4) | Known in ML folklore | Measured here: distance-based OOD scores flag every shifted spectrum (AUROC 0.9–1.0) yet do not rank the screen's errors (AUROC ≈ 0.5); they would reject real data wholesale |
 | 3 | Joint randomization of simulator ingredients ("domain randomization") applied to spectra; whether it absorbs compound mismatch and what it costs in-domain | Domain randomization (robotics) | First use on astronomical spectra; the compound and in-domain-cost measurements |
 | 4 | Loss decomposition: total = irreducible + reducible, with the oracle as ceiling | Target-only bound (domain adaptation) | Reported per simulator ingredient for a mission layout; replaces the retired repair rule |
