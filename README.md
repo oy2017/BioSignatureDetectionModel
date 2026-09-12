@@ -1,15 +1,78 @@
 # When can a simulator-trained screen be trusted?
 
-Ariel will deliver transmission spectra of roughly a thousand exoplanets. Machine-learning
-screens trained on simulated spectra have been proposed to triage them — the consortium's
-own Tier-1 strategy trains classifiers on simulated spectra to decide which planets deserve
-deeper observation (Mugnai et al. 2021). Every such screen is validated the same way: on
-held-out spectra from the simulator that trained it. There will be no Ariel data to validate
-it on before the decisions are made.
+## Why this matters, from the beginning
 
-This repository asks the question a mission actually faces: **on data whose physics differs
-from the simulator — in ways we anticipate and in ways we deliberately hold out — which
-planets can a screen still classify, does it know when it can't, and what fixes what?**
+**What Ariel is.** Ariel is a European Space Agency telescope, launching in 2029, whose
+whole job is to look at the atmospheres of about a thousand planets around other stars. It
+does this by watching a planet pass in front of its star and measuring how much starlight
+the planet's atmosphere absorbs at each wavelength. The result is a *transmission spectrum*:
+a short curve, a few dozen numbers, whose bumps say which molecules are present — water,
+methane, carbon dioxide — and in what rough proportions.
+
+**The problem of a thousand planets.** Ariel cannot study every planet deeply. Its survey is
+organised in tiers: a quick look at all thousand (Tier 1: a handful of coarse measurements
+per planet), a deeper look at a few hundred (Tier 2), and a very deep look at a few dozen
+(Tier 3). Somebody has to decide, from the quick look, which planets deserve the deep one.
+Done by hand that is a thousand judgement calls; done with a model that fits the physics to
+each spectrum it is slow and needs expert supervision. So a natural idea has been proposed,
+including by the Ariel consortium itself: train a machine-learning *screen* — a classifier —
+to read the quick-look spectrum and flag the planets worth more time (Mugnai et al. 2021).
+
+**The catch: there is nothing real to train it on.** Ariel has not flown. No spectrum of
+Ariel quality exists for any of these planets. So the screen is trained on *simulated*
+spectra: a computer model of an atmosphere, a computer model of the telescope, tens of
+thousands of imaginary planets. And it is tested the same way — on more spectra from the
+same simulator, held back from training. That test gives a reassuring number, typically
+well above 90 %.
+
+**Why that number means less than it looks.** The simulator embodies hundreds of choices:
+which molecules exist in the atmosphere, which database gives their absorption, whether
+there are clouds or haze, how the star's spots contaminate the signal, how noisy the
+detector is. The real universe will make all of those choices differently from the
+simulator. A screen that is 95 % accurate on the simulator's imaginary planets may be 95 %
+accurate on real ones, or it may not, and the standard test cannot tell the difference,
+because both training and testing happen inside the same set of assumptions. The
+consortium's own paper is explicit that its spectra were used only as "transmission
+spectral shapes to test our methods against", with no claim about the atmospheric model's
+realism. That is the state of the art: validated in-simulator, nowhere else.
+
+**Why it is worth worrying about.** A screen that quietly fails does not look like a
+failure. It returns confident answers, and the mission acts on them: deep observations go to
+the wrong planets, and the planets that would have been the discoveries never get a second
+look. Telescope time on a space mission cannot be refunded. We also have a concrete example
+that the failure is not hypothetical: carbon-rich atmospheres — one of the things Ariel is
+meant to find — contain two molecules (HCN and C₂H₂) that chemistry papers have described
+since 2012 and that the standard Ariel machine-learning training grid does not include. A
+screen trained without them, asked to find carbon-rich planets, performs at chance on
+exactly those planets, while reporting high confidence.
+
+**What this repository does.** It asks the question the mission actually faces — *when can
+such a screen be trusted, and when can it not?* — and answers it with measurements rather
+than assurances. We take two screens (the consortium's published design, rebuilt from their
+paper, and a second one of our own aimed at a real Ariel science target), and we break the
+simulator on purpose, one assumption at a time and several at once: add clouds, add haze,
+put spots on the star, change the noise, swap the radiative-transfer code, swap the opacity
+database, change the chemistry, add the molecules the grid forgot. For each break we measure
+what the screen loses; how much of that loss *any* retraining could recover; how much a
+training set that randomizes the uncertain ingredients buys back; whether the screen can be
+made to *decline* the planets it is about to get wrong; and what finally removes the loss.
+We do this at the coarse Tier-1 resolution where the triage decision would really be made,
+and on Ariel's actual list of target planets rather than an idealised population.
+
+**Who can use it.** An Ariel team deciding whether a screen may enter the ranking gets a
+table, one row per way the simulator can be wrong, saying what happens and what to do about
+it. Anyone training a machine-learning model on a simulator grid — which is now most of the
+field — gets a scripted procedure they can run on their own model. Anyone building such a
+grid gets two design rules with evidence behind them. And a reader with no background gets
+a worked example of a general lesson: a model validated only on the world that built it has
+not been validated.
+
+**What is and isn't claimed.** No method here is new; the tools are standard in machine
+learning and are cited. What is new is the question asked of an exoplanet screen, the
+physics the simulator gets wrong being the thing varied (others vary only detector noise),
+the framing of each failure as absorb-or-detect-or-fix, the answer as a table a mission can
+act on, and the finding about the field's standard training grid. The numbers are specific
+to our two screens and our simulator; the procedure is not.
 
 ## The answer, in the form the paper gives it
 
