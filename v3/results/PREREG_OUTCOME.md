@@ -67,3 +67,17 @@ Not run. No prediction scored.
 - The one-draw/per-bin "20–40 %" number is retired; say "below 50 %" or give the measured range.
 - Axis 8 is reported as a finding about the C/O label under disequilibrium, with the repair test
   marked untestable forward and 65 % post hoc in reverse.
+
+## Addendum (same day): the ceiling correction retires the repair rule
+
+`oracle.py` trains the pipeline only at each test strength and uses that accuracy as the
+ceiling instead of the clean accuracy. Against the ceiling, mixed-strength augmentation
+recovers 83–99 % (deterministic) and 76–107 % (stochastic) of the recoverable loss on v3, and
+90–99 % / 55–104 % on v2, the low stochastic values being the cases whose test SNR lay outside
+the training levels. **There is no difference in what augmentation can absorb.** The
+deterministic/stochastic split in every Table-4-style result is a split in *irreducible* loss
+(v3: 0.4–2.8 points for re-rendered or injected deterministic shifts, 3.0–4.8 points for
+noise), not in augmentation's reach. The draw-count rule, the gain-ramp test and the Fourier
+and invertibility rival eliminations were explaining an effect that the denominator created.
+Sections 1–2 above stand as measurements; their interpretation does not. Full tables:
+`results/ariel_oracle.txt` (v3) and `../v2/results/ariel_oracle.txt` (v2).

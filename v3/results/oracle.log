@@ -1,0 +1,4 @@
+white noise       snr8          stochastic    frozen  91.45  aug  92.97  oracle  92.87  vs-clean    35%  vs-oracle   107%  irreducible +2.97
+correlated noise  snr8          stochastic    frozen  89.04  aug  92.34  oracle  92.28  vs-clean    48%  vs-oracle   102%  irreducible +3.56
+white noise       snr5          stochastic    frozen  87.93  aug  91.12  oracle  91.05  vs-clean    40%  vs-oracle   102%  irreducible +4.79
+correlated noise  snr5          stochastic    frozen  83.70  aug  89.78  oracle  91.67  vs-clean    50%  vs-oracle    76%  irreducible +4.17

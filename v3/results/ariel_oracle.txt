@@ -1,0 +1,18 @@
+Oracle ceilings for the repair tests, configuration ariel, pipeline norm_xgb
+
+oracle = trained only at the test strength; irreducible = clean minus oracle (points the shift
+removes for any training); vs-oracle = share of the recoverable loss that mixed-strength augmentation got.
+
+axis              case          kind            frozen  augmented  oracle  irreducible  vs clean  vs oracle
+white noise       snr8          stochastic      91.45%     92.97%  92.87%       +2.97       35%       107%
+correlated noise  snr8          stochastic      89.04%     92.34%  92.28%       +3.56       48%       102%
+white noise       snr5          stochastic      87.93%     91.12%  91.05%       +4.79       40%       102%
+correlated noise  snr5          stochastic      83.70%     89.78%  91.67%       +4.17       50%        76%
+gain ramp         x1.0          deterministic   93.44%     95.05%  95.37%       +0.47       67%        83%
+gain ramp         x2.0          deterministic   90.65%     94.65%  95.47%       +0.37       77%        83%
+stellar spots     tlse_spots10  deterministic   89.36%     94.27%  94.31%       +1.53       76%        99%
+stellar spots     tlse_spots20  deterministic   86.12%     92.80%  93.01%       +2.83       69%        97%
+haze              haze_3p0e7    deterministic   92.97%     94.91%  95.30%       +0.54       68%        83%
+
+deterministic, vs oracle: 83-99%   stochastic, vs oracle: 76-107%   (OVERLAPPING: the rule does not survive the ceiling correction)
+irreducible loss, deterministic: +0.37 to +2.83 pts; stochastic: +2.97 to +4.79 pts

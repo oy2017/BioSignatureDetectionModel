@@ -279,7 +279,18 @@ the label-bearing molecule, anything that recolours the spectrum is expensive �
 are **confirmatory**. Any spectroscopist would have bet that way. They are worth
 having as a budget, not as a discovery.
 
-### 4.2 The repair rule (the finding that resolves a real question)
+### 4.2 The repair rule — RETIRED 2026-09-11 (see v3/results/PREREG_OUTCOME.md, addendum)
+
+`v3/oracle.py` measured the ceiling each shift leaves (a pipeline trained only at the test
+strength). Against that ceiling, augmentation recovers essentially all recoverable loss on
+every axis, deterministic or stochastic, on both grids. The split this section explained was
+a split in irreducible loss, created by dividing by the clean accuracy. What survives is the
+decomposition itself — total loss = irreducible + reducible, with mixed-strength augmentation
+closing the reducible part without knowing the deployment strength — and it feeds the
+"can you trust it?" programme being drafted below. The text that follows is kept as the
+record of what was believed before the correction; do not cite it.
+
+### 4.2 (superseded) The repair rule
 
 What augmentation can recover is set by **how many values the shift draws per
 spectrum**, not by whether it came out of the forward model.
