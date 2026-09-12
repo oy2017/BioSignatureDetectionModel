@@ -1,14 +1,14 @@
 WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
-I0000 00:00:1789191945.707942  779486 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
-I0000 00:00:1789191945.711654  779486 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
-I0000 00:00:1789191945.794124  779486 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+I0000 00:00:1789192821.705329  786754 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1789192821.709024  786754 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+I0000 00:00:1789192821.754581  786754 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
 To enable the following instructions: AVX2 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
 WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
-I0000 00:00:1789191949.429690  779486 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
-I0000 00:00:1789191949.436103  779486 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
-E0000 00:00:1789191950.729209  779486 cuda_executor.cc:1737] INTERNAL: CUDA Runtime error: Failed call to cudaGetRuntimeVersion: Error loading CUDA libraries. GPU will not be used.: Error loading CUDA libraries. GPU will not be used.
-W0000 00:00:1789191950.731536  779512 cuda_executor.cc:1755] Failed to determine cuDNN version (Note that this is expected if the application doesn't link the cuDNN plugin): INTERNAL: cuDNN error: CUDNN_STATUS_INTERNAL_ERROR
-W0000 00:00:1789191950.794830  779486 gpu_device.cc:2365] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+I0000 00:00:1789192824.036214  786754 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1789192824.038903  786754 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+E0000 00:00:1789192824.805133  786754 cuda_executor.cc:1737] INTERNAL: CUDA Runtime error: Failed call to cudaGetRuntimeVersion: Error loading CUDA libraries. GPU will not be used.: Error loading CUDA libraries. GPU will not be used.
+W0000 00:00:1789192824.806725  786782 cuda_executor.cc:1755] Failed to determine cuDNN version (Note that this is expected if the application doesn't link the cuDNN plugin): INTERNAL: cuDNN error: CUDNN_STATUS_INTERNAL_ERROR
+W0000 00:00:1789192824.826661  786754 gpu_device.cc:2365] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
 Skipping registering GPU devices...
 clean                      acc  95.84  margin: keep  90% -> 98.85 (auroc_err 0.94)  ensemble: keep  90% -> 97.46 (auroc_err 0.88)  mahalanobis: keep  90% -> 95.42 (auroc_err 0.40)  pca_recon: keep  90% -> 95.59 (auroc_err 0.47)  knn: keep  90% -> 95.42 (auroc_err 0.40)
 cloud_1e3Pa                acc  91.10  margin: keep  76% -> 97.93 (auroc_err 0.89)  ensemble: keep  55% -> 97.27 (auroc_err 0.79)  mahalanobis: keep  16% -> 91.35 (auroc_err 0.56)  pca_recon: keep  26% -> 92.61 (auroc_err 0.57)  knn: keep  29% -> 90.87 (auroc_err 0.56)
@@ -23,15 +23,16 @@ exomol                     acc  85.10  margin: keep  65% -> 94.66 (auroc_err 0.8
 quenched                   acc  98.24  margin: keep  98% -> 98.89 (auroc_err 0.90)  ensemble: keep  96% -> 98.81 (auroc_err 0.84)  mahalanobis: keep  77% -> 98.03 (auroc_err 0.42)  pca_recon: keep  80% -> 98.13 (auroc_err 0.45)  knn: keep  77% -> 98.05 (auroc_err 0.41)
 compound_spots20_haze3e7   acc  86.05  margin: keep  81% -> 90.22 (auroc_err 0.74)  ensemble: keep  32% -> 95.77 (auroc_err 0.64)  mahalanobis: keep   1% -> 97.85 (auroc_err 0.67)  pca_recon: keep   7% -> 95.93 (auroc_err 0.66)  knn: keep   1% -> 98.51 (auroc_err 0.62)
 absorbers                  acc  71.68  margin: keep  86% -> 73.32 (auroc_err 0.68)  ensemble: keep  76% -> 80.34 (auroc_err 0.84)  mahalanobis: keep  61% -> 94.40 (auroc_err 0.90)  pca_recon: keep  60% -> 94.54 (auroc_err 0.91)  knn: keep  65% -> 92.75 (auroc_err 0.89)
+absorbers_quenched         acc  67.21  margin: keep  91% -> 69.08 (auroc_err 0.81)  ensemble: keep  77% -> 80.81 (auroc_err 0.92)  mahalanobis: keep  37% -> 98.48 (auroc_err 0.94)  pca_recon: keep  36% -> 98.39 (auroc_err 0.92)  knn: keep  46% -> 94.85 (auroc_err 0.90)
 white_snr8                 acc  91.93  margin: keep  84% -> 97.17 (auroc_err 0.90)  ensemble: keep  60% -> 98.14 (auroc_err 0.84)  mahalanobis: keep   0% -> 100.00 (auroc_err 0.43)  pca_recon: keep   0% -> 96.67 (auroc_err 0.46)  knn: keep  15% -> 95.49 (auroc_err 0.42)
 white_snr5                 acc  87.57  margin: keep  75% -> 95.27 (auroc_err 0.85)  ensemble: keep  36% -> 98.04 (auroc_err 0.78)  mahalanobis: keep   0% ->   nan (auroc_err 0.44)  pca_recon: keep   0% -> 100.00 (auroc_err 0.46)  knn: keep   0% ->   nan (auroc_err 0.41)
 correlated_snr8            acc  89.24  margin: keep  86% -> 93.94 (auroc_err 0.87)  ensemble: keep  68% -> 97.29 (auroc_err 0.86)  mahalanobis: keep  21% -> 88.65 (auroc_err 0.43)  pca_recon: keep  49% -> 88.80 (auroc_err 0.48)  knn: keep  25% -> 88.57 (auroc_err 0.41)
 correlated_snr5            acc  83.67  margin: keep  81% -> 89.24 (auroc_err 0.80)  ensemble: keep  43% -> 96.70 (auroc_err 0.77)  mahalanobis: keep   2% -> 82.29 (auroc_err 0.45)  pca_recon: keep  22% -> 84.20 (auroc_err 0.49)  knn: keep   2% -> 79.55 (auroc_err 0.44)
 score        mean accepted worst accepted mean coverage mean AUROC(err)
-pca_recon           93.33%         84.20%         36.3%           0.575
-mahalanobis         92.41%         82.29%         28.8%           0.550
-ensemble            95.83%         80.34%         60.5%           0.787
-knn                 91.27%         79.55%         33.7%           0.521
-margin              93.28%         73.32%         84.0%           0.844
+pca_recon           93.63%         84.20%         36.3%           0.596
+mahalanobis         92.79%         82.29%         29.3%           0.573
+ensemble            94.95%         80.34%         61.5%           0.795
+knn                 91.49%         79.55%         34.5%           0.543
+margin              91.85%         69.08%         84.4%           0.842
 
-Without declining anything the worst shifted-case accuracy is 71.68%.
+Without declining anything the worst shifted-case accuracy is 67.21%.
