@@ -1,5 +1,24 @@
 # When can a simulator-trained screen be trusted?
 
+**TL;DR.** Machine-learning screens are proposed to decide which of Ariel's thousand
+exoplanets get a closer look. They are trained and validated on simulated spectra, because
+no real ones exist yet — so nobody knows what they do when the real atmospheres differ from
+the simulator. We measure it. Breaking the simulator one assumption at a time (clouds, haze,
+starspots, noise, other codes, other opacity tables, other chemistry, missing molecules) and
+testing two screens — the consortium's own design and one aimed at a real science target —
+we find the answer has three parts. **Mismatch you modelled** can be largely absorbed by
+randomizing it into training, and a confidence-based decline rule handles the rest; what
+remains is information the mismatch destroyed, so only a better observation recovers it.
+**Some mismatch helps**: disequilibrium chemistry makes the carbon-rich label easier. **Physics
+the simulator omitted cannot be trusted at all**: the screen is confidently wrong, no
+retraining on other ingredients helps, only a distance-based novelty alarm sees it, and only
+fixing the forward model repairs it — and the field's standard Ariel training grid omits two
+molecules that put a carbon-rich screen at chance on the very planets it exists to find. The
+deliverable is a reliability table a mission can act on, a scripted procedure anyone can run
+on their own screen, and the general lesson: *a model validated only on the world that built
+it has not been validated.* Numbers are being regenerated (see Status); the qualitative map is
+the result.
+
 ## Why this matters, from the beginning
 
 **What Ariel is.** Ariel is a European Space Agency telescope, launching in 2029, whose
