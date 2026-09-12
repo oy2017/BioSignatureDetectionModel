@@ -307,6 +307,15 @@ Checks before the word "finding" (§2b rule):
     margin rule, caught by distance scores, fully fixed by adding the species. (b) passes.
 (c) mechanism — known chemistry (C/O > 1 → HCN, C2H2) plus the measured band overlap. Passes.
 
+## 4d. Ceilings for the re-rendered-code and opacity axes (oracle.py, 2026-09-12)
+
+- **Exo-Transmit** (a different radiative-transfer code, same physics): frozen 90.10 %, oracle
+  95.29 %, irreducible **+0.55** points of a 5.75-point loss — 90 % of the code-to-code cost is
+  reducible by training on the other code's output. Randomizing other ingredients did not
+  reduce it at all (89.65 %); only training on it does.
+- **HCN + C2H2**: frozen 71.68 %, oracle 95.90 %, irreducible −0.06 — fully reducible (§4c).
+- **ExoMol tables**: training render in progress; the oracle row follows automatically.
+
 ## 5. Decision gates (cheap first; each has a kill criterion)
 
 - **G1 — detect (done).** Kill if no score ranks errors above AUROC 0.7 under re-rendered
