@@ -1,0 +1,24 @@
+Label sensitivity and error structure, configuration ariel, pipeline norm_xgb, label C/O > 1.0
+
+1. Cut sensitivity (cut moved in dex of log10 C/O; spectra unchanged; model retrained)
+ shift  C/O cut train pos test pos  accuracy  majority    gain     F1   Brier
+ -0.10    0.794      62.9%    62.9%    94.43%    62.90% +31.53% 0.955 0.0403
+ -0.05    0.891      56.7%    56.8%    96.00%    56.77% +39.23% 0.965 0.0291
+ +0.00    1.000      50.2%    50.0%    95.84%    50.00% +45.84% 0.959 0.0304
+ +0.05    1.122      42.6%    42.6%    91.23%    57.36% +33.86% 0.903 0.0665
+ +0.10    1.259      34.0%    33.9%    84.85%    66.07% +18.78% 0.798 0.1019
+
+2. Accuracy against |log10(C/O)| distance from the cut (dex)
+    margin      n    pos  accuracy  majority    gain  mean p
+0.00-0.05   1274  52.1%    82.89%    52.12% +30.77%  0.603
+0.05-0.1    1338  58.7%    94.69%    58.67% +36.02%  0.590
+0.10-0.2    2745  67.5%    97.74%    67.47% +30.27%  0.669
+0.20-0.3    1923  62.8%    98.86%    62.77% +36.09%  0.631
+0.30-       1736   0.0%    99.88%   100.00%  -0.12%  0.005
+
+3. Error rate against feature amplitude (std of the noise-free binned depth) in quintiles
+  quintile 1: amplitude 3.13e-08-4.80e-05  error  4.60%  amp/noise median 3.50
+  quintile 2: amplitude 4.81e-05-3.05e-04  error  4.83%  amp/noise median 3.49
+  quintile 3: amplitude 3.06e-04-1.13e-03  error  4.16%  amp/noise median 3.55
+  quintile 4: amplitude 1.13e-03-4.35e-03  error  3.83%  amp/noise median 3.65
+  quintile 5: amplitude 4.35e-03-2.13e-01  error  3.38%  amp/noise median 3.70

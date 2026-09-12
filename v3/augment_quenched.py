@@ -68,8 +68,10 @@ def main():
     rows = []
     def line(name, m):
         a_cl, a_fr, a_au = c_cl[m].mean(), c_fr[m].mean(), c_au[m].mean()
-        frac = (a_au - a_fr) / max(a_cl - a_fr, 1e-9) * 100
-        L.append(f"{name:<16}{m.sum():>6}{a_cl*100:7.2f}%{a_fr*100:8.2f}%{a_au*100:10.2f}%{(a_au-a_fr)*100:+7.2f}{frac:9.0f}%")
+        # a recovered fraction needs a loss to recover; below half a point there is none to speak of
+        frac = (a_au - a_fr) / (a_cl - a_fr) * 100 if a_cl - a_fr >= 0.005 else np.nan
+        fstr = f"{frac:9.0f}%" if np.isfinite(frac) else f"{'n/a':>10}"
+        L.append(f"{name:<16}{m.sum():>6}{a_cl*100:7.2f}%{a_fr*100:8.2f}%{a_au*100:10.2f}%{(a_au-a_fr)*100:+7.2f}{fstr}")
         rows.append(dict(subset=name, n=int(m.sum()), clean=a_cl, frozen=a_fr, augmented=a_au, pct_of_gap=frac))
     line("all planets", np.ones(len(ys), bool))
     for lo, hi in T_BANDS:
@@ -78,6 +80,39 @@ def main():
     L += ["", f"cost on clean data of training with the shift: {clean_ref*100:.2f}% -> {a_cl_au*100:.2f}% ({(a_cl_au-clean_ref)*100:+.2f})",
           "", "Pre-registered prediction: > 60 % recovered (deterministic re-render, zero draws per spectrum).",
           "The rule is falsified on this axis if the all-planets recovery is below 40 %."]
+    r_all = rows[0]
+    if r_all["frozen"] >= r_all["clean"] - 0.005:
+        cool = [r for r in rows if r["subset"].startswith("T 500")]
+        L += ["", "Outcome: the frozen pipeline loses nothing on the quenched spectra"
+              f" ({r_all['clean']*100:.2f}% clean -> {r_all['frozen']*100:.2f}% quenched), so there is no gap and the",
+              "prediction gets no test in this direction: neither confirmed nor falsified."]
+        if cool:
+            L.append(f"The secondary prediction (cost concentrated below 1000 K) is wrong in sign: the change IS concentrated"
+                     f" there ({cool[0]['clean']*100:.2f}% -> {cool[0]['frozen']*100:.2f}%) but it is a gain.")
+    else:
+        f = r_all["pct_of_gap"]
+        L += ["", f"Outcome: {f:.0f}% of the loss recovered -> " + ("prediction confirmed." if f > 60 else
+              "prediction falsified." if f < 40 else "in the band the rule does not decide.")]
+
+    # Reverse direction (POST HOC, not pre-registered): a screen trained on quenched atmospheres
+    # deployed on equilibrium ones. Run because the forward direction produced no loss to repair
+    # and a one-draw axis needs a loss for the rule to be tested on it at all. The augmented model
+    # is the same mixed one; its reference is a model trained on quenched spectra only.
+    Xq_only = np.where(ok_q[:, None], Xq, Xeq)
+    Xn_q, _ = add_noise(binned(Xq_only, cfg), Ptr, cen, snr=SNR, shape="ariel", seed=1000)
+    f_q = Features(kind).fit(Xn_q); m_q = make_xgb(params).fit(f_q.transform(Xn_q), ytr)
+    acc = lambda f_, m_, X_, y_: metrics(y_, m_.predict_proba(f_.transform(X_))[:, 1])["accuracy"]
+    q_ref, q_fr, q_au = acc(f_q, m_q, Xs, ys), acc(f_q, m_q, Xc, yc), acc(f_aug, m_aug, Xc, yc)
+    gap = q_ref - q_fr
+    L += ["", "Reverse direction (post hoc, not pre-registered): trained on quenched spectra only, deployed on equilibrium.",
+          f"  quenched-only model: on quenched test {q_ref*100:.2f}%, on equilibrium test {q_fr*100:.2f}% (cost {gap*100:+.2f} pts)",
+          f"  mixed model (the same augmentation) on equilibrium test: {q_au*100:.2f}%"]
+    if gap >= 0.005:
+        L.append(f"  recovered: {(q_au - q_fr) / gap * 100:.0f}% of the loss")
+    else:
+        L.append("  no loss in this direction either")
+    rows.append(dict(subset="reverse: quenched-only -> equilibrium", n=len(yc), clean=q_ref, frozen=q_fr, augmented=q_au,
+                     pct_of_gap=(q_au - q_fr) / gap * 100 if gap >= 0.005 else np.nan))
     open(os.path.join(RESULTS, f"{cfg}_augment_quenched.txt"), "w").write("\n".join(L) + "\n")
     pd.DataFrame(rows).to_csv(os.path.join(RESULTS, f"{cfg}_augment_quenched.csv"), index=False)
     print("\n".join(L))

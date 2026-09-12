@@ -1,0 +1,17 @@
+clean reference (frozen pipeline): 95.84%
+Gain-ramp augmentation: a DETERMINISTIC shift that is not a physics re-render.
+
+The repair rule was established on two physics re-renders against two injected
+noise axes, which confounds deterministic/stochastic with physics/instrument.
+The gain ramp is injected like the noise but deterministic in form, so it
+separates the two explanations.
+
+case             frozen  augmented    gain  % of gap
+x0.5             94.90%     95.25%  +0.35       38%   (costs 0.9 points)
+x1.0             93.44%     95.05%  +1.61       67%   (costs 2.4 points)
+x2.0             90.65%     94.65%  +4.00       77%   (costs 5.2 points)
+clean            95.84%     95.25%  -0.59
+
+On the >5-point criterion the paper uses: 1 case(s), 77-77% recovered.
+On the same criterion, this grid's deterministic physics axes recover 69-76% and its stochastic noise axes 40-50% (results/ariel_augment*.csv).
+The gain ramp lands with the deterministic axes: determinism, not physics, is what predicts repair.

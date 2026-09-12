@@ -1,0 +1,16 @@
+a,b,relationship,rho
+norm_rf,pca_rf,same model family,0.905292608158371
+pca_xgb,raw_xgb,same model family,0.8906536901095594
+norm_xgb,pca_xgb,same model family,0.8876339853630987
+norm_xgb,raw_xgb,same model family,0.8244224311573772
+pca_rf,raw_rf,same model family,0.5780069189769013
+norm_rf,raw_rf,same model family,0.4844667459495789
+pca_xgb,pca_rf,same representation,0.9910344533151175
+norm_xgb,norm_rf,same representation,0.9795221116452361
+raw_xgb,raw_rf,same representation,0.6288910713523207
+norm_rf,pca_xgb,sharing neither,0.9169709105582633
+pca_rf,raw_xgb,sharing neither,0.9013492198014312
+norm_xgb,pca_rf,sharing neither,0.8749306246585636
+norm_rf,raw_xgb,sharing neither,0.8556421497216141
+pca_xgb,raw_rf,sharing neither,0.552474277237423
+norm_xgb,raw_rf,sharing neither,0.4135457161600601

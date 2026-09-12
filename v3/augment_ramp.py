@@ -58,6 +58,25 @@ def ramp(X, Xnf, params, cen, s, rng):
     return X * (1 + signs * amp * tilt)
 
 
+
+def live_bands(cfg):
+    """Recovered fractions of every case that clears the >5-point criterion, read from the CSVs
+    augment.py and augment_white.py wrote, split into deterministic re-renders and stochastic
+    noise by the axis name. Read, not typed: the v2 bands (79-89 / 29-35) do not carry over."""
+    det, sto = [], []
+    tables = [pd.read_csv(p) for p in (os.path.join(RESULTS, f"{cfg}_{fn}.csv") for fn in ("augment", "augment_white"))
+              if os.path.exists(p)]
+    # every table scores the same frozen pipeline, so one clean row serves all of them
+    clean = [float(r) for d in tables for r in d.loc[d.case == "clean", "frozen"]]
+    if not clean:
+        return det, sto
+    ref = clean[0]
+    for d in tables:
+        for axis, g in d.groupby("axis"):
+            big = g[(g.case != "clean") & (ref - g.frozen > 0.05)]
+            (sto if "noise" in axis.lower() else det).extend(big.pct_of_gap.dropna().tolist())
+    return det, sto
+
 def main():
     cen = centres(CFG)
     best = json.load(open(os.path.join(RESULTS, f"{CFG}_best.json")))["best"]
@@ -119,13 +138,20 @@ def main():
         hi = max(r["pct_of_gap"] for r in big)
         L.append(f"On the >5-point criterion the paper uses: {len(big)} case(s), "
                  f"{lo:.0f}-{hi:.0f}% recovered.")
-        L.append("Deterministic physics axes recover 79-89%; stochastic noise axes 29-35%.")
-        verdict = ("with the deterministic axes: determinism, not physics, is what predicts repair"
-                   if lo >= 60 else
-                   "with the stochastic axes: the split tracks physics vs instrument, not determinism"
-                   if hi <= 45 else
-                   "between the two bands: the criterion is not clean on this axis")
-        L.append(f"The gain ramp lands {verdict}.")
+        det, sto = live_bands(CFG)
+        if det and sto:
+            L.append(f"On the same criterion, this grid's deterministic physics axes recover {min(det):.0f}-{max(det):.0f}%"
+                     f" and its stochastic noise axes {min(sto):.0f}-{max(sto):.0f}% (results/{CFG}_augment*.csv).")
+            if max(sto) >= min(det):
+                verdict = "nowhere decisive: the two bands overlap on this grid"
+            else:
+                mid = (max(sto) + min(det)) / 2
+                verdict = ("with the deterministic axes: determinism, not physics, is what predicts repair" if lo >= mid else
+                           "with the stochastic axes: the split tracks physics vs instrument, not determinism" if hi <= mid else
+                           "between the two bands: the criterion is not clean on this axis")
+            L.append(f"The gain ramp lands {verdict}.")
+        else:
+            L.append("The comparison bands are not on disk yet (run augment.py and augment_white.py first).")
     else:
         L.append("No case cleared the >5-point criterion, so this axis cannot settle it.")
 

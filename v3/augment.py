@@ -216,7 +216,8 @@ def fit(cfg="ariel"):
         a_au = metrics(yc, m_aug.predict_proba(f_aug.transform(Xs))[:, 1])["accuracy"]
         lines.append(f"{'SNR '+str(s):<16}{a_fr*100:8.2f}%{a_au*100:10.2f}%{(a_au-a_fr)*100:+7.2f}"
                      f"{(a_au-a_fr)/max(clean_ref-a_fr,1e-9)*100:9.0f}%")
-        rows.append(dict(axis="correlated noise", case=f"snr{s}", frozen=a_fr, augmented=a_au))
+        rows.append(dict(axis="correlated noise", case=f"snr{s}", frozen=a_fr, augmented=a_au,
+                         pct_of_gap=(a_au - a_fr) / max(clean_ref - a_fr, 1e-9) * 100))
     a_fr = metrics(yc, frozen_model.predict_proba(frozen_feats.transform(Xc))[:, 1])["accuracy"]
     a_au = metrics(yc, m_aug.predict_proba(f_aug.transform(Xc))[:, 1])["accuracy"]
     lines.append(f"{'clean':<16}{a_fr*100:8.2f}%{a_au*100:10.2f}%{(a_au-a_fr)*100:+7.2f}{'':>10}")

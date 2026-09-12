@@ -146,15 +146,21 @@ def main():
           f"another (max {spread.max():.0f}x).",
           f"  Between the two strongest pipelines alone it reaches "
           f"{(M['norm_xgb'] / M['pca_xgb'].replace(0, np.nan)).max():.1f}x.",
-          "",
-          f"Ranking inversion under haze 3e7: frozen {c_n:.2f} -> {h_n:.2f}%, "
-          f"PCA {c_p:.2f} -> {h_p:.2f}%.",
-          f"The two break even when {100*f_even:.0f}% of a population carries that haze;",
-          "below that fraction the in-domain ranking still wins.",
-          "",
-          "Sharing a model family agrees no better than sharing nothing "
-          f"({g['same model family'].mean():.3f} vs {g['sharing neither'].mean():.3f});",
-          "the representation is what carries the budget."]
+          ""]
+    if h_n >= h_p:
+        L += [f"No ranking inversion under haze 3e7: frozen {c_n:.2f} -> {h_n:.2f}%, PCA {c_p:.2f} -> {h_p:.2f}%;",
+              "the in-domain ranking holds under the shift on this grid."]
+    else:
+        L += [f"Ranking inversion under haze 3e7: frozen {c_n:.2f} -> {h_n:.2f}%, PCA {c_p:.2f} -> {h_p:.2f}%.",
+              f"The two break even when {100*f_even:.0f}% of a population carries that haze;",
+              "below that fraction the in-domain ranking still wins."]
+    fam, nei = g['same model family'].mean(), g['sharing neither'].mean()
+    L += ["",
+          (f"Sharing a model family agrees no better than sharing nothing ({fam:.3f} vs {nei:.3f});"
+           if fam - nei < 0.05 else
+           f"Sharing a model family agrees somewhat better than sharing nothing ({fam:.3f} vs {nei:.3f});"),
+          "the representation is what carries the budget." if g['same representation'].mean() > max(fam, nei)
+          else "no single factor carries the budget on this grid."]
     open(os.path.join(RESULTS, f"{cfg}_transfer.txt"), "w").write("\n".join(L) + "\n")
     df.to_csv(os.path.join(RESULTS, f"{cfg}_transfer.csv"), index=False)
     print("\n".join(L))

@@ -1,0 +1,8 @@
+White-noise augmentation (second stochastic axis)
+
+case           frozen  augmented    gain  % of gap
+SNR 12         93.97%     94.11%  +0.14        8%
+SNR 10         92.80%     93.67%  +0.87       28%
+SNR 8          91.45%     92.97%  +1.52       35%
+SNR 5          87.93%     91.12%  +3.18       40%
+clean          95.84%     95.47%  -0.37

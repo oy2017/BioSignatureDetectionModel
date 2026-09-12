@@ -60,11 +60,25 @@ def ramp(s=2.0):
     return Xnf * (signs * amp * tilt)
 
 
-CASES = [("stellar spots 20%", "repairable 80%", lambda: rerender("tlse_spots20")),
-         ("haze 3e7",          "repairable 89%", lambda: rerender("haze_3p0e7")),
-         ("gain ramp 2x",      "repairable 84%", ramp),
-         ("correlated noise",  "repairable 31%", correlated),
-         ("white noise",       "repairable 29%", white)]
+def recovered(fn, case):
+    """The measured recovered fraction for one case, read from the CSV the repair script wrote
+    (never typed in: the v2 numbers do not carry over to this grid)."""
+    p = os.path.join("results", f"{CFG}_{fn}.csv")
+    if os.path.exists(p):
+        d = pd.read_csv(p)
+        key = d.case.astype(str).str.lower().str.replace(" ", "")
+        r = d[key == case.lower().replace(" ", "")]
+        if len(r) and np.isfinite(r.pct_of_gap.iloc[0]):
+            return float(r.pct_of_gap.iloc[0])
+    return np.nan
+
+
+# (name, draws per spectrum, measured recovery, perturbation)
+CASES = [("stellar spots 20%", 0,   recovered("augment", "tlse_spots20"), lambda: rerender("tlse_spots20")),
+         ("haze 3e7",          0,   recovered("augment", "haze_3p0e7"),   lambda: rerender("haze_3p0e7")),
+         ("gain ramp 2x",      1,   recovered("augment_ramp", "x2.0"),    ramp),
+         ("correlated noise",  102, recovered("augment", "snr5"),         correlated),
+         ("white noise",       102, recovered("augment_white", "snr5"),   white)]
 
 L = ["Is the repair rule confounded with the frequency content of the shift?", "",
      "A Fourier account of robustness says noise augmentation helps against",
@@ -75,7 +89,8 @@ L = ["Is the repair rule confounded with the frequency content of the shift?", "
      f"{'axis':<20}{'repair':<17}{'centroid':>10}{'power>1/8':>12}"]
 print(L[0])
 rows = []
-for name, rep, fn in CASES:
+for name, draws, rec, fn in CASES:
+    rep = f"recovers {rec:.0f}%" if np.isfinite(rec) else "recovers n/a"
     D = fn()
     D = D[np.all(np.isfinite(D), axis=1)]
     D = D - D.mean(axis=1, keepdims=True)
@@ -87,11 +102,20 @@ for name, rep, fn in CASES:
     # participation ratio of the mean power spectrum: how many modes carry the shift
     dof = float((Pw.sum() ** 2) / (Pw ** 2).sum())
     L.append(f"{name:<20}{rep:<17}{centroid:>10.3f}{hi:>11.0%}")
-    rows.append((name, rep, centroid, hi, dof))
+    rows.append((name, draws, rec, centroid, hi, dof))
 
+from scipy.stats import spearmanr
+ok = [r for r in rows if np.isfinite(r[2])]
+rho = spearmanr([r[4] for r in ok], [r[2] for r in ok]).correlation if len(ok) >= 3 else np.nan
+smooth, rough = min(ok, key=lambda r: r[4]), max(ok, key=lambda r: r[4])
+few = [r[2] for r in ok if r[1] <= 1]; many = [r[2] for r in ok if r[1] > 1]
 L += ["",
-      "The correlated noise is the smoothest perturbation of the five and still repairs",
-      "worst, so frequency content does not order repairability and the draw count does.",
+      "If the Fourier account held, recovery would rise with high-frequency power.",
+      f"Measured Spearman(power above 1/8 cycle per bin, recovered) = {rho:+.2f} over {len(ok)} cases.",
+      f"Smoothest perturbation: {smooth[0]} ({smooth[4]:.0%} high-frequency power) recovers {smooth[2]:.0f}%;",
+      f"roughest: {rough[0]} ({rough[4]:.0%}) recovers {rough[2]:.0f}%.",
+      f"Grouped by draw count instead: <=1 draw recovers {min(few):.0f}-{max(few):.0f}%, per-bin draws {min(many):.0f}-{max(many):.0f}%"
+      + (" (non-overlapping)." if max(many) < min(few) else " (overlapping)."),
       ""]
 import os as _os
 _p = _os.path.join("results", "ariel_frequency.txt")

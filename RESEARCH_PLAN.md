@@ -523,7 +523,22 @@ into a measurement**. Where it can, do that instead of disclosing it.
    solar-type hosts and disagree on M dwarfs, and the ExoSim2 noise axis will
    price the classifier's sensitivity to exactly that difference, concentrated on
    the cool-host planets. That is a prediction the axis can now test.
-6. **Run the validation** and compare against the committed predictions.
+6. **Run the validation — DONE 2026-09-11** (`v3/run_chain.sh`, logs and CSVs in
+   `v3/results/`, scorecard in `v3/results/PREREG_OUTCOME.md`). In-distribution
+   95.84 % (norm_xgb; normalization again worth +4 to +10 points over PCA and
+   raw). Against the pre-registration: the per-bin noise axes recover 40–50 %
+   (below the 60 % falsification line, so the rule survives, but above the
+   20–40 % band predicted from v2); deterministic axes 69–76 %, gain ramp 77 %.
+   The separation is non-overlapping but about half as wide as on v2. Axis 8
+   produced **no loss to repair**: the frozen screen scores *higher* on quenched
+   spectra (95.84 → 98.24 %, all four pipelines agree), the gain concentrated
+   below 1000 K where quenching carries the deep C/O > 1 water depletion
+   (label separation 0.3 → 3.3 dex in H2O) up to the photosphere. The
+   pre-registered prediction is untestable forward (neither confirmed nor
+   falsified) and its secondary prediction is wrong in sign; a labelled post-hoc
+   reverse test (train quenched, deploy equilibrium) loses 8.9 points and
+   recovers 65 %. Three scripts that had v2 bands typed in now read the live
+   CSVs.
 
 ## 8. Decisions already taken, not to be re-litigated
 

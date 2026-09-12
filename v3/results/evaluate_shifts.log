@@ -1,0 +1,59 @@
+cloud          cloud_1e1Pa            acc  62.02 (-33.82) brier 0.2586 pos 0.394 amp 0.026 n=9016
+cloud          cloud_1e2Pa            acc  82.99 (-12.85) brier 0.1182 pos 0.427 amp 0.286 n=9016
+cloud          cloud_1e3Pa            acc  91.10 ( -4.74) brier 0.0639 pos 0.483 amp 0.572 n=9016
+cloud          cloud_1e4Pa            acc  94.79 ( -1.05) brier 0.0394 pos 0.502 amp 0.804 n=9016
+cloud          cloud_1e5Pa            acc  95.74 ( -0.10) brier 0.0318 pos 0.513 amp 0.945 n=9016
+exomol         exomol                 acc  85.10 (-10.74) brier 0.1079 pos 0.396 amp 0.864 n=9016
+exotransmit    exotransmit            acc  90.10 ( -5.75) brier 0.0807 pos 0.422 amp 0.887 n=9016
+haze           haze_1p0e10            acc  57.58 (-38.27) brier 0.3541 pos 0.140 amp 0.474 n=9016
+haze           haze_2p0e5             acc  95.74 ( -0.10) brier 0.0313 pos 0.521 amp 0.987 n=9016
+haze           haze_2p0e6             acc  95.00 ( -0.84) brier 0.0374 pos 0.534 amp 0.947 n=9016
+haze           haze_2p4e8             acc  91.27 ( -4.57) brier 0.0647 pos 0.529 amp 0.779 n=9016
+haze           haze_3p0e7             acc  92.97 ( -2.87) brier 0.0560 pos 0.558 amp 0.894 n=9016
+quenched       quenched               acc  98.24 ( +2.40) brier 0.0152 pos 0.514 amp 0.993 n=9016
+tlse           tlse_fac05             acc  95.11 ( -0.73) brier 0.0377 pos 0.509 amp 1.017 n=9016
+tlse           tlse_fac10             acc  93.80 ( -2.04) brier 0.0482 pos 0.499 amp 1.039 n=9016
+tlse           tlse_mixed             acc  89.81 ( -6.03) brier 0.0853 pos 0.477 amp 0.962 n=9016
+tlse           tlse_spots02           acc  94.27 ( -1.57) brier 0.0451 pos 0.507 amp 0.982 n=9016
+tlse           tlse_spots05           acc  91.96 ( -3.88) brier 0.0664 pos 0.492 amp 0.967 n=9016
+tlse           tlse_spots10           acc  89.36 ( -6.48) brier 0.0898 pos 0.473 amp 0.965 n=9016
+tlse           tlse_spots20           acc  86.12 ( -9.72) brier 0.1198 pos 0.435 amp 1.082 n=9016
+white noise    snr12                  acc  94.14 ( -1.70) brier 0.0434 pos 0.509 amp 1.000 n=9016
+white noise    snr10                  acc  93.28 ( -2.56) brier 0.0511 pos 0.498 amp 1.000 n=9016
+white noise    snr8                   acc  91.32 ( -4.53) brier 0.0649 pos 0.490 amp 1.000 n=9016
+white noise    snr5                   acc  87.58 ( -8.26) brier 0.0935 pos 0.453 amp 1.000 n=9016
+correlated noise snr12                  acc  93.58 ( -2.26) brier 0.0515 pos 0.508 amp 1.000 n=9016
+correlated noise snr10                  acc  91.43 ( -4.41) brier 0.0690 pos 0.499 amp 1.000 n=9016
+correlated noise snr8                   acc  89.53 ( -6.31) brier 0.0858 pos 0.479 amp 1.000 n=9016
+correlated noise snr5                   acc  83.20 (-12.64) brier 0.1355 pos 0.438 amp 1.000 n=9016
+gain ramp      x0.25                  acc  95.70 ( -0.14) brier 0.0322 pos 0.515 amp 0.996 n=9016
+gain ramp      x0.5                   acc  95.09 ( -0.75) brier 0.0359 pos 0.513 amp 1.009 n=9016
+gain ramp      x1.0                   acc  93.63 ( -2.21) brier 0.0504 pos 0.508 amp 1.010 n=9016
+gain ramp      x2.0                   acc  90.56 ( -5.28) brier 0.0786 pos 0.494 amp 1.034 n=9016
+baseline offset x0.25                  acc  95.84 ( +0.00) brier 0.0304 pos 0.517 amp 1.000 n=9016
+baseline offset x0.5                   acc  95.84 ( +0.00) brier 0.0304 pos 0.517 amp 1.000 n=9016
+baseline offset x1.0                   acc  95.84 ( +0.00) brier 0.0304 pos 0.517 amp 1.000 n=9016
+baseline offset x2.0                   acc  95.84 ( +0.00) brier 0.0304 pos 0.517 amp 1.000 n=9016
+absolute noise 20 ppm                 acc  91.97 ( -3.87) brier 0.0568 pos 0.512 amp 1.000 n=9016
+absolute noise 50 ppm                 acc  90.37 ( -5.47) brier 0.0689 pos 0.500 amp 1.000 n=9016
+absolute noise 100 ppm                acc  87.78 ( -8.06) brier 0.0838 pos 0.492 amp 1.000 n=9016
+absolute noise 200 ppm                acc  85.09 (-10.75) brier 0.1024 pos 0.483 amp 1.000 n=9016
+noise colouring white snr15            acc  93.66 ( -2.19) brier 0.0458 pos 0.510 amp 1.000 n=9016
+noise colouring ariel snr15            acc  95.79 ( -0.06) brier 0.0309 pos 0.516 amp 1.000 n=9016
+noise colouring exosim snr15           acc  95.63 ( -0.21) brier 0.0311 pos 0.515 amp 1.000 n=9016
+noise colouring white snr10            acc  92.52 ( -3.32) brier 0.0578 pos 0.498 amp 1.000 n=9016
+noise colouring ariel snr10            acc  94.45 ( -1.39) brier 0.0410 pos 0.496 amp 1.000 n=9016
+noise colouring exosim snr10           acc  94.34 ( -1.50) brier 0.0417 pos 0.493 amp 1.000 n=9016
+noise colouring white snr7             acc  89.87 ( -5.97) brier 0.0759 pos 0.477 amp 1.000 n=9016
+noise colouring ariel snr7             acc  92.46 ( -3.38) brier 0.0565 pos 0.473 amp 1.000 n=9016
+noise colouring exosim snr7            acc  92.32 ( -3.52) brier 0.0579 pos 0.469 amp 1.000 n=9016
+noise colouring white snr5             acc  87.61 ( -8.23) brier 0.0917 pos 0.453 amp 1.000 n=9016
+noise colouring ariel snr5             acc  90.46 ( -5.38) brier 0.0714 pos 0.454 amp 1.000 n=9016
+noise colouring exosim snr5            acc  90.34 ( -5.50) brier 0.0728 pos 0.450 amp 1.000 n=9016
+
+Out-of-envelope extrapolation, radius split at 15.0 R_earth (train n=10812, test n=7228)
+  The control trains on a random subset of the SAME size drawn from the whole grid
+  and is tested on the SAME large planets, so only the training distribution differs.
+  extrapolation: acc 95.39%  Brier 0.0354
+  control (random training draw, same n, same test planets, mean of 5): acc 98.35%  Brier 0.0130
+  penalty net of sample size: -2.96 points, Brier +0.0225

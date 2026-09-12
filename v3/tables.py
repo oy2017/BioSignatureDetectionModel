@@ -14,7 +14,7 @@ import pandas as pd
 from common import RESULTS
 
 LABELS = {"raw_xgb": "XGBoost, raw bins", "pca_xgb": "XGBoost, PCA", "norm_xgb": "XGBoost, per-spectrum normalized",
-          "raw_rf": "Random Forest, raw bins", "pca_rf": "Random Forest, PCA", "norm_rf": "Random Forest, per-spectrum normalized",
+          "raw_rf": "Random Forest, raw bins", "pca_rf": "Random Forest, PCA", "norm_rf": "Random Forest, per-spectrum normalized", "norm_mlp": "MLP, per-spectrum normalized",
           "pcaw_mlp": "MLP, PCA whitened", "pca_mlp": "MLP, PCA unwhitened"}
 
 

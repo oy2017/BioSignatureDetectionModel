@@ -1,0 +1,22 @@
+Axis 8 (quenched composition): recovery by training on quenched spectra, configuration ariel, pipeline norm_xgb
+Frozen clean reference 95.84%. Augmented: 66% of training planets quenched, rest equilibrium.
+
+subset               n   clean   frozen  augmented    gain  % of gap
+all planets       9016  95.84%   98.24%     98.54%  +0.30       n/a
+T 500-1000 K      2345  88.61%   97.44%     98.34%  +0.90       n/a
+T 1000-1500 K     2320  97.72%   97.63%     97.72%  +0.09       n/a
+T 1500-2500 K     4351  98.74%   98.99%     99.08%  +0.09       n/a
+
+cost on clean data of training with the shift: 95.84% -> 95.43% (-0.41)
+
+Pre-registered prediction: > 60 % recovered (deterministic re-render, zero draws per spectrum).
+The rule is falsified on this axis if the all-planets recovery is below 40 %.
+
+Outcome: the frozen pipeline loses nothing on the quenched spectra (95.84% clean -> 98.24% quenched), so there is no gap and the
+prediction gets no test in this direction: neither confirmed nor falsified.
+The secondary prediction (cost concentrated below 1000 K) is wrong in sign: the change IS concentrated there (88.61% -> 97.44%) but it is a gain.
+
+Reverse direction (post hoc, not pre-registered): trained on quenched spectra only, deployed on equilibrium.
+  quenched-only model: on quenched test 98.56%, on equilibrium test 89.67% (cost +8.88 pts)
+  mixed model (the same augmentation) on equilibrium test: 95.43%
+  recovered: 65% of the loss

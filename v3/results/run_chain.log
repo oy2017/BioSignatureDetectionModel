@@ -1,0 +1,15 @@
+=== evaluate_shifts  18:48:57
+=== analyze_labels  18:49:26
+=== analyze_calibration  18:49:37
+=== realism  18:49:40
+=== physics_baseline  18:49:44
+=== prevalence  18:49:46
+=== augment  18:49:54
+=== augment_white  18:58:44
+=== augment_ramp  18:58:49
+=== augment_quenched  18:58:53
+=== frequency  18:59:01
+=== invertibility  18:59:03
+=== sensitivity  19:10:15
+=== chain complete  19:10:58
+next: run_multimodel.sh (five further pipelines) then transfer.py, then tables.py
