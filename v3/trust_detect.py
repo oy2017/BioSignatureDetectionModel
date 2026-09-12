@@ -30,7 +30,7 @@ from augment import shifted_test, corr_noise  # noqa: E402
 from pipeline import MLPWrap  # noqa: E402
 
 RERENDERED = ["cloud_1e3Pa", "cloud_1e4Pa", "haze_3p0e7", "haze_2p4e8", "tlse_spots10", "tlse_spots20", "tlse_mixed",
-              "exotransmit", "exomol", "quenched", "compound_spots20_haze3e7"]
+              "exotransmit", "exomol", "quenched", "compound_spots20_haze3e7", "absorbers", "absorbers_quenched"]
 NOISE = [("white", 8), ("white", 5), ("correlated", 8), ("correlated", 5)]
 DECLINE_CLEAN = 0.10
 

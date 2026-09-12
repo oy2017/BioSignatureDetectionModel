@@ -214,6 +214,40 @@ detection and wrong about usefulness.
 Pre-registered expectations for the randomized grid (plan §9) were committed before these
 runs and are unchanged; the randomized analysis is queued behind its render.
 
+## 4c. The missing-absorber result (2026-09-11, late) — candidate headline, with its checks
+
+`shift_absorbers.py` re-renders the test planets with HCN and C2H2 added at their FastChem
+abundances. These are not exotic: at C/O > 1 the equilibrium HCN and C2H2 abundances are
+~1e-5 (median log10 −5.0 and −4.5 on the carbon-rich planets; −9.8 and −14.5 on the others),
+exactly as Madhusudhan 2012 and Moses 2013 describe, and the training forward model (MultiREx's
+default gas set) simply does not contain them.
+
+**Frozen screen: 95.84 → 71.68 %. Carbon-rich planets: 97.6 → 48.0 % — chance. Hot carbon-rich
+planets (1500–2500 K): 98.7 → 51.0 %.** The predicted-positive rate halves (0.52 → 0.26): the
+screen calls carbon-rich planets oxygen-rich. Mechanism, from the spectra: the added absorption
+sits at 2.8–3.0 µm and 4.1 µm, up to half the planet's own amplitude, i.e. it fills the region
+between the 2.7 µm water band and the 3.3 µm methane band — the screen reads it as water. The
+randomized screen does not absorb it (75.0 %), and the clean-fixed decline rules catch only
+part of it (ensemble: 82 % accepted at 75 % coverage, credit −16 points).
+
+Why this is the answer to "can you trust it" in one row: the physics the training simulator
+omitted is the physics that *defines* the class the screen is meant to find, the omission is
+one the literature had already documented, and neither robustness training nor detection
+rescues it. Only fixing the forward model can — which the oracle (training render with HCN +
+C2H2, running) will show, and which will probably make the screen *better* than before,
+since HCN and C2H2 are carbon-rich markers.
+
+Checks before the word "finding" (§2b rule):
+(a) literature phrased as the negation — Ardévol Martínez 2022 tested an *added* absorber
+    (AlO) on a retrieval CNN and found it robust; ours is the opposite outcome for a
+    classifier whose label is the added species' own regime. Nothing found on HCN/C2H2 and
+    ML screens. Passes.
+(b) implementation — abundances from the same FastChem call that produced the training
+    gases (asserted equal to 1e-6); Exo-Transmit HCN/C2H2 tables cover the temperature range;
+    abundances constant with altitude, as for every other gas. Pending: the quenched variant
+    (rendering) and the oracle.
+(c) mechanism — known chemistry (C/O > 1 → HCN, C2H2) plus the measured band overlap. Passes.
+
 ## 5. Decision gates (cheap first; each has a kill criterion)
 
 - **G1 — detect (done).** Kill if no score ranks errors above AUROC 0.7 under re-rendered

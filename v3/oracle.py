@@ -150,7 +150,8 @@ def main():
     # --- deterministic, re-rendered with another code / other opacity tables, when the training
     # re-render exists (shift_exotransmit.py --splits train; shift_opacity.py --splits train)
     for case, fname, axis in (("exotransmit", "train_native_exotransmit.npy", "exotransmit"),
-                              ("exomol", "train_native_exomol.npy", "exomol")):
+                              ("exomol", "train_native_exomol.npy", "exomol"),
+                              ("absorbers", "train_native_absorbers.npy", "absorbers")):
         p_tr = os.path.join(DATA, fname)
         if not os.path.exists(p_tr):
             print(f"  {case}: no training re-render on disk, oracle skipped", flush=True); continue
