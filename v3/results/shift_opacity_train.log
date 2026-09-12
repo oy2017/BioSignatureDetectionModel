@@ -1,0 +1,17 @@
+Loading MultiREx version 0.3.1
+swap dir [exomol] /home/owenhyang/opacity_swap_v3_exomol
+  swapped  CH4  -> 12C-1H4__YT34to10.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  CO   -> 12C-16O__Li2015.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  CO2  -> 12C-16O2__UCL-4000.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  H2O  -> 1H2-16O__POKAZATEL__R15000_0.3-50mu.xsec.TauREx.h5
+  retained O2   -> opacO2.dat
+  retained O3   -> opacO3.dat
+--- train [exomol]: 18040 planets, jobs=4, reduce=bin ---
+    8069 s total, 0.45 s/planet (wall, jobs=4); 0 failures (NaN rows)
+    vs baseline: median rel diff 6.179e-03, max 6.318e+01; median Pearson r 0.801949, median mean-depth ratio 1.005975
+    wrote /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/train_native_exomol.npy (18040, 2753)
+
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
