@@ -1,0 +1,77 @@
+Randomized training grid vs the frozen screen, configuration ariel, pipeline norm_xgb
+
+full = every ingredient randomized; held-out = the variant trained WITHOUT the case's axis
+(for the opacity and code axes every variant is held out; 'full' is shown). oracle = trained at the
+test strength (oracle.py), where measured. in/OUT = test strength inside the randomized training range.
+
+case                           range   frozen     full  held-out   oracle
+clean                             in    95.84    95.12         -        -
+cloud_1e5Pa                       in    95.74    95.00     94.74        -
+cloud_1e4Pa                       in    94.79    94.13     93.44        -
+cloud_1e3Pa                       in    91.10    92.45     91.32        -
+cloud_1e2Pa                      OUT    82.99    86.39     84.76        -
+cloud_1e1Pa                      OUT    62.02    64.53     64.05        -
+haze_2p0e5                        in    95.74    95.06     94.93        -
+haze_2p0e6                        in    95.00    94.74     94.41        -
+haze_3p0e7                        in    92.97    93.90     93.10    95.30
+haze_2p4e8                        in    91.27    92.83     91.95        -
+haze_1p0e10                      OUT    57.58    66.59     65.52        -
+tlse_spots02                      in    94.27    94.68     94.14        -
+tlse_spots05                      in    91.96    94.06     92.04        -
+tlse_spots10                      in    89.36    92.92     90.02    94.31
+tlse_spots20                      in    86.12    91.59     86.52    93.01
+tlse_mixed                       OUT    89.81    93.13     90.28        -
+tlse_fac10                       OUT    93.80    93.52     93.51        -
+quenched                          in    98.24    98.20     98.07        -
+exotransmit                      OUT    90.10    89.65     89.65        -
+exomol                           OUT    85.10    88.83     88.83        -
+compound_spots10_haze3e7          in    88.90    92.54         -        -
+compound_spots20_haze3e7          in    86.05    90.69         -        -
+white_snr12                       in    94.31    94.21     94.11        -
+white_snr8                        in    91.61    92.22     91.93    92.87
+white_snr5                        in    87.79    90.48     89.36    91.05
+correlated_snr12                  in    93.09    93.09     92.93        -
+correlated_snr8                   in    89.74    91.10     90.77    92.28
+correlated_snr5                   in    84.19    86.89     85.97    91.67
+
+clean cost of randomization: 95.84% -> 95.12% (-0.72 points)
+in-range cases with an oracle: full reaches 36-83% of the ceiling (n = 7)
+
+Held-out axes, IN-RANGE cases only: mean loss (points vs the frozen clean accuracy) of the frozen screen, of the
+variant trained without that axis, and of the full randomized screen; transfer = share of full's loss reduction
+that the held-out variant achieves without ever seeing the axis.
+  held-out aero   : frozen  +2.04  without-axis  +2.43  full  +1.82   transfer  -180%   (7 cases)
+  held-out spots  : frozen  +5.41  without-axis  +5.16  full  +2.53   transfer     9%   (4 cases)
+  held-out quench : frozen  -2.40  without-axis  -2.23  full  -2.36   transfer   nan%   (1 cases)
+  held-out noise  : frozen  +5.72  without-axis  +4.99  full  +4.51   transfer    60%   (6 cases)
+  never trained exotransmit : frozen  +5.75  randomized  +6.19
+  never trained exomol      : frozen +10.74  randomized  +7.01
+
+Absorb/detect trade-off (Mahalanobis shift AUROC; margin error AUROC), frozen -> full:
+  cloud_1e5Pa                    shift 0.596 -> 0.577   error 0.933 -> 0.916
+  cloud_1e4Pa                    shift 0.791 -> 0.761   error 0.916 -> 0.909
+  cloud_1e3Pa                    shift 0.949 -> 0.934   error 0.892 -> 0.894
+  cloud_1e2Pa                    shift 0.996 -> 0.994   error 0.834 -> 0.845
+  cloud_1e1Pa                    shift 1.000 -> 1.000   error 0.633 -> 0.648
+  haze_2p0e5                     shift 0.517 -> 0.507   error 0.941 -> 0.918
+  haze_2p0e6                     shift 0.635 -> 0.537   error 0.937 -> 0.916
+  haze_3p0e7                     shift 0.900 -> 0.633   error 0.887 -> 0.909
+  haze_2p4e8                     shift 0.987 -> 0.820   error 0.860 -> 0.903
+  haze_1p0e10                    shift 1.000 -> 0.984   error 0.551 -> 0.678
+  tlse_spots02                   shift 0.576 -> 0.539   error 0.907 -> 0.919
+  tlse_spots05                   shift 0.659 -> 0.561   error 0.879 -> 0.916
+  tlse_spots10                   shift 0.743 -> 0.559   error 0.836 -> 0.914
+  tlse_spots20                   shift 0.836 -> 0.507   error 0.783 -> 0.906
+  tlse_mixed                     shift 0.729 -> 0.583   error 0.844 -> 0.913
+  tlse_fac10                     shift 0.508 -> 0.486   error 0.913 -> 0.912
+  quenched                       shift 0.576 -> 0.529   error 0.905 -> 0.919
+  exotransmit                    shift 0.802 -> 0.791   error 0.913 -> 0.943
+  exomol                         shift 0.979 -> 0.977   error 0.831 -> 0.881
+  compound_spots10_haze3e7       shift 0.984 -> 0.507   error 0.791 -> 0.903
+  compound_spots20_haze3e7       shift 0.994 -> 0.361   error 0.738 -> 0.896
+  white_snr12                    shift 0.881 -> 0.845   error 0.926 -> 0.917
+  white_snr8                     shift 0.998 -> 0.996   error 0.899 -> 0.915
+  white_snr5                     shift 1.000 -> 1.000   error 0.853 -> 0.892
+  correlated_snr12               shift 0.696 -> 0.647   error 0.910 -> 0.922
+  correlated_snr8                shift 0.929 -> 0.879   error 0.860 -> 0.896
+  correlated_snr5                shift 0.991 -> 0.977   error 0.802 -> 0.856

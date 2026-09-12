@@ -13,7 +13,7 @@ How this maps onto the old driver (../exotransmit_harness.py and
 
   * The Exo-Transmit configuration is unchanged and is reproduced verbatim:
     absorbers CH4, CO2, H2O, O3 and, in v3, CO (opacCO.dat added to MultiREx and
-    present in Exo-Transmit's Opac/); NH3 still carries mean molecular weight only; Collision Induced
+    present in Exo-Transmit's Opac/); NH3 now absorbs in both codes (opacNH3.dat added to MultiREx); Collision Induced
     Absorption off; Rayleigh on with augmentation 1.0; 100 isothermal layers
     between top and base pressure (otherInput.in's optical-depth count is set
     to 100 to match TauREx); planet radius at the base of the atmosphere;
@@ -68,7 +68,7 @@ N_LAYERS = 100
 EXO_TIMEOUT_S = 1800
 
 GASES = ["H2O", "CO", "CO2", "NH3", "CH4", "O3"]
-ABSORBERS = {"CH4", "CO2", "H2O", "O3", "CO"}   # v3: CO carries opacity (opacCO.dat in Exo-Transmit's Opac/)
+ABSORBERS = {"CH4", "CO2", "H2O", "O3", "CO", "NH3"}   # v3: CO and NH3 carry opacity in both codes (opacCO.dat, opacNH3.dat)
 
 EOS_SPECIES = ("C CH4 CO COS CO2 C2H2 C2H4 C2H6 H HCN HCl HF H2 H2CO H2O H2S "
                "He K MgH N N2 NO2 NH3 NO Na O O2 O3 OH PH3 SH SO2 SiH SiO TiO "

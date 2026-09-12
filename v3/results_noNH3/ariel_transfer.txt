@@ -1,0 +1,43 @@
+Does the fidelity budget transfer? configuration ariel
+
+52 shared shift cases, six pipelines = 2 model families x 3 representations.
+Spearman correlation of the per-case accuracy loss, every pair of pipelines.
+
+pipeline A  pipeline B  relationship              rho
+norm_rf     pca_rf      same model family       0.905
+pca_xgb     raw_xgb     same model family       0.891
+norm_xgb    pca_xgb     same model family       0.888
+norm_xgb    raw_xgb     same model family       0.824
+pca_rf      raw_rf      same model family       0.578
+norm_rf     raw_rf      same model family       0.484
+pca_xgb     pca_rf      same representation     0.991
+norm_xgb    norm_rf     same representation     0.980
+raw_xgb     raw_rf      same representation     0.629
+norm_rf     pca_xgb     sharing neither         0.917
+pca_rf      raw_xgb     sharing neither         0.901
+norm_xgb    pca_rf      sharing neither         0.875
+norm_rf     raw_xgb     sharing neither         0.856
+pca_xgb     raw_rf      sharing neither         0.552
+norm_xgb    raw_rf      sharing neither         0.414
+
+physical proxy: Spearman(loss, surviving feature amplitude) = 0.181 (n = 52), so the ordering is not simply how much signal is left.
+
+same representation    n=3  mean rho 0.866   range 0.629-0.991
+same model family      n=6  mean rho 0.762   range 0.484-0.905
+sharing neither        n=6  mean rho 0.752   range 0.414-0.917
+
+same representation vs all other pairs:   Mann-Whitney U one-sided p = 0.0901   (n = 3 vs 12)
+same representation vs same model family: Mann-Whitney U one-sided p = 0.1310
+                                         permutation (20k) p = 0.2497
+                                         mean difference = +0.105
+
+
+Magnitude spread on the 24 cases costing at least 5 points to some pipeline:
+  the same shift costs a median 6.4x more for one pipeline than another (max 186x).
+  Between the two strongest pipelines alone it reaches 24.9x.
+
+No ranking inversion under haze 3e7: frozen 95.84 -> 92.97%, PCA 91.56 -> 86.06%;
+the in-domain ranking holds under the shift on this grid.
+
+Sharing a model family agrees no better than sharing nothing (0.762 vs 0.752);
+the representation is what carries the budget.

@@ -1,0 +1,22 @@
+T=2500: 104 bins, median NSR@1h 1.92e-04, 46 s
+T=2750: 104 bins, median NSR@1h 1.72e-04, 48 s
+T=3000: 104 bins, median NSR@1h 1.55e-04, 48 s
+T=3250: 104 bins, median NSR@1h 1.43e-04, 55 s
+T=3500: 104 bins, median NSR@1h 1.33e-04, 31 s
+T=3750: 104 bins, median NSR@1h 1.25e-04, 24 s
+T=4000: 104 bins, median NSR@1h 1.17e-04, 24 s
+T=4250: 104 bins, median NSR@1h 1.11e-04, 25 s
+T=4500: 104 bins, median NSR@1h 1.06e-04, 28 s
+T=4750: 104 bins, median NSR@1h 1.01e-04, 69 s
+T=5000: 104 bins, median NSR@1h 9.68e-05, 72 s
+T=5250: 104 bins, median NSR@1h 9.31e-05, 73 s
+T=5500: 104 bins, median NSR@1h 8.98e-05, 73 s
+T=5750: 104 bins, median NSR@1h 8.68e-05, 73 s
+T=6000: 104 bins, median NSR@1h 8.41e-05, 60 s
+T=6250: 104 bins, median NSR@1h 8.16e-05, 54 s
+T=6500: 104 bins, median NSR@1h 7.92e-05, 57 s
+T=6750: 104 bins, median NSR@1h 7.69e-05, 64 s
+T=7000: 104 bins, median NSR@1h 7.49e-05, 28 s
+T=7250: 104 bins, median NSR@1h 7.30e-05, 25 s
+T=7500: 104 bins, median NSR@1h 7.14e-05, 25 s
+wrote results/exosim_nsr_curves.npz with 21 curves

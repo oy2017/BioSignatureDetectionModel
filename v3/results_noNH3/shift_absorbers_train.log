@@ -1,0 +1,6 @@
+train: chemistry 176 s; median log10 HCN -8.97, C2H2 -12.89; C/O>1 planets: HCN -5.10, C2H2 -4.64
+train: 18040/18040 rendered, 1083 s -> /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/train_native_absorbers.npy
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1

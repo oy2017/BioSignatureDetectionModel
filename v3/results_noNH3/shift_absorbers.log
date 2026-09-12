@@ -1,0 +1,28 @@
+test1: chemistry 14 s; median log10 HCN -9.04, C2H2 -13.10; C/O>1 planets: HCN -5.03, C2H2 -4.54
+test1: 1804/1804 rendered, 282 s -> /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/test1_native_absorbers.npy
+test2: chemistry 16 s; median log10 HCN -8.86, C2H2 -12.63; C/O>1 planets: HCN -5.03, C2H2 -4.57
+test2: 1814/1814 rendered, 210 s -> /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/test2_native_absorbers.npy
+test3: chemistry 16 s; median log10 HCN -8.91, C2H2 -12.52; C/O>1 planets: HCN -5.01, C2H2 -4.53
+test3: 1813/1813 rendered, 203 s -> /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/test3_native_absorbers.npy
+test4: chemistry 8 s; median log10 HCN -9.03, C2H2 -12.99; C/O>1 planets: HCN -5.03, C2H2 -4.55
+test4: 1776/1776 rendered, 119 s -> /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/test4_native_absorbers.npy
+test5: chemistry 8 s; median log10 HCN -8.92, C2H2 -12.85; C/O>1 planets: HCN -4.95, C2H2 -4.52
+test5: 1809/1809 rendered, 117 s -> /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/test5_native_absorbers.npy
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+test1: chemistry 14 s; median log10 HCN -6.10, C2H2 -6.82; C/O>1 planets: HCN -4.32, C2H2 -3.79
+test1: 1804/1804 rendered, 136 s -> /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/test1_native_absorbers_quenched.npy
+test2: chemistry 11 s; median log10 HCN -5.69, C2H2 -5.86; C/O>1 planets: HCN -4.31, C2H2 -3.79
+test2: 1814/1814 rendered, 122 s -> /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/test2_native_absorbers_quenched.npy
+test3: chemistry 19 s; median log10 HCN -5.71, C2H2 -5.78; C/O>1 planets: HCN -4.35, C2H2 -3.85
+test3: 1813/1813 rendered, 189 s -> /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/test3_native_absorbers_quenched.npy
+test4: chemistry 15 s; median log10 HCN -5.98, C2H2 -6.39; C/O>1 planets: HCN -4.34, C2H2 -3.83
+test4: 1776/1776 rendered, 142 s -> /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/test4_native_absorbers_quenched.npy
+test5: chemistry 14 s; median log10 HCN -6.42, C2H2 -7.53; C/O>1 planets: HCN -4.28, C2H2 -3.78
+test5: 1809/1809 rendered, 148 s -> /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/test5_native_absorbers_quenched.npy
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1

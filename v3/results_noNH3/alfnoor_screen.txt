@@ -1,0 +1,65 @@
+Mugnai et al. 2021 Tier-1 molecular screen, rebuilt (POP-III train, POP-I test, 7 points, requirement noise)
+train 3852 spectra, test 963 planets; their Table 6 at 1e-4: CH4 82-86, CO2 79-83, H2O 71-78, NH3 82-87 %
+
+=== threshold: abundance > 1e-5
+molecule model       clean    haze3e7   cloud1e2  absorbers    spots10    spots20   noise_x2   noise_x3
+CH4      KNN         69.3%      41.1%      57.0%      69.4%      54.9%      48.5%      62.0%      56.3%
+CH4      MLP         72.8%      41.1%      58.4%      71.5%      56.5%      48.2%      62.1%      56.3%
+CH4      RFC         71.7%      41.1%      57.3%      70.6%      54.9%      47.2%      60.6%      54.7%
+CH4      SVC         72.2%      41.1%      57.7%      70.9%      56.7%      48.2%      61.9%      55.3%
+H2O      KNN         64.3%      38.7%      51.0%      63.6%      49.8%      44.0%      58.6%      53.0%
+H2O      MLP         67.1%      38.9%      50.4%      67.1%      49.2%      43.7%      60.4%      54.5%
+H2O      RFC         68.0%      38.9%      51.8%      67.3%      50.7%      44.7%      59.2%      55.2%
+H2O      SVC         65.6%      38.9%      49.3%      66.1%      48.3%      43.1%      57.6%      52.8%
+CO2      KNN         53.5%      44.9%      46.0%      52.2%      48.6%      44.1%      49.2%      45.5%
+CO2      MLP         55.1%      41.6%      45.5%      55.6%      45.6%      44.3%      47.7%      46.6%
+CO2      RFC         56.3%      41.8%      48.0%      55.7%      46.6%      43.8%      49.6%      47.4%
+CO2      SVC         52.1%      41.5%      44.5%      51.8%      44.2%      44.1%      46.8%      45.1%
+NH3      KNN         47.1%      47.6%      49.8%      46.6%      48.5%      49.0%      48.4%      48.0%
+NH3      MLP         45.4%      53.9%      46.7%      44.9%      48.3%      50.4%      46.6%      47.0%
+NH3      RFC         47.1%      48.0%      46.6%      46.6%      49.3%      48.4%      47.6%      46.5%
+NH3      SVC         42.4%      42.3%      43.2%      42.2%      43.4%      43.2%      43.0%      43.4%
+
+=== threshold: abundance > 1e-4
+molecule model       clean    haze3e7   cloud1e2  absorbers    spots10    spots20   noise_x2   noise_x3
+CH4      KNN         75.3%      62.4%      67.5%      72.8%      68.6%      64.4%      67.1%      64.4%
+CH4      MLP         77.8%      62.4%      66.7%      76.9%      69.0%      64.7%      70.4%      65.7%
+CH4      RFC         77.2%      62.4%      65.5%      75.3%      68.0%      64.7%      68.1%      64.8%
+CH4      SVC         76.8%      62.4%      67.6%      75.5%      68.4%      64.4%      69.0%      65.7%
+H2O      KNN         75.6%      61.8%      65.4%      75.6%      68.7%      64.7%      69.8%      67.3%
+H2O      MLP         78.3%      61.8%      65.6%      77.7%      68.5%      64.7%      71.9%      68.7%
+H2O      RFC         78.9%      61.8%      66.7%      77.9%      68.3%      65.0%      70.7%      67.5%
+H2O      SVC         77.9%      61.8%      64.8%      77.6%      67.1%      64.2%      71.0%      67.9%
+CO2      KNN         59.4%      59.8%      57.2%      59.8%      60.5%      59.7%      58.2%      58.0%
+CO2      MLP         62.5%      59.8%      60.2%      61.4%      60.1%      60.1%      60.7%      60.3%
+CO2      RFC         60.0%      59.8%      59.6%      61.0%      60.4%      60.2%      59.9%      59.4%
+CO2      SVC         59.8%      59.8%      59.8%      59.8%      59.8%      59.8%      59.8%      59.8%
+NH3      KNN         57.9%      57.6%      58.4%      56.8%      55.5%      55.5%      57.4%      56.4%
+NH3      MLP         61.0%      60.9%      60.4%      61.2%      60.7%      61.1%      60.9%      60.7%
+NH3      RFC         61.0%      60.5%      59.6%      60.4%      60.5%      58.7%      60.5%      60.4%
+NH3      SVC         61.0%      61.0%      61.0%      61.0%      61.0%      61.0%      61.0%      61.0%
+
+=== threshold: abundance > 1e-3
+molecule model       clean    haze3e7   cloud1e2  absorbers    spots10    spots20   noise_x2   noise_x3
+CH4      KNN         83.0%      79.1%      77.6%      81.9%      80.9%      79.3%      80.6%      78.0%
+CH4      MLP         84.6%      79.1%      78.8%      84.8%      80.3%      79.6%      79.4%      78.5%
+CH4      RFC         83.9%      79.1%      78.7%      83.9%      80.1%      79.5%      79.9%      78.4%
+CH4      SVC         80.3%      79.1%      78.9%      80.3%      79.0%      79.1%      79.4%      79.3%
+H2O      KNN         85.8%      82.6%      81.9%      84.9%      83.9%      83.4%      81.9%      81.8%
+H2O      MLP         88.4%      82.6%      82.3%      88.4%      84.9%      83.6%      84.5%      83.1%
+H2O      RFC         86.7%      82.6%      82.9%      86.7%      84.6%      83.4%      83.9%      83.3%
+H2O      SVC         87.0%      82.6%      82.3%      87.1%      84.0%      83.2%      84.2%      83.3%
+CO2      KNN         80.6%      81.6%      79.6%      80.6%      80.7%      81.0%      78.6%      80.0%
+CO2      MLP         81.9%      81.6%      81.5%      81.5%      81.4%      81.5%      81.3%      81.4%
+CO2      RFC         81.8%      81.6%      81.4%      81.6%      81.3%      81.5%      81.2%      81.1%
+CO2      SVC         81.6%      81.6%      81.6%      81.6%      81.6%      81.6%      81.6%      81.6%
+NH3      KNN         80.3%      80.9%      80.6%      80.1%      79.9%      80.3%      79.3%      80.2%
+NH3      MLP         81.4%      81.5%      81.4%      81.4%      81.4%      81.5%      81.5%      81.5%
+NH3      RFC         81.5%      81.5%      81.3%      81.5%      81.5%      81.4%      81.5%      81.6%
+NH3      SVC         81.5%      81.5%      81.5%      81.5%      81.5%      81.5%      81.5%      81.5%
+
+At the 1e-4 threshold, mean over the four molecules and four models: clean 68.8, haze3e7 61.0, cloud1e2 62.9, absorbers 68.2, spots10 64.1, spots20 62.0, noise_x2 64.8, noise_x3 63.0
+
+Deviations from Mugnai et al. 2021: forward model MultiREx/TauREx 3 with Exo-Transmit tables (theirs: TauREx 3 with ExoMol k-tables);
+noise shape from ExoSim2 rather than ArielRad, level set by the Tier-1 requirement per target; 965 known MCS planets (2026 list)
+rather than their 1000 (2019 list incl. TESS predictions); training spectra noised once, not resampled per epoch.

@@ -1,0 +1,27 @@
+  stellar spots 20%      linear  0.720  nonlinear  0.792
+  stellar spots 10%      linear  0.767  nonlinear  0.802
+  haze 3e7               linear  0.787  nonlinear  0.806
+  haze 2e6               linear  0.806  nonlinear  0.812
+  correlated noise SNR 8 linear  0.926  nonlinear  0.941
+  correlated noise SNR 5 linear  0.894  nonlinear  0.922
+  white noise SNR 8      linear  0.863  nonlinear  0.853
+  white noise SNR 5      linear  0.790  nonlinear  0.793
+Does invertibility predict repairability? configuration ariel
+
+R2_inv: variance of the clean spectrum recovered by a ridge map from the shifted
+spectrum, fitted and scored on disjoint halves of the pooled test planets.
+pct_recovered: the augmentation gain already measured for the same case.
+
+axis                    kind             linear  nonlin  recovered
+stellar spots 20%       deterministic     0.720   0.792        69%
+stellar spots 10%       deterministic     0.767   0.802        76%
+haze 3e7                deterministic     0.787   0.806        68%
+haze 2e6                deterministic     0.806   0.812        64%
+correlated noise SNR 8  stochastic        0.926   0.941        n/a
+correlated noise SNR 5  stochastic        0.894   0.922        n/a
+white noise SNR 8       stochastic        0.863   0.853        35%
+white noise SNR 5       stochastic        0.790   0.793        40%
+
+Spearman(R2_inv, recovered) = -0.543   Pearson = -0.566   (n = 6)
+deterministic: linear 0.720-0.806, nonlinear 0.792-0.812, recovered 64-76%
+stochastic:    linear 0.790-0.863, nonlinear 0.793-0.853, recovered 35-40%

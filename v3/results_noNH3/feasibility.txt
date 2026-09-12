@@ -1,0 +1,23 @@
+C/O feasibility on 596 planets, Ariel layout, peak-to-peak SNR 15.0
+
+=== cut: C/O > 0.55 (solar) ===
+positive rate 0.723
+  (a) bulk params only, no spectrum :  65.8%   [T alone:  72.3%]   <- confound floor
+  (b) spectrum, normalized, XGBoost  :  85.7%   [logistic:  80.7%]
+      spectrum beats bulk by +20.0 points
+  (c) T  500-1000 K: n=169  pos 0.72  spectrum acc  85.8%  majority  72.2%
+  (c) T 1000-1500 K: n=158  pos 0.68  spectrum acc  84.2%  majority  67.7%
+  (c) T 1500-2500 K: n=269  pos 0.75  spectrum acc  83.6%  majority  75.1%
+
+=== cut: C/O > 1.0 (carbon-rich) ===
+positive rate 0.379
+  (a) bulk params only, no spectrum :  53.4%   [T alone:  62.1%]   <- confound floor
+  (b) spectrum, normalized, XGBoost  :  92.3%   [logistic:  89.4%]
+      spectrum beats bulk by +38.9 points
+  (c) T  500-1000 K: n=169  pos 0.34  spectrum acc  80.5%  majority  65.7%
+  (c) T 1000-1500 K: n=158  pos 0.37  spectrum acc  95.6%  majority  62.7%
+  (c) T 1500-2500 K: n=269  pos 0.41  spectrum acc  97.8%  majority  59.5%
+
+Reading: the label is usable where (b) clearly exceeds (a) AND (c) holds inside each
+temperature band. If (c) collapses to majority in the cool band, the C/O signature is
+not observable there and the label must be restricted or stratified by temperature.

@@ -1,0 +1,33 @@
+ExoSim2 (reconstructed Ariel-like payload) vs ExoRad curves used in v2, per host T_eff
+
+ T_eff  bins  Spearman  ratio med    ratio 5-95%
+  2500   104     0.800       2.07   1.99-2.89  
+  2750   104     0.850       2.07   1.99-2.79  
+  3000   104     0.859       2.07   1.99-2.71  
+  3250   104     0.915       2.07   1.99-2.65  
+  3500   104     0.937       2.07   1.99-2.59  
+  3750   104     0.949       2.07   1.99-2.58  
+  4000   104     0.957       2.07   1.99-2.57  
+  4250   104     0.964       2.06   1.99-2.53  
+  4500   104     0.967       2.06   1.99-2.50  
+  4750   104     0.970       2.06   1.99-2.47  
+  5000   104     0.973       2.06   1.99-2.46  
+  5250   104     0.976       2.06   1.99-2.44  
+  5500   104     0.977       2.06   1.99-2.43  
+  5750   104     0.979       2.06   1.99-2.43  
+  6000   104     0.981       2.06   1.99-2.42  
+  6250   104     0.982       2.06   1.99-2.42  
+  6500   104     0.983       2.06   1.99-2.41  
+  6750   104     0.983       2.06   1.99-2.40  
+  7000   104     0.983       2.06   1.99-2.39  
+  7250   104     0.984       2.06   1.99-2.39  
+  7500   104     0.985       2.06   1.99-2.39  
+
+shape agreement: Spearman min 0.800, median 0.973, max 0.985 over 21 stars
+level ratio ExoSim2/ExoRad: median 2.06, range 2.06-2.07
+does the level ratio trend with T_eff?  Spearman(T_eff, ratio) = -1.000
+
+Reading: a high per-star Spearman with a ratio that is nearly constant across bins AND across
+T_eff means the two noise models differ by one normalisation, which the study's SNR convention
+sets anyway. A ratio that varies across bins is a shape difference and is what the ExoSim2 noise
+axis will measure the classifier's sensitivity to.

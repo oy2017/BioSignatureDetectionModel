@@ -1,0 +1,11 @@
+ariel     102      95.84%     93.01%       94.79%       91.10%       92.97%       89.36%       86.12%       90.10%       85.10%       98.24%       86.05%
+tier2      51      95.37%     92.86%       93.19%       89.13%       89.77%       87.80%       83.31%       88.70%       72.28%       98.03%       78.09%
+tier1       7      88.08%     84.34%       83.51%       75.55%       60.59%       78.98%       70.80%       86.58%       64.69%       92.20%       50.12%
+The screen at each tier's binning (norm_xgb, Tier-3 hyper-parameters, trained at SNR 15)
+
+tier     bins clean SNR15 clean SNR7  cloud_1e4Pa  cloud_1e3Pa   haze_3p0e7 tlse_spots10 tlse_spots20  exotransmit       exomol     quenched compound_spo
+ariel     102      95.84%     93.01%       94.79%       91.10%       92.97%       89.36%       86.12%       90.10%       85.10%       98.24%       86.05%
+tier2      51      95.37%     92.86%       93.19%       89.13%       89.77%       87.80%       83.31%       88.70%       72.28%       98.03%       78.09%
+tier1       7      88.08%     84.34%       83.51%       75.55%       60.59%       78.98%       70.80%       86.58%       64.69%       92.20%       50.12%
+
+Tier 1 is what the triage decision would actually be made on; Tier 3 ('ariel') is what the study has used so far.

@@ -1,0 +1,23 @@
+Is the repair rule confounded with the frequency content of the shift?
+Is the repair rule confounded with the frequency content of the shift?
+
+A Fourier account of robustness says noise augmentation helps against
+high-frequency corruption and hurts against low. If every repairable axis were
+low-frequency and every unrepairable one high, that account and the draw-count
+rule would be indistinguishable here. Power is measured on the perturbation
+(shifted minus clean) across the 102 bins.
+
+axis                repair             centroid   power>1/8
+stellar spots 20%   recovers 69%          0.092        28%
+haze 3e7            recovers 68%          0.049        10%
+gain ramp 2x        recovers 77%          0.033         6%
+correlated noise    recovers 50%          0.040         2%
+white noise         recovers 40%          0.254        76%
+
+If the Fourier account held, recovery would rise with high-frequency power.
+Measured Spearman(power above 1/8 cycle per bin, recovered) = -0.30 over 5 cases.
+Smoothest perturbation: correlated noise (2% high-frequency power) recovers 50%;
+roughest: white noise (76%) recovers 40%.
+Grouped by draw count instead: <=1 draw recovers 68-77%, per-bin draws 40-50% (non-overlapping).
+
+wrote results/ariel_frequency.txt

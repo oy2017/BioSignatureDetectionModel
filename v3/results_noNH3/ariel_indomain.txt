@@ -1,0 +1,26 @@
+In-domain study, configuration = ariel, SNR 15 (peak-to-peak convention), Ariel-shaped noise
+train n = 18040, test sets n = [1804, 1814, 1813, 1776, 1809]
+feature dimensions: {'pcaw': 71, 'raw': 102, 'norm': 102, 'pca': 71}
+
+raw_xgb    accuracy 85.93±1.06  precision 83.14±1.86  recall 90.16±0.55  f1 86.50±0.95  brier 0.0944±0.0052  ece 0.0236±0.0058  auc 0.9443±0.0054
+raw_rf     accuracy 86.19±1.17  precision 82.63±1.79  recall 91.65±1.17  f1 86.90±1.16  brier 0.0946±0.0057  ece 0.0380±0.0061  auc 0.9432±0.0061
+pca_xgb    accuracy 91.56±0.54  precision 90.12±1.23  recall 93.34±0.36  f1 91.70±0.62  brier 0.0589±0.0039  ece 0.0174±0.0044  auc 0.9772±0.0021
+pca_rf     accuracy 90.22±0.49  precision 88.88±0.87  recall 91.94±0.71  f1 90.38±0.44  brier 0.0931±0.0015  ece 0.1403±0.0053  auc 0.9694±0.0022
+norm_xgb   accuracy 95.84±0.50  precision 94.29±0.92  recall 97.58±0.21  f1 95.91±0.53  brier 0.0304±0.0040  ece 0.0121±0.0047  auc 0.9928±0.0010
+norm_rf    accuracy 95.53±0.67  precision 93.80±1.11  recall 97.49±0.31  f1 95.61±0.70  brier 0.0374±0.0038  ece 0.0320±0.0031  auc 0.9901±0.0020
+norm_mlp   accuracy 95.47±0.58  precision 93.56±1.11  recall 97.66±0.29  f1 95.56±0.63  brier 0.0332±0.0040  ece 0.0111±0.0054  auc 0.9914±0.0014   restarts acc 95.47±0.15 (n=5)
+pcaw_mlp   accuracy 86.82±0.73  precision 89.37±1.26  recall 84.74±0.92  f1 86.43±0.92  brier 0.1074±0.0027  ece 0.1327±0.0104  auc 0.9605±0.0052   restarts acc 86.82±3.14 (n=5)
+pca_mlp    accuracy 85.63±0.62  precision 89.94±1.11  recall 81.31±0.99  f1 84.66±0.69  brier 0.1047±0.0018  ece 0.1163±0.0094  auc 0.9598±0.0027   restarts acc 85.63±3.48 (n=5)
+
+Pairwise McNemar (exact) on pooled test sets: (b = A right/B wrong, c = A wrong/B right, p)
+  norm_xgb vs raw_xgb   : b= 1021 c=  127 p=5.82e-174
+  norm_xgb vs raw_rf    : b=  988 c=  118 p=1.25e-171
+  norm_xgb vs pca_xgb   : b=  500 c=  114 p=1.45e-58
+  norm_xgb vs pca_rf    : b=  636 c=  129 p=2.71e-81
+  norm_xgb vs norm_rf   : b=  103 c=   75 p=4.27e-02
+  norm_xgb vs norm_mlp  : b=  126 c=  106 p=2.12e-01
+  norm_xgb vs pcaw_mlp  : b=  959 c=  135 p=1.35e-153
+  norm_xgb vs pca_mlp   : b= 1461 c=  162 p=1.41e-261
+Paired bootstrap F1 gap norm_xgb - norm_rf: 0.29 pts, 95% CI [0.01, 0.58]
+
+Best pipeline: norm_xgb  (frozen at models/ariel_norm_xgb.joblib)
