@@ -42,3 +42,6 @@ v3/models/*pcaw_mlp.keras
 
 # runtime state of background jobs, never provenance
 v3/results/*.pid
+
+# Editorial correspondence is private
+*Scholastica*.pdf
