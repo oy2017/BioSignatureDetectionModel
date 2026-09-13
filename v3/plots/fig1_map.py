@@ -29,6 +29,7 @@ def main():
         sd_o = (pd.read_csv(po).groupby("case").oracle.std() * 100).to_dict()
     fig, ax = figure(0.62)
     y = np.arange(len(ROWS))[::-1]
+    first_oracle = next(k for k, _, _ in ROWS if k in orc.index)      # the row that carries the oracle legend entry
     for yi, (k, lab, reg) in zip(y, ROWS):
         fr = (clean - det.loc[k, "accuracy_all"]) * 100
         rd = (clean - env.loc[k, "accuracy_all"]) * 100
@@ -41,7 +42,7 @@ def main():
         ax.scatter(rd, yi, marker="o", s=34, color=col, zorder=4, label="randomized screen" if yi == y[0] else None)
         if np.isfinite(irr):
             ax.errorbar(irr, yi, xerr=sd_o.get(k, 0), fmt="none", ecolor=INK, elinewidth=.9, capsize=2, zorder=2)
-            ax.scatter(irr, yi, marker="|", s=140, color=INK, lw=1.6, zorder=5, label="irreducible (oracle)" if yi == y[0] else None)
+            ax.scatter(irr, yi, marker="|", s=140, color=INK, lw=1.6, zorder=5, label="irreducible (oracle)" if k == first_oracle else None)
     ax.axvline(0, color=INK2, lw=.8)
     ax.set_yticks(y); ax.set_yticklabels([r[1] for r in ROWS], fontsize=7.5)
     ax.set_xlabel("Accuracy Lost Relative to the Clean-Trained Screen on Clean Spectra (Points)")
