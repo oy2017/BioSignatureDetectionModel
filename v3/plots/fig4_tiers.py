@@ -29,7 +29,7 @@ def main():
             if c in orc.index:
                 a.scatter(xi, orc.loc[c, "oracle"] * 100, marker="_", s=160, color=INK, lw=1.5, zorder=5, label="ceiling (trained at test condition)" if (i == 1 and j == 0) else None)
     a.axhline(50, color=INK2, lw=.7, ls=":"); a.text(len(CASES) - .6, 51, "chance", fontsize=6.5, color=INK2, ha="right")
-    a.set_xticks(x); a.set_xticklabels([l for _, l in CASES], rotation=45, ha="right", fontsize=7); a.set_ylabel("accuracy (%)"); a.set_ylim(40, 100)
+    a.set_xticks(x); a.set_xticklabels([l for _, l in CASES], rotation=45, ha="right", fontsize=7); a.set_ylabel("Accuracy (%)"); a.set_ylim(40, 100)
     a.grid(axis="x", visible=False); a.legend(fontsize=6.3, loc="upper center", bbox_to_anchor=(0.5, -0.32), ncol=2, frameon=False)
     m = pd.read_csv(os.path.join(RES, "ariel_mcs.csv")).set_index("case")
     rows = [("tier-2 sigma, ExoSim2 shape, 102 bins", "Tier 3 binning"), ("tier-2 sigma, tier-2 binning (51)", "Tier 2"), ("tier-1 sigma, tier-1 binning (7)", "Tier 1")]
@@ -37,7 +37,7 @@ def main():
     for k, (col_, lab) in enumerate(bands):
         b.bar(xb + (k - 1.5) * .2, [m.loc[r, col_] * 100 for r, _ in rows], .19, color=[SERIES[1], SERIES[3], SERIES[2], SERIES[0]][k], label=lab)
     b.plot(xb, [m.loc[r, "accuracy"] * 100 for r, _ in rows], color=INK, marker="D", ms=4, lw=1, label="all targets", zorder=5)
-    b.set_xticks(xb); b.set_xticklabels([l for _, l in rows], fontsize=7); b.set_ylim(40, 100); b.set_ylabel("accuracy on Ariel's known targets (%)")
+    b.set_xticks(xb); b.set_xticklabels([l for _, l in rows], fontsize=7); b.set_ylim(40, 100); b.set_ylabel("Accuracy on Ariel's Known Targets (%)")
     b.grid(axis="x", visible=False); b.legend(fontsize=6.3, loc="upper center", bbox_to_anchor=(0.5, -0.18), ncol=3, frameon=False)
     panel_label(a, "a"); panel_label(b, "b")
     fig.tight_layout(); save(fig, "fig4_tiers.png")

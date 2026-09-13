@@ -95,7 +95,12 @@ def configurations():
     r200 = centres_to_edges(multirex_550_centres())
     t1e, t1l = ariel_edges(tier_channels(1, 3, 1))
     t2e, t2l = ariel_edges(tier_channels(10, 50, 10))
+    def tier1_split(x):
+        """Tier-1 layout with the AIRS-CH0 split at x um instead of the log midpoint (2.758 um)."""
+        e, l = ariel_edges(tier_channels(1, 3, 1)); e = list(e); e[5] = x
+        return {"edges": e, "channel": l}
     out = {
+        "tier1_s30": tier1_split(3.0), "tier1_s25": tier1_split(2.5),
         "ariel": {"edges": ae.tolist(), "channel": al},
         "r100": {"edges": r100.tolist()},
         "r200": {"edges": r200.tolist()},

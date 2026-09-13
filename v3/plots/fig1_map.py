@@ -35,7 +35,7 @@ def main():
             ax.scatter(irr, yi, marker="|", s=140, color=INK, lw=1.6, zorder=5, label="irreducible (oracle)" if yi == y[0] else None)
     ax.axvline(0, color=INK2, lw=.8)
     ax.set_yticks(y); ax.set_yticklabels([r[1] for r in ROWS], fontsize=7.5)
-    ax.set_xlabel("accuracy lost relative to the clean-trained screen on clean spectra (points)")
+    ax.set_xlabel("Accuracy Lost Relative to the Clean-Trained Screen on Clean Spectra (Points)")
     ax.set_xlim(-4, 33); ax.grid(axis="y", visible=False)
     for yy, txt, col in ((y[0] + .55, "modelled mismatch", SERIES[0]), (y[10] + .55, "helps", SERIES[2]), (y[11] + .55, "omitted physics", SERIES[1])):
         ax.text(31.8, yy, txt, ha="right", va="center", fontsize=7.5, color=col, fontweight="bold")

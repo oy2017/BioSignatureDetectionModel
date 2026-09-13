@@ -119,20 +119,22 @@ def do_render(jobs):
         np.save(out, X); print(f"  {name}: {X.shape}, {bad} failures, {time.time()-t0:.0f} s", flush=True)
 
 
-def tier1_sigma(P, cen, factor=1.0):
+def tier1_sigma(P, cen, factor=1.0, transit_correction=False):
     teffs, shapes = nsr_shapes(np.asarray(cen, float), EXOSIM_NPZ)
+    if transit_correction:
+        n = np.maximum(P["tier1_transits"].to_numpy(), 1.0); factor = factor * np.sqrt((n - 0.5) / n)[:, None]
     node = teffs[np.argmin(np.abs(teffs[None, :] - P["s temperature"].to_numpy()[:, None]), axis=1)]
     S = np.vstack([shapes[int(t)] for t in node])
     return factor * (P["modulation_5H"].to_numpy() / 7.0)[:, None] * S
 
 
-def do_fit(noise_factor=1.0):
+def do_fit(noise_factor=1.0, layout="tier1", transit_correction=False):
     from sklearn.neighbors import KNeighborsClassifier
     from sklearn.neural_network import MLPClassifier
     from sklearn.ensemble import RandomForestClassifier
     from sklearn.svm import SVC
     import shift_tlse as T
-    wl = np.load(os.path.join(DATA, "native_wl.npy")); edges = np.array(configs()["tier1"]["edges"]); cen = centres("tier1")
+    wl = np.load(os.path.join(DATA, "native_wl.npy")); edges = np.array(configs()[layout]["edges"]); cen = centres(layout)
     Ptr = pd.read_parquet(os.path.join(OUT, "pop3_params.parquet")); Pte = pd.read_parquet(os.path.join(OUT, "pop1_params.parquet"))
     load = lambda n: np.load(os.path.join(OUT, f"{n}.npy")).astype(np.float64)
     Xtr_n = load("pop3_native"); ok_tr = np.all(np.isfinite(Xtr_n), axis=1); Ptr = Ptr[ok_tr].reset_index(drop=True); Xtr_n = Xtr_n[ok_tr]
@@ -145,9 +147,9 @@ def do_fit(noise_factor=1.0):
     for f in (0.10, 0.20):
         cases[f"spots{int(f*100)}"] = cases["clean"] * T.contamination(Tst, logg, f, 0.0)
     rng = np.random.default_rng(SEED + 405)
-    Xtr = bin_native(Xtr_n, wl, edges); Xtr = Xtr + rng.normal(0, 1, Xtr.shape) * tier1_sigma(Ptr, cen, noise_factor)
+    Xtr = bin_native(Xtr_n, wl, edges); Xtr = Xtr + rng.normal(0, 1, Xtr.shape) * tier1_sigma(Ptr, cen, noise_factor, transit_correction)
     binned = {k: bin_native(v, wl, edges) for k, v in cases.items()}
-    sig = tier1_sigma(Pte, cen, noise_factor); eps = rng.normal(0, 1, sig.shape)
+    sig = tier1_sigma(Pte, cen, noise_factor, transit_correction); eps = rng.normal(0, 1, sig.shape)
     noisy = {k: v + eps * sig for k, v in binned.items()}
     noisy["noise_x2"] = binned["clean"] + eps * 2 * sig; noisy["noise_x3"] = binned["clean"] + eps * 3 * sig
     norm = lambda X: (X - X.mean(1, keepdims=True)) / (X.std(1, keepdims=True) + 1e-12)
@@ -196,16 +198,16 @@ def do_fit(noise_factor=1.0):
     L += ["", "Deviations from Mugnai et al. 2021: forward model MultiREx/TauREx 3 with Exo-Transmit tables (theirs: TauREx 3 with ExoMol k-tables);",
           "noise shape from ExoSim2 rather than ArielRad, level set by the Tier-1 requirement per target; 965 known MCS planets (2026 list)",
           "rather than their 1000 (2019 list incl. TESS predictions); training spectra noised once, not resampled per epoch."]
-    tag = "" if noise_factor == 1.0 else f"_noise{noise_factor:g}"
+    tag = ("" if noise_factor == 1.0 else f"_noise{noise_factor:g}") + ("" if layout == "tier1" else f"_{layout}") + ("_tc" if transit_correction else "")
     open(os.path.join(RESULTS, f"alfnoor_screen{tag}.txt"), "w").write("\n".join(L) + "\n")
     df.to_csv(os.path.join(RESULTS, f"alfnoor_screen{tag}.csv"), index=False); print("\n".join(L))
 
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--render", action="store_true"); ap.add_argument("--fit", action="store_true")
-    ap.add_argument("--jobs", type=int, default=8); ap.add_argument("--noise-factor", type=float, default=1.0); a = ap.parse_args()
+    ap.add_argument("--jobs", type=int, default=8); ap.add_argument("--noise-factor", type=float, default=1.0); ap.add_argument("--layout", default="tier1"); ap.add_argument("--transit-correction", action="store_true"); a = ap.parse_args()
     if a.render: do_render(a.jobs)
-    if a.fit: do_fit(a.noise_factor)
+    if a.fit: do_fit(a.noise_factor, a.layout, a.transit_correction)
 
 
 if __name__ == "__main__":

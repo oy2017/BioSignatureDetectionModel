@@ -19,8 +19,8 @@ def main():
     fig, (a, b) = figure(0.48, ncols=2)
     x = np.arange(len(CASES))
     for ax, (df, col_y, s1, s2, ylab, title) in zip((a, b), (
-            (det, "auroc_error", "margin", "mahalanobis", "error-ranking AUROC", None),
-            (env, "credit", "ensemble", "knn", "credit vs clean baseline (points)", None))):
+            (det, "auroc_error", "margin", "mahalanobis", "Error-Ranking AUROC", None),
+            (env, "credit", "ensemble", "knn", "Credit vs Clean Baseline (Points)", None))):
         d = df.set_index(["case", "score"])
         v1 = [d.loc[(c, s1), col_y] * (100 if col_y == "credit" else 1) for c in CASES]
         v2 = [d.loc[(c, s2), col_y] * (100 if col_y == "credit" else 1) for c in CASES]

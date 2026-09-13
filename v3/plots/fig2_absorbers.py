@@ -30,14 +30,14 @@ def main():
     a.plot(cen, bc[i] * 1e6, color=SERIES[0], lw=1.4, label="training forward model (no HCN, C$_2$H$_2$)")
     a.plot(cen, ba[i] * 1e6, color=SERIES[1], lw=1.4, label="with HCN + C$_2$H$_2$ at equilibrium abundance")
     a.set_xscale("log"); a.set_xticks([0.5, 1, 2, 3, 5, 7.8]); a.set_xticklabels(["0.5", "1", "2", "3", "5", "7.8"])
-    a.set_xlabel("wavelength (µm)"); a.set_ylabel("transit depth (ppm)")
+    a.set_xlabel("Wavelength (µm)"); a.set_ylabel("Transit Depth (ppm)")
     r = Pc.iloc[i]; a.text(0.02, 0.97, f"T = {r['atm temperature']:.0f} K, C/O = {r['co_ratio']:.2f}\np(carbon-rich): {p_c[i]:.2f} → {p_s[i]:.2f}",
                            transform=a.transAxes, fontsize=7, color=INK2, va="top")
     a.legend(fontsize=6.8, loc="lower right")
     bins = np.linspace(0, 1, 26); m = yc == 1
     b.hist(p_c[m], bins, color=SERIES[0], alpha=.75, label=f"clean ({(p_c[m] >= .5).mean()*100:.0f} % called carbon-rich)")
     b.hist(p_s[m], bins, color=SERIES[1], alpha=.75, label=f"with HCN + C$_2$H$_2$ ({(p_s[m] >= .5).mean()*100:.0f} %)")
-    b.axvline(0.5, color=INK2, lw=.8, ls="--"); b.set_xlabel("probability of carbon-rich"); b.set_ylabel("carbon-rich test planets")
+    b.axvline(0.5, color=INK2, lw=.8, ls="--"); b.set_xlabel("Probability of Carbon-Rich"); b.set_ylabel("Carbon-Rich Test Planets (Count)")
     b.legend(fontsize=6.5, loc="upper center"); b.grid(axis="x", visible=False)
     panel_label(a, "a"); panel_label(b, "b")
     fig.tight_layout(); save(fig, "fig2_absorbers.png")

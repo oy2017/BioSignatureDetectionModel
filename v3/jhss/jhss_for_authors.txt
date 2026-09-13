@@ -1,0 +1,423 @@
+Types of Manuscripts (https://jhss.scholasticahq.com/for-authors/#manuscript-guidelines) Quick
+Guide (https://jhss.scholasticahq.com/for-authors/#QuickGuide) Ideas for Research
+(https://jhss.scholasticahq.com/for-authors/#Ideas for Research)
+Tracking (https://jhss.scholasticahq.com/for-authors/#Tracking) Office hours
+Journal of High School Science (/)
+MENU
+For Authors
+Submissions for the journal are open
+Submit a manuscript (https://app.scholasticahq.com/submissions/jhss/new)
+
+(https://jhss.scholasticahq.com/for-authors/#Officehours)
+Types of Manuscripts
+The Journal accepts Original articles, Review papers, Technical notes and Case Studies
+Original articles: The Journal publishes original research and experiments that have
+quantitative results and which make a significant contribution to the existing corpus of
+knowledge in the field. The results must follow from the experimental observations and be
+adequately supported by a statistical analysis and a large enough sample size. Conclusions
+must be supported by the results. Superlative or opinionated words or phrases such as “I
+believe”, “I think”, etc, are not acceptable. Surveys will generally not be published. For
+more information, see the ‘For Authors’ section at the website.
+Review papers: Review papers must address and describe potential gaps in current
+quantitative knowledge, non-obvious, non-intuitive incorrect implicit assumptions and/or
+limitations in the current knowledge base, methodology or design and suggest research
+trajectory, methods, or design to address these deficiencies. Reviews that merely present
+and collate current literature will generally not be published. The Journal does not
+publish commentary and/or opinion papers.
+The Journal recognizes that our vision of what a Review paper is differs from the conventional
+view; where a Review paper is a survey of previously published research. We require students to
+think above-and-beyond the currently accepted paradigms and extract/extrapolate/
+information from published research that has not yet been published. This need not be ground-
+breaking or novel; but should still be a new way of thinking about the problem and proposing a
+solution. Publication of a review paper in the Journal of High School Science differentiates
+students who are meticulous, thoughtful and knowledgeable from those who can additionally
+connect disparate concepts in a coherent way, think and/or speculate about the problem
+differently than has been done before and pose implementable solutions.
+
+Technical notes: A technical note is a concise document that presents the findings of a
+short experimental analysis or investigation. It typically focuses on a specific technical
+topic or problem and provides a condensed summary of the methodology, results, and
+conclusions of the study. Technical notes are often used to communicate preliminary or
+limited research findings, share experimental techniques or innovations, or provide brief
+updates on ongoing projects. A concise report introducing or demonstrating a method,
+workflow, or analytical approach, often validated on limited data can also serve as a
+Technical note.
+Case studies: A Case study describes a clinical or epidemeological situation(s) - often
+unique, misdiagnosed, an outlier, or uncharacteristic of accepted clinical practice,
+protocol, diagnosis, symptoms or treatment. Case studies can be fictional but will need to
+be explicitly described as such.
+Quick guide for submission
+1. Submit your manuscript as a .docx file or equivalent with one-column, Times New
+Roman 12 Font text. Line spacing should be 1.15, Left and right margins should be 1
+inch and top and bottom margins should be 0.5 inches. Paragraphs must be
+separated by a blank line. Do NOT indent paragraphs. There is NO limit to the
+number of pages and/or number of words in the manuscript body.
+2. Subheading # and subheadiing title should be bold. Sub-Sub heading # should be
+bold and Sub-Sub-Sub heading title should be italicized. Tables should be included
+at appropriate locations in the text.
+3. Each figure should be submitted separately as its own JPEG or PNG file without title
+or legend. Figure legends should be submitted separately as a .docx file or
+equivalent. Figure legends should NOT be part of the figure JPEG.
+
+4. References should be numbered and sequentially presented in the text at
+appropriate locations in curved paranthesis (Vancouver style). The References
+should correspond with those in the References section at the end of the manuscript.
+5. Equations must be numbered with an (eqX) to distinguish them from references. The
+microsoft equation software can be used to generate equations.
+6. References in the references section must be formated in APA style. A live link DOI
+must be included after each reference.
+Ideas for Research
+The following represent unconceived or under-researched knowledge areas. This
+intellectual property is being made freely available. Should you derive inspiration from -
+and decide to pursue - any of them, we encourage you to submit any resulting publication
+to the Journal of High School Science. In any event, please acknowledge the Journal of
+High School Science in any resulting publication. We will be happy to provide you with
+more information.
+1. Dimensional analysis:
+▼
+2. Fractional Voting system:
+▼
+3. Design drugs that decrease target protein mutation:
+▼
+4. Tariff mitigation strategies:
+▼
+5. Tumoristatic or tumoricidal organoids:
+▼
+6. Elemental or compound compositions that work like rare-earth metals:
+▼
+7. Top-down construction of alloy-templated nanometer transistors:
+▼
+8. Design CART cells to exhibit a Th2 to Th1 polarization:
+▼
+9. Engineer a reverse water transport system in plants:
+▼
+10. Do Shingrix vaccine excipient immunostimulants modulate NK-cell populations to decrease
+dementia and Alzheimer's disease:
+▼
+
+11. CAR-T manufacturing protocol should attempt to recapitulate the post chemo-radiotherapy
+epigenetic profile of the T-Cells of cancer patients in remission:
+▼
+12. What's different about the food at Michelin Starred restaurants:
+▼
+13. Build with post-tensioned concrete blocks:
+▼
+14. Add expiration dates to paper or digital currency:
+▼
+15. Produce Hydrogen and water from Liquified Petroleum Gas at point-of-use:
+▼
+16. De-vulcanization of Tyres:
+▼
+17. Bio-engineered yogurt - "Open Source" Medicine:
+▼
+18. Change Hydrocarbon combustion reaction pathway:
+▼
+19. Smart Strings:
+▼
+20. Pressure cooker whistle frequency design to notify when food is cooked:
+▼
+21. Genetically modify plants to secrete Varroa mite resistant pollen :
+▼
+22. Predicting Earthquake Timing Through Pre- and Post-Rupture Signal Relationships :
+▼
+Tracking your manuscript after submission
+Ignore progress bars at the website. Instead, navigate to the Metrics page, then scroll
+down to , Current Review Timeline (https://jhss.scholasticahq.com/pages/776-metrics)
+to obtain information on when your manuscript is expected to be reviewed.
+Office hours
+If you have any questions or need clarification before/during/after submission and/or
+review, we will be happy to google meet with you between 7:30 AM and 8:00 AM
+Central Standard Time (USA) on any day.
+Send us an email at journalofhighschoolscience@gmail.com
+(mailto:journalofhighschoolscience@gmail.com), along with your email address,
+indicating what date you would like to meet and we will send you a google invite, minutes
+before the meet. Please be courteous and cancel beforehand; should you be unable to
+attend for any reason. Note that we only populate these times when we receive a request
+to meet.
+
+Submission Guidelines
+Title Page
+Title: Concise and informative. Titles are often used in information retrieval systems.
+Avoid abbreviations and formulae where possible.
+Author names and affiliations: Where the family name may be ambiguous (e.g., a double
+name), please indicate this clearly. Present the authors’ affiliation addresses (where the
+actual work was performed) below the names. Indicate all affiliations with a lower-case
+superscript letter immediately after the author’s name and in front of the appropriate
+address. Provide the full postal address of each affiliation, including the country name,
+and, the e-mail address of each author.
+Corresponding author: Clearly indicate who will handle correspondence at all stages of
+refereeing and publication, also post-publication. Ensure that telephone and fax numbers
+(with country and area code) are provided in addition to e-mail address and the complete
+School affiliation postal address.
+Present/permanent address: If an author has moved since the work described in the article
+was done, or was visiting at the time, a “Present address” (or “Permanent address”) may be
+indicated immediately below the affiliation address. The address at which the author
+actually did the work must be retained as the main, affiliation address.
+Abstract: It should contain a brief and clear description of the aims of the paper, its
+principal results and major conclusions in one paragraph. The abstract should include all
+keywords pertinent to the subject.References should not appear in an abstract.
+Keywords: Indicate no less than 10 Keywords. They should be carefully selected in order to
+improve accessibility of scientific information in the manuscript. Keywords commonly
+used in international abstracting services are preferred.
+▼
+
+Main Body
+Research papers must contain Introduction, Materials and Methods, Results and
+Discussion, Conclusion and References. Results and Discussion may be combined into one
+section if appropriate. For Review papers or Technical notes, appropriate sections may be
+selected.
+Policy and Ethics: The work described in the article must have been carried out in
+accordance with the Code of Ethics of the World Medical Association
+(http://www.wma.net/e/policy/b3.htm) (Declaration of Helsinki) for experiments involving
+humans; EC Directive 86/609/EEC for animal experiments
+(http://ec.europa.eu/environment/chemicals/lab_animals/legislation_en.htm); Uniform
+Requirements for manuscripts submitted to Biomedical journals
+(http://www.nejm.org/general/text/requirements/1.htm).
+Statement of informed consent: Patients have a right to privacy that should not be infringed
+without informed consent. Identifying information, including patients’ names, initials, or
+hospital numbers, should not be published in written descriptions, photographs, and
+pedigrees unless the information is essential for scientific purposes and the patient (or
+parent or guardian) gives written informed consent for publication. Informed consent for
+this purpose requires that a patient who is identifiable be shown the manuscript to be
+published. Authors should identify Individuals who provide writing assistance and disclose
+the funding source for this assistance. Identifying details should be omitted if they are not
+essential. Complete anonymity is difficult to achieve, however, and informed consent
+should be obtained if there is any doubt. For example, masking the eye region in
+photographs of patients is inadequate protection of anonymity. If identifying
+characteristics are altered to protect anonymity, such as in genetic pedigrees, authors
+should provide assurance that alterations do not distort scientific meaning and editors
+should so note.
+
+Materials and Methods: It should include materials, standard techniques and procedures
+relevant to the study. Published procedures and techniques should be cited unless
+significant modifications are involved. Exact specification of relevant materials and
+equipment must be stated. Chemical terms must conform with IUPAC rules. Trademarks or
+commercial products must be labelled using a superscripted (R). Names of products and
+equipment mentioned must be accompanied by the name of the manufacturer or
+distributor, location with state or country. This information must be stated in parentheses
+in the text. Any potential hazards connected with materials and procedures must be
+mentioned. A precise and detailed description of the procedure should be given that is
+sufficient for carrying out any repetition of the work.
+Statistical approach: The number of repeat measurements and the variance must be clearly
+depicted in the text and in the illustrations. Reasonable significant figures must be used.
+General Format: Please use Microsoft Word default style settings, i.e., Normal and Times
+New Roman 12. Subsections use subsection number as bold and heading as italicized. Sub-
+sub-sections use no bold and heading italicized. Leave only one (1) space after periods. Do
+not use spaces to create indents. Use line returns only at the end of paragraphs and do put
+blank lines between paragraphs. Use the Symbol font for symbols and special characters.
+Equations should be numbered consequtively with Arabic numerals in parentheses on the
+right side of the page. SI units should be used throughout. Use proper superscripts and
+subscripts; not raised or lowered text.
+Figures: Figures must be submitted SEPARATELY from the main body of the text as
+SEPARATE JPEG files. They must be numbered in Arabic numerals in the order in which
+they are cited in the text, and designed to fit the column of page size of the Journal. All
+parts of a figure must be “grouped” with no segmented text box. Left justify the title in
+normal Font Size 10 below the figure. Keys to symbols should be a part of the figure, and
+
+not a part of the caption. Use the same typeface for all figures. Labels should be in title
+case. Figure legends should be informative and self-explanatory and submitted as a
+separate file; NOT as part of the Figure JPEG.
+Tables: Tables should be numbered consecutively with Arabic numerals, referred to by
+number in the text and designed to fit the column of page size of the Journal. Prepare
+numerical illustrations (e.g., tables) using the “table” function (rows and columns) when
+ever practiable. Do not style the tables or make them using text functions such as tabs,
+spaces or lines. Hide lines except under the column headings. Left justify the Table # above
+the table in bold Font Size 12 and the heading in ordinary Font Size 12. Captions should be
+typed separately. Table legends should be informative and self-explanatory.
+Footnotes: Footnotes should not be used.
+Abbreviations: Try to use abbreviations sparingly. When used extensively, provide a list of
+all non-standard abbreviations on a separate page before the reference section. When
+symbols are used extensively, include a list of all symbols in the notation section. Do not
+abbreviate the word “Figure” or “Table” in titles or text.
+References: References should be numbered consecutively in the order in which they are
+cited in the text. Cite in the text by the appropriate Arabic numeral enclosed in
+parentheses, e.g., (1) or (2-5), not super or sub scripted. References to unpublished
+personal communications should be avoided. Use ( ) for reference citation in the text. Place
+punctuation AFTER the reference. For each reference, use a single continuous paragraph
+with no extra space or line break. Do not use “add-ins” such as EndNotes. Abbreviations for
+journal names should conform to those in the Bibliographic Guide for Editors and Authors
+(Americal Chemical Society, Washington, D.C.). The references should conform to the
+following style and punctuation: Journal Article: Davies NM, Jamali F. COX-2 selective
+inhibitors cardiac toxicity: Getting to the heart of the matter. J Pharm Sci, 7: 332-336,
+2004. Book: Mutschler, E; Derendorf, H., Drug Actions, Basic Principles and Therapeutic
+
+Aspects. CRC, Ann Arbor, MI, USA, 1995. Contribution to a Book: Jamali, F.,
+Stereochemically Pure Drugs: An Overview, in Wainer IW; Drayer D (eds), Drug
+Stereochemistry: Analytical Methods and Pharmacology. 2nd ed., Marcel Dekker, INC, New
+York, NY, pp 375-384, 1993. Patent: E.A. Balazs, Ultrapure hyaluronic acid and the use
+thereof, U.S. Patent 4,141,973 (1979).
+Acknowledgements: Acknowledgements of financial support, gifts, technical help or other
+assistance may be stated in an un-numbered paragraph under this heading preceding the
+references.
+After Review
+One set of page proofs (as PDF file) will emailed to the corresponding author. Please use
+the PDF annotations function to list the corrections. Proofreading is solely your
+responsibility. Note that we may proceed with the publication of your article if no response
+is received.
+Submission Ethics
+▼
+It is necessary to agree upon standards of expected ethical behavior for all parties involved
+in the act of publishing: the author, the Journal editor, the peer reviewer and the publisher.
+Our ethic statements are based on COPE's Best Practice Guidelines for Journal Editors.
+Publication decisions: The editor of the Journal is responsible for deciding which of the
+articles submitted to the Journal should be published. The editor may be guided by the
+policies of the Journal’s editorial board and constrained by such legal requirements as
+shall be in force regarding libel, copyright infringement and plagiarism. The editor may
+confer with other editors or reviewers in making this decision.
+Fair play: An editor will at any time evaluate manuscripts for their intellectual content
+without regard to race, gender, sexual orientation, religious belief, ethnic origin,
+citizenship, or political philosophy of the authors.
+▼
+
+Confidentiality: The editor and any editorial staff must not disclose any information about
+a submitted manuscript to anyone other than the corresponding author, reviewers,
+potential reviewers, other editorial advisers and the publisher, as appropriate.
+Disclosure and conflicts of interest: Unpublished materials disclosed in a submited
+manuscript must not be used in an editor’s own research without the express written
+consent of the author.
+Duties of Reviewers
+Contribution to editorial decisions: Peer review assists the editor in making editorial
+decisions and through the editorial communications with the author may also assist the
+author in improving the manuscript. Generative AI at http://reviewpaperai.com
+(http://reviewpaperai.com) is used to perform a preliminary review of received
+manuscripts.
+Promptness: Any selected referee who feels unqualified to review the research reported in
+the manuscript or knows that its prompt review will be impossible should notify the editor
+and excuse himself/herself from the review process.
+Confidentiality: Any manuscripts received for review must be treated as confidential
+documents. They must not be shown to or discussed with others except as authorized by
+the editor.
+Standards of Objectivity: Reviews should be conducted objectively. Personal criticism of the
+author is inappropriate. Referees should express their views clearly with supporting
+arguments.
+Acknowledgement of Sources: Reviewers should identify relevant published work that has
+not been cited by the authors. Any statement that an observation, derivation or argument
+had been previously reported should be accompanied by the relevant citation. A reviewer
+
+should also call to the editor’s attention any substantial similarity or overlap between the
+manuscript under consideration and any other published paper of which they have the
+personal knowledge.
+Disclosure and Conflict of Interest: Privileged information or ideas obtained through peer
+review must be kept confidential and not used for personal advantage. Reviewers should
+not consider manuscripts in which they have conflicts of interest resulting from
+competitive, collaborative, or other relationships or connections with any of the authors,
+companies, or institutions connected to the papers.
+Duties of Authors
+Reporting standards: Authors of reports of original research should present an accurate
+account of the work performed as well as an objective discussion of its significance.
+Underlying data should be represented accurately in the paper. A paper should contain
+sufficient detail and references to permit others to replicate the work. Fraudulent or
+knowingly inaccurate statements constitute unethical behavior and are unacceptable.
+Data access and Retention: Authors are asked to provide the raw data in connection with a
+paper for editorial reivew, and should be prepared to provide public access to such data
+(consistent with ALPSP-STM statement on Data and Databasees), if practicable, and
+should in any event be prepared to retain such data for a reasonable time after publication.
+Originality and Plagiarism: The authors should ensure that they have written entirely
+original works, and if the authors have used the work and/or words of others, that this is
+appropriately cited or quoted.
+Multiple, Redundant or Concurrent Publication: An author should not in general publish
+manuscripts describing essentially the same research in more than one journal or primary
+publication. Submitting the same manuscript to more than one journal concurrently
+constitutes unethical publishing behavior and is unacceptable.
+
+Acknowledgement of Sources: Proper acknowledgement of the work of others must always
+be given. Authors should cite publications that have been influential in determining the
+nature of the reported work.
+Authorship of the paper: Authorship should be limited to those who have made a significant
+contribution to the conception, design, execution or interpretation of the reported study.
+All those who have made significant contributions should be listed as co-authors. Where
+there are others who have participated in certain substantive aspects of the research
+project, they should be acknowledged or listed as contributors. The corresponding author
+should ensure that all appropriate co-authors and no inappropriate co-authors are
+included in the paper, and that all co-authors have seen and approved the final version of
+the paper and have agreed to its submission for publication.
+Disclosure and Conflicts of Interest: All authors should disclose in their manuscript any
+financial or other substantive conflict of interest that might be construed to influence the
+results or interpretation of their manuscript. All sources of financial support for the
+project should be disclosed.
+Fundamental errors in published works: When an author discovers a significant error or
+inaccuracy in his/her own published work, it is the author's obligation to promptly notify
+the journal editor or publisher and cooperate with the editor to retract or correct the
+paper.
+General guidelines for writing a scientific manuscript
+Title: Choose a concise and informative title that accurately reflects the content of your
+research.
+Abstract: Write a clear and succinct abstract that summarizes the objectives, methods, key
+findings, and implications of your study.
+▼
+
+Introduction: Provide a comprehensive overview of the background and significance of your
+research, including a clear statement of the research question or hypothesis.
+Materials and Methods: Describe your study design, materials, and methods in sufficient
+detail to allow replication of the study. Include information about data collection,
+measurements, and statistical analyses.
+Results: Present your findings in a logical and organized manner, using tables, figures, and
+graphs where appropriate. Provide clear and concise descriptions of the results without
+interpretation or speculation.
+Discussion: Interpret your results and relate them to existing literature. Discuss the
+implications of your findings and any limitations or potential biases in your study.
+Consider alternative explanations and address potential future directions for research.
+Conclusion: Summarize the main findings of your study and their broader implications.
+Avoid overstating or making claims beyond the scope of your research.
+References: Cite all relevant sources accurately and consistently following the appropriate
+citation style (e.g., APA, MLA, or specific journal guidelines). Ensure that your references
+are up to date and include a wide range of sources to demonstrate a thorough review of the
+existing literature.
+Structure: Organize your manuscript into logical sections (e.g., Introduction, Methods,
+Results, Discussion) with clear headings. Use subheadings to further divide sections, if
+necessary.
+Clarity and Conciseness: Use clear and precise language to convey your ideas. Avoid jargon
+
+and define technical terms when necessary. Eliminate unnecessary words or information
+that do not contribute to the main message.
+Figures and Tables: Ensure that all figures and tables are clear, well-labeled, and directly
+support the main findings of your research. Include captions that provide sufficient
+context and interpretation.
+Ethical Considerations: Address any ethical concerns related to your research, such as
+human or animal subjects, conflicts of interest, or informed consent. Adhere to ethical
+guidelines and obtain necessary approvals.
+Proofreading and Editing: Thoroughly proofread your manuscript for grammatical errors,
+typos, and formatting inconsistencies. Seek feedback from colleagues or mentors to
+improve clarity and readability.
+Journal Guidelines: Familiarize yourself with the specific guidelines and formatting
+requirements of your target journal. Adhere to their instructions regarding word limits,
+referencing style, manuscript structure, and supplementary materials.
+Review and Revision: Be open to reviewer comments and revise your manuscript
+accordingly. Address each comment thoughtfully and provide clear responses or revisions
+when submitting a revised version.
+Intellectual Property: Respect intellectual property rights by properly attributing and
+referencing the work of others. Obtain permission for the use of copyrighted material, such
+as figures or tables, when necessary.
+Accurate Data and Analysis: Ensure the accuracy and integrity of your data and analysis.
+
+Double-check calculations, statistical methods, and reported results for errors.
+Reproducibility: Provide sufficient details and documentation of your methods, materials,
+and data to enable other researchers to replicate your study.
+Writing Style: Write in a clear, concise, and engaging manner. Use active voice, appropriate
+verb tenses, and consistent terminology throughout the manuscript.
+Persistence and Resilience: Be prepared for the possibility of rejection or revisions.
+Scientific publishing is a competitive process, so maintain a positive attitude and be
+persistent in your efforts to improve and disseminate your research.
+We have constructed ultra-short videos to illustrate some common scientific errors and
+how to fix them
+Positive and Negative controls (https://www.youtube.com/watch?v=d17RHcF2JzI)
+Graph Axes must display units (https://www.youtube.com/watch?v=hlip4spZz0c)
+How to quantitate opinion (https://www.youtube.com/watch?v=tFy4jwSp4jM)
+Obtain necessary permissions to use external figures
+(https://www.youtube.com/watch?v=gZpWcdDVAhM)
+Present your data in Tables whenever possible (https://www.youtube.com/watch?
+v=lNBgE-N0Jzg)
+Add error bars to graphs (https://www.youtube.com/watch?v=_Yxl3K9O9BQ)
+Write in Third Person, Past Perfect tense (https://www.youtube.com/watch?
+v=6S2J_hwYI_k)
+Do not use superlative or opinionated language or text
+(https://www.youtube.com/watch?v=1aIcH4I8l3s)
+how to find two-tailed p-value for unpaired data (https://www.youtube.com/watch?
+v=6jPs9vz50yw)
+
+how to add clickable ‘live’ reference links (https://www.youtube.com/watch?
+v=uucSRg1BVes)
+how to find recent research for your topic (https://www.youtube.com/watch?
+v=vShHPaVB9Rk)
+Powered by Scholastica (https://scholasticahq.com/), the modern academic journal management
+system
