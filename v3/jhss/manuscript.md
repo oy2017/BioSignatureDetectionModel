@@ -192,7 +192,7 @@ At full resolution, one classifier was robust to omitted absorbers and fragile t
 | Spot loss ≥ 1.5 times larger for M-dwarf hosts | Not met: 7.6 points for M-dwarf hosts, 12.3 for F-type hosts |
 | Randomizing haze and spots lowers their Mahalanobis separation by ≥ 0.2 | Met |
 
-The largest surprise was not anticipated: the haze failure came from the photometric inputs while the molecular bands were intact, with confidence rising as accuracy fell. Four expectations about recoverability erred in the same direction, since aerosol losses proved largely recoverable. The reversed host dependence of the spot loss, contrary to the stronger chromatic contamination of M dwarfs (11), remains unexplained and is not used in any conclusion.
+Table 5 compares the expectations with the outcomes. The largest surprise was not anticipated: the haze failure came from the photometric inputs while the molecular bands were intact, with confidence rising as accuracy fell. Four expectations about recoverability erred in the same direction, since aerosol losses proved largely recoverable. The reversed host dependence of the spot loss, contrary to the stronger chromatic contamination of M dwarfs (11), remains unexplained and is not used in any conclusion.
 
 ### 3.7 Limitations
 
