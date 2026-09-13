@@ -13,7 +13,7 @@ import json, os, sys
 import joblib, numpy as np, pandas as pd
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 from common import DATA, MODELS, RESULTS, SNR, TESTS, Features, load_split, metrics  # noqa: E402
-from pipeline import make_xgb  # noqa: E402
+from pipeline import make_xgb, make_rf, fit_mlp  # noqa: E402
 from augment import shifted_test  # noqa: E402
 
 CASES = ["cloud_1e4Pa", "cloud_1e3Pa", "haze_3p0e7", "tlse_spots10", "tlse_spots20", "exotransmit", "exomol", "quenched",
@@ -32,6 +32,14 @@ def main():
         else:
             f = Features("norm").fit(Xtr); m = make_xgb(hp).fit(f.transform(Xtr), ytr)
             joblib.dump({"features": f, "model": m, "config": cfg, "params": hp}, os.path.join(MODELS, f"{cfg}_norm_xgb.joblib"))
+            # the detector battery's ensemble (trust_detect.py) needs RF and MLP screens at this tier too; Tier-3
+            # hyper-parameters, as for XGBoost (added 2026-09-13)
+            Z = f.transform(Xtr)
+            hp_rf = joblib.load(os.path.join(MODELS, "ariel_norm_rf.joblib"))["params"]
+            joblib.dump({"features": f, "model": make_rf(hp_rf).fit(Z, ytr), "config": cfg, "params": hp_rf}, os.path.join(MODELS, f"{cfg}_norm_rf.joblib"))
+            hp_mlp = joblib.load(os.path.join(MODELS, "ariel_norm_mlp.joblib"))["params"]
+            mm = fit_mlp(Z, ytr, hp_mlp); mm.save(os.path.join(MODELS, f"{cfg}_norm_mlp.keras"))
+            joblib.dump({"features": f, "config": cfg, "params": hp_mlp, "keras_path": os.path.join(MODELS, f"{cfg}_norm_mlp.keras")}, os.path.join(MODELS, f"{cfg}_norm_mlp.joblib"))
         acc = lambda X, y: metrics(y, m.predict_proba(f.transform(X))[:, 1])["accuracy"]
         Xc = np.vstack([load_split(t, cfg)[0] for t in TESTS]); yc = np.concatenate([load_split(t, cfg)[1] for t in TESTS])
         X7 = np.vstack([load_split(t, cfg, snr=7.0, seed_offset=5)[0] for t in TESTS])
