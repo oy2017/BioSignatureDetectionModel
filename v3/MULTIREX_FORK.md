@@ -37,7 +37,7 @@ To do: report item 1 upstream (D4san/MultiREx) with the three-line reproduction 
    Unpatched, every cross section is looked up at a pressure 1e5 times too low. On test1 the
    clean-trained screen went from 96.3 % (as rendered before) to 90.0 % on spectra rendered with the
    correction (`results/check_pressure_units.txt`). The fork now divides the grid by 1e5 at load
-   (`multirex_fork_change6_pressure_units.diff`). To report upstream (TauREx 3).
+   (`multirex_fork_change6_pressure_units.diff`). Reported upstream 2026-09-13: https://github.com/ucl-exoplanets/taurex3/issues/172 (evidence and reproduction in `upstream_reports/taurex3_issue172/`).
 7. **Grey deck kept alongside a Mie haze (bug fix).** `make_tm` added the grey `SimpleClouds`
    contribution only in an `elif` after `cloud_model`, so `Atmosphere(cloud_pressure=…,
    cloud_model={…})` rendered the haze and silently dropped the deck. Affected the randomized grid's
