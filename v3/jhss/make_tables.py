@@ -20,7 +20,8 @@ def envelope(cfg):
     for c in cases:
         cells = []
         for sc in ("ensemble", "margin", "mahalanobis", "knn"):
-            r = e.loc[(c, sc)]; cells.append(f"{r.accuracy_accepted*100:.1f} ({r.coverage*100:.0f} %; {r.credit*100:+.1f})")
+            r = e.loc[(c, sc)]
+            cells.append("declines all" if not np.isfinite(r.accuracy_accepted) else f"{r.accuracy_accepted*100:.1f} ({r.coverage*100:.0f} %; {r.credit*100:+.1f})")
         L.append(f"| {LAB[c]} | {e.loc[(c, 'ensemble')].accuracy_all*100:.1f} | " + " | ".join(cells) + " |")
     return "\n".join(L)
 
