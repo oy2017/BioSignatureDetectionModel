@@ -1,0 +1,4 @@
+Mechanism of the absorbers loss, ariel (102 bins), norm_xgb: clean 96.05 %, absorbers 72.32 % (loss 23.7 points)
+
+window 2.75-3.05 um (11 bins): restoring it recovers 13.6 of 23.7 points; transplanting only it into clean spectra costs 11.9
+window 2.75-4.3 um (38 bins): restoring it recovers 15.8 of 23.7 points; transplanting only it into clean spectra costs 9.6

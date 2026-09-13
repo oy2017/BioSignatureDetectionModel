@@ -1,0 +1,23 @@
+Oracle ceilings for the repair tests, configuration ariel, pipeline norm_xgb
+
+oracle = trained only at the test strength; irreducible = clean minus oracle (points the shift
+removes for any training); vs-oracle = share of the recoverable loss that mixed-strength augmentation got.
+
+axis              case          kind            frozen  augmented  oracle  irreducible  vs clean  vs oracle
+white noise       snr8          stochastic      91.96%     93.17%  93.07%       +2.98       30%       109%
+correlated noise  snr8          stochastic      89.34%     92.37%  92.82%       +3.23       45%        87%
+white noise       snr5          stochastic      90.11%     91.61%  91.71%       +4.34       25%        94%
+correlated noise  snr5          stochastic      85.22%     89.69%  91.70%       +4.35       41%        69%
+white noise       snr5 (aug incl. SNR 5)stochastic      90.11%     91.86%  91.71%       +4.34       29%       109%
+correlated noise  snr5 (aug incl. SNR 5)stochastic      85.22%     90.57%  91.70%       +4.35       49%        83%
+gain ramp         x1.0          deterministic   94.96%     95.50%  95.52%       +0.53       49%        96%
+gain ramp         x2.0          deterministic   93.49%     95.05%  95.53%       +0.52       61%        77%
+stellar spots     tlse_spots10  deterministic   88.91%     94.18%  94.52%       +1.53       74%        94%
+stellar spots     tlse_spots20  deterministic   85.33%     93.70%  94.03%       +2.02       78%        96%
+haze              haze_3p0e7    deterministic   90.99%     94.81%  95.24%       +0.81       75%        90%
+exotransmit       exotransmit   deterministic   95.35%     95.73%  95.73%       +0.32       54%       nan%
+exomol            exomol        deterministic   87.03%     95.04%  95.04%       +1.01       89%       nan%
+absorbers         absorbers     deterministic   72.32%     96.12%  96.12%       -0.07      100%       nan%
+
+deterministic, vs oracle: 77-96%   stochastic, vs oracle: 69-109%   (OVERLAPPING: the rule does not survive the ceiling correction)
+irreducible loss, deterministic: -0.07 to +2.02 pts; stochastic: +2.98 to +4.35 pts

@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>When can a simulator-trained screen be trusted?</title>
-<meta name="description" content="A reliability envelope for machine-learning triage of Ariel exoplanet spectra: what a simulator-trained screen can absorb, what it can detect, and what only a forward-model fix repairs.">
+<title>Can a simulator-trained classifier for Ariel spectra be trusted?</title>
+<meta name="description" content="A published machine-learning classifier for Ariel Tier-1 spectra, rebuilt and stress-tested: where it can be trusted, where it cannot, and why.">
 <style>
   :root { --ink:#1b1b1f; --ink2:#4a4a52; --muted:#7a7a84; --line:#e3e3e8; --bg:#fbfbfc; --card:#ffffff; --accent:#0b5cad; --accent2:#9a3412; --ok:#1f6f43; }
   @media (prefers-color-scheme: dark) { :root { --ink:#ececf1; --ink2:#c3c3cc; --muted:#8d8d98; --line:#2a2a31; --bg:#121216; --card:#1a1a20; --accent:#7ab4f5; --accent2:#f0a47a; --ok:#7fd0a1; } }
@@ -42,74 +42,48 @@
 </head>
 <body>
 <header>
-  <div class="kicker">Ariel · machine-learning triage · simulator-to-mission reliability</div>
-  <h1>When can a simulator-trained screen be trusted?</h1>
-  <p class="lead">Ariel will deliver spectra of about a thousand exoplanets, and machine-learning screens trained on simulated spectra have been proposed to triage them. They are validated on the simulator that trained them. There will be no Ariel data to validate them on before the decisions are made. We ask what happens when the physics differs from the simulator — in ways we anticipate and in ways we deliberately hold out — and deliver the answer as a table a mission can act on.</p>
+  <div class="kicker">Ariel · machine-learning classifiers · can they be trusted?</div>
+  <h1>Can a simulator-trained classifier for Ariel spectra be trusted?</h1>
+  <p class="lead">Machine-learning classifiers have been proposed to sort the thousand planets of Ariel's quick-look survey by composition. They are trained and tested on simulated spectra, because no real ones exist yet. We rebuilt the classifier the Ariel consortium proposed, confirmed it reproduces the published results, and tested it against the ways a simulator can be wrong.</p>
   <div class="links">
-    <a class="btn primary" href="https://github.com/oy2017/BioSignatureDetectionModel">Code &amp; results</a>
-    <a class="btn" href="https://github.com/oy2017/BioSignatureDetectionModel/blob/main/v3/TRUST_IDEA.md">The programme &amp; stress test</a>
-    <a class="btn" href="#paper">Paper (in preparation)</a>
+    <a class="btn primary" href="https://github.com/oy2017/BioSignatureDetectionModel/tree/main/ariel_tier1_trust">Results &amp; code</a>
+    <a class="btn" href="https://github.com/ucl-exoplanets/taurex3/issues/172">TauREx bug report</a>
+    <a class="btn" href="#paper">Paper (submitted soon)</a>
   </div>
 </header>
 
 <main>
 <section>
-  <h2>The answer has three regions</h2>
-  <p>For each way the simulator can be wrong, we measure what the screen loses, what no retraining can recover, what a randomized training grid buys back, whether a decline rule can tell, and what removes the loss. The map that comes out has three regions.</p>
+  <h2>What we found</h2>
   <div class="grid">
-    <div class="card r1"><div class="tag">Region 1</div><h3>Mismatch you modelled</h3><p>Clouds, haze, stellar contamination, noise level, a different radiative-transfer code, other opacity tables. Randomized training plus a confidence-based decline rule recovers most of the loss. What remains is information the mismatch destroyed; only a better observation — or training on the alternative code or tables — gets it back.</p></div>
-    <div class="card r2"><div class="tag">Region 2</div><h3>Mismatch that helps</h3><p>Quenched, disequilibrium chemistry makes the carbon-rich label <em>easier</em>, at every vertical-mixing strength tried: the deep water depletion of carbon-rich atmospheres is carried up to where the spectrum forms. The design rule: train on equilibrium.</p></div>
-    <div class="card r3"><div class="tag">Region 3</div><h3>Physics the simulator omitted</h3><p>Nothing done to the training set helps; the screen is confidently wrong; only a distance-based novelty alarm sees it; only fixing the forward model repairs it. The worked case: two molecules carbon-rich atmospheres are known to carry (HCN, C₂H₂) that the field's standard Ariel training grid omits — and that put a carbon-rich screen at chance on the planets it exists to find.</p></div>
+    <div class="card r1"><div class="tag">Reproduced</div><h3>The published classifier, rebuilt</h3><p>Its code was never released. Rebuilt from the paper element by element, it matches all 48 published accuracies within 3.7 points. A mistaken reading of the recipe missed by 10 points on average, so the match is a real test.</p></div>
+    <div class="card r2"><div class="tag">Trustworthy</div><h3>Robust where one might worry</h3><p>Swapping the opacity database or the radiative-transfer code cost it about 3 points; two omitted absorbers cost nothing.</p></div>
+    <div class="card r3"><div class="tag">Not trustworthy</div><h3>Confidently blind to haze</h3><p>At a haze as weak as the least hazy hot Jupiters observed, it declared methane and water absent on nearly every planet that had them, became more confident, and gave no warning, although the molecular bands were intact. The cause: its three optical photometric inputs. Removing them, or training with haze, largely fixes it.</p></div>
   </div>
 </section>
 
 <section>
-  <h2>Two screens under test</h2>
-  <div class="grid">
-    <div class="card"><div class="tag">Theirs</div><h3>The consortium's Tier-1 molecular screen</h3><p>Mugnai et al. 2021 (AJ 162, 288) train default scikit-learn classifiers on simulated seven-point Tier-1 spectra to flag H₂O, CH₄, CO₂ or NH₃ above an abundance threshold — the published strategy for choosing which planets are re-observed. Its code is not public; we rebuild it from the paper's text and list every deviation.</p></div>
-    <div class="card"><div class="tag">Ours</div><h3>A carbon-rich screen</h3><p>Is C/O &gt; 1? A chemical regime rather than a molecule, and a stated Ariel science target. Equilibrium chemistry, the Ariel layout, noise shaped by the consortium's own simulator, a tuned gradient-boosted classifier on per-spectrum-normalized bins.</p></div>
-  </div>
-  <p style="margin-top:14px">One is simple and theirs; one is tuned and ours. Where both break in the same places the result is about the setup, not the model. Where they differ, the difference is a finding.</p>
+  <h2>Does the answer carry over?</h2>
+  <p>No. A second classifier, built for Ariel's carbon-to-oxygen question, failed in nearly the opposite places: two molecules missing from the standard training grid cost it 26–30 points on carbon-rich real targets, while haze cost it only 5 points at full resolution. One counterexample is enough: a stress test of one classifier cannot stand in for another, so each classifier needs its own before it helps choose which planets get deeper observations.</p>
 </section>
 
 <section>
-  <h2>The reliability envelope</h2>
-  <div class="scroll"><table>
-    <tr><th>column</th><th>what it reports</th></tr>
-    <tr><td><b>loss</b></td><td>accuracy the mismatch removes from the screen, on the same planets</td></tr>
-    <tr><td><b>irreducible</b></td><td>the part no retraining recovers — the ceiling set by a model trained at the test condition</td></tr>
-    <tr><td><b>absorb</b></td><td>what a training grid that randomizes the uncertain ingredients buys back</td></tr>
-    <tr><td><b>detect</b></td><td>whether a decline rule ranks the screen's errors, by confidence or by distance from the training set</td></tr>
-    <tr><td><b>fix</b></td><td>what removes the loss: training on it, a better observation, or a change to the forward model</td></tr>
-  </table></div>
-  <p style="margin-top:14px">Evaluated at the binning where the triage decision is made (Tier 1, seven points), on the mission's actual target list, with decline thresholds fixed on clean data and nothing tuned on the shifted sets.</p>
-  <div class="fig">Figure: the envelope, one row per mismatch, for both screens — in preparation from the regenerated results (v3/TRUST_IDEA.md §4h).</div>
-  <p class="note" style="margin-top:14px">Status: compute complete (12 Sept 2026). Rebuilding the consortium's screen exposed that our own forward model carried NH₃ without absorption — a documented simplification, but indefensible in a study whose headline is an omitted species. The table was added and every number regenerated; the qualitative map survived, and the earlier run is archived in the repository.</p>
-</section>
-
-<section>
-  <h2>The procedure, reusable on any screen</h2>
+  <h2>The stress test, reusable on any classifier</h2>
   <ol class="steps">
-    <li>Render the test planets under each mismatch: clouds, haze, spots, noise, another code, other tables, quenched chemistry, missing absorbers, compounds.</li>
-    <li>Bound what any retraining could recover with a model trained at the test condition — every recovery is measured against that ceiling, never against clean accuracy.</li>
-    <li>Randomize the uncertain ingredients jointly in one training grid; measure the in-domain cost and the share of each ceiling reached.</li>
-    <li>Hold each axis out in turn: does robustness transfer to physics the screen never saw?</li>
-    <li>Compare decline rules — confidence margin, ensemble disagreement, Mahalanobis, k-NN — against the clean selective baseline at equal coverage.</li>
-    <li>Evaluate at the tier where the decision is made and on the mission's real target list; split by host type and chemistry assumption.</li>
+    <li>Change the simulator one way at a time: clouds, haze, star spots, noise, a gain ramp, another opacity database, another radiative-transfer code, missing absorbers, and combinations.</li>
+    <li>Measure the accuracy lost on the same planets and the same noise.</li>
+    <li>Bound how much of that loss any retraining could recover, with the design retrained at the test condition.</li>
+    <li>Train on a randomized grid, with each ingredient held out in turn, to see what robustness buys and whether it transfers.</li>
+    <li>Ask whether the classifier knows: confidence, ensemble spread, distance scores and conformal prediction, scored against the clean baseline.</li>
+    <li>Commit expectations before running, and report the misses.</li>
   </ol>
-  <p style="margin-top:16px">Two habits run through all of it: expectations are committed before a run and misses are reported as misses — several of ours are, including a rule from our own earlier work that turned out to be an artefact of the wrong denominator — and every relative number names its reference.</p>
-</section>
-
-<section>
-  <h2>What is new, and what is not</h2>
-  <p>No method here is new. Domain randomization, selective prediction, distance-based out-of-distribution scores, target-trained oracle bounds and held-out-axis evaluation are standard, and the paper cites their origins. What is new is the question asked of an exoplanet screen at all; physics-side mismatch axes where prior work shifts instrument noise; the absorb-or-detect-or-fix framing with held-out axes; the envelope as a mission deliverable; and the finding about the field's standard training grid. Closest prior work: Ardévol Martínez et al. 2022, the Ariel Data Challenge datasets, and misspecification detection for simulation-based inference in cosmology.</p>
 </section>
 
 <section id="paper">
   <h2>Paper</h2>
-  <p>In preparation. The programme, its pre-registered expectations, the stress test with kill criteria, and every result as it lands are public in <a href="https://github.com/oy2017/BioSignatureDetectionModel/blob/main/v3/TRUST_IDEA.md">TRUST_IDEA.md</a>; the plan and its decisions in <a href="https://github.com/oy2017/BioSignatureDetectionModel/blob/main/RESEARCH_PLAN.md">RESEARCH_PLAN.md</a>.</p>
+  <p>A technical note is being prepared. The results, figures, faithfulness argument, expectations and the commands that reproduce everything are in <a href="https://github.com/oy2017/BioSignatureDetectionModel/tree/main/ariel_tier1_trust">ariel_tier1_trust</a>.</p>
 </section>
 </main>
-<footer>Built from the repository's committed results; every number on this page can be checked against a file in <code>v3/results/</code>.</footer>
+<footer>Built from the repository's committed results; every number on this page can be checked against a file in <code>ariel_tier1_trust/results/</code>.</footer>
 </body>
 </html>

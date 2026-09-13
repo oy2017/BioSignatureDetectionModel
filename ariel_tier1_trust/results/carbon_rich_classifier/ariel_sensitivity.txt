@@ -1,0 +1,24 @@
+Sensitivity of three stated limitations, configuration ariel, pipeline norm_xgb
+
+1. Training-draw uncertainty (10 bootstrap resamples of the training set,
+   each retrained and scored on the same five test sets)
+   five-set mean accuracy: 95.87% ± 0.13 across training draws
+   range 95.70-96.05%; the paper's single-draw value is the reference model
+
+2. Stellar-contamination result against the adopted spot contrast
+   (T_spot / T_eff; the paper adopts 0.85)
+
+    contrast   5% coverage  20% coverage
+        0.80        91.02%        84.40%
+        0.85        91.45%        85.31%
+        0.90        92.50%        87.19%
+
+3. Correlated-noise cost against the smoothing kernel width, at effective SNR 8
+   (clean baseline 96.05%; the paper uses sigma 3 bins)
+
+   white (sigma 0)     92.35%  (-3.70)
+   sigma 1 bins        90.46%  (-5.59)
+   sigma 3 bins        89.66%  (-6.39)
+   sigma 8 bins        89.95%  (-6.10)
+   sigma 20 bins       90.45%  (-5.60)
+
