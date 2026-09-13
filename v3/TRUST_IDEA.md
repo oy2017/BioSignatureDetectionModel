@@ -435,6 +435,18 @@ requirement noise: haze 3e7 −13 to −16 (CH4, H2O), spots 20 % −11 to −14
 unmodelled HCN + C2H2 −1 to −2 (pre-registered ≥ 5 on CH4: **not met** at this noise level).
 All to be re-read after the NH3 run.
 
+## 4g′. Reproduction checks on the consortium screen (2026-09-12, after the re-run)
+
+Two things we could have got wrong were tested (`alfnoor_screen.py --layout / --transit-correction /
+--noise-factor`). Moving the AIRS-CH0 split (2.76 → 3.0 or 2.5 µm): ≤ 2 points on any molecule. Correcting
+the per-target noise for the integer number of Tier-1 transits: ≤ 1.4 points. A noise scan: at 0.35× our
+requirement noise CH4 82, NH3 85, H2O 73 % — inside their Table 6 — while CO2 stays at 60–62 % until 0.25×
+(71 %). Reading: our per-target noise is ~3× the noise their pipeline used (ArielRad after the required
+integer transits, or a different modulation assumption), and CO2 at Tier 1 depends on something we do not
+have — their CH1 binning or ExoMol's CO2 band. Both are questions only the authors can answer; the note to
+them is drafted at `v3/jhss/note_to_alfnoor_authors.md`. The mismatch *costs* on their screen (the paper's
+use of it) are relative and move by < 2 points across all of these variants.
+
 ## 4h. REGENERATED RESULTS with NH3 absorbing (rerun_all.sh, 2026-09-12 08:32–15:22, 0 failures) — these supersede §4a–4f
 
 Frozen clean-trained Tier-3 screen: **96.47 %** clean (norm_xgb; normalization again +4 to +10
