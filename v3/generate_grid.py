@@ -34,6 +34,7 @@ build_system, native_wavelengths, one_native, chunked, GASES, BULK = (
     _v2.build_system, _v2.native_wavelengths, _v2.one_native, _v2.chunked, _v2.GASES, _v2.BULK)
 FILL_GAS, WL_MIN, WL_MAX = _v2.FILL_GAS, _v2.WL_MIN, _v2.WL_MAX      # the shift scripts import these too
 import pyfastchem  # noqa: E402
+import forward_model_guard  # noqa: E402,F401  (Exo-Transmit pressure units)
 
 DATA = os.path.join(HERE, "data")
 FC_DIR = os.path.expanduser("~/fastchem_input")
@@ -87,26 +88,36 @@ class Chemistry:
             raise ValueError(mode)
         if g_cgs is None:
             raise ValueError("quenched mode needs the surface gravity g_cgs")
-        P = np.logspace(-4, 3, 300)                                     # bar, top to bottom
+        # Corrected 2026-09-12 (audit): (i) the convective switch used the wrong sign of the Schwarzschild
+        # criterion (dlnT < ad), which put an adiabat below 10 mbar on every planet and made cool
+        # atmospheres thousands of K hot at depth; (ii) irradiation used T_eq^4 where Guillot's T_irr^4 =
+        # 4 T_eq^4 belongs; (iii) the Zahnle & Marley timescale lacked its metallicity factor m^-0.7;
+        # (iv) the quench search stopped at 100 bar and fell back to photospheric equilibrium when nothing
+        # equilibrated there, the wrong limit. The profile now extends to 1e5 bar, convects only where the
+        # radiative gradient EXCEEDS the adiabat, and a planet with no fast level anywhere is frozen at the
+        # deepest level of the profile.
+        P = np.logspace(-4, 5, 400)                                     # bar, top to bottom
         tau = 1e-2 * (P * 1e6) / g_cgs
         gam, Tint, Teq, f = 0.4, 100.0, float(T), 0.25
-        Tp = (0.75 * Tint**4 * (2/3 + tau) + 0.75 * Teq**4 * f * (2/3 + 1/(gam*np.sqrt(3))
+        Tirr4 = 4.0 * Teq**4
+        Tp = (0.75 * Tint**4 * (2/3 + tau) + 0.75 * Tirr4 * f * (2/3 + 1/(gam*np.sqrt(3))
               + (gam/np.sqrt(3) - 1/(gam*np.sqrt(3))) * np.exp(-gam*tau*np.sqrt(3)))) ** 0.25
         Tp = Tp * (float(T) / np.interp(P_CHEM_BAR, P, Tp))          # anchor: T(P_CHEM_BAR) == T
-        # convective interior: follow the adiabat once the radiative gradient falls below it
+        # convective interior: below the first level (under the photosphere) where the radiative
+        # gradient exceeds the adiabatic one, follow the adiabat (Schwarzschild criterion)
         dlnT = np.gradient(np.log(Tp), np.log(P)); ad = 2.0 / 7.0
-        deep = np.where((P > P_CHEM_BAR) & (dlnT < ad))[0]
+        deep = np.where((P > P_CHEM_BAR) & (dlnT > ad))[0]
         if deep.size:
             i0 = deep[0]; Tp[i0:] = Tp[i0] * (P[i0:] / P[i0]) ** ad
-        t_chem = 1.5e-6 / P * np.exp(42000.0 / Tp)
+        metal = 10.0 ** float(mh)
+        t_chem = 1.5e-6 / P * metal ** -0.7 * np.exp(42000.0 / Tp)
         mu_mH = 2.3 * 1.6726e-24; H = 1.380649e-16 * Tp / (mu_mH * g_cgs)
         t_mix = H**2 / self.kzz
-        fast = (t_chem < t_mix) & (P >= P_CHEM_BAR) & (P <= 100.0)     # levels at/below the photosphere that equilibrate
-        if not fast.any():
-            return self._equilibrium_at(T, P_CHEM_BAR, co, mh)         # nothing equilibrates: no quench signal
+        fast = (t_chem < t_mix) & (P >= P_CHEM_BAR)                     # levels at/below the photosphere that equilibrate
         # the quench point is the SHALLOWEST level where chemistry still keeps up: below it the gas
         # is in equilibrium, above it the composition is frozen at this level's value and mixed up
-        iq = np.min(np.where(fast)[0])
+        iq = np.min(np.where(fast)[0]) if fast.any() else P.size - 1
+        self.last_quench = (float(P[iq]), float(Tp[iq]), bool(fast.any()))
         return self._equilibrium_at(Tp[iq], P[iq], co, mh)
 
 def worker(rows, wl):

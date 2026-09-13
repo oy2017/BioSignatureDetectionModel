@@ -24,7 +24,7 @@ import argparse, json, os, sys, time
 import joblib, numpy as np, pandas as pd
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 from common import DATA, MODELS, RESULTS, SEED, SNR, TESTS, Features, centres, load_split, metrics  # noqa: E402
-from noise import add_noise  # noqa: E402
+from noise import add_noise, sigma_matrix  # noqa: E402
 from pipeline import make_xgb  # noqa: E402
 from augment import binned, shifted_test, corr_noise  # noqa: E402
 from augment_ramp import ramp, TEST_STRENGTHS  # noqa: E402
@@ -63,7 +63,8 @@ def main():
         f = Features(kind).fit(Xn); return f, make_xgb(params).fit(f.transform(Xn), ytr)
 
     def fit_on_native(Xnat):
-        Xn, _ = add_noise(binned(Xnat, CFG), Ptr, cen, snr=SNR, shape="ariel", seed=1000)   # same seed as augment.py
+        Xb_ = binned(Xnat, CFG); sig_ = sigma_matrix(Xtr_nf, Ptr["s temperature"].to_numpy(), cen, SNR, "ariel")  # noise scaled to the CLEAN training spectrum, as the test sets scale it (2026-09-12 audit)
+        Xn = Xb_ + np.random.default_rng(1000).normal(0.0, 1.0, sig_.shape) * sig_                       # same seed as augment.py
         return fit_on_noisy(Xn)
 
     rows = []; per = []

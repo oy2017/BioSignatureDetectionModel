@@ -39,7 +39,7 @@ def build_full(cfg, cen):
         X[key == i] = nat[k][key == i]
     X = X * spot_factor(Ptr, D.spot_frac.to_numpy())
     Xb = binned(X, cfg)
-    sig = sigma_matrix(Xb, Ptr["s temperature"].to_numpy(), cen, 1.0, "ariel") / D.snr.to_numpy()[:, None]
+    sig = sigma_matrix(binned(nat["clean_eq"], cfg), Ptr["s temperature"].to_numpy(), cen, 1.0, "ariel") / D.snr.to_numpy()[:, None]  # noise scaled to the CLEAN training spectrum, as the test sets scale it (2026-09-12 audit)
     rng = np.random.default_rng(SEED + 1000)
     return Xb + rng.normal(0.0, 1.0, sig.shape) * sig, ytr
 

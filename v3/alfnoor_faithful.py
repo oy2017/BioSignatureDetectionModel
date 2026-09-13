@@ -34,6 +34,7 @@ HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 from common import DATA, RESULTS, SEED, configs  # noqa: E402
 from bin_spectra import bin_native  # noqa: E402
 from noise import nsr_shapes, EXOSIM_NPZ  # noqa: E402
+import noise as NZ  # noqa: E402
 import ariel_bins as AB  # noqa: E402
 import alfnoor_screen as AS  # noqa: E402
 
@@ -97,34 +98,10 @@ def n1_exact(P):
 
 
 def radiometric_sigma(P, edges, k2=None):
-    """Tier-3-style per-bin transit-depth noise from the ExoSim 2 payload model for ONE transit, scaled
-    photon-limited to each host (distance, radius) and transit duration, divided by sqrt(integer Tier-1
-    transits): 'a re-scaled version of the Tier 3 noise, obtained by combining the number of transit
-    observations needed to match the Tier 1 required SNR' (Mugnai et al. 2021, Sec. 2.2).  The global
-    level k^2 is calibrated so that SNR 7 on the 5-scale-height modulation (median bin) reproduces the
-    candidate list's Tier-3 transit counts (planets with N3 >= 5)."""
-    z = np.load(EXOSIM_NPZ); teffs = z["teffs"]
-    d = pd.read_csv(os.path.join(DATA, "mcs", "Ariel_MCS_Known_2026-05-11.csv"))
-    d["key"] = d["Planet Name"].astype(str).str.replace(" ", "")
-    M = pd.read_parquet(os.path.join(DATA, "mcs", "mcs_params.parquet")); M["key"] = M.name.astype(str).str.replace(" ", "")
-    M = M.merge(d[["key", "Star Distance [pc]"]].drop_duplicates("key"), on="key", how="left")
-
-    def raw(Q, e):
-        cen = 0.5 * (e[1:] + e[:-1]); w = np.diff(e); out = np.empty((len(Q), len(cen)))
-        node = np.argmin(np.abs(teffs[None, :] - Q["s temperature"].to_numpy()[:, None]), axis=1)
-        for i, T in enumerate(teffs):
-            wl, nsr = z[f"wl_{int(T)}"], z[f"nsr_{int(T)}"]; o = np.argsort(wl); wl, nsr = wl[o], nsr[o]
-            ef = np.concatenate([[wl[0] - (wl[1] - wl[0]) / 2], (wl[1:] + wl[:-1]) / 2, [wl[-1] + (wl[-1] - wl[-2]) / 2]])
-            dens = np.interp(cen, wl, nsr * np.sqrt(np.diff(ef)))          # noise density per sqrt(micron)
-            out[node == i] = dens / np.sqrt(w)
-        scale = (Q["Star Distance [pc]"].to_numpy() / 47.5) * (1.18 / Q["s radius"].to_numpy()) * np.sqrt(2.0 / (Q.t14_s.to_numpy() / 3600))
-        return out * scale[:, None]
-    if k2 is None:
-        e3 = layout_edges("tier3_r20"); s = raw(M, e3); N3 = M.tier3_transits.to_numpy(float); ok = N3 >= 5
-        k2 = float(10 ** np.median(np.log10(N3[ok] / (7 * np.median(s[ok], 1) / M.modulation_5H.to_numpy()[ok]) ** 2)))
-    Q = P[["name"]].assign(key=P.name.astype(str).str.replace(" ", "")).merge(
-        M[["key", "Star Distance [pc]", "s radius", "s temperature", "t14_s", "tier1_transits"]].drop_duplicates("key"), on="key", how="left")
-    return np.sqrt(k2) * raw(Q, edges) / np.sqrt(Q.tier1_transits.to_numpy(float))[:, None], k2
+    """Tier-3-style per-bin noise at the Tier-1 transit count: 'a re-scaled version of the Tier 3 noise,
+    obtained by combining the number of transit observations needed to match the Tier 1 required SNR'
+    (Mugnai et al. 2021, Sec. 2.2). Shared implementation: noise.radiometric_sigma."""
+    return NZ.radiometric_sigma(P, edges, "tier1_transits", k2)
 
 
 def sigma(P, edges, mode, factor=1.0):
@@ -138,7 +115,7 @@ def sigma(P, edges, mode, factor=1.0):
         ne, n1, _ = n1_exact(P); s_t1 = s_t1 * np.sqrt(ne / n1)[:, None]
     if len(cen) == len(t1_cen) and np.allclose(cen, t1_cen):
         return s_t1
-    teffs, shapes = nsr_shapes(cen, EXOSIM_NPZ)
+    teffs, shapes = nsr_shapes(cen, EXOSIM_NPZ, edges=edges)
     node = teffs[np.argmin(np.abs(teffs[None, :] - P["s temperature"].to_numpy()[:, None]), axis=1)]
     a = np.vstack([shapes[int(t)] for t in node])                  # (n, nb) relative shape at the bin centres
     point = np.clip(np.searchsorted(t1_edges, cen, side="right") - 1, 0, len(t1_cen) - 1)

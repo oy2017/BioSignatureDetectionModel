@@ -1,0 +1,26 @@
+--- /tmp/claude-1000/-mnt-c-Users-owenh-BioSignatureDetectionModel/6df27690-b19a-4d43-895a-c8a267082e66/scratchpad/spectra_before_pfix.py	2026-09-12 23:47:33.312836991 -0700
++++ /home/owenhyang/tfenv/lib/python3.10/site-packages/multirex/spectra.py	2026-09-12 23:47:33.332499322 -0700
+@@ -59,6 +59,23 @@
+ #########################################
+ # Predefine the opacity path with the data included in the package
+ taurex.log.disableLogging()
++# ---------------------------------------------------------------------------------------------
++# Fork change 6 (2026-09-12): pressure units of the Exo-Transmit opacity tables.
++# TauREx 3.3.2's ExoTransmitOpacity multiplies the pressure line of each opacT*.dat table by 1e5,
++# i.e. reads it as bar. Exo-Transmit's tables are in Pa: its own reader computes number density
++# as n = P / (k_B T) with k_B in J/K (Exo_Transmit readopactable.c; "all quantities in SI units",
++# USR_MANUAL). Unpatched, every cross section is looked up at a pressure 1e5 times too low.
++import taurex.opacity.exotransmit as _et
++if not getattr(_et.ExoTransmitOpacity, "_multirex_pa_fix", False):
++    _et_orig_load = _et.ExoTransmitOpacity._load_exo_transmit
++    def _et_load_pa(self, filename):
++        _et_orig_load(self, filename)
++        self._pressure_grid = self._pressure_grid / 1e5          # undo TauREx's bar -> Pa conversion
++        self._min_pressure = self._pressure_grid.min()
++        self._max_pressure = self._pressure_grid.max()
++    _et.ExoTransmitOpacity._load_exo_transmit = _et_load_pa
++    _et.ExoTransmitOpacity._multirex_pa_fix = True
++# ---------------------------------------------------------------------------------------------
+ OpacityCache().clear_cache()
+ xsec_path = os.path.join(os.path.dirname(__file__), 'data')
+ OpacityCache().set_opacity_path(xsec_path)

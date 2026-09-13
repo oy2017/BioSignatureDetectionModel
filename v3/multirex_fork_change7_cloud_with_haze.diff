@@ -1,0 +1,13 @@
+--- /tmp/claude-1000/-mnt-c-Users-owenh-BioSignatureDetectionModel/6df27690-b19a-4d43-895a-c8a267082e66/scratchpad/spectra_before_cloudfix.py	2026-09-12 23:59:24.906664572 -0700
++++ /home/owenhyang/tfenv/lib/python3.10/site-packages/multirex/spectra.py	2026-09-12 23:59:24.926354613 -0700
+@@ -1387,6 +1387,10 @@
+                     lee_mie_topP=_cm.get("topP", -1)))
+             else:
+                 raise ValueError(f"unknown cloud_model type: {kind}")
++            # Fork change 7 (2026-09-12): a grey deck given alongside a Mie model used to be dropped
++            # silently (the deck was only added in the elif below); add both when both are given.
++            if _cp is not None and kind != "simple":
++                tm.add_contribution(SimpleCloudsContribution(clouds_pressure=_cp))
+         elif _cp is not None:
+             tm.add_contribution(SimpleCloudsContribution(clouds_pressure=_cp))
+         tm.build()

@@ -160,7 +160,10 @@ def fit(cfg="ariel"):
 
     def train_on(Xaug_native):
         Xb = binned(Xaug_native, cfg)
-        Xn, _ = add_noise(Xb, Ptr, cen, snr=SNR, shape="ariel", seed=1000)
+        from noise import sigma_matrix
+        clean_nf = np.load(os.path.join(DATA, f"train_{cfg}.npy")).astype(float)
+        sig = sigma_matrix(clean_nf, Ptr["s temperature"].to_numpy(), cen, SNR, "ariel")  # noise scaled to the CLEAN training spectrum, as the test sets scale it (2026-09-12 audit)
+        Xn = Xb + np.random.default_rng(1000).normal(0.0, 1.0, sig.shape) * sig
         f = Features(kind).fit(Xn)
         m = make_xgb(params).fit(f.transform(Xn), ytr)
         return f, m

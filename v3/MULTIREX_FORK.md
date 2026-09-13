@@ -27,3 +27,22 @@ Opacity tables added to `multirex/data/` by this study (Exo-Transmit format, fro
 on 2026-09-12; before it NH3 acted through mean molecular weight only — see TRUST_IDEA §4g).
 
 To do: report item 1 upstream (D4san/MultiREx) with the three-line reproduction above.
+
+## Changes made during the 2026-09-12 audit (all v3 results after that date depend on them)
+
+6. **Exo-Transmit opacity pressures in Pa (bug fix, upstream in TauREx 3.3.2).** TauREx's
+   `ExoTransmitOpacity._load_exo_transmit` multiplies the pressure line of each `opac*.dat` table
+   by 1e5, reading it as bar. Exo-Transmit's tables are in Pa: its reader computes the number density
+   as P/(k_B T) with k_B in J/K (`readopactable.c`), and its manual states that all quantities are SI.
+   Unpatched, every cross section is looked up at a pressure 1e5 times too low. On test1 the
+   clean-trained screen went from 96.3 % (as rendered before) to 90.0 % on spectra rendered with the
+   correction (`results/check_pressure_units.txt`). The fork now divides the grid by 1e5 at load
+   (`multirex_fork_change6_pressure_units.diff`). To report upstream (TauREx 3).
+7. **Grey deck kept alongside a Mie haze (bug fix).** `make_tm` added the grey `SimpleClouds`
+   contribution only in an `elif` after `cloud_model`, so `Atmosphere(cloud_pressure=…,
+   cloud_model={…})` rendered the haze and silently dropped the deck. Affected the randomized grid's
+   haze-plus-cloud planets and the consortium rebuild's haze case
+   (`multirex_fork_change7_cloud_with_haze.diff`).
+
+`forward_model_guard.py` (imported by `generate_grid.py` and `shift_opacity.py`) refuses to render
+if either change is missing.

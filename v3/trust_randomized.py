@@ -36,7 +36,7 @@ CASES = [("cloud_1e5Pa", "aero", True), ("cloud_1e4Pa", "aero", True), ("cloud_1
          ("tlse_spots20", "spots", True), ("tlse_mixed", "spots", False), ("tlse_fac10", "spots", False),
          ("quenched", "quench", True), ("exotransmit", "code", False), ("exomol", "opacity", False),
          ("compound_spots10_haze3e7", "compound", True), ("compound_spots20_haze3e7", "compound", True)]
-NOISE = [("white", 12, True), ("white", 8, True), ("white", 5, True), ("correlated", 12, True), ("correlated", 8, True), ("correlated", 5, True)]
+NOISE = [("white", 12, True), ("white", 8, True), ("white", 5, True), ("correlated", 12, False), ("correlated", 8, False), ("correlated", 5, False)]   # 2026-09-12: the randomized grid has white noise only
 HELD_OUT = {"aero": "no_aero", "spots": "no_spots", "quench": "no_quench", "noise": "no_noise"}
 
 
@@ -70,6 +70,8 @@ def main():
     quench = D.quenched.to_numpy(); fac = spot_factor(Ptr, D.spot_frac.to_numpy()); snr_draw = D.snr.to_numpy()
     tstar = Ptr["s temperature"].to_numpy()
 
+    clean_b = binned(nat["clean_eq"], cfg)
+
     def variant(name):
         aero = has_aero if name != "no_aero" else np.zeros_like(has_aero)
         q = quench if name != "no_quench" else np.zeros_like(quench)
@@ -81,7 +83,7 @@ def main():
             X = X * fac
         Xb = binned(X, cfg)
         snr = snr_draw if name != "no_noise" else np.full(len(Xb), SNR)
-        sig = sigma_matrix(Xb, tstar, cen, 1.0, "ariel") / snr[:, None]
+        sig = sigma_matrix(clean_b, tstar, cen, 1.0, "ariel") / snr[:, None]  # noise scaled to the CLEAN training spectrum, as the test sets scale it (2026-09-12 audit)
         rng = np.random.default_rng(SEED + 1000)
         Xn = Xb + rng.normal(0.0, 1.0, sig.shape) * sig
         t0 = time.time(); f = Features(kind).fit(Xn); m = make_xgb(params).fit(f.transform(Xn), ytr)

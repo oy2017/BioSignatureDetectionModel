@@ -2,9 +2,9 @@
 
 Two noise conventions, both reported:
   grid     the study's convention, SNR 15 on each planet's own peak-to-peak amplitude;
-  tier2    the mission's: sigma = (5-scale-height H2 modulation) / 7 per target, ExoSim2 shape
-           for the host's Teff — an absolute level that does not know the planet's real amplitude.
-And for Tier 1: the tier-1 screen (tier_screen.py) on the 7-bin layout at the same absolute sigma.
+  mission  the payload noise model per target (noise.radiometric_sigma): ExoSim 2 NSR scaled to the
+           host's distance and radius and the transit duration, after the catalogue's integer number
+           of transits for the tier (Tier 2 for the 102- and 51-bin screens, Tier 1 for the 7-bin one).
 
 Reported: accuracy overall, inside vs outside the training box, by host band, by tier-2
 transit count (a proxy for how hard the target is for Ariel); the achieved relative SNR
@@ -19,7 +19,7 @@ import joblib, numpy as np, pandas as pd
 from sklearn.neighbors import NearestNeighbors
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 from common import DATA, MODELS, RESULTS, SEED, SNR, TESTS, centres, configs, load_split, metrics  # noqa: E402
-from noise import sigma_matrix, nsr_shapes, EXOSIM_NPZ  # noqa: E402
+from noise import sigma_matrix, nsr_shapes, radiometric_sigma, EXOSIM_NPZ  # noqa: E402
 from bin_spectra import bin_native  # noqa: E402
 
 BANDS = [("M (<4000 K)", 0, 4000), ("K (4000-5300)", 4000, 5300), ("G (5300-6000)", 5300, 6000), ("F+ (>6000)", 6000, 1e9)]
@@ -64,17 +64,22 @@ def main():
     cen = centres("ariel"); Xb = bin_native(Xn, wl, np.array(configs()["ariel"]["edges"]))
     Xg = Xb + rng.normal(0, 1, Xb.shape) * sigma_matrix(Xb, tst, cen, SNR, "ariel")
     p_grid = report("grid noise (SNR 15 on own amplitude)", "ariel", Xg, "")
-    # mission convention: absolute sigma from the tier-2 requirement, ExoSim2 shape
-    sig2 = P.sigma_tier2.to_numpy()
-    S = exosim_sigma(sig2, tst, cen); Xt2 = Xb + rng.normal(0, 1, Xb.shape) * S
-    amp = np.ptp(Xb, axis=1); rel = amp / np.median(S, axis=1)
-    p_t2 = report("tier-2 sigma, ExoSim2 shape, 102 bins", "ariel", Xt2, f"achieved SNR on own amplitude: median {np.median(rel):.1f}, 10-90% {np.percentile(rel,10):.1f}-{np.percentile(rel,90):.1f}")
+    # mission noise: the payload model per target (noise.radiometric_sigma) after the catalogue's integer
+    # number of transits for the tier; replaces the earlier sigma = modulation_5H / 7 convention, which ignored
+    # that an integer number of transits over-achieves the SNR-7 requirement (2026-09-12 audit)
+    S3, k2 = radiometric_sigma(P, np.array(configs()["ariel"]["edges"]), "tier2_transits")
+    Xt2 = Xb + rng.normal(0, 1, Xb.shape) * S3
+    amp = np.ptp(Xb, axis=1); rel = amp / np.median(S3, axis=1)
+    L.insert(3, f"payload-noise level k2 = {k2:.3f} (calibrated on the catalogue's Tier-3 transit counts)")
+    report("mission noise at N2, 102 bins", "ariel", Xt2, f"achieved SNR on own amplitude: median {np.median(rel):.1f}, 10-90% {np.percentile(rel,10):.1f}-{np.percentile(rel,90):.1f}")
     if "tier2" in pipes:
-        cen2 = centres("tier2"); Xb2 = bin_native(Xn, wl, np.array(configs()["tier2"]["edges"]))
-        X2 = Xb2 + rng.normal(0, 1, Xb2.shape) * exosim_sigma(sig2, tst, cen2); report("tier-2 sigma, tier-2 binning (51)", "tier2", X2, "")
+        e2 = np.array(configs()["tier2"]["edges"]); Xb2 = bin_native(Xn, wl, e2)
+        X2 = Xb2 + rng.normal(0, 1, Xb2.shape) * radiometric_sigma(P, e2, "tier2_transits", k2)[0]; report("mission noise at N2, tier-2 binning (51)", "tier2", X2, "")
     if "tier1" in pipes:
-        cen1 = centres("tier1"); Xb1 = bin_native(Xn, wl, np.array(configs()["tier1"]["edges"]))
-        X1 = Xb1 + rng.normal(0, 1, Xb1.shape) * exosim_sigma(sig2, tst, cen1); report("tier-1 sigma, tier-1 binning (7)", "tier1", X1, "")
+        e1 = np.array(configs()["tier1"]["edges"]); Xb1 = bin_native(Xn, wl, e1)
+        S1 = radiometric_sigma(P, e1, "tier1_transits", k2)[0]; X1 = Xb1 + rng.normal(0, 1, Xb1.shape) * S1
+        rel1 = np.ptp(Xb1, axis=1) / np.median(S1, axis=1)
+        report("mission noise at N1, tier-1 binning (7)", "tier1", X1, f"achieved SNR on own amplitude: median {np.median(rel1):.1f}, 10-90% {np.percentile(rel1,10):.1f}-{np.percentile(rel1,90):.1f}")
 
     # how many real targets would the clean-data decline rules reject before any mismatch?
     f, m = pipes["ariel"]["features"], pipes["ariel"]["model"]
@@ -86,7 +91,7 @@ def main():
         return {"margin": 1 - np.abs(2 * p - 1), "mahalanobis": np.sqrt(np.einsum("ij,jk,ik->i", d, Ci, d)), "knn": knn.kneighbors(Z)[0].mean(1)}
     pc = m.predict_proba(Zc)[:, 1]; S0 = scores(Zc, pc)
     L += ["", "Share of real targets the clean-fixed decline thresholds (10 % of clean grid planets declined) would decline:"]
-    for tag, X in (("grid noise", Xg), ("tier-2 sigma", Xt2)):
+    for tag, X in (("grid noise", Xg), ("mission noise N2", Xt2)):
         Z = f.transform(X); p = m.predict_proba(Z)[:, 1]; Sx = scores(Z, p)
         L.append(f"  {tag:<14}" + "  ".join(f"{k}: {(Sx[k] > np.quantile(S0[k], 0.9)).mean():5.1%}" for k in Sx))
     L += ["", "Caveats: C/O is drawn, not known, for these targets, so this measures the screen's behaviour on the mission's",

@@ -11,8 +11,8 @@ Variants
     exomol      H2O -> ExoMol POKAZATEL, CH4 -> ExoMol YT34to10,
                 CO2 -> ExoMol UCL-4000; O3 and O2 keep the Exo-Transmit tables
     exomol_o3   the above plus O3 -> converted HITRAN table (~/exomolop_o3)
-CO and NH3 have no opacity data in either database and act only through the
-mean molecular weight, exactly as in the baseline.
+NH3 keeps its Exo-Transmit table (it has no ExoMolOP table here); CO is swapped to ExoMol Li2015.
+(Before 2026-09-12 NH3 was omitted from the swap directory and so carried no opacity under it.)
 
 Outputs (v2/data/), float32 (n, 2753), same row order as {split}_params.parquet,
 NaN rows where the forward model failed:
@@ -72,6 +72,8 @@ import time
 import numpy as np
 import pandas as pd
 from joblib import Parallel, delayed
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import forward_model_guard  # noqa: E402,F401  (Exo-Transmit pressure units)
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 if HERE not in sys.path:
@@ -122,7 +124,7 @@ def build_swap_dir(variant):
 
     retained = {}
     orig = original_opacity_dir()
-    for mol in ("O3", "O2", "H2O", "CH4", "CO2"):
+    for mol in ("O3", "O2", "H2O", "CH4", "CO2", "NH3", "CO"):      # 2026-09-12: NH3 was missing, so it had no opacity under the swap
         if mol in swapped:
             continue
         src = os.path.join(orig, f"opac{mol}.dat")
@@ -133,6 +135,10 @@ def build_swap_dir(variant):
     expected = {"exomol": {"H2O", "CH4", "CO2", "CO"}, "exomol_o3": {"H2O", "CH4", "CO2", "O3", "CO"}}   # v3: CO swapped too
     if set(swapped) != expected[variant]:
         raise RuntimeError(f"{variant}: swapped {sorted(swapped)}, expected {sorted(expected[variant])}")
+    from generate_grid import GASES
+    missing = sorted(set(GASES) - set(swapped) - set(retained))
+    if missing:
+        raise RuntimeError(f"{variant}: no opacity table for {missing} in the swap directory")
     print(f"swap dir [{variant}] {swap}")
     for m, f in sorted(swapped.items()):
         print(f"  swapped  {m:<4} -> {f}")
