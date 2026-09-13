@@ -43,7 +43,7 @@ Files: this directory (new downloads, key_arxivid.pdf) or `../` (already in refe
 |---|---|---|---|
 | madhusudhan2012 | arXiv:1109.3183 | C/O > 1: HCN, C2H2 major constituents; tracers of C/O above 800 K | madhusudhan2012_1109.3183.pdf |
 | moses2013 | Moses et al. 2012: CHEMICAL CONSEQUENCES OF THE C/O RATIO ON HOT JUPITERS: EXAMPLES FROM WASP-12b, CoRoT | C/O chemistry with quenching and photochemistry; disequilibrium enhances HCN, C2H2 | moses2013_1211.2996.pdf |
-| zahnle2014 | arXiv:1408.6283 | the CO/CH4 quench timescale used in Axis 8 | zahnle2014_1408.6283.pdf |
+| zahnle2014 | Zahnle 2014: METHANE, CARBON MONOXIDE, AND AMMONIA IN BROWN DWARFS AND SELF-LUMINOUS GIANT PLANETS | the CO/CH4 quench timescale used in Axis 8 | zahnle2014_1408.6283.pdf |
 | stock2018 | arXiv:1804.05010 | the equilibrium chemistry code behind the label | stock2018_1804.05010.pdf |
 | kawashima2021 | Kawashima 2021: Implementation of disequilibrium chemistry to spectral retrieval 
 code ARCiS and appl | equilibrium assumption biases retrieved C/O (ARCiS) | kawashima2021_2110.13443.pdf |
@@ -61,11 +61,11 @@ code ARCiS and appl | equilibrium assumption biases retrieved C/O (ARCiS) | kawa
 
 | key | paper | cited for | file |
 |---|---|---|---|
-| alrefaie2021 | arXiv:1912.07759 | the radiative-transfer core under MultiREx | ../Al-Refaie_2021_ApJ_917_37.pdf |
+| alrefaie2021 | Alrefaie et al. 2019: TauREx 3: A Fast, Dynamic, and Extendable Framework for Retrievals | the radiative-transfer core under MultiREx | ../Al-Refaie_2021_ApJ_917_37.pdf |
 | kempton2017 | Kempton et al. 2016: Exo-Transmit: An Open-Source Code for Calculating Transmission Spectra for Exoplanet  | the independent code and the source of the CO/NH3/HCN/C2H2 tables | ../Kempton_2017_ExoTransmit.pdf |
 | chubb2021 | Chubb et al. 2020: The ExoMolOP database: Cross sections and k-tables for molecules of interest in high- | the ExoMol cross sections of the opacity axis | ../Chubb_2021_ExoMolOP.pdf |
-| freedman2014 | arXiv:1409.0026 | the opacity compilation behind Exo-Transmit | ../Freedman_2014_gaseous_mean_opacities.pdf |
-| lupu2014 | arXiv:1401.1499 | line-list sources of the Exo-Transmit tables (Table 2) | ../Lupu_2014_atmospheres_after_giant_impact.pdf |
+| freedman2014 | Freedman et al. 2014: GASEOUS MEAN OPACITIES FOR GIANT PLANET AND ULTRACOOL DWARF ATMOSPHERES OVER A RANGE  | the opacity compilation behind Exo-Transmit | ../Freedman_2014_gaseous_mean_opacities.pdf |
+| lupu2014 | Lupu et al. 2014: THE ATMOSPHERES OF EARTHLIKE PLANETS AFTER GIANT IMPACT EVENTS | line-list sources of the Exo-Transmit tables (Table 2) | ../Lupu_2014_atmospheres_after_giant_impact.pdf |
 
 ## ML-methods
 
@@ -90,7 +90,7 @@ code ARCiS and appl | equilibrium assumption biases retrieved C/O (ARCiS) | kawa
 | key | paper | cited for | file |
 |---|---|---|---|
 | schmitt2021 | Schmitt et al. 2021: Detecting Model Misspecification in Amortized Bayesian Inference with Neural Networks | misspecification detection for amortized inference | schmitt2021_2112.08866.pdf |
-| cannon2022 | arXiv:2209.01845 | impact of misspecification on neural SBI | cannon2022_2209.01845.pdf |
+| cannon2022 | Cannon et al. 2022: Investigating the Impact of Model Misspecification in Neural Simulation-based Inferen | impact of misspecification on neural SBI | cannon2022_2209.01845.pdf |
 | huang2023 | Huang et al. 2023: Learning Robust Statistics for Simulation-based Inference under Model Misspecificatio | robust summaries under misspecification | huang2023_2305.15871.pdf |
 | sbi2025a | Alvey et al. 2025: Simulation-based inference with deep ensembles: evaluating calibration uncertainty an | ensemble-based misspecification detection (cosmology) | sbi2025a_2507.13495.pdf |
 | sbi2025b | Akhmetzhanova et al. 2025: Detecting model misspecification in cosmology with scale-dependent normalizing flows | flow-based OOD detection for cosmological SBI | sbi2025b_2508.05744.pdf |
