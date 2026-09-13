@@ -534,9 +534,18 @@ tier where the mission would triage, the honest row reads "absorb some, detect n
 the omitted-physics and opacity-table cases are not recoverable by anything but the forward
 model". This is the most mission-relevant row in the paper and belongs in the abstract.
 
-(Tier-1 oracle ceilings: computed separately, `tier1_oracle.txt`; the frozen-screen detector
-battery needs Tier-1 RF/MLP screens and was not run — the randomized ensemble in the envelope
-covers detection at this tier.)
+Tier-1 ceilings (`tier1_oracle.txt`, a screen trained at the test condition): even with the
+mismatch in the training set the Tier-1 screen only reaches haze 3e7 **75.5 %** (irreducible
+13.2 points), ExoMol tables **79.3 %** (9.4), HCN + C2H2 **82.3 %** (6.3), spots 20 % 82.9 %
+(5.8), white noise SNR 5 79.1 % (9.6); Exo-Transmit 87.5 % (1.2), correlated noise ~0. So at
+seven points a large part of every serious loss is not recoverable by any training: the
+information is not in the data. Against these ceilings the randomized screen does well —
+spots 20 % 81.7 of 82.9 (91 % of the ceiling), haze 3e7 69.3 of 75.5 (60 %) — which is the
+fair way to read its Tier-1 numbers. Adding HCN + C2H2 to the grid, which restores 96 % at
+Tier 3, restores only 82 % at Tier 1.
+
+(The frozen-screen detector battery needs Tier-1 RF/MLP screens and was not run; the
+randomized ensemble in the envelope covers detection at this tier.)
 
 ## 4i. Verification of the headline (2026-09-12, after the re-run)
 

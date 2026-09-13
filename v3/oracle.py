@@ -51,9 +51,12 @@ def main():
     clean = metrics(yc, fm.predict_proba(ff.transform(Xc))[:, 1])["accuracy"]
 
     # frozen / augmented numbers already measured on these exact test arrays
-    prev = pd.concat([pd.read_csv(os.path.join(RESULTS, f"{CFG}_{f}.csv")) for f in ("augment", "augment_white", "augment_ramp")],
-                     ignore_index=True)
-    prev["key"] = prev.axis + "|" + prev.case.astype(str)
+    # the single-axis augmentation results, where the augment*.py scripts have run for this configuration;
+    # for a tier without them the 'augmented' column is left empty and only the ceiling is reported
+    tabs = [pd.read_csv(os.path.join(RESULTS, f"{CFG}_{f}.csv")) for f in ("augment", "augment_white", "augment_ramp")
+            if os.path.exists(os.path.join(RESULTS, f"{CFG}_{f}.csv"))]
+    prev = pd.concat(tabs, ignore_index=True) if tabs else pd.DataFrame(columns=["axis", "case", "frozen", "augmented"])
+    prev["key"] = prev.axis.astype(str) + "|" + prev.case.astype(str)
     prev = prev.set_index("key")
 
     def fit_on_noisy(Xn):
@@ -66,11 +69,14 @@ def main():
     rows = []
     def record(axis, case, kind_, Xs, f_o, m_o):
         k = f"{axis}|{case}"
-        a_fr, a_au = float(prev.loc[k, "frozen"]), float(prev.loc[k, "augmented"])
-        a_or = metrics(yc, m_o.predict_proba(f_o.transform(Xs))[:, 1])["accuracy"]
-        # sanity: the frozen pipeline on the array rebuilt here must reproduce the CSV to the 4th decimal
         a_chk = metrics(yc, fm.predict_proba(ff.transform(Xs))[:, 1])["accuracy"]
-        assert abs(a_chk - a_fr) < 5e-4, f"{k}: test array not reproduced ({a_chk:.4f} vs {a_fr:.4f})"
+        if k in prev.index:
+            a_fr, a_au = float(prev.loc[k, "frozen"]), float(prev.loc[k, "augmented"])
+            # sanity: the frozen pipeline on the array rebuilt here must reproduce the CSV to the 4th decimal
+            assert abs(a_chk - a_fr) < 5e-4, f"{k}: test array not reproduced ({a_chk:.4f} vs {a_fr:.4f})"
+        else:
+            a_fr, a_au = a_chk, np.nan
+        a_or = metrics(yc, m_o.predict_proba(f_o.transform(Xs))[:, 1])["accuracy"]
         gap_c, gap_o = clean - a_fr, a_or - a_fr
         r = dict(axis=axis, case=case, kind=kind_, clean=clean, frozen=a_fr, augmented=a_au, oracle=a_or,
                  pct_vs_clean=(a_au - a_fr) / gap_c * 100 if gap_c > 0.005 else np.nan,
@@ -172,6 +178,8 @@ def main():
 
     df = pd.DataFrame(rows)
     det = df[df.kind == "deterministic"].pct_vs_oracle.dropna(); sto = df[df.kind == "stochastic"].pct_vs_oracle.dropna()
+    if det.empty or sto.empty:
+        det = sto = pd.Series([np.nan])
     L = ["Oracle ceilings for the repair tests, configuration ariel, pipeline " + best, "",
          "oracle = trained only at the test strength; irreducible = clean minus oracle (points the shift",
          "removes for any training); vs-oracle = share of the recoverable loss that mixed-strength augmentation got.", "",

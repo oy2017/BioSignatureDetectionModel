@@ -170,8 +170,9 @@ opacity table was added and every v3 number regenerated (`v3/rerun_all.sh`, 0 fa
 previous run is archived in `v3/results_noNH3/`. Every qualitative statement of the map
 survived; haze and opacity-table costs rose, the contamination host gap narrowed. The envelope
 was then computed at Tier 1 as well (`TRUST_IDEA.md` §4h′): at seven points randomization still
-helps but no decline rule works, so the Tier-3 reliability statements do not carry to the tier
-where triage would happen. Next: the paper outline and venue.
+helps but no decline rule works, and even a screen trained on the mismatch recovers only part
+of the loss (haze ceiling 75 %, opacity tables 79 %, missing species 82 %), so the Tier-3
+reliability statements do not carry to the tier where triage would happen. Next: the paper outline and venue.
 
 ## What is and is not new
 
