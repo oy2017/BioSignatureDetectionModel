@@ -1,7 +1,7 @@
 # Can a simulator-trained classifier for Ariel Tier-1 spectra be trusted?
 
 Supplementary material for the technical note *"Can a simulator-trained classifier for Ariel Tier-1 spectra be
-trusted? Re-implementation and stress test of a published molecular classifier"* (manuscript source:
+trusted?"* (manuscript source:
 [`v3/jhss/note_src.md`](../v3/jhss/note_src.md); built files in [`v3/jhss/`](../v3/jhss/)).
 
 ## In brief
