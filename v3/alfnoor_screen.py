@@ -168,8 +168,29 @@ def do_fit(noise_factor=1.0):
                 rows.append(r)
                 L.append(f"{mol:<9}{mname:<6}" + "".join(f"{r[c]*100:10.1f}%" for c in Z))
         L.append("")
+    # decline rules on their screen, 1e-4 threshold: ensemble disagreement across the four models and the
+    # k-NN distance to the training set, thresholds fixed at the 90th percentile of the CLEAN test scores
+    from sklearn.neighbors import NearestNeighbors
+    knn = NearestNeighbors(n_neighbors=10).fit(Ztr); d_clean = knn.kneighbors(Z["clean"])[0].mean(1); thr_d = np.quantile(d_clean, 0.9)
+    L.append("=== decline rules at the 1e-4 threshold: accepted accuracy (coverage), thresholds fixed on clean")
+    L.append(f"{'molecule':<9}{'rule':<10}" + "".join(f"{c:>16}" for c in Z))
+    for mol in MOLS:
+        ytr = (Ptr[f"atm {mol}"] > -4).astype(int).to_numpy(); yte = (Pte[f"atm {mol}"] > -4).astype(int).to_numpy()
+        fitted = {mname: mk().fit(Ztr, ytr) for mname, mk in makers.items()}
+        votes = lambda Zc: np.column_stack([m.predict(Zc) for m in fitted.values()])
+        dis_clean = votes(Z["clean"]).std(1); thr_e = np.quantile(dis_clean, 0.9)
+        for rule in ("ensemble", "knn"):
+            cells = ""
+            for c, Zc in Z.items():
+                V = votes(Zc); pred = (V.mean(1) >= 0.5).astype(int)
+                keep = (V.std(1) <= thr_e) if rule == "ensemble" else (knn.kneighbors(Zc)[0].mean(1) <= thr_d)
+                acc_k = (pred[keep] == yte[keep]).mean() if keep.any() else np.nan
+                cells += f"{acc_k*100:8.1f} ({keep.mean()*100:3.0f}%)"
+                rows.append(dict(threshold="1e-4", molecule=mol, model=f"vote+{rule}", base_rate=yte.mean(), **{c: acc_k}))
+            L.append(f"{mol:<9}{rule:<10}" + cells)
+    L.append("")
     df = pd.DataFrame(rows)
-    mid = df[df.threshold == "1e-4"]
+    mid = df[(df.threshold == "1e-4") & ~df.model.str.startswith("vote")]
     L.append("At the 1e-4 threshold, mean over the four molecules and four models: " +
              ", ".join(f"{c} {mid[c].mean()*100:.1f}" for c in Z))
     L += ["", "Deviations from Mugnai et al. 2021: forward model MultiREx/TauREx 3 with Exo-Transmit tables (theirs: TauREx 3 with ExoMol k-tables);",

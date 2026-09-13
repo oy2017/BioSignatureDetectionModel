@@ -58,6 +58,17 @@ NH3      MLP         85.0%      81.5%      82.1%      85.4%      84.1%      82.9
 NH3      RFC         84.8%      81.5%      82.2%      85.4%      83.8%      82.8%      82.2%      82.5%
 NH3      SVC         84.5%      81.5%      81.9%      84.2%      83.2%      82.2%      82.2%      82.1%
 
+=== decline rules at the 1e-4 threshold: accepted accuracy (coverage), thresholds fixed on clean
+molecule rule                 clean         haze3e7        cloud1e2       absorbers         spots10         spots20        noise_x2        noise_x3
+CH4      ensemble      73.2 ( 95%)    62.4 (100%)    66.1 ( 96%)    73.2 ( 94%)    66.3 ( 99%)    64.4 ( 99%)    66.5 ( 95%)    64.1 ( 96%)
+CH4      knn           70.3 ( 90%)    41.4 (  3%)    60.1 ( 70%)    70.4 ( 91%)    61.3 ( 49%)    60.6 ( 26%)    61.7 ( 77%)    60.6 ( 66%)
+H2O      ensemble      68.8 ( 90%)    61.8 (100%)    64.0 ( 95%)    69.4 ( 90%)    64.8 ( 96%)    62.8 ( 98%)    65.7 ( 90%)    64.6 ( 91%)
+H2O      knn           67.1 ( 90%)    58.6 (  3%)    62.0 ( 70%)    67.7 ( 91%)    64.1 ( 49%)    60.6 ( 26%)    65.2 ( 77%)    64.5 ( 66%)
+CO2      ensemble      60.9 ( 97%)    59.8 (100%)    60.0 ( 98%)    60.6 ( 97%)    60.4 ( 98%)    60.0 ( 99%)    60.6 ( 97%)    59.7 ( 98%)
+CO2      knn           59.2 ( 90%)    48.3 (  3%)    56.3 ( 70%)    59.0 ( 91%)    59.4 ( 49%)    59.0 ( 26%)    59.5 ( 77%)    57.0 ( 66%)
+NH3      ensemble      79.3 ( 95%)    61.0 (100%)    63.0 ( 98%)    79.3 ( 94%)    70.5 ( 99%)    65.2 ( 99%)    70.6 ( 96%)    66.6 ( 98%)
+NH3      knn           77.7 ( 90%)    13.8 (  3%)    59.5 ( 70%)    77.3 ( 91%)    72.4 ( 49%)    66.9 ( 26%)    69.8 ( 77%)    65.9 ( 66%)
+
 At the 1e-4 threshold, mean over the four molecules and four models: clean 68.7, haze3e7 61.2, cloud1e2 62.5, absorbers 68.5, spots10 64.8, spots20 62.9, noise_x2 64.4, noise_x3 62.6
 
 Deviations from Mugnai et al. 2021: forward model MultiREx/TauREx 3 with Exo-Transmit tables (theirs: TauREx 3 with ExoMol k-tables);

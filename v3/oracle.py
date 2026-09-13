@@ -29,12 +29,13 @@ from pipeline import make_xgb  # noqa: E402
 from augment import binned, shifted_test, corr_noise  # noqa: E402
 from augment_ramp import ramp, TEST_STRENGTHS  # noqa: E402
 
-CFG = "ariel"
+CFG = "ariel"   # overridden by --config
 
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--jobs", type=int, default=4); ap.add_argument("--skip-haze", action="store_true")
-    a = ap.parse_args()
+    ap.add_argument("--config", default="ariel"); a = ap.parse_args()
+    global CFG; CFG = a.config
     cen = centres(CFG)
     best = json.load(open(os.path.join(RESULTS, f"{CFG}_best.json")))["best"]
     fr = joblib.load(os.path.join(MODELS, f"{CFG}_{best}.joblib"))

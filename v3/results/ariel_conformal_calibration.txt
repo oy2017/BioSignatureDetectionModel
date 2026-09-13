@@ -1,0 +1,20 @@
+Split-conformal prediction (90 % target, calibrated on clean test1+test2) and calibration under mismatch; ariel, norm_xgb
+
+case                         accuracy  coverage  ambiguous  empty   Brier    ECE  mean p|y=1
+clean                          96.59%     90.8%       0.0%   8.4%   0.025  0.009       0.963
+cloud_1e3Pa                    93.11%     79.3%       0.0%  19.2%   0.051  0.017       0.895
+haze_3p0e7                     90.64%     87.8%       0.0%   5.8%   0.080  0.087       0.992
+haze_2p4e8                     88.38%     84.2%       0.0%   9.6%   0.092  0.100       0.983
+tlse_spots10                   89.22%     85.6%       0.0%   6.9%   0.092  0.084       0.902
+tlse_spots20                   85.85%     80.8%       0.0%   9.7%   0.121  0.111       0.851
+exotransmit                    90.05%     87.4%       0.0%   6.1%   0.084  0.084       0.823
+exomol                         81.01%     62.9%       0.0%  30.6%   0.141  0.174       0.621
+quenched                       98.63%     97.2%       0.0%   1.8%   0.012  0.008       0.989
+compound_spots20_haze3e7       85.99%     79.4%       0.0%  12.7%   0.114  0.099       0.874
+absorbers                      71.67%     64.2%       0.0%  11.8%   0.266  0.252       0.460
+absorbers_quenched             66.32%     62.4%       0.0%   7.9%   0.318  0.326       0.343
+white_snr5                     89.74%     76.7%       0.0%  20.0%   0.076  0.045       0.851
+correlated_snr5                84.12%     75.0%       0.0%  15.6%   0.131  0.119       0.780
+
+Reading: coverage below 90 % means the conformal guarantee, valid on the calibration distribution, is broken by the mismatch;
+'ambiguous' is the conformal decline rate. ECE well above the clean value means the probabilities no longer mean what they say.

@@ -47,7 +47,12 @@ def build_full(cfg, cen):
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--config", default="ariel"); a = ap.parse_args(); cfg = a.config
     cen = centres(cfg)
-    hp = {k: joblib.load(os.path.join(MODELS, f"{cfg}_norm_{k}.joblib"))["params"] for k in ("xgb", "rf", "mlp")}
+    hp = {}
+    for k in ("xgb", "rf", "mlp"):
+        pth = os.path.join(MODELS, f"{cfg}_norm_{k}.joblib")
+        if not os.path.exists(pth):
+            pth = os.path.join(MODELS, f"ariel_norm_{k}.joblib")      # tiers reuse the Tier-3 hyper-parameters
+        hp[k] = joblib.load(pth)["params"]
     Xn, ytr = build_full(cfg, cen)
     f = Features("norm").fit(Xn); Z = f.transform(Xn)
     t0 = time.time(); xgb = make_xgb(hp["xgb"]).fit(Z, ytr); rf = make_rf(hp["rf"]).fit(Z, ytr); mlp = MLPWrap(fit_mlp(Z, ytr, hp["mlp"]))
