@@ -436,6 +436,8 @@ if __name__ == "__main__":
     print("parsed blocks:", kinds)
     which = sys.argv[1] if len(sys.argv) > 1 else "both"
     stem = os.path.splitext(os.path.basename(SRC))[0]
+    if stem == "manuscript":
+        stem = "technical_note_manuscript"  # submission type in the filename
 
     if which in ("docx", "both"):
         print("docx ->", build_docx(blocks, f"{OUTDIR}/{stem}.docx"))
@@ -448,4 +450,4 @@ if __name__ == "__main__":
     _, legends = split_figures(blocks)
     if legends:
         head = [("h", (1, "Figure legends"))]
-        print("legends ->", build_docx(head + legends, f"{OUTDIR}/figure_legends.docx"))
+        print("legends ->", build_docx(head + legends, f"{OUTDIR}/technical_note_figure_legends.docx"))
