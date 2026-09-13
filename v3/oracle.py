@@ -66,8 +66,12 @@ def main():
         Xn, _ = add_noise(binned(Xnat, CFG), Ptr, cen, snr=SNR, shape="ariel", seed=1000)   # same seed as augment.py
         return fit_on_noisy(Xn)
 
-    rows = []
+    rows = []; per = []
+    sizes = [len(load_split(t, CFG)[1]) for t in TESTS]; bounds = np.cumsum([0] + sizes)
     def record(axis, case, kind_, Xs, f_o, m_o):
+        for k_ in range(len(TESTS)):
+            sl = slice(bounds[k_], bounds[k_ + 1])
+            per.append(dict(axis=axis, case=case, split=TESTS[k_], oracle=metrics(yc[sl], m_o.predict_proba(f_o.transform(Xs[sl]))[:, 1])["accuracy"]))
         k = f"{axis}|{case}"
         a_chk = metrics(yc, fm.predict_proba(ff.transform(Xs))[:, 1])["accuracy"]
         if k in prev.index:
@@ -193,6 +197,7 @@ def main():
           f" stochastic: {df[df.kind=='stochastic'].irreducible.min():+.2f} to {df[df.kind=='stochastic'].irreducible.max():+.2f} pts"]
     open(os.path.join(RESULTS, f"{CFG}_oracle.txt"), "w").write("\n".join(L) + "\n")
     df.to_csv(os.path.join(RESULTS, f"{CFG}_oracle.csv"), index=False)
+    pd.DataFrame(per).to_csv(os.path.join(RESULTS, f"{CFG}_oracle_persplit.csv"), index=False)
     print("\n".join(L))
 
 

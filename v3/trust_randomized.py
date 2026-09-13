@@ -113,6 +113,8 @@ def main():
         return float(g.oracle.iloc[0]) if len(g) else np.nan
 
     acc = lambda f, m, X, y: metrics(y, m.predict_proba(f.transform(X))[:, 1])["accuracy"]
+    sizes = [len(load_split(t, cfg)[1]) for t in TESTS]; bounds = np.cumsum([0] + sizes)
+    per = []                                                    # per-test-set accuracies for error bars
     rows = []
     for name, axis, inr, X, y in sets:
         r = dict(case=name, axis=axis, in_range=inr, oracle=oracle_for(name))
@@ -120,6 +122,9 @@ def main():
             r[v] = acc(f, m, X, y)
         r["held_out"] = r[HELD_OUT[axis]] if axis in HELD_OUT else (r["full"] if axis in ("code", "opacity") else np.nan)
         rows.append(r)
+        for k in range(len(TESTS)):
+            sl = slice(bounds[k], bounds[k + 1])
+            per.append(dict(case=name, split=TESTS[k], frozen=acc(ff, fm, X[sl], y[sl]), full=acc(*models["full"][:2], X[sl], y[sl])))
         print(f"{name:<30}{'in ' if inr else 'OUT'}  frozen {r['frozen']*100:6.2f}  full {r['full']*100:6.2f}  held-out {r['held_out']*100 if np.isfinite(r['held_out']) else float('nan'):6.2f}"
               f"  oracle {r['oracle']*100 if np.isfinite(r['oracle']) else float('nan'):6.2f}", flush=True)
     df = pd.DataFrame(rows)
@@ -178,6 +183,7 @@ def main():
         L.append(f"  {t.case:<30} shift {t.frozen_auroc_shift:.3f} -> {t.full_auroc_shift:.3f}   error {t.frozen_auroc_error:.3f} -> {t.full_auroc_error:.3f}")
     open(os.path.join(RESULTS, f"{cfg}_trust_randomized.txt"), "w").write("\n".join(L) + "\n")
     df.to_csv(os.path.join(RESULTS, f"{cfg}_trust_randomized.csv"), index=False); tdf.to_csv(os.path.join(RESULTS, f"{cfg}_trust_tradeoff.csv"), index=False)
+    pd.DataFrame(per).to_csv(os.path.join(RESULTS, f"{cfg}_trust_randomized_persplit.csv"), index=False)
     print("\n".join(L))
 
 

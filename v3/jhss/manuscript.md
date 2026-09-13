@@ -38,7 +38,24 @@ Nine pipelines were tuned by cross-validation on the training set: XGBoost (46),
 
 ### 2.3 The mismatch axes
 
-Each axis re-renders the *same* test planets with one ingredient changed, so every loss is a within-planet difference. The axes and the concern each represents are: an optically thick grey cloud deck at 10⁵ to 10 Pa (aerosols hide the lower atmosphere); a Lee et al. Mie haze at 2 × 10⁵ to 10¹⁰ m⁻³ (22); unocculted star spots at 2–20 % coverage, with the transit-light-source correction built from PHOENIX spectra at a spot contrast of 0.85 (21); white and time-correlated noise at effective signal-to-noise 12 to 5; a gain ramp across the detector; the same planets rendered by an independent radiative-transfer code, Exo-Transmit (25), with the same opacities; the same planets rendered with the ExoMol cross sections (26) in place of Exo-Transmit's tables for H₂O, CH₄, CO₂ and CO; quenched chemistry, in which the carbon–oxygen partition is frozen at the level where the mixing timescale for an eddy-diffusion coefficient K<sub>zz</sub> overtakes the CO–CH₄ conversion timescale of reference (18) on a Guillot profile anchored to the isothermal temperature, for K<sub>zz</sub> from 10⁷ to 10¹¹ cm² s⁻¹; HCN and C₂H₂ added at their FastChem equilibrium or quenched abundances (Section 3.2); and compounds of spots, haze and noise on the same planet. Cloud decks at 10² and 10 Pa, haze at 10¹⁰ m⁻³, faculae and the two non-native codes lie outside anything the randomized training grid contains and are tagged as such.
+Each axis re-renders the *same* test planets with one ingredient changed, so every loss is a within-planet difference. The axes and the concern each represents are: an optically thick grey cloud deck at 10⁵ to 10 Pa (aerosols hide the lower atmosphere); a Lee et al. Mie haze at 2 × 10⁵ to 10¹⁰ m⁻³ (22); unocculted star spots at 2–20 % coverage, with the transit-light-source correction built from PHOENIX spectra at a spot contrast of 0.85 (21); white and time-correlated noise at effective signal-to-noise 12 to 5; a gain ramp across the detector; the same planets rendered by an independent radiative-transfer code, Exo-Transmit (25), with the same opacities; the same planets rendered with the ExoMol cross sections (26) in place of Exo-Transmit's tables for H₂O, CH₄, CO₂ and CO; quenched chemistry, in which the carbon–oxygen partition is frozen at the level where the mixing timescale for an eddy-diffusion coefficient K<sub>zz</sub> overtakes the CO–CH₄ conversion timescale of reference (18) on a Guillot profile anchored to the isothermal temperature, for K<sub>zz</sub> from 10⁷ to 10¹¹ cm² s⁻¹; HCN and C₂H₂ added at their FastChem equilibrium or quenched abundances (Section 3.2); and compounds of spots, haze and noise on the same planet. Cloud decks at 10² and 10 Pa, haze at 10¹⁰ m⁻³, faculae and the two non-native codes lie outside anything the randomized training grid contains and are tagged as such. Table 1 lists the axes, the concern each represents, and whether the randomized training grid of Section 2.4 contains it.
+
+**Table 1.** The mismatch axes. Each re-renders the same test planets with one ingredient changed; the last column says whether the ingredient is drawn at random in the randomized training grid, so that a test on it is in-range, or is never shown to the screen, so that a test on it is a held-out axis.
+
+<!-- table:axes -->
+| Axis | What is varied | Concern it represents | In the randomized grid |
+| :-- | :-- | :-- | :-- |
+| Cloud deck | grey, optically thick cloud top at 10⁵, 10⁴, 10³, 10², 10 Pa | aerosols hide the lower atmosphere | 10³–10⁵ Pa, 50 % of planets |
+| Haze | Lee et al. Mie haze, 0.1 µm, at 2 × 10⁵, 2 × 10⁶, 3 × 10⁷, 2.4 × 10⁸, 10¹⁰ m⁻³ | photochemical haze mutes and slopes the spectrum | 10⁵–3 × 10⁸ m⁻³, 60 % |
+| Stellar contamination | unocculted spots at 2, 5, 10, 20 % coverage (contrast 0.85); faculae 5, 10 %; mixed | the transit light-source effect imprints the star on the planet | spots 0–20 %, 70 % |
+| Noise level and colour | white and time-correlated (σ = 3 bins) at effective SNR 12, 10, 8, 5; a gain ramp ×0.25–2 | the deployed noise differs from the training noise | SNR 5–15, all planets |
+| Radiative-transfer code | the same planets rendered by Exo-Transmit with the same opacities | code-to-code differences in the forward model | never (held out) |
+| Opacity database | ExoMol cross sections for H₂O, CH₄, CO₂, CO in place of Exo-Transmit's tables | line-list differences between databases | never (held out) |
+| Quenched chemistry | carbon–oxygen partition frozen at the quench level, K<sub>zz</sub> = 10⁷–10¹¹ cm² s⁻¹ | vertical mixing drives the photosphere out of equilibrium | 50 % of planets |
+| Omitted absorbers | HCN and C₂H₂ added at their FastChem equilibrium or quenched abundances | species the training forward model does not contain | never (held out) |
+| Compounds | spots 10–20 % × haze 2 × 10⁶–3 × 10⁷ × SNR 8–10 on the same planet | real planets are off on several axes at once | jointly, through the draws above |
+| Binning and targets | Tier-1 (7 points) and Tier-2 (51) layouts; the 965 known Mission Candidate Sample planets under the mission's noise definition | the decision is made at Tier 1, on real targets | — |
+<!-- /table:axes -->
 
 ### 2.4 The measurements
 
@@ -52,9 +69,9 @@ Five quantities are measured for every axis, all on identical test planets and n
 
 **Figure 1.** The reliability map at Tier 3. Each row is one mismatch; the open circle is the accuracy lost by the clean-trained screen, the filled circle the loss of the randomized screen, and the black tick the irreducible part — clean accuracy minus a screen trained only at the test condition. Rows are grouped by region: modelled mismatch (blue), mismatch that helps (green) and physics the simulator omitted (orange). The clean-trained screen scores 96.47 % on clean spectra; the randomized screen 95.41 %.
 
-Table 1 and Figure 1 give the map at Tier 3, and it has three regions.
+Table 2 and Figure 1 give the map at Tier 3, and it has three regions.
 
-**Table 1.** The reliability map at Tier 3, one row per mismatch. Loss is in accuracy points relative to the clean-trained screen's 96.47 % on clean spectra; irreducible is clean accuracy minus the oracle trained at the test condition; randomized is the loss of the screen trained on the randomized grid (95.41 % clean); detect names the decline rule whose score ranks the screen's errors with AUROC ≥ 0.85; fix is what removes the loss.
+**Table 2.** The reliability map at Tier 3, one row per mismatch. Loss is in accuracy points relative to the clean-trained screen's 96.47 % on clean spectra; irreducible is clean accuracy minus the oracle trained at the test condition; randomized is the loss of the screen trained on the randomized grid (95.41 % clean); detect names the decline rule whose score ranks the screen's errors with AUROC ≥ 0.85; fix is what removes the loss.
 
 | Mismatch | Loss | Irreducible | Randomized | Detect | Fix |
 | :-- | --: | --: | --: | :-- | :-- |
@@ -78,7 +95,7 @@ The decline rules behave the same way throughout this region: the probability ma
 
 **Region 2: mismatch that helps.** Quenching the carbon–oxygen partition at depth *raises* the clean-trained screen's accuracy from 96.5 to 98.3 %, by 6.6 points on planets below 1,000 K, at every eddy-diffusion coefficient from 10⁷ to 10¹¹ cm² s⁻¹. The reason is chemical: at depth a carbon-rich atmosphere is depleted of water by orders of magnitude (16, 17), quenching carries that depletion up to the photosphere, and the label's separation in water abundance on cool planets grows from 0.3 to 3.3 dex. The reverse deployment — a screen trained on quenched atmospheres applied to equilibrium ones — loses 10.1 points, of which mixing recovers 72 %. The design rule is to train on the chemistry in which the label is hardest to see. Whether this holds under photochemistry, which the forward model does not include, is not tested here.
 
-**Region 3: physics the simulator omitted.** The last two rows are the subject of Section 3.2.
+**Region 3: physics the simulator omitted.** The last two rows of Table 2 are the subject of Section 3.2.
 
 ### 3.2 The omitted species
 
@@ -106,9 +123,9 @@ The consortium's molecule-presence screen gives the refinement that makes the re
 
 **Figure 4.** The same mismatches at the two binnings. (a) Accuracy of the clean-trained screen (bars), the randomized screen (circles) and the ceiling from a screen trained at the test condition (ticks) at Tier 3 (102 points, blue) and Tier 1 (7 points, orange). (b) The screen on the 965 known planets of Ariel's Mission Candidate Sample under the mission's own noise definition, by tier and host type.
 
-Everything in Section 3.1 is a Tier-3 statement. Triage would happen at Tier 1, on seven numbers per planet, so the map was computed again there (Table 2, Figure 4a) with a screen of the same design trained on the seven-point spectra: 88.7 % on clean spectra, 84.1 % at the tier's SNR of seven.
+Everything in Section 3.1 is a Tier-3 statement. Triage would happen at Tier 1, on seven numbers per planet, so the map was computed again there (Table 3, Figure 4a) with a screen of the same design trained on the seven-point spectra: 88.7 % on clean spectra, 84.1 % at the tier's SNR of seven.
 
-**Table 2.** The map at Tier 1 (seven points). Columns as in Table 1; the clean-trained Tier-1 screen scores 88.7 % on clean spectra and the randomized one 87.9 %. Accepted / coverage is for the best decline rule at a threshold that declines 10 % of clean planets; credit is against the clean selective baseline at that coverage.
+**Table 3.** The map at Tier 1 (seven points). Columns as in Table 2; the clean-trained Tier-1 screen scores 88.7 % on clean spectra and the randomized one 87.9 %. Accepted / coverage is for the best decline rule at a threshold that declines 10 % of clean planets; credit is against the clean selective baseline at that coverage.
 
 | Mismatch | Clean-trained | Randomized | Ceiling | Best rule: accepted / coverage | Credit |
 | :-- | --: | --: | --: | :-- | --: |
@@ -159,11 +176,129 @@ Every number in this paper is read from a committed result file. The code, the r
 
 ## Appendix A. The consortium screen: recipe, deviations, reproduction
 
-The rebuild follows reference (6) §II.2 and §II.5. Deviations: MultiREx/TauREx 3 with Exo-Transmit tables in place of TauREx 3 with ExoMol k-tables; the ExoSim 2 noise shape scaled to the Tier-1 requirement per target in place of ArielRad's Tier-1 noise; the 965 known planets of the 2026 candidate list in place of their 1,000 (which included TESS predictions); training spectra noised once rather than resampled. Reproduction at the 10⁻⁴ threshold (their Table 6 in parentheses): CH₄ 70–72 (82–87), H₂O 63–69 (71–78), CO₂ 60 (79–83), NH₃ 76–78 (82–87) %. Checks: moving the AIRS-CH0 split from 2.76 to 3.0 or 2.5 µm changes the four by at most 2 points; correcting the noise for the integer number of Tier-1 transits per target (a target needing N transits reaches the requirement with N − 0.5 on average) changes them by at most 1.4; scaling the noise to 0.75, 0.5, 0.35 and 0.25 of the requirement gives CH₄ 76, 78, 82, 86, H₂O 70, 72, 72, 86 and NH₃ 80, 82, 84, 61 %, so three of the four classifiers reach their published values at roughly a third of our noise, while CO₂ stays at the majority rate (60–62 %) until the noise is a quarter (71 %). Mismatch costs on their screen at the requirement noise, mean over the four classifiers: haze 3 × 10⁷ m⁻³ −8 to −17, spots 20 % −6 to −13, cloud deck at 10² Pa −6 to −16, noise doubled −5 to −8, HCN + C₂H₂ at 10⁻⁷–10⁻⁴ −0.2 to −1.1 points. Decline rules on their screen: ensemble disagreement across the four classifiers keeps ~100 % of planets under haze (all four agree on the wrong answer), while the k-nearest-neighbour distance declines 97 % — the same confidence-versus-distance split as on ours, with the distance rule acting as a population alarm rather than a per-planet fix.
+The rebuild follows reference (6) §II.2 and §II.5. Deviations: MultiREx/TauREx 3 with Exo-Transmit tables in place of TauREx 3 with ExoMol k-tables; the ExoSim 2 noise shape scaled to the Tier-1 requirement per target in place of ArielRad's Tier-1 noise; the 965 known planets of the 2026 candidate list in place of their 1,000 (which included TESS predictions); training spectra noised once rather than resampled. Reproduction at the 10⁻⁴ threshold (their Table 6 in parentheses): CH₄ 70–72 (82–87), H₂O 63–69 (71–78), CO₂ 60 (79–83), NH₃ 76–78 (82–87) %. Checks: moving the AIRS-CH0 split from 2.76 to 3.0 or 2.5 µm changes the four by at most 2 points; correcting the noise for the integer number of Tier-1 transits per target (a target needing N transits reaches the requirement with N − 0.5 on average) changes them by at most 1.4; scaling the noise to 0.75, 0.5, 0.35 and 0.25 of the requirement gives CH₄ 76, 78, 82, 86, H₂O 70, 72, 72, 86 and NH₃ 80, 82, 84, 61 %, so three of the four classifiers reach their published values at roughly a third of our noise, while CO₂ stays at the majority rate (60–62 %) until the noise is a quarter (71 %). Mismatch costs on their screen at the requirement noise, mean over the four classifiers: haze 3 × 10⁷ m⁻³ −8 to −17, spots 20 % −6 to −13, cloud deck at 10² Pa −6 to −16, noise doubled −5 to −8, HCN + C₂H₂ at 10⁻⁷–10⁻⁴ −0.2 to −1.1 points. Decline rules on their screen: ensemble disagreement across the four classifiers keeps ~100 % of planets under haze (all four agree on the wrong answer), while the k-nearest-neighbour distance declines 97 % — the same confidence-versus-distance split as on ours, with the distance rule acting as a population alarm rather than a per-planet fix. Table 4 gives every number.
+
+**Table 4.** The consortium's Tier-1 screen, rebuilt: accuracy (%) at the 10⁻⁴ abundance threshold for each molecule and classifier on the clean test population and under each mismatch, with the published range from ref. (6) Table 6 for comparison. The "vote" rows are the majority vote of the four classifiers after the ensemble-disagreement or k-nearest-neighbour decline rule, on the accepted planets only.
+
+<!-- table:consortium -->
+| Molecule | Classifier | Their Table 6 | Clean | Haze 3 × 10⁷ | Cloud 10² Pa | HCN + C₂H₂ | Spots 10 % | Spots 20 % | Noise ×2 | Noise ×3 |
+| :-- | :-- | --: | --: | --: | --: | --: | --: | --: | --: | --: |
+<!-- /table:consortium -->
 
 ## Appendix B. Full envelope tables
 
-The complete tables — every mismatch at both binnings, every decline rule, coverage, accepted accuracy, credit, error and shift AUROC, ceilings, held-out transfer — are the files `ariel_trust_envelope`, `tier1_trust_envelope`, `ariel_trust_randomized`, `tier1_trust_randomized`, `ariel_oracle` and `tier1_oracle` in `v3/results`.
+Tables 5 and 6 give, for every mismatch and every decline rule at each binning, the accuracy of all planets and, per rule, the accepted-set accuracy with the coverage kept and the credit against the clean selective baseline at that coverage (points). Table 7 gives the clean-trained, randomized, held-out and ceiling accuracies at both binnings. The source files are `ariel_trust_envelope`, `tier1_trust_envelope`, `ariel_trust_randomized`, `tier1_trust_randomized`, `ariel_oracle` and `tier1_oracle` in `v3/results`.
+
+**Table 5.** The envelope at Tier 3 (102 points), randomized screen. Cells: accepted-set accuracy % (coverage %; credit in points). Thresholds decline 10 % of clean planets.
+
+<!-- table:envelope3 -->
+| Mismatch | All | Ensemble | Margin | Mahalanobis | k-NN |
+| :-- | --: | :-- | :-- | :-- | :-- |
+| Clean | 95.4 | 96.7 (90 %; +0.0) | 98.4 (90 %; +0.0) | 95.2 (90 %; +0.0) | 94.9 (90 %; +0.0) |
+| Cloud deck, 10⁵ Pa | 95.3 | 96.7 (90 %; -0.0) | 98.2 (90 %; -0.2) | 94.8 (85 %; -0.2) | 94.7 (88 %; -0.2) |
+| Cloud deck, 10⁴ Pa | 94.5 | 96.5 (87 %; -0.6) | 97.9 (89 %; -0.6) | 93.4 (63 %; -1.2) | 93.4 (70 %; -0.5) |
+| Cloud deck, 10³ Pa | 92.7 | 95.8 (76 %; -2.9) | 97.4 (85 %; -1.4) | 91.7 (25 %; -4.7) | 92.2 (39 %; -3.2) |
+| Cloud deck, 10² Pa (out of range) | 86.7 | 92.8 (57 %; -6.9) | 93.9 (77 %; -5.5) | 89.5 (2 %; -6.3) | 88.5 (5 %; -9.8) |
+| Cloud deck, 10 Pa (out of range) | 65.2 | 72.4 (21 %; -27.6) | 73.0 (55 %; -26.9) | 100.0 (0 %; +0.0) | 90.9 (0 %; -9.1) |
+| Haze, 2 × 10⁵ m⁻³ | 95.4 | 96.6 (90 %; -0.0) | 98.3 (90 %; -0.1) | 95.0 (89 %; -0.1) | 94.9 (89 %; -0.0) |
+| Haze, 2 × 10⁶ m⁻³ | 94.8 | 96.2 (91 %; -0.4) | 98.0 (90 %; -0.4) | 94.1 (82 %; -0.8) | 94.0 (85 %; -0.7) |
+| Haze, 3 × 10⁷ m⁻³ | 93.7 | 95.1 (90 %; -1.6) | 97.4 (89 %; -1.2) | 92.7 (70 %; -2.0) | 92.3 (72 %; -1.7) |
+| Haze, 2.4 × 10⁸ m⁻³ | 93.1 | 95.0 (85 %; -2.4) | 97.1 (87 %; -1.6) | 93.7 (40 %; -1.1) | 93.6 (49 %; -0.3) |
+| Haze, 10¹⁰ m⁻³ (out of range) | 70.1 | 74.2 (31 %; -25.8) | 82.2 (37 %; -17.8) | 91.5 (4 %; -5.2) | 91.7 (7 %; -6.4) |
+| Star spots, 2 % | 94.4 | 96.2 (90 %; -0.5) | 98.0 (90 %; -0.4) | 94.2 (86 %; -0.9) | 94.1 (86 %; -0.7) |
+| Star spots, 5 % | 93.8 | 96.0 (89 %; -0.8) | 97.6 (89 %; -0.9) | 93.9 (82 %; -1.1) | 94.1 (79 %; -0.3) |
+| Star spots, 10 % | 92.9 | 96.0 (87 %; -1.2) | 97.3 (87 %; -1.4) | 92.9 (80 %; -1.9) | 94.2 (71 %; +0.2) |
+| Star spots, 20 % | 91.7 | 96.1 (82 %; -1.9) | 97.2 (84 %; -1.7) | 91.2 (82 %; -3.8) | 94.2 (63 %; +0.6) |
+| Spots + faculae (out of range) | 93.0 | 95.9 (87 %; -1.2) | 97.2 (88 %; -1.4) | 93.3 (77 %; -1.4) | 94.1 (71 %; +0.1) |
+| Faculae, 10 % (out of range) | 93.4 | 97.5 (83 %; -0.3) | 96.6 (90 %; -1.8) | 93.1 (91 %; -2.1) | 93.2 (86 %; -1.6) |
+| Quenched chemistry | 98.2 | 98.5 (99 %; +2.8) | 98.7 (99 %; +2.7) | 98.0 (80 %; +3.1) | 98.0 (83 %; +3.4) |
+| Other radiative-transfer code | 90.2 | 96.8 (84 %; -0.9) | 94.0 (93 %; -3.8) | 87.8 (57 %; -6.9) | 87.0 (67 %; -6.8) |
+| Other opacity tables | 89.1 | 96.0 (52 %; -3.8) | 95.9 (78 %; -3.4) | 97.4 (4 %; +0.8) | 88.8 (21 %; -8.9) |
+| Spots 10 % + haze 3 × 10⁷ | 92.1 | 95.6 (86 %; -1.8) | 97.0 (86 %; -1.8) | 91.3 (81 %; -3.6) | 93.9 (59 %; +0.3) |
+| Spots 20 % + haze 3 × 10⁷ | 90.5 | 95.5 (81 %; -2.5) | 96.3 (83 %; -2.6) | 90.1 (89 %; -5.0) | 93.7 (54 %; -0.1) |
+| HCN + C₂H₂ omitted | 75.8 | 86.6 (71 %; -12.6) | 77.7 (86 %; -21.1) | 94.1 (62 %; -0.5) | 94.0 (66 %; +0.3) |
+| HCN + C₂H₂ omitted, quenched | 75.7 | 88.9 (73 %; -10.2) | 77.5 (92 %; -20.5) | 98.5 (43 %; +3.7) | 98.1 (53 %; +4.3) |
+| White noise, SNR 12 | 94.4 | 96.7 (87 %; -0.4) | 97.7 (89 %; -0.8) | 93.5 (45 %; -1.3) | 92.8 (75 %; -1.3) |
+| White noise, SNR 8 | 92.5 | 96.1 (80 %; -2.1) | 96.9 (88 %; -1.7) | 100.0 (0 %; +0.0) | 95.4 (23 %; -2.0) |
+| White noise, SNR 5 | 90.8 | 95.8 (60 %; -3.9) | 95.9 (85 %; -2.9) | nan (0 %; +nan) | nan (0 %; +nan) |
+| Correlated noise, SNR 12 | 93.7 | 96.0 (88 %; -1.0) | 97.2 (90 %; -1.2) | 92.6 (77 %; -2.2) | 92.0 (77 %; -2.3) |
+| Correlated noise, SNR 8 | 91.1 | 95.9 (80 %; -2.4) | 95.0 (90 %; -3.5) | 92.0 (34 %; -3.3) | 91.6 (34 %; -4.4) |
+| Correlated noise, SNR 5 | 87.2 | 94.9 (65 %; -4.7) | 91.2 (88 %; -7.4) | 89.3 (6 %; -7.8) | 91.6 (4 %; -6.3) |
+<!-- /table:envelope3 -->
+
+**Table 6.** The envelope at Tier 1 (7 points), randomized screen. Cells as in Table 5.
+
+<!-- table:envelope1 -->
+| Mismatch | All | Ensemble | Margin | Mahalanobis | k-NN |
+| :-- | --: | :-- | :-- | :-- | :-- |
+| Clean | 87.9 | 91.0 (90 %; +0.0) | 91.2 (90 %; +0.0) | 87.7 (90 %; +0.0) | 88.2 (90 %; +0.0) |
+| Cloud deck, 10⁵ Pa | 86.7 | 90.0 (89 %; -1.3) | 90.4 (88 %; -1.5) | 86.5 (88 %; -1.2) | 87.4 (88 %; -0.8) |
+| Cloud deck, 10⁴ Pa | 81.8 | 85.7 (86 %; -6.4) | 86.5 (85 %; -6.5) | 82.9 (77 %; -4.3) | 84.5 (78 %; -4.0) |
+| Cloud deck, 10³ Pa | 75.6 | 79.0 (81 %; -14.0) | 79.9 (82 %; -14.0) | 78.3 (55 %; -8.0) | 80.0 (57 %; -9.3) |
+| Cloud deck, 10² Pa (out of range) | 64.5 | 67.8 (72 %; -27.1) | 68.9 (74 %; -26.7) | 71.6 (27 %; -12.2) | 73.2 (27 %; -18.5) |
+| Cloud deck, 10 Pa (out of range) | 52.7 | 53.1 (60 %; -43.0) | 53.8 (65 %; -43.0) | 56.8 (6 %; -18.6) | 55.4 (6 %; -40.5) |
+| Haze, 2 × 10⁵ m⁻³ | 87.7 | 90.8 (90 %; -0.1) | 91.3 (90 %; +0.1) | 87.5 (91 %; -0.2) | 88.0 (89 %; -0.4) |
+| Haze, 2 × 10⁶ m⁻³ | 87.4 | 90.0 (91 %; -0.7) | 90.9 (88 %; -1.0) | 86.3 (84 %; -1.3) | 87.0 (77 %; -1.5) |
+| Haze, 3 × 10⁷ m⁻³ | 69.3 | 70.7 (87 %; -21.0) | 75.3 (66 %; -21.4) | 67.9 (73 %; -19.2) | 67.3 (64 %; -21.9) |
+| Haze, 2.4 × 10⁸ m⁻³ | 60.5 | 61.3 (71 %; -33.6) | 65.9 (47 %; -32.4) | 58.0 (41 %; -27.5) | 60.4 (60 %; -28.9) |
+| Haze, 10¹⁰ m⁻³ (out of range) | 50.2 | 51.6 (47 %; -45.8) | 51.5 (46 %; -46.8) | 61.5 (2 %; -8.9) | 52.3 (10 %; -42.6) |
+| Star spots, 2 % | 87.8 | 90.2 (91 %; -0.5) | 91.1 (90 %; +0.0) | 87.9 (85 %; +0.3) | 88.8 (83 %; +0.4) |
+| Star spots, 5 % | 86.5 | 89.0 (91 %; -1.8) | 90.8 (87 %; -1.4) | 86.5 (79 %; -0.9) | 87.5 (76 %; -1.0) |
+| Star spots, 10 % | 84.9 | 87.1 (90 %; -4.0) | 90.7 (80 %; -3.5) | 84.2 (76 %; -3.0) | 84.7 (73 %; -3.9) |
+| Star spots, 20 % | 81.7 | 84.3 (87 %; -7.2) | 91.1 (68 %; -5.5) | 79.4 (79 %; -7.9) | 79.5 (77 %; -9.0) |
+| Spots + faculae (out of range) | 85.1 | 87.4 (90 %; -3.5) | 90.6 (82 %; -3.1) | 84.8 (74 %; -2.4) | 85.6 (72 %; -3.1) |
+| Faculae, 10 % (out of range) | 84.6 | 87.4 (89 %; -3.9) | 87.8 (90 %; -3.3) | 85.9 (83 %; -1.7) | 86.1 (89 %; -2.2) |
+| Quenched chemistry | 94.2 | 95.3 (96 %; +6.0) | 95.5 (96 %; +6.3) | 94.8 (82 %; +7.2) | 95.9 (80 %; +7.6) |
+| Other radiative-transfer code | 86.8 | 89.9 (90 %; -1.0) | 90.1 (90 %; -0.9) | 86.6 (84 %; -1.0) | 87.1 (83 %; -1.2) |
+| Other opacity tables | 66.8 | 67.5 (96 %; -21.8) | 67.4 (96 %; -21.9) | 68.2 (85 %; -19.4) | 68.0 (87 %; -20.3) |
+| Spots 10 % + haze 3 × 10⁷ | 65.4 | 67.2 (86 %; -24.7) | 75.3 (46 %; -22.9) | 65.1 (92 %; -22.7) | 64.5 (89 %; -23.8) |
+| Spots 20 % + haze 3 × 10⁷ | 62.5 | 64.9 (83 %; -27.8) | 76.2 (33 %; -23.0) | 62.4 (97 %; -25.5) | 62.1 (96 %; -26.0) |
+| HCN + C₂H₂ omitted | 69.0 | 71.0 (86 %; -21.1) | 71.8 (85 %; -21.1) | 67.1 (91 %; -20.6) | 68.4 (91 %; -19.9) |
+| HCN + C₂H₂ omitted, quenched | 70.6 | 72.1 (90 %; -18.8) | 72.7 (89 %; -18.8) | 67.0 (84 %; -20.6) | 68.9 (82 %; -19.5) |
+| White noise, SNR 12 | 86.7 | 89.5 (90 %; -1.4) | 89.8 (91 %; -1.2) | 86.3 (86 %; -1.3) | 87.3 (86 %; -1.1) |
+| White noise, SNR 8 | 83.1 | 85.9 (88 %; -5.4) | 86.1 (90 %; -5.1) | 82.0 (69 %; -5.0) | 84.1 (67 %; -4.7) |
+| White noise, SNR 5 | 74.6 | 78.1 (82 %; -14.8) | 77.1 (88 %; -14.8) | 73.2 (42 %; -12.4) | 78.1 (39 %; -12.6) |
+| Correlated noise, SNR 12 | 87.6 | 91.0 (90 %; +0.1) | 91.3 (90 %; +0.1) | 87.5 (89 %; -0.2) | 88.0 (89 %; -0.3) |
+| Correlated noise, SNR 8 | 87.3 | 90.1 (90 %; -0.8) | 90.5 (91 %; -0.5) | 86.9 (87 %; -0.8) | 87.8 (86 %; -0.5) |
+| Correlated noise, SNR 5 | 86.5 | 89.6 (90 %; -1.4) | 89.8 (90 %; -1.4) | 86.2 (80 %; -1.3) | 86.6 (78 %; -1.9) |
+<!-- /table:envelope1 -->
+
+**Table 7.** Clean-trained, randomized, held-out and ceiling accuracies (%) at both binnings. Held-out is the randomized grid rebuilt without the case's ingredient (for the two codes and the omitted species every grid is held out and the randomized value is repeated); ceiling is a screen trained at the test condition.
+
+<!-- table:ceilings -->
+| Mismatch | Tier 3: clean-trained | Tier 3: randomized | Tier 3: held-out | Tier 3: ceiling | Tier 1: clean-trained | Tier 1: randomized | Tier 1: ceiling |
+| :-- | --: | --: | --: | --: | --: | --: | --: |
+| Clean | 96.5 | 95.4 | — | — | 88.7 | 87.9 | — |
+| Cloud deck, 10⁵ Pa | 96.4 | 95.3 | 95.3 | — | 87.8 | 86.7 | — |
+| Cloud deck, 10⁴ Pa | 95.2 | 94.5 | 94.1 | — | 83.8 | 81.8 | — |
+| Cloud deck, 10³ Pa | 92.4 | 92.7 | 92.2 | — | 76.5 | 75.6 | — |
+| Cloud deck, 10² Pa (out of range) | 85.5 | 86.7 | 85.8 | — | 64.9 | 64.5 | — |
+| Cloud deck, 10 Pa (out of range) | 63.7 | 65.2 | 64.5 | — | 52.2 | 52.7 | — |
+| Haze, 2 × 10⁵ m⁻³ | 96.3 | 95.4 | 95.5 | — | 88.6 | 87.7 | — |
+| Haze, 2 × 10⁶ m⁻³ | 94.7 | 94.8 | 94.6 | — | 87.3 | 87.4 | — |
+| Haze, 3 × 10⁷ m⁻³ | 90.4 | 93.7 | 92.7 | 95.2 | 60.3 | 69.3 | 75.5 |
+| Haze, 2.4 × 10⁸ m⁻³ | 88.1 | 93.1 | 91.5 | — | 50.2 | 60.5 | — |
+| Haze, 10¹⁰ m⁻³ (out of range) | 61.3 | 70.1 | 66.2 | — | 52.6 | 50.2 | — |
+| Star spots, 2 % | 94.0 | 94.4 | 94.1 | — | 87.4 | 87.8 | — |
+| Star spots, 5 % | 91.5 | 93.8 | 92.3 | — | 84.1 | 86.5 | — |
+| Star spots, 10 % | 88.8 | 92.9 | 89.8 | 94.2 | 78.3 | 84.9 | 85.5 |
+| Star spots, 20 % | 85.5 | 91.7 | 86.5 | 93.0 | 70.0 | 81.7 | 82.9 |
+| Spots + faculae (out of range) | 89.2 | 93.0 | 90.0 | — | 79.8 | 85.1 | — |
+| Faculae, 10 % (out of range) | 93.0 | 93.4 | 93.3 | — | 86.9 | 84.6 | — |
+| Quenched chemistry | 98.3 | 98.2 | 98.1 | — | 92.5 | 94.2 | — |
+| Other radiative-transfer code | 90.0 | 90.2 | 90.2 | 95.5 | 86.8 | 86.8 | 87.5 |
+| Other opacity tables | 80.6 | 89.1 | 89.1 | 94.6 | 64.8 | 66.8 | 79.3 |
+| Spots 10 % + haze 3 × 10⁷ | 87.6 | 92.1 | — | — | 50.7 | 65.4 | — |
+| Spots 20 % + haze 3 × 10⁷ | 85.4 | 90.5 | — | — | 50.1 | 62.5 | — |
+| HCN + C₂H₂ omitted | 75.8 | 75.8 | — | 96.4 | 69.0 | 69.0 | 82.3 |
+| HCN + C₂H₂ omitted, quenched | 75.7 | 75.7 | — | — | 70.6 | 70.6 | — |
+| White noise, SNR 12 | 94.5 | 94.4 | 94.0 | — | 86.9 | 86.7 | — |
+| White noise, SNR 8 | 92.2 | 92.5 | 92.1 | — | 81.0 | 83.1 | — |
+| White noise, SNR 5 | 88.9 | 90.8 | 89.9 | — | 71.8 | 74.6 | — |
+| Correlated noise, SNR 12 | 93.0 | 93.7 | 93.6 | — | 88.7 | 87.6 | — |
+| Correlated noise, SNR 8 | 89.2 | 91.1 | 90.7 | — | 88.8 | 87.3 | — |
+| Correlated noise, SNR 5 | 84.1 | 87.2 | 85.4 | — | 88.1 | 86.5 | — |
+<!-- /table:ceilings -->
 
 ## Appendix C. Conformal prediction and calibration under mismatch
 

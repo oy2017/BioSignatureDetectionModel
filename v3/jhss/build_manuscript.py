@@ -30,7 +30,7 @@ def parse(md):
         ln = lines[i]
         s = ln.strip()
 
-        if not s or s == "---":
+        if not s or s == "---" or s.startswith("<!--"):
             i += 1
             continue
 
