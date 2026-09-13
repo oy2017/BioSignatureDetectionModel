@@ -1,0 +1,7 @@
+clean rendered (1804, 2753) failures 0
+absorbers rendered (1804, 2753) failures 0
+norm_xgb planets 1804
+stored (TauREx units)  clean 96.3 (C-rich 97.9) | with HCN+C2H2 73.5 (C-rich 48.9)
+pressure fixed         clean 90.0 (C-rich 82.1) | with HCN+C2H2 67.4 (C-rich 33.0)
+
+[exited with code 0]
