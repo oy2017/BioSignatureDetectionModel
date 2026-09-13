@@ -11,26 +11,26 @@ cloud_1e2Pa                   OUT  frozen  64.85  full  64.50  held-out  63.93  
 cloud_1e1Pa                   OUT  frozen  52.15  full  52.72  held-out  51.93  oracle    nan
 haze_2p0e5                    in   frozen  88.58  full  87.71  held-out  87.98  oracle    nan
 haze_2p0e6                    in   frozen  87.30  full  87.40  held-out  87.15  oracle    nan
-haze_3p0e7                    in   frozen  60.34  full  69.32  held-out  64.67  oracle    nan
+haze_3p0e7                    in   frozen  60.34  full  69.32  held-out  64.67  oracle  75.48
 haze_2p4e8                    in   frozen  50.18  full  60.53  held-out  54.26  oracle    nan
 haze_1p0e10                   OUT  frozen  52.62  full  50.18  held-out  49.67  oracle    nan
 tlse_spots02                  in   frozen  87.36  full  87.82  held-out  87.16  oracle    nan
 tlse_spots05                  in   frozen  84.06  full  86.49  held-out  84.22  oracle    nan
-tlse_spots10                  in   frozen  78.31  full  84.94  held-out  79.79  oracle    nan
-tlse_spots20                  in   frozen  69.96  full  81.70  held-out  72.83  oracle    nan
+tlse_spots10                  in   frozen  78.31  full  84.94  held-out  79.79  oracle  85.53
+tlse_spots20                  in   frozen  69.96  full  81.70  held-out  72.83  oracle  82.90
 tlse_mixed                    OUT  frozen  79.82  full  85.13  held-out  81.04  oracle    nan
 tlse_fac10                    OUT  frozen  86.95  full  84.57  held-out  85.39  oracle    nan
 quenched                      in   frozen  92.49  full  94.23  held-out  94.17  oracle    nan
-exotransmit                   OUT  frozen  86.79  full  86.85  held-out  86.85  oracle    nan
-exomol                        OUT  frozen  64.78  full  66.77  held-out  66.77  oracle    nan
+exotransmit                   OUT  frozen  86.79  full  86.85  held-out  86.85  oracle  87.52
+exomol                        OUT  frozen  64.78  full  66.77  held-out  66.77  oracle  79.26
 compound_spots10_haze3e7      in   frozen  50.70  full  65.44  held-out    nan  oracle    nan
 compound_spots20_haze3e7      in   frozen  50.12  full  62.52  held-out    nan  oracle    nan
 white_snr12                   in   frozen  86.86  full  86.68  held-out  86.78  oracle    nan
-white_snr8                    in   frozen  81.01  full  83.05  held-out  82.08  oracle    nan
-white_snr5                    in   frozen  71.81  full  74.58  held-out  73.15  oracle    nan
+white_snr8                    in   frozen  81.01  full  83.05  held-out  82.08  oracle  84.01
+white_snr5                    in   frozen  71.81  full  74.58  held-out  73.15  oracle  79.08
 correlated_snr12              in   frozen  88.66  full  87.64  held-out  88.17  oracle    nan
-correlated_snr8               in   frozen  88.84  full  87.27  held-out  87.60  oracle    nan
-correlated_snr5               in   frozen  88.13  full  86.52  held-out  87.52  oracle    nan
+correlated_snr8               in   frozen  88.84  full  87.27  held-out  87.60  oracle  88.68
+correlated_snr5               in   frozen  88.13  full  86.52  held-out  87.52  oracle  88.10
 Randomized training grid vs the frozen screen, configuration tier1, pipeline norm_xgb
 
 full = every ingredient randomized; held-out = the variant trained WITHOUT the case's axis
@@ -46,28 +46,29 @@ cloud_1e2Pa                      OUT    64.85    64.50     63.93        -
 cloud_1e1Pa                      OUT    52.15    52.72     51.93        -
 haze_2p0e5                        in    88.58    87.71     87.98        -
 haze_2p0e6                        in    87.30    87.40     87.15        -
-haze_3p0e7                        in    60.34    69.32     64.67        -
+haze_3p0e7                        in    60.34    69.32     64.67    75.48
 haze_2p4e8                        in    50.18    60.53     54.26        -
 haze_1p0e10                      OUT    52.62    50.18     49.67        -
 tlse_spots02                      in    87.36    87.82     87.16        -
 tlse_spots05                      in    84.06    86.49     84.22        -
-tlse_spots10                      in    78.31    84.94     79.79        -
-tlse_spots20                      in    69.96    81.70     72.83        -
+tlse_spots10                      in    78.31    84.94     79.79    85.53
+tlse_spots20                      in    69.96    81.70     72.83    82.90
 tlse_mixed                       OUT    79.82    85.13     81.04        -
 tlse_fac10                       OUT    86.95    84.57     85.39        -
 quenched                          in    92.49    94.23     94.17        -
-exotransmit                      OUT    86.79    86.85     86.85        -
-exomol                           OUT    64.78    66.77     66.77        -
+exotransmit                      OUT    86.79    86.85     86.85    87.52
+exomol                           OUT    64.78    66.77     66.77    79.26
 compound_spots10_haze3e7          in    50.70    65.44         -        -
 compound_spots20_haze3e7          in    50.12    62.52         -        -
 white_snr12                       in    86.86    86.68     86.78        -
-white_snr8                        in    81.01    83.05     82.08        -
-white_snr5                        in    71.81    74.58     73.15        -
+white_snr8                        in    81.01    83.05     82.08    84.01
+white_snr5                        in    71.81    74.58     73.15    79.08
 correlated_snr12                  in    88.66    87.64     88.17        -
-correlated_snr8                   in    88.84    87.27     87.60        -
-correlated_snr5                   in    88.13    86.52     87.52        -
+correlated_snr8                   in    88.84    87.27     87.60    88.68
+correlated_snr5                   in    88.13    86.52     87.52    88.10
 
 clean cost of randomization: 88.69% -> 87.92% (-0.77 points)
+in-range cases with an oracle: full reaches 38-92% of the ceiling (n = 5)
 
 Held-out axes, IN-RANGE cases only: mean loss (points vs the frozen clean accuracy) of the frozen screen, of the
 variant trained without that axis, and of the full randomized screen; transfer = share of full's loss reduction

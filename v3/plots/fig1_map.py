@@ -1,4 +1,4 @@
-"""Figure 1: the reliability map at Tier 3. One row per mismatch; the frozen screen's loss, the
+"""Figure 1: the reliability map at Tier 3. Error bars: standard deviation across the five test sets. One row per mismatch; the frozen screen's loss, the
 randomized screen's loss, and the irreducible part (clean minus the oracle trained at the test
 condition). Rows grouped by region: modelled mismatch, mismatch that helps, omitted physics."""
 import os, sys
@@ -21,6 +21,12 @@ def main():
     det = pd.read_csv(os.path.join(RES, "ariel_trust_detect.csv")); det = det[det.score == "margin"].set_index("case")
     orc = pd.read_csv(os.path.join(RES, "ariel_oracle.csv")).set_index("case")
     clean = det.loc["clean", "accuracy_all"]
+    sd_f = sd_r = sd_o = {}
+    pp = os.path.join(RES, "ariel_trust_randomized_persplit.csv"); po = os.path.join(RES, "ariel_oracle_persplit.csv")
+    if os.path.exists(pp):
+        g = pd.read_csv(pp).groupby("case"); sd_f = (g.frozen.std() * 100).to_dict(); sd_r = (g.full.std() * 100).to_dict()
+    if os.path.exists(po):
+        sd_o = (pd.read_csv(po).groupby("case").oracle.std() * 100).to_dict()
     fig, ax = figure(0.62)
     y = np.arange(len(ROWS))[::-1]
     for yi, (k, lab, reg) in zip(y, ROWS):
@@ -29,9 +35,12 @@ def main():
         irr = orc.loc[k, "irreducible"] if k in orc.index else np.nan
         col = {1: SERIES[0], 2: SERIES[2], 3: SERIES[1]}[reg]
         ax.plot([min(fr, rd), max(fr, rd)], [yi, yi], color=col, lw=1.2, alpha=.6, zorder=1)
+        ax.errorbar(fr, yi, xerr=sd_f.get(k, 0), fmt="none", ecolor=col, elinewidth=.9, capsize=2, zorder=2)
+        ax.errorbar(rd, yi, xerr=sd_r.get(k, 0), fmt="none", ecolor=col, elinewidth=.9, capsize=2, zorder=2)
         ax.scatter(fr, yi, marker="o", s=34, facecolor="white", edgecolor=col, lw=1.4, zorder=3, label="clean-trained screen" if yi == y[0] else None)
         ax.scatter(rd, yi, marker="o", s=34, color=col, zorder=4, label="randomized screen" if yi == y[0] else None)
         if np.isfinite(irr):
+            ax.errorbar(irr, yi, xerr=sd_o.get(k, 0), fmt="none", ecolor=INK, elinewidth=.9, capsize=2, zorder=2)
             ax.scatter(irr, yi, marker="|", s=140, color=INK, lw=1.6, zorder=5, label="irreducible (oracle)" if yi == y[0] else None)
     ax.axvline(0, color=INK2, lw=.8)
     ax.set_yticks(y); ax.set_yticklabels([r[1] for r in ROWS], fontsize=7.5)

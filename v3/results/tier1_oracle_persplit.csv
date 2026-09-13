@@ -1,0 +1,46 @@
+axis,case,split,oracle
+white noise,snr8,test1,0.8370288248337029
+white noise,snr8,test2,0.8401323042998897
+white noise,snr8,test3,0.846111417539989
+white noise,snr8,test4,0.8265765765765766
+white noise,snr8,test5,0.8501934770591487
+correlated noise,snr8,test1,0.8835920177383592
+correlated noise,snr8,test2,0.8792723263506064
+correlated noise,snr8,test3,0.8935466078323221
+correlated noise,snr8,test4,0.8789414414414415
+correlated noise,snr8,test5,0.8982863460475401
+white noise,snr5,test1,0.7766075388026608
+white noise,snr5,test2,0.7872105843439912
+white noise,snr5,test3,0.794815223386652
+white noise,snr5,test4,0.795045045045045
+white noise,snr5,test5,0.8004422332780542
+correlated noise,snr5,test1,0.8869179600886918
+correlated noise,snr5,test2,0.8732083792723263
+correlated noise,snr5,test3,0.8808604522890238
+correlated noise,snr5,test4,0.8733108108108109
+correlated noise,snr5,test5,0.8905472636815921
+gain ramp,x1.0,test1,0.8869179600886918
+gain ramp,x1.0,test2,0.8908489525909592
+gain ramp,x1.0,test3,0.8968560397131826
+gain ramp,x1.0,test4,0.8823198198198198
+gain ramp,x1.0,test5,0.8999447208402432
+gain ramp,x2.0,test1,0.8941241685144125
+gain ramp,x2.0,test2,0.8781697905181919
+gain ramp,x2.0,test3,0.8957528957528957
+gain ramp,x2.0,test4,0.8834459459459459
+gain ramp,x2.0,test5,0.900497512437811
+stellar spots,tlse_spots10,test1,0.8420177383592018
+stellar spots,tlse_spots10,test2,0.8654906284454245
+stellar spots,tlse_spots10,test3,0.8604522890237176
+stellar spots,tlse_spots10,test4,0.8457207207207207
+stellar spots,tlse_spots10,test5,0.8623548922056384
+stellar spots,tlse_spots20,test1,0.8276053215077606
+stellar spots,tlse_spots20,test2,0.8241455347298787
+stellar spots,tlse_spots20,test3,0.8328736900165472
+stellar spots,tlse_spots20,test4,0.8209459459459459
+stellar spots,tlse_spots20,test5,0.8391376451077943
+haze,haze_3p0e7,test1,0.7533259423503326
+haze,haze_3p0e7,test2,0.7486218302094818
+haze,haze_3p0e7,test3,0.7589630446773304
+haze,haze_3p0e7,test4,0.7466216216216216
+haze,haze_3p0e7,test5,0.7661691542288557

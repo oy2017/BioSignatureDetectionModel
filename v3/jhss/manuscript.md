@@ -67,7 +67,7 @@ Five quantities are measured for every axis, all on identical test planets and n
 
 ![Figure 1](figures/fig1_map.png)
 
-**Figure 1.** The reliability map at Tier 3. Each row is one mismatch; the open circle is the accuracy lost by the clean-trained screen, the filled circle the loss of the randomized screen, and the black tick the irreducible part — clean accuracy minus a screen trained only at the test condition. Rows are grouped by region: modelled mismatch (blue), mismatch that helps (green) and physics the simulator omitted (orange). The clean-trained screen scores 96.47 % on clean spectra; the randomized screen 95.41 %.
+**Figure 1.** The reliability map at Tier 3. Each row is one mismatch; the open circle is the accuracy lost by the clean-trained screen, the filled circle the loss of the randomized screen, and the black tick the irreducible part — clean accuracy minus a screen trained only at the test condition. Rows are grouped by region: modelled mismatch (blue), mismatch that helps (green) and physics the simulator omitted (orange). Error bars are the standard deviation across the five test sets. The clean-trained screen scores 96.47 % on clean spectra; the randomized screen 95.41 %.
 
 Table 2 and Figure 1 give the map at Tier 3, and it has three regions.
 
@@ -121,7 +121,7 @@ The consortium's molecule-presence screen gives the refinement that makes the re
 
 ![Figure 4](figures/fig4_tiers.png)
 
-**Figure 4.** The same mismatches at the two binnings. (a) Accuracy of the clean-trained screen (bars), the randomized screen (circles) and the ceiling from a screen trained at the test condition (ticks) at Tier 3 (102 points, blue) and Tier 1 (7 points, orange). (b) The screen on the 965 known planets of Ariel's Mission Candidate Sample under the mission's own noise definition, by tier and host type.
+**Figure 4.** The same mismatches at the two binnings. (a) Accuracy of the clean-trained screen (bars), the randomized screen (circles) and the ceiling from a screen trained at the test condition (ticks) at Tier 3 (102 points, blue) and Tier 1 (7 points, orange); error bars are the standard deviation across the five test sets. (b) The screen on the 965 known planets of Ariel's Mission Candidate Sample under the mission's own noise definition, by tier and host type.
 
 Everything in Section 3.1 is a Tier-3 statement. Triage would happen at Tier 1, on seven numbers per planet, so the map was computed again there (Table 3, Figure 4a) with a screen of the same design trained on the seven-point spectra: 88.7 % on clean spectra, 84.1 % at the tier's SNR of seven.
 
