@@ -1,3 +1,5 @@
+**Technical note**
+
 # Can a simulator-trained classifier for Ariel Tier-1 spectra be trusted?
 
 Owen Yang<sup>a</sup>
