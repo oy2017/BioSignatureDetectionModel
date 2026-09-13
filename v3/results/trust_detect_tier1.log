@@ -1,12 +1,39 @@
-Traceback (most recent call last):
-  File "/mnt/c/Users/owenh/BioSignatureDetectionModel/v3/trust_detect.py", line 122, in <module>
-    main()
-  File "/mnt/c/Users/owenh/BioSignatureDetectionModel/v3/trust_detect.py", line 51, in main
-    ens = [load_pipe(cfg, k) for k in ("norm_xgb", "norm_rf", "norm_mlp")]
-  File "/mnt/c/Users/owenh/BioSignatureDetectionModel/v3/trust_detect.py", line 51, in <listcomp>
-    ens = [load_pipe(cfg, k) for k in ("norm_xgb", "norm_rf", "norm_mlp")]
-  File "/mnt/c/Users/owenh/BioSignatureDetectionModel/v3/trust_detect.py", line 39, in load_pipe
-    d = joblib.load(os.path.join(MODELS, f"{cfg}_{key}.joblib"))
-  File "/home/owenhyang/tfenv/lib/python3.10/site-packages/joblib/numpy_pickle.py", line 735, in load
-    with open(filename, "rb") as f:
-FileNotFoundError: [Errno 2] No such file or directory: '/mnt/c/Users/owenh/BioSignatureDetectionModel/v3/models/tier1_norm_rf.joblib'
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1789314870.148803 1458434 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1789314870.151126 1458434 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+I0000 00:00:1789314870.177354 1458434 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1789314871.273487 1458434 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1789314871.275035 1458434 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+E0000 00:00:1789314871.630809 1458434 cuda_executor.cc:1737] INTERNAL: CUDA Runtime error: Failed call to cudaGetRuntimeVersion: Error loading CUDA libraries. GPU will not be used.: Error loading CUDA libraries. GPU will not be used.
+W0000 00:00:1789314871.632564 1458465 cuda_executor.cc:1755] Failed to determine cuDNN version (Note that this is expected if the application doesn't link the cuDNN plugin): INTERNAL: cuDNN error: CUDNN_STATUS_INTERNAL_ERROR
+W0000 00:00:1789314871.649547 1458434 gpu_device.cc:2365] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+clean                      acc  88.55  margin: keep  90% -> 92.52 (auroc_err 0.89)  ensemble: keep  90% -> 91.61 (auroc_err 0.83)  mahalanobis: keep  90% -> 88.33 (auroc_err 0.45)  pca_recon: keep  90% -> 89.43 (auroc_err 0.58)  knn: keep  90% -> 88.32 (auroc_err 0.50)
+cloud_1e3Pa                acc  76.57  margin: keep  89% -> 79.10 (auroc_err 0.70)  ensemble: keep  61% -> 83.91 (auroc_err 0.69)  mahalanobis: keep  58% -> 81.53 (auroc_err 0.59)  pca_recon: keep  75% -> 80.29 (auroc_err 0.62)  knn: keep  50% -> 81.98 (auroc_err 0.60)
+cloud_1e4Pa                acc  83.90  margin: keep  89% -> 87.95 (auroc_err 0.82)  ensemble: keep  80% -> 88.84 (auroc_err 0.77)  mahalanobis: keep  80% -> 84.91 (auroc_err 0.52)  pca_recon: keep  84% -> 85.96 (auroc_err 0.62)  knn: keep  76% -> 85.15 (auroc_err 0.55)
+haze_3p0e7                 acc  59.47  margin: keep  98% -> 59.71 (auroc_err 0.57)  ensemble: keep  74% -> 63.17 (auroc_err 0.62)  mahalanobis: keep   8% -> 80.62 (auroc_err 0.63)  pca_recon: keep  86% -> 58.14 (auroc_err 0.50)  knn: keep   6% -> 81.05 (auroc_err 0.59)
+haze_2p4e8                 acc  49.90  margin: keep  97% -> 49.79 (auroc_err 0.56)  ensemble: keep  36% -> 59.60 (auroc_err 0.60)  mahalanobis: keep   0% -> 88.00 (auroc_err 0.56)  pca_recon: keep  85% -> 50.22 (auroc_err 0.52)  knn: keep   0% -> 84.62 (auroc_err 0.53)
+tlse_spots10               acc  78.93  margin: keep  97% -> 79.97 (auroc_err 0.68)  ensemble: keep  74% -> 88.20 (auroc_err 0.82)  mahalanobis: keep  38% -> 90.92 (auroc_err 0.74)  pca_recon: keep  92% -> 80.54 (auroc_err 0.67)  knn: keep  35% -> 91.15 (auroc_err 0.74)
+tlse_spots20               acc  70.76  margin: keep  98% -> 71.11 (auroc_err 0.64)  ensemble: keep  62% -> 86.21 (auroc_err 0.82)  mahalanobis: keep  19% -> 92.09 (auroc_err 0.76)  pca_recon: keep  99% -> 70.98 (auroc_err 0.65)  knn: keep  17% -> 92.59 (auroc_err 0.75)
+tlse_mixed                 acc  80.51  margin: keep  96% -> 81.75 (auroc_err 0.69)  ensemble: keep  76% -> 88.76 (auroc_err 0.81)  mahalanobis: keep  43% -> 90.93 (auroc_err 0.73)  pca_recon: keep  90% -> 82.85 (auroc_err 0.68)  knn: keep  39% -> 91.15 (auroc_err 0.74)
+exotransmit                acc  87.56  margin: keep  90% -> 91.52 (auroc_err 0.87)  ensemble: keep  87% -> 91.11 (auroc_err 0.81)  mahalanobis: keep  84% -> 87.65 (auroc_err 0.46)  pca_recon: keep  90% -> 88.24 (auroc_err 0.56)  knn: keep  82% -> 87.47 (auroc_err 0.50)
+exomol                     acc  67.50  margin: keep  96% -> 68.56 (auroc_err 0.67)  ensemble: keep  88% -> 70.44 (auroc_err 0.71)  mahalanobis: keep  91% -> 67.21 (auroc_err 0.45)  pca_recon: keep  91% -> 67.70 (auroc_err 0.52)  knn: keep  88% -> 68.20 (auroc_err 0.56)
+quenched                   acc  80.98  margin: keep  95% -> 82.76 (auroc_err 0.71)  ensemble: keep  90% -> 83.83 (auroc_err 0.75)  mahalanobis: keep  91% -> 80.38 (auroc_err 0.44)  pca_recon: keep  91% -> 82.11 (auroc_err 0.58)  knn: keep  90% -> 80.49 (auroc_err 0.54)
+compound_spots20_haze3e7   acc  50.00  margin: keep 100% -> 50.01 (auroc_err 0.60)  ensemble: keep  54% -> 65.56 (auroc_err 0.71)  mahalanobis: keep   0% ->   nan (auroc_err 0.62)  pca_recon: keep 100% -> 50.00 (auroc_err 0.53)  knn: keep   0% ->   nan (auroc_err 0.53)
+absorbers                  acc  69.42  margin: keep  85% -> 72.62 (auroc_err 0.74)  ensemble: keep  82% -> 74.79 (auroc_err 0.77)  mahalanobis: keep  96% -> 69.02 (auroc_err 0.45)  pca_recon: keep  91% -> 69.33 (auroc_err 0.47)  knn: keep  94% -> 69.61 (auroc_err 0.62)
+absorbers_quenched         acc  62.40  margin: keep  90% -> 64.17 (auroc_err 0.72)  ensemble: keep  83% -> 66.94 (auroc_err 0.73)  mahalanobis: keep  96% -> 62.10 (auroc_err 0.46)  pca_recon: keep  92% -> 62.77 (auroc_err 0.50)  knn: keep  94% -> 62.49 (auroc_err 0.61)
+white_snr8                 acc  82.44  margin: keep  91% -> 85.18 (auroc_err 0.78)  ensemble: keep  78% -> 87.14 (auroc_err 0.74)  mahalanobis: keep  72% -> 82.16 (auroc_err 0.48)  pca_recon: keep  91% -> 83.19 (auroc_err 0.57)  knn: keep  61% -> 82.91 (auroc_err 0.50)
+white_snr5                 acc  74.59  margin: keep  92% -> 76.75 (auroc_err 0.71)  ensemble: keep  63% -> 81.25 (auroc_err 0.67)  mahalanobis: keep  41% -> 74.57 (auroc_err 0.49)  pca_recon: keep  90% -> 75.23 (auroc_err 0.55)  knn: keep  29% -> 75.14 (auroc_err 0.50)
+correlated_snr8            acc  88.29  margin: keep  90% -> 92.08 (auroc_err 0.87)  ensemble: keep  88% -> 91.45 (auroc_err 0.81)  mahalanobis: keep  84% -> 88.49 (auroc_err 0.46)  pca_recon: keep  89% -> 89.15 (auroc_err 0.58)  knn: keep  81% -> 88.37 (auroc_err 0.49)
+correlated_snr5            acc  87.54  margin: keep  90% -> 91.30 (auroc_err 0.86)  ensemble: keep  84% -> 91.18 (auroc_err 0.79)  mahalanobis: keep  69% -> 88.33 (auroc_err 0.49)  pca_recon: keep  88% -> 88.61 (auroc_err 0.59)  knn: keep  64% -> 88.00 (auroc_err 0.51)
+score        mean accepted worst accepted mean coverage mean AUROC(err)
+knn                 81.90%         62.49%         53.3%           0.580
+mahalanobis         81.81%         62.10%         57.0%           0.548
+ensemble            80.14%         59.60%         74.2%           0.742
+pca_recon           74.43%         50.00%         89.7%           0.571
+margin              75.55%         49.79%         93.1%           0.718
+
+Without declining anything the worst shifted-case accuracy is 49.90%.
+tier1 detect exit 0

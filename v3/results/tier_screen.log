@@ -1,4 +1,16 @@
 ariel     102      96.05%     93.52%       94.85%       90.57%       90.99%       88.91%       85.33%       95.35%       87.03%       81.18%       85.14%
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1789314784.648735 1448275 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1789314784.650842 1448275 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+I0000 00:00:1789314784.890770 1448275 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1789314786.642712 1448275 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1789314786.644288 1448275 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+E0000 00:00:1789314787.265629 1448275 cuda_executor.cc:1737] INTERNAL: CUDA Runtime error: Failed call to cudaGetRuntimeVersion: Error loading CUDA libraries. GPU will not be used.: Error loading CUDA libraries. GPU will not be used.
+W0000 00:00:1789314787.266388 1448357 cuda_executor.cc:1755] Failed to determine cuDNN version (Note that this is expected if the application doesn't link the cuDNN plugin): INTERNAL: cuDNN error: CUDNN_STATUS_INTERNAL_ERROR
+W0000 00:00:1789314787.281095 1448275 gpu_device.cc:2365] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
 tier2      51      94.65%     92.21%       93.56%       88.13%       89.26%       87.95%       84.58%       94.18%       79.72%       80.78%       84.46%
 tier1       7      88.55%     83.86%       83.90%       76.57%       59.47%       78.93%       70.76%       87.56%       67.50%       80.98%       50.00%
 The screen at each tier's binning (norm_xgb, Tier-3 hyper-parameters, trained at SNR 15)

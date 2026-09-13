@@ -1,0 +1,57 @@
+Loading MultiREx version 0.3.1
+  pop1_native_cloud1e4: (977, 2753), 22 failures
+  pop1_native_cloud1e3: (977, 2753), 22 failures
+  pop1_native_cloud1e1: (977, 2753), 22 failures
+  pop1_native_haze2e5: (977, 2753), 23 failures
+  pop1_native_haze2e6: (977, 2753), 23 failures
+  pop1_native_haze2p4e8: (977, 2753), 23 failures
+  pop1_native_haze1e10: (977, 2753), 23 failures
+  pop3_native_haze3e7: (3908, 2753), 101 failures
+  pop3_native_cloud1e2: (3908, 2753), 99 failures
+  pop3_native_absorbers: (3908, 2753), 99 failures
+  pop3_native_rand_haze: (3908, 2753), 99 failures
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+swap dir [exomol] /home/owenhyang/opacity_swap_v3_exomol
+  swapped  CH4  -> 12C-1H4__YT34to10.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  CO   -> 12C-16O__Li2015.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  CO2  -> 12C-16O2__UCL-4000.R15000_0.3-50mu.xsec.TauREx.h5
+  swapped  H2O  -> 1H2-16O__POKAZATEL__R15000_0.3-50mu.xsec.TauREx.h5
+  retained NH3  -> opacNH3.dat
+  retained O2   -> opacO2.dat
+  retained O3   -> opacO3.dat
+  pop1_native_exomol: (977, 2753), 22 failures
+    370 s
+  pop3_native_exomol: (3908, 2753), 97 failures
+    1516 s
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+/mnt/c/Users/owenh/BioSignatureDetectionModel/v3/alfnoor_trust.py:124: RuntimeWarning: overflow encountered in cast
+  y = S.bin_to_grid(d[:, 0] * 1e6, d[:, 1] / 100.0, grid).astype(np.float32)
+  pop1_native_exotransmit: (977, 2753), 1 failures
+    285 s
+/mnt/c/Users/owenh/BioSignatureDetectionModel/v3/alfnoor_trust.py:124: RuntimeWarning: overflow encountered in cast
+  y = S.bin_to_grid(d[:, 0] * 1e6, d[:, 1] / 100.0, grid).astype(np.float32)
+/mnt/c/Users/owenh/BioSignatureDetectionModel/v3/alfnoor_trust.py:124: RuntimeWarning: overflow encountered in cast
+  y = S.bin_to_grid(d[:, 0] * 1e6, d[:, 1] / 100.0, grid).astype(np.float32)
+/mnt/c/Users/owenh/BioSignatureDetectionModel/v3/alfnoor_trust.py:124: RuntimeWarning: overflow encountered in cast
+  y = S.bin_to_grid(d[:, 0] * 1e6, d[:, 1] / 100.0, grid).astype(np.float32)
+/mnt/c/Users/owenh/BioSignatureDetectionModel/v3/alfnoor_trust.py:124: RuntimeWarning: overflow encountered in cast
+  y = S.bin_to_grid(d[:, 0] * 1e6, d[:, 1] / 100.0, grid).astype(np.float32)
+/mnt/c/Users/owenh/BioSignatureDetectionModel/v3/alfnoor_trust.py:124: RuntimeWarning: overflow encountered in cast
+  y = S.bin_to_grid(d[:, 0] * 1e6, d[:, 1] / 100.0, grid).astype(np.float32)
+/mnt/c/Users/owenh/BioSignatureDetectionModel/v3/alfnoor_trust.py:124: RuntimeWarning: overflow encountered in cast
+  y = S.bin_to_grid(d[:, 0] * 1e6, d[:, 1] / 100.0, grid).astype(np.float32)
+  pop3_native_exotransmit: (3908, 2753), 8 failures
+    1113 s
+render exit 0

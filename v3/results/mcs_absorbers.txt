@@ -1,0 +1,5 @@
+Omitted HCN + C2H2 on the 965 known Ariel targets, payload noise at each tier's own transit count
+
+ariel  (tier2): all  91.7 ->  78.3 %; carbon-rich  93.0 ->  65.0 %; oxygen-rich  90.4 ->  91.9 %; share called carbon-rich 0.52 -> 0.37; mean p(carbon-rich) on carbon-rich 0.91 -> 0.64
+tier2  (tier2): all  91.5 ->  77.3 %; carbon-rich  91.4 ->  61.9 %; oxygen-rich  91.6 ->  92.9 %; share called carbon-rich 0.50 -> 0.35; mean p(carbon-rich) on carbon-rich 0.89 -> 0.60
+tier1  (tier1): all  82.7 ->  70.1 %; carbon-rich  84.0 ->  58.4 %; oxygen-rich  81.4 ->  81.8 %; share called carbon-rich 0.52 -> 0.38; mean p(carbon-rich) on carbon-rich 0.79 -> 0.56
