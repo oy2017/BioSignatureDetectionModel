@@ -45,9 +45,9 @@ def parse(md):
             i += 1
             continue
 
-        m = re.match(r"^!\[[^\]]*\]\(([^)]+)\)\s*$", s)
+        m = re.match(r"^!\[[^\]]*\]\(([^)]+)\)(?:\{width=([\d.]+)\})?\s*$", s)
         if m:
-            blocks.append(("img", urllib.parse.unquote(m.group(1))))
+            blocks.append(("img", (urllib.parse.unquote(m.group(1)), float(m.group(2)) if m.group(2) else 6.2)))
             i += 1
             continue
 
@@ -242,9 +242,9 @@ def build_docx(blocks, dest):
                 r.bold, r.italic = b_, True
                 _script(r, sc)
         elif kind == "img":
-            fp = figpath(payload)
+            fp = figpath(payload[0])
             if fp:
-                doc.add_picture(fp, width=Inches(6.2))
+                doc.add_picture(fp, width=Inches(payload[1]))
                 doc.paragraphs[-1].alignment = WD_ALIGN_PARAGRAPH.CENTER
         elif kind == "table":
             rows = payload
@@ -369,14 +369,14 @@ def build_pdf(blocks, dest):
         elif kind == "quote":
             story.append(Paragraph(f"<i>{esc(payload)}</i>", quotest))
         elif kind == "img":
-            fp = figpath(payload)
+            fp = figpath(payload[0])
             if not fp:
                 continue
             with PILImage.open(fp) as im:
                 w, h = im.size
-            # DOCX inserts figures at 6.2 in wide; match that, but shrink further
-            # if the image would not otherwise fit the text block height.
-            scale = min(6.2 * inch / w, avail / w, (LETTER[1] - 2.2 * inch) / h)
+            # DOCX inserts figures at the requested width (default 6.2 in); match that, but shrink
+            # further if the image would not otherwise fit the text block height.
+            scale = min(payload[1] * inch / w, avail / w, (LETTER[1] - 2.2 * inch) / h)
             im = Image(fp, width=w * scale, height=h * scale)
             im.hAlign = "CENTER"                      # DOCX centers figures
             story.append(Spacer(1, 5))
