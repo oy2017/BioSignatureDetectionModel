@@ -214,7 +214,7 @@ In the interest of transparency, the author discloses the following assistance: 
 
 ## Data and Code Availability
 
-The re-implemented classifier, the stress-test scripts, every result table and figure, the expectations committed before the runs, and the corrections made to the forward model are in the directory `ariel_tier1_trust` of https://github.com/oy2017/BioSignatureDetectionModel, which serves as the supplementary file of this note.
+All code and results are publicly available at https://github.com/oy2017/BioSignatureDetectionModel. The directory `ariel_tier1_trust`, which serves as the supplementary file of this note, contains every result table and figure, the expectations committed before the runs, the evidence that the re-implementation is faithful, and the command that reproduces each result. The re-implemented consortium classifiers, released for general use, are in the directory `v3` of the same repository, together with the carbon-rich classifier, the stress-test scripts and the corrections made to the forward model. Every reported number can be checked against the committed result files; regenerating the spectra from scratch additionally requires the third-party opacity tables, stellar spectra, chemistry code and noise simulator cited in Section 2.
 
 ## Appendix A. Published and re-implemented accuracies
 
