@@ -93,9 +93,9 @@ Unless stated, results are for the 10⁻⁴ threshold, averaged over the four cl
 
 ### 3.1 The re-implementation reproduced the published accuracies
 
-![Figure 1](figures/note_fig1_reproduction.png){width=3.4}
+![Figure 1](figures/note_fig1_reproduction.png)
 
-**Figure 1.** Re-implemented against published accuracy for the 48 combinations of classifier, molecule and abundance threshold. Dashed line: equality; grey band: ±5 points.
+**Figure 1.** The re-implementation against the published accuracies for the 48 combinations of classifier, molecule and abundance threshold. (a) Re-implemented against published accuracy; dashed line, equality. (b) Difference between the two for each combination, grouped by molecule, with marker shape giving the abundance threshold. Grey bands: ±5 points.
 
 Across the 48 published accuracies, the re-implementation differed by +0.4 points on average, 1.4 in absolute value and at most 3.7 (Figure 1; Appendix A), with a correlation of 0.96. It also reproduced the published patterns: accuracy rose with the abundance threshold for 15 of 16 classifier-molecule pairs (16 of 16 published), and water was the hardest molecule at 10⁻⁵ and 10⁻⁴ in both. At 10⁻⁴ the mean accuracies were 84.9 % (CH₄), 74.9 % (H₂O), 79.5 % (CO₂) and 84.4 % (NH₃), against 84.0, 74.8, 80.5 and 85.0 % published. Since a mistaken reading of the recipe missed by 10 points (Section 2.2), this agreement indicates that the re-implementation followed the published design.
 
