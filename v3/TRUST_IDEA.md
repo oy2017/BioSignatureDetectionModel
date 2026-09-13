@@ -283,7 +283,8 @@ default gas set) simply does not contain them.
 planets (1500–2500 K): 98.7 → 51.0 %.** The predicted-positive rate halves (0.52 → 0.26): the
 screen calls carbon-rich planets oxygen-rich. Mechanism, from the spectra: the added absorption
 sits at 2.8–3.0 µm and 4.1 µm, up to half the planet's own amplitude, i.e. it fills the region
-between the 2.7 µm water band and the 3.3 µm methane band — the screen reads it as water. The
+between the 2.7 µm water band and the 3.3 µm methane band — and, being broadband at that
+level, reshapes the whole normalized spectrum (mechanism test in §4i). The
 randomized screen does not absorb it (75.0 %), and the clean-fixed decline rules catch only
 part of it (ensemble: 82 % accepted at 75 % coverage, credit −16 points).
 
@@ -501,6 +502,47 @@ What changed from the NH3-less run: haze costs doubled (2.9 → 6.1 at 3e7), the
 cost rose (10.7 → 15.9) and now partly transfers from randomization, the contamination host
 gap narrowed (10 → 4 points), the consortium screen's H2O classifier got harder and its NH3
 classifier became reproducible. Every qualitative statement of the map survived.
+
+## 4i. Verification of the headline (2026-09-12, after the re-run)
+
+Claim: a carbon-rich screen trained without HCN and C2H2 is at chance on carbon-rich planets once
+those species are present at their chemical abundances; the loss is fully repaired by adding them.
+
+- **Abundances are the literature's.** FastChem equilibrium at the photospheric level gives HCN
+  ~1e-5 and C2H2 ~3e-5 on carbon-rich planets (quenched: 5e-5 and 1.5e-4). Madhusudhan 2012:
+  at C/O ≥ 1 and T > 800 K "C2H2, CH4 and HCN become major constituents", enhanced by 3–6 orders
+  of magnitude over solar, and "C2H2 and HCN can be considered good tracers of the C/O ratio".
+  Moses 2013 agrees, and adds that disequilibrium enhances them further.
+- **Opacities are a validated database.** Exo-Transmit's tables (Kempton et al. 2017) are built
+  from the Freedman et al. 2008/2014 compilation (Lupu et al. 2014, Table 2) and include HCN and
+  C2H2. Single-planet check (hot carbon-rich, amplitude 1422 ppm): HCN at 1e-5 adds 300–600 ppm
+  in the 1.5, 2.0, 3.0, 4.8 and 7 µm bands; C2H2 at 3e-5 adds 420–470 ppm at 1.5 and 3.0 µm and
+  ~210 at 7 µm. That is 30–40 % of the planet's own amplitude, broadband.
+- **Mechanism, corrected.** §4c said the screen "reads the added absorption as water". That is
+  at most half the story: restoring the 2.75–3.05 µm bins of the absorber spectra to their clean
+  values recovers 5.0 of the 24.5 points; restoring 2.75–4.3 µm recovers 7.9; conversely,
+  transplanting only the 2.75–3.05 µm bins into clean spectra costs 13.6. The rest is
+  broadband: with absorption added at 30–40 % of the amplitude across 1.5–7 µm, per-spectrum
+  normalization rescales every bin, so the whole normalized shape moves. The honest statement:
+  the added bands overlap the water–methane region *and* reshape the normalized spectrum.
+- **Robust to the model.** norm_mlp −23.4, norm_rf −23.4, raw_xgb −15.8, pca_xgb −13.8 points;
+  the randomized screen −20.7. Normalized pipelines lose most, for the reason above.
+- **Robust to the binning.** Tier-2 screen 96.0 → 70.7 %, Tier-1 screen 88.7 → 66.3 %; carbon-rich
+  planets at 45–46 % in both.
+- **Statistically solid.** Across the five test sets 71.9 ± 1.1 %. Planets with negligible
+  HCN/C2H2 (C/O < 1) are unaffected (96.2 %) — the internal null control.
+- **Fully repairable.** Oracle trained with the species: 96.43 % on the absorber set, irreducible
+  −0.04 — marginally better than the original screen on its own data.
+- **Label-specific.** The consortium's molecule-presence screen loses 0.2–1.1 points to the same
+  two species. The general statement is therefore: omitted physics is fatal when it sits on the
+  feature that defines the class being screened, and the species a generic grid omits are
+  exactly the ones that define a chemical regime.
+- **Field-level.** The Ariel Data Challenge grid uses H2O, CH4, CO, CO2, NH3 only (Changeat &
+  Yip 2023, §2.2). Stated as: a carbon-rich screen trained on that grid *would* be at chance —
+  demonstrated here on an equivalent grid — not as a defect in any published screen.
+
+Verdict: A-grade holds. One wording to fix wherever it appears: "reads it as water" → "overlaps
+the water–methane region and reshapes the normalized spectrum".
 
 ## 5. Decision gates (cheap first; each has a kill criterion)
 
