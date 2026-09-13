@@ -1,12 +1,12 @@
-Compound mismatch on the frozen clean-trained screen, configuration ariel, pipeline norm_xgb; clean 96.47%
+Compound mismatch on the frozen clean-trained screen, configuration ariel, pipeline norm_xgb; clean 96.05%
 
 compound                  accuracy    loss  sum of parts   excess
-spots10_haze3e7             87.64%    8.83         13.81    -4.98
-spots20_haze3e7             85.40%   11.07         17.11    -6.04
-spots10_haze3e7_snr8        87.13%    9.34         21.41   -12.07
-spots20_haze3e7_snr8        84.69%   11.78         24.71   -12.93
-spots10_haze2e6_snr10       88.25%    8.22         14.84    -6.62
+spots10_haze3e7             87.83%    8.22         12.20    -3.98
+spots20_haze3e7             85.14%   10.91         15.78    -4.87
+spots10_haze3e7_snr8        86.77%    9.28         18.96    -9.67
+spots20_haze3e7_snr8        84.32%   11.73         22.54   -10.80
+spots10_haze2e6_snr10       88.34%    7.71         13.17    -5.46
 
-single-axis losses (points): tlse_spots10 7.69, tlse_spots20 10.99, haze_3p0e7 6.12, haze_2p0e6 1.77, snr10 5.38, snr8 7.60
+single-axis losses (points): tlse_spots10 7.14, tlse_spots20 10.73, haze_3p0e7 5.06, haze_2p0e6 1.32, snr10 4.70, snr8 6.75
 
 excess > 0: the axes compound super-additively on this screen; excess < 0: they partly mask each other.

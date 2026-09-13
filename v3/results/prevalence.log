@@ -1,7 +1,7 @@
-  radius 1-26: raw 80.90%  norm 96.10%  gap +15.19  depth span 4.49 dex
-  radius 1-6: raw 74.18%  norm 94.60%  gap +20.43  depth span 4.24 dex
-  radius 6-12: raw 84.62%  norm 95.27%  gap +10.65  depth span 2.89 dex
-  radius 12-20: raw 87.44%  norm 96.17%  gap +8.74  depth span 2.33 dex
+  radius 1-26: raw 81.05%  norm 95.23%  gap +14.18  depth span 4.49 dex
+  radius 1-6: raw 75.57%  norm 94.81%  gap +19.23  depth span 4.24 dex
+  radius 6-12: raw 84.44%  norm 95.02%  gap +10.58  depth span 2.89 dex
+  radius 12-20: raw 87.51%  norm 95.96%  gap +8.45  depth span 2.33 dex
 Prevalence and the normalization mechanism, configuration ariel, pipeline norm_xgb
 
 1. Precision at realistic base rates. The grid is balanced by construction, so every
@@ -9,24 +9,24 @@ Prevalence and the normalization mechanism, configuration ariel, pipeline norm_x
    of the classifier and do not change with prevalence; precision does.
 
    threshold  recall  specif.    π=0.5    π=0.2    π=0.1   π=0.05   π=0.01
-       0.500   98.0%    95.0%    95.1%    82.9%    68.4%    50.6%    16.4%
-       0.215   99.4%    91.6%    92.2%    74.8%    56.8%    38.4%    10.7%
-       0.900   91.6%    98.3%    98.2%    93.2%    86.0%    74.4%    35.7%
-       0.990   74.2%    99.6%    99.5%    98.0%    95.6%    91.2%    66.5%
+       0.500   97.6%    94.5%    94.7%    81.6%    66.3%    48.3%    15.2%
+       0.215   99.1%    90.6%    91.3%    72.5%    54.0%    35.7%     9.6%
+       0.900   89.6%    98.3%    98.2%    93.1%    85.7%    73.9%    35.2%
+       0.990   73.1%    99.6%    99.5%    98.0%    95.6%    91.1%    66.2%
 
-   at π = 0.10, 50 % precision needs threshold 0.090 and retains 99.8 % recall
-   at π = 0.05, 50 % precision needs threshold 0.519 and retains 97.8 % recall
-   at π = 0.01, 50 % precision needs threshold 0.981 and retains 80.8 % recall
+   at π = 0.10, 50 % precision needs threshold 0.141 and retains 99.4 % recall
+   at π = 0.05, 50 % precision needs threshold 0.554 and retains 97.1 % recall
+   at π = 0.01, 50 % precision needs threshold 0.970 and retains 82.8 % recall
 
 2. Why per-spectrum normalization helps: the absolute-depth nuisance direction.
    Raw vs normalized features trained and tested on radius-restricted populations,
    training-set size held fixed at 4,000 planets per band.
 
     radius (R_E)      raw   normalized      gap   depth span
-            1-26   80.90%       96.10%  +15.19      4.49 dex
-             1-6   74.18%       94.60%  +20.43      4.24 dex
-            6-12   84.62%       95.27%  +10.65      2.89 dex
-           12-20   87.44%       96.17%   +8.74      2.33 dex
+            1-26   81.05%       95.23%  +14.18      4.49 dex
+             1-6   75.57%       94.81%  +19.23      4.24 dex
+            6-12   84.44%       95.02%  +10.58      2.89 dex
+           12-20   87.51%       95.96%   +8.45      2.33 dex
 
-   The normalization advantage falls from +15.2 points on the full grid to
-   +8.7 on the narrowest band, tracking the shrinking spread of absolute transit depth.
+   The normalization advantage falls from +14.2 points on the full grid to
+   +8.4 on the narrowest band, tracking the shrinking spread of absolute transit depth.

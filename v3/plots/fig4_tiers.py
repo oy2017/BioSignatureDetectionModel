@@ -40,7 +40,7 @@ def main():
     a.set_xticks(x); a.set_xticklabels([l for _, l in CASES], rotation=45, ha="right", fontsize=7); a.set_ylabel("Accuracy (%)"); a.set_ylim(40, 100)
     a.grid(axis="x", visible=False); a.legend(fontsize=6.3, loc="upper center", bbox_to_anchor=(0.5, -0.32), ncol=2, frameon=False)
     m = pd.read_csv(os.path.join(RES, "ariel_mcs.csv")).set_index("case")
-    rows = [("tier-2 sigma, ExoSim2 shape, 102 bins", "Tier 3 binning"), ("tier-2 sigma, tier-2 binning (51)", "Tier 2"), ("tier-1 sigma, tier-1 binning (7)", "Tier 1")]
+    rows = [("mission noise at N2, 102 bins", "Tier 3 binning"), ("mission noise at N2, tier-2 binning (51)", "Tier 2"), ("mission noise at N1, tier-1 binning (7)", "Tier 1")]
     xb = np.arange(len(rows)); bands = [("acc_M", "M hosts"), ("acc_K", "K"), ("acc_G", "G"), ("acc_F+", "F+")]
     for k, (col_, lab) in enumerate(bands):
         b.bar(xb + (k - 1.5) * .2, [m.loc[r, col_] * 100 for r, _ in rows], .19, color=[SERIES[1], SERIES[3], SERIES[2], SERIES[0]][k], label=lab)

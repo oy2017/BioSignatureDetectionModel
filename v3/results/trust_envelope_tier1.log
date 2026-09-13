@@ -1,14 +1,14 @@
 WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
-I0000 00:00:1789263312.717401 1124928 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
-I0000 00:00:1789263312.719808 1124928 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
-I0000 00:00:1789263312.925796 1124928 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+I0000 00:00:1789303871.108398 1436630 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1789303871.110655 1436630 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+I0000 00:00:1789303871.137626 1436630 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
 To enable the following instructions: AVX2 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
 WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
-I0000 00:00:1789263315.469047 1124928 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
-I0000 00:00:1789263315.471275 1124928 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
-E0000 00:00:1789263316.250357 1124928 cuda_executor.cc:1737] INTERNAL: CUDA Runtime error: Failed call to cudaGetRuntimeVersion: Error loading CUDA libraries. GPU will not be used.: Error loading CUDA libraries. GPU will not be used.
-W0000 00:00:1789263316.251551 1126279 cuda_executor.cc:1755] Failed to determine cuDNN version (Note that this is expected if the application doesn't link the cuDNN plugin): INTERNAL: cuDNN error: CUDNN_STATUS_INTERNAL_ERROR
-W0000 00:00:1789263316.269143 1124928 gpu_device.cc:2365] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+I0000 00:00:1789303872.370742 1436630 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1789303872.372606 1436630 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+E0000 00:00:1789303874.613137 1436630 cuda_executor.cc:1737] INTERNAL: CUDA Runtime error: Failed call to cudaGetRuntimeVersion: Error loading CUDA libraries. GPU will not be used.: Error loading CUDA libraries. GPU will not be used.
+W0000 00:00:1789303874.614258 1436762 cuda_executor.cc:1755] Failed to determine cuDNN version (Note that this is expected if the application doesn't link the cuDNN plugin): INTERNAL: cuDNN error: CUDNN_STATUS_INTERNAL_ERROR
+W0000 00:00:1789303874.632978 1436630 gpu_device.cc:2365] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
 Skipping registering GPU devices...
 trained randomized xgb/rf/mlp in 39 s
 Reliability envelope of the randomized screen (norm xgb/rf/mlp trained on the randomized grid), configuration tier1
@@ -19,138 +19,138 @@ coverage (what declining low-score planets buys on clean data anyway). in/OUT = 
 
 --- score: ensemble
 case                             range     all  accepted    cov  credit AUROC(err)
-clean                               in   87.92     90.98   90.0   +0.00      0.811
-cloud_1e5Pa                         in   86.66     90.03   88.7   -1.29      0.801
-cloud_1e4Pa                         in   81.81     85.66   85.8   -6.45      0.768
-cloud_1e3Pa                         in   75.55     79.03   81.0  -14.03      0.688
-cloud_1e2Pa                        OUT   64.50     67.75   71.9  -27.07      0.603
-cloud_1e1Pa                        OUT   52.72     53.14   60.4  -43.00      0.510
-haze_2p0e5                          in   87.71     90.80   90.3   -0.09      0.818
-haze_2p0e6                          in   87.40     90.00   90.7   -0.73      0.792
-haze_3p0e7                          in   69.32     70.73   87.0  -21.00      0.597
-haze_2p4e8                          in   60.53     61.31   71.4  -33.64      0.523
-haze_1p0e10                        OUT   50.18     51.63   46.9  -45.79      0.514
-tlse_spots02                        in   87.82     90.18   91.0   -0.46      0.794
-tlse_spots05                        in   86.49     88.95   90.9   -1.77      0.789
-tlse_spots10                        in   84.94     87.10   89.7   -3.96      0.748
-tlse_spots20                        in   81.70     84.32   87.5   -7.20      0.701
-tlse_mixed                         OUT   85.13     87.35   90.3   -3.54      0.752
-tlse_fac10                         OUT   84.57     87.36   88.8   -3.92      0.764
-quenched                            in   94.23     95.28   95.8   +6.02      0.791
-exotransmit                        OUT   86.85     89.88   90.3   -1.01      0.785
-exomol                             OUT   66.77     67.47   95.7  -21.81      0.621
-compound_spots10_haze3e7            in   65.44     67.25   86.2  -24.72      0.566
-compound_spots20_haze3e7            in   62.52     64.92   82.8  -27.78      0.574
-absorbers                          OUT   68.98     71.01   86.0  -21.07      0.698
-absorbers_quenched                 OUT   70.63     72.06   90.5  -18.78      0.709
-white_snr12                         in   86.68     89.51   90.2   -1.38      0.785
-white_snr8                          in   83.05     85.91   88.4   -5.43      0.739
-white_snr5                          in   74.58     78.07   81.9  -14.77      0.657
-correlated_snr12                    in   87.64     91.02   90.1   +0.06      0.815
-correlated_snr8                     in   87.27     90.05   90.4   -0.81      0.802
-correlated_snr5                     in   86.52     89.55   90.0   -1.42      0.795
-   over shifted cases: worst accepted 51.63%, mean coverage 85.2%, mean credit -11.96
+clean                               in   88.19     90.55   90.0   +0.00      0.752
+cloud_1e5Pa                         in   87.70     90.08   89.0   -0.65      0.737
+cloud_1e4Pa                         in   83.91     86.72   84.5   -4.91      0.703
+cloud_1e3Pa                         in   75.17     78.86   77.8  -13.94      0.654
+cloud_1e2Pa                        OUT   63.80     66.62   69.2  -27.62      0.584
+cloud_1e1Pa                        OUT   52.81     53.53   56.8  -41.88      0.515
+haze_2p0e5                          in   87.66     90.00   89.9   -0.56      0.763
+haze_2p0e6                          in   86.60     89.14   88.7   -1.66      0.732
+haze_3p0e7                          in   73.20     74.74   75.8  -18.40      0.579
+haze_2p4e8                          in   65.35     65.01   60.4  -30.15      0.500
+haze_1p0e10                        OUT   48.95     48.13   62.6  -46.91      0.481
+tlse_spots02                        in   86.97     89.28   90.1   -1.26      0.755
+tlse_spots05                        in   85.95     88.34   88.9   -2.39      0.728
+tlse_spots10                        in   84.80     87.43   85.8   -3.93      0.707
+tlse_spots20                        in   83.37     86.18   81.1   -6.22      0.678
+tlse_mixed                         OUT   84.83     87.31   86.6   -3.88      0.719
+tlse_fac10                         OUT   85.97     88.46   89.1   -2.24      0.734
+quenched                            in   81.32     83.86   87.8   -7.14      0.726
+exotransmit                        OUT   87.58     90.05   88.1   -0.87      0.748
+exomol                             OUT   70.22     73.40   87.8  -17.60      0.724
+compound_spots10_haze3e7            in   71.56     72.81   70.2  -21.25      0.538
+compound_spots20_haze3e7            in   70.14     71.70   68.7  -22.62      0.533
+absorbers                          OUT   75.38     79.20   84.1  -12.56      0.711
+absorbers_quenched                 OUT   68.82     72.33   82.2  -19.77      0.673
+white_snr12                         in   87.39     89.44   89.4   -1.22      0.733
+white_snr8                          in   83.97     86.39   85.7   -4.97      0.697
+white_snr5                          in   75.37     78.32   80.4  -14.19      0.622
+correlated_snr12                   OUT   88.04     90.26   89.9   -0.28      0.754
+correlated_snr8                    OUT   87.67     90.03   88.8   -0.76      0.747
+correlated_snr5                    OUT   87.41     89.47   87.6   -1.54      0.709
+   over shifted cases: worst accepted 48.13%, mean coverage 81.6%, mean credit -11.43
 
 --- score: margin
 case                             range     all  accepted    cov  credit AUROC(err)
-clean                               in   87.92     91.19   90.0   +0.00      0.842
-cloud_1e5Pa                         in   86.66     90.36   88.1   -1.49      0.827
-cloud_1e4Pa                         in   81.81     86.46   85.0   -6.49      0.787
-cloud_1e3Pa                         in   75.55     79.85   81.6  -13.98      0.715
-cloud_1e2Pa                        OUT   64.50     68.86   74.3  -26.69      0.639
-cloud_1e1Pa                        OUT   52.72     53.77   64.5  -43.03      0.523
-haze_2p0e5                          in   87.71     91.28   89.9   +0.06      0.846
-haze_2p0e6                          in   87.40     90.91   87.8   -1.00      0.821
-haze_3p0e7                          in   69.32     75.33   65.9  -21.42      0.658
-haze_2p4e8                          in   60.53     65.86   46.5  -32.40      0.576
-haze_1p0e10                        OUT   50.18     51.50   45.6  -46.80      0.515
-tlse_spots02                        in   87.82     91.06   90.5   +0.01      0.840
-tlse_spots05                        in   86.49     90.78   86.9   -1.43      0.832
-tlse_spots10                        in   84.94     90.72   80.4   -3.48      0.814
-tlse_spots20                        in   81.70     91.10   67.8   -5.51      0.796
-tlse_mixed                         OUT   85.13     90.62   82.3   -3.06      0.818
-tlse_fac10                         OUT   84.57     87.81   90.2   -3.31      0.768
-quenched                            in   94.23     95.53   95.9   +6.28      0.840
-exotransmit                        OUT   86.85     90.15   90.4   -0.93      0.805
-exomol                             OUT   66.77     67.40   95.8  -21.89      0.599
-compound_spots10_haze3e7            in   65.44     75.33   46.5  -22.93      0.635
-compound_spots20_haze3e7            in   62.52     76.22   33.2  -23.01      0.625
-absorbers                          OUT   68.98     71.82   85.1  -21.09      0.688
-absorbers_quenched                 OUT   70.63     72.66   89.2  -18.82      0.698
-white_snr12                         in   86.68     89.83   90.6   -1.15      0.818
-white_snr8                          in   83.05     86.13   89.7   -5.13      0.761
-white_snr5                          in   74.58     77.12   87.8  -14.76      0.655
-correlated_snr12                    in   87.64     91.33   90.0   +0.14      0.847
-correlated_snr8                     in   87.27     90.49   90.5   -0.51      0.839
-correlated_snr5                     in   86.52     89.82   89.9   -1.39      0.819
-   over shifted cases: worst accepted 51.50%, mean coverage 79.4%, mean credit -11.56
+clean                               in   88.19     91.78   90.0   +0.00      0.849
+cloud_1e5Pa                         in   87.70     91.32   89.5   -0.67      0.842
+cloud_1e4Pa                         in   83.91     87.80   87.8   -4.76      0.805
+cloud_1e3Pa                         in   75.17     78.92   85.6  -14.45      0.713
+cloud_1e2Pa                        OUT   63.80     66.30   82.2  -28.17      0.617
+cloud_1e1Pa                        OUT   52.81     53.13   79.4  -42.22      0.516
+haze_2p0e5                          in   87.66     91.37   90.4   -0.27      0.855
+haze_2p0e6                          in   86.60     90.14   91.7   -1.09      0.832
+haze_3p0e7                          in   73.20     75.53   89.0  -16.63      0.682
+haze_2p4e8                          in   65.35     68.71   79.7  -26.51      0.629
+haze_1p0e10                        OUT   48.95     49.73   63.3  -47.99      0.524
+tlse_spots02                        in   86.97     90.15   91.5   -1.11      0.843
+tlse_spots05                        in   85.95     88.92   91.3   -2.45      0.823
+tlse_spots10                        in   84.80     88.54   88.7   -3.71      0.808
+tlse_spots20                        in   83.37     88.98   81.6   -5.64      0.789
+tlse_mixed                         OUT   84.83     88.34   89.8   -3.57      0.812
+tlse_fac10                         OUT   85.97     89.79   88.7   -2.48      0.841
+quenched                            in   81.32     83.61   93.0   -7.08      0.807
+exotransmit                        OUT   87.58     91.48   89.7   -0.47      0.846
+exomol                             OUT   70.22     71.84   93.5  -18.68      0.761
+compound_spots10_haze3e7            in   71.56     75.26   81.2  -19.52      0.673
+compound_spots20_haze3e7            in   70.14     75.57   72.9  -21.08      0.663
+absorbers                          OUT   75.38     79.68   83.6  -14.38      0.756
+absorbers_quenched                 OUT   68.82     71.54   86.8  -21.36      0.714
+white_snr12                         in   87.39     90.61   90.7   -0.94      0.831
+white_snr8                          in   83.97     86.94   90.5   -4.67      0.793
+white_snr5                          in   75.37     78.33   88.3  -14.05      0.693
+correlated_snr12                   OUT   88.04     91.98   89.6   +0.01      0.852
+correlated_snr8                    OUT   87.67     91.40   90.1   -0.36      0.847
+correlated_snr5                    OUT   87.41     90.78   90.1   -0.97      0.829
+   over shifted cases: worst accepted 49.73%, mean coverage 86.6%, mean credit -11.22
 
 --- score: mahalanobis
 case                             range     all  accepted    cov  credit AUROC(err)
-clean                               in   87.92     87.75   90.0   +0.00      0.429
-cloud_1e5Pa                         in   86.66     86.55   88.2   -1.17      0.457
-cloud_1e4Pa                         in   81.81     82.93   77.1   -4.27      0.516
-cloud_1e3Pa                         in   75.55     78.33   55.0   -8.01      0.558
-cloud_1e2Pa                        OUT   64.50     71.59   26.9  -12.18      0.570
-cloud_1e1Pa                        OUT   52.72     56.85    5.9  -18.57      0.505
-haze_2p0e5                          in   87.71     87.54   90.7   -0.20      0.428
-haze_2p0e6                          in   87.40     86.29   83.5   -1.33      0.431
-haze_3p0e7                          in   69.32     67.89   72.8  -19.24      0.462
-haze_2p4e8                          in   60.53     57.99   40.9  -27.50      0.487
-haze_1p0e10                        OUT   50.18     61.46    2.1   -8.85      0.504
-tlse_spots02                        in   87.82     87.88   84.7   +0.28      0.456
-tlse_spots05                        in   86.49     86.50   79.1   -0.87      0.459
-tlse_spots10                        in   84.94     84.21   76.0   -3.04      0.430
-tlse_spots20                        in   81.70     79.43   78.8   -7.94      0.387
-tlse_mixed                         OUT   85.13     84.77   73.8   -2.42      0.457
-tlse_fac10                         OUT   84.57     85.93   83.0   -1.67      0.547
-quenched                            in   94.23     94.76   81.8   +7.20      0.548
-exotransmit                        OUT   86.85     86.62   83.7   -1.02      0.457
-exomol                             OUT   66.77     68.24   85.1  -19.40      0.487
-compound_spots10_haze3e7            in   65.44     65.08   92.4  -22.73      0.464
-compound_spots20_haze3e7            in   62.52     62.37   97.0  -25.47      0.485
-absorbers                          OUT   68.98     67.14   91.0  -20.58      0.307
-absorbers_quenched                 OUT   70.63     67.03   84.0  -20.63      0.275
-white_snr12                         in   86.68     86.31   85.9   -1.29      0.447
-white_snr8                          in   83.05     81.98   68.6   -5.05      0.447
-white_snr5                          in   74.58     73.19   41.8  -12.37      0.478
-correlated_snr12                    in   87.64     87.48   89.0   -0.21      0.441
-correlated_snr8                     in   87.27     86.89   87.1   -0.76      0.448
-correlated_snr5                     in   86.52     86.18   80.0   -1.28      0.461
-   over shifted cases: worst accepted 56.85%, mean coverage 71.9%, mean credit -8.30
+clean                               in   88.19     87.71   90.0   +0.00      0.333
+cloud_1e5Pa                         in   87.70     87.49   89.8   -0.20      0.359
+cloud_1e4Pa                         in   83.91     84.77   83.4   -2.38      0.460
+cloud_1e3Pa                         in   75.17     79.80   64.1   -5.40      0.580
+cloud_1e2Pa                        OUT   63.80     72.03   31.4   -7.58      0.591
+cloud_1e1Pa                        OUT   52.81     51.05    7.4  -17.12      0.509
+haze_2p0e5                          in   87.66     87.22   91.2   -0.57      0.333
+haze_2p0e6                          in   86.60     85.95   87.7   -1.58      0.387
+haze_3p0e7                          in   73.20     71.50   68.6  -14.26      0.434
+haze_2p4e8                          in   65.35     61.67   36.6  -19.13      0.467
+haze_1p0e10                        OUT   48.95     62.66    2.7   -1.24      0.536
+tlse_spots02                        in   86.97     86.96   84.7   -0.35      0.413
+tlse_spots05                        in   85.95     85.99   79.4   -0.82      0.433
+tlse_spots10                        in   84.80     84.20   76.2   -2.33      0.412
+tlse_spots20                        in   83.37     81.81   80.4   -5.07      0.382
+tlse_mixed                         OUT   84.83     84.63   73.8   -1.67      0.435
+tlse_fac10                         OUT   85.97     85.92   90.5   -1.80      0.426
+quenched                            in   81.32     80.43   90.4   -7.29      0.409
+exotransmit                        OUT   87.58     86.91   85.2   -0.40      0.345
+exomol                             OUT   70.22     69.68   91.5  -18.12      0.408
+compound_spots10_haze3e7            in   71.56     70.93   90.8  -16.83      0.422
+compound_spots20_haze3e7            in   70.14     69.80   96.1  -18.32      0.446
+absorbers                          OUT   75.38     75.18   97.5  -12.96      0.309
+absorbers_quenched                 OUT   68.82     68.74   97.3  -19.38      0.381
+white_snr12                         in   87.39     86.70   87.2   -0.80      0.358
+white_snr8                          in   83.97     82.32   74.4   -4.07      0.399
+white_snr5                          in   75.37     72.32   46.5  -10.48      0.449
+correlated_snr12                   OUT   88.04     87.51   89.4   -0.15      0.353
+correlated_snr8                    OUT   87.67     87.27   86.4   -0.12      0.378
+correlated_snr5                    OUT   87.41     86.79   75.2   +0.37      0.415
+   over shifted cases: worst accepted 51.05%, mean coverage 74.3%, mean credit -6.55
 
 --- score: knn
 case                             range     all  accepted    cov  credit AUROC(err)
-clean                               in   87.92     88.24   90.0   +0.00      0.567
-cloud_1e5Pa                         in   86.66     87.44   87.6   -0.85      0.594
-cloud_1e4Pa                         in   81.81     84.49   78.2   -3.98      0.626
-cloud_1e3Pa                         in   75.55     80.02   56.7   -9.33      0.606
-cloud_1e2Pa                        OUT   64.50     73.24   26.7  -18.48      0.586
-cloud_1e1Pa                        OUT   52.72     55.41    5.7  -40.54      0.508
-haze_2p0e5                          in   87.71     87.97   89.0   -0.39      0.558
-haze_2p0e6                          in   87.40     87.00   76.7   -1.55      0.519
-haze_3p0e7                          in   69.32     67.25   63.6  -21.86      0.464
-haze_2p4e8                          in   60.53     60.38   59.8  -28.93      0.490
-haze_1p0e10                        OUT   50.18     52.34   10.2  -42.64      0.507
-tlse_spots02                        in   87.82     88.77   82.7   +0.39      0.577
-tlse_spots05                        in   86.49     87.55   76.3   -1.02      0.546
-tlse_spots10                        in   84.94     84.70   73.3   -3.90      0.469
-tlse_spots20                        in   81.70     79.53   76.8   -8.97      0.364
-tlse_mixed                         OUT   85.13     85.61   71.5   -3.06      0.502
-tlse_fac10                         OUT   84.57     86.13   88.7   -2.18      0.643
-quenched                            in   94.23     95.95   80.5   +7.61      0.702
-exotransmit                        OUT   86.85     87.14   83.0   -1.24      0.571
-exomol                             OUT   66.77     68.03   87.3  -20.27      0.583
-compound_spots10_haze3e7            in   65.44     64.51   89.1  -23.84      0.428
-compound_spots20_haze3e7            in   62.52     62.14   95.7  -26.03      0.413
-absorbers                          OUT   68.98     68.37   91.3  -19.87      0.582
-absorbers_quenched                 OUT   70.63     68.90   82.5  -19.48      0.567
-white_snr12                         in   86.68     87.26   85.5   -1.06      0.563
-white_snr8                          in   83.05     84.12   67.3   -4.73      0.547
-white_snr5                          in   74.58     78.13   38.5  -12.63      0.542
-correlated_snr12                    in   87.64     88.02   89.1   -0.32      0.575
-correlated_snr8                     in   87.27     87.76   86.3   -0.49      0.566
-correlated_snr5                     in   86.52     86.64   78.4   -1.85      0.538
-   over shifted cases: worst accepted 52.34%, mean coverage 71.7%, mean credit -10.74
+clean                               in   88.19     87.77   90.0   +0.00      0.510
+cloud_1e5Pa                         in   87.70     87.55   89.0   -0.24      0.522
+cloud_1e4Pa                         in   83.91     85.31   80.4   -2.33      0.576
+cloud_1e3Pa                         in   75.17     80.77   59.3   -7.29      0.628
+cloud_1e2Pa                        OUT   63.80     73.48   27.6  -16.57      0.607
+cloud_1e1Pa                        OUT   52.81     53.22    6.4  -41.39      0.512
+haze_2p0e5                          in   87.66     87.32   90.4   -0.47      0.504
+haze_2p0e6                          in   86.60     86.35   81.5   -1.25      0.509
+haze_3p0e7                          in   73.20     71.90   60.5  -16.25      0.477
+haze_2p4e8                          in   65.35     63.11   50.8  -25.29      0.473
+haze_1p0e10                        OUT   48.95     54.81    6.9  -39.58      0.530
+tlse_spots02                        in   86.97     87.84   82.9   +0.27      0.571
+tlse_spots05                        in   85.95     87.08   75.7   -0.51      0.543
+tlse_spots10                        in   84.80     85.21   71.8   -2.43      0.471
+tlse_spots20                        in   83.37     81.89   76.4   -5.66      0.370
+tlse_mixed                         OUT   84.83     85.86   69.7   -1.83      0.504
+tlse_fac10                         OUT   85.97     85.86   91.0   -1.95      0.545
+quenched                            in   81.32     80.39   91.3   -7.44      0.436
+exotransmit                        OUT   87.58     87.08   84.6   -0.54      0.490
+exomol                             OUT   70.22     69.57   91.1  -18.23      0.473
+compound_spots10_haze3e7            in   71.56     70.56   87.3  -17.19      0.422
+compound_spots20_haze3e7            in   70.14     69.60   94.9  -18.44      0.407
+absorbers                          OUT   75.38     75.35   96.4  -12.73      0.550
+absorbers_quenched                 OUT   68.82     68.80   97.3  -19.30      0.527
+white_snr12                         in   87.39     87.10   86.5   -0.56      0.500
+white_snr8                          in   83.97     83.16   70.1   -4.52      0.486
+white_snr5                          in   75.37     75.67   38.9  -13.56      0.501
+correlated_snr12                   OUT   88.04     87.59   89.4   -0.16      0.511
+correlated_snr8                    OUT   87.67     87.49   85.7   -0.19      0.520
+correlated_snr5                    OUT   87.41     87.29   73.1   -0.35      0.495
+   over shifted cases: worst accepted 53.22%, mean coverage 72.7%, mean credit -9.52
 
-randomized screen on clean data: 87.92% (frozen clean-trained screen: see results/tier1_trust_randomized.txt)
+randomized screen on clean data: 88.19% (frozen clean-trained screen: see results/tier1_trust_randomized.txt)

@@ -1,58 +1,61 @@
+Loading MultiREx version 0.3.1
 === test1: 1804 planets ===
-  cloud 1e5Pa: 0 failures, ptp ratio 0.942, 0.06 s/planet, 104 s -> test1_native_cloud_1e5Pa.npy
-  cloud 1e4Pa: 0 failures, ptp ratio 0.760, 0.05 s/planet, 84 s -> test1_native_cloud_1e4Pa.npy
-  cloud 1e3Pa: 0 failures, ptp ratio 0.550, 0.05 s/planet, 82 s -> test1_native_cloud_1e3Pa.npy
-  cloud 1e2Pa: 0 failures, ptp ratio 0.325, 0.05 s/planet, 83 s -> test1_native_cloud_1e2Pa.npy
-  cloud 1e1Pa: 0 failures, ptp ratio 0.072, 0.05 s/planet, 90 s -> test1_native_cloud_1e1Pa.npy
-  haze 2p0e5: 0 failures, ptp ratio 0.999, 0.06 s/planet, 105 s -> test1_native_haze_2p0e5.npy
-  haze 2p0e6: 0 failures, ptp ratio 0.994, 0.05 s/planet, 93 s -> test1_native_haze_2p0e6.npy
-  haze 3p0e7: 0 failures, ptp ratio 0.939, 0.05 s/planet, 92 s -> test1_native_haze_3p0e7.npy
-  haze 2p4e8: 0 failures, ptp ratio 0.835, 0.05 s/planet, 91 s -> test1_native_haze_2p4e8.npy
-  haze 1p0e10: 0 failures, ptp ratio 0.584, 0.05 s/planet, 97 s -> test1_native_haze_1p0e10.npy
+  cloud 1e5Pa: 0 failures, ptp ratio 0.971, 0.04 s/planet, 75 s -> test1_native_cloud_1e5Pa.npy
+  cloud 1e4Pa: 0 failures, ptp ratio 0.800, 0.04 s/planet, 75 s -> test1_native_cloud_1e4Pa.npy
+  cloud 1e3Pa: 0 failures, ptp ratio 0.583, 0.04 s/planet, 69 s -> test1_native_cloud_1e3Pa.npy
+  cloud 1e2Pa: 0 failures, ptp ratio 0.343, 0.04 s/planet, 65 s -> test1_native_cloud_1e2Pa.npy
+  cloud 1e1Pa: 0 failures, ptp ratio 0.074, 0.03 s/planet, 58 s -> test1_native_cloud_1e1Pa.npy
+  haze 2p0e5: 0 failures, ptp ratio 0.999, 0.04 s/planet, 75 s -> test1_native_haze_2p0e5.npy
+  haze 2p0e6: 0 failures, ptp ratio 0.991, 0.04 s/planet, 74 s -> test1_native_haze_2p0e6.npy
+  haze 3p0e7: 0 failures, ptp ratio 0.912, 0.04 s/planet, 73 s -> test1_native_haze_3p0e7.npy
+  haze 2p4e8: 0 failures, ptp ratio 0.789, 0.04 s/planet, 74 s -> test1_native_haze_2p4e8.npy
+  haze 1p0e10: 0 failures, ptp ratio 0.544, 0.04 s/planet, 76 s -> test1_native_haze_1p0e10.npy
 === test2: 1814 planets ===
-  cloud 1e5Pa: 0 failures, ptp ratio 0.938, 0.05 s/planet, 86 s -> test2_native_cloud_1e5Pa.npy
-  cloud 1e4Pa: 0 failures, ptp ratio 0.757, 0.04 s/planet, 80 s -> test2_native_cloud_1e4Pa.npy
-  cloud 1e3Pa: 0 failures, ptp ratio 0.548, 0.04 s/planet, 75 s -> test2_native_cloud_1e3Pa.npy
-  cloud 1e2Pa: 0 failures, ptp ratio 0.323, 0.04 s/planet, 74 s -> test2_native_cloud_1e2Pa.npy
-  cloud 1e1Pa: 0 failures, ptp ratio 0.071, 0.04 s/planet, 71 s -> test2_native_cloud_1e1Pa.npy
-  haze 2p0e5: 0 failures, ptp ratio 0.999, 0.05 s/planet, 94 s -> test2_native_haze_2p0e5.npy
-  haze 2p0e6: 0 failures, ptp ratio 0.994, 0.05 s/planet, 94 s -> test2_native_haze_2p0e6.npy
-  haze 3p0e7: 0 failures, ptp ratio 0.940, 0.05 s/planet, 94 s -> test2_native_haze_3p0e7.npy
-  haze 2p4e8: 0 failures, ptp ratio 0.835, 0.05 s/planet, 96 s -> test2_native_haze_2p4e8.npy
-  haze 1p0e10: 0 failures, ptp ratio 0.579, 0.05 s/planet, 98 s -> test2_native_haze_1p0e10.npy
+  cloud 1e5Pa: 0 failures, ptp ratio 0.967, 0.05 s/planet, 87 s -> test2_native_cloud_1e5Pa.npy
+  cloud 1e4Pa: 0 failures, ptp ratio 0.796, 0.04 s/planet, 67 s -> test2_native_cloud_1e4Pa.npy
+  cloud 1e3Pa: 0 failures, ptp ratio 0.576, 0.03 s/planet, 62 s -> test2_native_cloud_1e3Pa.npy
+  cloud 1e2Pa: 0 failures, ptp ratio 0.341, 0.03 s/planet, 62 s -> test2_native_cloud_1e2Pa.npy
+  cloud 1e1Pa: 0 failures, ptp ratio 0.073, 0.03 s/planet, 56 s -> test2_native_cloud_1e1Pa.npy
+  haze 2p0e5: 0 failures, ptp ratio 0.999, 0.04 s/planet, 75 s -> test2_native_haze_2p0e5.npy
+  haze 2p0e6: 0 failures, ptp ratio 0.991, 0.04 s/planet, 75 s -> test2_native_haze_2p0e6.npy
+  haze 3p0e7: 0 failures, ptp ratio 0.914, 0.04 s/planet, 77 s -> test2_native_haze_3p0e7.npy
+  haze 2p4e8: 0 failures, ptp ratio 0.788, 0.04 s/planet, 77 s -> test2_native_haze_2p4e8.npy
+  haze 1p0e10: 0 failures, ptp ratio 0.544, 0.04 s/planet, 77 s -> test2_native_haze_1p0e10.npy
 === test3: 1813 planets ===
-  cloud 1e5Pa: 0 failures, ptp ratio 0.938, 0.05 s/planet, 84 s -> test3_native_cloud_1e5Pa.npy
-  cloud 1e4Pa: 0 failures, ptp ratio 0.757, 0.04 s/planet, 78 s -> test3_native_cloud_1e4Pa.npy
-  cloud 1e3Pa: 0 failures, ptp ratio 0.549, 0.04 s/planet, 73 s -> test3_native_cloud_1e3Pa.npy
-  cloud 1e2Pa: 0 failures, ptp ratio 0.322, 0.04 s/planet, 73 s -> test3_native_cloud_1e2Pa.npy
-  cloud 1e1Pa: 0 failures, ptp ratio 0.068, 0.04 s/planet, 70 s -> test3_native_cloud_1e1Pa.npy
-  haze 2p0e5: 0 failures, ptp ratio 0.999, 0.05 s/planet, 96 s -> test3_native_haze_2p0e5.npy
-  haze 2p0e6: 0 failures, ptp ratio 0.994, 0.05 s/planet, 93 s -> test3_native_haze_2p0e6.npy
-  haze 3p0e7: 0 failures, ptp ratio 0.942, 0.05 s/planet, 97 s -> test3_native_haze_3p0e7.npy
-  haze 2p4e8: 0 failures, ptp ratio 0.838, 0.05 s/planet, 97 s -> test3_native_haze_2p4e8.npy
-  haze 1p0e10: 0 failures, ptp ratio 0.578, 0.05 s/planet, 96 s -> test3_native_haze_1p0e10.npy
+  cloud 1e5Pa: 0 failures, ptp ratio 0.967, 0.04 s/planet, 68 s -> test3_native_cloud_1e5Pa.npy
+  cloud 1e4Pa: 0 failures, ptp ratio 0.792, 0.04 s/planet, 68 s -> test3_native_cloud_1e4Pa.npy
+  cloud 1e3Pa: 0 failures, ptp ratio 0.576, 0.03 s/planet, 62 s -> test3_native_cloud_1e3Pa.npy
+  cloud 1e2Pa: 0 failures, ptp ratio 0.338, 0.03 s/planet, 63 s -> test3_native_cloud_1e2Pa.npy
+  cloud 1e1Pa: 0 failures, ptp ratio 0.071, 0.03 s/planet, 60 s -> test3_native_cloud_1e1Pa.npy
+  haze 2p0e5: 0 failures, ptp ratio 0.999, 0.04 s/planet, 80 s -> test3_native_haze_2p0e5.npy
+  haze 2p0e6: 0 failures, ptp ratio 0.992, 0.04 s/planet, 80 s -> test3_native_haze_2p0e6.npy
+  haze 3p0e7: 0 failures, ptp ratio 0.915, 0.04 s/planet, 76 s -> test3_native_haze_3p0e7.npy
+  haze 2p4e8: 0 failures, ptp ratio 0.789, 0.04 s/planet, 76 s -> test3_native_haze_2p4e8.npy
+  haze 1p0e10: 0 failures, ptp ratio 0.539, 0.04 s/planet, 79 s -> test3_native_haze_1p0e10.npy
 === test4: 1776 planets ===
-  cloud 1e5Pa: 0 failures, ptp ratio 0.938, 0.05 s/planet, 82 s -> test4_native_cloud_1e5Pa.npy
-  cloud 1e4Pa: 0 failures, ptp ratio 0.757, 0.05 s/planet, 80 s -> test4_native_cloud_1e4Pa.npy
-  cloud 1e3Pa: 0 failures, ptp ratio 0.547, 0.04 s/planet, 75 s -> test4_native_cloud_1e3Pa.npy
-  cloud 1e2Pa: 0 failures, ptp ratio 0.324, 0.04 s/planet, 76 s -> test4_native_cloud_1e2Pa.npy
-  cloud 1e1Pa: 0 failures, ptp ratio 0.073, 0.04 s/planet, 70 s -> test4_native_cloud_1e1Pa.npy
-  haze 2p0e5: 0 failures, ptp ratio 0.999, 0.05 s/planet, 91 s -> test4_native_haze_2p0e5.npy
-  haze 2p0e6: 0 failures, ptp ratio 0.993, 0.06 s/planet, 98 s -> test4_native_haze_2p0e6.npy
-  haze 3p0e7: 0 failures, ptp ratio 0.940, 0.05 s/planet, 82 s -> test4_native_haze_3p0e7.npy
-  haze 2p4e8: 0 failures, ptp ratio 0.839, 0.04 s/planet, 79 s -> test4_native_haze_2p4e8.npy
-  haze 1p0e10: 0 failures, ptp ratio 0.589, 0.05 s/planet, 86 s -> test4_native_haze_1p0e10.npy
+  cloud 1e5Pa: 0 failures, ptp ratio 0.972, 0.04 s/planet, 66 s -> test4_native_cloud_1e5Pa.npy
+  cloud 1e4Pa: 0 failures, ptp ratio 0.798, 0.04 s/planet, 65 s -> test4_native_cloud_1e4Pa.npy
+  cloud 1e3Pa: 0 failures, ptp ratio 0.579, 0.03 s/planet, 58 s -> test4_native_cloud_1e3Pa.npy
+  cloud 1e2Pa: 0 failures, ptp ratio 0.339, 0.03 s/planet, 57 s -> test4_native_cloud_1e2Pa.npy
+  cloud 1e1Pa: 0 failures, ptp ratio 0.076, 0.03 s/planet, 54 s -> test4_native_cloud_1e1Pa.npy
+  haze 2p0e5: 0 failures, ptp ratio 0.999, 0.04 s/planet, 72 s -> test4_native_haze_2p0e5.npy
+  haze 2p0e6: 0 failures, ptp ratio 0.991, 0.04 s/planet, 72 s -> test4_native_haze_2p0e6.npy
+  haze 3p0e7: 0 failures, ptp ratio 0.909, 0.04 s/planet, 72 s -> test4_native_haze_3p0e7.npy
+  haze 2p4e8: 0 failures, ptp ratio 0.793, 0.04 s/planet, 71 s -> test4_native_haze_2p4e8.npy
+  haze 1p0e10: 0 failures, ptp ratio 0.547, 0.04 s/planet, 72 s -> test4_native_haze_1p0e10.npy
 === test5: 1809 planets ===
-  cloud 1e5Pa: 0 failures, ptp ratio 0.942, 0.04 s/planet, 73 s -> test5_native_cloud_1e5Pa.npy
-  cloud 1e4Pa: 0 failures, ptp ratio 0.760, 0.04 s/planet, 73 s -> test5_native_cloud_1e4Pa.npy
-  cloud 1e3Pa: 0 failures, ptp ratio 0.547, 0.04 s/planet, 67 s -> test5_native_cloud_1e3Pa.npy
-  cloud 1e2Pa: 0 failures, ptp ratio 0.322, 0.04 s/planet, 67 s -> test5_native_cloud_1e2Pa.npy
-  cloud 1e1Pa: 0 failures, ptp ratio 0.067, 0.04 s/planet, 64 s -> test5_native_cloud_1e1Pa.npy
-  haze 2p0e5: 0 failures, ptp ratio 0.999, 0.05 s/planet, 84 s -> test5_native_haze_2p0e5.npy
-  haze 2p0e6: 0 failures, ptp ratio 0.993, 0.05 s/planet, 89 s -> test5_native_haze_2p0e6.npy
-  haze 3p0e7: 0 failures, ptp ratio 0.938, 0.05 s/planet, 87 s -> test5_native_haze_3p0e7.npy
-  haze 2p4e8: 0 failures, ptp ratio 0.830, 0.05 s/planet, 87 s -> test5_native_haze_2p4e8.npy
-  haze 1p0e10: 0 failures, ptp ratio 0.583, 0.05 s/planet, 84 s -> test5_native_haze_1p0e10.npy
+  cloud 1e5Pa: 0 failures, ptp ratio 0.969, 0.04 s/planet, 69 s -> test5_native_cloud_1e5Pa.npy
+  cloud 1e4Pa: 0 failures, ptp ratio 0.791, 0.03 s/planet, 62 s -> test5_native_cloud_1e4Pa.npy
+  cloud 1e3Pa: 0 failures, ptp ratio 0.576, 0.03 s/planet, 57 s -> test5_native_cloud_1e3Pa.npy
+  cloud 1e2Pa: 0 failures, ptp ratio 0.336, 0.03 s/planet, 55 s -> test5_native_cloud_1e2Pa.npy
+  cloud 1e1Pa: 0 failures, ptp ratio 0.071, 0.03 s/planet, 54 s -> test5_native_cloud_1e1Pa.npy
+  haze 2p0e5: 0 failures, ptp ratio 0.999, 0.04 s/planet, 72 s -> test5_native_haze_2p0e5.npy
+  haze 2p0e6: 0 failures, ptp ratio 0.991, 0.04 s/planet, 73 s -> test5_native_haze_2p0e6.npy
+  haze 3p0e7: 0 failures, ptp ratio 0.911, 0.04 s/planet, 71 s -> test5_native_haze_3p0e7.npy
+  haze 2p4e8: 0 failures, ptp ratio 0.781, 0.04 s/planet, 74 s -> test5_native_haze_2p4e8.npy
+  haze 1p0e10: 0 failures, ptp ratio 0.547, 0.04 s/planet, 77 s -> test5_native_haze_1p0e10.npy
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
 Loading MultiREx version 0.3.1
 Loading MultiREx version 0.3.1
 Loading MultiREx version 0.3.1

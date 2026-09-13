@@ -1,11 +1,11 @@
-  stellar spots 20%      linear  0.718  nonlinear  0.790
-  stellar spots 10%      linear  0.766  nonlinear  0.801
-  haze 3e7               linear  0.787  nonlinear  0.805
-  haze 2e6               linear  0.805  nonlinear  0.812
-  correlated noise SNR 8 linear  0.926  nonlinear  0.941
-  correlated noise SNR 5 linear  0.894  nonlinear  0.921
-  white noise SNR 8      linear  0.862  nonlinear  0.853
-  white noise SNR 5      linear  0.789  nonlinear  0.792
+  stellar spots 20%      linear  0.731  nonlinear  0.794
+  stellar spots 10%      linear  0.776  nonlinear  0.805
+  haze 3e7               linear  0.796  nonlinear  0.809
+  haze 2e6               linear  0.810  nonlinear  0.814
+  correlated noise SNR 8 linear  0.924  nonlinear  0.939
+  correlated noise SNR 5 linear  0.891  nonlinear  0.922
+  white noise SNR 8      linear  0.862  nonlinear  0.854
+  white noise SNR 5      linear  0.790  nonlinear  0.793
 Does invertibility predict repairability? configuration ariel
 
 R2_inv: variance of the clean spectrum recovered by a ridge map from the shifted
@@ -13,15 +13,15 @@ spectrum, fitted and scored on disjoint halves of the pooled test planets.
 pct_recovered: the augmentation gain already measured for the same case.
 
 axis                    kind             linear  nonlin  recovered
-stellar spots 20%       deterministic     0.718   0.790        68%
-stellar spots 10%       deterministic     0.766   0.801        67%
-haze 3e7                deterministic     0.787   0.805        75%
-haze 2e6                deterministic     0.805   0.812        60%
-correlated noise SNR 8  stochastic        0.926   0.941        48%
-correlated noise SNR 5  stochastic        0.894   0.921        47%
-white noise SNR 8       stochastic        0.862   0.853        29%
-white noise SNR 5       stochastic        0.789   0.792        28%
+stellar spots 20%       deterministic     0.731   0.794        78%
+stellar spots 10%       deterministic     0.776   0.805        74%
+haze 3e7                deterministic     0.796   0.809        75%
+haze 2e6                deterministic     0.810   0.814        61%
+correlated noise SNR 8  stochastic        0.924   0.939        45%
+correlated noise SNR 5  stochastic        0.891   0.922        41%
+white noise SNR 8       stochastic        0.862   0.854        30%
+white noise SNR 5       stochastic        0.790   0.793        25%
 
-Spearman(R2_inv, recovered) = -0.310   Pearson = -0.322   (n = 8)
-deterministic: linear 0.718-0.805, nonlinear 0.790-0.812, recovered 60-75%
-stochastic:    linear 0.789-0.926, nonlinear 0.792-0.941, recovered 28-48%
+Spearman(R2_inv, recovered) = -0.214   Pearson = -0.407   (n = 8)
+deterministic: linear 0.731-0.810, nonlinear 0.794-0.814, recovered 61-78%
+stochastic:    linear 0.790-0.924, nonlinear 0.793-0.939, recovered 25-45%

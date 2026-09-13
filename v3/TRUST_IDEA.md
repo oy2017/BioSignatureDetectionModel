@@ -627,3 +627,56 @@ prices physics mismatch with ceilings, (iii) tests absorption *and* detection wi
 axes, and (iv) hands over a table a mission can act on. It is not bulletproof because of S1,
 and S1 cannot be removed by more simulation — only narrowed by Test 4. The paper is
 honest if it says so in the abstract.
+
+## 4j. Regeneration after the 2026-09-12 audit (run 2026-09-13 00:03–05:54, `rerun_audit.sh`)
+
+Eight defects fixed before the run (commit ab044fa): Exo-Transmit opacity pressures read as bar by
+TauREx (fork change 6); grey deck dropped when a Mie haze was also given (fork change 7); NH3 missing
+from the ExoMol swap; wide-bin noise shapes ignoring bin width (Tier 1/2); real-target noise ignoring
+integer transit counts; training noise scaled to the shifted rather than the clean spectrum; the quench
+profile's inverted convection criterion (plus T_irr and metallicity factor); correlated noise tagged
+in-range. Pre-audit state: `results_prePfix/`, `data_prePfix/`, `models_prePfix/`.
+
+| quantity | before | after |
+|---|---|---|
+| clean accuracy (norm_xgb, 5-set mean) | 96.47 | 96.05 (training draws 95.87 ± 0.13) |
+| HCN+C2H2 omitted: frozen / randomized / oracle | 71.9 / 75.8 / 96.4 | 72.3 / 75.6 / 96.1 |
+| HCN+C2H2: distance AUROC(error); accepted at coverage | 0.90–0.92; 95 % at 61 % | 0.90–0.91; 94.6 % at 60 % |
+| HCN+C2H2: margin AUROC; ECE; conformal coverage | 0.66; 0.25; 64 % | 0.70; 0.24; 65 % |
+| HCN+C2H2 quenched: frozen | 66.5 | 58.8 |
+| mechanism: restore 2.75–3.05 µm recovers | 5.0 of 24.5 | 13.6 of 23.7 (band overlap now the main part) |
+| other radiative-transfer code (Exo-Transmit): loss | 6.5 | 0.7 (mostly the pressure bug) |
+| other opacity database (ExoMol): loss / oracle | 15.9 / 94.6 | 9.0 / 95.0 |
+| quenched chemistry (K_zz 1e9): frozen | 98.3 (gain +1.8) | 81.2 (loss 14.9); cool planets 52.6 at every K_zz |
+| quenched: training on it recovers | — | 83 % (93.6); randomized screen 90.8 |
+| haze 3e7: frozen / randomized / oracle | 90.4 / 93.7 / 95.2 | 91.0 / 94.1 / 95.2 |
+| spots 20 %: frozen / randomized / oracle | 85.5 / 91.7 / 93.0 | 85.3 / 92.7 / 94.0 |
+| cloud 1e3 Pa: frozen / randomized | 92.5 / 92.8 | 90.6 / 91.7 |
+| randomization clean cost | 1.06 | 1.43 |
+| randomized share of single-axis ceilings (in-range) | 31–83 % | 27–85 % (white SNR 8: none) |
+| trade-off, Mahalanobis shift AUROC frozen→full: spots20 / haze / compound | 0.84→0.51 / 0.91→0.64 / 1.00→0.35 | 0.85→0.49 / 0.93→0.68 / 1.00→0.33 |
+| compound spots20+haze: excess over sum of parts | −6 | −4.9 (still sub-additive) |
+| spots 20 %, M vs F+ hosts | −16.2 vs −8.6 | −16.4 vs −8.0 |
+| Tier 1 clean / SNR 7 | 88.7 / 84.1 | 88.6 / 83.9 |
+| Tier 1 haze 3e7: frozen / randomized / ceiling | 60.3 / 69.3 / 75.5 | 59.5 / 73.2 / 81.4 |
+| Tier 1 spots 20 %: frozen / randomized / ceiling | 70.0 / 81.7 / 82.9 | 70.8 / 83.4 / 85.6 |
+| Tier 1 compound: frozen / randomized | 50.1 / 62.5 | 50.0 / 70.1 |
+| Tier 1 ExoMol: frozen / randomized / ceiling | 64.8 / 66.8 / 79.3 | 67.5 / 70.2 / 80.3 |
+| Tier 1 HCN+C2H2: frozen / randomized / ceiling | 66.3 / 69.0 / 82.3 | 69.4 / 75.4 / 84.8 |
+| Tier 1 quenched: frozen / randomized | 92.5 / 94.2 | 81.0 / 81.3 (randomization does not help) |
+| real targets (payload noise, own transit counts): T3 / T2 / T1 | 94.2 / 93.1 / 79.2 | 92.4 / 90.9 / 83.0; M dwarfs at T1 56.5 |
+| consortium screen reproduction (48 Table-6 cells) | — | all within 5 points; HCN+C2H2 cost ≤ 0.2 |
+| consortium screen haze 3e7 cost (mean of 4 classifiers) | 8–17 | 13–23 |
+| spot contrast 0.80/0.85/0.90 at 20 % | 84.5/85.5/87.3 | 84.4/85.3/87.2 |
+| correlated kernel σ 1/3/8 at SNR 8 | −5.9/−7.3/−5.9 | −5.6/−6.4/−6.1 |
+
+What held: the headline (omitted HCN+C2H2 put the carbon-rich screen at chance on carbon-rich planets,
+not absorbed, detected only by distance scores, fully repaired in the forward model, label-specific on the
+consortium screen); the absorb/detect trade-off; sub-additive compounds; M-dwarf concentration of
+contamination; Tier 1 losses mostly irreducible.
+What changed: Region 2 ("mismatch that helps") is gone — with a physically consistent quench profile,
+disequilibrium chemistry is the largest modelled loss (cool planets at chance), absorbable by training on it
+at Tier 3 but not at Tier 1; the radiative-transfer-code disagreement was largely the pressure bug; the
+opacity-database cost roughly halved; the mechanism of the headline is now mainly the 2.75–3.05 µm band
+overlap; the real-target Tier-1 accuracy rose (83 %) once the Tier-1 noise shape and transit counts were
+right. The Tier-1 frozen-screen detector battery was not run (no Tier-1 RF/MLP screens), as before.

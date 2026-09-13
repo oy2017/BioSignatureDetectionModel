@@ -1,22 +1,20 @@
 Axis 8 (quenched composition): recovery by training on quenched spectra, configuration ariel, pipeline norm_xgb
-Frozen clean reference 96.47%. Augmented: 66% of training planets quenched, rest equilibrium.
+Frozen clean reference 96.05%. Augmented: 66% of training planets quenched, rest equilibrium.
 
 subset               n   clean   frozen  augmented    gain  % of gap
-all planets       9016  96.47%   98.30%     98.49%  +0.19       n/a
-T 500-1000 K      2345  90.92%   97.48%     98.21%  +0.72       n/a
-T 1000-1500 K     2320  97.80%   97.72%     97.72%  +0.00       n/a
-T 1500-2500 K     4351  98.76%   99.06%     99.06%  +0.00       n/a
+all planets       9016  96.05%   81.18%     93.58% +12.40       83%
+T 500-1000 K      2345  88.83%   52.62%     84.09% +31.47       87%
+T 1000-1500 K     2320  98.06%   77.24%     93.10% +15.86       76%
+T 1500-2500 K     4351  98.87%   98.67%     98.94%  +0.28       n/a
 
-cost on clean data of training with the shift: 96.47% -> 95.87% (-0.60)
+cost on clean data of training with the shift: 96.05% -> 95.09% (-0.96)
 
 Pre-registered prediction: > 60 % recovered (deterministic re-render, zero draws per spectrum).
 The rule is falsified on this axis if the all-planets recovery is below 40 %.
 
-Outcome: the frozen pipeline loses nothing on the quenched spectra (96.47% clean -> 98.30% quenched), so there is no gap and the
-prediction gets no test in this direction: neither confirmed nor falsified.
-The secondary prediction (cost concentrated below 1000 K) is wrong in sign: the change IS concentrated there (90.92% -> 97.48%) but it is a gain.
+Outcome: 83% of the loss recovered -> prediction confirmed.
 
 Reverse direction (post hoc, not pre-registered): trained on quenched spectra only, deployed on equilibrium.
-  quenched-only model: on quenched test 98.68%, on equilibrium test 88.62% (cost +10.06 pts)
-  mixed model (the same augmentation) on equilibrium test: 95.87%
-  recovered: 72% of the loss
+  quenched-only model: on quenched test 93.93%, on equilibrium test 89.39% (cost +4.55 pts)
+  mixed model (the same augmentation) on equilibrium test: 95.09%
+  recovered: 125% of the loss

@@ -1,0 +1,38 @@
+/home/owenhyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/home/owenhyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/home/owenhyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/home/owenhyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/home/owenhyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/home/owenhyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/home/owenhyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/home/owenhyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/home/owenhyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/home/owenhyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/home/owenhyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/home/owenhyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/home/owenhyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/home/owenhyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+Mugnai et al. 2021 Tier-1 screen, faithful rebuild [faithful_tier3_r20_radiometric]: natives faithful, layout tier3_r20 (104 bins), noise radiometric x 1.0
+train 3809 spectra, test 954 planets; Tier-1 SNR on 5H modulation, median 9.6 (IQR 8.6-12.0)
+median peak-to-peak of the clean binned spectra 699 ppm; median per-bin sigma 184 ppm
+their Table 6 at 1e-4: CH4 82-86, CO2 79-83, H2O 71-78, NH3 82-87 %
+
+At 1e-4, mean over the four classifiers:
+  CH4  clean  84.6 (range 83-86); cost in points: haze3e7 +18.3, cloud1e2 +9.4, absorbers +0.5, spots10 +6.3, spots20 +10.1, noise_x2 +9.2, noise_x3 +14.4
+  H2O  clean  74.1 (range 68-78); cost in points: haze3e7 +11.4, cloud1e2 +6.6, absorbers +0.4, spots10 +2.8, spots20 +6.1, noise_x2 +5.8, noise_x3 +8.5
+  CO2  clean  79.0 (range 77-80); cost in points: haze3e7 +15.6, cloud1e2 +6.0, absorbers -0.3, spots10 +5.0, spots20 +8.7, noise_x2 +9.4, noise_x3 +13.3
+  NH3  clean  83.9 (range 81-85); cost in points: haze3e7 +22.1, cloud1e2 +13.4, absorbers +0.2, spots10 +10.1, spots20 +14.3, noise_x2 +10.2, noise_x3 +15.0

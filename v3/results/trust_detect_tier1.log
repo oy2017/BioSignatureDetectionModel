@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/mnt/c/Users/owenh/BioSignatureDetectionModel/v3/trust_detect.py", line 122, in <module>
+    main()
+  File "/mnt/c/Users/owenh/BioSignatureDetectionModel/v3/trust_detect.py", line 51, in main
+    ens = [load_pipe(cfg, k) for k in ("norm_xgb", "norm_rf", "norm_mlp")]
+  File "/mnt/c/Users/owenh/BioSignatureDetectionModel/v3/trust_detect.py", line 51, in <listcomp>
+    ens = [load_pipe(cfg, k) for k in ("norm_xgb", "norm_rf", "norm_mlp")]
+  File "/mnt/c/Users/owenh/BioSignatureDetectionModel/v3/trust_detect.py", line 39, in load_pipe
+    d = joblib.load(os.path.join(MODELS, f"{cfg}_{key}.joblib"))
+  File "/home/owenhyang/tfenv/lib/python3.10/site-packages/joblib/numpy_pickle.py", line 735, in load
+    with open(filename, "rb") as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/mnt/c/Users/owenh/BioSignatureDetectionModel/v3/models/tier1_norm_rf.joblib'

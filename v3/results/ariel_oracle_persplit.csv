@@ -1,46 +1,46 @@
 axis,case,split,oracle
-white noise,snr8,test1,0.9251662971175166
-white noise,snr8,test2,0.9305402425578831
-white noise,snr8,test3,0.9354660783232212
-white noise,snr8,test4,0.9296171171171171
-white noise,snr8,test5,0.9425096738529575
-correlated noise,snr8,test1,0.9190687361419069
-correlated noise,snr8,test2,0.9288864388092613
-correlated noise,snr8,test3,0.9310535024820739
-correlated noise,snr8,test4,0.9268018018018018
-correlated noise,snr8,test5,0.9364289662797125
-white noise,snr5,test1,0.914079822616408
-white noise,snr5,test2,0.9095920617420066
-white noise,snr5,test3,0.921676778819636
-white noise,snr5,test4,0.9099099099099099
-white noise,snr5,test5,0.9292426755113322
-correlated noise,snr5,test1,0.9129711751662971
-correlated noise,snr5,test2,0.9195148842337376
-correlated noise,snr5,test3,0.9194704908990623
-correlated noise,snr5,test4,0.9149774774774775
-correlated noise,snr5,test5,0.9264787175234936
-gain ramp,x1.0,test1,0.9567627494456763
-gain ramp,x1.0,test2,0.9597574421168688
-gain ramp,x1.0,test3,0.9641478212906784
-gain ramp,x1.0,test4,0.9572072072072072
-gain ramp,x1.0,test5,0.970702045328911
-gain ramp,x2.0,test1,0.9578713968957872
-gain ramp,x2.0,test2,0.960308710033076
-gain ramp,x2.0,test3,0.963596249310535
-gain ramp,x2.0,test4,0.9667792792792793
-gain ramp,x2.0,test5,0.9624101713653952
-stellar spots,tlse_spots10,test1,0.9334811529933481
-stellar spots,tlse_spots10,test2,0.9432194046306505
-stellar spots,tlse_spots10,test3,0.9470490899062327
-stellar spots,tlse_spots10,test4,0.9425675675675675
-stellar spots,tlse_spots10,test5,0.9458264234383638
-stellar spots,tlse_spots20,test1,0.9162971175166297
-stellar spots,tlse_spots20,test2,0.9266813671444322
-stellar spots,tlse_spots20,test3,0.936569222283508
-stellar spots,tlse_spots20,test4,0.9329954954954955
-stellar spots,tlse_spots20,test5,0.9364289662797125
-haze,haze_3p0e7,test1,0.9484478935698448
-haze,haze_3p0e7,test2,0.948180815876516
-haze,haze_3p0e7,test3,0.95146166574738
+white noise,snr8,test1,0.9246119733924612
+white noise,snr8,test2,0.9261300992282249
+white noise,snr8,test3,0.936569222283508
+white noise,snr8,test4,0.9245495495495496
+white noise,snr8,test5,0.941404090657822
+correlated noise,snr8,test1,0.9257206208425721
+correlated noise,snr8,test2,0.9283351708930541
+correlated noise,snr8,test3,0.9238830667402096
+correlated noise,snr8,test4,0.9245495495495496
+correlated noise,snr8,test5,0.9386401326699834
+white noise,snr5,test1,0.9174057649667405
+white noise,snr5,test2,0.9073869900771775
+white noise,snr5,test3,0.9194704908990623
+white noise,snr5,test4,0.9138513513513513
+white noise,snr5,test5,0.9275843007186291
+correlated noise,snr5,test1,0.9124168514412417
+correlated noise,snr5,test2,0.9167585446527012
+correlated noise,snr5,test3,0.9205736348593492
+correlated noise,snr5,test4,0.9132882882882883
+correlated noise,snr5,test5,0.9220563847429519
+gain ramp,x1.0,test1,0.950110864745011
+gain ramp,x1.0,test2,0.9459757442116868
+gain ramp,x1.0,test3,0.9580805295091009
+gain ramp,x1.0,test4,0.956081081081081
+gain ramp,x1.0,test5,0.9657269209508016
+gain ramp,x2.0,test1,0.9490022172949002
+gain ramp,x2.0,test2,0.9492833517089305
+gain ramp,x2.0,test3,0.9569773855488142
+gain ramp,x2.0,test4,0.956081081081081
+gain ramp,x2.0,test5,0.9651741293532339
+stellar spots,tlse_spots10,test1,0.9368070953436807
+stellar spots,tlse_spots10,test2,0.9437706725468578
+stellar spots,tlse_spots10,test3,0.948703805846663
+stellar spots,tlse_spots10,test4,0.9470720720720721
+stellar spots,tlse_spots10,test5,0.9496959646213378
+stellar spots,tlse_spots20,test1,0.9379157427937915
+stellar spots,tlse_spots20,test2,0.9393605292171996
+stellar spots,tlse_spots20,test3,0.9404302261445119
+stellar spots,tlse_spots20,test4,0.9386261261261262
+stellar spots,tlse_spots20,test5,0.945273631840796
+haze,haze_3p0e7,test1,0.947339246119734
+haze,haze_3p0e7,test2,0.9476295479603087
+haze,haze_3p0e7,test3,0.9520132377275234
 haze,haze_3p0e7,test4,0.956081081081081
-haze,haze_3p0e7,test5,0.956882255389718
+haze,haze_3p0e7,test5,0.9590934217799889

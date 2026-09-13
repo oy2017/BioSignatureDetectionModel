@@ -4,11 +4,12 @@ swap dir [exomol] /home/owenhyang/opacity_swap_v3_exomol
   swapped  CO   -> 12C-16O__Li2015.R15000_0.3-50mu.xsec.TauREx.h5
   swapped  CO2  -> 12C-16O2__UCL-4000.R15000_0.3-50mu.xsec.TauREx.h5
   swapped  H2O  -> 1H2-16O__POKAZATEL__R15000_0.3-50mu.xsec.TauREx.h5
+  retained NH3  -> opacNH3.dat
   retained O2   -> opacO2.dat
   retained O3   -> opacO3.dat
---- test1 [exomol]: 1804 planets, jobs=4, reduce=bin ---
-    787 s total, 0.44 s/planet (wall, jobs=4); 0 failures (NaN rows)
-    vs baseline: median rel diff 6.167e-03, max 1.944e+01; median Pearson r 0.806203, median mean-depth ratio 1.005739
+--- test1 [exomol]: 1804 planets, jobs=6, reduce=bin ---
+    633 s total, 0.35 s/planet (wall, jobs=6); 0 failures (NaN rows)
+    vs baseline: median rel diff 5.474e-03, max 1.124e+01; median Pearson r 0.862120, median mean-depth ratio 1.003719
     wrote /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/test1_native_exomol.npy (1804, 2753)
 
 swap dir [exomol] /home/owenhyang/opacity_swap_v3_exomol
@@ -16,11 +17,12 @@ swap dir [exomol] /home/owenhyang/opacity_swap_v3_exomol
   swapped  CO   -> 12C-16O__Li2015.R15000_0.3-50mu.xsec.TauREx.h5
   swapped  CO2  -> 12C-16O2__UCL-4000.R15000_0.3-50mu.xsec.TauREx.h5
   swapped  H2O  -> 1H2-16O__POKAZATEL__R15000_0.3-50mu.xsec.TauREx.h5
+  retained NH3  -> opacNH3.dat
   retained O2   -> opacO2.dat
   retained O3   -> opacO3.dat
---- test2 [exomol]: 1814 planets, jobs=4, reduce=bin ---
-    812 s total, 0.45 s/planet (wall, jobs=4); 0 failures (NaN rows)
-    vs baseline: median rel diff 6.325e-03, max 1.181e+02; median Pearson r 0.807029, median mean-depth ratio 1.006016
+--- test2 [exomol]: 1814 planets, jobs=6, reduce=bin ---
+    637 s total, 0.35 s/planet (wall, jobs=6); 0 failures (NaN rows)
+    vs baseline: median rel diff 5.600e-03, max 3.564e+01; median Pearson r 0.864837, median mean-depth ratio 1.003696
     wrote /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/test2_native_exomol.npy (1814, 2753)
 
 swap dir [exomol] /home/owenhyang/opacity_swap_v3_exomol
@@ -28,11 +30,12 @@ swap dir [exomol] /home/owenhyang/opacity_swap_v3_exomol
   swapped  CO   -> 12C-16O__Li2015.R15000_0.3-50mu.xsec.TauREx.h5
   swapped  CO2  -> 12C-16O2__UCL-4000.R15000_0.3-50mu.xsec.TauREx.h5
   swapped  H2O  -> 1H2-16O__POKAZATEL__R15000_0.3-50mu.xsec.TauREx.h5
+  retained NH3  -> opacNH3.dat
   retained O2   -> opacO2.dat
   retained O3   -> opacO3.dat
---- test3 [exomol]: 1813 planets, jobs=4, reduce=bin ---
-    839 s total, 0.46 s/planet (wall, jobs=4); 0 failures (NaN rows)
-    vs baseline: median rel diff 6.194e-03, max 1.471e+01; median Pearson r 0.813376, median mean-depth ratio 1.006085
+--- test3 [exomol]: 1813 planets, jobs=6, reduce=bin ---
+    641 s total, 0.35 s/planet (wall, jobs=6); 0 failures (NaN rows)
+    vs baseline: median rel diff 5.510e-03, max 9.836e+00; median Pearson r 0.866190, median mean-depth ratio 1.003824
     wrote /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/test3_native_exomol.npy (1813, 2753)
 
 swap dir [exomol] /home/owenhyang/opacity_swap_v3_exomol
@@ -40,11 +43,12 @@ swap dir [exomol] /home/owenhyang/opacity_swap_v3_exomol
   swapped  CO   -> 12C-16O__Li2015.R15000_0.3-50mu.xsec.TauREx.h5
   swapped  CO2  -> 12C-16O2__UCL-4000.R15000_0.3-50mu.xsec.TauREx.h5
   swapped  H2O  -> 1H2-16O__POKAZATEL__R15000_0.3-50mu.xsec.TauREx.h5
+  retained NH3  -> opacNH3.dat
   retained O2   -> opacO2.dat
   retained O3   -> opacO3.dat
---- test4 [exomol]: 1776 planets, jobs=4, reduce=bin ---
-    817 s total, 0.46 s/planet (wall, jobs=4); 0 failures (NaN rows)
-    vs baseline: median rel diff 6.180e-03, max 1.276e+01; median Pearson r 0.804353, median mean-depth ratio 1.006140
+--- test4 [exomol]: 1776 planets, jobs=6, reduce=bin ---
+    631 s total, 0.36 s/planet (wall, jobs=6); 0 failures (NaN rows)
+    vs baseline: median rel diff 5.479e-03, max 1.042e+01; median Pearson r 0.863052, median mean-depth ratio 1.003774
     wrote /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/test4_native_exomol.npy (1776, 2753)
 
 swap dir [exomol] /home/owenhyang/opacity_swap_v3_exomol
@@ -52,11 +56,12 @@ swap dir [exomol] /home/owenhyang/opacity_swap_v3_exomol
   swapped  CO   -> 12C-16O__Li2015.R15000_0.3-50mu.xsec.TauREx.h5
   swapped  CO2  -> 12C-16O2__UCL-4000.R15000_0.3-50mu.xsec.TauREx.h5
   swapped  H2O  -> 1H2-16O__POKAZATEL__R15000_0.3-50mu.xsec.TauREx.h5
+  retained NH3  -> opacNH3.dat
   retained O2   -> opacO2.dat
   retained O3   -> opacO3.dat
---- test5 [exomol]: 1809 planets, jobs=4, reduce=bin ---
-    812 s total, 0.45 s/planet (wall, jobs=4); 0 failures (NaN rows)
-    vs baseline: median rel diff 6.200e-03, max 3.996e+01; median Pearson r 0.815911, median mean-depth ratio 1.005875
+--- test5 [exomol]: 1809 planets, jobs=6, reduce=bin ---
+    640 s total, 0.35 s/planet (wall, jobs=6); 0 failures (NaN rows)
+    vs baseline: median rel diff 5.483e-03, max 3.491e+01; median Pearson r 0.865406, median mean-depth ratio 1.003603
     wrote /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/test5_native_exomol.npy (1809, 2753)
 
 swap dir [exomol] /home/owenhyang/opacity_swap_v3_exomol
@@ -64,13 +69,16 @@ swap dir [exomol] /home/owenhyang/opacity_swap_v3_exomol
   swapped  CO   -> 12C-16O__Li2015.R15000_0.3-50mu.xsec.TauREx.h5
   swapped  CO2  -> 12C-16O2__UCL-4000.R15000_0.3-50mu.xsec.TauREx.h5
   swapped  H2O  -> 1H2-16O__POKAZATEL__R15000_0.3-50mu.xsec.TauREx.h5
+  retained NH3  -> opacNH3.dat
   retained O2   -> opacO2.dat
   retained O3   -> opacO3.dat
---- train [exomol]: 18040 planets, jobs=4, reduce=bin ---
-    7675 s total, 0.43 s/planet (wall, jobs=4); 0 failures (NaN rows)
-    vs baseline: median rel diff 6.101e-03, max 5.437e+01; median Pearson r 0.808127, median mean-depth ratio 1.005605
+--- train [exomol]: 18040 planets, jobs=6, reduce=bin ---
+    6394 s total, 0.35 s/planet (wall, jobs=6); 0 failures (NaN rows)
+    vs baseline: median rel diff 5.408e-03, max 4.806e+01; median Pearson r 0.864678, median mean-depth ratio 1.003530
     wrote /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/train_native_exomol.npy (18040, 2753)
 
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
 Loading MultiREx version 0.3.1
 Loading MultiREx version 0.3.1
 Loading MultiREx version 0.3.1

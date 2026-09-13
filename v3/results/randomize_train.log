@@ -1,6 +1,9 @@
+Loading MultiREx version 0.3.1
 18040 planets: haze on 60%, cloud on 50%, spots on 70%, quenched 50%
-  eq: (18040, 2753), 0 failures, 639 s -> /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/train_native_rand_aero_eq.npy
-  q: (18040, 2753), 0 failures, 640 s -> /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/train_native_rand_aero_q.npy
+  eq: (18040, 2753), 0 failures, 624 s -> /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/train_native_rand_aero_eq.npy
+  q: (18040, 2753), 0 failures, 553 s -> /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/train_native_rand_aero_q.npy
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
 Loading MultiREx version 0.3.1
 Loading MultiREx version 0.3.1
 Loading MultiREx version 0.3.1

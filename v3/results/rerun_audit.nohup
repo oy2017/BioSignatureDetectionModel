@@ -1,0 +1,96 @@
+[2026-09-13 00:03:47] === stage 0: archive
+Loading MultiREx version 0.3.1
+[2026-09-13 00:03:55] === stage 1: grid
+[2026-09-13 00:03:55] start generate_grid
+[2026-09-13 00:16:32] done  generate_grid
+[2026-09-13 00:16:32] start bin_spectra
+[2026-09-13 00:16:42] done  bin_spectra
+[2026-09-13 00:16:42] === stage 2: tuning + renders in parallel
+[2026-09-13 00:16:42] start ariel_pipeline
+[2026-09-13 00:16:42] start shift_aerosol
+[2026-09-13 01:15:06] done  shift_aerosol
+[2026-09-13 01:15:06] start shift_tlse
+[2026-09-13 01:15:45] done  shift_tlse
+[2026-09-13 01:15:45] start generate_quenched
+[2026-09-13 01:31:23] done  generate_quenched
+[2026-09-13 01:31:23] start shift_absorbers
+[2026-09-13 01:37:41] done  shift_absorbers
+[2026-09-13 01:37:41] start shift_absorbers_q
+[2026-09-13 01:43:58] done  shift_absorbers_q
+[2026-09-13 01:43:58] start shift_absorbers_tr
+[2026-09-13 01:55:46] done  shift_absorbers_tr
+[2026-09-13 01:55:46] start randomize_train
+[2026-09-13 02:11:57] done  ariel_pipeline
+[2026-09-13 02:15:26] done  randomize_train
+[2026-09-13 02:15:26] start kzz_1e7
+[2026-09-13 02:19:53] done  kzz_1e7
+[2026-09-13 02:19:53] start kzz_1e8
+[2026-09-13 02:24:18] done  kzz_1e8
+[2026-09-13 02:24:18] start kzz_1e10
+[2026-09-13 02:28:39] done  kzz_1e10
+[2026-09-13 02:28:39] start kzz_1e11
+[2026-09-13 02:32:59] done  kzz_1e11
+[2026-09-13 02:32:59] start mcs_testset
+[2026-09-13 02:33:37] done  mcs_testset
+[2026-09-13 02:33:37] start alfnoor_render
+[2026-09-13 02:37:27] done  alfnoor_render
+[2026-09-13 02:37:27] === stage 2D: ExoMol renders
+[2026-09-13 02:37:27] start shift_opacity
+[2026-09-13 05:17:11] done  shift_opacity
+[2026-09-13 05:17:11] === stage 3: analysis
+[2026-09-13 05:17:11] start compound
+[2026-09-13 05:17:37] done  compound
+[2026-09-13 05:17:37] start run_chain
+[2026-09-13 05:30:32] done  run_chain
+[2026-09-13 05:30:32] start run_multimodel
+[2026-09-13 05:32:35] done  run_multimodel
+[2026-09-13 05:32:35] start shift_pca_rf
+[2026-09-13 05:33:18] done  shift_pca_rf
+[2026-09-13 05:33:18] start shift_raw_xgb
+[2026-09-13 05:33:51] done  shift_raw_xgb
+[2026-09-13 05:33:51] start shift_raw_rf
+[2026-09-13 05:34:31] done  shift_raw_rf
+[2026-09-13 05:34:31] start transfer
+[2026-09-13 05:34:32] done  transfer
+[2026-09-13 05:34:32] start tables
+[2026-09-13 05:34:33] done  tables
+[2026-09-13 05:34:33] start oracle
+[2026-09-13 05:44:38] done  oracle
+[2026-09-13 05:44:39] start trust_detect
+[2026-09-13 05:45:13] done  trust_detect
+[2026-09-13 05:45:13] start trust_randomized
+[2026-09-13 05:46:27] done  trust_randomized
+[2026-09-13 05:46:27] start trust_envelope
+[2026-09-13 05:48:02] done  trust_envelope
+[2026-09-13 05:48:02] start host_dependence
+[2026-09-13 05:48:15] done  host_dependence
+[2026-09-13 05:48:15] start conformal
+[2026-09-13 05:48:26] done  conformal
+[2026-09-13 05:48:26] start mechanism_bands
+[2026-09-13 05:48:29] done  mechanism_bands
+[2026-09-13 05:48:29] start kzz_eval
+[2026-09-13 05:48:36] done  kzz_eval
+[2026-09-13 05:48:36] start tier_screen
+[2026-09-13 05:49:04] done  tier_screen
+[2026-09-13 05:49:04] start oracle_tier1
+[2026-09-13 05:49:42] done  oracle_tier1
+[2026-09-13 05:49:42] start trust_detect_tier1
+[2026-09-13 05:49:44] FAILED trust_detect_tier1 (results/trust_detect_tier1.log)
+[2026-09-13 05:49:44] start trust_randomized_tier1
+[2026-09-13 05:50:42] done  trust_randomized_tier1
+[2026-09-13 05:50:42] start trust_envelope_tier1
+[2026-09-13 05:52:24] done  trust_envelope_tier1
+[2026-09-13 05:52:24] start mcs_eval
+[2026-09-13 05:52:27] done  mcs_eval
+[2026-09-13 05:52:27] start alfnoor_fit
+[2026-09-13 05:54:05] done  alfnoor_fit
+[2026-09-13 05:54:05] === stage 4: figures
+[2026-09-13 05:54:05] start plot_fig1_map
+[2026-09-13 05:54:06] done  plot_fig1_map
+[2026-09-13 05:54:06] start plot_fig2_absorbers
+[2026-09-13 05:54:12] done  plot_fig2_absorbers
+[2026-09-13 05:54:12] start plot_fig3_detect
+[2026-09-13 05:54:13] done  plot_fig3_detect
+[2026-09-13 05:54:13] start plot_fig4_tiers
+[2026-09-13 05:54:14] FAILED plot_fig4_tiers (results/plot_fig4_tiers.log)
+[2026-09-13 05:54:14] === all done

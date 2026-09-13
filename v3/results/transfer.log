@@ -4,40 +4,40 @@ Does the fidelity budget transfer? configuration ariel
 Spearman correlation of the per-case accuracy loss, every pair of pipelines.
 
 pipeline A  pipeline B  relationship              rho
-norm_xgb    pca_xgb     same model family       0.956
-norm_rf     pca_rf      same model family       0.950
-pca_xgb     raw_xgb     same model family       0.926
-norm_xgb    raw_xgb     same model family       0.902
-pca_rf      raw_rf      same model family       0.790
-norm_rf     raw_rf      same model family       0.751
-norm_xgb    norm_rf     same representation     0.989
-pca_xgb     pca_rf      same representation     0.989
-raw_xgb     raw_rf      same representation     0.837
-norm_rf     pca_xgb     sharing neither         0.961
-norm_xgb    pca_rf      sharing neither         0.947
-pca_rf      raw_xgb     sharing neither         0.932
-norm_rf     raw_xgb     sharing neither         0.924
-pca_xgb     raw_rf      sharing neither         0.775
-norm_xgb    raw_rf      sharing neither         0.731
+norm_xgb    pca_xgb     same model family       0.958
+norm_rf     pca_rf      same model family       0.928
+pca_xgb     raw_xgb     same model family       0.914
+norm_xgb    raw_xgb     same model family       0.909
+pca_rf      raw_rf      same model family       0.727
+norm_rf     raw_rf      same model family       0.723
+norm_xgb    norm_rf     same representation     0.983
+pca_xgb     pca_rf      same representation     0.983
+raw_xgb     raw_rf      same representation     0.826
+norm_rf     pca_xgb     sharing neither         0.945
+norm_xgb    pca_rf      sharing neither         0.930
+norm_rf     raw_xgb     sharing neither         0.928
+pca_rf      raw_xgb     sharing neither         0.925
+norm_xgb    raw_rf      sharing neither         0.718
+pca_xgb     raw_rf      sharing neither         0.695
 
-physical proxy: Spearman(loss, surviving feature amplitude) = -0.007 (n = 63), so the ordering is not simply how much signal is left.
+physical proxy: Spearman(loss, surviving feature amplitude) = 0.289 (n = 63), so the ordering is not simply how much signal is left.
 
-same representation    n=3  mean rho 0.938   range 0.837-0.989
-same model family      n=6  mean rho 0.879   range 0.751-0.956
-sharing neither        n=6  mean rho 0.878   range 0.731-0.961
+same representation    n=3  mean rho 0.931   range 0.826-0.983
+same model family      n=6  mean rho 0.860   range 0.723-0.958
+sharing neither        n=6  mean rho 0.857   range 0.695-0.945
 
 same representation vs all other pairs:   Mann-Whitney U one-sided p = 0.0901   (n = 3 vs 12)
 same representation vs same model family: Mann-Whitney U one-sided p = 0.1310
-                                         permutation (20k) p = 0.2134
-                                         mean difference = +0.059
+                                         permutation (20k) p = 0.2249
+                                         mean difference = +0.071
 
 
-Magnitude spread on the 32 cases costing at least 5 points to some pipeline:
-  the same shift costs a median 6.4x more for one pipeline than another (max 101x).
-  Between the two strongest pipelines alone it reaches 39.0x.
+Magnitude spread on the 29 cases costing at least 5 points to some pipeline:
+  the same shift costs a median 4.8x more for one pipeline than another (max 48x).
+  Between the two strongest pipelines alone it reaches 5.4x.
 
-No ranking inversion under haze 3e7: frozen 96.47 -> 90.35%, PCA 92.09 -> 85.54%;
+No ranking inversion under haze 3e7: frozen 96.05 -> 90.99%, PCA 91.84 -> 86.01%;
 the in-domain ranking holds under the shift on this grid.
 
-Sharing a model family agrees no better than sharing nothing (0.879 vs 0.878);
+Sharing a model family agrees no better than sharing nothing (0.860 vs 0.857);
 the representation is what carries the budget.

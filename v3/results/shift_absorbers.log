@@ -1,13 +1,16 @@
-test1: chemistry 7 s; median log10 HCN -9.04, C2H2 -13.10; C/O>1 planets: HCN -5.03, C2H2 -4.54
-test1: 1804/1804 rendered, 98 s -> /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/test1_native_absorbers.npy
-test2: chemistry 7 s; median log10 HCN -8.86, C2H2 -12.63; C/O>1 planets: HCN -5.03, C2H2 -4.57
-test2: 1814/1814 rendered, 84 s -> /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/test2_native_absorbers.npy
-test3: chemistry 7 s; median log10 HCN -8.91, C2H2 -12.52; C/O>1 planets: HCN -5.01, C2H2 -4.53
-test3: 1813/1813 rendered, 84 s -> /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/test3_native_absorbers.npy
-test4: chemistry 7 s; median log10 HCN -9.03, C2H2 -12.99; C/O>1 planets: HCN -5.03, C2H2 -4.55
-test4: 1776/1776 rendered, 82 s -> /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/test4_native_absorbers.npy
-test5: chemistry 7 s; median log10 HCN -8.92, C2H2 -12.85; C/O>1 planets: HCN -4.95, C2H2 -4.52
-test5: 1809/1809 rendered, 85 s -> /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/test5_native_absorbers.npy
+Loading MultiREx version 0.3.1
+test1: chemistry 6 s; median log10 HCN -9.04, C2H2 -13.10; C/O>1 planets: HCN -5.03, C2H2 -4.54
+test1: 1804/1804 rendered, 82 s -> /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/test1_native_absorbers.npy
+test2: chemistry 5 s; median log10 HCN -8.86, C2H2 -12.63; C/O>1 planets: HCN -5.03, C2H2 -4.57
+test2: 1814/1814 rendered, 68 s -> /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/test2_native_absorbers.npy
+test3: chemistry 6 s; median log10 HCN -8.91, C2H2 -12.52; C/O>1 planets: HCN -5.01, C2H2 -4.53
+test3: 1813/1813 rendered, 67 s -> /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/test3_native_absorbers.npy
+test4: chemistry 5 s; median log10 HCN -9.03, C2H2 -12.99; C/O>1 planets: HCN -5.03, C2H2 -4.55
+test4: 1776/1776 rendered, 65 s -> /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/test4_native_absorbers.npy
+test5: chemistry 5 s; median log10 HCN -8.92, C2H2 -12.85; C/O>1 planets: HCN -4.95, C2H2 -4.52
+test5: 1809/1809 rendered, 65 s -> /mnt/c/Users/owenh/BioSignatureDetectionModel/v3/data/test5_native_absorbers.npy
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
 Loading MultiREx version 0.3.1
 Loading MultiREx version 0.3.1
 Loading MultiREx version 0.3.1

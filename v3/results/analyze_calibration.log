@@ -1,22 +1,22 @@
 Calibration, configuration ariel (pooled test sets, n=9016, equal-count bins)
 
-  raw_xgb    ECE 0.0347  Brier 0.0944  AUC 0.9460  max |gap| 0.107
-  raw_rf     ECE 0.0361  Brier 0.0938  AUC 0.9441  max |gap| 0.063
-  pca_xgb    ECE 0.0206  Brier 0.0575  AUC 0.9786  max |gap| 0.104
-  pca_rf     ECE 0.1415  Brier 0.0920  AUC 0.9706  max |gap| 0.252
-  norm_xgb   ECE 0.0103  Brier 0.0264  AUC 0.9944  max |gap| 0.056
-  norm_rf    ECE 0.0366  Brier 0.0355  AUC 0.9915  max |gap| 0.171
-  norm_mlp   ECE 0.0040  Brier 0.0308  AUC 0.9923  max |gap| 0.017
-  pcaw_mlp   ECE 0.1122  Brier 0.1045  AUC 0.9602  max |gap| 0.348
-  pca_mlp    ECE 0.1421  Brier 0.0998  AUC 0.9685  max |gap| 0.369
+  raw_xgb    ECE 0.0370  Brier 0.0935  AUC 0.9475  max |gap| 0.095
+  raw_rf     ECE 0.0405  Brier 0.0908  AUC 0.9481  max |gap| 0.073
+  pca_xgb    ECE 0.0176  Brier 0.0577  AUC 0.9776  max |gap| 0.063
+  pca_rf     ECE 0.1442  Brier 0.0944  AUC 0.9687  max |gap| 0.267
+  norm_xgb   ECE 0.0099  Brier 0.0292  AUC 0.9937  max |gap| 0.046
+  norm_rf    ECE 0.0297  Brier 0.0379  AUC 0.9904  max |gap| 0.135
+  norm_mlp   ECE 0.0081  Brier 0.0339  AUC 0.9918  max |gap| 0.032
+  pcaw_mlp   ECE 0.1356  Brier 0.1048  AUC 0.9625  max |gap| 0.417
+  pca_mlp    ECE 0.1336  Brier 0.1088  AUC 0.9624  max |gap| 0.402
 
 Operating thresholds, frozen norm_xgb
-  clean: AP 0.994, at threshold 0.5 precision 95.1% recall 98.0% accuracy 96.47%
-      recall >= 90%: threshold 0.932, precision 98.4%
-      recall >= 95%: threshold 0.777, precision 97.1%
-      recall >= 99%: threshold 0.353, precision 93.9%
-  cloud_1e4Pa: AP 0.985, at threshold 0.5 precision 94.2% recall 96.3% accuracy 95.15%
-      recall >= 90%: threshold 0.815, precision 96.7%
-      recall >= 95%: threshold 0.591, precision 95.0%
-      recall >= 99%: threshold 0.196, precision 91.3%
+  clean: AP 0.993, at threshold 0.5 precision 94.7% recall 97.6% accuracy 96.05%
+      recall >= 90%: threshold 0.895, precision 98.1%
+      recall >= 95%: threshold 0.729, precision 96.7%
+      recall >= 99%: threshold 0.251, precision 91.9%
+  cloud_1e4Pa: AP 0.984, at threshold 0.5 precision 91.8% recall 98.6% accuracy 94.85%
+      recall >= 90%: threshold 0.877, precision 96.4%
+      recall >= 95%: threshold 0.769, precision 94.8%
+      recall >= 99%: threshold 0.397, precision 90.5%
   (cloud: 0 planets with failed re-render excluded)

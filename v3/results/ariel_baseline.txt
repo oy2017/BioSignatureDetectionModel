@@ -1,13 +1,13 @@
 Hand-built band-depth index vs the classifier, configuration ariel, label C/O > 1.0
 
 Bands (um): CH4a 3.15-3.45; CH4b 7.3-7.79; COa 4.5-4.85; COb 2.28-2.4; H2O 2.55-2.8
-Index: max(CH4, CO band depths) - H2O band depth; cutoff tuned on the training set: > 0.748 (training accuracy 79.94%)
+Index: max(CH4, CO band depths) - H2O band depth; cutoff tuned on the training set: > 0.757 (training accuracy 80.80%)
 
 method                            accuracy       F1
-index-1D                           79.26%±1.31        -
-index-ML                           90.09%±1.13   90.36%
-full pipeline                      96.47%±0.26   96.52%
+index-1D                           79.90%±1.61        -
+index-ML                           90.46%±1.14   90.70%
+full pipeline                      96.05%±0.59   96.11%
 
-The full pipeline leads the hand-built index by 17.2 points and the
-same five band depths given to XGBoost by 6.4 points, so the advantage is
+The full pipeline leads the hand-built index by 16.2 points and the
+same five band depths given to XGBoost by 5.6 points, so the advantage is
 the spectral detail beyond band contrasts, not the model alone.

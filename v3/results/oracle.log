@@ -1,41 +1,44 @@
-white noise       snr8          stochastic    frozen  92.05  aug  93.32  oracle  93.27  vs-clean    29%  vs-oracle   105%  irreducible +3.21
-correlated noise  snr8          stochastic    frozen  88.92  aug  92.52  oracle  92.85  vs-clean    48%  vs-oracle    92%  irreducible +3.63
-white noise       snr5          stochastic    frozen  89.29  aug  91.30  oracle  91.69  vs-clean    28%  vs-oracle    84%  irreducible +4.78
-correlated noise  snr5          stochastic    frozen  83.91  aug  89.80  oracle  91.87  vs-clean    47%  vs-oracle    74%  irreducible +4.60
-white noise       snr5 in-range stochastic    frozen  89.29  aug  91.87  oracle  91.69  vs-clean    36%  vs-oracle   107%  irreducible +4.78
-correlated noise  snr5 in-range stochastic    frozen  83.91  aug  90.75  oracle  91.87  vs-clean    54%  vs-oracle    86%  irreducible +4.60
-gain ramp         x1.0          deterministic frozen  95.19  aug  96.02  oracle  96.17  vs-clean    65%  vs-oracle    84%  irreducible +0.30
-gain ramp         x2.0          deterministic frozen  93.81  aug  95.60  oracle  96.22  vs-clean    67%  vs-oracle    74%  irreducible +0.26
-stellar spots     tlse_spots10  deterministic frozen  88.79  aug  93.94  oracle  94.24  vs-clean    67%  vs-oracle    95%  irreducible +2.23
-stellar spots     tlse_spots20  deterministic frozen  85.48  aug  92.95  oracle  92.98  vs-clean    68%  vs-oracle   100%  irreducible +3.49
-  haze render: 18040 planets, 0 failures, 615 s
-haze              haze_3p0e7    deterministic frozen  90.35  aug  94.95  oracle  95.22  vs-clean    75%  vs-oracle    95%  irreducible +1.25
-exotransmit       exotransmit   deterministic frozen  89.98  oracle  95.51  irreducible +0.96  (no mixed augmentation for this axis: the oracle IS the augmentation)
-exomol            exomol        deterministic frozen  80.57  oracle  94.64  irreducible +1.83  (no mixed augmentation for this axis: the oracle IS the augmentation)
-absorbers         absorbers     deterministic frozen  71.93  oracle  96.43  irreducible +0.04  (no mixed augmentation for this axis: the oracle IS the augmentation)
+white noise       snr8          stochastic    frozen  91.96  aug  93.17  oracle  93.07  vs-clean    30%  vs-oracle   109%  irreducible +2.98
+correlated noise  snr8          stochastic    frozen  89.34  aug  92.37  oracle  92.82  vs-clean    45%  vs-oracle    87%  irreducible +3.23
+white noise       snr5          stochastic    frozen  90.11  aug  91.61  oracle  91.71  vs-clean    25%  vs-oracle    94%  irreducible +4.34
+correlated noise  snr5          stochastic    frozen  85.22  aug  89.69  oracle  91.70  vs-clean    41%  vs-oracle    69%  irreducible +4.35
+white noise       snr5 in-range stochastic    frozen  90.11  aug  91.86  oracle  91.71  vs-clean    29%  vs-oracle   109%  irreducible +4.34
+correlated noise  snr5 in-range stochastic    frozen  85.22  aug  90.57  oracle  91.70  vs-clean    49%  vs-oracle    83%  irreducible +4.35
+gain ramp         x1.0          deterministic frozen  94.96  aug  95.50  oracle  95.52  vs-clean    49%  vs-oracle    96%  irreducible +0.53
+gain ramp         x2.0          deterministic frozen  93.49  aug  95.05  oracle  95.53  vs-clean    61%  vs-oracle    77%  irreducible +0.52
+stellar spots     tlse_spots10  deterministic frozen  88.91  aug  94.18  oracle  94.52  vs-clean    74%  vs-oracle    94%  irreducible +1.53
+stellar spots     tlse_spots20  deterministic frozen  85.33  aug  93.70  oracle  94.03  vs-clean    78%  vs-oracle    96%  irreducible +2.02
+Loading MultiREx version 0.3.1
+  haze render: 18040 planets, 0 failures, 537 s
+haze              haze_3p0e7    deterministic frozen  90.99  aug  94.81  oracle  95.24  vs-clean    75%  vs-oracle    90%  irreducible +0.81
+exotransmit       exotransmit   deterministic frozen  95.35  oracle  95.73  irreducible +0.32  (no mixed augmentation for this axis: the oracle IS the augmentation)
+exomol            exomol        deterministic frozen  87.03  oracle  95.04  irreducible +1.01  (no mixed augmentation for this axis: the oracle IS the augmentation)
+absorbers         absorbers     deterministic frozen  72.32  oracle  96.12  irreducible -0.07  (no mixed augmentation for this axis: the oracle IS the augmentation)
 Oracle ceilings for the repair tests, configuration ariel, pipeline norm_xgb
 
 oracle = trained only at the test strength; irreducible = clean minus oracle (points the shift
 removes for any training); vs-oracle = share of the recoverable loss that mixed-strength augmentation got.
 
 axis              case          kind            frozen  augmented  oracle  irreducible  vs clean  vs oracle
-white noise       snr8          stochastic      92.05%     93.32%  93.27%       +3.21       29%       105%
-correlated noise  snr8          stochastic      88.92%     92.52%  92.85%       +3.63       48%        92%
-white noise       snr5          stochastic      89.29%     91.30%  91.69%       +4.78       28%        84%
-correlated noise  snr5          stochastic      83.91%     89.80%  91.87%       +4.60       47%        74%
-white noise       snr5 (aug incl. SNR 5)stochastic      89.29%     91.87%  91.69%       +4.78       36%       107%
-correlated noise  snr5 (aug incl. SNR 5)stochastic      83.91%     90.75%  91.87%       +4.60       54%        86%
-gain ramp         x1.0          deterministic   95.19%     96.02%  96.17%       +0.30       65%        84%
-gain ramp         x2.0          deterministic   93.81%     95.60%  96.22%       +0.26       67%        74%
-stellar spots     tlse_spots10  deterministic   88.79%     93.94%  94.24%       +2.23       67%        95%
-stellar spots     tlse_spots20  deterministic   85.48%     92.95%  92.98%       +3.49       68%       100%
-haze              haze_3p0e7    deterministic   90.35%     94.95%  95.22%       +1.25       75%        95%
-exotransmit       exotransmit   deterministic   89.98%     95.51%  95.51%       +0.96       85%       nan%
-exomol            exomol        deterministic   80.57%     94.64%  94.64%       +1.83       88%       nan%
-absorbers         absorbers     deterministic   71.93%     96.43%  96.43%       +0.04      100%       nan%
+white noise       snr8          stochastic      91.96%     93.17%  93.07%       +2.98       30%       109%
+correlated noise  snr8          stochastic      89.34%     92.37%  92.82%       +3.23       45%        87%
+white noise       snr5          stochastic      90.11%     91.61%  91.71%       +4.34       25%        94%
+correlated noise  snr5          stochastic      85.22%     89.69%  91.70%       +4.35       41%        69%
+white noise       snr5 (aug incl. SNR 5)stochastic      90.11%     91.86%  91.71%       +4.34       29%       109%
+correlated noise  snr5 (aug incl. SNR 5)stochastic      85.22%     90.57%  91.70%       +4.35       49%        83%
+gain ramp         x1.0          deterministic   94.96%     95.50%  95.52%       +0.53       49%        96%
+gain ramp         x2.0          deterministic   93.49%     95.05%  95.53%       +0.52       61%        77%
+stellar spots     tlse_spots10  deterministic   88.91%     94.18%  94.52%       +1.53       74%        94%
+stellar spots     tlse_spots20  deterministic   85.33%     93.70%  94.03%       +2.02       78%        96%
+haze              haze_3p0e7    deterministic   90.99%     94.81%  95.24%       +0.81       75%        90%
+exotransmit       exotransmit   deterministic   95.35%     95.73%  95.73%       +0.32       54%       nan%
+exomol            exomol        deterministic   87.03%     95.04%  95.04%       +1.01       89%       nan%
+absorbers         absorbers     deterministic   72.32%     96.12%  96.12%       -0.07      100%       nan%
 
-deterministic, vs oracle: 74-100%   stochastic, vs oracle: 74-107%   (OVERLAPPING: the rule does not survive the ceiling correction)
-irreducible loss, deterministic: +0.04 to +3.49 pts; stochastic: +3.21 to +4.78 pts
+deterministic, vs oracle: 77-96%   stochastic, vs oracle: 69-109%   (OVERLAPPING: the rule does not survive the ceiling correction)
+irreducible loss, deterministic: -0.07 to +2.02 pts; stochastic: +2.98 to +4.35 pts
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
 Loading MultiREx version 0.3.1
 Loading MultiREx version 0.3.1
 Loading MultiREx version 0.3.1

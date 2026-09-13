@@ -1,0 +1,25 @@
+Traceback (most recent call last):
+  File "/home/owenhyang/tfenv/lib/python3.10/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "pandas/_libs/index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7096, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'tier-2 sigma, ExoSim2 shape, 102 bins'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/owenh/BioSignatureDetectionModel/v3/plots/fig4_tiers.py", line 55, in <module>
+    main()
+  File "/mnt/c/Users/owenh/BioSignatureDetectionModel/v3/plots/fig4_tiers.py", line 46, in main
+    b.bar(xb + (k - 1.5) * .2, [m.loc[r, col_] * 100 for r, _ in rows], .19, color=[SERIES[1], SERIES[3], SERIES[2], SERIES[0]][k], label=lab)
+  File "/mnt/c/Users/owenh/BioSignatureDetectionModel/v3/plots/fig4_tiers.py", line 46, in <listcomp>
+    b.bar(xb + (k - 1.5) * .2, [m.loc[r, col_] * 100 for r, _ in rows], .19, color=[SERIES[1], SERIES[3], SERIES[2], SERIES[0]][k], label=lab)
+  File "/home/owenhyang/tfenv/lib/python3.10/site-packages/pandas/core/indexing.py", line 1184, in __getitem__
+    return self.obj._get_value(*key, takeable=self._takeable)
+  File "/home/owenhyang/tfenv/lib/python3.10/site-packages/pandas/core/frame.py", line 4232, in _get_value
+    row = self.index.get_loc(index)
+  File "/home/owenhyang/tfenv/lib/python3.10/site-packages/pandas/core/indexes/base.py", line 3819, in get_loc
+    raise KeyError(key) from err
+KeyError: 'tier-2 sigma, ExoSim2 shape, 102 bins'

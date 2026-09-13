@@ -1,16 +1,16 @@
 a,b,relationship,rho
-norm_xgb,pca_xgb,same model family,0.9564398130668044
-norm_rf,pca_rf,same model family,0.9503277099529223
-pca_xgb,raw_xgb,same model family,0.9256823266146794
-norm_xgb,raw_xgb,same model family,0.9024320018563801
-pca_rf,raw_rf,same model family,0.7895128625229394
-norm_rf,raw_rf,same model family,0.7509964472739143
-norm_xgb,norm_rf,same representation,0.9891475288531357
-pca_xgb,pca_rf,same representation,0.988585764589663
-raw_xgb,raw_rf,same representation,0.8368126070819438
-norm_rf,pca_xgb,sharing neither,0.9609175342729431
-norm_xgb,pca_rf,sharing neither,0.9472660738081863
-pca_rf,raw_xgb,sharing neither,0.932027414756323
-norm_rf,raw_xgb,sharing neither,0.9240399999010125
-pca_xgb,raw_rf,sharing neither,0.7751569621615554
-norm_xgb,raw_rf,sharing neither,0.7305840691454433
+norm_xgb,pca_xgb,same model family,0.9582403141892356
+norm_rf,pca_rf,same model family,0.9280972900403105
+pca_xgb,raw_xgb,same model family,0.9142212461201679
+norm_xgb,raw_xgb,same model family,0.9088693951654631
+pca_rf,raw_rf,same model family,0.7268264093225976
+norm_rf,raw_rf,same model family,0.7231099852849671
+norm_xgb,norm_rf,same representation,0.9827724894425115
+pca_xgb,pca_rf,same representation,0.9825372059529524
+raw_xgb,raw_rf,same representation,0.8262529360555242
+norm_rf,pca_xgb,sharing neither,0.9452867221100715
+norm_xgb,pca_rf,sharing neither,0.9298883754421955
+norm_rf,raw_xgb,sharing neither,0.9275202362571776
+pca_rf,raw_xgb,sharing neither,0.9246870462385419
+norm_xgb,raw_rf,sharing neither,0.717537457607982
+pca_xgb,raw_rf,sharing neither,0.6945958372399674

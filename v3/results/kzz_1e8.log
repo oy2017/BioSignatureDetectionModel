@@ -1,14 +1,16 @@
 Loading MultiREx version 0.3.1
-test1: chemistry for 1804 in 6.8 s
-test1: 1804/1804 rendered (100.0%), label balance 0.484, 66 s
-test2: chemistry for 1814 in 6.3 s
-test2: 1814/1814 rendered (100.0%), label balance 0.513, 56 s
-test3: chemistry for 1813 in 6.4 s
-test3: 1813/1813 rendered (100.0%), label balance 0.520, 56 s
-test4: chemistry for 1776 in 6.4 s
-test4: 1776/1776 rendered (100.0%), label balance 0.494, 54 s
-test5: chemistry for 1809 in 6.0 s
-test5: 1809/1809 rendered (100.0%), label balance 0.489, 54 s
+test1: chemistry for 1804 in 4.4 s
+test1: 1804/1804 rendered (100.0%), label balance 0.484, 54 s
+test2: chemistry for 1814 in 4.2 s
+test2: 1814/1814 rendered (100.0%), label balance 0.513, 46 s
+test3: chemistry for 1813 in 4.4 s
+test3: 1813/1813 rendered (100.0%), label balance 0.520, 45 s
+test4: chemistry for 1776 in 4.0 s
+test4: 1776/1776 rendered (100.0%), label balance 0.494, 45 s
+test5: chemistry for 1809 in 4.1 s
+test5: 1809/1809 rendered (100.0%), label balance 0.489, 46 s
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
 Loading MultiREx version 0.3.1
 Loading MultiREx version 0.3.1
 Loading MultiREx version 0.3.1

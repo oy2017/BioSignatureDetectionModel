@@ -1,37 +1,37 @@
-white noise       snr8          stochastic    frozen  81.00  aug    nan  oracle  84.01  vs-clean   nan%  vs-oracle   nan%  irreducible +4.68
-correlated noise  snr8          stochastic    frozen  88.73  aug    nan  oracle  88.68  vs-clean   nan%  vs-oracle   nan%  irreducible +0.01
-white noise       snr5          stochastic    frozen  72.74  aug    nan  oracle  79.08  vs-clean   nan%  vs-oracle   nan%  irreducible +9.61
-correlated noise  snr5          stochastic    frozen  87.87  aug    nan  oracle  88.10  vs-clean   nan%  vs-oracle   nan%  irreducible +0.59
-white noise       snr5 in-range stochastic    frozen  72.74  aug  78.77  oracle  79.08  vs-clean    38%  vs-oracle    95%  irreducible +9.61
-correlated noise  snr5 in-range stochastic    frozen  87.87  aug  87.95  oracle  88.10  vs-clean    11%  vs-oracle    38%  irreducible +0.59
-gain ramp         x1.0          deterministic frozen  88.88  aug    nan  oracle  89.14  vs-clean   nan%  vs-oracle   nan%  irreducible -0.45
-gain ramp         x2.0          deterministic frozen  89.23  aug    nan  oracle  89.04  vs-clean   nan%  vs-oracle   nan%  irreducible -0.35
-stellar spots     tlse_spots10  deterministic frozen  78.31  aug    nan  oracle  85.53  vs-clean   nan%  vs-oracle   nan%  irreducible +3.16
-stellar spots     tlse_spots20  deterministic frozen  69.96  aug    nan  oracle  82.90  vs-clean   nan%  vs-oracle   nan%  irreducible +5.79
-haze              haze_3p0e7    deterministic frozen  60.34  aug    nan  oracle  75.48  vs-clean   nan%  vs-oracle   nan%  irreducible +13.21
-exotransmit       exotransmit   deterministic frozen  86.79  oracle  87.52  irreducible +1.16  (no mixed augmentation for this axis: the oracle IS the augmentation)
-exomol            exomol        deterministic frozen  64.78  oracle  79.26  irreducible +9.43  (no mixed augmentation for this axis: the oracle IS the augmentation)
-absorbers         absorbers     deterministic frozen  66.34  oracle  82.34  irreducible +6.34  (no mixed augmentation for this axis: the oracle IS the augmentation)
+white noise       snr8          stochastic    frozen  82.40  aug    nan  oracle  84.63  vs-clean   nan%  vs-oracle   nan%  irreducible +3.93
+correlated noise  snr8          stochastic    frozen  88.34  aug    nan  oracle  88.59  vs-clean   nan%  vs-oracle   nan%  irreducible -0.03
+white noise       snr5          stochastic    frozen  74.96  aug    nan  oracle  79.51  vs-clean   nan%  vs-oracle   nan%  irreducible +9.04
+correlated noise  snr5          stochastic    frozen  87.87  aug    nan  oracle  87.99  vs-clean   nan%  vs-oracle   nan%  irreducible +0.57
+white noise       snr5 in-range stochastic    frozen  74.96  aug  78.56  oracle  79.51  vs-clean    27%  vs-oracle    79%  irreducible +9.04
+correlated noise  snr5 in-range stochastic    frozen  87.87  aug  87.92  oracle  87.99  vs-clean     8%  vs-oracle    45%  irreducible +0.57
+gain ramp         x1.0          deterministic frozen  88.69  aug    nan  oracle  88.69  vs-clean   nan%  vs-oracle   nan%  irreducible -0.13
+gain ramp         x2.0          deterministic frozen  88.52  aug    nan  oracle  88.73  vs-clean   nan%  vs-oracle   nan%  irreducible -0.18
+stellar spots     tlse_spots10  deterministic frozen  78.93  aug    nan  oracle  86.93  vs-clean   nan%  vs-oracle   nan%  irreducible +1.62
+stellar spots     tlse_spots20  deterministic frozen  70.76  aug    nan  oracle  85.56  vs-clean   nan%  vs-oracle   nan%  irreducible +2.99
+haze              haze_3p0e7    deterministic frozen  59.47  aug    nan  oracle  81.44  vs-clean   nan%  vs-oracle   nan%  irreducible +7.11
+exotransmit       exotransmit   deterministic frozen  87.56  oracle  87.88  irreducible +0.68  (no mixed augmentation for this axis: the oracle IS the augmentation)
+exomol            exomol        deterministic frozen  67.50  oracle  80.33  irreducible +8.22  (no mixed augmentation for this axis: the oracle IS the augmentation)
+absorbers         absorbers     deterministic frozen  69.42  oracle  84.83  irreducible +3.73  (no mixed augmentation for this axis: the oracle IS the augmentation)
 Oracle ceilings for the repair tests, configuration ariel, pipeline norm_xgb
 
 oracle = trained only at the test strength; irreducible = clean minus oracle (points the shift
 removes for any training); vs-oracle = share of the recoverable loss that mixed-strength augmentation got.
 
 axis              case          kind            frozen  augmented  oracle  irreducible  vs clean  vs oracle
-white noise       snr8          stochastic      81.00%       nan%  84.01%       +4.68      nan%       nan%
-correlated noise  snr8          stochastic      88.73%       nan%  88.68%       +0.01      nan%       nan%
-white noise       snr5          stochastic      72.74%       nan%  79.08%       +9.61      nan%       nan%
-correlated noise  snr5          stochastic      87.87%       nan%  88.10%       +0.59      nan%       nan%
-white noise       snr5 (aug incl. SNR 5)stochastic      72.74%     78.77%  79.08%       +9.61       38%        95%
-correlated noise  snr5 (aug incl. SNR 5)stochastic      87.87%     87.95%  88.10%       +0.59       11%        38%
-gain ramp         x1.0          deterministic   88.88%       nan%  89.14%       -0.45      nan%       nan%
-gain ramp         x2.0          deterministic   89.23%       nan%  89.04%       -0.35      nan%       nan%
-stellar spots     tlse_spots10  deterministic   78.31%       nan%  85.53%       +3.16      nan%       nan%
-stellar spots     tlse_spots20  deterministic   69.96%       nan%  82.90%       +5.79      nan%       nan%
-haze              haze_3p0e7    deterministic   60.34%       nan%  75.48%      +13.21      nan%       nan%
-exotransmit       exotransmit   deterministic   86.79%     87.52%  87.52%       +1.16       39%       nan%
-exomol            exomol        deterministic   64.78%     79.26%  79.26%       +9.43       61%       nan%
-absorbers         absorbers     deterministic   66.34%     82.34%  82.34%       +6.34       72%       nan%
+white noise       snr8          stochastic      82.40%       nan%  84.63%       +3.93      nan%       nan%
+correlated noise  snr8          stochastic      88.34%       nan%  88.59%       -0.03      nan%       nan%
+white noise       snr5          stochastic      74.96%       nan%  79.51%       +9.04      nan%       nan%
+correlated noise  snr5          stochastic      87.87%       nan%  87.99%       +0.57      nan%       nan%
+white noise       snr5 (aug incl. SNR 5)stochastic      74.96%     78.56%  79.51%       +9.04       27%        79%
+correlated noise  snr5 (aug incl. SNR 5)stochastic      87.87%     87.92%  87.99%       +0.57        8%        45%
+gain ramp         x1.0          deterministic   88.69%       nan%  88.69%       -0.13      nan%       nan%
+gain ramp         x2.0          deterministic   88.52%       nan%  88.73%       -0.18      nan%       nan%
+stellar spots     tlse_spots10  deterministic   78.93%       nan%  86.93%       +1.62      nan%       nan%
+stellar spots     tlse_spots20  deterministic   70.76%       nan%  85.56%       +2.99      nan%       nan%
+haze              haze_3p0e7    deterministic   59.47%       nan%  81.44%       +7.11      nan%       nan%
+exotransmit       exotransmit   deterministic   87.56%     87.88%  87.88%       +0.68       32%       nan%
+exomol            exomol        deterministic   67.50%     80.33%  80.33%       +8.22       61%       nan%
+absorbers         absorbers     deterministic   69.42%     84.83%  84.83%       +3.73       81%       nan%
 
 deterministic, vs oracle: nan-nan%   stochastic, vs oracle: nan-nan%   (OVERLAPPING: the rule does not survive the ceiling correction)
-irreducible loss, deterministic: -0.45 to +13.21 pts; stochastic: +0.01 to +9.61 pts
+irreducible loss, deterministic: -0.18 to +8.22 pts; stochastic: -0.03 to +9.04 pts
