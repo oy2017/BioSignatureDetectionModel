@@ -1,0 +1,8 @@
+== 2 consortium design with the photometric-point noise inflated (mean over 4 molecules x 4 classifiers; accuracy / recall, loss vs own clean)
+  phot noise x1    published  clean 81.1/63.2 (+0.0)  haze3e7 63.4/6.1 (+17.7)  spots20 70.3/26.3 (+10.8)
+  phot noise x1    no optical clean 77.3/53.0 (+0.0)  haze3e7 71.7/33.3 (+5.6)  spots20 74.1/43.7 (+3.2)
+  phot noise x3    published  clean 79.6/59.3 (+0.0)  haze3e7 63.9/8.7 (+15.6)  spots20 71.6/31.2 (+7.9)
+  phot noise x3    no optical clean 77.3/53.0 (+0.0)  haze3e7 71.7/33.3 (+5.6)  spots20 74.1/43.7 (+3.2)
+  phot noise x10   published  clean 77.7/54.4 (+0.0)  haze3e7 67.5/20.8 (+10.2)  spots20 73.3/40.6 (+4.4)
+  phot noise x10   no optical clean 77.3/53.0 (+0.0)  haze3e7 71.7/33.3 (+5.6)  spots20 74.1/43.7 (+3.2)
+

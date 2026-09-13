@@ -1,0 +1,39 @@
+Loading MultiREx version 0.3.1
+rendered pop1_native_haze_r0p03 density 3.19e+10 (41 s)
+rendered pop1_native_haze_r0p5 density 3.76e+05 (32 s)
+/home/owenhyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/home/owenhyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/home/owenhyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/home/owenhyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/home/owenhyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/home/owenhyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/home/owenhyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/home/owenhyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/home/owenhyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/home/owenhyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+== 3 haze particle size at a fixed 0.35-um haze extinction (that of 0.1 um at 3e7 m^-3)
+  radius 0.03 um, density 3.19e+10 m^-3: adds optical 1015 ppm, NIRSpec 110, AIRS 4; AIRS peak-to-peak ratio 1.00; failures fell back to clean 1
+  radius 0.1 um, density 3e+07 m^-3: adds optical 1094 ppm, NIRSpec 140, AIRS 5; AIRS peak-to-peak ratio 1.00; failures fell back to clean 1
+  radius 0.5 um, density 3.76e+05 m^-3: adds optical 1424 ppm, NIRSpec 1239, AIRS 531; AIRS peak-to-peak ratio 1.94; failures fell back to clean 1
+  published  clean 81.1/63.2 (+0.0)  r0.03 63.5/6.7 (+17.5)  r0.1 63.4/6.1 (+17.7)  r0.5 61.2/3.7 (+19.9)
+  no optical clean 77.3/53.0 (+0.0)  r0.03 72.5/35.9 (+4.8)  r0.1 71.7/33.3 (+5.6)  r0.5 60.8/7.6 (+16.5)
+  AIRS only  clean 73.7/44.2 (+0.0)  r0.03 73.3/43.9 (+0.4)  r0.1 73.2/43.9 (+0.5)  r0.5 60.3/21.9 (+13.4)
+
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
+Loading MultiREx version 0.3.1
