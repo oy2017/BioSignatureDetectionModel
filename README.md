@@ -168,8 +168,10 @@ carried NH₃ through mean molecular weight only — a documented simplification
 the earlier study, but indefensible in a paper whose headline is an omitted species. The NH₃
 opacity table was added and every v3 number regenerated (`v3/rerun_all.sh`, 0 failures); the
 previous run is archived in `v3/results_noNH3/`. Every qualitative statement of the map
-survived; haze and opacity-table costs rose, the contamination host gap narrowed. Next: the
-paper outline and venue.
+survived; haze and opacity-table costs rose, the contamination host gap narrowed. The envelope
+was then computed at Tier 1 as well (`TRUST_IDEA.md` §4h′): at seven points randomization still
+helps but no decline rule works, so the Tier-3 reliability statements do not carry to the tier
+where triage would happen. Next: the paper outline and venue.
 
 ## What is and is not new
 

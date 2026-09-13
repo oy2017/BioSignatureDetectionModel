@@ -503,6 +503,41 @@ cost rose (10.7 → 15.9) and now partly transfers from randomization, the conta
 gap narrowed (10 → 4 points), the consortium screen's H2O classifier got harder and its NH3
 classifier became reproducible. Every qualitative statement of the map survived.
 
+## 4h′. The envelope at Tier 1 — where triage would actually happen (2026-09-12, evening)
+
+Same machinery (`--config tier1`), seven points, Tier-3 hyper-parameters. Frozen Tier-1 screen
+88.7 % clean; randomized Tier-1 screen 87.9 % (cost −0.8).
+
+| mismatch | frozen | randomized | best decline rule (accepted @ coverage) | credit vs clean selective |
+|---|---|---|---|---|
+| haze 3e7 | 60.3 | 69.3 | 70.7 @ 87 % (ensemble) | −21 |
+| haze 2.4e8 | 50.2 | 60.5 | — | — |
+| spots 20 % | 70.0 | 81.7 | 84.3 @ 88 % | −7 |
+| spots + haze compound | 50.1 | 62.5 | 64.9 @ 83 % | −28 |
+| ExoMol tables | 64.8 | 66.8 | 67.5 @ 96 % | −22 |
+| HCN + C2H2 | 66.3 | 69.0 | 71.0 @ 86 % | −21 |
+| white noise SNR 5 | 71.8 | 74.6 | — | — |
+| correlated noise SNR 5 | 88.1 | 86.5 | 89.6 @ 90 % | −1 |
+| quenched | 92.5 | 94.2 | — | gain |
+
+Reading: at seven points, randomization still buys 9–14 points on spots, haze and compounds,
+but **no decline rule works** — error AUROC 0.57–0.70 and credits of −7 to −28 for every rule
+on every serious mismatch; the worst accepted accuracy over shifted cases is 52 % for the
+ensemble and margin rules. The reasons are structural: with seven numbers per planet there is
+too little redundancy for confidence to separate right from wrong, and a haze that costs 6
+points at 102 bins costs 28 here because it removes most of the shape the screen reads.
+Correlated noise is nearly free at Tier 1 (bin-to-bin correlation over seven wide bins is
+close to a common offset, which normalization removes) while white noise costs 17.
+
+Consequence for the envelope: the reliability statements of §4h are Tier-3 statements. At the
+tier where the mission would triage, the honest row reads "absorb some, detect nothing, and
+the omitted-physics and opacity-table cases are not recoverable by anything but the forward
+model". This is the most mission-relevant row in the paper and belongs in the abstract.
+
+(Tier-1 oracle ceilings: computed separately, `tier1_oracle.txt`; the frozen-screen detector
+battery needs Tier-1 RF/MLP screens and was not run — the randomized ensemble in the envelope
+covers detection at this tier.)
+
 ## 4i. Verification of the headline (2026-09-12, after the re-run)
 
 Claim: a carbon-rich screen trained without HCN and C2H2 is at chance on carbon-rich planets once
