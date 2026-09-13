@@ -10,7 +10,7 @@ from the simulator. We rebuilt the classifier the Ariel consortium proposed (its
 never released), confirmed it reproduces all 48 published accuracies within 3.7 points, and
 stress-tested it against fifteen ways the simulator can be wrong. It could be trusted when the
 opacity database, the radiative-transfer code or two minor absorbers changed. It could not be
-trusted under haze: at a haze as weak as the least hazy hot Jupiters observed, it declared
+trusted under haze: at a haze comparable to the least hazy hot Jupiters observed, it declared
 methane and water absent on nearly every planet that had them, grew *more* confident, and gave
 no warning, although the molecular bands were intact. The cause was its three optical
 photometric inputs; removing them largely removed the failure. A second classifier, built for
@@ -67,7 +67,7 @@ written off as molecule-free with full confidence.
 | Reproduction of published accuracies | 48 of 48 within 3.7 points | (built for this work) |
 | Other opacity database / other code | −2.9 / −3.5 points | −9.0 / −0.7 points |
 | HCN and C₂H₂ omitted from training | −0.1 points | −26 to −30 points on carbon-rich real targets |
-| Haze, 3 × 10⁷ m⁻³ (weak end of observed hot-Jupiter hazes) | −17.7 points; molecules reported on 0–5 % of planets | −5.1 points at full resolution; −29.1 at Tier 1 |
+| Haze, 3 × 10⁷ m⁻³ (weak end of observed hot-Jupiter hazes) | −17.7 points; methane reported on 0–5 % of planets | −5.1 points at full resolution; −29.1 at Tier 1 |
 | Cause of the haze loss | the three optical photometric inputs (removing them: −5.6) | at Tier 1, the same points (removing them: −7.4, but −18.6 clean) |
 | Does it know? | confidence rises; no decline rule helps | distance scores flag the missing absorbers; confidence does not |
 
