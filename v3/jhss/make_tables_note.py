@@ -25,7 +25,7 @@ def repro():
     return "\n".join(L)
 
 
-CASES = [("cloud1e3", "Grey cloud deck, 10³ Pa", "yes"), ("cloud1e2", "Grey cloud deck, 10² Pa", "no"),
+CASES = [("cloud1e3", "Gray cloud deck, 10³ Pa", "yes"), ("cloud1e2", "Gray cloud deck, 10² Pa", "no"),
          ("haze2e6", "Haze, 2 × 10⁶ m⁻³", "no"), ("haze3e7", "Haze, 3 × 10⁷ m⁻³", "no"), ("haze2p4e8", "Haze, 2.4 × 10⁸ m⁻³", "no"),
          ("spots10", "Unocculted spots, 10 %", "no"), ("spots20", "Unocculted spots, 20 %", "no"), ("compound", "Spots 20 % + haze 3 × 10⁷ m⁻³", "no"),
          ("white_x2", "White noise, 2 × σ", "no"), ("white_x3", "White noise, 3 × σ", "no"), ("corr_x2", "Correlated noise, 2 × σ", "no"),
@@ -53,7 +53,7 @@ def consortium():
 
 def variants():
     d = pd.read_csv(os.path.join(RES, "alfnoor_haze_mechanism.csv")); g = d.groupby(["variant", "case"])[["accuracy", "recall"]].mean() * 100
-    V = [("A published", "All 104 bins (published)"), ("B ir_stats", "All bins, normalised with the bins above 1.1 µm"), ("C no_optical", "Photometric points removed"), ("D airs_only", "AIRS bins only (above 1.95 µm)")]
+    V = [("A published", "All 104 bins (published)"), ("B ir_stats", "All bins, normalized with the bins above 1.1 µm"), ("C no_optical", "Photometric points removed"), ("D airs_only", "AIRS bins only (above 1.95 µm)")]
     cols = [("clean", "Clean"), ("haze2e6", "Haze 2 × 10⁶"), ("haze3e7", "Haze 3 × 10⁷"), ("haze2p4e8", "Haze 2.4 × 10⁸"), ("spots20", "Spots 20 %"), ("compound", "Spots + haze")]
     L = ["| Classifier input | " + " | ".join(c[1] for c in cols) + " |", "| :-- | " + " | ".join("--:" for _ in cols) + " |"]
     for v, lab in V:
