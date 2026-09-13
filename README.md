@@ -105,3 +105,12 @@ including the Exo-Transmit pressure-unit correction; [`v3/forward_model_guard.py
 refuses to render without it. Re-rendering additionally needs Exo-Transmit, the ExoMolOP
 tables, the PHOENIX atlas, FastChem and an ExoSim 2 environment. Result files are committed,
 so every number can be checked without regenerating spectra.
+
+## License
+
+The code, result files and figures in this repository are released under the [MIT License](LICENSE).
+The license does not cover third-party material kept for reference: the PDFs in `reference papers/`, journal
+guidelines, templates and editorial correspondence, and files derived from third-party tools (TauREx 3, BSD 3-Clause;
+MultiREx, MIT; ExoRad and ExoSim 2), which remain under their owners' terms. Manuscript text is excluded, since its
+copyright is governed by the publishing journal.
+

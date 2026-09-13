@@ -80,3 +80,12 @@ The forward model is TauREx 3 through a MultiREx fork with two corrections, both
 | Omitted absorbers on the known targets (Figure 4a) | `python mcs_absorbers.py` |
 | Figures | `python plots/note_fig1_reproduction.py` (and `note_fig2`–`note_fig4`) |
 | Manuscript | in `v3/jhss/`: `python make_tables_note.py && python render_note.py && python build_manuscript.py both` |
+
+## License
+
+The code, result files and figures in this repository are released under the [MIT License](../LICENSE).
+The license does not cover third-party material kept for reference: the PDFs in `reference papers/`, journal
+guidelines, templates and editorial correspondence, and files derived from third-party tools (TauREx 3, BSD 3-Clause;
+MultiREx, MIT; ExoRad and ExoSim 2), which remain under their owners' terms. Manuscript text is excluded, since its
+copyright is governed by the publishing journal.
+
