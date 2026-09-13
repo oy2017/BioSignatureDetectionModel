@@ -1,0 +1,70 @@
+  metadata attempt 1 failed: HTTP Error 429: Unknown Error; waiting
+  metadata attempt 2 failed: HTTP Error 429: Unknown Error; waiting
+  metadata attempt 3 failed: HTTP Error 429: Unknown Error; waiting
+  metadata attempt 4 failed: HTTP Error 503: Service Unavailable; waiting
+  metadata attempt 1 failed: HTTP Error 429: Unknown Error; waiting
+  metadata attempt 2 failed: HTTP Error 429: Unknown Error; waiting
+  metadata attempt 3 failed: HTTP Error 429: Unknown Error; waiting
+  metadata attempt 4 failed: HTTP Error 429: Unknown Error; waiting
+  metadata attempt 1 failed: HTTP Error 429: Unknown Error; waiting
+  metadata attempt 2 failed: HTTP Error 429: Unknown Error; waiting
+  metadata attempt 3 failed: HTTP Error 503: Service Unavailable; waiting
+  metadata attempt 4 failed: HTTP Error 429: Unknown Error; waiting
+metadata for 0/54 ids
+tinetti2018            ../s10686-018-9598-x.pdf
+edwards2019            ../Edwards_2019_AJ_157_242.pdf
+edwards2022            ../Ariel_Mission_Reference_Sample_Edwards_2022.pdf
+mugnai2020             ../Mugnai_2020_ArielRad.pdf
+mugnai2025             mugnai2025_2501.12809.pdf
+changeat2020           ../Changeat_2020_AJ_160_80.pdf
+mugnai2021             mugnai2021_2110.00503.pdf
+changeat2023           ../ESA_Ariel_Data_Challenge_Changeat_Yip_2023.pdf
+aubin2023              aubin2023_2309.09337.pdf
+mugnai2026             ../Mugnai_2026_Ariel_simulated_observations_dataset.pdf
+tiers2026              tiers2026_2604.07598.pdf
+yakubu2026             yakubu2026_2606.23766.pdf
+marquezneila2018       ../1806.03944v1.pdf
+zingales2018           zingales2018_1806.02906.pdf
+cobb2019               cobb2019_1905.10659.pdf
+nixon2020              nixon2020_2004.10755.pdf
+yip2021                yip2021_2011.11284.pdf
+ardevol2022            ardevol2022_2203.01236.pdf
+vasist2023             vasist2023_2301.06575.pdf
+gebhard2024            gebhard2024_2410.21477.pdf
+yip2023                ../Yip_2023_Lessons_Learned_ADC2022_PMLR_v220.pdf
+hayes2020              NOT VERIFIED: mnras 000, 1–18 (2019) preprint 2 april 2020 compiled using 
+duque2025              ../2407.19167v2.pdf
+ares2024               ares2024_2401.03809.pdf
+barstow2020            barstow2020_2002.01063.pdf
+madhusudhan2012        madhusudhan2012_1109.3183.pdf
+moses2013              moses2013_1211.2996.pdf
+zahnle2014             zahnle2014_1408.6283.pdf
+stock2018              stock2018_1804.05010.pdf
+kawashima2021          kawashima2021_2110.13443.pdf
+baeyens2025            baeyens2025_2506.12806.pdf
+rackham2018            rackham2018_1711.05691.pdf
+pinhas2018             NOT VERIFIED: mnras 000, 1–15 (2018) preprint 2 november 2018 compiled usi
+lee2013                ../Lee_2013_HR8799b_retrieval.pdf
+alrefaie2021           ../Al-Refaie_2021_ApJ_917_37.pdf
+kempton2017            ../Kempton_2017_ExoTransmit.pdf
+chubb2021              ../Chubb_2021_ExoMolOP.pdf
+freedman2014           ../Freedman_2014_gaseous_mean_opacities.pdf
+lupu2014               NOT VERIFIED: the atmospheres of earth-like planets after giant impact eve
+bishop1995             —
+chen2020               chen2020_1907.10905.pdf
+tobin2017              tobin2017_1703.06907.pdf
+hendrycks2017          hendrycks2017_1610.02136.pdf
+lee2018                NOT VERIFIED: a simple uniﬁed framework for detecting out-of-distribution 
+sun2022                sun2022_2204.06507.pdf
+lakshminarayanan2017   lakshminarayanan2017_1612.01474.pdf
+geifman2017            NOT VERIFIED: selective classiﬁcation for deep neural networks yonatan gei
+jaeger2023             jaeger2023_2211.15259.pdf
+hendrycks2019          hendrycks2019_1903.12261.pdf
+rusak2020              rusak2020_2001.06057.pdf
+angelopoulos2021       angelopoulos2021_2107.07511.pdf
+tibshirani2019         tibshirani2019_1904.06019.pdf
+schmitt2021            schmitt2021_2112.08866.pdf
+cannon2022             NOT VERIFIED: investigating the impact of model misspeciﬁcation in neural 
+huang2023              huang2023_2305.15871.pdf
+sbi2025a               sbi2025a_2507.13495.pdf
+sbi2025b               sbi2025b_2508.05744.pdf

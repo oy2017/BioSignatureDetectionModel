@@ -72,18 +72,32 @@ REFS = [
 ]
 
 def meta(ids):
+    """arXiv API metadata with backoff; on persistent 429 return {} and let the PDF title check stand in."""
     url = "http://export.arxiv.org/api/query?" + urllib.parse.urlencode({"id_list": ",".join(ids), "max_results": len(ids)})
-    r = ET.fromstring(urllib.request.urlopen(url, timeout=120).read()); out = {}
-    for e in r.findall("a:entry", NS):
-        i = e.find("a:id", NS).text.split("/abs/")[-1]; i = re.sub(r"v\d+$", "", i)
-        out[i] = dict(title=e.find("a:title", NS).text.replace("\n", " ").strip(), year=e.find("a:published", NS).text[:4],
-                      authors=[a.find("a:name", NS).text for a in e.findall("a:author", NS)])
-    return out
+    for attempt in range(4):
+        try:
+            r = ET.fromstring(urllib.request.urlopen(url, timeout=120).read()); out = {}
+            for e in r.findall("a:entry", NS):
+                i = e.find("a:id", NS).text.split("/abs/")[-1]; i = re.sub(r"v\d+$", "", i)
+                out[i] = dict(title=e.find("a:title", NS).text.replace("\n", " ").strip(), year=e.find("a:published", NS).text[:4],
+                              authors=[a.find("a:name", NS).text for a in e.findall("a:author", NS)])
+            return out
+        except Exception as e:
+            print(f"  metadata attempt {attempt+1} failed: {e}; waiting", flush=True); time.sleep(45 * (attempt + 1))
+    return {}
+
+def pdf_title(path):
+    """First page text of a PDF, for a title check when the API is unavailable."""
+    try:
+        import fitz; d = fitz.open(path); t = d[0].get_text(); d.close(); return " ".join(t.split())[:600]
+    except Exception:
+        return ""
 
 ids = [r[1] for r in REFS if r[1]]
 M = {}
 for k in range(0, len(ids), 20):
-    M.update(meta(ids[k:k+20])); time.sleep(8)
+    M.update(meta(ids[k:k+20])); time.sleep(10)
+print(f"metadata for {len(M)}/{len(ids)} ids", flush=True)
 rows, bib = [], []
 for key, aid, frag, topic, why, existing in REFS:
     if aid is None:
@@ -92,20 +106,29 @@ for key, aid, frag, topic, why, existing in REFS:
         rows.append((topic, key, "Bishop 1995, Neural Computation 7, 108 (no arXiv)", why, "—")); 
         bib.append(f"@article{{{key},\n  author={{Bishop, Christopher M.}}, title={{Training with noise is equivalent to Tikhonov regularization}},\n  journal={{Neural Computation}}, volume={{7}}, pages={{108--116}}, year={{1995}}}}")
         continue
-    m = M.get(aid); ok = m is not None and frag in m["title"].lower()
-    status = "OK" if ok else ("NO METADATA" if m is None else f"TITLE MISMATCH: {m['title'][:70]}")
+    m = M.get(aid)
     fname = existing or f"{key}_{aid}.pdf"; dest = os.path.join(ROOT, existing) if existing else os.path.join(HERE, fname)
-    if ok and not os.path.exists(dest):
+    if not os.path.exists(dest):
         try:
-            urllib.request.urlretrieve(f"https://arxiv.org/pdf/{aid}", dest); time.sleep(2)
+            req = urllib.request.Request(f"https://arxiv.org/pdf/{aid}", headers={"User-Agent": "Mozilla/5.0"})
+            open(dest, "wb").write(urllib.request.urlopen(req, timeout=120).read()); time.sleep(4)
         except Exception as e:
-            status += f" (download failed: {e})"
+            print(f"  {key}: download failed: {e}", flush=True)
+    # verify: API title if we have it, else the PDF's first page
+    if m is not None:
+        ok = frag in m["title"].lower(); status = "OK" if ok else f"TITLE MISMATCH: {m['title'][:70]}"
+    else:
+        head = pdf_title(dest).lower() if os.path.exists(dest) else ""
+        ok = frag in head; status = "OK (pdf title)" if ok else ("NOT VERIFIED: " + (head[:60] if head else "no pdf"))
+    if not ok and os.path.exists(dest) and not existing:
+        os.rename(dest, dest.replace(".pdf", ".UNVERIFIED.pdf"))
     if m:
         first = m["authors"][0].split()[-1]; etal = " et al." if len(m["authors"]) > 2 else ""
         bib.append(f"@article{{{key},\n  author={{{' and '.join(m['authors'])}}},\n  title={{{m['title']}}},\n  journal={{arXiv e-prints}}, eprint={{{aid}}}, year={{{m['year']}}}}}")
         rows.append((topic, key, f"{first}{etal} {m['year']}: {m['title'][:80]}", why, status if not ok else ("../" + existing if existing else fname)))
     else:
-        rows.append((topic, key, aid, why, status))
+        bib.append(f"@misc{{{key}, eprint={{{aid}}}, note={{{why}}}}}")
+        rows.append((topic, key, f"arXiv:{aid}", why, status if not ok else ("../" + existing if existing else fname)))
 open(os.path.join(HERE, "references.bib"), "w").write("\n\n".join(bib) + "\n")
 L = ["# References for the v3 paper — what each is cited for", "", "Files: this directory (new) or `../` (already in reference papers/). Status column flags any id whose arXiv title did not match the expected paper.", ""]
 for topic in ("Ariel", "ML-exo", "chemistry", "physics", "codes", "ML-methods", "SBI"):
