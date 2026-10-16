@@ -99,11 +99,15 @@ reference papers/   Third-party PDFs cited.
 
 ## Environment
 
-Python 3.10; `pip install -r requirements.txt`. The forward model is TauREx 3 through a
-MultiREx fork whose changes are documented in [`v3/MULTIREX_FORK.md`](v3/MULTIREX_FORK.md),
-including the Exo-Transmit pressure-unit correction; [`v3/forward_model_guard.py`](v3/forward_model_guard.py)
-refuses to render without it. Re-rendering additionally needs Exo-Transmit, the ExoMolOP
-tables, the PHOENIX atlas, FastChem and an ExoSim 2 environment. Result files are committed,
+Python 3.10; `pip install -r requirements.txt`, then `bash fetch_external_data.sh` for the
+Exo-Transmit opacity tables, the FastChem inputs, the PHOENIX atlas and the Ariel target list.
+The forward model is TauREx 3 called directly in [`v3/forward_model.py`](v3/forward_model.py),
+with the Exo-Transmit pressure-unit correction applied while TauREx still needs it;
+[`v3/forward_model_guard.py`](v3/forward_model_guard.py) refuses to render without it. (Until
+2026-10-16 the model ran through a MultiREx fork; [`v3/MULTIREX_FORK.md`](v3/MULTIREX_FORK.md)
+records that history and the bit-identical switch.) Re-rendering the opacity-swap and
+Exo-Transmit departures additionally needs the ExoMolOP tables, Exo-Transmit itself and an
+ExoSim 2 environment. Result files are committed,
 so every number can be checked without regenerating spectra.
 
 ## License

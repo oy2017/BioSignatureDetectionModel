@@ -64,10 +64,14 @@ trusted?"* (manuscript source:
 ## Reproducing the results
 
 The scripts live in [`v3/`](../v3/) and run from there with the environment in [`requirements.txt`](../requirements.txt).
-The forward model is TauREx 3 through a MultiREx fork with two corrections, both recorded in
-[`v3/MULTIREX_FORK.md`](../v3/MULTIREX_FORK.md): Exo-Transmit opacity pressures read in Pa (reported upstream as
-[TauREx issue 172](https://github.com/ucl-exoplanets/taurex3/issues/172)) and a grey cloud deck kept alongside a haze.
-[`v3/forward_model_guard.py`](../v3/forward_model_guard.py) refuses to render if either is missing.
+External files (opacity tables, FastChem inputs, the PHOENIX atlas, the Ariel target list) come from
+[`fetch_external_data.sh`](../fetch_external_data.sh). The forward model is TauREx 3, called directly in
+[`v3/forward_model.py`](../v3/forward_model.py), with Exo-Transmit opacity pressures read in Pa (reported upstream as
+[TauREx issue 172](https://github.com/ucl-exoplanets/taurex3/issues/172), fixed there in pull request 174 and applied here
+only while the installed TauREx still needs it) and a grey cloud deck kept alongside a haze.
+[`v3/forward_model_guard.py`](../v3/forward_model_guard.py) refuses to render if either is missing. The spectra of the
+note were rendered through a MultiREx fork; the direct model reproduces them bit for bit
+([`v3/MULTIREX_FORK.md`](../v3/MULTIREX_FORK.md)).
 
 | Result | Command (from `v3/`) |
 | :-- | :-- |

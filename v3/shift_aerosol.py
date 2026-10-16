@@ -103,44 +103,24 @@ def build_system(row, cloud_pressure=None, haze_density=None):
     """generate_grid.build_system with the aerosol keywords added. With both
     aerosol arguments None this is the clear path and must reproduce
     {split}_native.npy."""
-    from multirex import Atmosphere, Planet, Star, System
-    kw = dict(temperature=float(row["atm temperature"]),
-              base_pressure=float(row["atm base_pressure"]),
-              top_pressure=float(row["atm top_pressure"]),
-              composition={g: float(row[f"atm {g}"]) for g in GASES},
-              fill_gas=FILL_GAS)
-    if cloud_pressure is not None:
-        kw["cloud_pressure"] = float(cloud_pressure)
-    if haze_density is not None:
-        kw["cloud_model"] = {"type": "lee_mie", "radius": HAZE_RADIUS,
-                             "q": HAZE_Q, "mix_ratio": float(haze_density)}
-    atm = Atmosphere(**kw)
-    planet = Planet(radius=float(row["p_radius"]), mass=float(row["p_mass"]), atmosphere=atm)
-    star = Star(temperature=float(row["s temperature"]), radius=float(row["s radius"]),
-                mass=float(row["s mass"]))
-    system = System(planet=planet, star=star, sma=float(row["sma"]))
-    system.make_tm()
-    return system
+    import forward_model as FM
+    return FM.build_model(row, GASES, FILL_GAS, cloud_pressure=_cloud(cloud_pressure), haze=_haze(haze_density))
+
+
+def _cloud(cloud_pressure):
+    return None if cloud_pressure is None else float(cloud_pressure)
+
+
+def _haze(haze_density):
+    """Lee et al. (2013) Mie haze filling the column: HAZE_RADIUS um particles, Q0 = HAZE_Q."""
+    return None if haze_density is None else {"radius": HAZE_RADIUS, "q": HAZE_Q, "mix_ratio": float(haze_density)}
 
 
 def one_native(row, wl_native, cloud_pressure=None, haze_density=None):
     """Noise-free native transit depth on wl_native, or None on failure.
     Extraction and cleaning are identical to generate_grid.one_native."""
-    try:
-        system = build_system(row, cloud_pressure, haze_density)
-        wn, rprs = system.transmission.model()[:2]
-        wl = 1e4 / np.asarray(wn)
-        order = np.argsort(wl)
-        wl, rprs = wl[order], np.asarray(rprs)[order]
-        m = (wl >= WL_MIN) & (wl <= WL_MAX)
-        y = rprs[m]
-        if y.shape[0] != wl_native.shape[0] or not np.allclose(wl[m], wl_native):
-            y = np.interp(wl_native, wl[m], y)
-        if not np.all(np.isfinite(y)) or np.any(y > 1.0) or np.any(y <= 0):
-            return None
-        return y.astype(np.float32)
-    except Exception:
-        return None
+    import forward_model as FM
+    return FM.spectrum(row, wl_native, GASES, FILL_GAS, cloud_pressure=_cloud(cloud_pressure), haze=_haze(haze_density))
 
 
 def _worker(rows, wl_native, aerosol):

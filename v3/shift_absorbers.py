@@ -3,8 +3,8 @@
 Carbon-rich and quenched atmospheres carry HCN and C2H2 (Moses et al. 2013), whose bands at
 ~3.0 and 3.3 um overlap the CH4 features the C/O screen reads. The test planets are re-rendered
 with both added at their FastChem abundances (equilibrium at the photospheric level, or the
-quenched composition), using the Exo-Transmit tables opacHCN.dat / opacC2H2.dat dropped into
-MultiREx's data directory exactly as opacCO.dat was. The six training gases are recomputed and
+quenched composition), using the Exo-Transmit tables opacHCN.dat / opacC2H2.dat in
+v3/data/opacities (fetch_external_data.sh). The six training gases are recomputed and
 checked against the stored values so the ONLY change is the two new absorbers.
 
 Usage: python shift_absorbers.py --jobs 4 [--mode equilibrium|quenched]
@@ -21,29 +21,14 @@ EXTRA = {"HCN": "C1H1N1_hcn", "C2H2": "C2H2"}
 
 
 def build_system(row, gases):
-    from multirex import Atmosphere, Planet, Star, System
-    atm = Atmosphere(temperature=float(row["atm temperature"]), base_pressure=float(row["atm base_pressure"]),
-                     top_pressure=float(row["atm top_pressure"]),
-                     composition={g: float(row[f"atm {g}"]) for g in gases}, fill_gas=G.FILL_GAS)
-    planet = Planet(radius=float(row["p_radius"]), mass=float(row["p_mass"]), atmosphere=atm)
-    star = Star(temperature=float(row["s temperature"]), radius=float(row["s radius"]), mass=float(row["s mass"]))
-    system = System(planet=planet, star=star, sma=float(row["sma"])); system.make_tm()
-    return system
+    """A built TauREx transmission model with the given absorbers; call .model() on it."""
+    import forward_model as FM
+    return FM.build_model(row, gases, G.FILL_GAS)
 
 
 def one_native(row, wl_native, gases):
-    try:
-        system = build_system(row, gases)
-        wn, rprs = system.transmission.model()[:2]
-        wl = 1e4 / np.asarray(wn); o = np.argsort(wl); wl, rprs = wl[o], np.asarray(rprs)[o]
-        m = (wl >= G.WL_MIN) & (wl <= G.WL_MAX); y = rprs[m]
-        if y.shape[0] != wl_native.shape[0] or not np.allclose(wl[m], wl_native):
-            y = np.interp(wl_native, wl[m], y)
-        if not np.all(np.isfinite(y)) or np.any(y > 1.0) or np.any(y <= 0):
-            return None
-        return y.astype(np.float32)
-    except Exception:
-        return None
+    import forward_model as FM
+    return FM.spectrum(row, wl_native, gases, G.FILL_GAS)
 
 
 def worker(rows, wl, gases):

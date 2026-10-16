@@ -11,17 +11,17 @@
 # rather than from a single run.
 
 # --- Radiative transfer / synthetic spectrum generation ---
-# Pinned to the fork commit that carries everything v3 needs: the grey-cloud and
-# Mie-haze support (July 2026) and the two forward-model corrections of the
-# September 2026 audit (v3/MULTIREX_FORK.md, changes 6 and 7). Earlier commits
-# cannot render a single cloud or haze case. The opacity tables for CO, HCN,
-# C2H2 and NH3 must be copied from Exo-Transmit's Opac/ directory into the
-# installed multirex/data/ (see v3/MULTIREX_FORK.md).
-git+https://github.com/oy2017/MultiREx-public.git@83f739ccd3e6eb75b394907a5a43a498f46e36d2#egg=MultiREx
+# v3 calls TauREx 3 directly (v3/forward_model.py, since 2026-10-16); the opacity
+# tables and the other external files are fetched by fetch_external_data.sh.
 # The Exo-Transmit pressure-unit bug (taurex3 issue 172) is fixed on TauREx's main
-# branch (pull request 174, 2026-09-14) but not in any release as of 2026-10-16; the
-# fork's correction is conditional, so a fixed TauREx can be used without change.
+# branch (pull request 174, 2026-09-14) but not in any release as of 2026-10-16;
+# forward_model.py applies the correction only while TauREx still needs it.
+# The superseded v2 study used the MultiREx fork at
+#   git+https://github.com/oy2017/MultiREx-public.git@83f739ccd3e6eb75b394907a5a43a498f46e36d2
+# which is no longer installed by this file (v3/MULTIREX_FORK.md).
 taurex==3.3.2
+astropy
+pyfastchem
 
 # --- Machine learning ---
 scikit-learn==1.7.2

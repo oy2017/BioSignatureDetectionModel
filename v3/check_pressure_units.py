@@ -1,3 +1,5 @@
+# One-off audit record (2026-09-12): compared spectra before and after the Exo-Transmit pressure-unit fix,
+# under the MultiREx fork and with the paths of the machine it ran on. Kept for provenance; not runnable here.
 import os, sys, json, numpy as np, pandas as pd, joblib, warnings
 os.chdir("/mnt/c/Users/owenh/BioSignatureDetectionModel/v3"); sys.path.insert(0, os.getcwd())
 from joblib import Parallel, delayed

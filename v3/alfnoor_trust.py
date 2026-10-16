@@ -86,8 +86,8 @@ def _exomol_worker(rows, wl, swap):
     out = []
     for r in rows:
         try:
-            system = A.build_system(r, cloud_pressure=r["cloud_pressure"])
-            wn, d = system.transmission.model()[:2]
+            tm = A.build_system(r, cloud_pressure=r["cloud_pressure"])
+            wn, d = tm.model()[:2]
             w = 1e4 / np.asarray(wn, float); o = np.argsort(w); w, d = w[o], np.asarray(d, float)[o]
             m = (w >= G.WL_MIN) & (w <= G.WL_MAX)
             y = bin_native(d[m][None, :], w[m], SO.native_edges(wl))[0]

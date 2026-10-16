@@ -65,25 +65,9 @@ def _w(rows, wl, gases, fixed):
 
 
 def _one_native_gases_cloud(row, wl_native, gases, cloud_pressure):
-    """SA.one_native with a grey cloud deck: rebuild the system with both."""
-    try:
-        from multirex import Atmosphere, Planet, Star, System
-        atm = Atmosphere(temperature=float(row["atm temperature"]), base_pressure=float(row["atm base_pressure"]),
-                         top_pressure=float(row["atm top_pressure"]), composition={g: float(row[f"atm {g}"]) for g in gases},
-                         fill_gas=G.FILL_GAS, cloud_pressure=float(cloud_pressure))
-        planet = Planet(radius=float(row["p_radius"]), mass=float(row["p_mass"]), atmosphere=atm)
-        star = Star(temperature=float(row["s temperature"]), radius=float(row["s radius"]), mass=float(row["s mass"]))
-        system = System(planet=planet, star=star, sma=float(row["sma"])); system.make_tm()
-        wn, rprs = system.transmission.model()[:2]
-        wl = 1e4 / np.asarray(wn); o = np.argsort(wl); wl, rprs = wl[o], np.asarray(rprs)[o]
-        m = (wl >= G.WL_MIN) & (wl <= G.WL_MAX); y = rprs[m]
-        if y.shape[0] != wl_native.shape[0] or not np.allclose(wl[m], wl_native):
-            y = np.interp(wl_native, wl[m], y)
-        if not np.all(np.isfinite(y)) or np.any(y > 1.0) or np.any(y <= 0):
-            return None
-        return y.astype(np.float32)
-    except Exception:
-        return None
+    """SA.one_native with a grey cloud deck: the given absorbers and the deck together."""
+    import forward_model as FM
+    return FM.spectrum(row, wl_native, gases, G.FILL_GAS, cloud_pressure=float(cloud_pressure))
 
 
 def render(P, wl, jobs, gases=None, fixed=None, haze=None):

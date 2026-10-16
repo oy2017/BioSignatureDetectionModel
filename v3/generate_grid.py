@@ -9,8 +9,8 @@ What changes:
     C/O ~ U(0.2, 1.8) and [M/H] ~ U(-1, 1.5) drawn independently per planet.
     U(0.2, 1.8) puts the carbon-rich cut C/O > 1.0 at the median.
   * label = (C/O > 1.0).  Invariant under every shift axis because it is a chemistry input.
-  * CO carries opacity (opacCO.dat placed in MultiREx's data dir on 2026-09-11).
-  * O3 is floored at log10 = -15: equilibrium gives ~1e-50 in hydrogen, MultiREx wants a number.
+  * CO carries opacity (opacCO.dat, in v3/data/opacities since the forward model reads Exo-Transmit tables there).
+  * O3 is floored at log10 = -15: equilibrium gives ~1e-50 in hydrogen, the forward model wants a number.
   * mode="quenched" is a HOOK (Axis 8): not implemented yet; raises so nothing silently runs
     equilibrium under that name.
 
@@ -23,18 +23,45 @@ import argparse, os, sys, time
 import numpy as np, pandas as pd
 from joblib import Parallel, delayed
 HERE = os.path.dirname(os.path.abspath(__file__))
-V2 = os.path.join(os.path.dirname(HERE), "v2")
-sys.path.insert(0, V2)
-# load v2's generator by path under its own name: importing it as `generate_grid` would
-# collide with this module whenever this file is imported rather than run
-import importlib.util  # noqa: E402
-_spec = importlib.util.spec_from_file_location("v2_generate_grid", os.path.join(V2, "generate_grid.py"))
-_v2 = importlib.util.module_from_spec(_spec); _spec.loader.exec_module(_v2)
-build_system, native_wavelengths, one_native, chunked, GASES, BULK = (
-    _v2.build_system, _v2.native_wavelengths, _v2.one_native, _v2.chunked, _v2.GASES, _v2.BULK)
-FILL_GAS, WL_MIN, WL_MAX = _v2.FILL_GAS, _v2.WL_MIN, _v2.WL_MAX      # the shift scripts import these too
+V2 = os.path.join(os.path.dirname(HERE), "v2")          # the bulk-parameter draws are read from v2/data
+sys.path.insert(0, HERE)
 import pyfastchem  # noqa: E402
-import forward_model_guard  # noqa: E402,F401  (Exo-Transmit pressure units)
+import forward_model as FM  # noqa: E402
+import forward_model_guard  # noqa: E402,F401  (opacity tables present, pressure units in Pa)
+
+# The forward model was v2's MultiREx wrapper until 2026-10-16; it is now forward_model.py (TauREx 3
+# directly). The constants below are v2's, unchanged. FILL_GAS and GASES are read at call time so a
+# caller may rebind them (alfnoor_faithful.py sets FILL_GAS = ["H2", "He"]).
+WL_MIN, WL_MAX = FM.WL_MIN, FM.WL_MAX
+FILL_GAS = "H2"
+GASES = ["H2O", "CO", "CO2", "NH3", "CH4", "O3"]
+BULK = {
+    "p_radius": (1.0, 26.0), "p_mass": (1.0, 300.0),
+    "atm temperature": (500.0, 2500.0), "atm base_pressure": (1e5, 1e6),
+    "atm top_pressure": (1.0, 10.0),
+    "s temperature": (2500.0, 7500.0), "s radius": (0.1, 1.7), "s mass": (0.1, 1.7),
+    "sma": (0.01, 0.5),
+}
+
+
+def chunked(seq, size):
+    for i in range(0, len(seq), size):
+        yield seq[i:i + size]
+
+
+def native_wavelengths():
+    """TauREx's native wavelength grid restricted to [WL_MIN, WL_MAX], ascending."""
+    return FM.native_wavelengths(GASES, FILL_GAS)
+
+
+def build_system(row):
+    """A built TauREx transmission model of the clear atmosphere; call .model() on it."""
+    return FM.build_model(row, GASES, FILL_GAS)
+
+
+def one_native(row, wl_native):
+    """Noise-free native-resolution transit depth on wl_native, or None on failure."""
+    return FM.spectrum(row, wl_native, GASES, FILL_GAS)
 
 DATA = os.path.join(HERE, "data")
 FC_DIR = os.path.expanduser("~/fastchem_input")

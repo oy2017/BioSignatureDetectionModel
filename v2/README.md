@@ -5,6 +5,11 @@ All numbers in `../nhsjs/manuscript.md` come from `results/`. Python: `~/tfenv/b
 python-docx). Set `OMP_NUM_THREADS=8` when running the training scripts; XGBoost with
 20 threads under other load slowed 100× (see the note in `pipeline.py`).
 
+**Superseded study; the fork is no longer installed by `../requirements.txt`.** v3 calls TauREx
+directly since 2026-10-16 (`../v3/forward_model.py`). To re-render v2's spectra, install the fork at
+commit `83f739c` of https://github.com/oy2017/MultiREx-public (see `../v3/MULTIREX_FORK.md`) and copy the
+opacity tables from `../v3/data/opacities/` into the installed `multirex/data/`.
+
 ## Pipeline, in order
 
 | Step | Command | Output |

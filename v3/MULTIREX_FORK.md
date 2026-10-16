@@ -69,3 +69,30 @@ STScI `phoenixm00_*.fits` atlas goes in `v2/phoenix/`; the Mission Candidate Sam
 `Ariel_MCS_Known_2026-05-11.csv` goes in `v3/data/mcs/`. Verified 2026-10-16 on macOS arm64: the
 faithful populations re-rendered with identical failure counts and the reproduction fit matched the
 committed result file to 0.05 points on average (maximum 1.2 on one ensemble-vote cell).
+
+## 2026-10-16, later: the fork retired; v3 calls TauREx 3 directly
+
+MultiREx added nothing to the physics: it converted units, built the TauREx objects and, in the
+fork, added the aerosol keywords. `v3/forward_model.py` now does exactly that in one module
+(planet and star units, isothermal profile, constant chemistry with the fill gas, absorption and
+Rayleigh contributions, grey deck, Lee Mie haze, 100 layers, the conditional pressure-unit
+correction), reading the Exo-Transmit tables from `v3/data/opacities/` (`fetch_external_data.sh`;
+all nine tables are byte-identical to Exo-Transmit's `Opac/` on GitHub, including the five the
+fork bundled). `generate_grid.py`, `shift_aerosol.py`, `shift_absorbers.py`, `shift_opacity.py`,
+`alfnoor_screen.py` and `alfnoor_trust.py` call it; `generate_grid.py` no longer imports v2's
+generator, and `forward_model_guard.py` checks the new module. `requirements.txt` no longer
+installs MultiREx; v2 (superseded) still needs the fork at commit `83f739c` to re-render.
+
+Verification, 2026-10-16, with MultiREx uninstalled from the environment, against the spectra
+rendered through the fork on 2026-10-15 (same machine): the native wavelength grid is identical;
+the faithful consortium populations (POP-I clean, haze 3e7, deck 1e2 Pa, HCN+C2H2 with deck; POP-III;
+240 planets each), the first-reading populations (H2 fill, 1 Pa top; 200 planets, four cases) and
+the Mission Candidate Sample set (400 planets) are bit-identical, with the same planets failing.
+`check_pressure_units.py` remains as the audit's record and still names the fork; it is not run.
+
+One hazard worth knowing when testing in a single process: joblib's loky reuses worker processes,
+and `alfnoor_faithful._worker` rebinds `generate_grid.FILL_GAS` and `shift_aerosol.FILL_GAS` to
+`["H2", "He"]` inside them. A later render in the same process that expects the default `"H2"`
+fill inherits the H2/He fill in the reused workers. The pipeline scripts each run in their own
+process, so none is affected; a comparison script that renders both kinds in one process must
+start a fresh process (or `Parallel` pool) between them.

@@ -1,8 +1,8 @@
 """Opacity-database swap on the v2 grid (R1-3 axis 2, native resolution).
 
-Re-renders the committed planets of the given splits with MultiREx while
+Re-renders the committed planets of the given splits with the forward model while
 TauREx's OpacityCache points at a directory of symlinks that replaces the
-Exo-Transmit tables shipped with MultiREx by ExoMolOP tables. Every output row
+Exo-Transmit tables of forward_model.OPACITY_DIR by ExoMolOP tables. Every output row
 is paired one-to-one with the stored noise-free native spectrum in
 {split}_native.npy, so the effect of the opacity data alone can be measured
 per planet.
@@ -55,7 +55,7 @@ Per-process opacity configuration
     file runs as a script it is __main__, and joblib pickles the worker by
     value with cloudpickle, carrying module globals into every worker; a
     path-only key would make each worker believe it is configured, skip
-    set_opacity_path, and silently render with the tables MultiREx installs at
+    set_opacity_path, and silently render with the default tables in
     import. run_split() additionally refuses to write output that matches the
     baseline.
 
@@ -93,8 +93,8 @@ _configured = {"key": None}
 
 # ----------------------------------------------------------------- opacities
 def original_opacity_dir():
-    import multirex
-    return os.path.join(os.path.dirname(multirex.__file__), "data")
+    import forward_model as FM
+    return FM.OPACITY_DIR
 
 
 def build_swap_dir(variant):
@@ -148,15 +148,10 @@ def build_swap_dir(variant):
 
 
 def configure_opacities(path):
-    """Point TauREx at `path`. Idempotent per (process, path)."""
-    key = (os.getpid(), path)
-    if _configured["key"] == key:
-        return
-    import multirex  # noqa: F401  (sets its own path at import)
-    from taurex.cache import OpacityCache
-    OpacityCache().clear_cache()
-    OpacityCache().set_opacity_path(path)
-    _configured["key"] = key
+    """Point TauREx at `path`. Idempotent per (process, path); forward_model keeps the choice."""
+    import forward_model as FM
+    FM.configure_opacities(path)
+    _configured["key"] = (os.getpid(), path)
 
 
 # ----------------------------------------------------------------- rendering
@@ -177,8 +172,8 @@ def render(row, wl_native, opacity_path, reduce="bin"):
     if reduce == "interp":
         return one_native(row, wl_native)
     try:
-        system = build_system(row)
-        wn, rprs = system.transmission.model()[:2]
+        tm = build_system(row)
+        wn, rprs = tm.model()[:2]
         wl = 1e4 / np.asarray(wn, dtype=np.float64)
         order = np.argsort(wl)
         wl, rprs = wl[order], np.asarray(rprs, dtype=np.float64)[order]
