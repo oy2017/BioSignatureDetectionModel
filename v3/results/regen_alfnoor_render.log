@@ -1,0 +1,23 @@
+Numba not installed, using numpy instead
+Loading MultiREx version 0.3.1
+  pop3_native: (3908, 2753), 56 failures, 74 s
+  pop1_native: (977, 2753), 14 failures, 17 s
+  pop1_native_haze3e7: (977, 2753), 14 failures, 21 s
+  pop1_native_cloud1e2: (977, 2753), 14 failures, 133 s
+  pop1_native_absorbers: (977, 2753), 14 failures, 19 s
+Numba not installed, using numpy instead
+Loading MultiREx version 0.3.1
+Numba not installed, using numpy instead
+Loading MultiREx version 0.3.1
+Numba not installed, using numpy instead
+Loading MultiREx version 0.3.1
+Numba not installed, using numpy instead
+Loading MultiREx version 0.3.1
+Numba not installed, using numpy instead
+Loading MultiREx version 0.3.1
+Numba not installed, using numpy instead
+Loading MultiREx version 0.3.1
+Numba not installed, using numpy instead
+Loading MultiREx version 0.3.1
+Numba not installed, using numpy instead
+Loading MultiREx version 0.3.1

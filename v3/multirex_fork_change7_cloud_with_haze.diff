@@ -1,6 +1,8 @@
---- /tmp/claude-1000/-mnt-c-Users-owenh-BioSignatureDetectionModel/6df27690-b19a-4d43-895a-c8a267082e66/scratchpad/spectra_before_cloudfix.py	2026-09-12 23:59:24.906664572 -0700
-+++ /home/owenhyang/tfenv/lib/python3.10/site-packages/multirex/spectra.py	2026-09-12 23:59:24.926354613 -0700
-@@ -1387,6 +1387,10 @@
+diff --git a/multirex/spectra.py b/multirex/spectra.py
+index 53d384b..4b1690b 100644
+--- a/multirex/spectra.py
++++ b/multirex/spectra.py
+@@ -1400,6 +1400,10 @@ class System:
                      lee_mie_topP=_cm.get("topP", -1)))
              else:
                  raise ValueError(f"unknown cloud_model type: {kind}")

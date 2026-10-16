@@ -46,3 +46,26 @@ To do: report item 1 upstream (D4san/MultiREx) with the three-line reproduction 
 
 `forward_model_guard.py` (imported by `generate_grid.py` and `shift_opacity.py`) refuses to render
 if either change is missing.
+
+## 2026-10-16: changes 6 and 7 pushed to the public fork; change 6 made conditional
+
+Both corrections now live on `oy2017/MultiREx-public` as commits `9376f4a` (change 6) and
+`83f739c` (change 7), and `requirements.txt` pins that commit; the diff files in this directory
+are regenerated from those commits. Until then the two changes existed only as local patches,
+and a fresh install from the pinned commit could not render a cloud or haze case.
+
+TauREx fixed issue 172 upstream on 2026-09-14 (pull request 174, "Fix exotransmit pressure
+units"), with a unit test; the latest release, 3.3.2 of 2025-12-16, does not contain it. Change 6
+therefore now checks, after each table is loaded, whether the loaded pressure grid is 1e5 times
+the file's second line, and divides only in that case; it raises if the ratio is neither 1 nor
+1e5. The same code is correct under 3.3.2 and under a TauREx that includes the fix, and
+`forward_model_guard.py` is unchanged.
+
+Fresh-install recipe (macOS arm64 or Linux, Python 3.10): `pip install -r requirements.txt`,
+then copy `opacCO.dat`, `opacHCN.dat`, `opacC2H2.dat` and `opacNH3.dat` from
+https://github.com/elizakempton/Exo_Transmit/tree/master/Opac into the installed
+`multirex/data/`; FastChem's `asplund_2009.dat` and `logK.dat` go in `~/fastchem_input/`; the
+STScI `phoenixm00_*.fits` atlas goes in `v2/phoenix/`; the Mission Candidate Sample table
+`Ariel_MCS_Known_2026-05-11.csv` goes in `v3/data/mcs/`. Verified 2026-10-16 on macOS arm64: the
+faithful populations re-rendered with identical failure counts and the reproduction fit matched the
+committed result file to 0.05 points on average (maximum 1.2 on one ensemble-vote cell).
