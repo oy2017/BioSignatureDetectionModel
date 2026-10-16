@@ -23,7 +23,9 @@ error on a planet whose label is decidable is a recoverable error; on one whose 
 irrecoverable.
 
 Usage:
-  python identifiability.py --departure none --jobs 8                 # POP-I at Tier-1 noise
+  OMP_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 python identifiability.py --departure none --jobs 8   # POP-I at Tier-1 noise
+  (pin the BLAS threads: NumPy on macOS uses Accelerate, which ignores OMP_NUM_THREADS; 8 unpinned
+   workers spun 80 threads and ran ten times slower)
   python identifiability.py --departure haze3e7 --jobs 8
   python identifiability.py --noise tier2 --jobs 8
   python identifiability.py --limit 8 --jobs 4 --starts 2             # timing run
