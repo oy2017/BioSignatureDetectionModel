@@ -53,9 +53,12 @@ if [ "$PHOENIX" = 1 ]; then
   mkdir -p v2/phoenix
   curl -fsSL "$PHX/" | grep -o 'phoenixm00_[0-9]*\.fits' | sort -u > v2/phoenix/.index
   n=$(wc -l < v2/phoenix/.index | tr -d ' '); echo "  $n files in the atlas index"
-  # no published checksums; a file is accepted if it is a FITS file of plausible size
-  xargs -P 8 -I{} sh -c 'f=v2/phoenix/{}; if [ -s "$f" ] && [ "$(head -c 6 "$f")" = "SIMPLE" ]; then exit 0; fi; curl -fsSL --retry 3 -o "$f.part" "'"$PHX"'/{}" && mv "$f.part" "$f"' < v2/phoenix/.index
-  bad=$(for f in $(cat v2/phoenix/.index); do [ "$(head -c 6 "v2/phoenix/$f")" = "SIMPLE" ] || echo "$f"; done)
+  # no published checksums; a file is accepted if it starts like a FITS file
+  fetch_phx() { local f="v2/phoenix/$1"; if [ -s "$f" ] && [ "$(head -c 6 "$f")" = "SIMPLE" ]; then return 0; fi
+                curl -fsSL --retry 3 -o "$f.part" "$PHX/$1" && mv "$f.part" "$f"; }
+  export -f fetch_phx; export PHX
+  xargs -P 8 -n 1 bash -c 'fetch_phx "$0"' < v2/phoenix/.index
+  bad=$(while read -r f; do [ "$(head -c 6 "v2/phoenix/$f")" = "SIMPLE" ] || echo "$f"; done < v2/phoenix/.index)
   [ -z "$bad" ] && echo "  ok      $n PHOENIX files" || { echo "corrupt downloads: $bad" >&2; exit 1; }
 else
   echo "== PHOENIX atlas skipped (--no-phoenix)"
