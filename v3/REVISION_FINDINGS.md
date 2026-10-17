@@ -139,6 +139,59 @@ continua, than the clear-grid training spectra, and the classifier's operating p
 latter. Expectation P1 (≥ 75 % of scored labels) not met at 68 %; P6 met (no NH₃ false positive on any
 panel planet).
 
+### F5. The diagnostic: a one-number optical-excess score, routed to the AIRS-only classifier, is never worse than the classifier and recovers a third of the CH₄ targets haze loses
+
+Candidates (a) input-subset disagreement, (b) optical excess (the three normalized photometric points
+against the normalized NIRSpec continuum, as a z-score on the clean training set), (c) band-metric
+consistency and (d) predicted decidability, scored on POP-I under clean, haze 3 × 10⁷, spots 20 %,
+cloud 10² Pa, compound, noise × 2 and × 3, against the note's five rules
+(`alfnoor_diagnostic.py`; `results/diagnostic.txt`, `diagnostic_*.csv`, `diagnostic_real.txt`).
+
+Selective credit (C1): no candidate has positive credit under haze or spots at the 10 % clean decline
+rate (disagreement −6.8 and −6.3, the best of the nine; the five old rules −17.8 to −25.7 under haze).
+C1 not met. The reason is instructive: the optical-excess score flags 100 % of hazy and 66 % of spotted
+planets while flagging 10 % of clean, 1.5 % of clouded and 2–3 % of noisier ones, so declining what it
+flags empties the hazy population (coverage 0 %) and credit is not the right measure of a shift
+detector. Used as a router instead, which is what C1's design intended: the flagged planets are
+re-scored by the AIRS-only learner (the same learner retrained without the optical points). Under haze
+the CH₄ accuracy rises from 66.6 to 78.3 % and the CH₄ recall from 11.6 to 53.7 % (compound: 5.4 to
+50.3 %; spots: 35.5 to 53.1 %), while under clean, cloud and noise the routed classifier is within 0.5
+points of the frozen one, because almost nothing is flagged. The disagreement candidate does nearly
+the same (77.7 % and 51.1 % under haze) at the cost of three retrained learners per molecule; the
+band-metric candidate makes things worse.
+
+Selection (C3, C6): 60 % of the 939 POP-I planets get a Tier-2 slot, ranked by the mean present
+probability of KNN, MLP and RFC. Under haze the classifier alone loses 38 of 359 CH₄-bearing targets;
+with the optical-excess routing 26; the AIRS-only classifier used everywhere 27; the best old rule
+(kNN, declined to the back) 42, and the margin and ensemble rules 105 and 112, worse than the band
+metric alone (103). Under clean spectra the routed classifier loses 19 against 20, the AIRS-only
+classifier 27; under noise × 2 it loses 37 against 37, the AIRS-only classifier 57. So the diagnostic
+buys the AIRS-only classifier's immunity to haze without paying its clean and noisy cost; it is never
+worse than the classifier in any case. C3 (fewer than half the lost targets) not met: 26 against 38
+is a third, not a half, and the remaining misses are the planets the AIRS-only learner also misses.
+C6 is met trivially: with a fixed slot count, slots wasted equal targets lost plus a constant, so the
+cost ranking is the same at every lost-target weight; the weight only matters if the budget can flex.
+For H₂O no candidate helps (78 lost under haze for the classifier, 82 with disagreement): the haze
+loss on H₂O is not routed through the optical points to the same degree.
+
+Error classes (C2, preliminary: the identifiability run has reached 176 of 939 planets, uncalibrated
+3σ threshold): 63–93 % of the classifier's errors, depending on molecule and case, are on labels the
+Δχ² test calls undecidable at the planet's Tier-1 noise, which is the first measurement of E4's
+prevalence. A random forest on bulk and noise features predicts decidability out of fold with AUROC
+0.93 for CH₄ and 0.65 for H₂O on clean spectra (C2 met for CH₄ only), Spearman 0.26–0.49 against the
+true Δχ²; routing the predicted-undecidable planets to the back of the queue loses targets (41 against
+37 under noise × 2), so C4's second clause is not met. Final numbers wait for the full run and the
+retrieval calibration.
+
+Real spectra (C5): the optical-excess score flags HAT-P-18 b (z = 2.3, the spotted host) and the
+K2-18 b reanalysis (1.6), not WASP-39 b (0.8), WASP-166 b (0.9) or the primary K2-18 b (0.8); it is
+molecule-independent, so it says nothing about the CH₄ misses of F2. The band-metric candidate flags
+exactly the one wrong learner on WASP-39 b (the MLP's H₂O verdict, |p − flag| = 1.00) and no other
+WASP-39 b cell, and on the panel it fires mostly on H₂O cells of flat-filled planets, where the band
+metric itself is unreliable. The disagreement candidate flags no WASP-39 b cell. C5 as written (fires on
+WASP-39 b iff A3; fires on HAT-P-18 b and K2-18 b; not on WASP-166 b) is met for the optical score on
+HAT-P-18 b, the reanalysed K2-18 b and WASP-166 b, and not for the primary K2-18 b.
+
 ### What these add up to, provisionally
 
 A simulator-trained classifier that reproduces its published in-simulator accuracies is mostly right
@@ -149,6 +202,9 @@ real planets that carry the molecule it was built to find, because those planets
 domain; and a cheap distance rule, useless for ranking errors inside the simulator (the note's Section
 3.4), identifies exactly those two planets on real data and not the hot Saturn. Under Ariel noise the
 optical photometric points decide the hot Saturn's Tier-1 outcome (58 % against 86 % without them),
-which is the note's haze mechanism showing on a real planet. The missing piece for the paper is the
-identifiability test (running), which will say whether Ariel at Tier 1 could decide these labels at
-all.
+which is the note's haze mechanism showing on a real planet. A one-number diagnostic on the known weak point, the optical
+excess, routed to the learner without that weak point, is never worse than the classifier and recovers
+a third of the CH₄ targets haze would lose from Ariel's Tier-2 queue; the old rules lose more targets
+than ranking by the band metric alone. Most classifier errors, on the planets measured so far, are on
+labels the spectrum cannot decide at Tier-1 noise. The missing piece for the paper is the complete
+identifiability test (running), which will fix that prevalence and calibrate it.

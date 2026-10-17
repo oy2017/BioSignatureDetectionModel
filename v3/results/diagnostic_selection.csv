@@ -1,0 +1,288 @@
+target,case,strategy,targets,lost,wasted,cost_w1,cost_w3,cost_w10
+CH4,clean,classifier,359,20,234,254,294,434
+CH4,clean,oracle,359,0,214,214,214,214
+CH4,clean,random,359,155,369,524,834,1919
+CH4,clean,band metric,359,102,316,418,622,1336
+CH4,clean,AIRS-only classifier,359,27,241,268,322,511
+CH4,clean,+ margin (declined to the back),359,65,279,344,474,929
+CH4,clean,+ ensemble (declined to the back),359,62,276,338,462,896
+CH4,clean,+ mahalanobis (declined to the back),359,26,240,266,318,500
+CH4,clean,+ knn (declined to the back),359,21,235,256,298,445
+CH4,clean,+ pca_recon (declined to the back),359,38,252,290,366,632
+CH4,clean,+ disagree (flagged re-scored by the fallback),359,21,235,256,298,445
+CH4,clean,+ optical (flagged re-scored by the fallback),359,19,233,252,290,423
+CH4,clean,+ bandmetric (flagged re-scored by the fallback),359,20,234,254,294,434
+CH4,clean,+ decidable (undecidable ranked by decidability),359,25,239,264,314,489
+CH4,haze3e7,classifier,359,38,252,290,366,632
+CH4,haze3e7,oracle,359,0,214,214,214,214
+CH4,haze3e7,random,359,142,356,498,782,1776
+CH4,haze3e7,band metric,359,103,317,420,626,1347
+CH4,haze3e7,AIRS-only classifier,359,27,241,268,322,511
+CH4,haze3e7,+ margin (declined to the back),359,105,319,424,634,1369
+CH4,haze3e7,+ ensemble (declined to the back),359,112,326,438,662,1446
+CH4,haze3e7,+ mahalanobis (declined to the back),359,53,267,320,426,797
+CH4,haze3e7,+ knn (declined to the back),359,42,256,298,382,676
+CH4,haze3e7,+ pca_recon (declined to the back),359,69,283,352,490,973
+CH4,haze3e7,+ disagree (flagged re-scored by the fallback),359,37,251,288,362,621
+CH4,haze3e7,+ optical (flagged re-scored by the fallback),359,26,240,266,318,500
+CH4,haze3e7,+ bandmetric (flagged re-scored by the fallback),359,38,252,290,366,632
+CH4,haze3e7,+ decidable (undecidable ranked by decidability),359,41,255,296,378,665
+CH4,spots20,classifier,359,29,243,272,330,533
+CH4,spots20,oracle,359,0,214,214,214,214
+CH4,spots20,random,359,139,353,492,770,1743
+CH4,spots20,band metric,359,110,324,434,654,1424
+CH4,spots20,AIRS-only classifier,359,26,240,266,318,500
+CH4,spots20,+ margin (declined to the back),359,79,293,372,530,1083
+CH4,spots20,+ ensemble (declined to the back),359,79,293,372,530,1083
+CH4,spots20,+ mahalanobis (declined to the back),359,99,313,412,610,1303
+CH4,spots20,+ knn (declined to the back),359,111,325,436,658,1435
+CH4,spots20,+ pca_recon (declined to the back),359,74,288,362,510,1028
+CH4,spots20,+ disagree (flagged re-scored by the fallback),359,30,244,274,334,544
+CH4,spots20,+ optical (flagged re-scored by the fallback),359,28,242,270,326,522
+CH4,spots20,+ bandmetric (flagged re-scored by the fallback),359,27,241,268,322,511
+CH4,spots20,+ decidable (undecidable ranked by decidability),359,35,249,284,354,599
+CH4,cloud1e2,classifier,359,29,243,272,330,533
+CH4,cloud1e2,oracle,359,0,214,214,214,214
+CH4,cloud1e2,random,359,140,354,494,774,1754
+CH4,cloud1e2,band metric,359,94,308,402,590,1248
+CH4,cloud1e2,AIRS-only classifier,359,34,248,282,350,588
+CH4,cloud1e2,+ margin (declined to the back),359,92,306,398,582,1226
+CH4,cloud1e2,+ ensemble (declined to the back),359,122,336,458,702,1556
+CH4,cloud1e2,+ mahalanobis (declined to the back),359,73,287,360,506,1017
+CH4,cloud1e2,+ knn (declined to the back),359,60,274,334,454,874
+CH4,cloud1e2,+ pca_recon (declined to the back),359,56,270,326,438,830
+CH4,cloud1e2,+ disagree (flagged re-scored by the fallback),359,30,244,274,334,544
+CH4,cloud1e2,+ optical (flagged re-scored by the fallback),359,30,244,274,334,544
+CH4,cloud1e2,+ bandmetric (flagged re-scored by the fallback),359,31,245,276,338,555
+CH4,cloud1e2,+ decidable (undecidable ranked by decidability),359,35,249,284,354,599
+CH4,compound,classifier,359,66,280,346,478,940
+CH4,compound,oracle,359,0,214,214,214,214
+CH4,compound,random,359,154,368,522,830,1908
+CH4,compound,band metric,359,110,324,434,654,1424
+CH4,compound,AIRS-only classifier,359,27,241,268,322,511
+CH4,compound,+ margin (declined to the back),359,94,308,402,590,1248
+CH4,compound,+ ensemble (declined to the back),359,94,308,402,590,1248
+CH4,compound,+ mahalanobis (declined to the back),359,87,301,388,562,1171
+CH4,compound,+ knn (declined to the back),359,72,286,358,502,1006
+CH4,compound,+ pca_recon (declined to the back),359,74,288,362,510,1028
+CH4,compound,+ disagree (flagged re-scored by the fallback),359,60,274,334,454,874
+CH4,compound,+ optical (flagged re-scored by the fallback),359,27,241,268,322,511
+CH4,compound,+ bandmetric (flagged re-scored by the fallback),359,67,281,348,482,951
+CH4,compound,+ decidable (undecidable ranked by decidability),359,68,282,350,486,962
+CH4,white_x2,classifier,359,37,251,288,362,621
+CH4,white_x2,oracle,359,0,214,214,214,214
+CH4,white_x2,random,359,158,372,530,846,1952
+CH4,white_x2,band metric,359,108,322,430,646,1402
+CH4,white_x2,AIRS-only classifier,359,57,271,328,442,841
+CH4,white_x2,+ margin (declined to the back),359,105,319,424,634,1369
+CH4,white_x2,+ ensemble (declined to the back),359,106,320,426,638,1380
+CH4,white_x2,+ mahalanobis (declined to the back),359,82,296,378,542,1116
+CH4,white_x2,+ knn (declined to the back),359,90,304,394,574,1204
+CH4,white_x2,+ pca_recon (declined to the back),359,64,278,342,470,918
+CH4,white_x2,+ disagree (flagged re-scored by the fallback),359,40,254,294,374,654
+CH4,white_x2,+ optical (flagged re-scored by the fallback),359,37,251,288,362,621
+CH4,white_x2,+ bandmetric (flagged re-scored by the fallback),359,36,250,286,358,610
+CH4,white_x2,+ decidable (undecidable ranked by decidability),359,41,255,296,378,665
+CH4,white_x3,classifier,359,56,270,326,438,830
+CH4,white_x3,oracle,359,0,214,214,214,214
+CH4,white_x3,random,359,142,356,498,782,1776
+CH4,white_x3,band metric,359,112,326,438,662,1446
+CH4,white_x3,AIRS-only classifier,359,67,281,348,482,951
+CH4,white_x3,+ margin (declined to the back),359,99,313,412,610,1303
+CH4,white_x3,+ ensemble (declined to the back),359,117,331,448,682,1501
+CH4,white_x3,+ mahalanobis (declined to the back),359,91,305,396,578,1215
+CH4,white_x3,+ knn (declined to the back),359,86,300,386,558,1160
+CH4,white_x3,+ pca_recon (declined to the back),359,81,295,376,538,1105
+CH4,white_x3,+ disagree (flagged re-scored by the fallback),359,60,274,334,454,874
+CH4,white_x3,+ optical (flagged re-scored by the fallback),359,57,271,328,442,841
+CH4,white_x3,+ bandmetric (flagged re-scored by the fallback),359,55,269,324,434,819
+CH4,white_x3,+ decidable (undecidable ranked by decidability),359,61,275,336,458,885
+H2O,clean,classifier,364,51,260,311,413,770
+H2O,clean,oracle,364,0,209,209,209,209
+H2O,clean,random,364,151,360,511,813,1870
+H2O,clean,band metric,364,130,339,469,729,1639
+H2O,clean,AIRS-only classifier,364,82,291,373,537,1111
+H2O,clean,+ margin (declined to the back),364,93,302,395,581,1232
+H2O,clean,+ ensemble (declined to the back),364,104,313,417,625,1353
+H2O,clean,+ mahalanobis (declined to the back),364,69,278,347,485,968
+H2O,clean,+ knn (declined to the back),364,71,280,351,493,990
+H2O,clean,+ pca_recon (declined to the back),364,73,282,355,501,1012
+H2O,clean,+ disagree (flagged re-scored by the fallback),364,62,271,333,457,891
+H2O,clean,+ optical (flagged re-scored by the fallback),364,56,265,321,433,825
+H2O,clean,+ bandmetric (flagged re-scored by the fallback),364,53,262,315,421,792
+H2O,clean,+ decidable (undecidable ranked by decidability),364,59,268,327,445,858
+H2O,haze3e7,classifier,364,78,287,365,521,1067
+H2O,haze3e7,oracle,364,0,209,209,209,209
+H2O,haze3e7,random,364,155,364,519,829,1914
+H2O,haze3e7,band metric,364,138,347,485,761,1727
+H2O,haze3e7,AIRS-only classifier,364,85,294,379,549,1144
+H2O,haze3e7,+ margin (declined to the back),364,79,288,367,525,1078
+H2O,haze3e7,+ ensemble (declined to the back),364,79,288,367,525,1078
+H2O,haze3e7,+ mahalanobis (declined to the back),364,94,303,397,585,1243
+H2O,haze3e7,+ knn (declined to the back),364,95,304,399,589,1254
+H2O,haze3e7,+ pca_recon (declined to the back),364,107,316,423,637,1386
+H2O,haze3e7,+ disagree (flagged re-scored by the fallback),364,82,291,373,537,1111
+H2O,haze3e7,+ optical (flagged re-scored by the fallback),364,85,294,379,549,1144
+H2O,haze3e7,+ bandmetric (flagged re-scored by the fallback),364,91,300,391,573,1210
+H2O,haze3e7,+ decidable (undecidable ranked by decidability),364,84,293,377,545,1133
+H2O,spots20,classifier,364,75,284,359,509,1034
+H2O,spots20,oracle,364,0,209,209,209,209
+H2O,spots20,random,364,151,360,511,813,1870
+H2O,spots20,band metric,364,136,345,481,753,1705
+H2O,spots20,AIRS-only classifier,364,81,290,371,533,1100
+H2O,spots20,+ margin (declined to the back),364,90,299,389,569,1199
+H2O,spots20,+ ensemble (declined to the back),364,90,299,389,569,1199
+H2O,spots20,+ mahalanobis (declined to the back),364,124,333,457,705,1573
+H2O,spots20,+ knn (declined to the back),364,134,343,477,745,1683
+H2O,spots20,+ pca_recon (declined to the back),364,103,312,415,621,1342
+H2O,spots20,+ disagree (flagged re-scored by the fallback),364,69,278,347,485,968
+H2O,spots20,+ optical (flagged re-scored by the fallback),364,73,282,355,501,1012
+H2O,spots20,+ bandmetric (flagged re-scored by the fallback),364,73,282,355,501,1012
+H2O,spots20,+ decidable (undecidable ranked by decidability),364,79,288,367,525,1078
+H2O,cloud1e2,classifier,364,88,297,385,561,1177
+H2O,cloud1e2,oracle,364,0,209,209,209,209
+H2O,cloud1e2,random,364,150,359,509,809,1859
+H2O,cloud1e2,band metric,364,134,343,477,745,1683
+H2O,cloud1e2,AIRS-only classifier,364,99,308,407,605,1298
+H2O,cloud1e2,+ margin (declined to the back),364,108,317,425,641,1397
+H2O,cloud1e2,+ ensemble (declined to the back),364,106,315,421,633,1375
+H2O,cloud1e2,+ mahalanobis (declined to the back),364,113,322,435,661,1452
+H2O,cloud1e2,+ knn (declined to the back),364,116,325,441,673,1485
+H2O,cloud1e2,+ pca_recon (declined to the back),364,102,311,413,617,1331
+H2O,cloud1e2,+ disagree (flagged re-scored by the fallback),364,88,297,385,561,1177
+H2O,cloud1e2,+ optical (flagged re-scored by the fallback),364,87,296,383,557,1166
+H2O,cloud1e2,+ bandmetric (flagged re-scored by the fallback),364,85,294,379,549,1144
+H2O,cloud1e2,+ decidable (undecidable ranked by decidability),364,95,304,399,589,1254
+H2O,compound,classifier,364,103,312,415,621,1342
+H2O,compound,oracle,364,0,209,209,209,209
+H2O,compound,random,364,146,355,501,793,1815
+H2O,compound,band metric,364,138,347,485,761,1727
+H2O,compound,AIRS-only classifier,364,84,293,377,545,1133
+H2O,compound,+ margin (declined to the back),364,103,312,415,621,1342
+H2O,compound,+ ensemble (declined to the back),364,106,315,421,633,1375
+H2O,compound,+ mahalanobis (declined to the back),364,107,316,423,637,1386
+H2O,compound,+ knn (declined to the back),364,107,316,423,637,1386
+H2O,compound,+ pca_recon (declined to the back),364,105,314,419,629,1364
+H2O,compound,+ disagree (flagged re-scored by the fallback),364,95,304,399,589,1254
+H2O,compound,+ optical (flagged re-scored by the fallback),364,83,292,375,541,1122
+H2O,compound,+ bandmetric (flagged re-scored by the fallback),364,112,321,433,657,1441
+H2O,compound,+ decidable (undecidable ranked by decidability),364,107,316,423,637,1386
+H2O,white_x2,classifier,364,67,276,343,477,946
+H2O,white_x2,oracle,364,0,209,209,209,209
+H2O,white_x2,random,364,143,352,495,781,1782
+H2O,white_x2,band metric,364,142,351,493,777,1771
+H2O,white_x2,AIRS-only classifier,364,104,313,417,625,1353
+H2O,white_x2,+ margin (declined to the back),364,103,312,415,621,1342
+H2O,white_x2,+ ensemble (declined to the back),364,105,314,419,629,1364
+H2O,white_x2,+ mahalanobis (declined to the back),364,125,334,459,709,1584
+H2O,white_x2,+ knn (declined to the back),364,131,340,471,733,1650
+H2O,white_x2,+ pca_recon (declined to the back),364,100,309,409,609,1309
+H2O,white_x2,+ disagree (flagged re-scored by the fallback),364,74,283,357,505,1023
+H2O,white_x2,+ optical (flagged re-scored by the fallback),364,69,278,347,485,968
+H2O,white_x2,+ bandmetric (flagged re-scored by the fallback),364,67,276,343,477,946
+H2O,white_x2,+ decidable (undecidable ranked by decidability),364,74,283,357,505,1023
+H2O,white_x3,classifier,364,89,298,387,565,1188
+H2O,white_x3,oracle,364,0,209,209,209,209
+H2O,white_x3,random,364,164,373,537,865,2013
+H2O,white_x3,band metric,364,142,351,493,777,1771
+H2O,white_x3,AIRS-only classifier,364,121,330,451,693,1540
+H2O,white_x3,+ margin (declined to the back),364,130,339,469,729,1639
+H2O,white_x3,+ ensemble (declined to the back),364,127,336,463,717,1606
+H2O,white_x3,+ mahalanobis (declined to the back),364,132,341,473,737,1661
+H2O,white_x3,+ knn (declined to the back),364,121,330,451,693,1540
+H2O,white_x3,+ pca_recon (declined to the back),364,118,327,445,681,1507
+H2O,white_x3,+ disagree (flagged re-scored by the fallback),364,91,300,391,573,1210
+H2O,white_x3,+ optical (flagged re-scored by the fallback),364,92,301,393,577,1221
+H2O,white_x3,+ bandmetric (flagged re-scored by the fallback),364,90,299,389,569,1199
+H2O,white_x3,+ decidable (undecidable ranked by decidability),364,93,302,395,581,1232
+joint,clean,classifier,576,95,92,187,377,1042
+joint,clean,oracle,576,3,0,3,9,30
+joint,clean,random,576,221,218,439,881,2428
+joint,clean,band metric,576,243,240,483,969,2670
+joint,clean,AIRS-only classifier,576,139,136,275,553,1526
+joint,clean,+ margin (declined to the back),576,133,130,263,529,1460
+joint,clean,+ ensemble (declined to the back),576,121,118,239,481,1328
+joint,clean,+ mahalanobis (declined to the back),576,105,102,207,417,1152
+joint,clean,+ knn (declined to the back),576,104,101,205,413,1141
+joint,clean,+ pca_recon (declined to the back),576,112,109,221,445,1229
+joint,clean,+ disagree (flagged re-scored by the fallback),576,104,101,205,413,1141
+joint,clean,+ optical (flagged re-scored by the fallback),576,102,99,201,405,1119
+joint,clean,+ bandmetric (flagged re-scored by the fallback),576,99,96,195,393,1086
+joint,haze3e7,classifier,576,150,147,297,597,1647
+joint,haze3e7,oracle,576,3,0,3,9,30
+joint,haze3e7,random,576,222,219,441,885,2439
+joint,haze3e7,band metric,576,244,241,485,973,2681
+joint,haze3e7,AIRS-only classifier,576,141,138,279,561,1548
+joint,haze3e7,+ margin (declined to the back),576,151,148,299,601,1658
+joint,haze3e7,+ ensemble (declined to the back),576,160,157,317,637,1757
+joint,haze3e7,+ mahalanobis (declined to the back),576,171,168,339,681,1878
+joint,haze3e7,+ knn (declined to the back),576,159,156,315,633,1746
+joint,haze3e7,+ pca_recon (declined to the back),576,183,180,363,729,2010
+joint,haze3e7,+ disagree (flagged re-scored by the fallback),576,146,143,289,581,1603
+joint,haze3e7,+ optical (flagged re-scored by the fallback),576,141,138,279,561,1548
+joint,haze3e7,+ bandmetric (flagged re-scored by the fallback),576,151,148,299,601,1658
+joint,spots20,classifier,576,132,129,261,525,1449
+joint,spots20,oracle,576,3,0,3,9,30
+joint,spots20,random,576,227,224,451,905,2494
+joint,spots20,band metric,576,246,243,489,981,2703
+joint,spots20,AIRS-only classifier,576,137,134,271,545,1504
+joint,spots20,+ margin (declined to the back),576,149,146,295,593,1636
+joint,spots20,+ ensemble (declined to the back),576,147,144,291,585,1614
+joint,spots20,+ mahalanobis (declined to the back),576,204,201,405,813,2241
+joint,spots20,+ knn (declined to the back),576,209,206,415,833,2296
+joint,spots20,+ pca_recon (declined to the back),576,186,183,369,741,2043
+joint,spots20,+ disagree (flagged re-scored by the fallback),576,134,131,265,533,1471
+joint,spots20,+ optical (flagged re-scored by the fallback),576,132,129,261,525,1449
+joint,spots20,+ bandmetric (flagged re-scored by the fallback),576,132,129,261,525,1449
+joint,cloud1e2,classifier,576,127,124,251,505,1394
+joint,cloud1e2,oracle,576,3,0,3,9,30
+joint,cloud1e2,random,576,242,239,481,965,2659
+joint,cloud1e2,band metric,576,236,233,469,941,2593
+joint,cloud1e2,AIRS-only classifier,576,146,143,289,581,1603
+joint,cloud1e2,+ margin (declined to the back),576,155,152,307,617,1702
+joint,cloud1e2,+ ensemble (declined to the back),576,157,154,311,625,1724
+joint,cloud1e2,+ mahalanobis (declined to the back),576,158,155,313,629,1735
+joint,cloud1e2,+ knn (declined to the back),576,154,151,305,613,1691
+joint,cloud1e2,+ pca_recon (declined to the back),576,148,145,293,589,1625
+joint,cloud1e2,+ disagree (flagged re-scored by the fallback),576,129,126,255,513,1416
+joint,cloud1e2,+ optical (flagged re-scored by the fallback),576,128,125,253,509,1405
+joint,cloud1e2,+ bandmetric (flagged re-scored by the fallback),576,126,123,249,501,1383
+joint,compound,classifier,576,183,180,363,729,2010
+joint,compound,oracle,576,3,0,3,9,30
+joint,compound,random,576,220,217,437,877,2417
+joint,compound,band metric,576,242,239,481,965,2659
+joint,compound,AIRS-only classifier,576,140,137,277,557,1537
+joint,compound,+ margin (declined to the back),576,183,180,363,729,2010
+joint,compound,+ ensemble (declined to the back),576,186,183,369,741,2043
+joint,compound,+ mahalanobis (declined to the back),576,196,193,389,781,2153
+joint,compound,+ knn (declined to the back),576,190,187,377,757,2087
+joint,compound,+ pca_recon (declined to the back),576,191,188,379,761,2098
+joint,compound,+ disagree (flagged re-scored by the fallback),576,164,161,325,653,1801
+joint,compound,+ optical (flagged re-scored by the fallback),576,140,137,277,557,1537
+joint,compound,+ bandmetric (flagged re-scored by the fallback),576,188,185,373,749,2065
+joint,white_x2,classifier,576,134,131,265,533,1471
+joint,white_x2,oracle,576,3,0,3,9,30
+joint,white_x2,random,576,221,218,439,881,2428
+joint,white_x2,band metric,576,236,233,469,941,2593
+joint,white_x2,AIRS-only classifier,576,167,164,331,665,1834
+joint,white_x2,+ margin (declined to the back),576,168,165,333,669,1845
+joint,white_x2,+ ensemble (declined to the back),576,162,159,321,645,1779
+joint,white_x2,+ mahalanobis (declined to the back),576,173,170,343,689,1900
+joint,white_x2,+ knn (declined to the back),576,190,187,377,757,2087
+joint,white_x2,+ pca_recon (declined to the back),576,156,153,309,621,1713
+joint,white_x2,+ disagree (flagged re-scored by the fallback),576,136,133,269,541,1493
+joint,white_x2,+ optical (flagged re-scored by the fallback),576,136,133,269,541,1493
+joint,white_x2,+ bandmetric (flagged re-scored by the fallback),576,133,130,263,529,1460
+joint,white_x3,classifier,576,165,162,327,657,1812
+joint,white_x3,oracle,576,3,0,3,9,30
+joint,white_x3,random,576,241,238,479,961,2648
+joint,white_x3,band metric,576,228,225,453,909,2505
+joint,white_x3,AIRS-only classifier,576,178,175,353,709,1955
+joint,white_x3,+ margin (declined to the back),576,190,187,377,757,2087
+joint,white_x3,+ ensemble (declined to the back),576,185,182,367,737,2032
+joint,white_x3,+ mahalanobis (declined to the back),576,192,189,381,765,2109
+joint,white_x3,+ knn (declined to the back),576,191,188,379,761,2098
+joint,white_x3,+ pca_recon (declined to the back),576,184,181,365,733,2021
+joint,white_x3,+ disagree (flagged re-scored by the fallback),576,168,165,333,669,1845
+joint,white_x3,+ optical (flagged re-scored by the fallback),576,169,166,335,673,1856
+joint,white_x3,+ bandmetric (flagged re-scored by the fallback),576,162,159,321,645,1779
