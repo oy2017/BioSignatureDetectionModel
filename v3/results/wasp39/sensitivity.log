@@ -1,0 +1,34 @@
+configuration                                        filled   verdicts at 1e-4 (KNN MLP RFC SVC), mean Tier-1 frequency; band metrics
+Numba not installed, using numpy instead
+benchmark + MIRI (fiducial)                          filled   1  H2O 1011  58%  CH4 0000   0%  CO2 0000   7%  NH3 0000   0%   M_H2O 4.00 M_CH4 -1.16 M_CO2 -0.08
+  MIRI as published (no level)                       filled   1  H2O 1011  56%  CH4 0000   0%  CO2 0010  18%  NH3 0000   0%   M_H2O 2.35 M_CH4 -1.13 M_CO2 0.82
+  all modes as published (no offsets)                filled   1  H2O 1011  41%  CH4 0000   0%  CO2 0000  19%  NH3 0000   0%   M_H2O 1.93 M_CH4 -1.25 M_CO2 0.87
+  fitted limb darkening                              filled   1  H2O 1011  71%  CH4 0000   0%  CO2 0000   8%  NH3 0000   0%   M_H2O 4.14 M_CH4 -1.04 M_CO2 0.03
+  PRISM saturated region kept                        filled   0  H2O 1011  50%  CH4 0000   0%  CO2 0000   6%  NH3 0000   0%   M_H2O 3.46 M_CH4 -1.26 M_CO2 -0.16
+  MIRI SPARTA                                        filled   1  H2O 1011  57%  CH4 0000   0%  CO2 0000   8%  NH3 0000   0%   M_H2O 4.54 M_CH4 -1.17 M_CO2 0.20
+  MIRI Tiberius                                      filled   1  H2O 1011  55%  CH4 0000   0%  CO2 0000   7%  NH3 0000   0%   M_H2O 4.11 M_CH4 -1.15 M_CO2 0.15
+  without MIRI, model fill                           filled  12  H2O 1011  54%  CH4 0000   0%  CO2 0000   8%  NH3 0000   0%   M_H2O 3.71 M_CH4 -1.15 M_CO2 0.59
+  without MIRI, flat fill                            filled  12  H2O 1011  57%  CH4 0000   0%  CO2 0010  16%  NH3 0000   0%   M_H2O 3.45 M_CH4 -1.15 M_CO2 0.80
+  fiducial, flat fill                                filled   1  H2O 1011  58%  CH4 0000   0%  CO2 0000   7%  NH3 0000   0%   M_H2O 4.00 M_CH4 -1.16 M_CO2 -0.08
+ERS products + MIRI (nirHiss, FIREFLy, Eureka!)      filled   2  H2O 1011  75%  CH4 0000   0%  CO2 0000   6%  NH3 0000   0%   M_H2O 4.03 M_CH4 -1.09 M_CO2 -0.09
+  NIRISS supreme-SPOON                               filled   2  H2O 1011  75%  CH4 0000   0%  CO2 0000   7%  NH3 0000   0%   M_H2O 3.91 M_CH4 -1.13 M_CO2 0.01
+  PRISM Eureka                                       filled   2  H2O 1011  75%  CH4 0000   0%  CO2 0000   6%  NH3 0000   0%   M_H2O 4.08 M_CH4 -1.04 M_CO2 -0.05
+  PRISM Tiberius                                     filled   2  H2O 1011  71%  CH4 0000   0%  CO2 0000   4%  NH3 0000   0%   M_H2O 3.85 M_CH4 -1.08 M_CO2 -0.11
+  PRISM Tshirt                                       filled   2  H2O 1011  75%  CH4 0000   0%  CO2 0000   6%  NH3 0000   0%   M_H2O 3.85 M_CH4 -1.04 M_CO2 -0.04
+  ERS without PRISM (the preliminary set) + MIRI     filled   3  H2O 1011  75%  CH4 0000   0%  CO2 0000   4%  NH3 0000   0%   M_H2O 3.88 M_CH4 -0.89 M_CO2 -0.36
+  ERS without PRISM, without MIRI, flat fill         filled  15  H2O 1111  73%  CH4 0000   0%  CO2 0010  12%  NH3 0000   0%   M_H2O 3.00 M_CH4 -0.85 M_CO2 0.77
+PRISM alone + MIRI (FIREFLy, saturated kept)         filled   0  H2O 1011  46%  CH4 0000   0%  CO2 0000   6%  NH3 0000   0%   M_H2O 3.06 M_CH4 -1.35 M_CO2 -0.03
+PRISM alone + MIRI (FIREFLy, saturated dropped)      filled  21  H2O 1011  62%  CH4 0000   0%  CO2 0000   8%  NH3 0000   0%   M_H2O 3.70 M_CH4 -1.24 M_CO2 0.08
+  fiducial, all four absorbers masked, model fill    filled   6  H2O 1011  58%  CH4 0000   0%  CO2 0000   8%  NH3 0000   0%   M_H2O 3.79 M_CH4 -1.12 M_CO2 -0.06
+  fiducial, Na masked, model fill                    filled   1  H2O 1011  58%  CH4 0000   0%  CO2 0000   7%  NH3 0000   0%   M_H2O 4.00 M_CH4 -1.16 M_CO2 -0.08
+  fiducial, K masked, model fill                     filled   1  H2O 1011  58%  CH4 0000   0%  CO2 0000   7%  NH3 0000   0%   M_H2O 4.00 M_CH4 -1.16 M_CO2 -0.08
+  fiducial, SO2 masked, model fill                   filled   3  H2O 1011  58%  CH4 0000   0%  CO2 0000   7%  NH3 0000   0%   M_H2O 3.79 M_CH4 -1.18 M_CO2 -0.08
+  fiducial, CO masked, model fill                    filled   4  H2O 1011  58%  CH4 0000   0%  CO2 0000   8%  NH3 0000   0%   M_H2O 4.00 M_CH4 -1.11 M_CO2 -0.06
+  fiducial, all four absorbers masked, flat fill     filled   6  H2O 1011  61%  CH4 0000   0%  CO2 0000   5%  NH3 0000   0%   M_H2O 2.31 M_CH4 -1.03 M_CO2 -0.22
+
+== round trip (A6): the benchmark model sampled at the benchmark grids with their errors, 200 realizations
+rms difference converted - direct over measured bins: 56 ppm (median error of the converted bins 32 ppm)
+  H2O: KNN direct 1 converted 100% (score +0.60 -> +0.69); MLP direct 0 converted   4% (score +0.28 -> +0.15); RFC direct 1 converted 100% (score +0.71 -> +0.70); SVC direct 1 converted 100% (score +1.39 -> +1.24)
+  CH4: KNN direct 0 converted   0% (score +0.00 -> +0.00); MLP direct 0 converted   0% (score +0.00 -> +0.00); RFC direct 0 converted   0% (score +0.00 -> +0.00); SVC direct 0 converted   0% (score -3.00 -> -3.06)
+  CO2: KNN direct 0 converted  30% (score +0.40 -> +0.45); MLP direct 0 converted   0% (score +0.02 -> +0.01); RFC direct 0 converted  28% (score +0.49 -> +0.48); SVC direct 0 converted   0% (score -0.98 -> -1.04)
+  NH3: KNN direct 0 converted   0% (score +0.00 -> +0.00); MLP direct 0 converted   0% (score +0.00 -> +0.00); RFC direct 0 converted   0% (score +0.01 -> +0.01); SVC direct 0 converted   0% (score -3.11 -> -3.17)

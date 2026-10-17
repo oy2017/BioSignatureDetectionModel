@@ -64,3 +64,51 @@ def ers_nc(path):
     ok = np.isfinite(d) & np.isfinite(e) & (e > 0)
     width = 2 * hw if np.all(hw < 0.1) else None     # one reduction stored wavelengths in the half-width field
     return dict(wl=wl[ok], depth=d[ok], err=e[ok], width=None if width is None else width[ok])
+
+
+def prism_h5(path, drop=(0.634, 2.115)):
+    """NIRSpec PRISM products of record 7388032 (Rustamkulov et al. 2023): wavelength (um), transit_depth
+    and transit_depth_uncertainty (fractional). `drop` removes the saturated region, by default the
+    range Carter & May et al. 2024 flag (satflag) in their re-reduction of the same data; None keeps it."""
+    import h5py
+    with h5py.File(path) as h:
+        wl = np.asarray(h["wavelength"][()], float); d = np.asarray(h["transit_depth"][()], float)
+        e = np.asarray(h["transit_depth_uncertainty"][()], float)
+    keep = np.isfinite(d) & np.isfinite(e) & (e > 0)
+    if drop is not None:
+        keep &= ~((wl >= drop[0]) & (wl <= drop[1]))
+    o = np.argsort(wl[keep])
+    return dict(wl=wl[keep][o], depth=d[keep][o], err=e[keep][o], width=None)
+
+
+def miri_h5(path):
+    """MIRI LRS products of record 10055845 (Powell et al. 2024): wavelength (um), dppm, dppm_error (ppm),
+    wavelength_error (half-width, scalar or per point). Points are returned sorted by wavelength."""
+    import h5py
+    with h5py.File(path) as h:
+        wl = np.asarray(h["wavelength"][()], float); d = np.asarray(h["dppm"][()], float); e = np.asarray(h["dppm_error"][()], float)
+        hw = np.broadcast_to(np.asarray(h["wavelength_error"][()], float), wl.shape)
+    o = np.argsort(wl); keep = np.isfinite(d[o]) & np.isfinite(e[o]) & (e[o] > 0)
+    return dict(wl=wl[o][keep], depth=d[o][keep] * 1e-6, err=e[o][keep] * 1e-6, width=2 * hw[o][keep])
+
+
+def carter_csv(path, drop_saturated=True):
+    """Transmission spectra of record 10161743 (Carter & May et al. 2024 benchmark): CSV with wave,
+    wave_low, wave_hig (um), rp/rs with asymmetric errors, and for PRISM a satflag column (nonzero = in
+    the saturated region) and a dilution factor already applied. Depth = (rp/rs)^2, error propagated."""
+    import pandas as pd
+    t = pd.read_csv(path)
+    rp = t["rp/rs"].to_numpy(float); e = _sym(t["rp/rs_err_low"], t["rp/rs_err_hih"])
+    keep = np.isfinite(rp) & np.isfinite(e) & (e > 0)
+    if drop_saturated and "satflag" in t:
+        keep &= t["satflag"].to_numpy() == 0
+    wl = t["wave"].to_numpy(float); width = (t["wave_hig"] - t["wave_low"]).to_numpy(float)
+    o = np.argsort(wl[keep])
+    return dict(wl=wl[keep][o], depth=(rp ** 2)[keep][o], err=(2 * rp * e)[keep][o], width=width[keep][o])
+
+
+def carter_model(path):
+    """The benchmark's best-fit model (5_MODEL_SPECTRUM/BestFitModel.txt): wavelength (um), depth (fractional),
+    0.5-12.5 um. Returns (wl, depth) sorted."""
+    a = np.loadtxt(path); o = np.argsort(a[:, 0])
+    return a[o, 0], a[o, 1]

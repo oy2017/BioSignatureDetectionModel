@@ -11,7 +11,8 @@ real atmosphere's shape, not the noise, the coverage or the classifier's in-simu
 Usage: python jwst_controls.py      (after jwst_panel.py and wasp39_assemble.py)
 Writes results/jwst_panel/controls.txt
 """
-import os, sys, numpy as np, pandas as pd
+import os, sys, warnings, numpy as np
+warnings.filterwarnings("ignore", category=RuntimeWarning)   # numpy on macOS Accelerate reports spurious FP flags from matmul, pandas as pd
 V3 = os.path.dirname(os.path.abspath(__file__)); os.chdir(V3); sys.path.insert(0, V3)
 _out = []
 _print = print
@@ -31,7 +32,7 @@ TWINS = {"TOI-270d": {"CH4": -1.64, "H2O": -1.10, "CO2": -1.67, "NH3": -5.0},
          "HAT-P-26b": {"CH4": -5.5, "H2O": -2.07, "CO2": -2.91, "NH3": -4.2},
          "WASP-166b": {"CH4": -7.9, "H2O": -1.30, "CO2": -2.23, "NH3": -4.0},
          "K2-18b-alt": {"CH4": -1.74, "H2O": -4.0, "CO2": -3.35, "NH3": -5.6},
-         "WASP-39b": {"CH4": -7.0, "H2O": -2.3, "CO2": -4.5, "NH3": -7.0}}
+         "WASP-39b": {"CH4": -7.0, "H2O": -2.3, "CO2": -4.5, "NH3": -7.0}}   # WASP-39 b: the benchmark + MIRI assembly (wasp39_assemble.py)
 # training-set distance rule, as in the note: 10-NN distance, threshold declining 10 % of clean test planets
 Xtr, Ptr, _ = AJ.training_set(); Ztr = AJ.znorm(Xtr, np.ones(104, bool))
 src = AF.DIRS["faithful"]; Xte = np.load(f"{src}/pop1_native.npy"); ok = np.all(np.isfinite(Xte), 1)
@@ -42,7 +43,7 @@ knn = NearestNeighbors(n_neighbors=10).fit(Ztr); d_clean = knn.kneighbors(AJ.zno
 print(f"kNN distance threshold declining 10 % of clean POP-I planets: {thr:.2f} (median clean {np.median(d_clean):.2f})\n")
 print(f"{'planet':<10} {'input':<14} {'kNN dist':>9} {'declined':>9}   verdicts at 1e-4 (all inputs; KNN MLP RFC SVC) and Tier-1 frequency")
 for pl, ab in TWINS.items():
-    covf = f"results/jwst_panel/{pl}_coverage.csv" if pl != "WASP-39b" else "results/wasp39/coverage_prelim_nirHiss.csv"
+    covf = f"results/jwst_panel/{pl}_coverage.csv" if pl != "WASP-39b" else "results/wasp39/coverage_benchmark.csv"
     cov = pd.read_csv(covf); filled = cov.filled.to_numpy(bool); real = cov.depth.to_numpy()
     if pl == "WASP-39b":
         real = real.copy(); real[filled] = np.nanmean(real[~filled])
@@ -64,7 +65,7 @@ for pl, ab in TWINS.items():
 print("\n== twins scattered with the real per-bin JWST errors (200 draws): detection frequency and decline rate")
 L = AJ.learners("all"); rng2 = np.random.default_rng(3)
 for pl, ab in TWINS.items():
-    covf = f"results/jwst_panel/{pl}_coverage.csv" if pl != "WASP-39b" else "results/wasp39/coverage_prelim_nirHiss.csv"
+    covf = f"results/jwst_panel/{pl}_coverage.csv" if pl != "WASP-39b" else "results/wasp39/coverage_benchmark.csv"
     cov = pd.read_csv(covf); filled = cov.filled.to_numpy(bool); err = cov.err.to_numpy(); err = np.where(filled | ~np.isfinite(err), 0.0, err)
     r = M[M.name == pl.replace("-alt", "")].iloc[0].to_dict(); r.update({"atm top_pressure": 1e-4, "atm CO": -15.0, "atm O3": -15.0, **{f"atm {k}": v for k, v in ab.items()}})
     y = G.one_native(r, wl)

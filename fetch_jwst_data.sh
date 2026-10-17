@@ -24,7 +24,7 @@ zenodo() {   # zenodo <record> <file> : resume loop until the zip verifies
   echo "GAVE UP on $dest" >&2; return 1
 }
 extract() {  # extract <zip> <destdir> <member patterns...>
-  local z=$1 d=$2; shift 2; mkdir -p "$d"; unzip -oq "$z" "$@" -d "$d" 2>/dev/null || true
+  local z=$1 d=$2; shift 2; mkdir -p "$d"; unzip -oq "$z" "$@" -d "$d" 2>/dev/null || true   # patterns may end with -x <excludes>
 }
 get() {      # get <url> <dest>
   [ -s "$2" ] && { echo "  ok      $2"; return 0; }
@@ -36,9 +36,9 @@ if [ "${1:-}" != "--verify" ]; then
   zenodo 7709712 zenodo_upload.zip       && extract "$ARC/7709712_zenodo_upload.zip" "$ROOT/wasp39/7709712/extracted" "zenodo_upload/4_TRANSMISSION_SPECTRA/*"
   zenodo 7101283 NIRCam_Zenodo_files.zip && extract "$ARC/7101283_NIRCam_Zenodo_files.zip" "$ROOT/wasp39/7101283/extracted" "2_TRANSMISSION_SPECTRA/*"
   zenodo 7185300 G395H_paper_data.zip    && extract "$ARC/7185300_G395H_paper_data.zip" "$ROOT/wasp39/7185300/extracted" "G395H_paper_data/3_TRANSMISSION_SPECTRA/*"
-  zenodo 7388032 W39_PRISM_data.zip      && extract "$ARC/7388032_W39_PRISM_data.zip" "$ROOT/wasp39/7388032/extracted" "*"
-  zenodo 10055845 miri_lrs_zenodo.zip    && extract "$ARC/10055845_miri_lrs_zenodo.zip" "$ROOT/wasp39/10055845/extracted" "*"
-  zenodo 10161743 ERS_DataSynthesis_Zenodo.zip && extract "$ARC/10161743_ERS_DataSynthesis_Zenodo.zip" "$ROOT/wasp39/10161743/extracted" "*"
+  zenodo 7388032 W39_PRISM_data.zip      && extract "$ARC/7388032_W39_PRISM_data.zip" "$ROOT/wasp39/7388032/extracted" "transit_spectra/*.h5" "best_fit_model/*"
+  zenodo 10055845 miri_lrs_zenodo.zip    && extract "$ARC/10055845_miri_lrs_zenodo.zip" "$ROOT/wasp39/10055845/extracted" "miri_lrs_zenodo/Figure2_Spectra/spectra/*" "miri_lrs_zenodo/Figure4_PhotochemicalModels/photochemical_model_spectra/*" "miri_lrs_zenodo/ExtendedFigure3_PICASO_Grid/*"
+  zenodo 10161743 ERS_DataSynthesis_Zenodo.zip && extract "$ARC/10161743_ERS_DataSynthesis_Zenodo.zip" "$ROOT/wasp39/10161743/extracted" "ZENODO/4_TRANSMISSION_SPECTRA/*" "ZENODO/5_MODEL_SPECTRUM/*" -x "*.DS_Store"
 
   echo "== panel"
   P=$ROOT/panel

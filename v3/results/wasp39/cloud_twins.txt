@@ -1,0 +1,14 @@
+real (benchmark + MIRI)            dispersion   324 ppm   H2O:1011  58%  CH4:0000   0%  CO2:0000   7%  NH3:0000   0%   H2O scores KNN +0.60 MLP +0.00 RFC +0.73 SVC +1.44
+benchmark model, binned directly   dispersion   331 ppm   H2O:1011  59%  CH4:0000   0%  CO2:0000  13%  NH3:0000   0%   H2O scores KNN +0.60 MLP +0.28 RFC +0.71 SVC +1.39
+clear twin                         dispersion  1190 ppm   H2O:1111 100%  CH4:0000   0%  CO2:0000   6%  NH3:0000   0%   H2O scores KNN +0.80 MLP +1.00 RFC +0.93 SVC +4.53
+twin, grey deck at 10000 Pa        dispersion  1188 ppm   H2O:1111 100%  CH4:0000   0%  CO2:0000   6%  NH3:0000   0%   H2O scores KNN +0.80 MLP +1.00 RFC +0.93 SVC +4.49
+twin, grey deck at 3000 Pa         dispersion  1175 ppm   H2O:1111 100%  CH4:0000   0%  CO2:0000   5%  NH3:0000   0%   H2O scores KNN +0.80 MLP +1.00 RFC +0.92 SVC +4.33
+twin, grey deck at 1000 Pa         dispersion  1142 ppm   H2O:1111 100%  CH4:0000   0%  CO2:0000   4%  NH3:0000   0%   H2O scores KNN +0.80 MLP +1.00 RFC +0.91 SVC +4.03
+twin, grey deck at 300 Pa          dispersion  1067 ppm   H2O:1111 100%  CH4:0000   0%  CO2:0000   6%  NH3:0000   0%   H2O scores KNN +0.80 MLP +1.00 RFC +0.88 SVC +3.67
+twin, grey deck at 100 Pa          dispersion   945 ppm   H2O:1111 100%  CH4:0000   0%  CO2:0000  11%  NH3:0000   0%   H2O scores KNN +0.80 MLP +1.00 RFC +0.90 SVC +3.27
+twin, grey deck at 30 Pa           dispersion   754 ppm   H2O:1111 100%  CH4:0000   0%  CO2:0000  15%  NH3:0000   0%   H2O scores KNN +0.80 MLP +0.99 RFC +0.94 SVC +2.80
+twin, grey deck at 10 Pa           dispersion   618 ppm   H2O:1111  98%  CH4:0000   0%  CO2:0000  15%  NH3:0000   0%   H2O scores KNN +0.80 MLP +0.97 RFC +0.96 SVC +2.49
+clear twin, log H2O = -3.0         dispersion  1251 ppm   H2O:1111 100%  CH4:0000   0%  CO2:0000  30%  NH3:0000   0%   H2O scores KNN +0.80 MLP +1.00 RFC +0.91 SVC +3.43
+clear twin, log H2O = -2.5         dispersion  1212 ppm   H2O:1111 100%  CH4:0000   0%  CO2:0000  12%  NH3:0000   0%   H2O scores KNN +0.80 MLP +1.00 RFC +0.92 SVC +4.24
+clear twin, log H2O = -2.0         dispersion  1139 ppm   H2O:1111 100%  CH4:0000   0%  CO2:0000   3%  NH3:0000   0%   H2O scores KNN +0.80 MLP +1.00 RFC +0.94 SVC +4.91
+clear twin, log H2O = -1.5         dispersion   956 ppm   H2O:1111 100%  CH4:0000   0%  CO2:0000   0%  NH3:0000   0%   H2O scores KNN +0.80 MLP +1.00 RFC +0.96 SVC +5.39

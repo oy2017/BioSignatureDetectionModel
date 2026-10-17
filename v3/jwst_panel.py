@@ -14,6 +14,8 @@ import argparse
 import os
 import sys
 
+import warnings
+warnings.filterwarnings("ignore", category=RuntimeWarning)   # numpy on macOS Accelerate reports spurious FP flags from matmul
 import numpy as np
 import pandas as pd
 

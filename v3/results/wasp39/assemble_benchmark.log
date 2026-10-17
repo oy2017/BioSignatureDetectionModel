@@ -1,0 +1,175 @@
+SOSS-o2  27 points, 0.633-0.848 um, median depth 21027 ppm, median err 80 ppm
+SOSS-o1  108 points, 0.877-2.805 um, median depth 21174 ppm, median err 60 ppm
+PRISM    112 points, 0.521-5.344 um, median depth 21516 ppm, median err 101 ppm
+NIRCam   49 points, 2.433-3.988 um, median depth 21306 ppm, median err 85 ppm
+NRS1     30 points, 2.739-3.687 um, median depth 21288 ppm, median err 65 ppm
+NRS2     29 points, 3.849-5.128 um, median depth 21423 ppm, median err 88 ppm
+MIRI     28 points, 5.125-11.875 um, median depth 21058 ppm, median err 239 ppm
+
+mode offsets onto SOSS order 1 (ppm): SOSS-o1 +0, PRISM -177, NIRCam +122, NRS1 -19, NRS2 -57, SOSS-o2 +0, MIRI +326; model levelled by -35 ppm
+
+bins filled from the model: 1 of 104: AIRS-CH0 2.01-2.03
+          bins  filled  median_err_ppm
+channel                               
+AIRS-CH0    69       1       31.875810
+AIRS-CH1    21       0       86.036580
+FGS1         1       0       14.955036
+FGS2         1       0       11.335566
+NIRSpec     11       0       21.310748
+VISPhot      1       0       28.510406
+Numba not installed, using numpy instead
+== WASP-39 b [benchmark: offsets aligned, MIRI levelled through the model, 1 bins model-filled]: verdicts at the delivered precision (1 = present)
+-- threshold 1e-5
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  0.0  1.0  1.0
+           H2O       1.0  1.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  0.0  1.0  0.0
+           H2O       1.0  1.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  0.0  1.0  1.0
+           H2O       1.0  1.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+-- threshold 1e-4
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       1.0  0.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       1.0  0.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       1.0  0.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+-- threshold 1e-3
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  0.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  0.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+== WASP-39 b [benchmark: offsets aligned, MIRI levelled through the model, 1 bins model-filled]: fraction of 300 Ariel tier1 noise draws called present (threshold 1e-4)
+learner               KNN   MLP   RFC   SVC
+variant    molecule                        
+airs_only  CH4        0.0   0.0   0.0   0.0
+           CO2       19.0  15.0  13.0   4.0
+           H2O       81.0  68.0  63.0  92.0
+           NH3        1.0   2.0   0.0   0.0
+all        CH4        0.0   0.0   0.0   0.0
+           CO2       23.0   5.0   0.0   0.0
+           H2O       80.0  34.0  33.0  87.0
+           NH3        0.0   0.0   0.0   0.0
+no_optical CH4        0.0   0.0   0.0   0.0
+           CO2       19.0   7.0   3.0   3.0
+           H2O       87.0  66.0  94.0  98.0
+           NH3        0.0   0.0   0.0   0.0
+== WASP-39 b [benchmark: offsets aligned, MIRI levelled through the model, 1 bins model-filled]: fraction of 300 Ariel tier3 noise draws called present (threshold 1e-4)
+learner               KNN   MLP    RFC    SVC
+variant    molecule                          
+airs_only  CH4        0.0   0.0    0.0    0.0
+           CO2        7.0  13.0   19.0    3.0
+           H2O       91.0  73.0   89.0   99.0
+           NH3        0.0   0.0    0.0    0.0
+all        CH4        0.0   0.0    0.0    0.0
+           CO2       10.0   3.0    0.0    0.0
+           H2O       89.0  25.0   76.0   98.0
+           NH3        0.0   0.0    0.0    0.0
+no_optical CH4        0.0   0.0    0.0    0.0
+           CO2        7.0   5.0    5.0    2.0
+           H2O       95.0  61.0  100.0  100.0
+           NH3        0.0   0.0    0.0    0.0
+== band metric (Mugnai et al. 2021, Eq. 3): M_H2O = 4.00, M_CH4 = -1.16, M_CO2 = -0.08  (their flags: CH4 >= 0.22, CO2 >= 0.26, H2O >= 0.80)
+
+== WASP-39 b [benchmark: filled bins replaced by the measured mean]: verdicts at the delivered precision (1 = present)
+-- threshold 1e-5
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  0.0  1.0  1.0
+           H2O       1.0  1.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  0.0  1.0  0.0
+           H2O       1.0  1.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  0.0  1.0  1.0
+           H2O       1.0  1.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+-- threshold 1e-4
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       1.0  0.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       1.0  0.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       1.0  0.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+-- threshold 1e-3
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  0.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  0.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+== WASP-39 b [benchmark: filled bins replaced by the measured mean]: fraction of 300 Ariel tier1 noise draws called present (threshold 1e-4)
+learner               KNN   MLP   RFC   SVC
+variant    molecule                        
+airs_only  CH4        0.0   0.0   0.0   0.0
+           CO2       19.0  15.0  13.0   4.0
+           H2O       81.0  68.0  62.0  92.0
+           NH3        1.0   2.0   0.0   0.0
+all        CH4        0.0   0.0   0.0   0.0
+           CO2       23.0   5.0   0.0   0.0
+           H2O       80.0  34.0  33.0  87.0
+           NH3        0.0   0.0   0.0   0.0
+no_optical CH4        0.0   0.0   0.0   0.0
+           CO2       19.0   7.0   3.0   3.0
+           H2O       87.0  66.0  94.0  98.0
+           NH3        0.0   0.0   0.0   0.0
+== WASP-39 b [benchmark: filled bins replaced by the measured mean]: fraction of 300 Ariel tier3 noise draws called present (threshold 1e-4)
+learner               KNN   MLP    RFC    SVC
+variant    molecule                          
+airs_only  CH4        0.0   0.0    0.0    0.0
+           CO2        7.0  13.0   19.0    3.0
+           H2O       91.0  73.0   89.0   99.0
+           NH3        0.0   0.0    0.0    0.0
+all        CH4        0.0   0.0    0.0    0.0
+           CO2       10.0   3.0    0.0    0.0
+           H2O       89.0  25.0   77.0   98.0
+           NH3        0.0   0.0    0.0    0.0
+no_optical CH4        0.0   0.0    0.0    0.0
+           CO2        7.0   5.0    5.0    2.0
+           H2O       95.0  61.0  100.0  100.0
+           NH3        0.0   0.0    0.0    0.0
+== band metric (Mugnai et al. 2021, Eq. 3): M_H2O = 4.00, M_CH4 = -1.16, M_CO2 = -0.08  (their flags: CH4 >= 0.22, CO2 >= 0.26, H2O >= 0.80)

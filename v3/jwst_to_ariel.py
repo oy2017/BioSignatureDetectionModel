@@ -225,3 +225,26 @@ def band_metric(depth, edges, molecule):
         sb, db = stats(lo, hi)
         vals.append((sb - sn) / np.sqrt(db ** 2 + dn ** 2))
     return float(np.nanmean(vals))
+
+
+def align_to_model(segments, offsets, model_wl, model_depth, modes):
+    """Offsets for modes that share no wavelengths with the aligned ones (MIRI against the near-infrared
+    modes: the overlap is one bin). The model is first levelled onto the already-aligned modes by the
+    inverse-variance-weighted mean residual over all their points, then each listed mode gets the
+    weighted mean of (levelled model - mode) over its points inside the model's range. The model fixes
+    only the level across the gap; its shape inside the mode is not used. Returns offsets with the
+    listed modes added, plus the model level applied."""
+    clean = sample_clean(model_wl, model_depth, segments)
+    num = den = 0.0
+    for m, o in offsets.items():
+        if m in modes:
+            continue
+        s = segments[m]; w = 1.0 / np.asarray(s["err"], float) ** 2
+        num += np.sum(w * (np.asarray(s["depth"], float) + o - clean[m]["depth"])); den += np.sum(w)
+    level = num / den if den > 0 else 0.0
+    out = dict(offsets)
+    for m in modes:
+        s = segments[m]; inside = (np.asarray(s["wl"], float) >= model_wl.min()) & (np.asarray(s["wl"], float) <= model_wl.max())
+        w = 1.0 / np.asarray(s["err"], float)[inside] ** 2
+        out[m] = float(np.sum(w * (clean[m]["depth"][inside] + level - np.asarray(s["depth"], float)[inside])) / np.sum(w))
+    return out, level

@@ -210,9 +210,9 @@ here and are not used by the pipeline unless stated.
 | 7709712 (Feinstein 2023, NIRISS) | zenodo_upload.zip | 4_TRANSMISSION_SPECTRA/*.h5 (nirHiss R=300 orders 1–2 fiducial; supreme-SPOON alternate) | `jwst_readers.ers_niriss_h5` |
 | 7101283 (Ahrer 2023, NIRCam) | NIRCam_Zenodo_files.zip | 2_TRANSMISSION_SPECTRA/LW-…-15nm_Eureka.h5 | `jwst_readers.ers_h5` |
 | 7185300 (Alderson 2023, G395H) | G395H_paper_data.zip | 3_TRANSMISSION_SPECTRA/…_weighted-average.nc | `jwst_readers.ers_nc` |
-| 7388032 (Rustamkulov 2023, PRISM) | W39_PRISM_data.zip | pending | |
-| 10055845 (Powell 2024, MIRI) | miri_lrs_zenodo.zip | pending | |
-| 10161743 (Carter & May 2024, benchmark) | ERS_DataSynthesis_Zenodo.zip | pending | |
+| 7388032 (Rustamkulov 2023, PRISM) | W39_PRISM_data.zip | transit_spectra/{FIREFLy,Eureka,Tiberius,Tshirt}_transit_spec.h5 (FIREFLy fiducial; the 0.634–2.115 µm saturated region dropped as in Carter & May's satflag); best_fit_model/ kept for reference | `jwst_readers.prism_h5` |
+| 10055845 (Powell 2024, MIRI) | miri_lrs_zenodo.zip | Figure2_Spectra/spectra/{Eureka!,SPARTA,Tiberius}-…-spectrum.h5 (Eureka! fiducial; 28 × 0.25 µm bins, 5.1–11.9 µm, ppm); the PICASO grid and photochemical-model spectra kept for reference | `jwst_readers.miri_h5` |
+| 10161743 (Carter & May 2024, benchmark) | ERS_DataSynthesis_Zenodo.zip | 4_TRANSMISSION_SPECTRA/Fixed_LimbDarkening/{NIRISS_SOSS_Order1,Order2,NIRCam_F322W2,NIRSpec_G395H_NRS1,NRS2}/R100.csv and NIRSpec_PRISM/bins_scale1+dilution.csv (satflag ≠ 0 dropped); Fit_LimbDarkening as the alternate; 5_MODEL_SPECTRUM/BestFitModel.txt (0.5–12.5 µm, R = 500) for gap filling and MIRI levelling; Archival_Data.txt (HST/Spitzer/VLT) not used | `jwst_readers.carter_csv`, `carter_model` |
 
 ### Panel (`v3/data/jwst/panel/<planet>/`)
 
