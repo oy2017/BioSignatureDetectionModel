@@ -47,3 +47,4 @@ v3/results/*.pid
 *Scholastica*.pdf
 *Gmail*.pdf
 ariel_tier1_trust/*.pdf
+v3/results/wasp39/segments_*.npz

@@ -77,6 +77,10 @@ class Planet:
         self.T_p = float(row["T_p"])                 # the MCS transit temperature; the drawn T is U(0.7, 1.05) x T_p
         self.truth = self._bin(truth_native)
         self.calls = 0
+        # one TauREx model per planet; parameters are updated in place per call (several times faster
+        # than rebuilding; the two give identical spectra, checked in identifiability_calibrate.py's setup)
+        cp = self.fixed_cloud if self.fixed_cloud is not None else float(row["cloud_pressure"])
+        self.tm = FM.build_model(self.row, self.gases, AF.FILL, cloud_pressure=cp, haze=self.haze)
 
     def _bin(self, y):
         if self.spot is not None:
@@ -84,13 +88,24 @@ class Planet:
         return bin_native(np.asarray(y, float)[None, :], self.wl, self.edges)[0]
 
     def render(self, T, logp, abund):
-        r = dict(self.row); r["atm temperature"] = float(T)
-        for g, v in abund.items():
-            r[f"atm {g}"] = float(v)
-        cp = self.fixed_cloud if self.fixed_cloud is not None else 10.0 ** logp
         self.calls += 1
-        y = FM.spectrum(r, self.wl, self.gases, AF.FILL, cloud_pressure=cp, haze=self.haze)
-        return None if y is None else self._bin(y.astype(float))
+        tm = self.tm
+        try:
+            tm["T"] = float(T)
+            if self.fixed_cloud is None:
+                tm["clouds_pressure"] = 10.0 ** float(logp)
+            for g, v in abund.items():
+                tm[g] = 10.0 ** float(v)
+            wn, d = tm.model()[:2]
+        except Exception:
+            return None
+        w = 1e4 / np.asarray(wn, float); o = np.argsort(w); d = np.asarray(d, float)[o]; w = w[o]
+        m = (w >= FM.WL_MIN) & (w <= FM.WL_MAX); y = d[m]
+        if y.shape[0] != self.wl.shape[0] or not np.allclose(w[m], self.wl):
+            y = np.interp(self.wl, w[m], y)
+        if not np.all(np.isfinite(y)) or np.any(y > 1.0) or np.any(y <= 0):
+            return None
+        return self._bin(y)
 
     def dchi2(self, mol, starts, rng):
         """Minimum chi^2 (offset-free) of the opposite class, with mol pinned at the boundary."""
@@ -112,7 +127,7 @@ class Planet:
         u0s = [(x_true - lo) / scale] + [rng.uniform(0, 1, 5) for _ in range(starts - 1)]
         for u0 in u0s:
             res = minimize(f, np.clip(u0, 0, 1), method="Nelder-Mead",
-                           options=dict(xatol=1e-3, fatol=1e-3, maxfev=600, initial_simplex=self._simplex(np.clip(u0, 0, 1))))
+                           options=dict(xatol=1e-3, fatol=1e-3, maxfev=400, initial_simplex=self._simplex(np.clip(u0, 0, 1))))
             if res.fun < best:
                 best, bx = res.fun, lo + np.clip(res.x, 0, 1) * scale
         return best, bx

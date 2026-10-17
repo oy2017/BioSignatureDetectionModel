@@ -1,0 +1,65 @@
+HD189733b: Fu et al. 2024 (Zenodo 11459715), NIRCam
+segments: NIRCam 139 pts 2.40-4.97 um, offset +0 ppm
+coverage by channel: AIRS-CH0 20/69 filled, AIRS-CH1 14/21 filled, FGS1 1/1 filled, FGS2 1/1 filled, NIRSpec 11/11 filled, VISPhot 1/1 filled
+== HD189733b [Fu et al. 2024 (Zenodo 11459715), NIRCam; 48 of 104 bins flat-filled]: verdicts at the delivered precision (1 = present)
+-- threshold 1e-5
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  1.0  1.0  1.0
+           H2O       1.0  1.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  1.0  1.0  1.0
+           H2O       0.0  1.0  0.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  1.0  1.0  1.0
+           H2O       1.0  1.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+-- threshold 1e-4
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  0.0  1.0  1.0
+           H2O       1.0  1.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  0.0  0.0  0.0
+           H2O       0.0  0.0  0.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  0.0  0.0  1.0
+           H2O       1.0  1.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+-- threshold 1e-3
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  1.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  0.0  0.0  0.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+== HD189733b [Fu et al. 2024 (Zenodo 11459715), NIRCam; 48 of 104 bins flat-filled]: fraction of 300 Ariel tier1 noise draws called present (threshold 1e-4)
+learner               KNN   MLP   RFC   SVC
+variant    molecule                        
+airs_only  CH4        0.0   0.0   0.0   0.0
+           CO2       75.0  29.0  17.0  40.0
+           H2O       48.0  76.0  38.0  90.0
+           NH3        1.0   6.0   0.0   3.0
+all        CH4        0.0   0.0   0.0   0.0
+           CO2       80.0  22.0   2.0   8.0
+           H2O       47.0  31.0   0.0  32.0
+           NH3        0.0   0.0   0.0   0.0
+no_optical CH4        0.0   0.0   0.0   0.0
+           CO2       80.0  15.0   2.0  21.0
+           H2O       52.0  44.0   6.0  68.0
+           NH3        0.0   0.0   0.0   0.0
+== band metric (Mugnai et al. 2021, Eq. 3): M_H2O = 4.53, M_CH4 = -0.48, M_CO2 = 1.44  (their flags: CH4 >= 0.22, CO2 >= 0.26, H2O >= 0.80)

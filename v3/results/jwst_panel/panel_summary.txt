@@ -1,0 +1,75 @@
+JWST panel through the consortium classifier (threshold 1e-4; verdict = majority of the four learners; flat fill of uncovered bins)
+
+== variant all: 16/22 scored labels correct (73 %); full-coverage planets only: 8/11
+  GJ3470b    CH4: absent (nan    )  H2O: absent (present)  CO2: split  (present)  NH3: absent (absent )
+  HAT-P-18b  CH4: absent (absent )  H2O: present(nan    )  CO2: absent (absent )  NH3: absent (absent )
+  HAT-P-26b  CH4: absent (absent )  H2O: absent (present)  CO2: split  (present)  NH3: absent (absent )
+  HD189733b  CH4: absent (absent )  H2O: absent (nan    )  CO2: absent (absent )  NH3: absent (absent )
+  K2-18b     CH4: absent (present)  H2O: absent (absent )  CO2: absent (nan    )  NH3: absent (absent )
+  TOI-270d   CH4: absent (present)  H2O: absent (nan    )  CO2: absent (present)  NH3: absent (absent )
+  TOI-421b   CH4: absent (absent )  H2O: absent (nan    )  CO2: absent (absent )  NH3: absent (nan    )
+  WASP-107b  CH4: absent (absent )  H2O: absent (present)  CO2: present(nan    )  NH3: absent (absent )
+
+== variant no_optical: 17/23 scored labels correct (74 %); full-coverage planets only: 8/11
+  GJ3470b    CH4: absent (nan    )  H2O: absent (present)  CO2: present(present)  NH3: absent (absent )
+  HAT-P-18b  CH4: absent (absent )  H2O: present(nan    )  CO2: absent (absent )  NH3: absent (absent )
+  HAT-P-26b  CH4: absent (absent )  H2O: absent (present)  CO2: present(present)  NH3: absent (absent )
+  HD189733b  CH4: absent (absent )  H2O: present(nan    )  CO2: split  (absent )  NH3: absent (absent )
+  K2-18b     CH4: absent (present)  H2O: absent (absent )  CO2: absent (nan    )  NH3: absent (absent )
+  TOI-270d   CH4: absent (present)  H2O: absent (nan    )  CO2: absent (present)  NH3: absent (absent )
+  TOI-421b   CH4: absent (absent )  H2O: absent (nan    )  CO2: absent (absent )  NH3: absent (nan    )
+  WASP-107b  CH4: absent (absent )  H2O: absent (present)  CO2: present(nan    )  NH3: absent (absent )
+
+== variant airs_only: 17/23 scored labels correct (74 %); full-coverage planets only: 8/10
+  GJ3470b    CH4: absent (nan    )  H2O: absent (present)  CO2: present(present)  NH3: absent (absent )
+  HAT-P-18b  CH4: absent (absent )  H2O: present(nan    )  CO2: absent (absent )  NH3: absent (absent )
+  HAT-P-26b  CH4: absent (absent )  H2O: absent (present)  CO2: present(present)  NH3: absent (absent )
+  HD189733b  CH4: absent (absent )  H2O: present(nan    )  CO2: present(absent )  NH3: absent (absent )
+  K2-18b     CH4: absent (present)  H2O: absent (absent )  CO2: absent (nan    )  NH3: absent (absent )
+  TOI-270d   CH4: split  (present)  H2O: absent (nan    )  CO2: absent (present)  NH3: absent (absent )
+  TOI-421b   CH4: absent (absent )  H2O: absent (nan    )  CO2: absent (absent )  NH3: absent (nan    )
+  WASP-107b  CH4: absent (absent )  H2O: absent (present)  CO2: present(nan    )  NH3: absent (absent )
+
+== Tier-1 detection frequency (mean over learners, all inputs) and band metric
+  GJ3470b    CH4:   1%  H2O:   8%  CO2:   9%  NH3:   4%   M_H2O/CH4/CO2 = 1.94/-0.80/0.83
+  HAT-P-18b  CH4:   3%  H2O:  18%  CO2:   2%  NH3:   1%   M_H2O/CH4/CO2 = -0.36/-2.70/-0.53
+  HAT-P-26b  CH4:   1%  H2O:   5%  CO2:  12%  NH3:   3%   M_H2O/CH4/CO2 = 0.88/-1.04/0.94
+  HD189733b  CH4:   0%  H2O:  27%  CO2:  28%  NH3:   0%   M_H2O/CH4/CO2 = 4.53/-0.48/1.44
+  K2-18b     CH4:  13%  H2O:   7%  CO2:   1%  NH3:   0%   M_H2O/CH4/CO2 = -0.78/0.18/1.05
+  TOI-270d   CH4:   7%  H2O:   4%  CO2:   3%  NH3:   9%   M_H2O/CH4/CO2 = 0.18/-0.81/0.72
+  TOI-421b   CH4:   1%  H2O:   6%  CO2:   6%  NH3:   4%   M_H2O/CH4/CO2 = 0.90/-0.66/0.24
+  WASP-107b  CH4:   0%  H2O:   5%  CO2:  49%  NH3:   0%   M_H2O/CH4/CO2 = 1.74/-0.45/1.12
+
+== data notes
+TOI-270d: Felix et al. 2025 reanalysis (Zenodo 15228454), native resolution
+segments: SOSS 2037 pts 0.85-2.83 um, offset +0 ppm; NRS1 1437 pts 2.74-3.71 um, offset -198 ppm; NRS2 2037 pts 3.82-5.17 um, offset +0 ppm
+coverage by channel: AIRS-CH0 3/69 filled, AIRS-CH1 12/21 filled, FGS1 1/1 filled, FGS2 0/1 filled, NIRSpec 0/11 filled, VISPhot 1/1 filled
+
+K2-18b: Jaziri et al. 2025 copies of the Madhusudhan et al. 2023/2025 spectra (Zenodo 16277833)
+segments: NIRISS+NIRSpec 4411 pts 0.85-5.17 um, offset +0 ppm; MIRI 28 pts 5.12-11.88 um, offset +0 ppm
+coverage by channel: AIRS-CH0 3/69 filled, AIRS-CH1 0/21 filled, FGS1 1/1 filled, FGS2 0/1 filled, NIRSpec 0/11 filled, VISPhot 1/1 filled
+
+TOI-421b: Davenport et al. 2025 (Zenodo 15176438): exoTEDRF SOSS, Deming G395H
+segments: SOSS 39 pts 0.89-2.74 um, offset +0 ppm; G395H 32 pts 2.75-5.08 um, offset +0 ppm
+coverage by channel: AIRS-CH0 0/69 filled, AIRS-CH1 13/21 filled, FGS1 1/1 filled, FGS2 0/1 filled, NIRSpec 0/11 filled, VISPhot 1/1 filled
+
+HAT-P-18b: Fu et al. 2022 (VizieR J/ApJ/940/L35), NIRISS SOSS
+segments: SOSS 1021 pts 0.61-2.83 um, offset +0 ppm
+coverage by channel: AIRS-CH0 34/69 filled, AIRS-CH1 21/21 filled, FGS1 0/1 filled, FGS2 0/1 filled, NIRSpec 0/11 filled, VISPhot 1/1 filled
+
+WASP-107b: Welbanks et al. 2024 NIRCam + MIRI (Zenodo 10780448), Sing et al. 2024 G395H (Zenodo 10891400)
+segments: F322W2 100 pts 2.46-3.94 um, offset +106 ppm; F444W 77 pts 3.90-5.04 um, offset +285 ppm; G395H 576 pts 2.74-5.16 um, offset +0 ppm; MIRI 58 pts 5.06-13.63 um, offset +0 ppm
+coverage by channel: AIRS-CH0 29/69 filled, AIRS-CH1 7/21 filled, FGS1 1/1 filled, FGS2 1/1 filled, NIRSpec 11/11 filled, VISPhot 1/1 filled
+
+HD189733b: Fu et al. 2024 (Zenodo 11459715), NIRCam
+segments: NIRCam 139 pts 2.40-4.97 um, offset +0 ppm
+coverage by channel: AIRS-CH0 20/69 filled, AIRS-CH1 14/21 filled, FGS1 1/1 filled, FGS2 1/1 filled, NIRSpec 11/11 filled, VISPhot 1/1 filled
+
+HAT-P-26b: Gressier et al. 2025 (AJ figure data), G395H ExoTiC-JEDI
+segments: G395H 214 pts 2.87-5.12 um, offset +0 ppm
+coverage by channel: AIRS-CH0 42/69 filled, AIRS-CH1 13/21 filled, FGS1 1/1 filled, FGS2 1/1 filled, NIRSpec 11/11 filled, VISPhot 1/1 filled
+
+GJ3470b: Beatty et al. 2024 (ApJL machine-readable tables), NIRCam
+segments: F322W2 100 pts 2.46-3.94 um, offset +0 ppm; F444W 72 pts 3.90-4.96 um, offset +0 ppm
+coverage by channel: AIRS-CH0 23/69 filled, AIRS-CH1 14/21 filled, FGS1 1/1 filled, FGS2 1/1 filled, NIRSpec 11/11 filled, VISPhot 1/1 filled
+
