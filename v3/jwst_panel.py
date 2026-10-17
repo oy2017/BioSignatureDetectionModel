@@ -29,6 +29,7 @@ P, A = "present", "absent"
 LABELS = {
     "TOI-270d": {"CH4": P, "H2O": None, "CO2": P, "NH3": A},
     "K2-18b": {"CH4": P, "H2O": A, "CO2": None, "NH3": A},
+    "K2-18b-alt": {"CH4": P, "H2O": A, "CO2": None, "NH3": A},
     "TOI-421b": {"CH4": A, "H2O": None, "CO2": A, "NH3": None},
     "HAT-P-18b": {"CH4": A, "H2O": None, "CO2": A, "NH3": A},
     "WASP-107b": {"CH4": A, "H2O": P, "CO2": None, "NH3": A},
@@ -37,7 +38,7 @@ LABELS = {
     "GJ3470b": {"CH4": None, "H2O": P, "CO2": P, "NH3": A},
     "WASP-166b": {"CH4": A, "H2O": P, "CO2": P, "NH3": None},
 }
-FULL = {"TOI-270d", "K2-18b", "TOI-421b", "HAT-P-18b", "WASP-166b"}        # optical + AIRS covered by data
+FULL = {"TOI-270d", "K2-18b", "K2-18b-alt", "TOI-421b", "HAT-P-18b", "WASP-166b"}        # optical + AIRS covered by data
 
 
 def numeric_rows(path, delimiter=None, skip=0):
@@ -58,13 +59,14 @@ def numeric_rows(path, delimiter=None, skip=0):
     return np.array([r[:n] for r in rows], float)
 
 
-def seg(a, wl, depth, err, unit=1.0, width=None, halfwidth=None, bounds=None, rprs=False):
-    """Build a segment from table columns (indices). rprs: the depth column is Rp/Rs, not (Rp/Rs)^2."""
+def seg(a, wl, depth, err, unit=1.0, width=None, halfwidth=None, bounds=None, rprs=False, err2=None):
+    """Build a segment from table columns (indices). rprs: the depth column is Rp/Rs, not (Rp/Rs)^2;
+    err2: a second (asymmetric) error column, symmetrized as the mean of the two."""
     if bounds is not None:
         lo, hi = a[:, bounds[0]], a[:, bounds[1]]; w = hi - lo; x = 0.5 * (lo + hi)
     else:
         x = a[:, wl]; w = a[:, width] if width is not None else (2 * a[:, halfwidth] if halfwidth is not None else None)
-    d, e = a[:, depth] * unit, a[:, err] * unit
+    d, e = a[:, depth] * unit, (a[:, err] if err2 is None else 0.5 * (a[:, err] + a[:, err2])) * unit
     if rprs:
         d, e = d ** 2, 2 * d * e
     ok = np.isfinite(d) & np.isfinite(e) & (e > 0)
@@ -99,6 +101,18 @@ def segments(root, planet):
         return {"NIRCam": seg(numeric_rows(r("HD189733b", "zenodo", "Data", "transit spectrum", "HD189733b_NIRCam_spectrum.txt")), 0, 2, 3, halfwidth=1)}, "Fu et al. 2024 (Zenodo 11459715), NIRCam"
     if planet == "HAT-P-26b":
         return {"G395H": seg(numeric_rows(r("HAT-P-26b", "Gressier2025_IOP_figdata", "f2", "dbf2a.txt")), 0, 1, 2)}, "Gressier et al. 2025 (AJ figure data), G395H ExoTiC-JEDI"
+    if planet == "K2-18b-alt":
+        d = r("K2-18b", "schmidt", "K2-18_zenodo")
+        f = lambda sub, name: seg(numeric_rows(f"{d}/{sub}/exoTEDRF/{name}"), 0, 2, 3, halfwidth=1)
+        return {"SOSS-o1": f("NIRISS Spectra/Order 1", "K2-18b_NIRISS_SOSS_Ord1_exoTEDRF_R100.dat"), "SOSS-o2": f("NIRISS Spectra/Order 2", "K2-18b_NIRISS_SOSS_Ord2_exoTEDRF_R100.dat"),
+                "NRS1": f("NIRSpec Spectra/NRS1", "K2-18b_NIRSpec_G395H_NRS1_exoTEDRF_R100.dat"), "NRS2": f("NIRSpec Spectra/NRS2", "K2-18b_NIRSpec_G395H_NRS2_exoTEDRF_R100.dat")}, "Schmidt & MacDonald 2025 reanalysis (Zenodo 14735689): exoTEDRF at R = 100"
+    if planet == "WASP-166b":
+        d = r("WASP-166b", "extracted")
+        import glob
+        n = glob.glob(f"{d}/**/S6_wasp166_231231_5SigmaCorrNirissO1_ap0_bg0_rp^2_Table_Save.txt", recursive=True)[0]
+        g = glob.glob(f"{d}/**/S6_wasp166b_NIRSpec_ap4_bg8_rp^2_Table_Save*v81*.txt", recursive=True)[0]
+        # the table's "bin_width" is a half-width: consecutive points step by twice its value
+        return {"SOSS": seg(numeric_rows(n), 0, 2, 3, halfwidth=1, err2=4), "G395M": seg(numeric_rows(g), 0, 2, 3, halfwidth=1, err2=4)}, "Mayo et al. 2025 (Zenodo 15122285): Eureka! NIRISS order 1 and NIRSpec G395M, 0.018 um bins"
     if planet == "GJ3470b":
         d = r("GJ3470b")
         return {"F322W2": seg(numeric_rows(f"{d}/Beatty2024_apjlad55e9t3_mrt.txt"), None, 2, 3, 1e-6, bounds=(0, 1)),
@@ -116,7 +130,7 @@ def run_planet(root, planet, draws, variants):
     d_f = d.copy(); d_f[filled] = np.nanmean(d[~filled]) if (~filled).any() else np.nan
     cov["filled"] = filled; cov["depth"] = d_f; cov["err"] = np.where(filled, np.nan, e)
     cov.to_csv(os.path.join(OUT, f"{planet}_coverage.csv"), index=False)
-    sig = J.ariel_sigma(planet, edges)
+    sig = J.ariel_sigma(planet.replace("-alt", ""), edges)
     text, V = AJ.summarize(f"{planet} [{source}; {int(filled.sum())} of 104 bins flat-filled]", d_f, edges, {"tier1": sig}, n=draws)
     V.to_csv(os.path.join(OUT, f"{planet}_verdicts.csv"), index=False)
     head = [f"{planet}: {source}", "segments: " + "; ".join(f"{k} {len(s['wl'])} pts {s['wl'].min():.2f}-{s['wl'].max():.2f} um, offset {off[k]*1e6:+.0f} ppm" for k, s in S.items()),
@@ -137,7 +151,8 @@ def run_planet(root, planet, draws, variants):
 
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument("--root", required=True); ap.add_argument("--planets", nargs="*", default=list(LABELS))
+    ap = argparse.ArgumentParser(); ap.add_argument("--root", default=os.path.join(HERE, "data", "jwst", "panel"), help="fetch_jwst_data.sh fills it")
+    ap.add_argument("--planets", nargs="*", default=list(LABELS))
     ap.add_argument("--draws", type=int, default=500); a = ap.parse_args()
     variants = ("all", "no_optical", "airs_only"); allrows, notes = [], []
     for pl in a.planets:
@@ -152,10 +167,9 @@ def main():
         g = df[df.variant == v]; s = g[g.correct.notna()]
         L.append(f"== variant {v}: {int(s.correct.sum())}/{len(s)} scored labels correct ({100*s.correct.mean():.0f} %)"
                  + (f"; full-coverage planets only: {int(s[s.full_coverage].correct.sum())}/{int(s.full_coverage.sum())}" if s.full_coverage.any() else ""))
-        t = g.pivot_table(index="planet", columns="molecule", values="verdict", aggfunc="first")
-        t2 = g.pivot_table(index="planet", columns="molecule", values="label", aggfunc="first")
-        for pl in t.index:
-            L.append(f"  {pl:<10} " + "  ".join(f"{m}: {t.loc[pl, m]:<7}({(t2.loc[pl, m] or 'amb.'):<7})" for m in MOLS))
+        for pl in sorted(g.planet.unique()):
+            gp = g[g.planet == pl].set_index("molecule")
+            L.append(f"  {pl:<10} " + "  ".join(f"{m}: {gp.loc[m, 'verdict']:<7}({(LABELS.get(pl, {}).get(m) or 'amb.'):<7})" for m in MOLS))
         L.append("")
     L.append("== Tier-1 detection frequency (mean over learners, all inputs) and band metric")
     g = df[df.variant == "all"]

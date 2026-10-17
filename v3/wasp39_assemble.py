@@ -7,7 +7,7 @@ Zenodo 7709712; nirHiss at R = 300 as the fiducial, supreme-SPOON as the alterna
 (Ahrer et al. 2023, Zenodo 7101283; Eureka!) and NIRSpec G395H (Alderson et al. 2023, Zenodo
 7185300; the weighted average of their eleven reductions).
 
-Usage: python wasp39_assemble.py --root <dir with the Zenodo records> [--niriss supreme-SPOON]
+Usage: python wasp39_assemble.py [--root v3/data/jwst/wasp39] [--niriss supreme-SPOON]
 Writes results/wasp39/segments_<tag>.npz, coverage_<tag>.csv, converted_<tag>.csv and verdicts_<tag>.txt
 """
 import argparse
@@ -50,7 +50,8 @@ def segments(root, niriss="nirHiss"):
 
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument("--root", required=True); ap.add_argument("--niriss", default="nirHiss")
+    ap = argparse.ArgumentParser(); ap.add_argument("--root", default=os.path.join(HERE, "data", "jwst", "wasp39"), help="fetch_jwst_data.sh fills it")
+    ap.add_argument("--niriss", default="nirHiss")
     ap.add_argument("--draws", type=int, default=1000); a = ap.parse_args()
     tag = f"prelim_{a.niriss}"
     S = segments(a.root, a.niriss); edges, labels = J.tier3_layout()

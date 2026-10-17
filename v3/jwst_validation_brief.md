@@ -193,3 +193,45 @@ claim for WASP-80 b, abundance unverified) are below 10⁻⁴. NH₃ can be vali
 only.
 (d) CO₂ > 10⁻⁴: TOI-270 d, TOI-1231 b, WASP-166 b, GJ 3470 b, HAT-P-26 b, HIP 67522 b;
 ambiguous: K2-18 b, WASP-107 b; negatives: HD 189733 b, HAT-P-18 b, WASP-52 b, TOI-421 b.
+
+---
+
+## Part 3. Data inventory: the files actually used, and where each came from (2026-10-16)
+
+`fetch_jwst_data.sh` rebuilds `v3/data/jwst/` from these sources and checks every file against
+`v3/jwst_manifest.md5`. Zenodo archives are fetched with a resume loop (Zenodo drops large transfers
+every few MB). Files marked DERIVED were converted from the archive's own products by a script named
+here and are not used by the pipeline unless stated.
+
+### WASP-39 b (`v3/data/jwst/wasp39/<record>/extracted/`)
+
+| Record | File in record | Members used | Reader |
+| :-- | :-- | :-- | :-- |
+| 7709712 (Feinstein 2023, NIRISS) | zenodo_upload.zip | 4_TRANSMISSION_SPECTRA/*.h5 (nirHiss R=300 orders 1–2 fiducial; supreme-SPOON alternate) | `jwst_readers.ers_niriss_h5` |
+| 7101283 (Ahrer 2023, NIRCam) | NIRCam_Zenodo_files.zip | 2_TRANSMISSION_SPECTRA/LW-…-15nm_Eureka.h5 | `jwst_readers.ers_h5` |
+| 7185300 (Alderson 2023, G395H) | G395H_paper_data.zip | 3_TRANSMISSION_SPECTRA/…_weighted-average.nc | `jwst_readers.ers_nc` |
+| 7388032 (Rustamkulov 2023, PRISM) | W39_PRISM_data.zip | pending | |
+| 10055845 (Powell 2024, MIRI) | miri_lrs_zenodo.zip | pending | |
+| 10161743 (Carter & May 2024, benchmark) | ERS_DataSynthesis_Zenodo.zip | pending | |
+
+### Panel (`v3/data/jwst/panel/<planet>/`)
+
+| Planet | Source | File(s) used | Columns |
+| :-- | :-- | :-- | :-- |
+| TOI-270 d | Zenodo 15228454, TOI-270d_transit_spectra.zip (Felix et al. 2025 reanalysis) | native_NIRISS.dat, native_NRS1.dat, native_NRS2.dat | wl µm, depth ppm, err ppm, fwhm µm |
+| K2-18 b | Zenodo 16277833, Spectra.zip (Jaziri et al. 2025; copies of the 2023/2025 spectra, −41 ppm offset applied to one instrument) | K2-18b_both_offset1_-41ppm_native.txt, K2-18b_miri_lrs_eureka_taurex.txt | wl µm, depth, err [, half-width] |
+| K2-18 b (alternate) | Zenodo 14735689, K2-18_reanalysis_data.zip (Schmidt & MacDonald 2025) | exoTEDRF R=100: NIRISS orders 1–2, NRS1, NRS2 | wl, half-width, depth, err |
+| TOI-421 b | Zenodo 15176438, TOI421b.zip (Davenport et al. 2025) | NIRISS/exoTEDRF/…_Final_50pix.csv; NIRSpec/Deming_spectrum.txt | wl, half-width, ppm, ppm, order; wl, depth, err |
+| HAT-P-18 b | VizieR J/ApJ/940/L35 (Fu et al. 2022), https://cdsarc.cds.unistra.fr/ftp/J/ApJ/940/L35/table1.dat | table1.dat | wl µm, depth ppm, err ppm |
+| WASP-107 b | Zenodo 10780449, FinalResults.zip (Welbanks et al. 2024); Zenodo 10891400 (Sing et al. 2024) | FinalSpectra/NIRCam_F322W2, NIRCam_F444W, MIRI_LRS (Eureka! fiducial); Sing_2024_Fig2_….csv | wl, width, depth, err; wl, half-width, Rp/Rs, err |
+| HD 189733 b | Zenodo 11459715, HD189733b_JWST_data_model.zip (Fu et al. 2024) | Data/transit spectrum/HD189733b_NIRCam_spectrum.txt | wl, half-width, depth, err |
+| HAT-P-26 b | AJ 170, 292 figure-data package https://content.cld.iop.org/journals/1538-3881/170/5/292/revision1/ajae0929f2.tar.gz (Gressier et al. 2025) | f2/dbf2a.txt (ExoTiC-JEDI) | wl, depth (fractional despite the ReadMe's "ppm"), err |
+| GJ 3470 b | ApJL 970, L10 machine-readable tables (Beatty et al. 2024), https://iopscience.iop.org/2041-8205/970/1/L10/suppdata/apjlad55e9t{3,4}_mrt.txt | t3 (F322W2), t4 (F444W) | bin lo, hi µm, depth ppm, err ppm (−163 ppm offset already applied by the authors) |
+| WASP-166 b | Zenodo 15122285, Zenodo_WASP-166b.zip (Mayo et al. 2025) | 0.01797-µm Eureka! tables: NIRISS order 1 and NIRSpec G395M (v81) | ECSV: wl, half-width (named bin_width), rp², errneg, errpos |
+| TOI-1231 b | osf.io/mryd6 (Sarkar et al. 2026) | not available: OSF down until 2026-10-19 | |
+
+Not used: the discovery-team spectra of TOI-270 d (Benneke et al. 2024: MAST observations only; Holmberg
+& Madhusudhan 2024: osf.io/8fu36) and K2-18 b (Madhusudhan et al. 2023: osf.io/36djh; Hu et al. 2025:
+osf.io/hpu8g), all on OSF; Luque et al. 2025's 2.9 GB K2-18 b record (Zenodo 15685551); the
+Fournier-Tondreau et al. 2024 HAT-P-18 b spectrum (MAST only); DERIVED tables made during the survey
+(TOI-421 b Eureka! depths from Stage-5 posteriors; Dyrek et al. 2024 MIRI CSV from Nature source data).

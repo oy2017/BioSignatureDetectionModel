@@ -1,0 +1,96 @@
+cbc04ecc46bb1d2e503bef5dba6567c5  v3/data/jwst/panel/GJ3470b/Beatty2024_apjlad55e9t3_ascii.txt
+1a0e31d3342f1a8c2fc289a58ecf1cf0  v3/data/jwst/panel/GJ3470b/Beatty2024_apjlad55e9t3_mrt.txt
+7daac46854cbd4d4cc0397801260971d  v3/data/jwst/panel/GJ3470b/Beatty2024_apjlad55e9t4_ascii.txt
+6d07e401dc632ab99dd642f2ab877c6d  v3/data/jwst/panel/GJ3470b/Beatty2024_apjlad55e9t4_mrt.txt
+84e858964ea37e002247f4cd8b33adb6  v3/data/jwst/panel/GJ3470b/Beatty2024_apjlad55e9t5_ascii.txt
+ac58742b35712f508452e491a8d7ed6c  v3/data/jwst/panel/HAT-P-18b/Fu2022_vizier_J_ApJ_940_L35/table1.dat
+9c58216322c250ae37b6cadda28a3d88  v3/data/jwst/panel/HAT-P-26b/Gressier2025_IOP_figdata/f1/dbf1a.txt
+9f9deb0740ad69c8999bf34d9b6352e2  v3/data/jwst/panel/HAT-P-26b/Gressier2025_IOP_figdata/f1/dbf1b.txt
+f8bb9bab865d951106b0a911993c9797  v3/data/jwst/panel/HAT-P-26b/Gressier2025_IOP_figdata/f2/dbf2a.txt
+16e65a26b1c83c26d267a6e5f70e72ca  v3/data/jwst/panel/HAT-P-26b/Gressier2025_IOP_figdata/f2/dbf2b.txt
+63b7c926d78aad055809906176ee92a0  v3/data/jwst/panel/HD189733b/zenodo/Data/transit spectrum/HD189733b_NIRCam_spectrum.txt
+8c67b4fe0113c413e2cf152480a704fe  v3/data/jwst/panel/HD189733b/zenodo/Data/whitelight transit lightcurve/F322W2_WL.txt
+56adc2179817b8d94483dd88a4c4abce  v3/data/jwst/panel/HD189733b/zenodo/Data/whitelight transit lightcurve/F444W_WL.txt
+6fab449f1438689f14c32044377aa7a0  v3/data/jwst/panel/K2-18b/Jaziri2025_zenodo16277833/Spectra/K2-18b_both_offset1_-41ppm_native_miri_lrs_eureka_160ppm_taurex.txt
+86bd13d56b9f905b764071942b9bd11c  v3/data/jwst/panel/K2-18b/Jaziri2025_zenodo16277833/Spectra/K2-18b_both_offset1_-41ppm_native.txt
+a2b0b2268df3ce3881141aa45933c4ea  v3/data/jwst/panel/K2-18b/Jaziri2025_zenodo16277833/Spectra/K2-18b_miri_lrs_eureka_taurex.txt
+f362054ce0dbef7c7a642a0b8b9d6256  v3/data/jwst/panel/K2-18b/schmidt/K2-18_zenodo/NIRISS Spectra/Order 1/exoTEDRF/K2-18b_NIRISS_SOSS_Ord1_exoTEDRF_R100.dat
+e58d0424f688cbf26bc0abbc39911aa7  v3/data/jwst/panel/K2-18b/schmidt/K2-18_zenodo/NIRISS Spectra/Order 2/exoTEDRF/K2-18b_NIRISS_SOSS_Ord2_exoTEDRF_R100.dat
+585c6fb98938143f2543323f7228f94c  v3/data/jwst/panel/K2-18b/schmidt/K2-18_zenodo/NIRSpec Spectra/NRS1/exoTEDRF/K2-18b_NIRSpec_G395H_NRS1_exoTEDRF_R100.dat
+17bdf7f820616eadfec15ebf9fb147ee  v3/data/jwst/panel/K2-18b/schmidt/K2-18_zenodo/NIRSpec Spectra/NRS2/exoTEDRF/K2-18b_NIRSpec_G395H_NRS2_exoTEDRF_R100.dat
+07d4bed0f8e539644080444e078addf7  v3/data/jwst/panel/TOI-270d/Felix2025_zenodo15228454/TOI-270d_transit_spectra/native_NIRISS.dat
+fad48018a619206642963bc57aeae8eb  v3/data/jwst/panel/TOI-270d/Felix2025_zenodo15228454/TOI-270d_transit_spectra/native_NRS1.dat
+64506ce20f2bd44a72528a38d1715e99  v3/data/jwst/panel/TOI-270d/Felix2025_zenodo15228454/TOI-270d_transit_spectra/native_NRS2.dat
+6207194d3f2875ae68242404dd0080cf  v3/data/jwst/panel/TOI-421b/Davenport2025_zenodo15176438/TOI421b_NIRSpec_G395H_R50_Eureka_depths_DERIVED_from_S5_posteriors.txt
+587d4b89b803e6d9bc45bc24f9748e96  v3/data/jwst/panel/TOI-421b/Davenport2025_zenodo15176438/TOI421b/NIRISS/exoTEDRF/BD-14 1137b_NIRISS_SOSS_transmission_spectrum_Final_50pix.csv
+41ed7109abaede6393ea3c9aafa3bda3  v3/data/jwst/panel/TOI-421b/Davenport2025_zenodo15176438/TOI421b/NIRISS/Fu_spec.txt
+b3cef77602cab92924106bd0a60c6982  v3/data/jwst/panel/TOI-421b/Davenport2025_zenodo15176438/TOI421b/NIRSpec/Deming_spectrum.txt
+dc58c4c3706e46be075e9c63f7c9d9a3  v3/data/jwst/panel/WASP-107b/Dyrek2024_Nature_SourceData/Dyrek2024_Fig2_HST_WFC3_transmission_spectrum.csv
+ac665b0d87c3226022c59235061aa03a  v3/data/jwst/panel/WASP-107b/Dyrek2024_Nature_SourceData/Dyrek2024_Fig2_MIRI_LRS_transmission_spectrum.csv
+9c838ac1170618222916f9c555a9fce1  v3/data/jwst/panel/WASP-107b/FinalResults/FinalSpectra/MIRI_LRS_Fiducial_Eureka_Spectrum.txt
+ae3eac4bb30cb65c15cb760febdc4e41  v3/data/jwst/panel/WASP-107b/FinalResults/FinalSpectra/NIRCam_F322W2_Fiducial_Eureka_Spectrum.txt
+8512891c7c7885e8c12a63f3a7c858c2  v3/data/jwst/panel/WASP-107b/FinalResults/FinalSpectra/NIRCam_F444W_Fiducial_Eureka_Spectrum.txt
+4e011b3136797b43ea14170a8839ebaf  v3/data/jwst/panel/WASP-107b/FinalResults/FinalSpectra/Pegasus_NIRCamSpectra/NIRCam_F322W2_Pegasus_Spectrum.txt
+b70adbfb0f566414fdd5144f33660991  v3/data/jwst/panel/WASP-107b/FinalResults/FinalSpectra/Pegasus_NIRCamSpectra/NIRCam_F444W_Pegasus_Spectrum.txt
+c2d4327de850b4d9bc445f044c168c4a  v3/data/jwst/panel/WASP-107b/FinalResults/FinalSpectra/tshirt_NIRCamSpectra/NIRCam_F322W2_tshirt_Spectrum.txt
+dd3de8bd9d9787db9e1f0ad2c3cca715  v3/data/jwst/panel/WASP-107b/FinalResults/FinalSpectra/tshirt_NIRCamSpectra/NIRCam_F444W_tshirt_Spectrum.txt
+0477deb0a34c4ed530350c46bdb43b7f  v3/data/jwst/panel/WASP-107b/FinalResults/FinalSpectra/WFC3_G102_Fiducial_Pegasus_Spectrum.txt
+490cab77211c075a5e5c5beadc140f37  v3/data/jwst/panel/WASP-107b/FinalResults/FinalSpectra/WFC3_G141_Fiducial_Pegasus_Spectrum.txt
+f97a1dc3e65cd34214a950b878a1f892  v3/data/jwst/panel/WASP-107b/Sing_2024_Fig2_WASP107b_transit_spec_data.csv
+22086be7731e9a73008e014b72495cba  v3/data/jwst/panel/WASP-166b/extracted/Zenodo_WASP-166b_(202504xx)/2._Data_Reduction/2.1._NIRISS/2.1.3._R=100/2.1.3.2._Eureka_output/S6_wasp166_231231_5SigmaCorrNirissO1_ap0_bg0_rp^2_Table_Save.txt
+5a102f29c2d71918231c221d253e2dd5  v3/data/jwst/panel/WASP-166b/extracted/Zenodo_WASP-166b_(202504xx)/2._Data_Reduction/2.1._NIRISS/2.1.4._Constant_width_bins_(0.01797_micron)/2.1.4.2._Eureka_output/S6_wasp166_231231_5SigmaCorrNirissO1_ap0_bg0_rp^2_Table_Save.txt
+920b4b1c96990a48e05bf5342e8da4f4  v3/data/jwst/panel/WASP-166b/extracted/Zenodo_WASP-166b_(202504xx)/2._Data_Reduction/2.1._NIRISS/2.1.5._High_Res_(pixel_level)/2.1.5.2._Eureka_output/S6_wasp166_231231_5SigmaCorrNirissO1_ap0_bg0_rp^2_Table_Save.txt
+f6a4503ceba5354761e3732efc40f8f7  v3/data/jwst/panel/WASP-166b/extracted/Zenodo_WASP-166b_(202504xx)/2._Data_Reduction/2.2._NIRSpec/2.2.2._R=100/2.2.2.2._Eureka_output/S6_wasp166b_ap4_bg8_rp^2_Table_Save_(R100_v79).txt
+c9c0595036436a582ed0eadd5cfd712c  v3/data/jwst/panel/WASP-166b/extracted/Zenodo_WASP-166b_(202504xx)/2._Data_Reduction/2.2._NIRSpec/2.2.3._Constant_width_(0.01797_mic)_bins/2.2.3.2._Eureka_output/S6_wasp166b_NIRSpec_ap4_bg8_rp^2_Table_Save _(_v81).txt
+f3bba5a802ef449bb337ec82227bafa8  v3/data/jwst/panel/WASP-166b/extracted/Zenodo_WASP-166b_(202504xx)/2._Data_Reduction/2.2._NIRSpec/2.2.4._High_Res_(2.2_pix)/2.2.4.2._Eureka_output/S6_wasp166b_ap4_bg8_rp^2_Table_Save_(_v82).txt
+5a102f29c2d71918231c221d253e2dd5  v3/data/jwst/panel/WASP-166b/extracted/Zenodo_WASP-166b_(202504xx)/3._Atm_Char/3.2._Eq_Chem/3.2.2._PLA_Combined_EC_Retrieval_(0.01797_mic)_E2/3.2.2.1._Input_datasets_(PLATON_format)/S6_wasp166_231231_5SigmaCorrNirissO1_ap0_bg0_rp^2_Table_Save.txt
+c9c0595036436a582ed0eadd5cfd712c  v3/data/jwst/panel/WASP-166b/extracted/Zenodo_WASP-166b_(202504xx)/3._Atm_Char/3.2._Eq_Chem/3.2.2._PLA_Combined_EC_Retrieval_(0.01797_mic)_E2/3.2.2.1._Input_datasets_(PLATON_format)/S6_wasp166b_NIRSpec_ap4_bg8_rp^2_Table_Save _(_v81).txt
+5a102f29c2d71918231c221d253e2dd5  v3/data/jwst/panel/WASP-166b/extracted/Zenodo_WASP-166b_(202504xx)/3._Atm_Char/3.2._Eq_Chem/3.2.3._PLA_NIRISS_alone_EC_Retrieval_(0.01797_mic)_E3/3.2.3.1._Input_datasets_(PLATON_format)/S6_wasp166_231231_5SigmaCorrNirissO1_ap0_bg0_rp^2_Table_Save.txt
+c9c0595036436a582ed0eadd5cfd712c  v3/data/jwst/panel/WASP-166b/extracted/Zenodo_WASP-166b_(202504xx)/3._Atm_Char/3.2._Eq_Chem/3.2.4._PLA_NIRSpec_alone_EC_Retrieval_(0.01797_mic)_E4/3.2.4.1._Input_datasets_(PLATON_format)/S6_wasp166b_NIRSpec_ap4_bg8_rp^2_Table_Save _(_v81).txt
+22086be7731e9a73008e014b72495cba  v3/data/jwst/panel/WASP-166b/extracted/Zenodo_WASP-166b_(202504xx)/3._Atm_Char/3.2._Eq_Chem/3.2.5._PLA_Combined_EC_Retrieval_(R=100)_E5/3.2.5.1._Input_datasets_(PLATON_format)/S6_wasp166_231231_5SigmaCorrNirissO1_ap0_bg0_rp^2_Table_Save_R100.txt
+f6a4503ceba5354761e3732efc40f8f7  v3/data/jwst/panel/WASP-166b/extracted/Zenodo_WASP-166b_(202504xx)/3._Atm_Char/3.2._Eq_Chem/3.2.5._PLA_Combined_EC_Retrieval_(R=100)_E5/3.2.5.1._Input_datasets_(PLATON_format)/S6_wasp166b_ap4_bg8_rp^2_Table_Save_(R100_v79).txt
+5a102f29c2d71918231c221d253e2dd5  v3/data/jwst/panel/WASP-166b/extracted/Zenodo_WASP-166b_(202504xx)/3._Atm_Char/3.2._Eq_Chem/3.2.6._PLA_Combined_EC_Retrieval_(0.01797_mic)_E6/3.2.6.1._Input_datasets_(PLATON_format)/S6_wasp166_231231_5SigmaCorrNirissO1_ap0_bg0_rp^2_Table_Save.txt
+c9c0595036436a582ed0eadd5cfd712c  v3/data/jwst/panel/WASP-166b/extracted/Zenodo_WASP-166b_(202504xx)/3._Atm_Char/3.2._Eq_Chem/3.2.6._PLA_Combined_EC_Retrieval_(0.01797_mic)_E6/3.2.6.1._Input_datasets_(PLATON_format)/S6_wasp166b_NIRSpec_ap4_bg8_rp^2_Table_Save _(_v81).txt
+0e1b070a8c2e975562a514df70ed511c  v3/data/jwst/wasp39/7101283/extracted/2_TRANSMISSION_SPECTRA/LW-transit-spectrum-W39b-NIRCam-15nm_chromatic-fitting.h5
+61c4a1f0e7697d934d83bb902deaa2b3  v3/data/jwst/wasp39/7101283/extracted/2_TRANSMISSION_SPECTRA/LW-transit-spectrum-W39b-NIRCam-15nm_Eureka.h5
+3e1c3f9c6e915a84feb1f26ed33687c8  v3/data/jwst/wasp39/7101283/extracted/2_TRANSMISSION_SPECTRA/LW-transit-spectrum-W39b-NIRCam-15nm_HANSOLO.h5
+2ab12fcbf87c5b3cde1316717eebf01d  v3/data/jwst/wasp39/7101283/extracted/2_TRANSMISSION_SPECTRA/LW-transit-spectrum-W39b-NIRCam-15px_tshirt.h5
+f578bbaa545b95d7a2616185646c5b02  v3/data/jwst/wasp39/7101283/extracted/2_TRANSMISSION_SPECTRA/SW-photometry-W39b-NIRCam_Eureka.h5
+9bd1258f1e7e0be9311c416f514875c8  v3/data/jwst/wasp39/7101283/extracted/2_TRANSMISSION_SPECTRA/SW-photometry-W39b-NIRCam_tshirt.h5
+35843caf7c1dc5725d69e4fb41d6e659  v3/data/jwst/wasp39/7185300/extracted/G395H_paper_data/3_TRANSMISSION_SPECTRA/transit-spectrum-W39b-G395H-10pix_reduction1.nc
+91dfb7965af0d98363dbfd34305d3985  v3/data/jwst/wasp39/7185300/extracted/G395H_paper_data/3_TRANSMISSION_SPECTRA/transit-spectrum-W39b-G395H-10pix_reduction10.nc
+3ae70d4199e46a17c6573df104ed192e  v3/data/jwst/wasp39/7185300/extracted/G395H_paper_data/3_TRANSMISSION_SPECTRA/transit-spectrum-W39b-G395H-10pix_reduction11.nc
+021af3b1008d6a9198417cd1a11752fe  v3/data/jwst/wasp39/7185300/extracted/G395H_paper_data/3_TRANSMISSION_SPECTRA/transit-spectrum-W39b-G395H-10pix_reduction2.nc
+9475e86c033fd1738c508a39ecde03ce  v3/data/jwst/wasp39/7185300/extracted/G395H_paper_data/3_TRANSMISSION_SPECTRA/transit-spectrum-W39b-G395H-10pix_reduction3.xc
+15a2267215f51ed38f7f5137c7c05025  v3/data/jwst/wasp39/7185300/extracted/G395H_paper_data/3_TRANSMISSION_SPECTRA/transit-spectrum-W39b-G395H-10pix_reduction4.nc
+539c41b9733f0dcc436ec7ffef862dfa  v3/data/jwst/wasp39/7185300/extracted/G395H_paper_data/3_TRANSMISSION_SPECTRA/transit-spectrum-W39b-G395H-10pix_reduction5.nc
+3ee8fec4fec9a2b7c689ca2b086f74e6  v3/data/jwst/wasp39/7185300/extracted/G395H_paper_data/3_TRANSMISSION_SPECTRA/transit-spectrum-W39b-G395H-10pix_reduction6.nc
+97303dde956cc386458975dceea28dab  v3/data/jwst/wasp39/7185300/extracted/G395H_paper_data/3_TRANSMISSION_SPECTRA/transit-spectrum-W39b-G395H-10pix_reduction7.nc
+55fffecd30ed6074d48d84be065defcf  v3/data/jwst/wasp39/7185300/extracted/G395H_paper_data/3_TRANSMISSION_SPECTRA/transit-spectrum-W39b-G395H-10pix_reduction8.nc
+d349cf8f1f3ecbc5ad20f85f19964301  v3/data/jwst/wasp39/7185300/extracted/G395H_paper_data/3_TRANSMISSION_SPECTRA/transit-spectrum-W39b-G395H-10pix_reduction9.nc
+a86e0ab153049e9dfc08421f5a314cde  v3/data/jwst/wasp39/7185300/extracted/G395H_paper_data/3_TRANSMISSION_SPECTRA/transit-spectrum-W39b-G395H-10pix_weighted-average.nc
+b829716586b4cdf351ad091a34b2c58c  v3/data/jwst/wasp39/7709712/extracted/zenodo_upload/4_TRANSMISSION_SPECTRA/FIREFly_transmission_spectrum_R_300_order_1.h5
+20c83d244e56491fd1bbbd2ee19fc4c7  v3/data/jwst/wasp39/7709712/extracted/zenodo_upload/4_TRANSMISSION_SPECTRA/FIREFly_transmission_spectrum_R_300_order_2.h5
+df1a027aec5882129a7fa016db679cb4  v3/data/jwst/wasp39/7709712/extracted/zenodo_upload/4_TRANSMISSION_SPECTRA/FIREFly_transmission_spectrum_R_pixel_order_1.h5
+cfc4698d134f5ee3de3d381c86917437  v3/data/jwst/wasp39/7709712/extracted/zenodo_upload/4_TRANSMISSION_SPECTRA/iraclis_transmission_spectrum_R_300_order_1.h5
+017d270c25c1746f9a82ad71263d5af6  v3/data/jwst/wasp39/7709712/extracted/zenodo_upload/4_TRANSMISSION_SPECTRA/iraclis_transmission_spectrum_R_300_order_2.h5
+5ae9f23d1d43a905f6df0b36dea7717f  v3/data/jwst/wasp39/7709712/extracted/zenodo_upload/4_TRANSMISSION_SPECTRA/NAMELESS_transmission_spectrum_R_300_order_1.h5
+5cb36e4ac3586ef14b3c43891af0178d  v3/data/jwst/wasp39/7709712/extracted/zenodo_upload/4_TRANSMISSION_SPECTRA/NAMELESS_transmission_spectrum_R_300_order_2.h5
+12443ea516bf7a3f57c3a790f177a134  v3/data/jwst/wasp39/7709712/extracted/zenodo_upload/4_TRANSMISSION_SPECTRA/NAMELESS_transmission_spectrum_R_pixel_order_1.h5
+c5b084938364a460fb58ee4675fa9b9e  v3/data/jwst/wasp39/7709712/extracted/zenodo_upload/4_TRANSMISSION_SPECTRA/NAMELESS_transmission_spectrum_R_pixel_order_2.h5
+de2d9f00d3a6dbdd4a24a02a3d873321  v3/data/jwst/wasp39/7709712/extracted/zenodo_upload/4_TRANSMISSION_SPECTRA/nirHiss_transmission_spectrum_R_100_order_1.h5
+b5e68c833d4ed6c663644d7bb81cb714  v3/data/jwst/wasp39/7709712/extracted/zenodo_upload/4_TRANSMISSION_SPECTRA/nirHiss_transmission_spectrum_R_100_order_2.h5
+e9b35d0f7f25d1bb016c607878b32936  v3/data/jwst/wasp39/7709712/extracted/zenodo_upload/4_TRANSMISSION_SPECTRA/nirHiss_transmission_spectrum_R_300_order_1.h5
+fc5fe59506109897b011d5b3e7f9932e  v3/data/jwst/wasp39/7709712/extracted/zenodo_upload/4_TRANSMISSION_SPECTRA/nirHiss_transmission_spectrum_R_300_order_2.h5
+4df877e798f4807950c705de5ac3f5c2  v3/data/jwst/wasp39/7709712/extracted/zenodo_upload/4_TRANSMISSION_SPECTRA/nirHiss_transmission_spectrum_R_native_order_1.h5
+ebf83960134c739a7e182d095bea042e  v3/data/jwst/wasp39/7709712/extracted/zenodo_upload/4_TRANSMISSION_SPECTRA/nirHiss_transmission_spectrum_R_native_order_2.h5
+419a8544f527bc1e0471287322292357  v3/data/jwst/wasp39/7709712/extracted/zenodo_upload/4_TRANSMISSION_SPECTRA/nirHiss_transmission_spectrum_R_pixel_order_1.h5
+52ae46fa4a23eebaaad8e5e1efb41aad  v3/data/jwst/wasp39/7709712/extracted/zenodo_upload/4_TRANSMISSION_SPECTRA/nirHiss_transmission_spectrum_R_pixel_order_2.h5
+2df21c7b8796e1243051ee7edfaa723d  v3/data/jwst/wasp39/7709712/extracted/zenodo_upload/4_TRANSMISSION_SPECTRA/supreme-SPOON_transmission_spectrum_R_300_order_1.h5
+c6aec4d0e5553ebc6bf381c91f1defe0  v3/data/jwst/wasp39/7709712/extracted/zenodo_upload/4_TRANSMISSION_SPECTRA/supreme-SPOON_transmission_spectrum_R_300_order_2.h5
+a518d512031a494e92d2af0754ad2683  v3/data/jwst/wasp39/7709712/extracted/zenodo_upload/4_TRANSMISSION_SPECTRA/supreme-SPOON_transmission_spectrum_R_pixel_order_1.h5
+9c277450bed4d5fc6c611aec20fee634  v3/data/jwst/wasp39/7709712/extracted/zenodo_upload/4_TRANSMISSION_SPECTRA/supreme-SPOON_transmission_spectrum_R_pixel_order_2.h5
+256acf0ed12c0bbc1bb3e969c26ed1a1  v3/data/jwst/wasp39/7709712/extracted/zenodo_upload/4_TRANSMISSION_SPECTRA/transitspectroscopy_transmission_spectrum_R_300_order_1.h5
+72d629288fda69300f1814aac08c4142  v3/data/jwst/wasp39/7709712/extracted/zenodo_upload/4_TRANSMISSION_SPECTRA/transitspectroscopy_transmission_spectrum_R_300_order_2.h5
+6bde0538de5a45375a8883ba2dc2605a  v3/data/jwst/wasp39/7709712/extracted/zenodo_upload/4_TRANSMISSION_SPECTRA/transitspectroscopy_transmission_spectrum_R_pixel_order_1.h5
+dfa331ee208798be9fd4c4aa72ad50a9  v3/data/jwst/wasp39/7709712/extracted/zenodo_upload/4_TRANSMISSION_SPECTRA/transitspectroscopy_transmission_spectrum_R_pixel_order_2.h5

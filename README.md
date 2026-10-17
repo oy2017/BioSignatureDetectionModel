@@ -100,7 +100,9 @@ reference papers/   Third-party PDFs cited.
 ## Environment
 
 Python 3.10; `pip install -r requirements.txt`, then `bash fetch_external_data.sh` for the
-Exo-Transmit opacity tables, the FastChem inputs, the PHOENIX atlas and the Ariel target list.
+Exo-Transmit opacity tables, the FastChem inputs, the PHOENIX atlas and the Ariel target list, and
+`bash fetch_jwst_data.sh` for the published JWST spectra of the revision's external validation
+(checksummed against `v3/jwst_manifest.md5`; provenance in `v3/jwst_validation_brief.md`).
 The forward model is TauREx 3 called directly in [`v3/forward_model.py`](v3/forward_model.py),
 with the Exo-Transmit pressure-unit correction applied while TauREx still needs it;
 [`v3/forward_model_guard.py`](v3/forward_model_guard.py) refuses to render without it. (Until
