@@ -1,0 +1,114 @@
+Numba not installed, using numpy instead
+none_tier1: 955 planets, 955 to do, 3 starts, 8 jobs
+  16/955 planets, 28841 s, median 3084.5 s and 558 calls per planet-molecule
+/Users/fanyang/tfenv/lib/python3.10/site-packages/joblib/externals/loky/backend/resource_tracker.py:444: UserWarning: resource_tracker: There appear to be 14 leaked semlock objects to clean up at shutdown: {'/loky-11786-3h27kl6l': 1, '/loky-11786-r3stpsol': 1, '/loky-11786-ejpj9c08': 1, '/loky-11786-cncmaccj': 1, '/loky-11786-0xjo5sll': 1, '/loky-11786-eglxhdfs': 1, '/loky-11786-vq5_2w9b': 1, '/loky-11786-3vpcekhs': 1, '/loky-11786-6shsa_jm': 1, '/loky-11786-d14lbezv': 1, '/loky-11786-ssh5j5g5': 1, '/loky-11786-u8hnp8se': 1, '/loky-11786-mdkysgqt': 1, '/loky-11786-l26x48gl': 1}
+  warnings.warn(
+/Users/fanyang/tfenv/lib/python3.10/site-packages/joblib/externals/loky/backend/resource_tracker.py:444: UserWarning: resource_tracker: There appear to be 4 leaked folder objects to clean up at shutdown: {'/var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_11786_5f6e8f42b207480e86df7a12039c178b_9814019bebe34943a0cac18041231265': 1, '/var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_11786_5f6e8f42b207480e86df7a12039c178b_0efd486daed4406ea82b404d0e62b823': 1, '/var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_11786_da356035e8cf4c618356f8f5334fe088_e2643a10e773443589982774b262d0fd': 1, '/var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_11786_5f6e8f42b207480e86df7a12039c178b_f369d8313b0a4475993a78045291a5f6': 1}
+  warnings.warn(
+/Users/fanyang/tfenv/lib/python3.10/site-packages/joblib/externals/loky/backend/resource_tracker.py:468: UserWarning: resource_tracker: /var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_11786_5f6e8f42b207480e86df7a12039c178b_9814019bebe34943a0cac18041231265: FileNotFoundError(2, 'No such file or directory')
+  warnings.warn('resource_tracker: %s: %r' % (name, e))
+/Users/fanyang/tfenv/lib/python3.10/site-packages/joblib/externals/loky/backend/resource_tracker.py:468: UserWarning: resource_tracker: /var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_11786_5f6e8f42b207480e86df7a12039c178b_0efd486daed4406ea82b404d0e62b823: FileNotFoundError(2, 'No such file or directory')
+  warnings.warn('resource_tracker: %s: %r' % (name, e))
+/Users/fanyang/tfenv/lib/python3.10/site-packages/joblib/externals/loky/backend/resource_tracker.py:468: UserWarning: resource_tracker: /var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_11786_da356035e8cf4c618356f8f5334fe088_e2643a10e773443589982774b262d0fd: FileNotFoundError(2, 'No such file or directory')
+  warnings.warn('resource_tracker: %s: %r' % (name, e))
+/Users/fanyang/tfenv/lib/python3.10/site-packages/joblib/externals/loky/backend/resource_tracker.py:468: UserWarning: resource_tracker: /var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_11786_5f6e8f42b207480e86df7a12039c178b_f369d8313b0a4475993a78045291a5f6: FileNotFoundError(2, 'No such file or directory')
+  warnings.warn('resource_tracker: %s: %r' % (name, e))
+Numba not installed, using numpy instead
+none_tier1: 955 planets, 939 to do, 3 starts, 8 jobs
+  16/939 planets, 1307 s, median 152.7 s and 542 calls per planet-molecule
+  32/939 planets, 2687 s, median 159.9 s and 526 calls per planet-molecule
+  48/939 planets, 4153 s, median 168.1 s and 562 calls per planet-molecule
+  64/939 planets, 5386 s, median 153.4 s and 611 calls per planet-molecule
+  80/939 planets, 6599 s, median 138.9 s and 579 calls per planet-molecule
+  96/939 planets, 7891 s, median 139.4 s and 612 calls per planet-molecule
+  112/939 planets, 9097 s, median 140.8 s and 610 calls per planet-molecule
+  128/939 planets, 10196 s, median 125.4 s and 534 calls per planet-molecule
+  144/939 planets, 11510 s, median 150.5 s and 566 calls per planet-molecule
+  160/939 planets, 12772 s, median 152.1 s and 634 calls per planet-molecule
+  176/939 planets, 14082 s, median 154.1 s and 631 calls per planet-molecule
+  192/939 planets, 15417 s, median 156.8 s and 577 calls per planet-molecule
+  208/939 planets, 16959 s, median 173.8 s and 586 calls per planet-molecule
+  224/939 planets, 18197 s, median 141.7 s and 558 calls per planet-molecule
+  240/939 planets, 19600 s, median 163.7 s and 547 calls per planet-molecule
+  256/939 planets, 20793 s, median 138.7 s and 548 calls per planet-molecule
+  272/939 planets, 22068 s, median 146.3 s and 614 calls per planet-molecule
+  288/939 planets, 23379 s, median 151.7 s and 590 calls per planet-molecule
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+  304/939 planets, 24534 s, median 123.6 s and 552 calls per planet-molecule
+  320/939 planets, 25732 s, median 133.4 s and 578 calls per planet-molecule
+  336/939 planets, 26848 s, median 124.6 s and 570 calls per planet-molecule
+  352/939 planets, 27984 s, median 127.6 s and 576 calls per planet-molecule
+  368/939 planets, 29034 s, median 123.2 s and 570 calls per planet-molecule
+  384/939 planets, 30118 s, median 127.7 s and 559 calls per planet-molecule
+  400/939 planets, 31188 s, median 124.6 s and 544 calls per planet-molecule
+  416/939 planets, 32290 s, median 123.0 s and 550 calls per planet-molecule
+  432/939 planets, 33401 s, median 125.7 s and 606 calls per planet-molecule
+  448/939 planets, 34462 s, median 122.2 s and 562 calls per planet-molecule
+  464/939 planets, 35526 s, median 120.4 s and 558 calls per planet-molecule
+  480/939 planets, 36552 s, median 118.5 s and 536 calls per planet-molecule
+  496/939 planets, 37623 s, median 124.1 s and 601 calls per planet-molecule
+  512/939 planets, 38672 s, median 123.5 s and 520 calls per planet-molecule
+  528/939 planets, 39749 s, median 121.4 s and 589 calls per planet-molecule
+  544/939 planets, 40757 s, median 116.9 s and 529 calls per planet-molecule
+  560/939 planets, 41912 s, median 131.4 s and 616 calls per planet-molecule
+  576/939 planets, 42967 s, median 119.8 s and 579 calls per planet-molecule
+  592/939 planets, 44037 s, median 123.8 s and 584 calls per planet-molecule
+  608/939 planets, 45132 s, median 124.7 s and 574 calls per planet-molecule
+  624/939 planets, 46148 s, median 120.3 s and 562 calls per planet-molecule
+  640/939 planets, 47227 s, median 122.9 s and 560 calls per planet-molecule
+  656/939 planets, 48270 s, median 118.4 s and 532 calls per planet-molecule
+  672/939 planets, 49305 s, median 121.9 s and 556 calls per planet-molecule
+  688/939 planets, 50415 s, median 126.3 s and 580 calls per planet-molecule
+  704/939 planets, 51505 s, median 121.6 s and 597 calls per planet-molecule
+  720/939 planets, 52513 s, median 117.4 s and 525 calls per planet-molecule
+  736/939 planets, 53615 s, median 127.6 s and 574 calls per planet-molecule
+  752/939 planets, 54701 s, median 119.4 s and 532 calls per planet-molecule
+  768/939 planets, 55935 s, median 142.4 s and 535 calls per planet-molecule
+  784/939 planets, 57150 s, median 142.5 s and 574 calls per planet-molecule
+  800/939 planets, 58313 s, median 133.7 s and 585 calls per planet-molecule
+  816/939 planets, 59415 s, median 121.4 s and 524 calls per planet-molecule
+  832/939 planets, 60653 s, median 144.9 s and 661 calls per planet-molecule
+  848/939 planets, 61778 s, median 128.7 s and 558 calls per planet-molecule
+  864/939 planets, 62884 s, median 126.2 s and 555 calls per planet-molecule
+  880/939 planets, 64025 s, median 131.8 s and 574 calls per planet-molecule
+  896/939 planets, 65156 s, median 129.4 s and 560 calls per planet-molecule
+  912/939 planets, 66381 s, median 140.7 s and 618 calls per planet-molecule
+  928/939 planets, 67548 s, median 131.1 s and 582 calls per planet-molecule
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+  939/939 planets, 68322 s, median 90.3 s and 558 calls per planet-molecule
+Identifiability of the consortium labels (log10 abundance > -4) [none_tier1]: 955 planets
+dchi2 = min chi^2 of the opposite class (offset-free, 104 Tier-3 bins, the planet's per-bin sigma)
+
+== undecidable fraction at 95 % one-sided (dchi2 < 3.84)
+  CH4  all  64.1 %   present  46.5 %   absent  74.7 %   within 0.5 dex of the threshold  97.9 %
+  H2O  all  77.8 %   present  67.3 %   absent  84.3 %   within 0.5 dex of the threshold  97.5 %
+  CO2  all  73.5 %   present  75.9 %   absent  71.9 %   within 0.5 dex of the threshold  96.7 %
+  NH3  all  61.9 %   present  57.3 %   absent  64.8 %   within 0.5 dex of the threshold  95.0 %
+
+== undecidable fraction at 3 sigma (dchi2 < 9)
+  CH4  all  79.5 %   present  67.4 %   absent  86.7 %   within 0.5 dex of the threshold  99.5 %
+  H2O  all  87.5 %   present  79.9 %   absent  92.2 %   within 0.5 dex of the threshold  99.5 %
+  CO2  all  86.7 %   present  86.8 %   absent  86.6 %   within 0.5 dex of the threshold  97.8 %
+  NH3  all  78.4 %   present  71.0 %   absent  83.2 %   within 0.5 dex of the threshold  96.7 %
+
+== undecidable fraction at 5 sigma (dchi2 < 25)
+  CH4  all  90.6 %   present  83.0 %   absent  95.1 %   within 0.5 dex of the threshold 100.0 %
+  H2O  all  94.7 %   present  91.5 %   absent  96.6 %   within 0.5 dex of the threshold 100.0 %
+  CO2  all  93.6 %   present  93.0 %   absent  94.0 %   within 0.5 dex of the threshold  99.5 %
+  NH3  all  90.1 %   present  85.8 %   absent  92.8 %   within 0.5 dex of the threshold  97.2 %
+
+== Bayes-optimal accuracy ceiling implied at 3 sigma: 1 - undecidable/2 (an undecidable label is a coin toss)
+  CH4  ceiling  60.3 %
+  H2O  ceiling  56.2 %
+  CO2  ceiling  56.6 %
+  NH3  ceiling  60.8 %
+
+median calls per planet-molecule 569, median 132.4 s
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
