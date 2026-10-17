@@ -19,10 +19,12 @@ dchi2 = min chi^2 of the opposite class (offset-free, 104 Tier-3 bins, the plane
   CO2  all  93.6 %   present  93.0 %   absent  94.0 %   within 0.5 dex of the threshold  99.5 %
   NH3  all  90.1 %   present  85.8 %   absent  92.8 %   within 0.5 dex of the threshold  97.2 %
 
-== Bayes-optimal accuracy ceiling implied at 3 sigma: 1 - undecidable/2 (an undecidable label is a coin toss)
-  CH4  ceiling  60.3 %
-  H2O  ceiling  56.2 %
-  CO2  ceiling  56.6 %
-  NH3  ceiling  60.8 %
+== accuracy ceilings: (i) coin toss on the 3-sigma-undecidable labels, 1 - undecidable/2; (ii) Bayes classifier when the
+   opposite class is represented by its best-fitting point, likelihood ratio exp(dchi2/2) times the class prior; (ii) is a lower
+   bound on the true ceiling because the best point over-credits the opposite class (the retrieval calibration integrates over it)
+  CH4  coin-toss ceiling  60.3 %   point-LR Bayes ceiling  79.2 %   prior-only  62.4 %
+  H2O  coin-toss ceiling  56.2 %   point-LR Bayes ceiling  73.4 %   prior-only  61.9 %
+  CO2  coin-toss ceiling  56.6 %   point-LR Bayes ceiling  74.4 %   prior-only  59.6 %
+  NH3  coin-toss ceiling  60.8 %   point-LR Bayes ceiling  79.4 %   prior-only  61.0 %
 
 median calls per planet-molecule 569, median 132.4 s

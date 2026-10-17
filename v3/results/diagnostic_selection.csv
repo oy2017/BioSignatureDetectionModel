@@ -12,7 +12,7 @@ CH4,clean,+ pca_recon (declined to the back),359,38,252,290,366,632
 CH4,clean,+ disagree (flagged re-scored by the fallback),359,21,235,256,298,445
 CH4,clean,+ optical (flagged re-scored by the fallback),359,19,233,252,290,423
 CH4,clean,+ bandmetric (flagged re-scored by the fallback),359,20,234,254,294,434
-CH4,clean,+ decidable (undecidable ranked by decidability),359,25,239,264,314,489
+CH4,clean,+ decidable (undecidable ranked by decidability),359,46,260,306,398,720
 CH4,haze3e7,classifier,359,38,252,290,366,632
 CH4,haze3e7,oracle,359,0,214,214,214,214
 CH4,haze3e7,random,359,142,356,498,782,1776
@@ -26,7 +26,7 @@ CH4,haze3e7,+ pca_recon (declined to the back),359,69,283,352,490,973
 CH4,haze3e7,+ disagree (flagged re-scored by the fallback),359,37,251,288,362,621
 CH4,haze3e7,+ optical (flagged re-scored by the fallback),359,26,240,266,318,500
 CH4,haze3e7,+ bandmetric (flagged re-scored by the fallback),359,38,252,290,366,632
-CH4,haze3e7,+ decidable (undecidable ranked by decidability),359,41,255,296,378,665
+CH4,haze3e7,+ decidable (undecidable ranked by decidability),359,61,275,336,458,885
 CH4,spots20,classifier,359,29,243,272,330,533
 CH4,spots20,oracle,359,0,214,214,214,214
 CH4,spots20,random,359,139,353,492,770,1743
@@ -40,7 +40,7 @@ CH4,spots20,+ pca_recon (declined to the back),359,74,288,362,510,1028
 CH4,spots20,+ disagree (flagged re-scored by the fallback),359,30,244,274,334,544
 CH4,spots20,+ optical (flagged re-scored by the fallback),359,28,242,270,326,522
 CH4,spots20,+ bandmetric (flagged re-scored by the fallback),359,27,241,268,322,511
-CH4,spots20,+ decidable (undecidable ranked by decidability),359,35,249,284,354,599
+CH4,spots20,+ decidable (undecidable ranked by decidability),359,51,265,316,418,775
 CH4,cloud1e2,classifier,359,29,243,272,330,533
 CH4,cloud1e2,oracle,359,0,214,214,214,214
 CH4,cloud1e2,random,359,140,354,494,774,1754
@@ -54,7 +54,7 @@ CH4,cloud1e2,+ pca_recon (declined to the back),359,56,270,326,438,830
 CH4,cloud1e2,+ disagree (flagged re-scored by the fallback),359,30,244,274,334,544
 CH4,cloud1e2,+ optical (flagged re-scored by the fallback),359,30,244,274,334,544
 CH4,cloud1e2,+ bandmetric (flagged re-scored by the fallback),359,31,245,276,338,555
-CH4,cloud1e2,+ decidable (undecidable ranked by decidability),359,35,249,284,354,599
+CH4,cloud1e2,+ decidable (undecidable ranked by decidability),359,54,268,322,430,808
 CH4,compound,classifier,359,66,280,346,478,940
 CH4,compound,oracle,359,0,214,214,214,214
 CH4,compound,random,359,154,368,522,830,1908
@@ -68,7 +68,7 @@ CH4,compound,+ pca_recon (declined to the back),359,74,288,362,510,1028
 CH4,compound,+ disagree (flagged re-scored by the fallback),359,60,274,334,454,874
 CH4,compound,+ optical (flagged re-scored by the fallback),359,27,241,268,322,511
 CH4,compound,+ bandmetric (flagged re-scored by the fallback),359,67,281,348,482,951
-CH4,compound,+ decidable (undecidable ranked by decidability),359,68,282,350,486,962
+CH4,compound,+ decidable (undecidable ranked by decidability),359,78,292,370,526,1072
 CH4,white_x2,classifier,359,37,251,288,362,621
 CH4,white_x2,oracle,359,0,214,214,214,214
 CH4,white_x2,random,359,158,372,530,846,1952
@@ -82,7 +82,7 @@ CH4,white_x2,+ pca_recon (declined to the back),359,64,278,342,470,918
 CH4,white_x2,+ disagree (flagged re-scored by the fallback),359,40,254,294,374,654
 CH4,white_x2,+ optical (flagged re-scored by the fallback),359,37,251,288,362,621
 CH4,white_x2,+ bandmetric (flagged re-scored by the fallback),359,36,250,286,358,610
-CH4,white_x2,+ decidable (undecidable ranked by decidability),359,41,255,296,378,665
+CH4,white_x2,+ decidable (undecidable ranked by decidability),359,59,273,332,450,863
 CH4,white_x3,classifier,359,56,270,326,438,830
 CH4,white_x3,oracle,359,0,214,214,214,214
 CH4,white_x3,random,359,142,356,498,782,1776
@@ -96,7 +96,7 @@ CH4,white_x3,+ pca_recon (declined to the back),359,81,295,376,538,1105
 CH4,white_x3,+ disagree (flagged re-scored by the fallback),359,60,274,334,454,874
 CH4,white_x3,+ optical (flagged re-scored by the fallback),359,57,271,328,442,841
 CH4,white_x3,+ bandmetric (flagged re-scored by the fallback),359,55,269,324,434,819
-CH4,white_x3,+ decidable (undecidable ranked by decidability),359,61,275,336,458,885
+CH4,white_x3,+ decidable (undecidable ranked by decidability),359,75,289,364,514,1039
 H2O,clean,classifier,364,51,260,311,413,770
 H2O,clean,oracle,364,0,209,209,209,209
 H2O,clean,random,364,151,360,511,813,1870
@@ -110,7 +110,7 @@ H2O,clean,+ pca_recon (declined to the back),364,73,282,355,501,1012
 H2O,clean,+ disagree (flagged re-scored by the fallback),364,62,271,333,457,891
 H2O,clean,+ optical (flagged re-scored by the fallback),364,56,265,321,433,825
 H2O,clean,+ bandmetric (flagged re-scored by the fallback),364,53,262,315,421,792
-H2O,clean,+ decidable (undecidable ranked by decidability),364,59,268,327,445,858
+H2O,clean,+ decidable (undecidable ranked by decidability),364,80,289,369,529,1089
 H2O,haze3e7,classifier,364,78,287,365,521,1067
 H2O,haze3e7,oracle,364,0,209,209,209,209
 H2O,haze3e7,random,364,155,364,519,829,1914
@@ -124,7 +124,7 @@ H2O,haze3e7,+ pca_recon (declined to the back),364,107,316,423,637,1386
 H2O,haze3e7,+ disagree (flagged re-scored by the fallback),364,82,291,373,537,1111
 H2O,haze3e7,+ optical (flagged re-scored by the fallback),364,85,294,379,549,1144
 H2O,haze3e7,+ bandmetric (flagged re-scored by the fallback),364,91,300,391,573,1210
-H2O,haze3e7,+ decidable (undecidable ranked by decidability),364,84,293,377,545,1133
+H2O,haze3e7,+ decidable (undecidable ranked by decidability),364,98,307,405,601,1287
 H2O,spots20,classifier,364,75,284,359,509,1034
 H2O,spots20,oracle,364,0,209,209,209,209
 H2O,spots20,random,364,151,360,511,813,1870
@@ -138,7 +138,7 @@ H2O,spots20,+ pca_recon (declined to the back),364,103,312,415,621,1342
 H2O,spots20,+ disagree (flagged re-scored by the fallback),364,69,278,347,485,968
 H2O,spots20,+ optical (flagged re-scored by the fallback),364,73,282,355,501,1012
 H2O,spots20,+ bandmetric (flagged re-scored by the fallback),364,73,282,355,501,1012
-H2O,spots20,+ decidable (undecidable ranked by decidability),364,79,288,367,525,1078
+H2O,spots20,+ decidable (undecidable ranked by decidability),364,92,301,393,577,1221
 H2O,cloud1e2,classifier,364,88,297,385,561,1177
 H2O,cloud1e2,oracle,364,0,209,209,209,209
 H2O,cloud1e2,random,364,150,359,509,809,1859
@@ -152,7 +152,7 @@ H2O,cloud1e2,+ pca_recon (declined to the back),364,102,311,413,617,1331
 H2O,cloud1e2,+ disagree (flagged re-scored by the fallback),364,88,297,385,561,1177
 H2O,cloud1e2,+ optical (flagged re-scored by the fallback),364,87,296,383,557,1166
 H2O,cloud1e2,+ bandmetric (flagged re-scored by the fallback),364,85,294,379,549,1144
-H2O,cloud1e2,+ decidable (undecidable ranked by decidability),364,95,304,399,589,1254
+H2O,cloud1e2,+ decidable (undecidable ranked by decidability),364,102,311,413,617,1331
 H2O,compound,classifier,364,103,312,415,621,1342
 H2O,compound,oracle,364,0,209,209,209,209
 H2O,compound,random,364,146,355,501,793,1815
@@ -166,7 +166,7 @@ H2O,compound,+ pca_recon (declined to the back),364,105,314,419,629,1364
 H2O,compound,+ disagree (flagged re-scored by the fallback),364,95,304,399,589,1254
 H2O,compound,+ optical (flagged re-scored by the fallback),364,83,292,375,541,1122
 H2O,compound,+ bandmetric (flagged re-scored by the fallback),364,112,321,433,657,1441
-H2O,compound,+ decidable (undecidable ranked by decidability),364,107,316,423,637,1386
+H2O,compound,+ decidable (undecidable ranked by decidability),364,113,322,435,661,1452
 H2O,white_x2,classifier,364,67,276,343,477,946
 H2O,white_x2,oracle,364,0,209,209,209,209
 H2O,white_x2,random,364,143,352,495,781,1782
@@ -180,7 +180,7 @@ H2O,white_x2,+ pca_recon (declined to the back),364,100,309,409,609,1309
 H2O,white_x2,+ disagree (flagged re-scored by the fallback),364,74,283,357,505,1023
 H2O,white_x2,+ optical (flagged re-scored by the fallback),364,69,278,347,485,968
 H2O,white_x2,+ bandmetric (flagged re-scored by the fallback),364,67,276,343,477,946
-H2O,white_x2,+ decidable (undecidable ranked by decidability),364,74,283,357,505,1023
+H2O,white_x2,+ decidable (undecidable ranked by decidability),364,89,298,387,565,1188
 H2O,white_x3,classifier,364,89,298,387,565,1188
 H2O,white_x3,oracle,364,0,209,209,209,209
 H2O,white_x3,random,364,164,373,537,865,2013
@@ -194,7 +194,7 @@ H2O,white_x3,+ pca_recon (declined to the back),364,118,327,445,681,1507
 H2O,white_x3,+ disagree (flagged re-scored by the fallback),364,91,300,391,573,1210
 H2O,white_x3,+ optical (flagged re-scored by the fallback),364,92,301,393,577,1221
 H2O,white_x3,+ bandmetric (flagged re-scored by the fallback),364,90,299,389,569,1199
-H2O,white_x3,+ decidable (undecidable ranked by decidability),364,93,302,395,581,1232
+H2O,white_x3,+ decidable (undecidable ranked by decidability),364,110,319,429,649,1419
 joint,clean,classifier,576,95,92,187,377,1042
 joint,clean,oracle,576,3,0,3,9,30
 joint,clean,random,576,221,218,439,881,2428

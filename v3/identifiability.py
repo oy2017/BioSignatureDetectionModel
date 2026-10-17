@@ -166,7 +166,10 @@ def main():
     ap.add_argument("--departure", default="none", choices=["none", "cloud1e2", "absorbers"] + list(HAZE) + list(SPOTS) + list(NOISE_X))
     ap.add_argument("--noise", default="tier1", choices=list(TIERS)); ap.add_argument("--jobs", type=int, default=8)
     ap.add_argument("--starts", type=int, default=3); ap.add_argument("--limit", type=int, default=0); ap.add_argument("--chunk", type=int, default=2)
+    ap.add_argument("--summarize", action="store_true", help="rewrite the .txt summary from the existing CSV")
     a = ap.parse_args()
+    if a.summarize:
+        tag = f"{a.departure}_{a.noise}"; df = pd.read_csv(os.path.join(RESULTS, f"identifiability_{tag}.csv")); summarize(df[np.isfinite(df.dchi2)], tag); return
     src = AF.DIRS["faithful"]; wl = np.load(os.path.join(DATA, "native_wl.npy")); edges = AF.layout_edges("tier3_r20")
     Pte = pd.read_parquet(os.path.join(src, "pop1_params.parquet"))
     nat = {"none": "pop1_native", "cloud1e2": "pop1_native_cloud1e2", "absorbers": "pop1_native_absorbers"}
@@ -215,9 +218,13 @@ def summarize(df, tag):
             L.append(f"  {mol:<4} all {u.mean()*100:5.1f} %   present {u[g.label == 1].mean()*100:5.1f} %   absent {u[g.label == 0].mean()*100:5.1f} %   "
                      f"within 0.5 dex of the threshold {u[np.abs(g.log_true - THRESH) < 0.5].mean()*100:5.1f} %")
         L.append("")
-    L.append("== Bayes-optimal accuracy ceiling implied at 3 sigma: 1 - undecidable/2 (an undecidable label is a coin toss)")
+    L.append("== accuracy ceilings: (i) coin toss on the 3-sigma-undecidable labels, 1 - undecidable/2; (ii) Bayes classifier when the")
+    L.append("   opposite class is represented by its best-fitting point, likelihood ratio exp(dchi2/2) times the class prior; (ii) is a lower")
+    L.append("   bound on the true ceiling because the best point over-credits the opposite class (the retrieval calibration integrates over it)")
     for mol in MOLS:
-        g = df[df.molecule == mol]; u = (g.dchi2 < 9).mean(); L.append(f"  {mol:<4} ceiling {100*(1-u/2):5.1f} %")
+        g = df[df.molecule == mol]; u = (g.dchi2 < 9).mean(); prior = g.label.mean(); lo = np.log(prior / (1 - prior))
+        p = 1 / (1 + np.exp(-(g.dchi2.to_numpy() / 2 + np.where(g.label == 1, lo, -lo)))); bayes = np.maximum(p, 1 - p).mean()
+        L.append(f"  {mol:<4} coin-toss ceiling {100*(1-u/2):5.1f} %   point-LR Bayes ceiling {100*bayes:5.1f} %   prior-only {100*max(prior, 1-prior):5.1f} %")
     L.append(""); L.append(f"median calls per planet-molecule {df.calls.median():.0f}, median {df.seconds.median():.1f} s")
     open(os.path.join(RESULTS, f"identifiability_{tag}.txt"), "w").write("\n".join(L) + "\n"); print("\n".join(L))
 

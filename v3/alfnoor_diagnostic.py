@@ -237,6 +237,22 @@ def evaluate(cases, Pte, edges, sig_te, sc):
                                  auroc_classes=AT.auroc(~decid[wrong], -D.pred.to_numpy()[wrong]), auroc_oracle=AT.auroc(~decid[wrong], -D.log_dchi2.to_numpy()[wrong]),
                                  spearman=pd.Series(D.pred.to_numpy()).corr(pd.Series(D.log_dchi2.to_numpy()), method="spearman")))
     classes = pd.DataFrame(rows)
+    # 3b. self-consistency of the split: on labels the test calls decidable the classifier should be near perfect; on
+    # undecidable ones near the majority-class rate of that subset (what a prior-only predictor scores)
+    rows = []
+    for mol, (idx, D) in reached.items():
+        decid = D.log_dchi2.to_numpy() > np.log10(9.0); y = y_true[mol][idx]
+        for k in LEARNERS:
+            for c in CASES:
+                pred = (P[c]["all"][(mol, k)][idx] >= 0.5).astype(int); right = pred == y
+                r = dict(molecule=mol, classifier=k, case=c, n=len(y), n_decidable=int(decid.sum()), undecidable_frac=float((~decid).mean()))
+                for nm, m in (("decidable", decid), ("undecidable", ~decid)):
+                    r[f"acc_{nm}"] = right[m].mean() if m.any() else np.nan
+                    r[f"base_{nm}"] = max(y[m].mean(), 1 - y[m].mean()) if m.any() else np.nan
+                    r[f"recall_{nm}"] = pred[m & (y == 1)].mean() if (m & (y == 1)).any() else np.nan
+                r["acc_all"] = right.mean(); r["base_all"] = max(y.mean(), 1 - y.mean())
+                rows.append(r)
+    consistency = pd.DataFrame(rows)
     # 4. selection simulation
     rows = []; n = len(Pte); slots = int(round(BUDGET * n)); rng = np.random.default_rng(SEED)
     for target in ("CH4", "H2O", "joint"):
@@ -268,10 +284,10 @@ def evaluate(cases, Pte, edges, sig_te, sc):
                 rows.append(dict(target=target, case=c, strategy=name, targets=int((y == 1).sum()), lost=lost, wasted=wasted,
                                  **{f"cost_w{w}": w * lost + wasted for w in WEIGHTS}))
     selection = pd.DataFrame(rows)
-    return credit, remedy, classes, selection
+    return credit, remedy, classes, selection, consistency
 
 
-def write_summary(credit, remedy, classes, selection):
+def write_summary(credit, remedy, classes, selection, consistency=None):
     L = ["Diagnostic candidates on POP-I (1e-4; mean over molecules and the four learners unless stated)", ""]
     L.append("== selective credit (threshold declines 10 % of clean planets; credit = accepted accuracy - clean selective baseline at equal coverage), points")
     g = credit.groupby(["rule", "case"])[["coverage", "accepted", "credit", "auroc_error"]].mean()
@@ -297,6 +313,15 @@ def write_summary(credit, remedy, classes, selection):
         g = classes.groupby(["molecule", "case"])[["n_wrong", "irrecoverable", "auroc_classes", "auroc_oracle", "spearman"]].mean()
         for (m, c), r in g.iterrows():
             L.append(f"  {m} {c:<10} wrong {r.n_wrong:5.0f}  irrecoverable {100*r.irrecoverable:4.0f} %  AUROC predicted {r.auroc_classes:.3f}  oracle {r.auroc_oracle:.3f}  Spearman(pred, dchi2) {r.spearman:.2f}")
+    if consistency is not None and len(consistency):
+        L.append(""); L.append("== (d') self-consistency of the decidable / undecidable split at 3 sigma (clean case unless stated; base = majority-class rate of the subset)")
+        L.append(f"  {'mol':<4} {'learner':<4} {'undec%':>6} {'acc_dec':>8} {'base_dec':>9} {'acc_undec':>10} {'base_undec':>11} {'rec_dec':>8} {'rec_undec':>10} {'acc_all':>8} {'base_all':>9}")
+        for _, r in consistency[consistency.case == "clean"].iterrows():
+            L.append(f"  {r.molecule:<4} {r.classifier:<4} {100*r.undecidable_frac:6.1f} {100*r.acc_decidable:8.1f} {100*r.base_decidable:9.1f} {100*r.acc_undecidable:10.1f} {100*r.base_undecidable:11.1f} {100*r.recall_decidable:8.1f} {100*r.recall_undecidable:10.1f} {100*r.acc_all:8.1f} {100*r.base_all:9.1f}")
+        g = consistency.groupby(["molecule", "case"])[["acc_decidable", "acc_undecidable", "base_undecidable", "recall_decidable", "recall_undecidable"]].mean()
+        L.append("  mean over learners, per case: acc on decidable / undecidable labels (base of undecidable), recall decidable / undecidable")
+        for (m, c), r in g.iterrows():
+            L.append(f"    {m} {c:<10} {100*r.acc_decidable:5.1f} / {100*r.acc_undecidable:5.1f} ({100*r.base_undecidable:5.1f})   recall {100*r.recall_decidable:5.1f} / {100*r.recall_undecidable:5.1f}")
     L.append(""); L.append(f"== Tier-2 selection: {int(BUDGET*100)} % of the planets get a slot; lost = targets not selected, wasted = slots on non-targets; cost = w x lost + wasted")
     for target in ("CH4", "H2O", "joint"):
         for c in ["clean", "haze3e7", "spots20", "white_x2"]:
@@ -338,10 +363,10 @@ def main():
     if a.real:
         text = score_real(sc); print(text); open(os.path.join(RESULTS, "diagnostic_real.txt"), "w").write(text + "\n"); return
     cases, Pte, e, sig = test_cases()
-    credit, remedy, classes, selection = evaluate(cases, Pte, e, sig, sc)
-    for name, df in (("credit", credit), ("remedy", remedy), ("classes", classes), ("selection", selection)):
+    credit, remedy, classes, selection, consistency = evaluate(cases, Pte, e, sig, sc)
+    for name, df in (("credit", credit), ("remedy", remedy), ("classes", classes), ("selection", selection), ("consistency", consistency)):
         if df is not None: df.to_csv(os.path.join(RESULTS, f"diagnostic_{name}.csv"), index=False)
-    text = write_summary(credit, remedy, classes, selection); print(text); open(os.path.join(RESULTS, "diagnostic.txt"), "w").write(text + "\n")
+    text = write_summary(credit, remedy, classes, selection, consistency); print(text); open(os.path.join(RESULTS, "diagnostic.txt"), "w").write(text + "\n")
 
 
 if __name__ == "__main__":
