@@ -103,15 +103,59 @@ def combine(segments, edges, offsets=None):
 
 
 def fill_gaps(depth, err, model_wl, model_depth, edges, min_cover=0.5, coverage=None):
-    """Fill bins with no data (or covered below min_cover) from a model binned by integration.
+    """Fill bins with no data (or covered below min_cover) from a model binned by integration, after
+    shifting the model by the inverse-variance-weighted mean offset between data and model over the
+    measured bins, so the fill continues the data's level rather than the model's absolute depth.
     Returns filled depth, filled error (NaN where filled: no measurement), and the filled mask."""
     filled = ~np.isfinite(depth)
     if coverage is not None:
         filled |= coverage.covered.to_numpy() < min_cover
     model_b = bin_native(np.asarray(model_depth, float)[None, :], np.asarray(model_wl, float), edges)[0]
+    meas = ~filled & np.isfinite(err) & (err > 0)
+    if meas.any():
+        w = 1.0 / err[meas] ** 2
+        model_b = model_b + np.sum(w * (depth[meas] - model_b[meas])) / np.sum(w)
     out = depth.copy(); out[filled] = model_b[filled]
     e = err.copy(); e[filled] = np.nan
     return out, e, filled
+
+
+def align_offsets(segments, reference, min_overlap_points=5):
+    """Additive offsets that bring each mode onto the reference mode's level, estimated from the
+    inverse-variance-weighted mean difference over the wavelengths the modes share, propagating
+    outward from the reference through the chain of overlaps. Returns {mode: offset} (reference: 0).
+    This is the step Carter & May et al. 2024 did at the light-curve level; for products reduced
+    separately it has to be done here, and the fitted values are reported as part of the procedure."""
+    off = {reference: 0.0}
+    pending = [m for m in segments if m != reference]
+    while pending:
+        progressed = False
+        for m in list(pending):
+            s = segments[m]
+            best = None
+            for r, o in off.items():
+                t = segments[r]
+                lo, hi = max(s["wl"].min(), t["wl"].min()), min(s["wl"].max(), t["wl"].max())
+                if hi <= lo:
+                    continue
+                ms, mt = (s["wl"] >= lo) & (s["wl"] <= hi), (t["wl"] >= lo) & (t["wl"] <= hi)
+                if ms.sum() < min_overlap_points or mt.sum() < min_overlap_points:
+                    continue
+                # compare on the coarser of the two grids: interpolate the finer onto it
+                if ms.sum() <= mt.sum():
+                    d_t = np.interp(s["wl"][ms], t["wl"], t["depth"]); d_s = s["depth"][ms]; w = 1.0 / s["err"][ms] ** 2
+                else:
+                    d_s = np.interp(t["wl"][mt], s["wl"], s["depth"]); d_t = t["depth"][mt]; w = 1.0 / t["err"][mt] ** 2
+                delta = np.sum(w * (d_t + o - d_s)) / np.sum(w); n = int(min(ms.sum(), mt.sum()))
+                if best is None or n > best[1]:
+                    best = (delta, n)
+            if best is not None:
+                off[m] = float(best[0]); pending.remove(m); progressed = True
+        if not progressed:
+            for m in pending:
+                off[m] = 0.0                      # no overlap with anything aligned: left as published
+            break
+    return off
 
 
 def ariel_sigma(name, edges, transits="tier1_transits"):
