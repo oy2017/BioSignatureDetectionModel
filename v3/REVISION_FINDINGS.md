@@ -278,23 +278,29 @@ atmosphere the population can draw at those bulk parameters; and the cloud-only 
 sample of 150 POP-I planets, their rendered spectrum against their own clear twin
 (`jwst_muting_census.py`; `results/jwst_panel/muting_census.{txt,csv}`, `muting_population.csv`).
 
-| planet | real, corrected (ppm) | clear twin (ppm) | muting | most the prior allows | beyond the prior |
-| :-- | :-- | :-- | :-- | :-- | :-- |
-| HAT-P-26 b | 159 | 847 | 5.3 | 2.4 | yes |
-| WASP-107 b | 263 | 1171 | 4.5 | 2.2 | yes |
-| WASP-39 b | 319 | 1190 | 3.7 | 2.0 | yes |
-| HAT-P-18 b* | 210 | 778 | 3.7 | 3.2 | yes, marginally |
-| GJ 3470 b | 53 | 182 | 3.5 | 2.0 | yes |
-| TOI-421 b* | 35 | 119 | 3.4 | 3.7 | no |
-| WASP-166 b | 69 | 213 | 3.1 | 1.8 | yes |
-| HD 189733 b* | 104 | 182 | 1.8 | 2.3 | no |
-| K2-18 b, reanalysis | 42 | 71 | 1.7 | 2.7 | no |
-| K2-18 b | 72 | 68 | 0.9 | 2.6 | no |
-| TOI-270 d | 86 | 57 | 0.7 | 2.0 | no |
+| planet | real, corrected (ppm) | clear twin (ppm) | muting | most the prior allows | beyond the prior | AIRS bins only: muting / prior |
+| :-- | :-- | :-- | :-- | :-- | :-- | :-- |
+| HAT-P-26 b | 159 | 847 | 5.3 | 2.4 | yes | 5.3 / 2.4 |
+| WASP-107 b | 263 | 1171 | 4.5 | 2.2 | yes | 4.5 / 2.2 |
+| WASP-39 b | 319 | 1190 | 3.7 | 2.0 | yes | 3.3 / 1.9 |
+| HAT-P-18 b* | 210 | 778 | 3.7 | 3.3 | marginally | 3.5 / 3.1 |
+| GJ 3470 b | 53 | 182 | 3.5 | 2.0 | yes | 3.5 / 2.0 |
+| TOI-421 b* | 35 | 119 | 3.4 | 3.7 | no | 3.5 / 3.5 |
+| WASP-166 b | 69 | 213 | 3.1 | 1.8 | yes | 3.0 / 1.8 |
+| HD 189733 b* | 104 | 182 | 1.8 | 2.3 | no | 1.7 / 2.3 |
+| K2-18 b, reanalysis | 42 | 71 | 1.7 | 2.7 | no | 1.5 / 2.6 |
+| K2-18 b | 72 | 68 | 0.9 | 2.6 | no | 0.9 / 2.6 |
+| TOI-270 d | 86 | 57 | 0.7 | 2.0 | no | 0.6 / 1.8 |
 
-\* twin abundances assumed (solar-metallicity water, no retrieved set in the survey); the others use the
-published retrievals. Changing the twin's water abundance between 10⁻² and 10⁻³ moves its dispersion by
-10–30 %, an order of magnitude less than the muting.
+\* twin water abundance from the literature with the other gases at the floor (HAT-P-18 b: log H₂O −3.03,
+Fu et al. 2022, the paper whose spectrum is used; a 2024 reanalysis finds −4.4, which would shrink the
+twin and the muting; HD 189733 b: 3–5 × solar, Fu et al. 2024; TOI-421 b: solar, mean molecular weight
+2.3–2.7, Davenport et al. 2025); the others use the published retrievals. Changing the twin's water
+abundance between 10⁻² and 10⁻³ moves its dispersion by 10–30 %, an order of magnitude less than the
+muting. The last column repeats the measure over the AIRS bins alone (1.95–7.8 µm), which excludes the
+optical slope: it changes nothing by more than 0.4, so the muting is in the molecular bands, not in a
+haze slope. Within the population the cloud-only muting over the AIRS bins has median 1.00, 90th
+percentile 1.09, 99th 2.12 and maximum 2.59 of 150.
 
 Every warm giant with a published abundance set (HAT-P-26 b, WASP-107 b, WASP-39 b, GJ 3470 b, WASP-166 b)
 is muted by a factor of 3 to 5 against its clear twin, and by 1.5 to 2.2 beyond the coldest, cloudiest
@@ -320,11 +326,11 @@ systematically too clear for warm giants, and the one learner that fails on WASP
 the population is least able to represent. It also explains F4 (absent by default): on muted spectra the
 bands fall under the noise the classifier was trained to expect, and it reverts to the prior.
 
-Caveats: eleven planets, eight with retrieved abundances; the twin's temperature is the MCS equilibrium
-temperature and the real terminators are cooler, which the 0.7 T_eq column allows for only up to the
-population's own floor; dispersion mixes the optical slope with the infrared bands, and a haze-dominated
-optical slope could raise the real dispersion, which would make the muting here a lower bound for the
-infrared.
+Caveats: eleven planets, five warm giants with retrieved abundances carrying the result, with no
+exception among them; the twin's temperature is the MCS equilibrium temperature, and the 0.7 T_eq column
+allows for a cooler terminator only up to the population's own floor, which is the comparison the
+question needs (a cooler real terminator is part of what the population does not represent). The
+optical-slope concern is closed by the AIRS-only column.
 
 ### What these add up to, provisionally
 
