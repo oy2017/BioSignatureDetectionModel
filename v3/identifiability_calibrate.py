@@ -159,15 +159,20 @@ def main():
     print(f"{len(sel)} planets selected, {len(todo)} to retrieve, {a.jobs} jobs, {a.npoints} live points, cap {a.maxcall} calls", flush=True)
     from joblib import Parallel, delayed
     t0 = time.time()
-    for b in range(0, len(todo), a.jobs):
-        batch = todo[b:b + a.jobs]
-        rows = Parallel(n_jobs=a.jobs)(delayed(retrieve_one)(int(Pte.iloc[i]["_index"]), Pte.iloc[i].to_dict(), Xb[i], sig[i], wl, edges, a.npoints, a.maxcall, SEED + int(i)) for i in batch)
-        new = pd.DataFrame(rows); done = pd.concat([done, new], ignore_index=True)
-        if a.n > 1:
-            done.to_csv(out, index=False)
-        print(f"  {min(b + a.jobs, len(todo))}/{len(todo)}  {time.time()-t0:.0f} s  median {new.minutes.median():.1f} min, {new.ncall.median():.0f} calls per planet", flush=True)
-        if a.n == 1:
-            print(new.T.to_string())
+    # one pool over every planet, results streamed as they finish (no batch barrier, so a slow planet holds no one up);
+    # the CSV is rewritten every `a.jobs` results and the run resumes from it
+    gen = Parallel(n_jobs=a.jobs, return_as="generator_unordered")(
+        delayed(retrieve_one)(int(Pte.iloc[i]["_index"]), Pte.iloc[i].to_dict(), Xb[i], sig[i], wl, edges, a.npoints, a.maxcall, SEED + int(i)) for i in todo)
+    pending = []
+    for k, row in enumerate(gen, 1):
+        pending.append(row)
+        if k % a.jobs == 0 or k == len(todo):
+            new = pd.DataFrame(pending); done = pd.concat([done, new], ignore_index=True); pending = []
+            if a.n > 1:
+                done.to_csv(out, index=False)
+            print(f"  {k}/{len(todo)}  {time.time()-t0:.0f} s  median {new.minutes.median():.1f} min, {new.ncall.median():.0f} calls per planet", flush=True)
+            if a.n == 1:
+                print(new.T.to_string())
 
 
 if __name__ == "__main__":
