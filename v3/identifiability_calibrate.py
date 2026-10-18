@@ -94,34 +94,47 @@ def retrieve_one(i, row, obs, sig, wl, edges, npoints, maxcall, seed):
 
 
 def summarize():
+    """Spearman per molecule; calibrated thresholds (the dchi2 at which the logistic fit of 1[p_true > q] crosses 1/2, q = 0.95
+    and 0.84); a monotone (isotonic) map dchi2 -> p_true applied to every planet of the identifiability run, giving the
+    population's undecidable fractions and Bayes-accuracy ceiling. Writes identifiability_calibration.txt and
+    identifiability_calibration_thresholds.csv (read by alfnoor_diagnostic.py)."""
     from scipy.stats import spearmanr
     from scipy.optimize import brentq
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.isotonic import IsotonicRegression
     cal = pd.read_csv(os.path.join(RESULTS, "identifiability_calibration.csv"))
-    idf = pd.read_csv(os.path.join(RESULTS, "identifiability_none_tier1.csv"))
-    L = [f"dchi2 test against nested-sampling posteriors on {cal['index'].nunique()} POP-I planets (noise-free spectra, Tier-1 sigma)", ""]
+    idf = pd.read_csv(os.path.join(RESULTS, "identifiability_none_tier1.csv")); idf = idf[np.isfinite(idf.dchi2)]
+    L = [f"dchi2 test against nested-sampling posteriors on {cal['index'].nunique()} POP-I planets (noise-free spectra, Tier-1 sigma)",
+         "p_true = posterior probability of the true class; decidable at level q if p_true > q", ""]
     rows = []
     for m in MOLS:
-        a = idf[idf.molecule == m][["index", "dchi2"]].merge(cal[["index", f"{m}_p_true", f"{m}_label"]], on="index")
+        a = idf[idf.molecule == m][["index", "dchi2", "label"]].merge(cal[["index", f"{m}_p_true"]], on="index")
         if len(a) < 10:
             L.append(f"{m}: only {len(a)} planets in both files"); continue
-        p = np.clip(a[f"{m}_p_true"].to_numpy(), 1e-4, 1 - 1e-4); d = a.dchi2.to_numpy()
+        p = np.clip(a[f"{m}_p_true"].to_numpy(), 1e-4, 1 - 1e-4); d = a.dchi2.to_numpy(); x = np.log10(np.clip(d, 1e-3, None))
         rho = spearmanr(d, np.log(p / (1 - p))).correlation
-        # logistic fit of p_true against log10(dchi2): p = 1 / (1 + exp(-(a + b log10 d)))
-        x = np.log10(np.clip(d, 1e-3, None)); y = (p > 0.5).astype(float)
-        from sklearn.linear_model import LogisticRegression
-        lr = LogisticRegression(C=1e6).fit(x[:, None], (a[f"{m}_p_true"] > 0.95).astype(int))
-        f = lambda t, q: lr.predict_proba([[np.log10(t)]])[0, 1] - q
         thr = {}
         for q in (0.95, 0.84):
+            yq = (a[f"{m}_p_true"] > q).astype(int).to_numpy()
+            if yq.min() == yq.max():
+                thr[q] = np.nan; continue
+            lr = LogisticRegression(C=1e6).fit(x[:, None], yq)
+            f = lambda t: lr.predict_proba([[np.log10(t)]])[0, 1] - 0.5
             try:
-                thr[q] = brentq(f, 1e-3, 1e4, args=(0.5,)) if q == 0.95 else np.nan
+                thr[q] = brentq(f, 1e-3, 1e4)
             except ValueError:
                 thr[q] = np.nan
-        L.append(f"{m:<4} n={len(a)}  Spearman(dchi2, logit p_true) = {rho:.2f};  P(p_true > 0.95) crosses 1/2 at dchi2 = {thr[0.95]:.2f}  "
-                 f"(nested-model 95 %: 3.84; 3 sigma: 9)")
-        rows.append(dict(molecule=m, n=len(a), spearman=rho, dchi2_at_95=thr[0.95]))
-    L.append(""); L.append("decidable in the retrieval sense (p_true > 0.95) by molecule: " + ", ".join(
-        f"{m} {(cal[f'{m}_p_true'] > 0.95).mean()*100:.0f} %" for m in MOLS if f"{m}_p_true" in cal))
+        iso = IsotonicRegression(y_min=0, y_max=1, out_of_bounds="clip").fit(x, a[f"{m}_p_true"].to_numpy())
+        allm = idf[idf.molecule == m]; pp = iso.predict(np.log10(np.clip(allm.dchi2.to_numpy(), 1e-3, None)))
+        ceiling_sample = np.maximum(p, 1 - p).mean(); ceiling_pop = np.maximum(pp, 1 - pp).mean()
+        L.append(f"{m:<4} n={len(a)}  Spearman(dchi2, logit p_true) = {rho:.2f};  calibrated threshold: p_true > 0.95 at dchi2 = {thr[0.95]:.2f}, "
+                 f"p_true > 0.84 at dchi2 = {thr[0.84]:.2f}  (nested-model 95 %: 3.84; 3 sigma: 9)")
+        L.append(f"     undecidable (p_true < 0.95 / < 0.84): sample {100*(p < 0.95).mean():.0f} / {100*(p < 0.84).mean():.0f} %;  population via the isotonic map "
+                 f"{100*(pp < 0.95).mean():.0f} / {100*(pp < 0.84).mean():.0f} %;  Bayes-accuracy ceiling sample {100*ceiling_sample:.1f} %, population {100*ceiling_pop:.1f} %")
+        rows.append(dict(molecule=m, n=len(a), spearman=rho, dchi2_at_95=thr[0.95], dchi2_at_84=thr[0.84], undecidable_95_pop=(pp < 0.95).mean(),
+                         undecidable_84_pop=(pp < 0.84).mean(), ceiling_pop=ceiling_pop, ceiling_sample=ceiling_sample))
+    L.append(""); L.append(f"sample: {cal.minutes.median():.1f} min and {cal.ncall.median():.0f} calls per planet (median)")
+    pd.DataFrame(rows).to_csv(os.path.join(RESULTS, "identifiability_calibration_thresholds.csv"), index=False)
     open(os.path.join(RESULTS, "identifiability_calibration.txt"), "w").write("\n".join(L) + "\n"); print("\n".join(L))
 
 
@@ -139,7 +152,7 @@ def main():
     sig = AF.sigma(Pte, edges, "radiometric"); Xb = bin_native(Y, wl, edges)
     if a.noisy:
         Xb = Xb + np.random.default_rng(SEED + 7).normal(0, 1, Xb.shape) * sig
-    sel = select(Pte, a.n)
+    sel = np.arange(len(Pte)) if a.n >= len(Pte) else select(Pte, a.n)
     out = os.path.join(RESULTS, "identifiability_calibration.csv")
     done = pd.read_csv(out) if os.path.exists(out) and a.n > 1 else pd.DataFrame()
     todo = [i for i in sel if done.empty or int(Pte.iloc[i]["_index"]) not in set(done["index"])]

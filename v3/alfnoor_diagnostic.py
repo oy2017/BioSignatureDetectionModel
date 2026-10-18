@@ -225,11 +225,14 @@ def evaluate(cases, Pte, edges, sig_te, sc):
     remedy = pd.DataFrame(rows)
     # 3. error classes (d)
     rows = []
+    thr_file = os.path.join(RESULTS, "identifiability_calibration_thresholds.csv")
+    THR = {r.molecule: (r.dchi2_at_95 if np.isfinite(r.dchi2_at_95) else 9.0) for r in pd.read_csv(thr_file).itertuples()} if os.path.exists(thr_file) else {}
+    print("decidability thresholds (dchi2):", {m: round(THR.get(m, 9.0), 2) for m in MOLS}, "(calibrated at p_true > 0.95)" if THR else "(3 sigma, uncalibrated)", flush=True)
     for mol, (idx, D) in reached.items():
         for k in LEARNERS:
             for c in CASES:
                 pred = (P[c]["all"][(mol, k)][idx] >= 0.5).astype(int); wrong = pred != y_true[mol][idx]
-                decid = D.log_dchi2.to_numpy() > np.log10(9.0)          # 3-sigma one-parameter test, before calibration
+                decid = D.log_dchi2.to_numpy() > np.log10(THR.get(mol, 9.0))
                 if wrong.sum() < 10 or (wrong & decid).sum() < 3 or (wrong & ~decid).sum() < 3:
                     continue
                 # score: predicted undecidability; positive class: irrecoverable error (wrong & undecidable)
@@ -241,7 +244,7 @@ def evaluate(cases, Pte, edges, sig_te, sc):
     # undecidable ones near the majority-class rate of that subset (what a prior-only predictor scores)
     rows = []
     for mol, (idx, D) in reached.items():
-        decid = D.log_dchi2.to_numpy() > np.log10(9.0); y = y_true[mol][idx]
+        decid = D.log_dchi2.to_numpy() > np.log10(THR.get(mol, 9.0)); y = y_true[mol][idx]
         for k in LEARNERS:
             for c in CASES:
                 pred = (P[c]["all"][(mol, k)][idx] >= 0.5).astype(int); right = pred == y
@@ -314,7 +317,7 @@ def write_summary(credit, remedy, classes, selection, consistency=None):
         for (m, c), r in g.iterrows():
             L.append(f"  {m} {c:<10} wrong {r.n_wrong:5.0f}  irrecoverable {100*r.irrecoverable:4.0f} %  AUROC predicted {r.auroc_classes:.3f}  oracle {r.auroc_oracle:.3f}  Spearman(pred, dchi2) {r.spearman:.2f}")
     if consistency is not None and len(consistency):
-        L.append(""); L.append("== (d') self-consistency of the decidable / undecidable split at 3 sigma (clean case unless stated; base = majority-class rate of the subset)")
+        L.append(""); L.append("== (d') self-consistency of the decidable / undecidable split at the calibrated threshold (3 sigma if uncalibrated) (clean case unless stated; base = majority-class rate of the subset)")
         L.append(f"  {'mol':<4} {'learner':<4} {'undec%':>6} {'acc_dec':>8} {'base_dec':>9} {'acc_undec':>10} {'base_undec':>11} {'rec_dec':>8} {'rec_undec':>10} {'acc_all':>8} {'base_all':>9}")
         for _, r in consistency[consistency.case == "clean"].iterrows():
             L.append(f"  {r.molecule:<4} {r.classifier:<4} {100*r.undecidable_frac:6.1f} {100*r.acc_decidable:8.1f} {100*r.base_decidable:9.1f} {100*r.acc_undecidable:10.1f} {100*r.base_undecidable:11.1f} {100*r.recall_decidable:8.1f} {100*r.recall_undecidable:10.1f} {100*r.acc_all:8.1f} {100*r.base_all:9.1f}")
