@@ -1,0 +1,13 @@
+dchi2 test against nested-sampling posteriors on 200 POP-I planets (noise-free spectra, Tier-1 sigma)
+p_true = posterior probability of the true class; decidable at level q if p_true > q
+
+CH4  n=200  Spearman(dchi2, logit p_true) = 0.85;  calibrated threshold: p_true > 0.95 at dchi2 = 0.44, p_true > 0.84 at dchi2 = 0.07  (nested-model 95 %: 3.84; 3 sigma: 9)
+     undecidable (p_true < 0.95 / < 0.84): sample 29 / 14 %;  population via the isotonic map 43 / 16 %;  Bayes-accuracy ceiling sample 93.7 %, population 90.7 %
+H2O  n=200  Spearman(dchi2, logit p_true) = 0.76;  calibrated threshold: p_true > 0.95 at dchi2 = 0.97, p_true > 0.84 at dchi2 = 0.08  (nested-model 95 %: 3.84; 3 sigma: 9)
+     undecidable (p_true < 0.95 / < 0.84): sample 54 / 24 %;  population via the isotonic map 75 / 42 %;  Bayes-accuracy ceiling sample 88.6 %, population 84.9 %
+CO2  n=200  Spearman(dchi2, logit p_true) = 0.88;  calibrated threshold: p_true > 0.95 at dchi2 = 0.96, p_true > 0.84 at dchi2 = 0.31  (nested-model 95 %: 3.84; 3 sigma: 9)
+     undecidable (p_true < 0.95 / < 0.84): sample 39 / 23 %;  population via the isotonic map 45 / 38 %;  Bayes-accuracy ceiling sample 90.8 %, population 87.8 %
+NH3  n=200  Spearman(dchi2, logit p_true) = 0.88;  calibrated threshold: p_true > 0.95 at dchi2 = 0.75, p_true > 0.84 at dchi2 = 0.11  (nested-model 95 %: 3.84; 3 sigma: 9)
+     undecidable (p_true < 0.95 / < 0.84): sample 31 / 16 %;  population via the isotonic map 41 / 26 %;  Bayes-accuracy ceiling sample 94.0 %, population 91.7 %
+
+sample: 14.3 min and 3888 calls per planet (median)
