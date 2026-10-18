@@ -267,6 +267,65 @@ Routing predicted-undecidable planets to the back of the queue loses targets, so
 is not met; the retrieval-everywhere strategy, which the full retrieval run enables, is the proper
 upper bound for C4 and is pending.
 
+### F7. Muting census: six of the eleven real JWST spectra are more muted than any atmosphere the simulator population can produce at their bulk parameters, and the distance rule cannot see it because it normalises amplitude away
+
+For each real planet with a converted spectrum, the dispersion of its measured Tier-3 bins (standard
+deviation of the depths, with the per-bin errors removed in quadrature) against the same dispersion of
+its clear H₂/He twin at the published abundances over the same bins; the twin under grey decks from the
+population's lowest allowed cloud top (5 × 10² Pa) down to 1 Pa; the twin at the population's coldest
+allowed temperature (0.7 T_eq, the floor of its prior) with the 5 × 10² Pa deck, which is the most muted
+atmosphere the population can draw at those bulk parameters; and the cloud-only muting of a random
+sample of 150 POP-I planets, their rendered spectrum against their own clear twin
+(`jwst_muting_census.py`; `results/jwst_panel/muting_census.{txt,csv}`, `muting_population.csv`).
+
+| planet | real, corrected (ppm) | clear twin (ppm) | muting | most the prior allows | beyond the prior |
+| :-- | :-- | :-- | :-- | :-- | :-- |
+| HAT-P-26 b | 159 | 847 | 5.3 | 2.4 | yes |
+| WASP-107 b | 263 | 1171 | 4.5 | 2.2 | yes |
+| WASP-39 b | 319 | 1190 | 3.7 | 2.0 | yes |
+| HAT-P-18 b* | 210 | 778 | 3.7 | 3.2 | yes, marginally |
+| GJ 3470 b | 53 | 182 | 3.5 | 2.0 | yes |
+| TOI-421 b* | 35 | 119 | 3.4 | 3.7 | no |
+| WASP-166 b | 69 | 213 | 3.1 | 1.8 | yes |
+| HD 189733 b* | 104 | 182 | 1.8 | 2.3 | no |
+| K2-18 b, reanalysis | 42 | 71 | 1.7 | 2.7 | no |
+| K2-18 b | 72 | 68 | 0.9 | 2.6 | no |
+| TOI-270 d | 86 | 57 | 0.7 | 2.0 | no |
+
+\* twin abundances assumed (solar-metallicity water, no retrieved set in the survey); the others use the
+published retrievals. Changing the twin's water abundance between 10⁻² and 10⁻³ moves its dispersion by
+10–30 %, an order of magnitude less than the muting.
+
+Every warm giant with a published abundance set (HAT-P-26 b, WASP-107 b, WASP-39 b, GJ 3470 b, WASP-166 b)
+is muted by a factor of 3 to 5 against its clear twin, and by 1.5 to 2.2 beyond the coldest, cloudiest
+atmosphere the population allows at its mass, radius and irradiation. For five planets no grey deck at any
+pressure in the model reaches the real amplitude, because their photospheres sit above the population's
+cloud floor. Within the population, clouds mute the median planet by 1 %, the 90th percentile by 23 %,
+the 99th by a factor of 2.4, and the most muted of 150 by 3.1; none of the sampled planets is as muted
+as any of the five giants. The two sub-Neptunes with retrieved methane-rich atmospheres (K2-18 b,
+TOI-270 d) are the only real planets whose amplitude the population covers, because their twins are
+already heavy, and the classifier missed CH₄ on both for the different reasons of F2 (coverage and
+domain).
+
+What this says: in feature amplitude the real warm giants lie outside the simulator population, although
+their bulk parameters lie inside it. The population's atmospheres are H₂/He with trace gases at 1 % at
+most, temperatures of 0.7–1.05 T_eq and a grey deck no higher than 5 × 10² Pa; the real planets need the
+remaining factor of 1.5–2.2 from what the population does not contain, metallicities of tens to hundreds
+of times solar, hazes, or patchy clouds, which is what their JWST retrievals report. The note's distance
+rule, and every input-space rule in it, works on normalised spectra and so removes exactly this
+quantity: WASP-39 b is in-distribution by distance (F1) and the most muted giants here are not flagged
+either. This is the measurement behind the reviewer's "joint distribution of Ariel targets unknown": the
+first eleven JWST transmission spectra converted to the Ariel grid say the simulator population is
+systematically too clear for warm giants, and the one learner that fails on WASP-39 b fails on the planet
+the population is least able to represent. It also explains F4 (absent by default): on muted spectra the
+bands fall under the noise the classifier was trained to expect, and it reverts to the prior.
+
+Caveats: eleven planets, eight with retrieved abundances; the twin's temperature is the MCS equilibrium
+temperature and the real terminators are cooler, which the 0.7 T_eq column allows for only up to the
+population's own floor; dispersion mixes the optical slope with the infrared bands, and a haze-dominated
+optical slope could raise the real dispersion, which would make the muting here a lower bound for the
+infrared.
+
 ### What these add up to, provisionally
 
 A simulator-trained classifier that reproduces its published in-simulator accuracies is mostly right
@@ -283,5 +342,8 @@ a third of the CH₄ targets haze would lose from Ariel's Tier-2 queue; the old 
 than ranking by the band metric alone. With the identifiability test calibrated against retrievals,
 a third to a half of the consortium labels are undecidable at Tier-1 noise, the classifier sits 6–10
 points below the information ceiling, half to two thirds of its clean errors are irrecoverable, and
-the errors the departures add are mostly recoverable. The remaining pieces are the retrieval on every
-planet (running), the departure identifiability runs, and the manuscript.
+the errors the departures add are mostly recoverable. The muting census (F7) turns the one-planet WASP-39 b
+result into a population statement: five of five warm giants with retrieved abundances are muted beyond
+anything the simulator population can draw at their bulk parameters, which no normalised-input rule can
+see. The remaining pieces are the retrieval on every planet (running), the departure identifiability
+runs, and the manuscript.
