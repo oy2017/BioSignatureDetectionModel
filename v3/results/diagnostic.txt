@@ -30,82 +30,82 @@ bandmetric          8   80.1   65.6   73.5       24   64.1   63.0   61.9       2
     bandmetric   66.6 ->  65.0   recall  11.6 ->  31.4
 
 == (d) error classes on the planets the identifiability test has reached: AUROC of predicted (and oracle) decidability for irrecoverable vs recoverable errors
-  CH4 clean      wrong   150  irrecoverable   93 %  AUROC predicted 0.610  oracle 1.000  Spearman(pred, dchi2) 0.39
-  CH4 cloud1e2   wrong   238  irrecoverable   84 %  AUROC predicted 0.617  oracle 1.000  Spearman(pred, dchi2) 0.39
-  CH4 compound   wrong   340  irrecoverable   70 %  AUROC predicted 0.727  oracle 1.000  Spearman(pred, dchi2) 0.39
-  CH4 haze3e7    wrong   319  irrecoverable   71 %  AUROC predicted 0.738  oracle 1.000  Spearman(pred, dchi2) 0.39
-  CH4 spots20    wrong   242  irrecoverable   86 %  AUROC predicted 0.523  oracle 1.000  Spearman(pred, dchi2) 0.39
-  CH4 white_x2   wrong   237  irrecoverable   85 %  AUROC predicted 0.624  oracle 1.000  Spearman(pred, dchi2) 0.39
-  CH4 white_x3   wrong   285  irrecoverable   78 %  AUROC predicted 0.668  oracle 1.000  Spearman(pred, dchi2) 0.39
-  CO2 clean      wrong   184  irrecoverable   96 %  AUROC predicted 0.857  oracle 1.000  Spearman(pred, dchi2) 0.42
-  CO2 cloud1e2   wrong   253  irrecoverable   95 %  AUROC predicted 0.759  oracle 1.000  Spearman(pred, dchi2) 0.42
-  CO2 compound   wrong   368  irrecoverable   88 %  AUROC predicted 0.871  oracle 1.000  Spearman(pred, dchi2) 0.42
-  CO2 haze3e7    wrong   348  irrecoverable   88 %  AUROC predicted 0.875  oracle 1.000  Spearman(pred, dchi2) 0.42
-  CO2 spots20    wrong   284  irrecoverable   95 %  AUROC predicted 0.799  oracle 1.000  Spearman(pred, dchi2) 0.42
-  CO2 white_x2   wrong   290  irrecoverable   95 %  AUROC predicted 0.808  oracle 1.000  Spearman(pred, dchi2) 0.42
-  CO2 white_x3   wrong   323  irrecoverable   93 %  AUROC predicted 0.815  oracle 1.000  Spearman(pred, dchi2) 0.42
-  H2O clean      wrong   236  irrecoverable   95 %  AUROC predicted 0.843  oracle 1.000  Spearman(pred, dchi2) 0.34
-  H2O cloud1e2   wrong   312  irrecoverable   89 %  AUROC predicted 0.752  oracle 1.000  Spearman(pred, dchi2) 0.34
-  H2O compound   wrong   362  irrecoverable   80 %  AUROC predicted 0.733  oracle 1.000  Spearman(pred, dchi2) 0.34
-  H2O haze3e7    wrong   362  irrecoverable   80 %  AUROC predicted 0.732  oracle 1.000  Spearman(pred, dchi2) 0.34
-  H2O spots20    wrong   307  irrecoverable   89 %  AUROC predicted 0.690  oracle 1.000  Spearman(pred, dchi2) 0.34
-  H2O white_x2   wrong   294  irrecoverable   91 %  AUROC predicted 0.646  oracle 1.000  Spearman(pred, dchi2) 0.34
-  H2O white_x3   wrong   330  irrecoverable   88 %  AUROC predicted 0.640  oracle 1.000  Spearman(pred, dchi2) 0.34
-  NH3 clean      wrong   147  irrecoverable   96 %  AUROC predicted 0.604  oracle 1.000  Spearman(pred, dchi2) 0.33
-  NH3 cloud1e2   wrong   288  irrecoverable   84 %  AUROC predicted 0.648  oracle 1.000  Spearman(pred, dchi2) 0.33
-  NH3 compound   wrong   370  irrecoverable   71 %  AUROC predicted 0.665  oracle 1.000  Spearman(pred, dchi2) 0.33
-  NH3 haze3e7    wrong   367  irrecoverable   71 %  AUROC predicted 0.667  oracle 1.000  Spearman(pred, dchi2) 0.33
-  NH3 spots20    wrong   298  irrecoverable   81 %  AUROC predicted 0.579  oracle 1.000  Spearman(pred, dchi2) 0.33
-  NH3 white_x2   wrong   251  irrecoverable   86 %  AUROC predicted 0.560  oracle 1.000  Spearman(pred, dchi2) 0.33
-  NH3 white_x3   wrong   301  irrecoverable   82 %  AUROC predicted 0.594  oracle 1.000  Spearman(pred, dchi2) 0.33
+  CH4 clean      wrong   150  irrecoverable   49 %  AUROC predicted 0.532  oracle 1.000  Spearman(pred, dchi2) 0.39
+  CH4 cloud1e2   wrong   238  irrecoverable   34 %  AUROC predicted 0.581  oracle 1.000  Spearman(pred, dchi2) 0.39
+  CH4 compound   wrong   340  irrecoverable   24 %  AUROC predicted 0.632  oracle 1.000  Spearman(pred, dchi2) 0.39
+  CH4 haze3e7    wrong   319  irrecoverable   26 %  AUROC predicted 0.631  oracle 1.000  Spearman(pred, dchi2) 0.39
+  CH4 spots20    wrong   242  irrecoverable   33 %  AUROC predicted 0.529  oracle 1.000  Spearman(pred, dchi2) 0.39
+  CH4 white_x2   wrong   237  irrecoverable   33 %  AUROC predicted 0.565  oracle 1.000  Spearman(pred, dchi2) 0.39
+  CH4 white_x3   wrong   285  irrecoverable   29 %  AUROC predicted 0.593  oracle 1.000  Spearman(pred, dchi2) 0.39
+  CO2 clean      wrong   184  irrecoverable   70 %  AUROC predicted 0.607  oracle 1.000  Spearman(pred, dchi2) 0.42
+  CO2 cloud1e2   wrong   253  irrecoverable   62 %  AUROC predicted 0.609  oracle 1.000  Spearman(pred, dchi2) 0.42
+  CO2 compound   wrong   368  irrecoverable   50 %  AUROC predicted 0.665  oracle 1.000  Spearman(pred, dchi2) 0.42
+  CO2 haze3e7    wrong   348  irrecoverable   52 %  AUROC predicted 0.671  oracle 1.000  Spearman(pred, dchi2) 0.42
+  CO2 spots20    wrong   284  irrecoverable   60 %  AUROC predicted 0.598  oracle 1.000  Spearman(pred, dchi2) 0.42
+  CO2 white_x2   wrong   290  irrecoverable   59 %  AUROC predicted 0.604  oracle 1.000  Spearman(pred, dchi2) 0.42
+  CO2 white_x3   wrong   323  irrecoverable   55 %  AUROC predicted 0.618  oracle 1.000  Spearman(pred, dchi2) 0.42
+  H2O clean      wrong   236  irrecoverable   66 %  AUROC predicted 0.634  oracle 1.000  Spearman(pred, dchi2) 0.34
+  H2O cloud1e2   wrong   312  irrecoverable   55 %  AUROC predicted 0.634  oracle 1.000  Spearman(pred, dchi2) 0.34
+  H2O compound   wrong   362  irrecoverable   46 %  AUROC predicted 0.658  oracle 1.000  Spearman(pred, dchi2) 0.34
+  H2O haze3e7    wrong   362  irrecoverable   47 %  AUROC predicted 0.659  oracle 1.000  Spearman(pred, dchi2) 0.34
+  H2O spots20    wrong   307  irrecoverable   55 %  AUROC predicted 0.614  oracle 1.000  Spearman(pred, dchi2) 0.34
+  H2O white_x2   wrong   294  irrecoverable   57 %  AUROC predicted 0.613  oracle 1.000  Spearman(pred, dchi2) 0.34
+  H2O white_x3   wrong   330  irrecoverable   54 %  AUROC predicted 0.608  oracle 1.000  Spearman(pred, dchi2) 0.34
+  NH3 clean      wrong   147  irrecoverable   68 %  AUROC predicted 0.461  oracle 1.000  Spearman(pred, dchi2) 0.33
+  NH3 cloud1e2   wrong   288  irrecoverable   42 %  AUROC predicted 0.531  oracle 1.000  Spearman(pred, dchi2) 0.33
+  NH3 compound   wrong   370  irrecoverable   34 %  AUROC predicted 0.568  oracle 1.000  Spearman(pred, dchi2) 0.33
+  NH3 haze3e7    wrong   367  irrecoverable   34 %  AUROC predicted 0.570  oracle 1.000  Spearman(pred, dchi2) 0.33
+  NH3 spots20    wrong   298  irrecoverable   41 %  AUROC predicted 0.516  oracle 1.000  Spearman(pred, dchi2) 0.33
+  NH3 white_x2   wrong   251  irrecoverable   47 %  AUROC predicted 0.467  oracle 1.000  Spearman(pred, dchi2) 0.33
+  NH3 white_x3   wrong   301  irrecoverable   42 %  AUROC predicted 0.511  oracle 1.000  Spearman(pred, dchi2) 0.33
 
-== (d') self-consistency of the decidable / undecidable split at 3 sigma (clean case unless stated; base = majority-class rate of the subset)
+== (d') self-consistency of the decidable / undecidable split at the calibrated threshold (3 sigma if uncalibrated) (clean case unless stated; base = majority-class rate of the subset)
   mol  learner undec%  acc_dec  base_dec  acc_undec  base_undec  rec_dec  rec_undec  acc_all  base_all
-  CH4  KNN    79.5     93.9      59.7       80.8        68.1     96.6       72.3     83.5      62.4
-  CH4  MLP    79.5     96.9      59.7       82.3        68.1     97.4       62.4     85.3      62.4
-  CH4  RFC    79.5     93.4      59.7       80.1        68.1     93.2       47.9     82.8      62.4
-  CH4  SVC    79.5     95.4      59.7       83.3        68.1     96.6       60.7     85.8      62.4
-  H2O  KNN    87.5     76.5      61.3       66.6        65.2     65.8       27.5     67.9      61.9
-  H2O  MLP    87.5     96.6      61.3       76.1        65.2     95.9       51.9     78.6      61.9
-  H2O  RFC    87.5     88.2      61.3       74.9        65.2     80.8       33.7     76.5      61.9
-  H2O  SVC    87.5     95.0      61.3       76.0        65.2     91.8       38.8     78.3      61.9
-  CO2  KNN    86.7     94.5      59.8       76.2        59.5     94.1       66.9     78.6      59.6
-  CO2  MLP    86.7     93.7      59.8       81.2        59.5     92.2       73.1     82.8      59.6
-  CO2  RFC    86.7     94.5      59.8       76.4        59.5     94.1       49.9     78.8      59.6
-  CO2  SVC    86.7     96.1      59.8       80.4        59.5     96.1       60.0     82.5      59.6
-  NH3  KNN    78.4     94.7      52.4       78.8        64.8     93.5       55.7     82.2      61.0
-  NH3  MLP    78.4     98.1      52.4       81.7        64.8     98.1       63.6     85.2      61.0
-  NH3  RFC    78.4     98.1      52.4       81.2        64.8     97.2       51.9     84.8      61.0
-  NH3  SVC    78.4     97.6      52.4       82.9        64.8     96.3       58.3     86.1      61.0
+  CH4  KNN    28.6     88.0      59.4       72.2        70.0     88.1       53.7     83.5      62.4
+  CH4  MLP    28.6     89.9      59.4       74.0        70.0     83.8       40.2     85.3      62.4
+  CH4  RFC    28.6     87.0      59.4       72.5        70.0     75.8       18.3     82.8      62.4
+  CH4  SVC    28.6     90.6      59.4       73.6        70.0     84.1       32.9     85.8      62.4
+  H2O  KNN    55.6     67.2      54.0       68.4        68.2     44.6       24.3     67.9      61.9
+  H2O  MLP    55.6     86.6      54.0       72.3        68.2     79.5       39.1     78.6      61.9
+  H2O  RFC    55.6     82.8      54.0       71.6        68.2     63.6       19.5     76.5      61.9
+  H2O  SVC    55.6     84.4      54.0       73.4        68.2     69.7       26.0     78.3      61.9
+  CO2  KNN    42.4     89.1      64.0       64.4        53.6     86.4       53.7     78.6      59.6
+  CO2  MLP    42.4     91.1      64.0       71.6        53.6     87.4       63.3     82.8      59.6
+  CO2  RFC    42.4     87.8      64.0       66.7        53.6     72.7       37.8     78.8      59.6
+  CO2  SVC    42.4     92.0      64.0       69.6        53.6     83.8       44.7     82.5      59.6
+  NH3  KNN    31.8     88.8      62.4       68.1        58.2     80.0       40.9     82.2      61.0
+  NH3  MLP    31.8     93.9      62.4       66.8        58.2     89.4       43.3     85.2      61.0
+  NH3  RFC    31.8     93.5      62.4       66.1        58.2     85.7       25.2     84.8      61.0
+  NH3  SVC    31.8     94.3      62.4       68.4        58.2     87.8       33.9     86.1      61.0
   mean over learners, per case: acc on decidable / undecidable labels (base of undecidable), recall decidable / undecidable
-    CH4 clean       94.9 /  81.6 ( 68.1)   recall  95.9 /  60.8
-    CH4 cloud1e2    79.3 /  73.9 ( 68.1)   recall  66.9 /  23.9
-    CH4 compound    47.3 /  68.7 ( 68.1)   recall  12.0 /   2.2
-    CH4 haze3e7     51.7 /  70.5 ( 68.1)   recall  19.2 /   8.0
-    CH4 spots20     82.3 /  72.6 ( 68.1)   recall  71.6 /  18.1
-    CH4 white_x2    81.5 /  73.6 ( 68.1)   recall  72.2 /  28.7
-    CH4 white_x3    68.0 /  70.7 ( 68.1)   recall  48.7 /  17.8
-    CO2 clean       94.7 /  78.6 ( 59.5)   recall  94.1 /  62.5
-    CO2 cloud1e2    90.6 /  70.9 ( 59.5)   recall  80.9 /  36.6
-    CO2 compound    65.0 /  61.0 ( 59.5)   recall  12.7 /   3.6
-    CO2 haze3e7     66.7 /  63.1 ( 59.5)   recall  17.6 /  10.2
-    CO2 spots20     89.2 /  67.4 ( 59.5)   recall  76.0 /  24.1
-    CO2 white_x2    89.4 /  66.7 ( 59.5)   recall  80.9 /  27.1
-    CO2 white_x3    83.1 /  63.6 ( 59.5)   recall  65.2 /  16.9
-    H2O clean       89.1 /  73.4 ( 65.2)   recall  83.6 /  38.0
-    H2O cloud1e2    70.2 /  66.9 ( 65.2)   recall  52.7 /  13.1
-    H2O compound    39.3 /  65.3 ( 65.2)   recall   1.0 /   0.3
-    H2O haze3e7     39.5 /  65.3 ( 65.2)   recall   1.4 /   1.0
-    H2O spots20     70.8 /  67.4 ( 65.2)   recall  53.8 /  10.0
-    H2O white_x2    77.1 /  68.0 ( 65.2)   recall  64.4 /  20.4
-    H2O white_x3    66.0 /  65.4 ( 65.2)   recall  46.2 /  13.8
-    NH3 clean       97.1 /  81.1 ( 64.8)   recall  96.3 /  57.4
-    NH3 cloud1e2    77.3 /  67.8 ( 64.8)   recall  57.9 /  12.8
-    NH3 compound    48.2 /  64.9 ( 64.8)   recall   1.4 /   0.4
-    NH3 haze3e7     48.8 /  65.1 ( 64.8)   recall   2.8 /   0.9
-    NH3 spots20     72.5 /  67.8 ( 64.8)   recall  48.4 /   9.4
-    NH3 white_x2    83.0 /  71.2 ( 64.8)   recall  69.2 /  27.5
-    NH3 white_x3    73.5 /  67.1 ( 64.8)   recall  50.7 /  16.8
+    CH4 clean       88.9 /  73.1 ( 70.0)   recall  82.9 /  36.3
+    CH4 cloud1e2    76.4 /  71.8 ( 70.0)   recall  45.5 /  12.2
+    CH4 compound    62.1 /  70.1 ( 70.0)   recall   6.8 /   0.6
+    CH4 haze3e7     65.1 /  70.2 ( 70.0)   recall  14.4 /   2.1
+    CH4 spots20     76.2 /  70.7 ( 70.0)   recall  44.0 /   7.0
+    CH4 white_x2    76.7 /  71.4 ( 70.0)   recall  50.5 /  17.4
+    CH4 white_x3    70.3 /  69.8 ( 70.0)   recall  32.7 /  11.6
+    CO2 clean       90.0 /  68.1 ( 53.6)   recall  82.6 /  49.9
+    CO2 cloud1e2    82.5 /  61.3 ( 53.6)   recall  56.7 /  27.4
+    CO2 compound    66.7 /  54.4 ( 53.6)   recall   7.6 /   1.9
+    CO2 haze3e7     69.0 /  56.3 ( 53.6)   recall  14.3 /   8.0
+    CO2 spots20     79.4 /  57.9 ( 53.6)   recall  45.6 /  15.6
+    CO2 white_x2    78.2 /  58.1 ( 53.6)   recall  49.4 /  18.2
+    CO2 white_x3    73.4 /  56.4 ( 53.6)   recall  34.3 /  11.6
+    H2O clean       80.2 /  71.4 ( 68.2)   recall  64.4 /  27.2
+    H2O cloud1e2    67.2 /  67.4 ( 68.2)   recall  32.7 /   7.5
+    H2O compound    54.2 /  68.3 ( 68.2)   recall   0.5 /   0.3
+    H2O haze3e7     54.5 /  68.2 ( 68.2)   recall   1.2 /   1.0
+    H2O spots20     67.3 /  68.3 ( 68.2)   recall  30.6 /   5.0
+    H2O white_x2    70.2 /  68.3 ( 68.2)   recall  40.6 /  16.0
+    H2O white_x3    63.8 /  66.8 ( 68.2)   recall  26.8 /  12.9
+    NH3 clean       92.6 /  67.4 ( 58.2)   recall  85.7 /  35.8
+    NH3 cloud1e2    74.2 /  60.4 ( 58.2)   recall  35.2 /   7.9
+    NH3 compound    62.7 /  58.2 ( 58.2)   recall   0.9 /   0.2
+    NH3 haze3e7     63.1 /  58.4 ( 58.2)   recall   2.0 /   0.4
+    NH3 spots20     73.0 /  59.9 ( 58.2)   recall  28.8 /   5.1
+    NH3 white_x2    79.3 /  61.8 ( 58.2)   recall  50.1 /  19.3
+    NH3 white_x3    72.9 /  59.1 ( 58.2)   recall  34.2 /  12.0
 
 == Tier-2 selection: 60 % of the planets get a slot; lost = targets not selected, wasted = slots on non-targets; cost = w x lost + wasted
 -- CH4 under clean (359 targets)

@@ -174,13 +174,8 @@ cost ranking is the same at every lost-target weight; the weight only matters if
 For H₂O no candidate helps (78 lost under haze for the classifier, 82 with disagreement): the haze
 loss on H₂O is not routed through the optical points to the same degree.
 
-Error classes (C2, C4): see F6 for the completed identifiability run. On it, 93–96 % of the
-classifier's clean errors and 70–89 % of its errors under the departures are on labels the Δχ² test
-calls undecidable at 3σ, before calibration. A random forest on bulk and noise features predicts the
-Δχ² out of fold with Spearman 0.33–0.42 and separates the two error classes with AUROC 0.61 (CH₄
-clean) to 0.86 (CO₂ clean), below the 0.93 the first 176 planets suggested, so C2 (AUROC ≥ 0.8) is met
-for CO₂ and H₂O only; routing predicted-undecidable planets to the back of the queue still loses
-targets, so C4's second clause is not met.
+Error classes (C2, C4): see F6, which supersedes the uncalibrated prevalence (93–96 % irrecoverable
+at 3σ) first reported here.
 
 Real spectra (C5): the optical-excess score flags HAT-P-18 b (z = 2.3, the spotted host) and the
 K2-18 b reanalysis (1.6), not WASP-39 b (0.8), WASP-166 b (0.9) or the primary K2-18 b (0.8); it is
@@ -191,61 +186,86 @@ metric itself is unreliable. The disagreement candidate flags no WASP-39 b cell.
 WASP-39 b iff A3; fires on HAT-P-18 b and K2-18 b; not on WASP-166 b) is met for the optical score on
 HAT-P-18 b, the reanalysed K2-18 b and WASP-166 b, and not for the primary K2-18 b.
 
-### F6. At Tier-1 noise most consortium labels are undecidable by a 3σ test, yet the classifier beats the ceiling that test implies: the test's counterfactual is too free, and the retrieval calibration has to set the threshold
+### F6. Identifiability, calibrated: at Tier-1 noise a third to a half of the consortium labels are undecidable, the classifier sits 6–10 points below the information ceiling, and the haze errors are mostly on labels the spectrum could decide
 
 The Δχ² identifiability test ran on all 955 POP-I test planets for the four molecules (3 restarts, 8
 workers, 15 h; `identifiability.py`; `results/identifiability_none_tier1.{csv,txt}`). For each label
 it finds the best-fitting atmosphere of the opposite class, with the molecule held at the 10⁻⁴
 boundary and temperature (0.7–1.05 T_eq), grey cloud top (5 × 10² to 10⁶ Pa), the other three
 abundances (10⁻⁹ to 10⁻²) and an additive offset free, and reports the χ² gap at the planet's Tier-1
-per-bin noise over the 104 bins.
+per-bin noise over the 104 bins. Nested-sampling retrievals of 200 planets (half random, half with a
+label within 0.7 dex of the boundary; same free quantities; 100 live points, median 3,900 likelihood
+calls and 14 min per planet, 8 h on 8 workers; `identifiability_calibrate.py`;
+`results/identifiability_calibration_200.{csv,txt}`, `identifiability_calibration_thresholds.csv`)
+give the posterior probability of the true class, p_true, which is the quantity "decidable" should mean.
 
-Undecidable fractions, all labels (present / absent):
+Calibration (B1): Spearman between the Δχ² gap and logit p_true is 0.85 (CH₄), 0.76 (H₂O), 0.88 (CO₂)
+and 0.88 (NH₃), all above the 0.7 kill criterion, so the cheap test ranks labels as the retrieval does
+and keeps its role on the population. B1 met. Its scale was wrong by an order of magnitude: p_true
+crosses 0.95 at Δχ² of 0.44, 0.97, 0.96 and 0.75 for the four molecules, not at the nested-model 3.84
+or the 3σ value 9. The reason, visible before the retrievals ran, is that the test represents the
+opposite class by its single best-fitting point and so over-credits that class; the retrieval
+integrates over its volume. The uncalibrated 3σ fractions (78–88 % undecidable) and the error-class
+prevalence first reported in F5 (93–96 % irrecoverable) are superseded by what follows. The retrieval
+is being extended to all 955 planets (29 h) so that the headline numbers come from it directly.
 
-| | 2σ (Δχ² < 3.84) | 3σ (Δχ² < 9) | 5σ | B2 expected |
+Undecidable fractions on the population (B2), labels with p_true below the level:
+
+| | below 0.95, calibrated Δχ² threshold | below 0.95, isotonic map | below 0.84, isotonic map | B2 expected |
 | :-- | :-- | :-- | :-- | :-- |
-| CH₄ | 64 % (47 / 75) | 80 % (67 / 87) | 91 % | 10–30 % |
-| H₂O | 78 % (67 / 84) | 88 % (80 / 92) | 95 % | 20–40 % |
-| CO₂ | 74 % (76 / 72) | 87 % (87 / 87) | 94 % | 10–30 % |
-| NH₃ | 62 % (57 / 65) | 78 % (71 / 83) | 90 % | 20–40 % |
+| CH₄ | 29 % | 43 % | 16 % | 10–30 % |
+| H₂O | 56 % | 75 % | 42 % | 20–40 % |
+| CO₂ | 42 % | 45 % | 38 % | 10–30 % |
+| NH₃ | 32 % | 41 % | 26 % | 20–40 % |
 
-B2 is not met by a factor of two to three. Labels within half a decade of the boundary are undecidable
-in 95–99.5 % of cases, as they must be; but so are 46–76 % of the labels two decades or more above it
-(abundance 10⁻³ to 10⁻²) and 72–86 % of absent labels more than a decade below, so the fractions are
-set by the planet's noise, not by proximity to the boundary. 571 of the 955 planets have no label
-decidable at 3σ; 28 have all four.
+B2 met for CH₄ and NH₃ at the threshold, not for H₂O and CO₂; the two mappings differ because the
+threshold is a 50 % crossing and the isotonic map carries the spread. The undecidable fraction is set
+by the planet's noise, not by proximity to the boundary: labels within half a decade of 10⁻⁴ are
+undecidable in 95–99 % of cases at 3σ, but so are 46–76 % of labels two decades above it.
 
-Self-consistency, the check that decides what the fractions mean (`alfnoor_diagnostic.py` section d′;
-`results/diagnostic_consistency.csv`, `diagnostic.txt`): on the labels the test calls decidable the
-four learners score 93–98 % (CH₄, CO₂, NH₃) and 77–97 % (H₂O) against majority-class rates of 52–61 %,
-as a sound split requires. On the labels it calls undecidable they score 76–83 % against majority
-rates of 60–68 %, 12–20 points above the prior, and their recall there is 48–73 % (CH₄). So the
-classifier extracts information from labels the 3σ test says carry none. The same shows in the ceilings
-(`identifiability_none_tier1.txt`): a Bayes classifier that represents the opposite class by its
-best-fitting point, likelihood ratio exp(Δχ²/2) times the class prior, would score 79 % on CH₄, 73 % on
-H₂O, 74 % on CO₂ and 79 % on NH₃, and the learners score 84, 75, 81 and 85 %. The classifier beats a
-ceiling that is supposed to bound it by 2–6 points.
+Ceiling (B3): a Bayes classifier with the retrieval's posteriors would score, mapped onto the
+population, 90.7 % (CH₄), 84.9 % (H₂O), 87.8 % (CO₂) and 91.7 % (NH₃); the four learners score 84.3,
+75.3, 80.7 and 84.6 %. Gaps of 6, 10, 7 and 7 points, 7.5 on average against the 8 B3 asked for: met
+within a point. So the classifier is not at the information limit on clean spectra; a quarter to a
+third of its clean errors are recoverable in principle.
 
-The resolution is that the point test is conservative in one direction only: the best-fitting
-opposite-class point is given the whole class's credit, so the opposite class is over-credited and the
-Δχ² gap understates the evidence. A retrieval that integrates over the opposite class's volume would
-give a larger evidence ratio, and that is what a classifier trained on the population effectively
-learns. Nothing in the test is wrong, but "undecidable at 3σ by the best counterfactual" is a stricter
-statement than "carries no usable information", and the error-class prevalence of F5 (93–96 % of clean
-errors irrecoverable) is an overstatement on the same count. The pre-registered route handles this:
-`identifiability_calibrate.py` runs nested-sampling retrievals on 200 planets and maps Δχ² to the
-posterior probability of the true class, and the calibrated threshold replaces 9. If the Spearman
-between the two is below 0.7 (B1), the retrievals alone carry E2 and E4. A timing run of one planet at
-50 live points is under way to size the 200.
+Self-consistency (`alfnoor_diagnostic.py` section d′; `results/diagnostic_consistency.csv`): at the
+calibrated threshold the four learners score 87–94 % on decidable CH₄, CO₂ and NH₃ labels and 67–87 %
+on decidable H₂O labels, against majority rates of 54–64 %; on undecidable labels they score 72–74 %
+(CH₄) and 68–73 % (H₂O) against majority rates of 70 and 68 %, that is, the prior, and 64–72 % (CO₂)
+and 66–68 % (NH₃) against 54 and 58 %, so at the strict 0.95 level some information remains in those
+two (the retrieval puts it between p_true 0.84 and 0.95). At the 3σ threshold the same check failed
+(76–83 % against 60–68 %), which is what exposed the scale error. The recall of present labels falls
+from 83–86 % on decidable CH₄, CO₂ and NH₃ to 36–50 % on undecidable ones, so the "absent by default"
+of F4 is the classifier reverting to the prior where the spectrum gives it nothing.
 
-What survives whatever the calibration says: the optimizer can only err by missing the true minimum,
-which makes a label look more decidable, so the undecidable fractions at any threshold are lower
-bounds; the recall of present labels is where the classifier's errors concentrate (recall on the
-undecidable set 28–73 % against 66–98 % on the decidable set), so the "absent by default" behaviour of
-F4 is the classifier doing the Bayes-rational thing on low-information spectra; and expectation B3
-(ceiling at least 8 points above the clean accuracy) is not met as written, since under the point-LR
-ceiling the classifier is already above it, which is a stronger statement in the paper's favour than
-B3 asked for.
+Error classes (E4, B4), the share of each learner's errors on labels undecidable at the calibrated
+threshold, mean over the four learners (`results/diagnostic_classes.csv`):
+
+| | clean | haze 3 × 10⁷ | spots 20 % | cloud 10² Pa | noise × 2 | noise × 3 |
+| :-- | :-- | :-- | :-- | :-- | :-- | :-- |
+| CH₄ | 49 % | 26 % | 33 % | 34 % | 33 % | 29 % |
+| H₂O | 66 % | 47 % | 55 % | 55 % | 57 % | 54 % |
+| CO₂ | 70 % | 52 % | 60 % | 62 % | 59 % | 55 % |
+| NH₃ | 68 % | 34 % | 41 % | 42 % | 47 % | 42 % |
+
+On clean spectra half (CH₄) to two thirds (the others) of the errors are irrecoverable; under every
+departure the share falls, because the departure adds errors on labels the spectrum could decide. B4
+asked for at least 70 % of the haze errors to be recoverable: met for CH₄ (74 %), not for NH₃ (66 %),
+H₂O (53 %) or CO₂ (48 %). B4's second clause (noise × 3: at most 30 % recoverable) is not met as
+tabulated, but the table is not yet the right test of it: these columns use the clean-spectrum
+decidability, whereas the plan's definition carries the departure into the counterfactual (the noise
+× 3 label is undecidable at the × 3 noise, not the × 1 noise). The departure runs of `identifiability.py`
+(haze3e7, spots20, cloud1e2, noise_x2, noise_x3) replace these columns when they finish; the clean
+column and the haze column's direction stand.
+
+Predicting decidability without the spectrum (C2, C4): a random forest on bulk and noise features
+predicts the Δχ² out of fold with Spearman 0.33–0.42 and separates the two error classes with AUROC
+0.46–0.67 at the calibrated threshold, against 0.61–0.86 at 3σ: the cheap predictor finds the
+hopeless planets (tiny signal) but not the boundary of decidability. C2 (AUROC ≥ 0.8) not met.
+Routing predicted-undecidable planets to the back of the queue loses targets, so C4's second clause
+is not met; the retrieval-everywhere strategy, which the full retrieval run enables, is the proper
+upper bound for C4 and is pending.
 
 ### What these add up to, provisionally
 
@@ -260,7 +280,8 @@ optical photometric points decide the hot Saturn's Tier-1 outcome (58 % against 
 which is the note's haze mechanism showing on a real planet. A one-number diagnostic on the known weak point, the optical
 excess, routed to the learner without that weak point, is never worse than the classifier and recovers
 a third of the CH₄ targets haze would lose from Ariel's Tier-2 queue; the old rules lose more targets
-than ranking by the band metric alone. Most classifier errors are on labels a 3σ counterfactual test
-cannot decide at Tier-1 noise, but the classifier still beats the accuracy that test implies, so the
-test is conservative and the prevalence of irrecoverable errors is an upper bound until the retrieval
-calibration sets the threshold. The missing piece for the paper is that calibration.
+than ranking by the band metric alone. With the identifiability test calibrated against retrievals,
+a third to a half of the consortium labels are undecidable at Tier-1 noise, the classifier sits 6–10
+points below the information ceiling, half to two thirds of its clean errors are irrecoverable, and
+the errors the departures add are mostly recoverable. The remaining pieces are the retrieval on every
+planet (running), the departure identifiability runs, and the manuscript.
