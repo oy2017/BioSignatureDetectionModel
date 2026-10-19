@@ -219,7 +219,9 @@ here and are not used by the pipeline unless stated.
 | Planet | Source | File(s) used | Columns |
 | :-- | :-- | :-- | :-- |
 | TOI-270 d | Zenodo 15228454, TOI-270d_transit_spectra.zip (Felix et al. 2025 reanalysis) | native_NIRISS.dat, native_NRS1.dat, native_NRS2.dat | wl µm, depth ppm, err ppm, fwhm µm |
-| K2-18 b | Zenodo 16277833, Spectra.zip (Jaziri et al. 2025; copies of the 2023/2025 spectra, −41 ppm offset applied to one instrument) | K2-18b_both_offset1_-41ppm_native.txt, K2-18b_miri_lrs_eureka_taurex.txt | wl µm, depth, err [, half-width] |
+| K2-18 b | osf.io/36djh (Madhusudhan et al. 2023, discovery-team originals); MIRI from Zenodo 16277833, Spectra.zip (Jaziri et al. 2025 copy of the Madhusudhan et al. 2025 spectrum) | K2-18b_niriss_soss_native.txt, K2-18b_nirspec_g395h_native.txt (the lowres pair and README kept); K2-18b_miri_lrs_eureka_taurex.txt | wl µm, half-width, depth, err; wl, depth, err, half-width |
+| K2-18 b (Hu) | osf.io/hpu8g, spectra-k2-18b.zip (Hu et al. 2025) | spectra/niriss_nameless/…order1_vis1_R300.spec, …order2_vis1_R100.spec; spectra/nirspec_combined/K2_G235H_NRS1_NRS2_ave2_direct.dat, K2_G395H_NRS1_NRS2_ave3_direct.dat | ECSV: wave, waveMin, waveMax, yval ppm, yerrLow/Upp ppm, ignore; lo, hi, mid µm, depth, err |
+| TOI-270 d (Holmberg) | osf.io/8fu36 (Holmberg & Madhusudhan 2024) | TOI-270d_nirspec_g395h_native.txt (canonical; the CLD and DT cases, lowres and README kept) | wl µm, half-width, depth, err |
 | K2-18 b (alternate) | Zenodo 14735689, K2-18_reanalysis_data.zip (Schmidt & MacDonald 2025) | exoTEDRF R=100: NIRISS orders 1–2, NRS1, NRS2 | wl, half-width, depth, err |
 | TOI-421 b | Zenodo 15176438, TOI421b.zip (Davenport et al. 2025) | NIRISS/exoTEDRF/…_Final_50pix.csv; NIRSpec/Deming_spectrum.txt | wl, half-width, ppm, ppm, order; wl, depth, err |
 | HAT-P-18 b | VizieR J/ApJ/940/L35 (Fu et al. 2022), https://cdsarc.cds.unistra.fr/ftp/J/ApJ/940/L35/table1.dat | table1.dat | wl µm, depth ppm, err ppm |
@@ -228,10 +230,9 @@ here and are not used by the pipeline unless stated.
 | HAT-P-26 b | AJ 170, 292 figure-data package https://content.cld.iop.org/journals/1538-3881/170/5/292/revision1/ajae0929f2.tar.gz (Gressier et al. 2025) | f2/dbf2a.txt (ExoTiC-JEDI) | wl, depth (fractional despite the ReadMe's "ppm"), err |
 | GJ 3470 b | ApJL 970, L10 machine-readable tables (Beatty et al. 2024), https://iopscience.iop.org/2041-8205/970/1/L10/suppdata/apjlad55e9t{3,4}_mrt.txt | t3 (F322W2), t4 (F444W) | bin lo, hi µm, depth ppm, err ppm (−163 ppm offset already applied by the authors) |
 | WASP-166 b | Zenodo 15122285, Zenodo_WASP-166b.zip (Mayo et al. 2025) | 0.01797-µm Eureka! tables: NIRISS order 1 and NIRSpec G395M (v81) | ECSV: wl, half-width (named bin_width), rp², errneg, errpos |
-| TOI-1231 b | osf.io/mryd6 (Sarkar et al. 2026) | not available: OSF down until 2026-10-19 | |
+| TOI-1231 b | osf.io/mryd6 (Sarkar et al. 2026) | TOI-1231b_{niriss_ord1,niriss_ord2,nirspec_g395h_nrs1,nirspec_g395h_nrs2}_JexoRes.txt (the JexoPipe set kept as the alternate) | wl µm, half-width, depth, err |
 
-Not used: the discovery-team spectra of TOI-270 d (Benneke et al. 2024: MAST observations only; Holmberg
-& Madhusudhan 2024: osf.io/8fu36) and K2-18 b (Madhusudhan et al. 2023: osf.io/36djh; Hu et al. 2025:
-osf.io/hpu8g), all on OSF; Luque et al. 2025's 2.9 GB K2-18 b record (Zenodo 15685551); the
+The OSF files are fetched by their file ids (`fetch_jwst_data.sh`, "OSF" block) and checksummed like the
+rest. Not used: Benneke et al. 2024's TOI-270 d (MAST observations only); Luque et al. 2025's 2.9 GB K2-18 b record (Zenodo 15685551); the
 Fournier-Tondreau et al. 2024 HAT-P-18 b spectrum (MAST only); DERIVED tables made during the survey
 (TOI-421 b Eureka! depths from Stage-5 posteriors; Dyrek et al. 2024 MIRI CSV from Nature source data).

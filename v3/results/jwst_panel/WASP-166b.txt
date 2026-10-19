@@ -47,19 +47,19 @@ no_optical CH4       0.0  0.0  0.0  0.0
            CO2       0.0  0.0  0.0  0.0
            H2O       0.0  0.0  0.0  0.0
            NH3       0.0  0.0  0.0  0.0
-== WASP-166b [Mayo et al. 2025 (Zenodo 15122285): Eureka! NIRISS order 1 and NIRSpec G395M, 0.018 um bins; 14 of 104 bins flat-filled]: fraction of 300 Ariel tier1 noise draws called present (threshold 1e-4)
+== WASP-166b [Mayo et al. 2025 (Zenodo 15122285): Eureka! NIRISS order 1 and NIRSpec G395M, 0.018 um bins; 14 of 104 bins flat-filled]: fraction of 500 Ariel tier1 noise draws called present (threshold 1e-4)
 learner               KNN   MLP   RFC   SVC
 variant    molecule                        
 airs_only  CH4        0.0   1.0   0.0   0.0
-           CO2       66.0  40.0  11.0  29.0
-           H2O       18.0  28.0   3.0  14.0
-           NH3       13.0  23.0   2.0  11.0
+           CO2       69.0  39.0  13.0  29.0
+           H2O       18.0  30.0   4.0  15.0
+           NH3       14.0  25.0   2.0  10.0
 all        CH4        0.0   0.0   0.0   0.0
-           CO2       62.0  11.0   0.0   7.0
-           H2O       24.0  20.0   0.0   7.0
-           NH3        3.0   0.0   0.0   0.0
+           CO2       63.0  12.0   1.0   8.0
+           H2O       24.0  22.0   0.0   9.0
+           NH3        4.0   0.0   0.0   0.0
 no_optical CH4        0.0   1.0   0.0   0.0
-           CO2       63.0  27.0   2.0  20.0
-           H2O       26.0  54.0  28.0  30.0
-           NH3        9.0   5.0   0.0   2.0
+           CO2       65.0  25.0   2.0  20.0
+           H2O       27.0  53.0  28.0  31.0
+           NH3        9.0   4.0   0.0   1.0
 == band metric (Mugnai et al. 2021, Eq. 3): M_H2O = 2.07, M_CH4 = -0.87, M_CO2 = 0.81  (their flags: CH4 >= 0.22, CO2 >= 0.26, H2O >= 0.80)

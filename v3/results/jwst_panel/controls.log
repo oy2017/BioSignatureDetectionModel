@@ -7,10 +7,10 @@ TOI-270d   twin, masked        6.95        no   CH4:1011  26%  H2O:1000   6%  CO
 TOI-270d   twin, full          6.03        no   CH4:1111  62%  H2O:1111  36%  CO2:1111  16%  NH3:0000   4%
                                                 dispersion of the measured bins: real 98 ppm, H2/He twin 57 ppm; filled bins 17/104
 
-K2-18b     real               12.31       yes   CH4:0100  12%  H2O:0000   8%  CO2:0000   1%  NH3:0000   0%
+K2-18b     real               11.25        no   CH4:0000  10%  H2O:0000   5%  CO2:0000   2%  NH3:0000   0%
 K2-18b     twin, masked        6.28        no   CH4:1111  82%  H2O:0000   1%  CO2:0000   3%  NH3:0000   0%
 K2-18b     twin, full          5.98        no   CH4:1111  96%  H2O:0000   9%  CO2:0101  10%  NH3:0000   1%
-                                                dispersion of the measured bins: real 100 ppm, H2/He twin 68 ppm; filled bins 5/104
+                                                dispersion of the measured bins: real 116 ppm, H2/He twin 68 ppm; filled bins 5/104
 
 WASP-107b  real                8.65        no   CH4:0000   0%  H2O:0000   6%  CO2:1101  50%  NH3:0000   0%
 WASP-107b  twin, masked        7.45        no   CH4:0000   0%  H2O:1000  18%  CO2:1111  88%  NH3:0000   0%
@@ -42,6 +42,21 @@ WASP-39b   twin, masked        4.73        no   CH4:0000   0%  H2O:1111 100%  CO
 WASP-39b   twin, full          4.71        no   CH4:0000   0%  H2O:1111 100%  CO2:0000   6%  NH3:0000   0%
                                                 dispersion of the measured bins: real 324 ppm, H2/He twin 1190 ppm; filled bins 1/104
 
+TOI-1231b  real               11.21        no   CH4:1100  14%  H2O:0000   4%  CO2:0000   0%  NH3:0000   2%
+TOI-1231b  twin, masked        6.70        no   CH4:1111  69%  H2O:0000   5%  CO2:0101   5%  NH3:0000   1%
+TOI-1231b  twin, full          5.71        no   CH4:1111  88%  H2O:0000  10%  CO2:0101  10%  NH3:0000   2%
+                                                dispersion of the measured bins: real 57 ppm, H2/He twin 63 ppm; filled bins 30/104
+
+K2-18b-hu  real               11.69       yes   CH4:1000   9%  H2O:0000   9%  CO2:0000   0%  NH3:0000   2%
+K2-18b-hu  twin, masked        6.60        no   CH4:1111  91%  H2O:0000   4%  CO2:0100   4%  NH3:0000   0%
+K2-18b-hu  twin, full          5.98        no   CH4:1111  96%  H2O:0000   9%  CO2:0101  10%  NH3:0000   1%
+                                                dispersion of the measured bins: real 44 ppm, H2/He twin 71 ppm; filled bins 16/104
+
+TOI-270d-hm real               11.01        no   CH4:0000   8%  H2O:0000   5%  CO2:0000   2%  NH3:0000   2%
+TOI-270d-hm twin, masked        9.68        no   CH4:1000   7%  H2O:0000   5%  CO2:1000   5%  NH3:0000   4%
+TOI-270d-hm twin, full          6.03        no   CH4:1111  62%  H2O:1111  36%  CO2:1111  16%  NH3:0000   4%
+                                                dispersion of the measured bins: real 60 ppm, H2/He twin 50 ppm; filled bins 63/104
+
 
 == twins scattered with the real per-bin JWST errors (200 draws): detection frequency and decline rate
 TOI-270d   twin + real errors        median err   30 ppm  declined   0 %   CH4  68%  H2O  21%  CO2  26%  NH3   0%
@@ -60,3 +75,9 @@ K2-18b-alt twin + real errors        median err   51 ppm  declined   0 %   CH4 1
 K2-18b-alt twin + twice the errors   median err  103 ppm  declined  22 %   CH4  78%  H2O   5%  CO2   5%  NH3   0%
 WASP-39b   twin + real errors        median err   32 ppm  declined   0 %   CH4   0%  H2O 100%  CO2   0%  NH3   0%
 WASP-39b   twin + twice the errors   median err   64 ppm  declined   0 %   CH4   0%  H2O 100%  CO2   0%  NH3   0%
+TOI-1231b  twin + real errors        median err   30 ppm  declined   0 %   CH4 100%  H2O   1%  CO2  31%  NH3   0%
+TOI-1231b  twin + twice the errors   median err   59 ppm  declined   2 %   CH4  96%  H2O   7%  CO2  13%  NH3   0%
+K2-18b-hu  twin + real errors        median err   19 ppm  declined   0 %   CH4 100%  H2O   0%  CO2  13%  NH3   0%
+K2-18b-hu  twin + twice the errors   median err   37 ppm  declined   0 %   CH4 100%  H2O   3%  CO2  11%  NH3   0%
+TOI-270d-hm twin + real errors        median err   31 ppm  declined   0 %   CH4  19%  H2O   8%  CO2  17%  NH3   0%
+TOI-270d-hm twin + twice the errors   median err   62 ppm  declined  59 %   CH4  16%  H2O   4%  CO2  12%  NH3   1%

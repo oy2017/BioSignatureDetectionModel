@@ -39,8 +39,11 @@ LABELS = {
     "HAT-P-26b": {"CH4": A, "H2O": P, "CO2": P, "NH3": A},
     "GJ3470b": {"CH4": None, "H2O": P, "CO2": P, "NH3": A},
     "WASP-166b": {"CH4": A, "H2O": P, "CO2": P, "NH3": None},
+    "TOI-1231b": {"CH4": P, "H2O": None, "CO2": P, "NH3": None},       # Sarkar et al. 2026: CH4 -0.85, CO2 -1.90; H2O < -2.24, NH3 < -3.34 (95 %)
+    "K2-18b-hu": {"CH4": P, "H2O": A, "CO2": None, "NH3": A},          # Hu et al. 2025 reduction of the same planet (adds G235H)
+    "TOI-270d-hm": {"CH4": P, "H2O": None, "CO2": P, "NH3": A},        # Holmberg & Madhusudhan 2024 discovery-team G395H only
 }
-FULL = {"TOI-270d", "K2-18b", "K2-18b-alt", "TOI-421b", "HAT-P-18b", "WASP-166b"}        # optical + AIRS covered by data
+FULL = {"TOI-270d", "K2-18b", "K2-18b-alt", "K2-18b-hu", "TOI-421b", "HAT-P-18b", "WASP-166b", "TOI-1231b"}        # optical + AIRS covered by data
 
 
 def numeric_rows(path, delimiter=None, skip=0):
@@ -59,6 +62,13 @@ def numeric_rows(path, delimiter=None, skip=0):
             continue
     n = min(len(r) for r in rows)
     return np.array([r[:n] for r in rows], float)
+
+
+def ecsv_rows(path):
+    """Columns wave, waveMin, waveMax, yval, mean(yerrLow, yerrUpp) of an ECSV spectrum table (Hu et al. 2025), rows with ignore == 0."""
+    import pandas as pd
+    t = pd.read_csv(path, comment="#"); t = t[t.get("ignore", 0) == 0]
+    return np.column_stack([t.wave, t.waveMin, t.waveMax, t.yval, 0.5 * (t.yerrLow + t.yerrUpp)]).astype(float)
 
 
 def seg(a, wl, depth, err, unit=1.0, width=None, halfwidth=None, bounds=None, rprs=False, err2=None):
@@ -84,9 +94,23 @@ def segments(root, planet):
                 "NRS1": seg(numeric_rows(f"{d}/native_NRS1.dat"), 0, 1, 2, 1e-6, width=3),
                 "NRS2": seg(numeric_rows(f"{d}/native_NRS2.dat"), 0, 1, 2, 1e-6, width=3)}, "Felix et al. 2025 reanalysis (Zenodo 15228454), native resolution"
     if planet == "K2-18b":
-        d = r("K2-18b", "Jaziri2025_zenodo16277833", "Spectra")
-        return {"NIRISS+NIRSpec": seg(numeric_rows(f"{d}/K2-18b_both_offset1_-41ppm_native.txt"), 0, 1, 2),
-                "MIRI": seg(numeric_rows(f"{d}/K2-18b_miri_lrs_eureka_taurex.txt"), 0, 1, 2, halfwidth=3)}, "Jaziri et al. 2025 copies of the Madhusudhan et al. 2023/2025 spectra (Zenodo 16277833)"
+        o = r("K2-18b", "Madhusudhan2023_osf_36djh"); d = r("K2-18b", "Jaziri2025_zenodo16277833", "Spectra")
+        return {"SOSS": seg(numeric_rows(f"{o}/K2-18b_niriss_soss_native.txt"), 0, 2, 3, halfwidth=1),
+                "G395H": seg(numeric_rows(f"{o}/K2-18b_nirspec_g395h_native.txt"), 0, 2, 3, halfwidth=1),
+                "MIRI": seg(numeric_rows(f"{d}/K2-18b_miri_lrs_eureka_taurex.txt"), 0, 1, 2, halfwidth=3)}, "Madhusudhan et al. 2023 native SOSS + G395H (OSF 36djh); MIRI from the Jaziri et al. 2025 copy of Madhusudhan et al. 2025 (Zenodo 16277833)"
+    if planet == "K2-18b-hu":
+        d = r("K2-18b", "Hu2025_osf_hpu8g", "spectra")
+        return {"SOSS-o1": seg(ecsv_rows(f"{d}/niriss_nameless/K2_18b_NIRISS_SOSS_order1_vis1_R300.spec"), 0, 3, 4, 1e-6, bounds=(1, 2)),
+                "SOSS-o2": seg(ecsv_rows(f"{d}/niriss_nameless/K2_18b_NIRISS_SOSS_order2_vis1_R100.spec"), 0, 3, 4, 1e-6, bounds=(1, 2)),
+                "G235H": seg(numeric_rows(f"{d}/nirspec_combined/K2_G235H_NRS1_NRS2_ave2_direct.dat"), 2, 3, 4, bounds=(0, 1)),
+                "G395H": seg(numeric_rows(f"{d}/nirspec_combined/K2_G395H_NRS1_NRS2_ave3_direct.dat"), 2, 3, 4, bounds=(0, 1))}, "Hu et al. 2025 (OSF hpu8g): NIRISS SOSS visit 1, NIRSpec G235H (2 visits) and G395H (3 visits) combined"
+    if planet == "TOI-270d-hm":
+        d = r("TOI-270d", "Holmberg2024_osf_8fu36")
+        return {"G395H": seg(numeric_rows(f"{d}/TOI-270d_nirspec_g395h_native.txt"), 0, 2, 3, halfwidth=1)}, "Holmberg & Madhusudhan 2024 (OSF 8fu36), canonical G395H at native resolution"
+    if planet == "TOI-1231b":
+        d = r("TOI-1231b", "Sarkar2026_osf_mryd6")
+        f = lambda name: seg(numeric_rows(f"{d}/TOI-1231b_{name}_JexoRes.txt"), 0, 2, 3, halfwidth=1)
+        return {"SOSS-o1": f("niriss_ord1"), "SOSS-o2": f("niriss_ord2"), "NRS1": f("nirspec_g395h_nrs1"), "NRS2": f("nirspec_g395h_nrs2")}, "Sarkar et al. 2026 (OSF mryd6): JexoRes NIRISS orders 1-2 and NIRSpec G395H NRS1-2"
     if planet == "TOI-421b":
         d = r("TOI-421b", "Davenport2025_zenodo15176438", "TOI421b")
         return {"SOSS": seg(numeric_rows(f"{d}/NIRISS/exoTEDRF/BD-14 1137b_NIRISS_SOSS_transmission_spectrum_Final_50pix.csv", ","), 0, 2, 3, 1e-6, halfwidth=1),
@@ -132,7 +156,7 @@ def run_planet(root, planet, draws, variants):
     d_f = d.copy(); d_f[filled] = np.nanmean(d[~filled]) if (~filled).any() else np.nan
     cov["filled"] = filled; cov["depth"] = d_f; cov["err"] = np.where(filled, np.nan, e)
     cov.to_csv(os.path.join(OUT, f"{planet}_coverage.csv"), index=False)
-    sig = J.ariel_sigma(planet.replace("-alt", ""), edges)
+    sig = J.ariel_sigma(planet.replace("-alt", "").replace("-hu", "").replace("-hm", ""), edges)
     text, V = AJ.summarize(f"{planet} [{source}; {int(filled.sum())} of 104 bins flat-filled]", d_f, edges, {"tier1": sig}, n=draws)
     V.to_csv(os.path.join(OUT, f"{planet}_verdicts.csv"), index=False)
     head = [f"{planet}: {source}", "segments: " + "; ".join(f"{k} {len(s['wl'])} pts {s['wl'].min():.2f}-{s['wl'].max():.2f} um, offset {off[k]*1e6:+.0f} ppm" for k, s in S.items()),

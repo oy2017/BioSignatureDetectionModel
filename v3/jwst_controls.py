@@ -11,8 +11,8 @@ real atmosphere's shape, not the noise, the coverage or the classifier's in-simu
 Usage: python jwst_controls.py      (after jwst_panel.py and wasp39_assemble.py)
 Writes results/jwst_panel/controls.txt
 """
-import os, sys, warnings, numpy as np
-warnings.filterwarnings("ignore", category=RuntimeWarning)   # numpy on macOS Accelerate reports spurious FP flags from matmul, pandas as pd
+import os, sys, warnings, numpy as np, pandas as pd
+warnings.filterwarnings("ignore", category=RuntimeWarning)   # numpy on macOS Accelerate reports spurious FP flags from matmul
 V3 = os.path.dirname(os.path.abspath(__file__)); os.chdir(V3); sys.path.insert(0, V3)
 _out = []
 _print = print
@@ -32,7 +32,10 @@ TWINS = {"TOI-270d": {"CH4": -1.64, "H2O": -1.10, "CO2": -1.67, "NH3": -5.0},
          "HAT-P-26b": {"CH4": -5.5, "H2O": -2.07, "CO2": -2.91, "NH3": -4.2},
          "WASP-166b": {"CH4": -7.9, "H2O": -1.30, "CO2": -2.23, "NH3": -4.0},
          "K2-18b-alt": {"CH4": -1.74, "H2O": -4.0, "CO2": -3.35, "NH3": -5.6},
-         "WASP-39b": {"CH4": -7.0, "H2O": -2.3, "CO2": -4.5, "NH3": -7.0}}   # WASP-39 b: the benchmark + MIRI assembly (wasp39_assemble.py)
+         "WASP-39b": {"CH4": -7.0, "H2O": -2.3, "CO2": -4.5, "NH3": -7.0},
+         "TOI-1231b": {"CH4": -0.85, "H2O": -3.0, "CO2": -1.90, "NH3": -4.0},   # Sarkar+2026; H2O and NH3 at their 95 % upper limits' side
+         "K2-18b-hu": {"CH4": -1.74, "H2O": -4.0, "CO2": -3.35, "NH3": -5.6},
+         "TOI-270d-hm": {"CH4": -1.64, "H2O": -1.10, "CO2": -1.67, "NH3": -5.0}}   # WASP-39 b abundances: the benchmark + MIRI assembly (wasp39_assemble.py)
 # training-set distance rule, as in the note: 10-NN distance, threshold declining 10 % of clean test planets
 Xtr, Ptr, _ = AJ.training_set(); Ztr = AJ.znorm(Xtr, np.ones(104, bool))
 src = AF.DIRS["faithful"]; Xte = np.load(f"{src}/pop1_native.npy"); ok = np.all(np.isfinite(Xte), 1)
@@ -47,11 +50,11 @@ for pl, ab in TWINS.items():
     cov = pd.read_csv(covf); filled = cov.filled.to_numpy(bool); real = cov.depth.to_numpy()
     if pl == "WASP-39b":
         real = real.copy(); real[filled] = np.nanmean(real[~filled])
-    r = M[M.name == pl.replace("-alt", "")].iloc[0].to_dict(); r.update({"atm top_pressure": 1e-4, "atm CO": -15.0, "atm O3": -15.0, **{f"atm {k}": v for k, v in ab.items()}})
+    r = M[M.name == pl.replace("-alt", "").replace("-hu", "").replace("-hm", "")].iloc[0].to_dict(); r.update({"atm top_pressure": 1e-4, "atm CO": -15.0, "atm O3": -15.0, **{f"atm {k}": v for k, v in ab.items()}})
     y = G.one_native(r, wl)
     if y is None: print(pl, "twin failed to render"); continue
     twin = bin_native(y.astype(float)[None, :], wl, edges)[0]; twin_m = twin.copy(); twin_m[filled] = np.nanmean(twin[~filled])
-    sig = J.ariel_sigma(pl.replace("-alt", ""), edges)
+    sig = J.ariel_sigma(pl.replace("-alt", "").replace("-hu", "").replace("-hm", ""), edges)
     for name, x in (("real", real), ("twin, masked", twin_m), ("twin, full", twin)):
         d = knn.kneighbors(AJ.znorm(x, np.ones(104, bool)))[0].mean()
         V = AJ.verdict_table(x, variants=("all",)); V = V[V.threshold == "1e-4"]
@@ -67,7 +70,7 @@ L = AJ.learners("all"); rng2 = np.random.default_rng(3)
 for pl, ab in TWINS.items():
     covf = f"results/jwst_panel/{pl}_coverage.csv" if pl != "WASP-39b" else "results/wasp39/coverage_benchmark.csv"
     cov = pd.read_csv(covf); filled = cov.filled.to_numpy(bool); err = cov.err.to_numpy(); err = np.where(filled | ~np.isfinite(err), 0.0, err)
-    r = M[M.name == pl.replace("-alt", "")].iloc[0].to_dict(); r.update({"atm top_pressure": 1e-4, "atm CO": -15.0, "atm O3": -15.0, **{f"atm {k}": v for k, v in ab.items()}})
+    r = M[M.name == pl.replace("-alt", "").replace("-hu", "").replace("-hm", "")].iloc[0].to_dict(); r.update({"atm top_pressure": 1e-4, "atm CO": -15.0, "atm O3": -15.0, **{f"atm {k}": v for k, v in ab.items()}})
     y = G.one_native(r, wl)
     if y is None: continue
     twin = bin_native(y.astype(float)[None, :], wl, edges)[0]

@@ -30,7 +30,10 @@ TWINS = {"TOI-270d": {"CH4": -1.64, "H2O": -1.10, "CO2": -1.67, "NH3": -5.0},
          "HAT-P-26b": {"CH4": -5.5, "H2O": -2.07, "CO2": -2.91, "NH3": -4.2},
          "GJ3470b":  {"CH4": -4.05, "H2O": -1.08, "CO2": -2.47, "NH3": -7.3},
          "WASP-166b": {"CH4": -7.9, "H2O": -1.30, "CO2": -2.23, "NH3": -4.0},
-         "WASP-39b": {"CH4": -7.0, "H2O": -2.3, "CO2": -4.5, "NH3": -7.0}}
+         "WASP-39b": {"CH4": -7.0, "H2O": -2.3, "CO2": -4.5, "NH3": -7.0},
+         "TOI-1231b": {"CH4": -0.85, "H2O": -3.0, "CO2": -1.90, "NH3": -4.0},   # Sarkar+2026; H2O and NH3 at their 95 % upper limits' side
+         "K2-18b-hu": {"CH4": -1.74, "H2O": -4.0, "CO2": -3.35, "NH3": -5.6},
+         "TOI-270d-hm": {"CH4": -1.64, "H2O": -1.10, "CO2": -1.67, "NH3": -5.0}}
 ASSUMED = {"TOI-421b", "HAT-P-18b", "HD189733b"}
 DECKS = [5e2, 1e2, 3e1, 1e1, 3e0, 1e0]        # Pa; 5e2 is the population's lowest cloud-top pressure
 
@@ -51,7 +54,7 @@ def main():
         covf = "results/wasp39/coverage_benchmark.csv" if pl == "WASP-39b" else f"results/jwst_panel/{pl}_coverage.csv"
         cov = pd.read_csv(covf); meas = ~cov.filled.to_numpy(bool); real = cov.depth.to_numpy(); err = cov.err.to_numpy()
         s_real = disp(real, meas); noise = float(np.sqrt(np.nanmean(err[meas] ** 2)) * 1e6); s_corr = float(np.sqrt(max(s_real ** 2 - noise ** 2, 0.0)))
-        r = M[M.name == pl.replace("-alt", "")].iloc[0].to_dict(); r.update({"atm top_pressure": 1e-4, "atm CO": -15.0, "atm O3": -15.0, **{f"atm {k}": v for k, v in ab.items()}})
+        r = M[M.name == pl.replace("-alt", "").replace("-hu", "").replace("-hm", "")].iloc[0].to_dict(); r.update({"atm top_pressure": 1e-4, "atm CO": -15.0, "atm O3": -15.0, **{f"atm {k}": v for k, v in ab.items()}})
         clear = render(r)
         if clear is None: L.append(f"{pl:<11} twin failed"); continue
         s_clear = disp(clear, meas); decks = {}

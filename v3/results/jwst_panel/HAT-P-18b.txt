@@ -47,19 +47,19 @@ no_optical CH4       0.0  0.0  0.0  0.0
            CO2       0.0  0.0  0.0  0.0
            H2O       1.0  1.0  0.0  1.0
            NH3       0.0  0.0  0.0  0.0
-== HAT-P-18b [Fu et al. 2022 (VizieR J/ApJ/940/L35), NIRISS SOSS; 56 of 104 bins flat-filled]: fraction of 300 Ariel tier1 noise draws called present (threshold 1e-4)
+== HAT-P-18b [Fu et al. 2022 (VizieR J/ApJ/940/L35), NIRISS SOSS; 56 of 104 bins flat-filled]: fraction of 500 Ariel tier1 noise draws called present (threshold 1e-4)
 learner               KNN   MLP   RFC   SVC
 variant    molecule                        
-airs_only  CH4        7.0   7.0   0.0   1.0
-           CO2        8.0   4.0   0.0   0.0
-           H2O       43.0  54.0  12.0  38.0
-           NH3        7.0   6.0   0.0   1.0
-all        CH4        7.0   4.0   0.0   0.0
-           CO2        8.0   1.0   0.0   0.0
-           H2O       41.0  24.0   0.0   8.0
+airs_only  CH4        7.0   8.0   0.0   1.0
+           CO2       10.0   4.0   0.0   0.0
+           H2O       44.0  53.0  13.0  39.0
+           NH3        8.0   6.0   0.0   0.0
+all        CH4        6.0   4.0   0.0   0.0
+           CO2        9.0   1.0   0.0   0.0
+           H2O       42.0  25.0   0.0  11.0
            NH3        3.0   0.0   0.0   0.0
-no_optical CH4        9.0   9.0   0.0   1.0
-           CO2        8.0   3.0   0.0   0.0
-           H2O       44.0  38.0  11.0  26.0
+no_optical CH4        8.0   8.0   0.0   1.0
+           CO2        9.0   3.0   0.0   0.0
+           H2O       45.0  40.0  12.0  29.0
            NH3        5.0   0.0   0.0   0.0
 == band metric (Mugnai et al. 2021, Eq. 3): M_H2O = -0.36, M_CH4 = -2.70, M_CO2 = -0.53  (their flags: CH4 >= 0.22, CO2 >= 0.26, H2O >= 0.80)

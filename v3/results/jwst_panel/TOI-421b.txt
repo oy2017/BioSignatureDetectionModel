@@ -47,19 +47,19 @@ no_optical CH4       0.0  0.0  0.0  0.0
            CO2       0.0  0.0  0.0  0.0
            H2O       0.0  0.0  0.0  0.0
            NH3       0.0  0.0  0.0  0.0
-== TOI-421b [Davenport et al. 2025 (Zenodo 15176438): exoTEDRF SOSS, Deming G395H; 15 of 104 bins flat-filled]: fraction of 300 Ariel tier1 noise draws called present (threshold 1e-4)
+== TOI-421b [Davenport et al. 2025 (Zenodo 15176438): exoTEDRF SOSS, Deming G395H; 15 of 104 bins flat-filled]: fraction of 500 Ariel tier1 noise draws called present (threshold 1e-4)
 learner               KNN   MLP  RFC   SVC
 variant    molecule                       
-airs_only  CH4        3.0   6.0  0.0   0.0
-           CO2       23.0  12.0  1.0   3.0
-           H2O       15.0  19.0  1.0   2.0
-           NH3       22.0  27.0  2.0  15.0
-all        CH4        4.0   0.0  0.0   0.0
-           CO2       23.0   1.0  0.0   0.0
-           H2O       18.0   5.0  0.0   1.0
-           NH3       17.0   0.0  0.0   0.0
-no_optical CH4        5.0   5.0  0.0   0.0
-           CO2       23.0   6.0  0.0   2.0
-           H2O       19.0  19.0  4.0   3.0
-           NH3       21.0   9.0  0.0   5.0
+airs_only  CH4        4.0   6.0  0.0   0.0
+           CO2       24.0  12.0  0.0   2.0
+           H2O       16.0  20.0  2.0   2.0
+           NH3       22.0  28.0  2.0  14.0
+all        CH4        5.0   0.0  0.0   0.0
+           CO2       25.0   1.0  0.0   0.0
+           H2O       19.0   7.0  0.0   1.0
+           NH3       18.0   0.0  0.0   0.0
+no_optical CH4        5.0   4.0  0.0   0.0
+           CO2       25.0   7.0  0.0   1.0
+           H2O       20.0  19.0  4.0   3.0
+           NH3       22.0   8.0  0.0   5.0
 == band metric (Mugnai et al. 2021, Eq. 3): M_H2O = 0.90, M_CH4 = -0.66, M_CO2 = 0.24  (their flags: CH4 >= 0.22, CO2 >= 0.26, H2O >= 0.80)

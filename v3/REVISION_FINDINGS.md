@@ -78,35 +78,50 @@ at most 0.12). A7 met.
 Caveat. The MIRI level relative to the near-infrared modes is set through a model the benchmark did not
 fit to MIRI; the alternative (MIRI as published) changes the CO₂ verdict of one learner and nothing else.
 
-### F2. The two real CH₄-bearing planets are missed, and the distance rule flags both
+### F2. The three real CH₄-bearing planets are missed with all inputs in six of six reductions and found without the optical points in five of six; the distance rule puts all six at or beyond its threshold
 
-TOI-270 d (CH₄ at 9.4σ, log VMR −1.6) and K2-18 b (CH₄ at 4–11σ in three analyses, log VMR −1.7 to
-−1.1) are called CH₄-absent by the classifier with all inputs (1 of 4 learners present on each), without
-the optical points, and in the AIRS-only variant (TOI-270 d split 2–2). Their 10-nearest-neighbour
-distances from the training set, 12.7 and 12.3, exceed the threshold that declines 10 % of clean
-simulated planets (11.25): both are flagged as outside the training distribution.
+TOI-270 d (CH₄ at 9.4σ, log VMR −1.6), K2-18 b (4–11σ in three analyses, −1.7 to −1.1) and TOI-1231 b
+(ln B 55–70, −0.85), through six reductions: TOI-270 d from Felix et al. 2025 and from the discovery
+team (Holmberg & Madhusudhan 2024, G395H only); K2-18 b from the discovery team's own files
+(Madhusudhan et al. 2023), from Schmidt & MacDonald 2025 and from Hu et al. 2025; TOI-1231 b from
+Sarkar et al. 2026 (`results/jwst_panel/panel_summary.txt`, `controls.txt`).
 
-Control (`results/jwst_panel/controls.txt`): the clear H₂/He twins with the same published abundances,
-through the same coverage mask and the same flat fill, scattered with the real per-bin JWST errors
-(30 and 45 ppm after binning), are detected as CH₄-bearing in 68 % and 96 % of 200 draws and are
-never flagged; at twice the real errors they are still detected in 43 % and 60 %. So the miss is not
-the noise, not the coverage, and not the classifier's in-simulator skill: it is the shape of the real
-spectra. Both planets are temperate sub-Neptunes around M dwarfs with high mean molecular weight and
-clouds or haze, a kind of atmosphere the consortium grid (H₂/He, four absorbers, gray cloud) does not
-contain. In the editor's taxonomy this is a recoverable error: the information is in the spectrum
-(JWST sees it), the classifier's training prior does not reach it, and a rule the note already
-tested would have declined both planets. Expectation P3 met; P2 not met (the no-optical and AIRS-only
-variants do not recover the misses, so this is not the haze mode of Section 3.3).
+| reduction | all inputs (KNN MLP RFC SVC) | no optical | AIRS only | distance (threshold 11.25) |
+| :-- | :-- | :-- | :-- | :-- |
+| TOI-270 d, Felix | 1000, absent | absent | split 2–2 | 12.70, flagged |
+| TOI-270 d, Holmberg | 0000, absent | absent | present | 11.01 |
+| K2-18 b, Madhusudhan | 0000, absent | absent | present | 11.25, at the threshold |
+| K2-18 b, Schmidt | 1000, absent | split | present | 11.54, flagged |
+| K2-18 b, Hu | 1000, absent | absent | present | 11.69, flagged |
+| TOI-1231 b, Sarkar | 1100, split | absent | present | 11.21 |
 
-Robustness to the reduction: the independent Schmidt & MacDonald 2025 reanalysis of K2-18 b
-(exoTEDRF, R = 100) gives the same answer: distance 11.5 (flagged), CH₄ called by 1 of 4 learners,
-Tier-1 frequency 18 %; its twin with the real errors is detected in 100 % of draws.
+With all inputs the classifier calls CH₄ absent on five reductions and splits on the sixth; the Tier-1
+detection frequencies are 7–16 %. With the AIRS channels alone, the same learners retrained without the
+optical and NIRSpec points, it calls CH₄ present on five of six and splits on the sixth. That is the
+note's optical-point mechanism (Section 3.3, haze mode) on real planets: all three have clouds or hazes
+in their retrievals (TOI-1231 b: clouds and haze at ln B 7.9; K2-18 b: grey cloud and haze at about
+3σ), and the three optical photometric points carry that shape into the learners. The muting census
+(F7) shows these sub-Neptunes are not more muted than their twins (0.6–2.2, inside the population's
+range), so unlike the warm giants the problem is the shape, not the amplitude. Expectation P2 (the
+no-optical or AIRS-only variant recovers the misses) is met for the AIRS-only variant, not for the
+no-optical one; P3 (the distance rule flags the misses) is met for three of six, and the other three sit
+at 11.0–11.25 against a clean median of 9.93, that is, at the 90th percentile of clean distances.
 
-Caveats. TOI-270 d is the Felix et al. 2025 reanalysis at native resolution, not Benneke et al.'s
-product; the primary K2-18 b spectrum is a third-party copy of the 2023 spectrum with a −41 ppm offset
-applied to one instrument; 17, 5 and 16 of 104 bins are flat-filled. The discovery-team originals are on
-OSF and will be run when it is back. The labels are the literature's; the CH₄ detections are among the
-most secure in the JWST literature.
+Control: the clear H₂/He twins with the published abundances, through the same coverage mask and flat
+fill, scattered with the real per-bin JWST errors (19–45 ppm after binning), are detected as
+CH₄-bearing in 68, 95, 100, 100 and 100 % of 200 draws (TOI-270 d Felix, K2-18 b three ways,
+TOI-1231 b) and never flagged; the G395H-only Holmberg reduction's twin, with 63 of 104 bins filled, is
+detected in 19 % and is the one case where coverage limits the test. So the misses are not the noise,
+not the coverage (except for that one), and not the classifier's in-simulator skill: they are the shape
+of the real spectra, and the information is in the spectrum, because the AIRS-only learner finds it. In
+the editor's taxonomy this is a recoverable error, and the optical-excess router of F5 is the kind of
+rule that recovers it.
+
+Switching K2-18 b from the third-party copy to the discovery team's files moved its distance from 12.3
+to 11.25 and its all-input verdict from 0100 to 0000, and raised the AIRS-only verdict from absent to
+present; the copy's −41 ppm instrument offset was replaced by the −92 ppm offset our alignment finds
+between SOSS and G395H. Caveats: labels from the literature (the CH₄ detections are among the most
+secure in the JWST literature); 5–30 bins flat-filled (63 for the G395H-only reduction).
 
 ### F3. With AIRS-only coverage the classifier cannot test H₂O, and says so by construction
 
@@ -120,9 +135,11 @@ ambiguous), HAT-P-26 b (2–3 of 4; present) and GJ 3470 b (2 of 4 all-input, 3 
 
 ### F4. On real spectra the classifier's default is "absent"
 
-Over the 28 panel labels the literature decides (ten inputs, nine planets, K2-18 b twice), the
-all-input classifier is right on 19 (68 %), which is below the share of absent labels (19 of 28). It
-reproduced one of the nine "present" labels. Even where it is right, the Tier-1 detection frequencies
+Over the 35 panel labels the literature decides (thirteen inputs, ten planets, K2-18 b three ways,
+TOI-270 d twice), the all-input classifier is right on 22 (63 %), which is below the share of absent
+labels (22 of 35). It reproduced none of the thirteen "present" labels outright (one split). Without the
+optical points it is right on 25 of 36, and with the AIRS channels alone on 29 of 37 (78 %), where it
+finds CH₄ on five of six sub-Neptune reductions (F2) and CO₂ on four of five warm giants. Even where it is right, the Tier-1 detection frequencies
 of present molecules are low (CO₂ on WASP-107 b 49 %; everything else below 30 %).
 
 WASP-166 b is the clean case of this: a hot super-Neptune with 0.86–5.16 µm coverage, inside the
@@ -136,8 +153,8 @@ the MIRI-less panel cannot separate them for this planet.
 
 Together with F1's four-fold muting, F4 says the real spectra carry smaller features, relative to their
 continua, than the clear-grid training spectra, and the classifier's operating point is tuned to the
-latter. Expectation P1 (≥ 75 % of scored labels) not met at 68 %; P6 met (no NH₃ false positive on any
-panel planet).
+latter. Expectation P1 (≥ 75 % of scored labels) not met at 63 % with all inputs, met at 78 % with the AIRS
+channels alone; P6 met (no NH₃ false positive on any panel planet).
 
 ### F5. The diagnostic: a one-number optical-excess score, routed to the AIRS-only classifier, is never worse than the classifier and recovers a third of the CH₄ targets haze loses
 
@@ -267,7 +284,7 @@ Routing predicted-undecidable planets to the back of the queue loses targets, so
 is not met; the retrieval-everywhere strategy, which the full retrieval run enables, is the proper
 upper bound for C4 and is pending.
 
-### F7. Muting census: six of the eleven real JWST spectra are more muted than any atmosphere the simulator population can produce at their bulk parameters, and the distance rule cannot see it because it normalises amplitude away
+### F7. Muting census: six of the fourteen real JWST spectra are more muted than any atmosphere the simulator population can produce at their bulk parameters, and the distance rule cannot see it because it normalises amplitude away
 
 For each real planet with a converted spectrum, the dispersion of its measured Tier-3 bins (standard
 deviation of the depths, with the per-bin errors removed in quadrature) against the same dispersion of
@@ -288,9 +305,12 @@ sample of 150 POP-I planets, their rendered spectrum against their own clear twi
 | TOI-421 b* | 35 | 119 | 3.4 | 3.7 | no | 3.5 / 3.5 |
 | WASP-166 b | 69 | 213 | 3.1 | 1.8 | yes | 3.0 / 1.8 |
 | HD 189733 b* | 104 | 182 | 1.8 | 2.3 | no | 1.7 / 2.3 |
-| K2-18 b, reanalysis | 42 | 71 | 1.7 | 2.7 | no | 1.5 / 2.6 |
-| K2-18 b | 72 | 68 | 0.9 | 2.6 | no | 0.9 / 2.6 |
-| TOI-270 d | 86 | 57 | 0.7 | 2.0 | no | 0.6 / 1.8 |
+| K2-18 b, Hu | 36 | 71 | 2.0 | 2.7 | no | 2.2 / 2.6 |
+| K2-18 b, Schmidt | 42 | 71 | 1.7 | 2.7 | no | 1.5 / 2.6 |
+| TOI-1231 b | 41 | 63 | 1.6 | 1.9 | no | 1.5 / 1.8 |
+| TOI-270 d, Holmberg | 48 | 50 | 1.0 | 1.9 | no | 1.0 / 1.9 |
+| K2-18 b, Madhusudhan | 94 | 68 | 0.7 | 2.6 | no | 0.7 / 2.6 |
+| TOI-270 d, Felix | 86 | 57 | 0.7 | 2.0 | no | 0.6 / 1.8 |
 
 \* twin water abundance from the literature with the other gases at the floor (HAT-P-18 b: log H₂O −3.03,
 Fu et al. 2022, the paper whose spectrum is used; a 2024 reanalysis finds −4.4, which would shrink the
@@ -308,10 +328,10 @@ atmosphere the population allows at its mass, radius and irradiation. For five p
 pressure in the model reaches the real amplitude, because their photospheres sit above the population's
 cloud floor. Within the population, clouds mute the median planet by 1 %, the 90th percentile by 23 %,
 the 99th by a factor of 2.4, and the most muted of 150 by 3.1; none of the sampled planets is as muted
-as any of the five giants. The two sub-Neptunes with retrieved methane-rich atmospheres (K2-18 b,
-TOI-270 d) are the only real planets whose amplitude the population covers, because their twins are
-already heavy, and the classifier missed CH₄ on both for the different reasons of F2 (coverage and
-domain).
+as any of the five giants. The three sub-Neptunes with retrieved methane-rich atmospheres (K2-18 b,
+TOI-270 d, TOI-1231 b, six reductions) are the only real planets whose amplitude the population covers,
+because their twins are already heavy, and the classifier missed CH₄ on all six for the different reason
+of F2 (the shape the optical points carry).
 
 What this says: in feature amplitude the real warm giants lie outside the simulator population, although
 their bulk parameters lie inside it. The population's atmospheres are H₂/He with trace gases at 1 % at
@@ -321,12 +341,12 @@ of times solar, hazes, or patchy clouds, which is what their JWST retrievals rep
 rule, and every input-space rule in it, works on normalised spectra and so removes exactly this
 quantity: WASP-39 b is in-distribution by distance (F1) and the most muted giants here are not flagged
 either. This is the measurement behind the reviewer's "joint distribution of Ariel targets unknown": the
-first eleven JWST transmission spectra converted to the Ariel grid say the simulator population is
+first fourteen JWST transmission spectra (ten planets) converted to the Ariel grid say the simulator population is
 systematically too clear for warm giants, and the one learner that fails on WASP-39 b fails on the planet
 the population is least able to represent. It also explains F4 (absent by default): on muted spectra the
 bands fall under the noise the classifier was trained to expect, and it reverts to the prior.
 
-Caveats: eleven planets, five warm giants with retrieved abundances carrying the result, with no
+Caveats: ten planets in fourteen reductions, five warm giants with retrieved abundances carrying the result, with no
 exception among them; the twin's temperature is the MCS equilibrium temperature, and the 0.7 T_eq column
 allows for a cooler terminator only up to the population's own floor, which is the comparison the
 question needs (a cooler real terminator is part of what the population does not represent). The

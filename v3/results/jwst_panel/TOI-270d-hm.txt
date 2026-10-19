@@ -1,0 +1,65 @@
+TOI-270d-hm: Holmberg & Madhusudhan 2024 (OSF 8fu36), canonical G395H at native resolution
+segments: G395H 3393 pts 2.74-5.17 um, offset +0 ppm
+coverage by channel: AIRS-CH0 37/69 filled, AIRS-CH1 12/21 filled, FGS1 1/1 filled, FGS2 1/1 filled, NIRSpec 11/11 filled, VISPhot 1/1 filled
+== TOI-270d-hm [Holmberg & Madhusudhan 2024 (OSF 8fu36), canonical G395H at native resolution; 63 of 104 bins flat-filled]: verdicts at the delivered precision (1 = present)
+-- threshold 1e-5
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       1.0  1.0  1.0  1.0
+           CO2       1.0  0.0  0.0  0.0
+           H2O       1.0  1.0  0.0  1.0
+           NH3       1.0  0.0  0.0  0.0
+all        CH4       1.0  1.0  0.0  1.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       1.0  0.0  0.0  1.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  1.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+-- threshold 1e-4
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       1.0  1.0  0.0  1.0
+           CO2       1.0  0.0  0.0  0.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       1.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+-- threshold 1e-3
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       1.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+== TOI-270d-hm [Holmberg & Madhusudhan 2024 (OSF 8fu36), canonical G395H at native resolution; 63 of 104 bins flat-filled]: fraction of 500 Ariel tier1 noise draws called present (threshold 1e-4)
+learner               KNN   MLP  RFC  SVC
+variant    molecule                      
+airs_only  CH4       33.0  27.0  2.0  8.0
+           CO2       10.0   6.0  0.0  1.0
+           H2O       14.0  16.0  1.0  3.0
+           NH3       10.0  15.0  1.0  3.0
+all        CH4       22.0  10.0  0.0  0.0
+           CO2        8.0   3.0  0.0  0.0
+           H2O       13.0   9.0  0.0  1.0
+           NH3        5.0   4.0  0.0  0.0
+no_optical CH4       26.0   8.0  0.0  0.0
+           CO2        8.0   3.0  0.0  0.0
+           H2O       14.0  12.0  1.0  1.0
+           NH3       11.0   7.0  0.0  1.0
+== band metric (Mugnai et al. 2021, Eq. 3): M_H2O = 0.56, M_CH4 = 0.60, M_CO2 = 0.35  (their flags: CH4 >= 0.22, CO2 >= 0.26, H2O >= 0.80)

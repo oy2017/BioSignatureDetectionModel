@@ -55,7 +55,19 @@ if [ "${1:-}" != "--verify" ]; then
   get "https://content.cld.iop.org/journals/1538-3881/170/5/292/revision1/ajae0929f2.tar.gz" "$ARC/Gressier2025_ajae0929f2.tar.gz" \
     && mkdir -p "$P/HAT-P-26b/Gressier2025_IOP_figdata/f2" && tar -xzf "$ARC/Gressier2025_ajae0929f2.tar.gz" -C "$P/HAT-P-26b/Gressier2025_IOP_figdata/f2" 2>/dev/null
   for t in 3 4; do get "https://iopscience.iop.org/2041-8205/970/1/L10/suppdata/apjlad55e9t${t}_mrt.txt?doi=10.3847/2041-8213/ad55e9" "$P/GJ3470b/Beatty2024_apjlad55e9t${t}_mrt.txt"; done
-  echo "(the original K2-18 b, TOI-270 d and TOI-1231 b spectra are on OSF: osf.io/36djh, osf.io/8fu36, osf.io/mryd6; add them here when OSF is reachable)"
+  echo "== OSF (osf.io/<project>; download links are the files' OSF ids)"
+  O=$P/TOI-1231b/Sarkar2026_osf_mryd6
+  get https://osf.io/download/u52k6/ "$O/TOI-1231b_niriss_ord1_JexoRes.txt";  get https://osf.io/download/6a4e575b8b2ce4c36d6e0fd7/ "$O/TOI-1231b_niriss_ord2_JexoRes.txt"
+  get https://osf.io/download/mq7cb/ "$O/TOI-1231b_nirspec_g395h_nrs1_JexoRes.txt"; get https://osf.io/download/8r5tg/ "$O/TOI-1231b_nirspec_g395h_nrs2_JexoRes.txt"
+  get https://osf.io/download/825n9/ "$O/TOI-1231b_niriss_ord1_JexoPipe.txt"; get https://osf.io/download/3f2j8/ "$O/TOI-1231b_niriss_ord2_JexoPipe.txt"
+  get https://osf.io/download/8k9e6/ "$O/TOI-1231b_nirspec_g395h_nrs1_JexoPipe.txt"; get https://osf.io/download/89mda/ "$O/TOI-1231b_nirspec_g395h_nrs2_JexoPipe.txt"
+  O=$P/K2-18b/Madhusudhan2023_osf_36djh
+  get https://osf.io/download/t5gz7/ "$O/K2-18b_niriss_soss_native.txt"; get https://osf.io/download/x5rvw/ "$O/K2-18b_nirspec_g395h_native.txt"
+  get https://osf.io/download/82d6b/ "$O/K2-18b_niriss_soss_lowres.txt"; get https://osf.io/download/pwut9/ "$O/K2-18b_nirspec_g395h_lowres.txt"; get https://osf.io/download/7uqaz/ "$O/README.txt"
+  get https://osf.io/download/j6p7r/ "$ARC/hpu8g_spectra-k2-18b.zip" && extract "$ARC/hpu8g_spectra-k2-18b.zip" "$P/K2-18b/Hu2025_osf_hpu8g" "spectra/niriss_nameless/*" "spectra/nirspec_combined/*"
+  O=$P/TOI-270d/Holmberg2024_osf_8fu36
+  for f in TOI-270d_nirspec_g395h_native.txt:5u2fq TOI-270d_nirspec_g395h_lowres.txt:mqwcv TOI-270d_nirspec_g395h_CLD_native.txt:bwxcq TOI-270d_nirspec_g395h_CLD_lowres.txt:rek85 TOI-270d_nirspec_g395h_DT_native.txt:mkhe7 TOI-270d_nirspec_g395h_DT_lowres.txt:e283p README.txt:hk7m4; do
+    get "https://osf.io/download/${f##*:}/" "$O/${f%%:*}"; done
 fi
 
 echo "== verifying against v3/jwst_manifest.md5"
