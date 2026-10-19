@@ -4,15 +4,26 @@ CH4,clean,oracle,359,0,214,214,214,214
 CH4,clean,random,359,155,369,524,834,1919
 CH4,clean,band metric,359,102,316,418,622,1336
 CH4,clean,AIRS-only classifier,359,27,241,268,322,511
+CH4,clean,retrieval of every planet (nested sampling),359,0,214,214,214,214
+CH4,clean,+ undecidable by the retrieval itself re-scored by it,359,4,218,222,230,258
 CH4,clean,+ margin (declined to the back),359,65,279,344,474,929
+CH4,clean,+ margin (flagged re-scored by the retrieval),359,17,231,248,282,401
 CH4,clean,+ ensemble (declined to the back),359,62,276,338,462,896
+CH4,clean,+ ensemble (flagged re-scored by the retrieval),359,17,231,248,282,401
 CH4,clean,+ mahalanobis (declined to the back),359,26,240,266,318,500
+CH4,clean,+ mahalanobis (flagged re-scored by the retrieval),359,13,227,240,266,357
 CH4,clean,+ knn (declined to the back),359,21,235,256,298,445
+CH4,clean,+ knn (flagged re-scored by the retrieval),359,13,227,240,266,357
 CH4,clean,+ pca_recon (declined to the back),359,38,252,290,366,632
+CH4,clean,+ pca_recon (flagged re-scored by the retrieval),359,15,229,244,274,379
 CH4,clean,+ disagree (flagged re-scored by the fallback),359,21,235,256,298,445
+CH4,clean,+ disagree (flagged re-scored by the retrieval),359,17,231,248,282,401
 CH4,clean,+ optical (flagged re-scored by the fallback),359,19,233,252,290,423
+CH4,clean,+ optical (flagged re-scored by the retrieval),359,15,229,244,274,379
 CH4,clean,+ bandmetric (flagged re-scored by the fallback),359,20,234,254,294,434
+CH4,clean,+ bandmetric (flagged re-scored by the retrieval),359,19,233,252,290,423
 CH4,clean,+ decidable (undecidable ranked by decidability),359,46,260,306,398,720
+CH4,clean,+ decidable (flagged re-scored by the retrieval),359,16,230,246,278,390
 CH4,haze3e7,classifier,359,38,252,290,366,632
 CH4,haze3e7,oracle,359,0,214,214,214,214
 CH4,haze3e7,random,359,142,356,498,782,1776
@@ -102,15 +113,26 @@ H2O,clean,oracle,364,0,209,209,209,209
 H2O,clean,random,364,151,360,511,813,1870
 H2O,clean,band metric,364,130,339,469,729,1639
 H2O,clean,AIRS-only classifier,364,82,291,373,537,1111
+H2O,clean,retrieval of every planet (nested sampling),364,2,211,213,217,231
+H2O,clean,+ undecidable by the retrieval itself re-scored by it,364,11,220,231,253,330
 H2O,clean,+ margin (declined to the back),364,93,302,395,581,1232
+H2O,clean,+ margin (flagged re-scored by the retrieval),364,46,255,301,393,715
 H2O,clean,+ ensemble (declined to the back),364,104,313,417,625,1353
+H2O,clean,+ ensemble (flagged re-scored by the retrieval),364,47,256,303,397,726
 H2O,clean,+ mahalanobis (declined to the back),364,69,278,347,485,968
+H2O,clean,+ mahalanobis (flagged re-scored by the retrieval),364,42,251,293,377,671
 H2O,clean,+ knn (declined to the back),364,71,280,351,493,990
+H2O,clean,+ knn (flagged re-scored by the retrieval),364,42,251,293,377,671
 H2O,clean,+ pca_recon (declined to the back),364,73,282,355,501,1012
+H2O,clean,+ pca_recon (flagged re-scored by the retrieval),364,44,253,297,385,693
 H2O,clean,+ disagree (flagged re-scored by the fallback),364,62,271,333,457,891
+H2O,clean,+ disagree (flagged re-scored by the retrieval),364,47,256,303,397,726
 H2O,clean,+ optical (flagged re-scored by the fallback),364,56,265,321,433,825
+H2O,clean,+ optical (flagged re-scored by the retrieval),364,45,254,299,389,704
 H2O,clean,+ bandmetric (flagged re-scored by the fallback),364,53,262,315,421,792
+H2O,clean,+ bandmetric (flagged re-scored by the retrieval),364,46,255,301,393,715
 H2O,clean,+ decidable (undecidable ranked by decidability),364,80,289,369,529,1089
+H2O,clean,+ decidable (flagged re-scored by the retrieval),364,42,251,293,377,671
 H2O,haze3e7,classifier,364,78,287,365,521,1067
 H2O,haze3e7,oracle,364,0,209,209,209,209
 H2O,haze3e7,random,364,155,364,519,829,1914
@@ -200,14 +222,24 @@ joint,clean,oracle,576,3,0,3,9,30
 joint,clean,random,576,221,218,439,881,2428
 joint,clean,band metric,576,243,240,483,969,2670
 joint,clean,AIRS-only classifier,576,139,136,275,553,1526
+joint,clean,retrieval of every planet (nested sampling),576,39,36,75,153,426
+joint,clean,+ undecidable by the retrieval itself re-scored by it,576,52,49,101,205,569
 joint,clean,+ margin (declined to the back),576,133,130,263,529,1460
+joint,clean,+ margin (flagged re-scored by the retrieval),576,92,89,181,365,1009
 joint,clean,+ ensemble (declined to the back),576,121,118,239,481,1328
+joint,clean,+ ensemble (flagged re-scored by the retrieval),576,91,88,179,361,998
 joint,clean,+ mahalanobis (declined to the back),576,105,102,207,417,1152
+joint,clean,+ mahalanobis (flagged re-scored by the retrieval),576,91,88,179,361,998
 joint,clean,+ knn (declined to the back),576,104,101,205,413,1141
+joint,clean,+ knn (flagged re-scored by the retrieval),576,90,87,177,357,987
 joint,clean,+ pca_recon (declined to the back),576,112,109,221,445,1229
+joint,clean,+ pca_recon (flagged re-scored by the retrieval),576,91,88,179,361,998
 joint,clean,+ disagree (flagged re-scored by the fallback),576,104,101,205,413,1141
+joint,clean,+ disagree (flagged re-scored by the retrieval),576,89,86,175,353,976
 joint,clean,+ optical (flagged re-scored by the fallback),576,102,99,201,405,1119
+joint,clean,+ optical (flagged re-scored by the retrieval),576,89,86,175,353,976
 joint,clean,+ bandmetric (flagged re-scored by the fallback),576,99,96,195,393,1086
+joint,clean,+ bandmetric (flagged re-scored by the retrieval),576,92,89,181,365,1009
 joint,haze3e7,classifier,576,150,147,297,597,1647
 joint,haze3e7,oracle,576,3,0,3,9,30
 joint,haze3e7,random,576,222,219,441,885,2439

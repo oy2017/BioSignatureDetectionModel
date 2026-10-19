@@ -26,10 +26,17 @@ compound, white_x2, white_x3), with the noise draws of the note:
              probability of KNN, MLP and RFC; targets lost (label 1 not selected) and slots wasted
              (label 0 selected), cost = w x lost + wasted for w = 1, 3, 10; strategies: classifier
              alone, + each old rule (declined planets to the back), + each candidate (flagged planets
-             re-ranked by the fallback), the band metric alone, random, and the oracle
+             re-ranked by the fallback), the band metric alone, random, and the oracle; on the clean
+             case also the existing method, a nested-sampling retrieval of every planet (its posterior
+             from identifiability_calibration.csv), and each rule with flagged planets re-scored by it
+  retrieval_classes  (d''): learner errors split against that posterior: recoverable (p_true > 0.95),
+             undecidable (0.05-0.95), misled (< 0.05); with the retrieval's own accuracy
+  triage     retrieval budget for a fraction f of the planets (clean case, CH4 and H2O): the planets each
+             rule ranks most suspect get the retrieval, the rest keep the classifier; targets lost vs f,
+             against a random budget, the measured dchi2 and the retrieval's own undecidability
 
 Usage:  OMP_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 python alfnoor_diagnostic.py [--real]
-Writes results/diagnostic_{credit,remedy,selection,classes}.csv and results/diagnostic.txt; --real scores
+Writes results/diagnostic_{credit,remedy,selection,classes,consistency,retrieval_classes,triage}.csv and results/diagnostic.txt; --real scores
 the converted JWST spectra (WASP-39 b and the panel) with the candidates at the clean thresholds.
 """
 import argparse
@@ -168,6 +175,20 @@ def decidability_regressor(Pte, sig, X, csv=os.path.join(RESULTS, "identifiabili
     return (pd.concat(rows) if rows else None), feats
 
 
+def retrieval_posteriors(Pte, csv=os.path.join(RESULTS, "identifiability_calibration.csv")):
+    """Nested-sampling posteriors of every planet the calibration run reached (the clean spectrum at Tier-1 sigma):
+    per molecule the posterior probability of 'present' and of the true class, aligned with Pte (NaN if missing)."""
+    if not os.path.exists(csv):
+        return None
+    C = pd.read_csv(csv).drop_duplicates("name"); name_to_i = {n: i for i, n in enumerate(Pte.name)}
+    C = C[C.name.isin(name_to_i)]; i = C.name.map(name_to_i).to_numpy(); out = {"n": len(C)}
+    for mol in MOLS:
+        pp = np.full(len(Pte), np.nan); pt = np.full(len(Pte), np.nan)
+        pp[i] = C[f"{mol}_p_present"].to_numpy(float); pt[i] = C[f"{mol}_p_true"].to_numpy(float); out[mol] = (pp, pt)
+    print(f"retrieval posteriors on {len(C)} of {len(Pte)} planets", flush=True)
+    return out
+
+
 # ---- evaluations ----------------------------------------------------------------------------------------------
 def evaluate(cases, Pte, edges, sig_te, sc):
     y_true = {mol: (Pte[f"atm {mol}"] > -4).astype(int).to_numpy() for mol in MOLS}
@@ -186,6 +207,7 @@ def evaluate(cases, Pte, edges, sig_te, sc):
                     for k in LEARNERS:
                         S[c][("decidable", (mol, k))] = s
     rules = OLD_RULES + [r for r in NEW if r != "decidable" or reached]
+    RET = retrieval_posteriors(Pte)
     # 1. selective credit
     rows = []
     for mol in MOLS:
@@ -256,6 +278,26 @@ def evaluate(cases, Pte, edges, sig_te, sc):
                 r["acc_all"] = right.mean(); r["base_all"] = max(y.mean(), 1 - y.mean())
                 rows.append(r)
     consistency = pd.DataFrame(rows)
+    # 3c. error classes against the retrieval posterior itself, where every planet has one: a learner error is
+    # recoverable if the posterior of the true class exceeds 0.95 (a retrieval of the same spectrum gets it right),
+    # undecidable if p_true is between 0.05 and 0.95, misled if below 0.05 (the retrieval is confidently wrong too).
+    # The posterior is of the clean spectrum; under a departure the decomposition carries the clean decidability.
+    rows = []
+    if RET is not None:
+        for mol in MOLS:
+            pp, pt = RET[mol]; have = np.isfinite(pt); y = y_true[mol]
+            ret_pred = (pp >= 0.5).astype(int); ret_right = ret_pred == y
+            for k in LEARNERS:
+                for c in CASES:
+                    pred = (P[c]["all"][(mol, k)] >= 0.5).astype(int); right = pred == y; wrong = ~right & have
+                    dec = pt > 0.95; und = (pt <= 0.95) & (pt >= 0.05); mis = pt < 0.05
+                    rows.append(dict(molecule=mol, classifier=k, case=c, n=int(have.sum()), learner_acc=right[have].mean(), retrieval_acc=ret_right[have].mean(),
+                                     bayes_expected=np.nanmean(np.maximum(pp, 1 - pp)[have]), undecidable_frac=und[have].mean(), misled_frac=mis[have].mean(),
+                                     acc_decidable=right[dec].mean(), acc_undecidable=right[und].mean(), base_undecidable=max(y[und].mean(), 1 - y[und].mean()) if und.any() else np.nan,
+                                     n_wrong=int(wrong.sum()), recoverable=dec[wrong].mean(), undecidable=und[wrong].mean(), misled=mis[wrong].mean(),
+                                     learner_right_retrieval_wrong=(right & ~ret_right & have).sum() / max(int((~ret_right & have).sum()), 1),
+                                     both_wrong=int((wrong & ~ret_right).sum())))
+    retclasses = pd.DataFrame(rows)
     # 4. selection simulation
     rows = []; n = len(Pte); slots = int(round(BUDGET * n)); rng = np.random.default_rng(SEED)
     for target in ("CH4", "H2O", "joint"):
@@ -266,6 +308,13 @@ def evaluate(cases, Pte, edges, sig_te, sc):
             fb = sum(np.mean([P[c]["airs_only"][(m, k)] for k in ("KNN", "MLP", "RFC")], axis=0) for m in mols)
             strategies = {"classifier": score, "oracle": y + rng.uniform(0, 1e-3, n), "random": rng.uniform(0, 1, n),
                           "band metric": sum(M[c][m] for m in mols), "AIRS-only classifier": fb}
+            # the existing method: a nested-sampling retrieval of every planet (its posterior is of the clean spectrum,
+            # so it enters the clean case only; under a departure it would have to be rerun on the departed spectrum)
+            ret = None
+            if RET is not None and c == "clean" and all(np.isfinite(RET[m][0]).all() for m in mols):
+                ret = sum(RET[m][0] for m in mols); strategies["retrieval of every planet (nested sampling)"] = ret
+                und = np.any(np.column_stack([RET[m][1] <= 0.95 for m in mols]), axis=1)
+                strategies["+ undecidable by the retrieval itself re-scored by it"] = np.where(und, ret, score)
             for rule in rules:
                 if rule == "decidable" and target == "joint":
                     continue
@@ -281,16 +330,44 @@ def evaluate(cases, Pte, edges, sig_te, sc):
                     strategies["+ decidable (undecidable ranked by decidability)"] = np.where(flag, -10 + (s - s.min()) / (np.ptp(s) + 1e-9), score)
                 else:
                     strategies[f"+ {rule} (flagged re-scored by the fallback)"] = np.where(flag, fb, score)
+                if ret is not None:
+                    strategies[f"+ {rule} (flagged re-scored by the retrieval)"] = np.where(flag, ret, score)
             for name, sc_ in strategies.items():
                 sel = np.zeros(n, bool); sel[np.argsort(-sc_)[:slots]] = True
                 lost = int((y == 1).sum() - (sel & (y == 1)).sum()); wasted = int((sel & (y == 0)).sum())
                 rows.append(dict(target=target, case=c, strategy=name, targets=int((y == 1).sum()), lost=lost, wasted=wasted,
                                  **{f"cost_w{w}": w * lost + wasted for w in WEIGHTS}))
     selection = pd.DataFrame(rows)
-    return credit, remedy, classes, selection, consistency
+    # 5. triage: with a retrieval budget for a fraction f of the planets, which planets should get one? Each rule ranks
+    # the planets by its suspicion score (clean case); the top f are re-scored by the retrieval posterior, the rest keep
+    # the classifier's score; targets lost at the 60 % selection against f. 'dchi2 measured' ranks by the cheap
+    # identifiability test's own gap on the spectrum; 'random' is the budget spent at random; 'p_true (retrieval's own)'
+    # is the unattainable ordering by the retrieval's own undecidability.
+    rows = []
+    if RET is not None:
+        for target in ("CH4", "H2O"):
+            pp, pt = RET[target]
+            if not np.isfinite(pp).all():
+                continue
+            y = y_true[target]; score = np.mean([P["clean"]["all"][(target, k)] for k in ("KNN", "MLP", "RFC")], axis=0)
+            orders = {"random": rng.uniform(0, 1, n), "p_true (retrieval's own)": -pt, "classifier margin": -np.abs(score - 0.5)}
+            for rule in rules:
+                s_ = np.nanmean(np.column_stack([sc.get(S["clean"], rule, target, k) for k in ("KNN", "MLP", "RFC")]), axis=1)
+                if np.isfinite(s_).sum() > 50:
+                    orders[rule] = np.where(np.isfinite(s_), s_, -np.inf)
+            if target in reached:
+                idx, D = reached[target]; dm = np.full(n, -np.inf); dm[idx] = -D.log_dchi2.to_numpy(); orders["dchi2 measured"] = dm
+            for name, o in orders.items():
+                rank = np.argsort(-o)
+                for f in np.arange(0, 1.01, 0.1):
+                    flag = np.zeros(n, bool); flag[rank[:int(round(f * n))]] = True; sc_ = np.where(flag, pp, score)
+                    sel = np.zeros(n, bool); sel[np.argsort(-sc_)[:slots]] = True
+                    rows.append(dict(target=target, order=name, f=round(f, 1), lost=int((y == 1).sum() - (sel & (y == 1)).sum()), wasted=int((sel & (y == 0)).sum())))
+    triage = pd.DataFrame(rows)
+    return credit, remedy, classes, selection, consistency, retclasses, triage
 
 
-def write_summary(credit, remedy, classes, selection, consistency=None):
+def write_summary(credit, remedy, classes, selection, consistency=None, retclasses=None, triage=None):
     L = ["Diagnostic candidates on POP-I (1e-4; mean over molecules and the four learners unless stated)", ""]
     L.append("== selective credit (threshold declines 10 % of clean planets; credit = accepted accuracy - clean selective baseline at equal coverage), points")
     g = credit.groupby(["rule", "case"])[["coverage", "accepted", "credit", "auroc_error"]].mean()
@@ -325,6 +402,20 @@ def write_summary(credit, remedy, classes, selection, consistency=None):
         L.append("  mean over learners, per case: acc on decidable / undecidable labels (base of undecidable), recall decidable / undecidable")
         for (m, c), r in g.iterrows():
             L.append(f"    {m} {c:<10} {100*r.acc_decidable:5.1f} / {100*r.acc_undecidable:5.1f} ({100*r.base_undecidable:5.1f})   recall {100*r.recall_decidable:5.1f} / {100*r.recall_undecidable:5.1f}")
+    if retclasses is not None and len(retclasses):
+        L.append(""); L.append("== (d'') error classes against the nested-sampling posterior of every planet (clean spectrum, Tier-1 sigma): a learner error is")
+        L.append("   recoverable if p_true > 0.95, undecidable if 0.05 <= p_true <= 0.95, misled if p_true < 0.05; the posterior is of the clean spectrum in every column")
+        g = retclasses[retclasses.case == "clean"].groupby("molecule")[["n", "learner_acc", "retrieval_acc", "bayes_expected", "undecidable_frac", "misled_frac"]].mean()
+        for m in MOLS:
+            if m in g.index:
+                r = g.loc[m]; L.append(f"  {m} n={r.n:.0f}  accuracy: learners (mean) {100*r.learner_acc:5.1f}  retrieval {100*r.retrieval_acc:5.1f}  retrieval's own expectation {100*r.bayes_expected:5.1f}   undecidable {100*r.undecidable_frac:4.1f} %  retrieval confidently wrong {100*r.misled_frac:3.1f} %")
+        L.append(f"  {'mol':<4} {'learner':<4} {'acc_dec':>8} {'acc_undec':>10} {'base_undec':>11} {'wrong':>6} {'recov%':>7} {'undec%':>7} {'misled%':>8} {'both_wrong':>11} {'learner right where retrieval wrong':>36}")
+        for _, r in retclasses[retclasses.case == "clean"].iterrows():
+            L.append(f"  {r.molecule:<4} {r.classifier:<4} {100*r.acc_decidable:8.1f} {100*r.acc_undecidable:10.1f} {100*r.base_undecidable:11.1f} {r.n_wrong:6d} {100*r.recoverable:7.1f} {100*r.undecidable:7.1f} {100*r.misled:8.1f} {r.both_wrong:11d} {100*r.learner_right_retrieval_wrong:35.1f} %")
+        g = retclasses.groupby(["molecule", "case"])[["n_wrong", "recoverable", "undecidable", "misled"]].mean()
+        L.append("  mean over learners, per case: errors, share recoverable / undecidable / misled (clean-spectrum posterior)")
+        for (m, c), r in g.iterrows():
+            L.append(f"    {m} {c:<10} wrong {r.n_wrong:5.0f}   {100*r.recoverable:5.1f} / {100*r.undecidable:5.1f} / {100*r.misled:5.1f}")
     L.append(""); L.append(f"== Tier-2 selection: {int(BUDGET*100)} % of the planets get a slot; lost = targets not selected, wasted = slots on non-targets; cost = w x lost + wasted")
     for target in ("CH4", "H2O", "joint"):
         for c in ["clean", "haze3e7", "spots20", "white_x2"]:
@@ -332,6 +423,14 @@ def write_summary(credit, remedy, classes, selection, consistency=None):
             L.append(f"-- {target} under {c} ({int(d.targets.iloc[0])} targets)"); L.append(f"   {'strategy':<52} {'lost':>5} {'wasted':>7}   cost w=1  w=3  w=10")
             for _, r in d.iterrows():
                 L.append(f"   {r.strategy:<52} {r.lost:5d} {r.wasted:7d}   {r.cost_w1:6d} {r.cost_w3:5d} {r.cost_w10:5d}")
+    if triage is not None and len(triage):
+        L.append(""); L.append("== retrieval triage (clean case): targets lost at the 60 % selection when the fraction f of planets each ordering ranks most suspect is re-scored by the retrieval")
+        fs = [0.0, 0.1, 0.2, 0.3, 0.5, 0.7, 1.0]
+        for target in triage.target.unique():
+            d = triage[triage.target == target]; L.append(f"-- {target}: lost targets at f = " + "  ".join(f"{int(100*f):3d}%" for f in fs))
+            for name in d.order.unique():
+                dd = d[d.order == name].set_index("f").lost
+                L.append(f"   {name:<28} " + "  ".join(f"{int(dd.get(f, -1)):4d}" for f in fs))
     return "\n".join(L)
 
 
@@ -366,10 +465,10 @@ def main():
     if a.real:
         text = score_real(sc); print(text); open(os.path.join(RESULTS, "diagnostic_real.txt"), "w").write(text + "\n"); return
     cases, Pte, e, sig = test_cases()
-    credit, remedy, classes, selection, consistency = evaluate(cases, Pte, e, sig, sc)
-    for name, df in (("credit", credit), ("remedy", remedy), ("classes", classes), ("selection", selection), ("consistency", consistency)):
+    credit, remedy, classes, selection, consistency, retclasses, triage = evaluate(cases, Pte, e, sig, sc)
+    for name, df in (("credit", credit), ("remedy", remedy), ("classes", classes), ("selection", selection), ("consistency", consistency), ("retrieval_classes", retclasses), ("triage", triage)):
         if df is not None: df.to_csv(os.path.join(RESULTS, f"diagnostic_{name}.csv"), index=False)
-    text = write_summary(credit, remedy, classes, selection, consistency); print(text); open(os.path.join(RESULTS, "diagnostic.txt"), "w").write(text + "\n")
+    text = write_summary(credit, remedy, classes, selection, consistency, retclasses, triage); print(text); open(os.path.join(RESULTS, "diagnostic.txt"), "w").write(text + "\n")
 
 
 if __name__ == "__main__":
