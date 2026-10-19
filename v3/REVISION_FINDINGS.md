@@ -114,8 +114,13 @@ TOI-1231 b) and never flagged; the G395H-only Holmberg reduction's twin, with 63
 detected in 19 % and is the one case where coverage limits the test. So the misses are not the noise,
 not the coverage (except for that one), and not the classifier's in-simulator skill: they are the shape
 of the real spectra, and the information is in the spectrum, because the AIRS-only learner finds it. In
-the editor's taxonomy this is a recoverable error, and the optical-excess router of F5 is the kind of
-rule that recovers it.
+the editor's taxonomy this is a recoverable error. Of the F5 candidates (`results/diagnostic_real.txt`),
+the input-subset disagreement flags the CH₄ cell on four of the six reductions (K2-18 b Madhusudhan,
+K2-18 b Hu, TOI-1231 b, TOI-270 d Holmberg; the MLP's |p_all − p_AIRS| reaches 0.86–1.00), while the
+molecule-independent optical-excess score flags only the two K2-18 b reductions with the largest
+optical excess (1.51 and 1.58 against 1.29–1.39 for Hu and TOI-1231 b, below its threshold); so on the
+real sub-Neptunes the disagreement candidate, not the optical score, is the one that would route
+them to the AIRS-only learner.
 
 Switching K2-18 b from the third-party copy to the discovery team's files moved its distance from 12.3
 to 11.25 and its all-input verdict from 0100 to 0000, and raised the AIRS-only verdict from absent to
