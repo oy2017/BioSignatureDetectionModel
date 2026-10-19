@@ -104,8 +104,12 @@ def summarize():
     from sklearn.isotonic import IsotonicRegression
     cal = pd.read_csv(os.path.join(RESULTS, "identifiability_calibration.csv"))
     idf = pd.read_csv(os.path.join(RESULTS, "identifiability_none_tier1.csv")); idf = idf[np.isfinite(idf.dchi2)]
+    full = cal["index"].nunique() >= idf["index"].nunique()
     L = [f"dchi2 test against nested-sampling posteriors on {cal['index'].nunique()} POP-I planets (noise-free spectra, Tier-1 sigma)",
-         "p_true = posterior probability of the true class; decidable at level q if p_true > q", ""]
+         "p_true = posterior probability of the true class; decidable at level q if p_true > q",
+         ("the retrieval covers every planet of the identifiability run, so the 'sample' fractions and ceiling are the population's; "
+          "the isotonic column is what the dchi2 test alone would give (the conditional mean of p_true at each dchi2, thresholded)") if full else
+         "the 'population' fractions and ceiling map the sample's dchi2 -> p_true relation onto every planet of the identifiability run", ""]
     rows = []
     for m in MOLS:
         a = idf[idf.molecule == m][["index", "dchi2", "label"]].merge(cal[["index", f"{m}_p_true"]], on="index")
@@ -132,7 +136,8 @@ def summarize():
         L.append(f"     undecidable (p_true < 0.95 / < 0.84): sample {100*(p < 0.95).mean():.0f} / {100*(p < 0.84).mean():.0f} %;  population via the isotonic map "
                  f"{100*(pp < 0.95).mean():.0f} / {100*(pp < 0.84).mean():.0f} %;  Bayes-accuracy ceiling sample {100*ceiling_sample:.1f} %, population {100*ceiling_pop:.1f} %")
         rows.append(dict(molecule=m, n=len(a), spearman=rho, dchi2_at_95=thr[0.95], dchi2_at_84=thr[0.84], undecidable_95_pop=(pp < 0.95).mean(),
-                         undecidable_84_pop=(pp < 0.84).mean(), ceiling_pop=ceiling_pop, ceiling_sample=ceiling_sample))
+                         undecidable_84_pop=(pp < 0.84).mean(), ceiling_pop=ceiling_pop, ceiling_sample=ceiling_sample,
+                         undecidable_95_sample=(p < 0.95).mean(), undecidable_84_sample=(p < 0.84).mean(), full_population=full))
     L.append(""); L.append(f"sample: {cal.minutes.median():.1f} min and {cal.ncall.median():.0f} calls per planet (median)")
     pd.DataFrame(rows).to_csv(os.path.join(RESULTS, "identifiability_calibration_thresholds.csv"), index=False)
     open(os.path.join(RESULTS, "identifiability_calibration.txt"), "w").write("\n".join(L) + "\n"); print("\n".join(L))
