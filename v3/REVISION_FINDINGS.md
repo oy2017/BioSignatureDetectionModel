@@ -374,7 +374,46 @@ predicted decidability 29, measured Δχ² 32, margin 42, band metric 44). C3 an
 paper, E3's "improves target selection against existing methods" cannot be claimed against a
 retrieval on clean simulated spectra; what the diagnostic has is F5's immunity to the haze departure,
 and whether a retrieval with the same clear-atmosphere forward model shares that failure on hazy
-spectra is the test still to run (the departure spot-check retrievals).
+spectra is the test below.
+
+**The clear-model retrieval on hazy spectra (2026-10-20; `identifiability_calibrate.py --departure
+haze3e7`, `results/identifiability_calibration_haze3e7.{csv,txt}`).** Sixty planets, half of them
+CH₄-present and decidable on the clean retrieval, half random; the same nested-sampling retrieval,
+with the training forward model (clear H₂/He, grey deck, no haze), on the 3 × 10⁷ m⁻³ hazed spectrum
+at Tier-1 noise. Three planets errored in the sampler on the optical excess, one hung past five hours
+in nestle's uncapped rejection loop and was stopped (the script now has a per-planet wall-clock
+cap), so 55 have posteriors. Against the clean retrieval of the same planets:
+
+| | CH₄ | H₂O | CO₂ | NH₃ |
+| :-- | :-- | :-- | :-- | :-- |
+| accuracy clean → hazed | 98 → 36 % | 87 → 62 % | 87 → 55 % | 96 → 64 % |
+| recall of present labels | 97 → 0 % | 73 → 5 % | 72 → 0 % | 89 → 0 % |
+| confidently wrong (p_true < 0.05) | 0 → 64 % | 0 → 38 % | 0 → 45 % | 0 → 36 % |
+| median posterior shift of log X | −4.7 dex | −3.4 dex | −4.2 dex | −3.4 dex |
+
+Of the 30 planets with CH₄ present and decidable on the clean spectrum, the hazed retrieval recovers
+none, with the posterior of the true class at 0.000 on every one. The accuracies equal the absent
+fractions: every abundance is driven to the prior floor, the retrieval says "absent" for everything,
+and it says so with full confidence. Its evidence shows the misfit (median log Z −13 on clean
+spectra, −260 on hazed, down to −2 × 10⁵), so an analyst looking at the fit would see it; a pipeline
+that reads only the posterior would not. The departure is largest where the classifier's failure
+was: with the retrieval's free offset removed, the haze-minus-clean difference is 18 σ per bin in
+the three optical points (median over planets; 4 to 170), 4.6 σ over NIRSpec, 1.8 σ over AIRS; the
+χ² per bin of the departure is 12 over all 104 bins and 3 over the AIRS bins alone. So the AIRS
+bins are not untouched (the haze at this density adds some 450 ppm there, partly absorbed by the
+offset), but the optical and NIR slope is what the clear model cannot produce, and the fit buys it
+down with the infrared.
+
+For the paper this closes the gap in E3. On hazy spectra the "existing method" with the same
+physics as the training set is not a fallback: it fails on the same planets, for the same reason,
+and more confidently than the classifier (which at least reverts to "absent" with low margin). The
+labels are decidable (the haze identifiability above), so these are recoverable errors in the
+editor's sense, recoverable by a model that carries the haze, which is the modelled-haze retrieval
+(running on the same sixty) and, at the classifier's cost, the AIRS-only routing of F5. The remaining
+caveats: 55 planets, to be replaced by the full population (running, ~365 core-hours); the retrieval
+holds the planet radius fixed with only a ±5 × 10⁻³ depth offset, so a retrieval with a free radius
+and a haze parameter, as the consortium would run on a flagged planet, is a different and fairer
+comparison, which is what the modelled run measures.
 
 ### F7. Muting census: six of the fourteen real JWST spectra are more muted than any atmosphere the simulator population can produce at their bulk parameters, and the distance rule cannot see it because it normalises amplitude away
 
