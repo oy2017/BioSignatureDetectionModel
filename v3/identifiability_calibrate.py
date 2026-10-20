@@ -72,9 +72,16 @@ def select_departure(Pte, n, seed=SEED):
     return np.sort(np.concatenate([a, b]))
 
 
-def retrieve_one(i, row, obs, sig, wl, edges, npoints, maxcall, seed, haze=None):
+def retrieve_one(i, row, obs, sig, wl, edges, npoints, maxcall, seed, haze=None, timeout=10800):
+    """One nested-sampling retrieval; `timeout` (s) is a wall-clock cap, because nestle's inner rejection loop has no
+    call cap and a pathological likelihood (a departed spectrum the model cannot fit) can spin in it for hours."""
+    import signal
     import warnings; warnings.filterwarnings("ignore")
     import nestle
+
+    def _alarm(signum, frame):
+        raise TimeoutError(f"timeout after {timeout} s")
+    signal.signal(signal.SIGALRM, _alarm); signal.alarm(int(timeout))
     G.FILL_GAS = AF.FILL
     t0 = time.time()
     try:
@@ -103,7 +110,7 @@ def retrieve_one(i, row, obs, sig, wl, edges, npoints, maxcall, seed, haze=None)
             return ll if np.isfinite(ll) else -1e10
 
         rng = np.random.RandomState(seed)
-        res = nestle.sample(loglike, prior, 7, method="multi", npoints=npoints, maxcall=maxcall, rstate=rng)
+        res = nestle.sample(loglike, prior, 7, method="multi", npoints=npoints, maxcall=maxcall, rstate=rng); signal.alarm(0)
         w = res.weights / res.weights.sum(); out = dict(index=int(i), name=r["name"], ncall=int(res.ncall), minutes=(time.time() - t0) / 60, logz=float(res.logz))
         for k, m in enumerate(MOLS):
             s = res.samples[:, 2 + k]; p = float(w[s > THRESH].sum()); lab = int(r[f"atm {m}"] > THRESH)
@@ -111,6 +118,7 @@ def retrieve_one(i, row, obs, sig, wl, edges, npoints, maxcall, seed, haze=None)
             out.update({f"{m}_label": lab, f"{m}_p_present": p, f"{m}_p_true": p if lab else 1 - p, f"{m}_med": q(0.5), f"{m}_lo": q(0.16), f"{m}_hi": q(0.84), f"{m}_true": float(r[f"atm {m}"])})
         return out
     except Exception as e:
+        signal.alarm(0)
         return dict(index=int(i), name=row.get("name", "?"), ncall=0, minutes=(time.time() - t0) / 60, error=str(e)[:120])
 
 
@@ -192,6 +200,7 @@ def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--n", type=int, default=200); ap.add_argument("--jobs", type=int, default=2)
     ap.add_argument("--npoints", type=int, default=100); ap.add_argument("--maxcall", type=int, default=20000)
     ap.add_argument("--noisy", action="store_true"); ap.add_argument("--summarize", action="store_true")
+    ap.add_argument("--timeout", type=float, default=10800, help="wall-clock cap per planet in seconds (recorded as an error row)")
     ap.add_argument("--departure", default="none", choices=["none", "haze3e7", "cloud1e2"] + list(NOISE_X)); ap.add_argument("--model-departure", action="store_true")
     a = ap.parse_args()
     tag = "" if a.departure == "none" else f"_{a.departure}" + ("_modelled" if a.model_departure else "")
@@ -218,7 +227,7 @@ def main():
     # one pool over every planet, results streamed as they finish (no batch barrier, so a slow planet holds no one up);
     # the CSV is rewritten every `a.jobs` results and the run resumes from it
     gen = Parallel(n_jobs=a.jobs, return_as="generator_unordered")(
-        delayed(retrieve_one)(int(Pte.iloc[i]["_index"]), Pte.iloc[i].to_dict(), Xb[i], sig[i], wl, edges, a.npoints, a.maxcall, SEED + int(i), haze) for i in todo)
+        delayed(retrieve_one)(int(Pte.iloc[i]["_index"]), Pte.iloc[i].to_dict(), Xb[i], sig[i], wl, edges, a.npoints, a.maxcall, SEED + int(i), haze, a.timeout) for i in todo)
     pending = []
     for k, row in enumerate(gen, 1):
         pending.append(row)

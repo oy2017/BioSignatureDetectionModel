@@ -1,0 +1,10 @@
+retrieval of 55 planets under haze3e7 (observed spectrum with the departure; forward model clear, as trained), against the clean retrieval of the same planets
+
+CH4  n=55 present 35:  accuracy clean  98.2 ->  36.4   recall of present  97.1 ->   0.0   decidable (p_true > 0.95)  83.6 ->  36.4 %   confidently wrong (p_true < 0.05)  0.0 -> 63.6 %   median p_true 0.998 -> 0.000   median posterior shift of log X -4.72 dex
+H2O  n=55 present 22:  accuracy clean  87.3 ->  61.8   recall of present  72.7 ->   4.5   decidable (p_true > 0.95)  45.5 ->  61.8 %   confidently wrong (p_true < 0.05)  0.0 -> 38.2 %   median p_true 0.908 -> 1.000   median posterior shift of log X -3.43 dex
+CO2  n=55 present 25:  accuracy clean  87.3 ->  54.5   recall of present  72.0 ->   0.0   decidable (p_true > 0.95)  52.7 ->  54.5 %   confidently wrong (p_true < 0.05)  0.0 -> 45.5 %   median p_true 0.963 -> 1.000   median posterior shift of log X -4.22 dex
+NH3  n=55 present 19:  accuracy clean  96.4 ->  63.6   recall of present  89.5 ->   0.0   decidable (p_true > 0.95)  63.6 ->  63.6 %   confidently wrong (p_true < 0.05)  0.0 -> 36.4 %   median p_true 0.991 -> 1.000   median posterior shift of log X -3.44 dex
+CH4 present and decidable on clean (n=30): recall under haze3e7 0.0 %, still decidable 0.0 %, median p_true 0.000
+log evidence (median, min): clean -13.3, -21.3 -> haze3e7 -260.1, -224153.6; the retrieval's own goodness of fit flags the departure
+
+sample: 33.7 min and 6732 calls per planet (median)
