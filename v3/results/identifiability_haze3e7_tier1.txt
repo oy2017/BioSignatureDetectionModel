@@ -1,0 +1,30 @@
+Identifiability of the consortium labels (log10 abundance > -4) [haze3e7_tier1]: 954 planets
+dchi2 = min chi^2 of the opposite class (offset-free, 104 Tier-3 bins, the planet's per-bin sigma)
+
+== undecidable fraction at 95 % one-sided (dchi2 < 3.84)
+  CH4  all  59.3 %   present  49.3 %   absent  65.4 %   within 0.5 dex of the threshold  98.4 %
+  H2O  all  84.5 %   present  79.9 %   absent  87.3 %   within 0.5 dex of the threshold  98.0 %
+  CO2  all  49.3 %   present  49.7 %   absent  48.9 %   within 0.5 dex of the threshold  93.4 %
+  NH3  all  65.9 %   present  65.1 %   absent  66.5 %   within 0.5 dex of the threshold  97.2 %
+
+== undecidable fraction at 3 sigma (dchi2 < 9)
+  CH4  all  73.6 %   present  63.0 %   absent  80.0 %   within 0.5 dex of the threshold  99.0 %
+  H2O  all  92.8 %   present  92.0 %   absent  93.2 %   within 0.5 dex of the threshold 100.0 %
+  CO2  all  69.0 %   present  68.4 %   absent  69.4 %   within 0.5 dex of the threshold  95.1 %
+  NH3  all  81.0 %   present  80.1 %   absent  81.6 %   within 0.5 dex of the threshold  98.9 %
+
+== undecidable fraction at 5 sigma (dchi2 < 25)
+  CH4  all  88.8 %   present  85.5 %   absent  90.8 %   within 0.5 dex of the threshold 100.0 %
+  H2O  all  97.0 %   present  96.4 %   absent  97.3 %   within 0.5 dex of the threshold 100.0 %
+  CO2  all  86.0 %   present  86.0 %   absent  85.9 %   within 0.5 dex of the threshold  97.8 %
+  NH3  all  92.5 %   present  93.0 %   absent  92.1 %   within 0.5 dex of the threshold  99.4 %
+
+== accuracy ceilings: (i) coin toss on the 3-sigma-undecidable labels, 1 - undecidable/2; (ii) Bayes classifier when the
+   opposite class is represented by its best-fitting point, likelihood ratio exp(dchi2/2) times the class prior; (ii) is a lower
+   bound on the true ceiling because the best point over-credits the opposite class (the retrieval calibration integrates over it)
+  CH4  coin-toss ceiling  63.2 %   point-LR Bayes ceiling  80.6 %   prior-only  62.4 %
+  H2O  coin-toss ceiling  53.6 %   point-LR Bayes ceiling  70.3 %   prior-only  61.8 %
+  CO2  coin-toss ceiling  65.5 %   point-LR Bayes ceiling  83.0 %   prior-only  59.5 %
+  NH3  coin-toss ceiling  59.5 %   point-LR Bayes ceiling  77.9 %   prior-only  61.0 %
+
+median calls per planet-molecule 612, median 228.3 s
