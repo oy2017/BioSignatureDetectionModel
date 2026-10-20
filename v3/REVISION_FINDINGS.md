@@ -280,11 +280,59 @@ classifier's errors are on labels the spectrum cannot decide; under every depart
 share rises because the departure adds errors on decidable labels. The two thresholds disagree on
 individual labels (the Δχ² version of the same table, `diagnostic_classes.csv`, gives 50/34/31/36 %
 irrecoverable on clean CH₄/H₂O/CO₂/NH₃ against the posterior's 75/80/80/81 %): the rank correlation
-of 0.8–0.9 is not a label-by-label agreement, and the posterior is the definition. B4 asked for at
-least 70 % of the haze errors to be recoverable: not met for any molecule (CH₄ 58 %, NH₃ 54 %, H₂O
-43 %, CO₂ 39 %); its noise × 3 clause (at most 30 % recoverable) is not met either, but these
-departure columns still carry the clean spectrum's decidability, and the departure identifiability
-runs (haze 3 × 10⁷ running, then spots, cloud, noise × 2 and × 3) replace them.
+of 0.8–0.9 is not a label-by-label agreement, and the posterior is the definition. The departure
+columns of this table carry the clean spectrum's posterior, so they only say that the departures add
+errors on labels the clean spectrum could decide; whether the departed spectrum still can is the
+question below.
+
+**Identifiability under haze (2026-10-20).** The Δχ² test rerun on the hazed population with the
+haze in the counterfactual model as well (`identifiability.py --departure haze3e7`; 954 planets, one
+errored; 43 core-hours; `results/identifiability_haze3e7_tier1.{csv,txt}`), so that it asks whether
+the label is decidable given a correct model of the departure, with the haze density held at its
+true value. At the calibrated thresholds the labels are about as decidable as on the clean spectra:
+
+| decidable labels | clean | haze 3 × 10⁷ | both | clean only | haze only | median log₁₀ Δχ² ratio |
+| :-- | :-- | :-- | :-- | :-- | :-- | :-- |
+| CH₄ | 71.3 % | 73.9 % | 68.0 % | 3.2 % | 5.9 % | +0.07 |
+| H₂O | 43.9 % | 37.9 % | 33.5 % | 10.4 % | 4.4 % | −0.16 |
+| CO₂ | 58.8 % | 76.0 % | 58.4 % | 0.4 % | 17.6 % | +0.42 |
+| NH₃ | 71.1 % | 71.7 % | 65.6 % | 5.5 % | 6.1 % | −0.08 |
+
+Present labels decidable: CH₄ 277 → 281 of 359, H₂O 194 → 166 of 364, CO₂ 205 → 280 of 386, NH₃
+254 → 249 of 372. The haze costs H₂O a little (it sits under the NIR slope the haze adds) and makes
+CO₂ more decidable, not less; the likely reason is that with the haze density known its optical and
+NIR slope pins the scale height, which removes part of the temperature–abundance degeneracy the
+counterfactual used, and a test that also fitted the haze density would give back some of that. The
+information needed for the labels survives the haze, in other words: what the classifier and the
+clear-model retrieval lose on hazy spectra is lost by their model, not by the spectrum.
+
+**Departure-aware error classes (d‴, `alfnoor_diagnostic.py` section 3d,
+`results/diagnostic_departure_classes.csv`).** Each learner's errors on the hazed spectra against the
+haze-model Δχ² at the calibrated thresholds, split into errors the learner also makes on the clean
+spectrum (shared) and errors the haze introduces; means over the four learners:
+
+| | CH₄ | H₂O | CO₂ | NH₃ |
+| :-- | :-- | :-- | :-- | :-- |
+| accuracy clean → haze | 84.3 → 66.6 % | 75.3 → 62.1 % | 80.7 → 63.6 % | 84.6 → 61.6 % |
+| recall on decidable present labels, clean → haze | 83 → 14 % | 65 → 1 % | 82 → 13 % | 84 → 2 % |
+| errors per learner, clean → haze | 150 → 319 | 236 → 362 | 184 → 347 | 147 → 366 |
+| errors the haze introduces | 218 | 170 | 218 | 250 |
+| of which recoverable (label decidable under the haze model) | 86.5 % | 63.5 % | 81.0 % | 78.7 % |
+| errors shared with the clean spectrum | 100 | 192 | 130 | 116 |
+| of which recoverable | 51 % | 29 % | 53 % | 40 % |
+| clean errors the haze removes | 49 | 43 | 54 | 30 |
+| all haze errors recoverable | 75 % | 45 % | 70 % | 67 % |
+
+This is the editor's two-class split measured rather than argued: the errors the haze introduces are
+four fifths recoverable for CH₄, CO₂ and NH₃ (two thirds for H₂O), while the errors the learners
+share with their clean run are half or less recoverable on the Δχ² definition and a quarter or less
+on the posterior one. The haze does not take the methane out of the spectrum; it takes the
+classifier's recall of decidable present labels from 83 % to 14 %, which is the mechanism of F2 and
+F5 on the population. B4 (at least 70 % of the haze errors recoverable) is met for CH₄ and CO₂ on
+all errors and for CH₄, CO₂ and NH₃ on the introduced errors, on the Δχ² definition; the posterior
+definition on the 60-planet modelled-haze retrieval (running) is the stricter check, and the other
+departures (spots, cloud, noise × 2 and × 3) have not had their identifiability runs yet, so the
+noise × 3 clause stays open.
 
 Self-consistency: on decidable labels the learners score 93.5–95.7 % (CH₄), 76–93 % (H₂O), 92–95 %
 (CO₂) and 91–98 % (NH₃); on undecidable ones 60–68, 61–66, 61–70 and 58–63 % against majority rates

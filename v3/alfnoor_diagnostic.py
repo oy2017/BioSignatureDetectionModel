@@ -36,7 +36,7 @@ compound, white_x2, white_x3), with the noise draws of the note:
              against a random budget, the measured dchi2 and the retrieval's own undecidability
 
 Usage:  OMP_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 python alfnoor_diagnostic.py [--real]
-Writes results/diagnostic_{credit,remedy,selection,classes,consistency,retrieval_classes,triage}.csv and results/diagnostic.txt; --real scores
+Writes results/diagnostic_{credit,remedy,selection,classes,consistency,retrieval_classes,triage,departure_classes}.csv and results/diagnostic.txt; --real scores
 the converted JWST spectra (WASP-39 b and the panel) with the candidates at the clean thresholds.
 """
 import argparse
@@ -298,6 +298,34 @@ def evaluate(cases, Pte, edges, sig_te, sc):
                                      learner_right_retrieval_wrong=(right & ~ret_right & have).sum() / max(int((~ret_right & have).sum()), 1),
                                      both_wrong=int((wrong & ~ret_right).sum())))
     retclasses = pd.DataFrame(rows)
+    # 3d. error classes under each departure, against the identifiability test run WITH the departure in the model
+    # (identifiability_<case>_tier1.csv): a learner error on the departed spectrum is recoverable if the label is still
+    # decidable given a correct model of the departure (the information survives; the error is computational), and
+    # irrecoverable if it is not (the departure, or the noise, removed the information). Errors are split into those
+    # the learner also makes on the clean spectrum ("shared") and those the departure introduces ("introduced").
+    rows = []; name_to_i = {n: i for i, n in enumerate(Pte.name)}
+    for c in CASES:
+        f = os.path.join(RESULTS, f"identifiability_{'none' if c == 'clean' else c}_tier1.csv")
+        if not os.path.exists(f):
+            continue
+        I = pd.read_csv(f); I = I[np.isfinite(I.dchi2) & I.name.isin(name_to_i)]
+        for mol in MOLS:
+            D = I[I.molecule == mol]
+            if len(D) < 40:
+                continue
+            idx = D.name.map(name_to_i).to_numpy(); decid = D.dchi2.to_numpy() > THR.get(mol, 9.0); y = y_true[mol][idx]
+            for k in LEARNERS:
+                pred = (P[c]["all"][(mol, k)][idx] >= 0.5).astype(int); wrong = pred != y
+                pred0 = (P["clean"]["all"][(mol, k)][idx] >= 0.5).astype(int); wrong0 = pred0 != y
+                intro = wrong & ~wrong0; shared = wrong & wrong0; fixed = ~wrong & wrong0
+                rows.append(dict(molecule=mol, classifier=k, case=c, n=len(idx), undecidable_frac=float((~decid).mean()), acc=float((~wrong).mean()), acc_clean=float((~wrong0).mean()),
+                                 acc_decidable=float((~wrong)[decid].mean()) if decid.any() else np.nan, acc_undecidable=float((~wrong)[~decid].mean()) if (~decid).any() else np.nan,
+                                 base_undecidable=max(y[~decid].mean(), 1 - y[~decid].mean()) if (~decid).any() else np.nan,
+                                 recall_decidable=float(pred[decid & (y == 1)].mean()) if (decid & (y == 1)).any() else np.nan,
+                                 n_wrong=int(wrong.sum()), recoverable=float(decid[wrong].mean()) if wrong.any() else np.nan,
+                                 n_introduced=int(intro.sum()), recoverable_introduced=float(decid[intro].mean()) if intro.any() else np.nan,
+                                 n_shared=int(shared.sum()), recoverable_shared=float(decid[shared].mean()) if shared.any() else np.nan, n_fixed=int(fixed.sum())))
+    depclasses = pd.DataFrame(rows)
     # 4. selection simulation
     rows = []; n = len(Pte); slots = int(round(BUDGET * n)); rng = np.random.default_rng(SEED)
     for target in ("CH4", "H2O", "joint"):
@@ -364,10 +392,10 @@ def evaluate(cases, Pte, edges, sig_te, sc):
                     sel = np.zeros(n, bool); sel[np.argsort(-sc_)[:slots]] = True
                     rows.append(dict(target=target, order=name, f=round(f, 1), lost=int((y == 1).sum() - (sel & (y == 1)).sum()), wasted=int((sel & (y == 0)).sum())))
     triage = pd.DataFrame(rows)
-    return credit, remedy, classes, selection, consistency, retclasses, triage
+    return credit, remedy, classes, selection, consistency, retclasses, triage, depclasses
 
 
-def write_summary(credit, remedy, classes, selection, consistency=None, retclasses=None, triage=None):
+def write_summary(credit, remedy, classes, selection, consistency=None, retclasses=None, triage=None, depclasses=None):
     L = ["Diagnostic candidates on POP-I (1e-4; mean over molecules and the four learners unless stated)", ""]
     L.append("== selective credit (threshold declines 10 % of clean planets; credit = accepted accuracy - clean selective baseline at equal coverage), points")
     g = credit.groupby(["rule", "case"])[["coverage", "accepted", "credit", "auroc_error"]].mean()
@@ -416,6 +444,19 @@ def write_summary(credit, remedy, classes, selection, consistency=None, retclass
         L.append("  mean over learners, per case: errors, share recoverable / undecidable / misled (clean-spectrum posterior)")
         for (m, c), r in g.iterrows():
             L.append(f"    {m} {c:<10} wrong {r.n_wrong:5.0f}   {100*r.recoverable:5.1f} / {100*r.undecidable:5.1f} / {100*r.misled:5.1f}")
+    if depclasses is not None and len(depclasses):
+        L.append(""); L.append("== (d3) error classes under each departure against the identifiability test run with the departure in the model")
+        L.append("   (calibrated dchi2 thresholds): recoverable = the label is decidable given a correct model of the departure; 'introduced' = errors the")
+        L.append("   learner does not make on the clean spectrum, 'shared' = errors it makes on both; 'fixed' = clean errors the departure removes")
+        L.append(f"  {'mol':<4} {'case':<10} {'undec%':>7} {'acc':>6} {'acc_cln':>8} {'acc_dec':>8} {'acc_und':>8} {'base_und':>9} {'rec_dec':>8} {'wrong':>6} {'recov%':>7} {'introd':>7} {'recov%':>7} {'shared':>7} {'recov%':>7} {'fixed':>6}")
+        cols = ["undecidable_frac", "acc", "acc_clean", "acc_decidable", "acc_undecidable", "base_undecidable", "recall_decidable", "n_wrong", "recoverable", "n_introduced", "recoverable_introduced", "n_shared", "recoverable_shared", "n_fixed"]
+        g = depclasses.groupby(["molecule", "case"], sort=False)[cols].mean()
+        for m in MOLS:
+            for (mm, c), r in g.iterrows():
+                if mm != m:
+                    continue
+                L.append(f"  {m:<4} {c:<10} {100*r.undecidable_frac:7.1f} {100*r.acc:6.1f} {100*r.acc_clean:8.1f} {100*r.acc_decidable:8.1f} {100*r.acc_undecidable:8.1f} {100*r.base_undecidable:9.1f} {100*r.recall_decidable:8.1f} {r.n_wrong:6.0f} {100*r.recoverable:7.1f} {r.n_introduced:7.0f} {100*r.recoverable_introduced:7.1f} {r.n_shared:7.0f} {100*r.recoverable_shared:7.1f} {r.n_fixed:6.0f}")
+        L.append("  (means over the four learners; per-learner rows in diagnostic_departure_classes.csv)")
     L.append(""); L.append(f"== Tier-2 selection: {int(BUDGET*100)} % of the planets get a slot; lost = targets not selected, wasted = slots on non-targets; cost = w x lost + wasted")
     for target in ("CH4", "H2O", "joint"):
         for c in ["clean", "haze3e7", "spots20", "white_x2"]:
@@ -465,10 +506,10 @@ def main():
     if a.real:
         text = score_real(sc); print(text); open(os.path.join(RESULTS, "diagnostic_real.txt"), "w").write(text + "\n"); return
     cases, Pte, e, sig = test_cases()
-    credit, remedy, classes, selection, consistency, retclasses, triage = evaluate(cases, Pte, e, sig, sc)
-    for name, df in (("credit", credit), ("remedy", remedy), ("classes", classes), ("selection", selection), ("consistency", consistency), ("retrieval_classes", retclasses), ("triage", triage)):
+    credit, remedy, classes, selection, consistency, retclasses, triage, depclasses = evaluate(cases, Pte, e, sig, sc)
+    for name, df in (("credit", credit), ("remedy", remedy), ("classes", classes), ("selection", selection), ("consistency", consistency), ("retrieval_classes", retclasses), ("triage", triage), ("departure_classes", depclasses)):
         if df is not None: df.to_csv(os.path.join(RESULTS, f"diagnostic_{name}.csv"), index=False)
-    text = write_summary(credit, remedy, classes, selection, consistency, retclasses, triage); print(text); open(os.path.join(RESULTS, "diagnostic.txt"), "w").write(text + "\n")
+    text = write_summary(credit, remedy, classes, selection, consistency, retclasses, triage, depclasses); print(text); open(os.path.join(RESULTS, "diagnostic.txt"), "w").write(text + "\n")
 
 
 if __name__ == "__main__":
