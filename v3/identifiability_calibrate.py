@@ -117,7 +117,7 @@ def retrieve_one(i, row, obs, sig, wl, edges, npoints, maxcall, seed, haze=None)
 def summarize_departure(tag):
     """The departure run's posteriors against the clean run's on the same planets: accuracy, CH4 recall, p_true shift."""
     cal = pd.read_csv(os.path.join(RESULTS, f"identifiability_calibration_{tag}.csv"))
-    cal = cal[cal.get("error", pd.Series(index=cal.index, dtype=object)).isna()] if "error" in cal else cal
+    cal = (cal[cal["error"].isna()] if "error" in cal else cal).reset_index(drop=True)
     ref = pd.read_csv(os.path.join(RESULTS, "identifiability_calibration.csv")).set_index("index").loc[cal["index"]].reset_index()
     L = [f"retrieval of {len(cal)} planets under {tag} (observed spectrum with the departure; forward model "
          f"{'with the haze' if tag.endswith('_modelled') else 'clear, as trained'}), against the clean retrieval of the same planets", ""]
@@ -125,14 +125,15 @@ def summarize_departure(tag):
         y = cal[f"{m}_label"].to_numpy(); pd_ = cal[f"{m}_p_present"].to_numpy(); pc = ref[f"{m}_p_present"].to_numpy()
         td = cal[f"{m}_p_true"].to_numpy(); tc = ref[f"{m}_p_true"].to_numpy()
         acc = lambda p: 100 * ((p >= 0.5) == (y == 1)).mean(); rec = lambda p: 100 * (p[y == 1] >= 0.5).mean() if (y == 1).any() else np.nan
-        dec = lambda t: 100 * (t > 0.95).mean()
+        dec = lambda t: 100 * (t > 0.95).mean(); mis = lambda t: 100 * (t < 0.05).mean()
         L.append(f"{m:<4} n={len(y)} present {int((y==1).sum())}:  accuracy clean {acc(pc):5.1f} -> {acc(pd_):5.1f}   recall of present {rec(pc):5.1f} -> {rec(pd_):5.1f}   "
-                 f"decidable (p_true > 0.95) {dec(tc):5.1f} -> {dec(td):5.1f} %   median p_true {np.median(tc):.3f} -> {np.median(td):.3f}   "
-                 f"median posterior shift of log X {np.median(cal[f'{m}_med'] - ref[f'{m}_med']):+.2f} dex")
+                 f"decidable (p_true > 0.95) {dec(tc):5.1f} -> {dec(td):5.1f} %   confidently wrong (p_true < 0.05) {mis(tc):4.1f} -> {mis(td):4.1f} %   median p_true {np.median(tc):.3f} -> {np.median(td):.3f}   "
+                 f"median posterior shift of log X {np.median(cal[f'{m}_med'].to_numpy() - ref[f'{m}_med'].to_numpy()):+.2f} dex")
     cd = (cal["CH4_label"] == 1) & (ref["CH4_p_true"] > 0.95)
     if cd.any():
         L.append(f"CH4 present and decidable on clean (n={int(cd.sum())}): recall under {tag} {100 * (cal.loc[cd, 'CH4_p_present'] >= 0.5).mean():.1f} %, "
                  f"still decidable {100 * (cal.loc[cd, 'CH4_p_true'] > 0.95).mean():.1f} %, median p_true {cal.loc[cd, 'CH4_p_true'].median():.3f}")
+    L.append(f"log evidence (median, min): clean {ref.logz.median():.1f}, {ref.logz.min():.1f} -> {tag} {cal.logz.median():.1f}, {cal.logz.min():.1f}; the retrieval's own goodness of fit flags the departure")
     L.append(""); L.append(f"sample: {cal.minutes.median():.1f} min and {cal.ncall.median():.0f} calls per planet (median)")
     open(os.path.join(RESULTS, f"identifiability_calibration_{tag}.txt"), "w").write("\n".join(L) + "\n"); print("\n".join(L))
 
