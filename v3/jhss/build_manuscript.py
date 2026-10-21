@@ -11,14 +11,43 @@ import re
 import sys
 import urllib.parse
 
-SRC = "/mnt/c/Users/owenh/BioSignatureDetectionModel/v3/jhss/manuscript.md"
-OUTDIR = "/mnt/c/Users/owenh/BioSignatureDetectionModel/v3/jhss"
-FIGROOT = "/mnt/c/Users/owenh/BioSignatureDetectionModel/v3/results"
-DEJAVU = "/usr/share/fonts/truetype/dejavu"
+# Paths follow the script's location, so the build runs from any clone; MANUSCRIPT_OUT overrides the
+# output directory (the rendered PDF/DOCX are not checked in).
+HERE = os.path.dirname(os.path.abspath(__file__))
+SRC = os.path.join(HERE, "manuscript.md")
+OUTDIR = os.environ.get("MANUSCRIPT_OUT", HERE)
+FIGROOT = os.path.join(os.path.dirname(HERE), "results")
+
+
+def _first_dir(cands, probe):
+    for d in cands:
+        if os.path.exists(os.path.join(d, probe)):
+            return d
+    return cands[0]
+
+
+def _mpl_fonts():
+    try:
+        import matplotlib
+        return os.path.join(os.path.dirname(matplotlib.__file__), "mpl-data", "fonts", "ttf")
+    except ImportError:
+        return ""
+
+
+DEJAVU = _first_dir(["/usr/share/fonts/truetype/dejavu", _mpl_fonts()], "DejaVuSerif.ttf")
 # JHSS requires Times New Roman. The PDF must render the same document as the
 # DOCX, so it uses the real Times faces; DejaVu is kept only as a glyph
 # fallback, since Times lacks U+2295 (the Earth-radius symbol in "R⊕").
-TIMES = "/mnt/c/Windows/Fonts"
+TIMES = _first_dir(["/mnt/c/Windows/Fonts", "C:/Windows/Fonts", "/System/Library/Fonts/Supplemental", "/Library/Fonts"], "times.ttf") \
+    if not os.path.exists("/System/Library/Fonts/Supplemental/Times New Roman.ttf") else "/System/Library/Fonts/Supplemental"
+# Windows names the faces times/timesbd/timesi/timesbi; macOS ships them as "Times New Roman*.ttf".
+TIMES_FACES = {"times.ttf": "Times New Roman.ttf", "timesbd.ttf": "Times New Roman Bold.ttf",
+               "timesi.ttf": "Times New Roman Italic.ttf", "timesbi.ttf": "Times New Roman Bold Italic.ttf"}
+
+
+def times_face(name):
+    p = os.path.join(TIMES, name)
+    return p if os.path.exists(p) else os.path.join(TIMES, TIMES_FACES[name])
 
 
 # ---------------------------------------------------------------- parsing
@@ -285,10 +314,10 @@ def build_pdf(blocks, dest):
                                     Table, TableStyle, KeepTogether)
     from PIL import Image as PILImage
 
-    pdfmetrics.registerFont(TTFont("TNR", f"{TIMES}/times.ttf"))
-    pdfmetrics.registerFont(TTFont("TNR-B", f"{TIMES}/timesbd.ttf"))
-    pdfmetrics.registerFont(TTFont("TNR-I", f"{TIMES}/timesi.ttf"))
-    pdfmetrics.registerFont(TTFont("TNR-BI", f"{TIMES}/timesbi.ttf"))
+    pdfmetrics.registerFont(TTFont("TNR", times_face("times.ttf")))
+    pdfmetrics.registerFont(TTFont("TNR-B", times_face("timesbd.ttf")))
+    pdfmetrics.registerFont(TTFont("TNR-I", times_face("timesi.ttf")))
+    pdfmetrics.registerFont(TTFont("TNR-BI", times_face("timesbi.ttf")))
     pdfmetrics.registerFontFamily("TNR", normal="TNR", bold="TNR-B",
                                   italic="TNR-I", boldItalic="TNR-BI")
     pdfmetrics.registerFont(TTFont("DJ", f"{DEJAVU}/DejaVuSerif.ttf"))
@@ -296,7 +325,7 @@ def build_pdf(blocks, dest):
     # Glyphs Times lacks, rendered from DejaVu so they do not drop out. Word
     # does this substitution itself, which is why the DOCX needs no equivalent.
     times_cmap = set()
-    for _t in TTLib(f"{TIMES}/times.ttf")["cmap"].tables:
+    for _t in TTLib(times_face("times.ttf"))["cmap"].tables:
         times_cmap |= set(_t.cmap)
 
     # Sizes, spacing and indents below mirror build_docx exactly: Times New

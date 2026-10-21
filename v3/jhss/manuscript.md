@@ -225,7 +225,7 @@ The existing method shares the recoverable failure. A nested-sampling retrieval 
 
 ![Figure 4](figures/fig4_identifiability.png)
 
-**Figure 4.** [PENDING figure] (a) Fraction of labels decidable at Tier-1 precision on clean spectra and under haze with the haze modelled, per molecule. (b) Share of the classifier's errors in each class under each departure (Table 6). (c) Posterior probability of the true CH₄ class from the clear-model and modelled-haze retrievals of the same hazed spectra, against the clean posterior.
+**Figure 4.** The two error classes. (a) Fraction of labels decidable at Tier-1 precision, per molecule, on clean spectra and under each departure with the departure in the counterfactual model; the noise cases are the clean Δχ² divided by k². (b) Share of the errors each departure introduces that are recoverable (Table 6); the clean bar is the posterior-based share of all clean errors. (c) Posterior probability of the true CH₄ class from the clear-model and the modelled-haze retrievals of the same hazed spectra, against the clean-spectrum posterior, on a logit scale clipped at 0.001 and 0.999; the grey lines mark 0.05 and 0.95.
 
 ### 3.5 Real JWST spectra: the same two classes
 
@@ -250,7 +250,7 @@ The existing method shares the recoverable failure. A nested-sampling retrieval 
 
 ![Figure 5](figures/fig5_muting.png)
 
-**Figure 5.** [PENDING figure] Muting of each real spectrum against its clear twin, with the most muted atmosphere the population allows at the planet's bulk parameters, and the distribution of the population's own cloud muting over all 955 POP-I planets.
+**Figure 5.** Muting of the real spectra against the simulator population. (a) For each real planet, the dispersion of its clear H₂/He twin over the measured bins divided by the noise-corrected dispersion of the real spectrum (filled), and the same for the most muted atmosphere the population prior allows at the planet's bulk parameters (open); the five warm giants with published abundances are in orange, the shaded band is the 5th to 95th percentile of the population's own cloud muting and the dotted line its most muted planet. (b) Cumulative distribution of that muting over the 955 POP-I planets, each rendered with its own cloud deck against its clear twin, with the five giants marked.
 
 **The error class of the real misses.** Retraining the design on a population in which a third of the training planets carried haze recovered two thirds of the CH₄ haze loss on the simulated population (66 → 79 % against 85 % clean), half of the CO₂ and NH₃ loss and a quarter of the H₂O loss, left the noise × 3 column unchanged, and cost 1-2 points on clean spectra. On the real panel it raised the all-input score from 22 of 35 to 26 of 36, and with the deep decks to 27 of 36. The three methane reductions whose muting lies beyond the simulator's aerosol prior (K2-18 b in both reanalyses and TOI-1231 b, needing decks at 47-238 Pa) are the three it recovered; the three within the prior (TOI-270 d in both reductions and the primary K2-18 b) it did not, apart from a split on K2-18 b under the deep decks (Table 7). On real planets, where the failure is the training prior, extending the prior repairs it, and the paper can say which planets those are and why. The AIRS-only variant finds five of six at no retraining, so routing remains the cheaper remedy and the retraining is the test of the class, not the contribution.
 
