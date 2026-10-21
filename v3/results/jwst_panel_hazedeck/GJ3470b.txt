@@ -1,0 +1,65 @@
+GJ3470b: Beatty et al. 2024 (ApJL machine-readable tables), NIRCam
+segments: F322W2 100 pts 2.46-3.94 um, offset +0 ppm; F444W 72 pts 3.90-4.96 um, offset +0 ppm
+coverage by channel: AIRS-CH0 23/69 filled, AIRS-CH1 14/21 filled, FGS1 1/1 filled, FGS2 1/1 filled, NIRSpec 11/11 filled, VISPhot 1/1 filled
+== GJ3470b [Beatty et al. 2024 (ApJL machine-readable tables), NIRCam; 51 of 104 bins flat-filled]: verdicts at the delivered precision (1 = present)
+-- threshold 1e-5
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  1.0  1.0  1.0
+           H2O       1.0  0.0  0.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  1.0  1.0  1.0
+           H2O       1.0  1.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  1.0  1.0  1.0
+           H2O       1.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+-- threshold 1e-4
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  1.0  1.0  1.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  1.0  1.0  1.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  1.0  1.0  1.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+-- threshold 1e-3
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  1.0  0.0  1.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  1.0  0.0  1.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  1.0  0.0  1.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+== GJ3470b [Beatty et al. 2024 (ApJL machine-readable tables), NIRCam; 51 of 104 bins flat-filled]: fraction of 500 Ariel tier1 noise draws called present (threshold 1e-4)
+learner               KNN   MLP  RFC  SVC
+variant    molecule                      
+airs_only  CH4        5.0   9.0  0.0  1.0
+           CO2       25.0  17.0  1.0  3.0
+           H2O       20.0  26.0  1.0  7.0
+           NH3       16.0  18.0  0.0  5.0
+all        CH4        4.0   6.0  0.0  0.0
+           CO2       26.0  16.0  1.0  3.0
+           H2O       20.0  21.0  2.0  5.0
+           NH3       14.0  11.0  0.0  3.0
+no_optical CH4        5.0   4.0  0.0  0.0
+           CO2       26.0  13.0  1.0  3.0
+           H2O       22.0  20.0  2.0  5.0
+           NH3       16.0  12.0  0.0  4.0
+== band metric (Mugnai et al. 2021, Eq. 3): M_H2O = 1.94, M_CH4 = -0.80, M_CO2 = 0.83  (their flags: CH4 >= 0.22, CO2 >= 0.26, H2O >= 0.80)

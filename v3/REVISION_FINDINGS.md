@@ -491,6 +491,78 @@ allows for a cooler terminator only up to the population's own floor, which is t
 question needs (a cooler real terminator is part of what the population does not represent). The
 optical-slope concern is closed by the AIRS-only column.
 
+### F8. Retraining on a departure-aware population recovers the real methane planets whose spectra are muted beyond the simulator's prior, and not the two that are not; it costs a point on clean spectra and does not beat the AIRS-only routing
+
+The editor's E4 asked for the two error classes on real data. The test (`alfnoor_retrain.py`,
+2026-10-20): a third of the faithful POP-III training planets re-rendered with a Lee–Mie haze of
+density log-uniform in 10⁶–3 × 10⁸ m⁻³ ("haze"), and in a second set a further sixth with a grey deck
+log-uniform in 5–500 Pa, two decades above the population prior's 5 × 10² Pa top ("hazedeck");
+1,954 of 1,996 renders succeeded (the rest keep their clean spectrum). The four learners retrained
+with the same binning, noise draw and normalisation as the faithful run, for the three input
+variants, and scored on POP-I and on the real panel exactly as before
+(`results/alfnoor_retrain_pop1.{csv,txt}`, `results/alfnoor_retrain_panel.{csv,txt}`,
+`results/jwst_panel_{haze,hazedeck}/`). The reviewer called this "familiar domain randomization";
+it is used here as the test of the error class, not as the contribution.
+
+On the simulated population, all inputs, accuracy / recall of present, mean over the four learners:
+
+| | clean | haze 3 × 10⁷ | cloud 10² Pa | spots 20 % | noise × 3 |
+| :-- | :-- | :-- | :-- | :-- | :-- |
+| CH₄ faithful | 84.9 / 72 | 66.3 / 11 | 75.4 / 39 | 74.6 / 35 | 70.3 / 28 |
+| CH₄ haze | 83.6 / 72 | 78.9 / 49 | 77.9 / 46 | 80.7 / 60 | 70.6 / 31 |
+| CH₄ hazedeck | 83.9 / 74 | 79.7 / 52 | 79.5 / 52 | 81.2 / 61 | 71.1 / 34 |
+| H₂O faithful | 74.9 / 46 | 62.2 / 1 | 67.7 / 22 | 67.5 / 19 | 65.6 / 20 |
+| H₂O hazedeck | 72.4 / 43 | 66.7 / 22 | 67.9 / 25 | 69.9 / 40 | 64.1 / 20 |
+| CO₂ faithful | 79.5 / 65 | 63.5 / 11 | 73.2 / 42 | 70.2 / 31 | 66.3 / 23 |
+| CO₂ hazedeck | 79.2 / 66 | 75.4 / 46 | 76.5 / 53 | 77.3 / 58 | 66.6 / 26 |
+| NH₃ faithful | 84.5 / 68 | 61.7 / 2 | 70.3 / 27 | 69.2 / 22 | 68.4 / 25 |
+| NH₃ hazedeck | 82.6 / 66 | 71.9 / 32 | 73.0 / 37 | 74.8 / 41 | 68.3 / 30 |
+
+The retrained classifier gives back two thirds of the CH₄ haze loss (66 → 79 against 85 clean), half
+of the CO₂ and NH₃ loss, a quarter of the H₂O loss, and most of the spots loss it was never trained
+on; the deep decks add a point or two more under the deep-deck departure; the noise × 3 column does
+not move, which is the irrecoverable class again. The cost is 1–2 points on clean spectra
+(CH₄ −1.0 to −1.3, H₂O −2.4, CO₂ −0.3 to −0.8, NH₃ −1.7 to −1.9), which the paper must state. Under
+haze the retrained all-inputs classifier (78.9 / 49) is level with the frozen AIRS-only one
+(78.9 / 54); the AIRS-only variant itself is unchanged by retraining (80.4 clean, 79.7 haze), as it
+should be, since the haze enters through the points it does not use.
+
+On the real panel (threshold 10⁻⁴, verdict = majority of the four learners), scored labels correct:
+
+| inputs | faithful | haze | hazedeck |
+| :-- | :-- | :-- | :-- |
+| all | 22 / 35 | 26 / 36 | 27 / 36 |
+| no optical | 25 / 36 | 27 / 38 | 26 / 36 |
+| AIRS only | 29 / 37 | 29 / 36 | 29 / 38 |
+
+The CH₄-present reductions with all inputs, against the muting census of F7 (the deck the real
+spectrum needs beyond the population's 5 × 10² Pa floor to match its muting):
+
+| reduction | deck needed (F7) | faithful | haze | hazedeck | AIRS-only (any training) |
+| :-- | :-- | :-- | :-- | :-- | :-- |
+| K2-18 b alt | 238 Pa | absent (1 of 4) | split (2) | present (4) | present |
+| K2-18 b hu | 117 Pa | absent (1) | present (3) | split (2) | present |
+| TOI-1231 b | 47 Pa | split (2) | present (3) | present (4) | present |
+| K2-18 b | none | absent (0) | absent (0) | split (2) | present |
+| TOI-270 d | none | absent (1) | absent (1) | absent (1) | split → absent |
+| TOI-270 d hm | within prior | absent (0) | absent (1) | absent (1) | present |
+
+The three reductions whose muting lies beyond the simulator's aerosol prior are the three the
+retrained classifier recovers; the three within the prior it does not (K2-18 b's primary reduction
+reaches a split under the deep decks). So on the real planets the error classes split the same way
+as on the population: where the failure is the training prior, extending the prior repairs it, and
+the paper can say which planets those are and why. Where it is not (TOI-270 d in both reductions,
+K2-18 b primary, with Tier-1 detection frequencies of 7–30 %), neither retraining nor the optical
+diagnosis helps with all inputs, and only the AIRS-only variant finds K2-18 b. The retrained
+classifier also moves the CO₂ and H₂O verdicts of the warm giants (WASP-166 b H₂O and CO₂, GJ 3470 b
+and HAT-P-26 b CO₂ to present, correctly; HD 189733 b CO₂ to present, wrongly), consistent with the
+same mechanism: the muted giants were being read as featureless.
+
+For the paper: the retraining is one paragraph of the E4 section, as the test that the real-planet
+errors of F2 are of the recoverable class for the muted planets and not for the others, with the
+clean-accuracy cost and the fact that it recovers fewer CH₄ reductions (2–3 of 6) than the AIRS-only
+routing (5 of 6) at no retraining. It is not the contribution; the error-class result is.
+
 ### What these add up to, provisionally
 
 A simulator-trained classifier that reproduces its published in-simulator accuracies is mostly right

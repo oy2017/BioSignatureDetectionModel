@@ -1,0 +1,65 @@
+K2-18b-hu: Hu et al. 2025 (OSF hpu8g): NIRISS SOSS visit 1, NIRSpec G235H (2 visits) and G395H (3 visits) combined
+segments: SOSS-o1 364 pts 0.85-2.82 um, offset +148 ppm; SOSS-o2 41 pts 0.60-0.90 um, offset +193 ppm; G235H 330 pts 1.67-3.07 um, offset +16 ppm; G395H 545 pts 2.87-5.17 um, offset +0 ppm
+coverage by channel: AIRS-CH0 3/69 filled, AIRS-CH1 12/21 filled, FGS1 0/1 filled, FGS2 0/1 filled, NIRSpec 0/11 filled, VISPhot 1/1 filled
+== K2-18b-hu [Hu et al. 2025 (OSF hpu8g): NIRISS SOSS visit 1, NIRSpec G235H (2 visits) and G395H (3 visits) combined; 16 of 104 bins flat-filled]: verdicts at the delivered precision (1 = present)
+-- threshold 1e-5
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       1.0  1.0  1.0  1.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  0.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       1.0  1.0  1.0  1.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  1.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       1.0  1.0  1.0  1.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  1.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+-- threshold 1e-4
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       1.0  0.0  1.0  1.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       1.0  0.0  1.0  1.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  1.0  0.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       0.0  0.0  0.0  1.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  0.0  0.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+-- threshold 1e-3
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       1.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       1.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+== K2-18b-hu [Hu et al. 2025 (OSF hpu8g): NIRISS SOSS visit 1, NIRSpec G235H (2 visits) and G395H (3 visits) combined; 16 of 104 bins flat-filled]: fraction of 500 Ariel tier1 noise draws called present (threshold 1e-4)
+learner               KNN   MLP  RFC   SVC
+variant    molecule                       
+airs_only  CH4       52.0  26.0  5.0  15.0
+           CO2        3.0   4.0  0.0   0.0
+           H2O       13.0  13.0  1.0   3.0
+           NH3       10.0  18.0  1.0   4.0
+all        CH4       39.0  16.0  0.0   4.0
+           CO2        2.0   3.0  0.0   0.0
+           H2O       13.0  34.0  2.0  11.0
+           NH3        7.0   6.0  0.0   0.0
+no_optical CH4       41.0  16.0  0.0   4.0
+           CO2        1.0   2.0  0.0   0.0
+           H2O       14.0  34.0  3.0  11.0
+           NH3        7.0  10.0  0.0   1.0
+== band metric (Mugnai et al. 2021, Eq. 3): M_H2O = 0.59, M_CH4 = 1.44, M_CO2 = -0.01  (their flags: CH4 >= 0.22, CO2 >= 0.26, H2O >= 0.80)

@@ -1,0 +1,65 @@
+HAT-P-18b: Fu et al. 2022 (VizieR J/ApJ/940/L35), NIRISS SOSS
+segments: SOSS 1021 pts 0.61-2.83 um, offset +0 ppm
+coverage by channel: AIRS-CH0 34/69 filled, AIRS-CH1 21/21 filled, FGS1 0/1 filled, FGS2 0/1 filled, NIRSpec 0/11 filled, VISPhot 1/1 filled
+== HAT-P-18b [Fu et al. 2022 (VizieR J/ApJ/940/L35), NIRISS SOSS; 56 of 104 bins flat-filled]: verdicts at the delivered precision (1 = present)
+-- threshold 1e-5
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       1.0  1.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       0.0  1.0  1.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       1.0  1.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       0.0  0.0  1.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       1.0  1.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+-- threshold 1e-4
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       1.0  1.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       1.0  1.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       1.0  1.0  0.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+-- threshold 1e-3
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       1.0  1.0  0.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       1.0  1.0  0.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       1.0  1.0  0.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+== HAT-P-18b [Fu et al. 2022 (VizieR J/ApJ/940/L35), NIRISS SOSS; 56 of 104 bins flat-filled]: fraction of 500 Ariel tier1 noise draws called present (threshold 1e-4)
+learner               KNN   MLP   RFC   SVC
+variant    molecule                        
+airs_only  CH4        7.0   7.0   0.0   1.0
+           CO2       10.0   4.0   0.0   0.0
+           H2O       45.0  56.0  18.0  42.0
+           NH3        9.0   6.0   0.0   1.0
+all        CH4        8.0  12.0   0.0   2.0
+           CO2       10.0   4.0   0.0   0.0
+           H2O       42.0  46.0   6.0  36.0
+           NH3        3.0   2.0   0.0   0.0
+no_optical CH4       10.0   8.0   0.0   2.0
+           CO2       11.0   3.0   0.0   0.0
+           H2O       46.0  44.0  12.0  36.0
+           NH3        6.0   3.0   0.0   0.0
+== band metric (Mugnai et al. 2021, Eq. 3): M_H2O = -0.36, M_CH4 = -2.70, M_CO2 = -0.53  (their flags: CH4 >= 0.22, CO2 >= 0.26, H2O >= 0.80)

@@ -1,0 +1,183 @@
+Real JWST panel under the three training sets (alfnoor_retrain.py --panel): verdict = majority of the four learners at 1e-4
+
+== inputs: all
+  faithful  22/35 scored labels correct
+  haze      26/36 scored labels correct
+  hazedeck  27/36 scored labels correct
+  planet       mol  label          faithful           haze       hazedeck   (learners present of 4, Tier-1 frequency %)
+  TOI-270d     CH4  present  absent  1   7% absent  1   9% absent  1   8%
+  TOI-270d     H2O  nan      absent  0   5% absent  0   7% absent  0   8%
+  TOI-270d     CO2  present  absent  0   3% absent  1   7% absent  1   6%
+  TOI-270d     NH3  absent   absent  0   8% absent  1  16% absent  0  12%
+  K2-18b       CH4  present  absent  0  10% absent  0  22% split   2  30%
+  K2-18b       H2O  absent   absent  0   5% absent  1  10% absent  1  15%
+  K2-18b       CO2  nan      absent  0   2% absent  0   5% absent  0   7%
+  K2-18b       NH3  absent   absent  0   0% absent  0   0% absent  0   0%
+  K2-18b-alt   CH4  present  absent  1  17% split   2  28% present 4  29%
+  K2-18b-alt   H2O  absent   absent  0   3% absent  0   9% absent  0  10%
+  K2-18b-alt   CO2  nan      absent  0   1% absent  0   2% absent  0   2%
+  K2-18b-alt   NH3  absent   absent  0   0% absent  0   0% absent  0   0%
+  TOI-421b     CH4  absent   absent  0   1% absent  0   3% absent  0   3%
+  TOI-421b     H2O  nan      absent  1   7% absent  0   9% absent  0  12%
+  TOI-421b     CO2  absent   absent  1   6% absent  1  10% absent  1   9%
+  TOI-421b     NH3  nan      absent  0   5% absent  0  10% absent  0  11%
+  HAT-P-18b    CH4  absent   absent  0   3% absent  0   5% absent  0   6%
+  HAT-P-18b    H2O  nan      present 3  19% present 4  32% present 3  34%
+  HAT-P-18b    CO2  absent   absent  0   3% absent  0   4% absent  0   4%
+  HAT-P-18b    NH3  absent   absent  0   1% absent  0   1% absent  0   1%
+  WASP-107b    CH4  absent   absent  0   0% absent  0   0% absent  0   0%
+  WASP-107b    H2O  present  absent  0   6% absent  0  14% absent  0  15%
+  WASP-107b    CO2  nan      present 3  48% present 4  75% present 4  79%
+  WASP-107b    NH3  absent   absent  0   0% absent  0   1% absent  0   3%
+  HD189733b    CH4  absent   absent  0   0% absent  0   0% absent  0   0%
+  HD189733b    H2O  nan      absent  1  27% split   2  48% split   2  52%
+  HD189733b    CO2  absent   absent  1  29% present 4  49% present 4  53%
+  HD189733b    NH3  absent   absent  0   0% absent  0   1% absent  0   1%
+  HAT-P-26b    CH4  absent   absent  0   1% absent  0   2% absent  0   2%
+  HAT-P-26b    H2O  present  absent  0   5% absent  0   6% absent  0   7%
+  HAT-P-26b    CO2  present  split   2  12% present 3  16% present 3  19%
+  HAT-P-26b    NH3  absent   absent  0   3% absent  0   8% absent  1   8%
+  GJ3470b      CH4  nan      absent  0   2% absent  0   2% absent  0   3%
+  GJ3470b      H2O  present  absent  0   9% absent  0  12% absent  0  12%
+  GJ3470b      CO2  present  split   2   8% present 4  11% present 4  12%
+  GJ3470b      NH3  absent   absent  0   4% absent  0   7% absent  0   7%
+  WASP-166b    CH4  absent   absent  0   0% absent  0   0% absent  0   0%
+  WASP-166b    H2O  present  absent  0  14% present 3  30% present 4  33%
+  WASP-166b    CO2  present  absent  1  21% present 3  34% present 3  38%
+  WASP-166b    NH3  nan      absent  0   1% absent  0   3% absent  0   4%
+  TOI-1231b    CH4  present  split   2  16% present 3  19% present 4  23%
+  TOI-1231b    H2O  nan      absent  0   4% absent  0   6% absent  0   6%
+  TOI-1231b    CO2  present  absent  0   0% absent  0   0% absent  0   0%
+  TOI-1231b    NH3  nan      absent  0   2% absent  0   4% absent  0   3%
+  K2-18b-hu    CH4  present  absent  1   9% present 3  15% split   2  16%
+  K2-18b-hu    H2O  absent   absent  0   9% split   2  15% absent  0  15%
+  K2-18b-hu    CO2  nan      absent  0   0% absent  0   1% absent  0   1%
+  K2-18b-hu    NH3  absent   absent  0   2% absent  0   3% absent  0   3%
+  TOI-270d-hm  CH4  present  absent  0   8% absent  1  11% absent  1  12%
+  TOI-270d-hm  H2O  nan      absent  0   6% absent  0   8% absent  0   9%
+  TOI-270d-hm  CO2  present  absent  0   3% absent  0   4% absent  0   4%
+  TOI-270d-hm  NH3  absent   absent  0   2% absent  0   5% absent  0   5%
+
+== inputs: no_optical
+  faithful  25/36 scored labels correct
+  haze      27/38 scored labels correct
+  hazedeck  26/36 scored labels correct
+  planet       mol  label          faithful           haze       hazedeck   (learners present of 4, Tier-1 frequency %)
+  TOI-270d     CH4  present  absent  1   7% absent  0   8% absent  0   8%
+  TOI-270d     H2O  nan      absent  0   7% absent  0   6% absent  0   7%
+  TOI-270d     CO2  present  absent  0   6% absent  1   6% absent  1   5%
+  TOI-270d     NH3  absent   absent  0  10% absent  0  13% absent  0  10%
+  K2-18b       CH4  present  absent  0  19% absent  0  25% split   2  33%
+  K2-18b       H2O  absent   absent  1  14% absent  1  13% absent  1  19%
+  K2-18b       CO2  nan      absent  0   4% absent  0   5% absent  0   7%
+  K2-18b       NH3  absent   absent  0   0% absent  0   0% absent  0   0%
+  K2-18b-alt   CH4  present  split   2  25% present 3  27% present 3  31%
+  K2-18b-alt   H2O  absent   absent  0   9% absent  0   8% absent  0   9%
+  K2-18b-alt   CO2  nan      absent  0   1% absent  0   1% absent  0   1%
+  K2-18b-alt   NH3  absent   absent  0   1% absent  0   1% absent  0   1%
+  TOI-421b     CH4  absent   absent  0   2% absent  0   3% absent  0   3%
+  TOI-421b     H2O  nan      absent  1  12% absent  0  13% absent  0  13%
+  TOI-421b     CO2  absent   absent  1   8% absent  1  10% absent  1   9%
+  TOI-421b     NH3  nan      absent  0   9% absent  0  12% absent  0  13%
+  HAT-P-18b    CH4  absent   absent  0   4% absent  0   5% absent  0   5%
+  HAT-P-18b    H2O  nan      present 4  32% present 3  34% present 4  35%
+  HAT-P-18b    CO2  absent   absent  0   3% absent  0   4% absent  0   4%
+  HAT-P-18b    NH3  absent   absent  0   1% absent  0   2% absent  0   3%
+  WASP-107b    CH4  absent   absent  0   0% absent  0   0% absent  0   0%
+  WASP-107b    H2O  present  absent  0  12% absent  1  16% absent  1  18%
+  WASP-107b    CO2  nan      present 4  55% present 4  72% present 4  75%
+  WASP-107b    NH3  absent   absent  0   1% absent  0   2% absent  0   2%
+  HD189733b    CH4  absent   absent  0   0% absent  0   0% absent  0   0%
+  HD189733b    H2O  nan      present 4  43% present 3  52% present 3  57%
+  HD189733b    CO2  absent   split   2  30% present 3  43% present 3  46%
+  HD189733b    NH3  absent   absent  0   0% absent  0   1% absent  0   1%
+  HAT-P-26b    CH4  absent   absent  0   1% absent  0   1% absent  0   1%
+  HAT-P-26b    H2O  present  absent  0   7% absent  0   7% absent  0   7%
+  HAT-P-26b    CO2  present  present 3  14% present 3  16% present 3  17%
+  HAT-P-26b    NH3  absent   absent  0   6% absent  0  10% absent  0   9%
+  GJ3470b      CH4  nan      absent  0   1% absent  0   2% absent  0   2%
+  GJ3470b      H2O  present  absent  0  11% absent  0  12% absent  0  12%
+  GJ3470b      CO2  present  present 3   9% present 4  11% present 4  11%
+  GJ3470b      NH3  absent   absent  0   6% absent  0   8% absent  0   8%
+  WASP-166b    CH4  absent   absent  0   0% absent  0   0% absent  0   0%
+  WASP-166b    H2O  present  present 4  35% present 4  33% present 4  33%
+  WASP-166b    CO2  present  present 3  28% present 3  33% present 3  35%
+  WASP-166b    NH3  nan      absent  0   4% absent  0   5% absent  0   5%
+  TOI-1231b    CH4  present  absent  1  16% present 3  19% split   2  20%
+  TOI-1231b    H2O  nan      absent  0   7% absent  0   7% absent  0   7%
+  TOI-1231b    CO2  present  absent  0   0% absent  0   0% absent  0   0%
+  TOI-1231b    NH3  nan      absent  0   4% absent  0   4% absent  0   4%
+  K2-18b-hu    CH4  present  absent  1  11% absent  1  15% absent  1  15%
+  K2-18b-hu    H2O  absent   absent  0  15% absent  1  15% absent  0  15%
+  K2-18b-hu    CO2  nan      absent  0   1% absent  0   1% absent  0   1%
+  K2-18b-hu    NH3  absent   absent  0   3% absent  0   4% absent  0   4%
+  TOI-270d-hm  CH4  present  absent  1   9% absent  1  11% absent  1  12%
+  TOI-270d-hm  H2O  nan      absent  0   7% absent  0   8% absent  0   8%
+  TOI-270d-hm  CO2  present  absent  0   3% absent  0   3% absent  0   4%
+  TOI-270d-hm  NH3  absent   absent  0   5% absent  0   6% absent  0   5%
+
+== inputs: airs_only
+  faithful  29/37 scored labels correct
+  haze      29/36 scored labels correct
+  hazedeck  29/38 scored labels correct
+  planet       mol  label          faithful           haze       hazedeck   (learners present of 4, Tier-1 frequency %)
+  TOI-270d     CH4  present  split   2  15% absent  1  16% absent  1  16%
+  TOI-270d     H2O  nan      absent  0   2% absent  0   2% absent  0   2%
+  TOI-270d     CO2  present  absent  0   8% absent  0   8% absent  0   7%
+  TOI-270d     NH3  absent   absent  0  20% absent  0  17% absent  0  14%
+  K2-18b       CH4  present  present 4  47% present 4  54% present 4  53%
+  K2-18b       H2O  absent   absent  0   3% absent  0   4% absent  0   4%
+  K2-18b       CO2  nan      absent  0   6% absent  0   8% absent  0   8%
+  K2-18b       NH3  absent   absent  0   0% absent  0   0% absent  0   0%
+  K2-18b-alt   CH4  present  present 3  33% present 3  37% present 3  37%
+  K2-18b-alt   H2O  absent   absent  0   3% absent  0   3% absent  0   4%
+  K2-18b-alt   CO2  nan      absent  0   1% absent  0   1% absent  0   1%
+  K2-18b-alt   NH3  absent   absent  0   2% absent  0   2% absent  0   2%
+  TOI-421b     CH4  absent   absent  0   2% absent  0   3% absent  0   2%
+  TOI-421b     H2O  nan      absent  1  10% absent  1  11% split   2  12%
+  TOI-421b     CO2  absent   absent  0  10% absent  1  10% absent  0  10%
+  TOI-421b     NH3  nan      absent  1  17% absent  0  14% absent  0  14%
+  HAT-P-18b    CH4  absent   absent  0   4% absent  0   4% absent  0   4%
+  HAT-P-18b    H2O  nan      present 4  37% present 4  40% present 4  39%
+  HAT-P-18b    CO2  absent   absent  0   3% absent  0   4% absent  0   4%
+  HAT-P-18b    NH3  absent   absent  0   3% absent  0   4% absent  0   4%
+  WASP-107b    CH4  absent   absent  0   0% absent  0   0% absent  0   0%
+  WASP-107b    H2O  present  absent  0  14% absent  1  20% absent  1  22%
+  WASP-107b    CO2  nan      present 4  79% present 4  78% present 4  78%
+  WASP-107b    NH3  absent   absent  0   4% absent  0   4% absent  0   4%
+  HD189733b    CH4  absent   absent  0   0% absent  0   0% absent  0   0%
+  HD189733b    H2O  nan      present 4  62% present 4  76% present 4  78%
+  HD189733b    CO2  absent   present 3  40% split   2  34% present 3  34%
+  HD189733b    NH3  absent   absent  0   2% absent  0   1% absent  0   2%
+  HAT-P-26b    CH4  absent   absent  0   3% absent  0   3% absent  0   3%
+  HAT-P-26b    H2O  present  absent  1   8% absent  1   8% absent  1   8%
+  HAT-P-26b    CO2  present  present 3  19% present 3  20% present 4  20%
+  HAT-P-26b    NH3  absent   absent  1  14% absent  0  14% absent  0  13%
+  GJ3470b      CH4  nan      absent  0   4% absent  0   4% absent  0   4%
+  GJ3470b      H2O  present  absent  0  12% absent  0  14% absent  0  14%
+  GJ3470b      CO2  present  present 4  13% present 4  12% present 4  12%
+  GJ3470b      NH3  absent   absent  0  11% absent  0  11% absent  0  10%
+  WASP-166b    CH4  absent   absent  0   0% absent  0   0% absent  0   0%
+  WASP-166b    H2O  present  absent  0  17% split   2  18% absent  1  20%
+  WASP-166b    CO2  present  present 4  38% present 4  36% present 4  38%
+  WASP-166b    NH3  nan      absent  0  13% absent  0  11% absent  0  11%
+  TOI-1231b    CH4  present  present 4  41% present 4  41% present 4  42%
+  TOI-1231b    H2O  nan      absent  0   6% absent  0   6% absent  0   6%
+  TOI-1231b    CO2  present  absent  0   1% absent  0   1% absent  0   1%
+  TOI-1231b    NH3  nan      absent  0   9% absent  0   6% absent  0   6%
+  K2-18b-hu    CH4  present  present 3  25% present 3  25% present 3  24%
+  K2-18b-hu    H2O  absent   absent  0   7% absent  0   7% absent  0   8%
+  K2-18b-hu    CO2  nan      absent  0   1% absent  0   2% absent  0   2%
+  K2-18b-hu    NH3  absent   absent  0  12% absent  0   8% absent  0   8%
+  TOI-270d-hm  CH4  present  present 3  17% present 3  18% present 3  19%
+  TOI-270d-hm  H2O  nan      absent  0   8% absent  0   9% absent  0   9%
+  TOI-270d-hm  CO2  present  absent  1   4% absent  0   4% absent  0   4%
+  TOI-270d-hm  NH3  absent   absent  0   7% absent  0   6% absent  0   5%
+
+CH4-present planets, verdict under all inputs / AIRS-only, by training set:
+  TOI-270d     faithful: absent / split   haze: absent / absent   hazedeck: absent / absent
+  K2-18b       faithful: absent / present   haze: absent / present   hazedeck: split / present
+  K2-18b-alt   faithful: absent / present   haze: split / present   hazedeck: present / present
+  TOI-1231b    faithful: split / present   haze: present / present   hazedeck: present / present
+  K2-18b-hu    faithful: absent / present   haze: present / present   hazedeck: split / present
+  TOI-270d-hm  faithful: absent / present   haze: absent / present   hazedeck: absent / present

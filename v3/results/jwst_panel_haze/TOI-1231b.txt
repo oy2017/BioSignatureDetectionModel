@@ -1,0 +1,65 @@
+TOI-1231b: Sarkar et al. 2026 (OSF mryd6): JexoRes NIRISS orders 1-2 and NIRSpec G395H NRS1-2
+segments: SOSS-o1 52 pts 0.86-2.37 um, offset +0 ppm; SOSS-o2 17 pts 0.64-0.88 um, offset +0 ppm; NRS1 702 pts 2.74-3.72 um, offset +0 ppm; NRS2 994 pts 3.83-5.17 um, offset +0 ppm
+coverage by channel: AIRS-CH0 17/69 filled, AIRS-CH1 12/21 filled, FGS1 0/1 filled, FGS2 0/1 filled, NIRSpec 0/11 filled, VISPhot 1/1 filled
+== TOI-1231b [Sarkar et al. 2026 (OSF mryd6): JexoRes NIRISS orders 1-2 and NIRSpec G395H NRS1-2; 30 of 104 bins flat-filled]: verdicts at the delivered precision (1 = present)
+-- threshold 1e-5
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       1.0  1.0  1.0  1.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  0.0  0.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       1.0  1.0  1.0  1.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  1.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       1.0  1.0  1.0  1.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  1.0  0.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+-- threshold 1e-4
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       1.0  1.0  1.0  1.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       1.0  0.0  1.0  1.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       1.0  0.0  1.0  1.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+-- threshold 1e-3
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       1.0  1.0  1.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       1.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+== TOI-1231b [Sarkar et al. 2026 (OSF mryd6): JexoRes NIRISS orders 1-2 and NIRSpec G395H NRS1-2; 30 of 104 bins flat-filled]: fraction of 500 Ariel tier1 noise draws called present (threshold 1e-4)
+learner               KNN   MLP   RFC   SVC
+variant    molecule                        
+airs_only  CH4       66.0  51.0  13.0  35.0
+           CO2        2.0   2.0   0.0   0.0
+           H2O       11.0  13.0   0.0   1.0
+           NH3        9.0  12.0   0.0   4.0
+all        CH4       49.0  22.0   0.0   4.0
+           CO2        1.0   0.0   0.0   0.0
+           H2O       10.0  11.0   1.0   2.0
+           NH3       10.0   3.0   0.0   1.0
+no_optical CH4       51.0  19.0   0.0   5.0
+           CO2        1.0   0.0   0.0   0.0
+           H2O       12.0  13.0   1.0   2.0
+           NH3       11.0   4.0   0.0   2.0
+== band metric (Mugnai et al. 2021, Eq. 3): M_H2O = 0.84, M_CH4 = 1.84, M_CO2 = -0.65  (their flags: CH4 >= 0.22, CO2 >= 0.26, H2O >= 0.80)
