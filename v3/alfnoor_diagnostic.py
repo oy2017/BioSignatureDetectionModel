@@ -303,12 +303,15 @@ def evaluate(cases, Pte, edges, sig_te, sc):
     # decidable given a correct model of the departure (the information survives; the error is computational), and
     # irrecoverable if it is not (the departure, or the noise, removed the information). Errors are split into those
     # the learner also makes on the clean spectrum ("shared") and those the departure introduces ("introduced").
+    # The white-noise cases need no run: the test's sigma enters only as a uniform factor, so dchi2 under noise x k is
+    # the clean dchi2 / k^2 with the same counterfactual minimiser (the calibrated thresholds are on the same statistic).
     rows = []; name_to_i = {n: i for i, n in enumerate(Pte.name)}
     for c in CASES:
-        f = os.path.join(RESULTS, f"identifiability_{'none' if c == 'clean' else c}_tier1.csv")
+        base = "none" if c in ("clean", "white_x2", "white_x3") else c; scale = {"white_x2": 0.25, "white_x3": 1 / 9}.get(c, 1.0)
+        f = os.path.join(RESULTS, f"identifiability_{base}_tier1.csv")
         if not os.path.exists(f):
             continue
-        I = pd.read_csv(f); I = I[np.isfinite(I.dchi2) & I.name.isin(name_to_i)]
+        I = pd.read_csv(f); I = I[np.isfinite(I.dchi2) & I.name.isin(name_to_i)].copy(); I["dchi2"] = I.dchi2 * scale
         for mol in MOLS:
             D = I[I.molecule == mol]
             if len(D) < 40:

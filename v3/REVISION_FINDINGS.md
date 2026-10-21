@@ -330,9 +330,17 @@ on the posterior one. The haze does not take the methane out of the spectrum; it
 classifier's recall of decidable present labels from 83 % to 14 %, which is the mechanism of F2 and
 F5 on the population. B4 (at least 70 % of the haze errors recoverable) is met for CH₄ and CO₂ on
 all errors and for CH₄, CO₂ and NH₃ on the introduced errors, on the Δχ² definition; the posterior
-definition on the 60-planet modelled-haze retrieval (running) is the stricter check, and the other
-departures (spots, cloud, noise × 2 and × 3) have not had their identifiability runs yet, so the
-noise × 3 clause stays open.
+definition on the 60-planet modelled-haze retrieval (running) is the stricter check.
+
+The white-noise cases need no run: the test's σ enters only as a uniform factor, so Δχ² under noise
+× k is the clean Δχ² / k² with the same counterfactual, and the diagnostic computes them that way.
+They are the opposite class. Under noise × 2 the undecidable fraction rises to 50/78/72/51 %
+(CH₄/H₂O/CO₂/NH₃) and under × 3 to 65/87/86/67 %; the errors the noise introduces are 61/32/23/53 %
+recoverable at × 2 and 56/23/10/41 % at × 3, all errors 45/20/17/36 % and 41/13/8/28 %. B4's noise
+× 3 clause (at most 30 % of the errors recoverable) is met for H₂O, CO₂ and NH₃ and missed by CH₄
+(41 %). So the two classes separate on the population as the editor asked: a haze error is in the
+spectrum's reach and a noise error is not, and the same test tells them apart label by label. The
+spots and deep-deck runs (running) complete the table.
 
 Self-consistency: on decidable labels the learners score 93.5–95.7 % (CH₄), 76–93 % (H₂O), 92–95 %
 (CO₂) and 91–98 % (NH₃); on undecidable ones 60–68, 61–66, 61–70 and 58–63 % against majority rates
