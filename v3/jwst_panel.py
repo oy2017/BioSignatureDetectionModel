@@ -24,7 +24,8 @@ from common import RESULTS  # noqa: E402
 import jwst_to_ariel as J  # noqa: E402
 import jwst_readers as R  # noqa: E402
 
-OUT = os.path.join(RESULTS, "jwst_panel"); os.makedirs(OUT, exist_ok=True)
+TRAIN = os.environ.get("ALFNOOR_TRAIN", "faithful")      # see alfnoor_jwst.TRAIN / alfnoor_retrain.py
+OUT = os.path.join(RESULTS, "jwst_panel" + ("" if TRAIN == "faithful" else f"_{TRAIN}")); os.makedirs(OUT, exist_ok=True)
 MOLS = ["CH4", "H2O", "CO2", "NH3"]
 P, A = "present", "absent"
 # consensus labels at 10^-4 (REVISION_EXPECTATIONS.md); None = ambiguous, not scored
@@ -188,7 +189,7 @@ def main():
         except FileNotFoundError as ex:
             notes += [f"{pl}: data not available ({ex})", ""]; print(f"{pl}: skipped, {ex}", flush=True)
     df = pd.DataFrame(allrows); df.to_csv(os.path.join(OUT, "panel_summary.csv"), index=False)
-    L = ["JWST panel through the consortium classifier (threshold 1e-4; verdict = majority of the four learners; flat fill of uncovered bins)", ""]
+    L = [f"JWST panel through the consortium classifier (threshold 1e-4; verdict = majority of the four learners; flat fill of uncovered bins; training set {TRAIN})", ""]
     for v in variants:
         g = df[df.variant == v]; s = g[g.correct.notna()]
         L.append(f"== variant {v}: {int(s.correct.sum())}/{len(s)} scored labels correct ({100*s.correct.mean():.0f} %)"
