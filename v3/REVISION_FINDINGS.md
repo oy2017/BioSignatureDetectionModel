@@ -330,7 +330,7 @@ on the posterior one. The haze does not take the methane out of the spectrum; it
 classifier's recall of decidable present labels from 83 % to 14 %, which is the mechanism of F2 and
 F5 on the population. B4 (at least 70 % of the haze errors recoverable) is met for CH₄ and CO₂ on
 all errors and for CH₄, CO₂ and NH₃ on the introduced errors, on the Δχ² definition; the posterior
-definition on the 60-planet modelled-haze retrieval (running) is the stricter check.
+definition on the modelled-haze retrieval (below) is the stricter check, and agrees.
 
 The white-noise cases need no run: the test's σ enters only as a uniform factor, so Δχ² under noise
 × k is the clean Δχ² / k² with the same counterfactual, and the diagnostic computes them that way.
@@ -422,6 +422,27 @@ caveats: 55 planets, to be replaced by the full population (running, ~365 core-h
 holds the planet radius fixed with only a ±5 × 10⁻³ depth offset, so a retrieval with a free radius
 and a haze parameter, as the consortium would run on a flagged planet, is a different and fairer
 comparison, which is what the modelled run measures.
+
+**The modelled-haze retrieval on the same sixty (2026-10-21; `identifiability_calibrate.py --departure
+haze3e7 --model-departure`, `results/identifiability_calibration_haze3e7_modelled.{csv,txt}`; 60 of 60,
+median 33.6 min and 6,062 calls per planet).** The same retrieval with the haze in the forward model
+(density free over the prior) on the same hazed spectra, against the clean retrieval of the same planets:
+
+| | CH₄ | H₂O | CO₂ | NH₃ |
+| :-- | :-- | :-- | :-- | :-- |
+| accuracy clean → hazed, modelled | 98 → 98 % | 88 → 87 % | 88 → 92 % | 97 → 92 % |
+| recall of present labels | 97 → 97 % | 74 → 74 % | 74 → 81 % | 90 → 80 % |
+| decidable (p_true > 0.95) | 85 → 83 % | 50 → 40 % | 57 → 70 % | 65 → 60 % |
+| confidently wrong | 0 → 0 % | 0 → 0 % | 0 → 0 % | 0 → 0 % |
+| median posterior shift of log X | −0.00 dex | −0.10 dex | +0.01 dex | −0.11 dex |
+
+Of the 33 planets with CH₄ present and decidable on the clean spectrum, the modelled retrieval recovers
+all 33 (median p_true 1.000) and 94 % stay decidable; the evidence is unchanged (median log Z −13.4 →
+−13.5). So the posterior says what the Δχ² test said: the haze removes no information the labels need
+(H₂O loses a little decidability, CO₂ gains some, as in the Δχ² table above), and the clear-model
+retrieval's zero recall and 64 % confident errors on the same spectra are entirely the model's. This is
+the posterior-based form of B4, met for all four molecules on the sixty. The full-population modelled
+run is queued after the clear-model one (both ~365 core-hours).
 
 ### F7. Muting census: six of the fourteen real JWST spectra are more muted than any atmosphere the simulator population can produce at their bulk parameters, and the distance rule cannot see it because it normalises amplitude away
 
