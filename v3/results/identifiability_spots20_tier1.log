@@ -1,0 +1,152 @@
+Numba not installed, using numpy instead
+spots20_tier1: 955 planets, 955 to do, 3 starts, 8 jobs
+  16/955 planets, 1291 s, median 150.7 s and 536 calls per planet-molecule
+  32/955 planets, 2485 s, median 134.3 s and 526 calls per planet-molecule
+  48/955 planets, 3799 s, median 150.8 s and 560 calls per planet-molecule
+  64/955 planets, 5141 s, median 143.5 s and 546 calls per planet-molecule
+  80/955 planets, 6520 s, median 157.7 s and 590 calls per planet-molecule
+  96/955 planets, 7888 s, median 157.3 s and 560 calls per planet-molecule
+  112/955 planets, 9246 s, median 148.4 s and 566 calls per planet-molecule
+  128/955 planets, 10890 s, median 185.8 s and 622 calls per planet-molecule
+  144/955 planets, 12388 s, median 176.9 s and 578 calls per planet-molecule
+/Users/fanyang/tfenv/lib/python3.10/site-packages/joblib/externals/loky/backend/resource_tracker.py:444: UserWarning: resource_tracker: There appear to be 14 leaked semlock objects to clean up at shutdown: {'/loky-71148-q3lzf_i7': 1, '/loky-71148-t627_4op': 1, '/loky-71148-4ih92007': 1, '/loky-71148-5whnvyks': 1, '/loky-71148-sokflvt2': 1, '/loky-71148-31yl20m6': 1, '/loky-71148-90e3cd35': 1, '/loky-71148-ocvw_28n': 1, '/loky-71148-6oarh6gz': 1, '/loky-71148-myvj6w1p': 1, '/loky-71148-7yvpofd1': 1, '/loky-71148-og274kuf': 1, '/loky-71148-dl62c8f_': 1, '/loky-71148-b_h8nnz3': 1}
+  warnings.warn(
+/Users/fanyang/tfenv/lib/python3.10/site-packages/joblib/externals/loky/backend/resource_tracker.py:444: UserWarning: resource_tracker: There appear to be 20 leaked folder objects to clean up at shutdown: {'/var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_71148_b6f51c9b304d447384c4069e0dc849a2_5031e89d9890439f849b57ac72e2f862': 1, '/var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_71148_b6f51c9b304d447384c4069e0dc849a2_0b4c8d525228469ea598703944ddbcac': 1, '/var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_71148_53e624dff06249e5887ceda8f3aeb157_591be32f66a444598e271bd7937e9bc2': 1, '/var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_71148_b6f51c9b304d447384c4069e0dc849a2_50279d53c6cb4110a2110088fa365c03': 1, '/var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_71148_d03699cba0114d018b45c501ff798bd7_e09af7bac2354ed49a7e82eb382bbeaa': 1, '/var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_71148_b6f51c9b304d447384c4069e0dc849a2_6cfba36d365342dfae3478fb0866baf4': 1, '/var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_71148_506f5bb61542423e9169459c966ca6c1_e1122a0f09ca4d3d9b3e6f9f184f7594': 1, '/var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_71148_b6f51c9b304d447384c4069e0dc849a2_2488ef26d6e243d0ad679fa77bb8c01a': 1, '/var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_71148_67229f3cea124404b099869472ef7ca5_ed5b304984ab4f01bed9b59e1e55146d': 1, '/var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_71148_b6f51c9b304d447384c4069e0dc849a2_667402d6df0946cf81db4cef1aefb269': 1, '/var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_71148_4c85082eae2542908d122709188214f1_772ae29aec9c4d18a0ebb067c13a6d25': 1, '/var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_71148_b6f51c9b304d447384c4069e0dc849a2_519916710d4a43c8a37677ab435e258b': 1, '/var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_71148_92ca7fb067b941099943f47c94611efe_3bb1fef46297496dbe566087e4022651': 1, '/var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_71148_b6f51c9b304d447384c4069e0dc849a2_4d9cd28fdfbe41e3bcad75e94756e9dc': 1, '/var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_71148_1faf05d178a44f70812c9b9c32bc6df5_ef7c62c73284405ea806d84052754453': 1, '/var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_71148_b6f51c9b304d447384c4069e0dc849a2_bf3426b65e7b46bfb45ddc474a1cfff2': 1, '/var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_71148_3e2c8dd8b25b4a0c92df4717e6bcda16_abb73ddb711c4827bca61e184b659501': 1, '/var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_71148_b6f51c9b304d447384c4069e0dc849a2_9bef5115649f4c0c8ae227b83bbe8242': 1, '/var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_71148_bb27ef8dff1a400ea5fe23a76fba60b6_80c55894861f4cc798a10ec24028e8d2': 1, '/var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_71148_b6f51c9b304d447384c4069e0dc849a2_61b4815a3cd4469d89e636dd2e25ab53': 1}
+  warnings.warn(
+/Users/fanyang/tfenv/lib/python3.10/site-packages/joblib/externals/loky/backend/resource_tracker.py:468: UserWarning: resource_tracker: /var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_71148_b6f51c9b304d447384c4069e0dc849a2_5031e89d9890439f849b57ac72e2f862: FileNotFoundError(2, 'No such file or directory')
+  warnings.warn('resource_tracker: %s: %r' % (name, e))
+/Users/fanyang/tfenv/lib/python3.10/site-packages/joblib/externals/loky/backend/resource_tracker.py:468: UserWarning: resource_tracker: /var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_71148_b6f51c9b304d447384c4069e0dc849a2_0b4c8d525228469ea598703944ddbcac: FileNotFoundError(2, 'No such file or directory')
+  warnings.warn('resource_tracker: %s: %r' % (name, e))
+/Users/fanyang/tfenv/lib/python3.10/site-packages/joblib/externals/loky/backend/resource_tracker.py:468: UserWarning: resource_tracker: /var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_71148_53e624dff06249e5887ceda8f3aeb157_591be32f66a444598e271bd7937e9bc2: FileNotFoundError(2, 'No such file or directory')
+  warnings.warn('resource_tracker: %s: %r' % (name, e))
+/Users/fanyang/tfenv/lib/python3.10/site-packages/joblib/externals/loky/backend/resource_tracker.py:468: UserWarning: resource_tracker: /var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_71148_b6f51c9b304d447384c4069e0dc849a2_50279d53c6cb4110a2110088fa365c03: FileNotFoundError(2, 'No such file or directory')
+  warnings.warn('resource_tracker: %s: %r' % (name, e))
+/Users/fanyang/tfenv/lib/python3.10/site-packages/joblib/externals/loky/backend/resource_tracker.py:468: UserWarning: resource_tracker: /var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_71148_d03699cba0114d018b45c501ff798bd7_e09af7bac2354ed49a7e82eb382bbeaa: FileNotFoundError(2, 'No such file or directory')
+  warnings.warn('resource_tracker: %s: %r' % (name, e))
+/Users/fanyang/tfenv/lib/python3.10/site-packages/joblib/externals/loky/backend/resource_tracker.py:468: UserWarning: resource_tracker: /var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_71148_b6f51c9b304d447384c4069e0dc849a2_6cfba36d365342dfae3478fb0866baf4: FileNotFoundError(2, 'No such file or directory')
+  warnings.warn('resource_tracker: %s: %r' % (name, e))
+/Users/fanyang/tfenv/lib/python3.10/site-packages/joblib/externals/loky/backend/resource_tracker.py:468: UserWarning: resource_tracker: /var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_71148_506f5bb61542423e9169459c966ca6c1_e1122a0f09ca4d3d9b3e6f9f184f7594: FileNotFoundError(2, 'No such file or directory')
+  warnings.warn('resource_tracker: %s: %r' % (name, e))
+/Users/fanyang/tfenv/lib/python3.10/site-packages/joblib/externals/loky/backend/resource_tracker.py:468: UserWarning: resource_tracker: /var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_71148_b6f51c9b304d447384c4069e0dc849a2_2488ef26d6e243d0ad679fa77bb8c01a: FileNotFoundError(2, 'No such file or directory')
+  warnings.warn('resource_tracker: %s: %r' % (name, e))
+/Users/fanyang/tfenv/lib/python3.10/site-packages/joblib/externals/loky/backend/resource_tracker.py:468: UserWarning: resource_tracker: /var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_71148_67229f3cea124404b099869472ef7ca5_ed5b304984ab4f01bed9b59e1e55146d: FileNotFoundError(2, 'No such file or directory')
+  warnings.warn('resource_tracker: %s: %r' % (name, e))
+/Users/fanyang/tfenv/lib/python3.10/site-packages/joblib/externals/loky/backend/resource_tracker.py:468: UserWarning: resource_tracker: /var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_71148_b6f51c9b304d447384c4069e0dc849a2_667402d6df0946cf81db4cef1aefb269: FileNotFoundError(2, 'No such file or directory')
+  warnings.warn('resource_tracker: %s: %r' % (name, e))
+/Users/fanyang/tfenv/lib/python3.10/site-packages/joblib/externals/loky/backend/resource_tracker.py:468: UserWarning: resource_tracker: /var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_71148_4c85082eae2542908d122709188214f1_772ae29aec9c4d18a0ebb067c13a6d25: FileNotFoundError(2, 'No such file or directory')
+  warnings.warn('resource_tracker: %s: %r' % (name, e))
+/Users/fanyang/tfenv/lib/python3.10/site-packages/joblib/externals/loky/backend/resource_tracker.py:468: UserWarning: resource_tracker: /var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_71148_b6f51c9b304d447384c4069e0dc849a2_519916710d4a43c8a37677ab435e258b: FileNotFoundError(2, 'No such file or directory')
+  warnings.warn('resource_tracker: %s: %r' % (name, e))
+/Users/fanyang/tfenv/lib/python3.10/site-packages/joblib/externals/loky/backend/resource_tracker.py:468: UserWarning: resource_tracker: /var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_71148_92ca7fb067b941099943f47c94611efe_3bb1fef46297496dbe566087e4022651: FileNotFoundError(2, 'No such file or directory')
+  warnings.warn('resource_tracker: %s: %r' % (name, e))
+/Users/fanyang/tfenv/lib/python3.10/site-packages/joblib/externals/loky/backend/resource_tracker.py:468: UserWarning: resource_tracker: /var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_71148_b6f51c9b304d447384c4069e0dc849a2_4d9cd28fdfbe41e3bcad75e94756e9dc: FileNotFoundError(2, 'No such file or directory')
+  warnings.warn('resource_tracker: %s: %r' % (name, e))
+/Users/fanyang/tfenv/lib/python3.10/site-packages/joblib/externals/loky/backend/resource_tracker.py:468: UserWarning: resource_tracker: /var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_71148_1faf05d178a44f70812c9b9c32bc6df5_ef7c62c73284405ea806d84052754453: FileNotFoundError(2, 'No such file or directory')
+  warnings.warn('resource_tracker: %s: %r' % (name, e))
+/Users/fanyang/tfenv/lib/python3.10/site-packages/joblib/externals/loky/backend/resource_tracker.py:468: UserWarning: resource_tracker: /var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_71148_b6f51c9b304d447384c4069e0dc849a2_bf3426b65e7b46bfb45ddc474a1cfff2: FileNotFoundError(2, 'No such file or directory')
+  warnings.warn('resource_tracker: %s: %r' % (name, e))
+/Users/fanyang/tfenv/lib/python3.10/site-packages/joblib/externals/loky/backend/resource_tracker.py:468: UserWarning: resource_tracker: /var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_71148_3e2c8dd8b25b4a0c92df4717e6bcda16_abb73ddb711c4827bca61e184b659501: FileNotFoundError(2, 'No such file or directory')
+  warnings.warn('resource_tracker: %s: %r' % (name, e))
+/Users/fanyang/tfenv/lib/python3.10/site-packages/joblib/externals/loky/backend/resource_tracker.py:468: UserWarning: resource_tracker: /var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_71148_b6f51c9b304d447384c4069e0dc849a2_9bef5115649f4c0c8ae227b83bbe8242: FileNotFoundError(2, 'No such file or directory')
+  warnings.warn('resource_tracker: %s: %r' % (name, e))
+/Users/fanyang/tfenv/lib/python3.10/site-packages/joblib/externals/loky/backend/resource_tracker.py:468: UserWarning: resource_tracker: /var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_71148_bb27ef8dff1a400ea5fe23a76fba60b6_80c55894861f4cc798a10ec24028e8d2: FileNotFoundError(2, 'No such file or directory')
+  warnings.warn('resource_tracker: %s: %r' % (name, e))
+/Users/fanyang/tfenv/lib/python3.10/site-packages/joblib/externals/loky/backend/resource_tracker.py:468: UserWarning: resource_tracker: /var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_71148_b6f51c9b304d447384c4069e0dc849a2_61b4815a3cd4469d89e636dd2e25ab53: FileNotFoundError(2, 'No such file or directory')
+  warnings.warn('resource_tracker: %s: %r' % (name, e))
+Numba not installed, using numpy instead
+spots20_tier1: 955 planets, 811 to do, 3 starts, 8 jobs
+  16/811 planets, 1677 s, median 197.6 s and 559 calls per planet-molecule
+  32/811 planets, 3192 s, median 165.0 s and 527 calls per planet-molecule
+  48/811 planets, 4804 s, median 186.0 s and 589 calls per planet-molecule
+Numba not installed, using numpy instead
+  64/811 planets, 6321 s, median 177.3 s and 554 calls per planet-molecule
+  80/811 planets, 7953 s, median 184.9 s and 606 calls per planet-molecule
+  96/811 planets, 9420 s, median 170.5 s and 552 calls per planet-molecule
+  112/811 planets, 10931 s, median 176.8 s and 590 calls per planet-molecule
+  128/811 planets, 12400 s, median 178.2 s and 574 calls per planet-molecule
+  144/811 planets, 13984 s, median 181.0 s and 620 calls per planet-molecule
+  160/811 planets, 15642 s, median 195.1 s and 590 calls per planet-molecule
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+  176/811 planets, 17135 s, median 162.9 s and 562 calls per planet-molecule
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+  192/811 planets, 18765 s, median 168.5 s and 587 calls per planet-molecule
+  208/811 planets, 20323 s, median 181.5 s and 580 calls per planet-molecule
+  224/811 planets, 21926 s, median 172.3 s and 562 calls per planet-molecule
+  240/811 planets, 23322 s, median 162.0 s and 554 calls per planet-molecule
+  256/811 planets, 24816 s, median 173.4 s and 578 calls per planet-molecule
+  272/811 planets, 26334 s, median 175.5 s and 539 calls per planet-molecule
+  288/811 planets, 27916 s, median 167.7 s and 534 calls per planet-molecule
+  304/811 planets, 29404 s, median 169.5 s and 570 calls per planet-molecule
+  320/811 planets, 30885 s, median 170.8 s and 536 calls per planet-molecule
+  336/811 planets, 32422 s, median 173.1 s and 542 calls per planet-molecule
+  352/811 planets, 33828 s, median 167.5 s and 544 calls per planet-molecule
+  368/811 planets, 35411 s, median 192.7 s and 616 calls per planet-molecule
+  384/811 planets, 36947 s, median 181.3 s and 558 calls per planet-molecule
+  400/811 planets, 38466 s, median 171.2 s and 560 calls per planet-molecule
+  416/811 planets, 39982 s, median 172.2 s and 576 calls per planet-molecule
+  432/811 planets, 41549 s, median 186.3 s and 578 calls per planet-molecule
+  448/811 planets, 43217 s, median 186.7 s and 620 calls per planet-molecule
+  464/811 planets, 44717 s, median 177.2 s and 574 calls per planet-molecule
+  480/811 planets, 46314 s, median 175.2 s and 584 calls per planet-molecule
+  496/811 planets, 47754 s, median 168.1 s and 558 calls per planet-molecule
+  512/811 planets, 49268 s, median 174.1 s and 554 calls per planet-molecule
+  528/811 planets, 50681 s, median 171.1 s and 537 calls per planet-molecule
+  544/811 planets, 52105 s, median 161.4 s and 556 calls per planet-molecule
+  560/811 planets, 53783 s, median 183.3 s and 550 calls per planet-molecule
+Numba not installed, using numpy instead
+  576/811 planets, 55261 s, median 163.3 s and 553 calls per planet-molecule
+  592/811 planets, 56474 s, median 143.3 s and 568 calls per planet-molecule
+  608/811 planets, 57568 s, median 126.5 s and 568 calls per planet-molecule
+  624/811 planets, 58696 s, median 125.0 s and 552 calls per planet-molecule
+  640/811 planets, 59824 s, median 136.6 s and 604 calls per planet-molecule
+  656/811 planets, 61019 s, median 131.9 s and 576 calls per planet-molecule
+  672/811 planets, 62174 s, median 131.3 s and 594 calls per planet-molecule
+  688/811 planets, 63300 s, median 131.9 s and 561 calls per planet-molecule
+  704/811 planets, 64479 s, median 138.1 s and 583 calls per planet-molecule
+  720/811 planets, 65571 s, median 128.9 s and 561 calls per planet-molecule
+  736/811 planets, 66714 s, median 134.2 s and 587 calls per planet-molecule
+  752/811 planets, 67760 s, median 120.0 s and 530 calls per planet-molecule
+  768/811 planets, 68867 s, median 131.1 s and 556 calls per planet-molecule
+  784/811 planets, 69992 s, median 133.9 s and 592 calls per planet-molecule
+  800/811 planets, 71147 s, median 134.0 s and 610 calls per planet-molecule
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+  811/811 planets, 71936 s, median 88.1 s and 582 calls per planet-molecule
+Identifiability of the consortium labels (log10 abundance > -4) [spots20_tier1]: 955 planets
+dchi2 = min chi^2 of the opposite class (offset-free, 104 Tier-3 bins, the planet's per-bin sigma)
+
+== undecidable fraction at 95 % one-sided (dchi2 < 3.84)
+  CH4  all  62.5 %   present  44.6 %   absent  73.3 %   within 0.5 dex of the threshold  97.9 %
+  H2O  all  77.1 %   present  66.2 %   absent  83.8 %   within 0.5 dex of the threshold  97.1 %
+  CO2  all  70.7 %   present  73.1 %   absent  69.1 %   within 0.5 dex of the threshold  96.7 %
+  NH3  all  61.2 %   present  55.6 %   absent  64.7 %   within 0.5 dex of the threshold  95.0 %
+
+== undecidable fraction at 3 sigma (dchi2 < 9)
+  CH4  all  77.1 %   present  63.2 %   absent  85.4 %   within 0.5 dex of the threshold  99.5 %
+  H2O  all  86.1 %   present  76.9 %   absent  91.7 %   within 0.5 dex of the threshold  99.5 %
+  CO2  all  86.2 %   present  86.0 %   absent  86.3 %   within 0.5 dex of the threshold  97.8 %
+  NH3  all  77.2 %   present  68.8 %   absent  82.5 %   within 0.5 dex of the threshold  96.1 %
+
+== undecidable fraction at 5 sigma (dchi2 < 25)
+  CH4  all  89.8 %   present  82.2 %   absent  94.5 %   within 0.5 dex of the threshold 100.0 %
+  H2O  all  94.3 %   present  90.7 %   absent  96.6 %   within 0.5 dex of the threshold 100.0 %
+  CO2  all  93.4 %   present  92.7 %   absent  93.8 %   within 0.5 dex of the threshold  99.5 %
+  NH3  all  89.1 %   present  83.9 %   absent  92.5 %   within 0.5 dex of the threshold  97.2 %
+
+== accuracy ceilings: (i) coin toss on the 3-sigma-undecidable labels, 1 - undecidable/2; (ii) Bayes classifier when the
+   opposite class is represented by its best-fitting point, likelihood ratio exp(dchi2/2) times the class prior; (ii) is a lower
+   bound on the true ceiling because the best point over-credits the opposite class (the retrieval calibration integrates over it)
+  CH4  coin-toss ceiling  61.5 %   point-LR Bayes ceiling  79.9 %   prior-only  62.4 %
+  H2O  coin-toss ceiling  57.0 %   point-LR Bayes ceiling  74.0 %   prior-only  61.9 %
+  CO2  coin-toss ceiling  56.9 %   point-LR Bayes ceiling  75.1 %   prior-only  59.6 %
+  NH3  coin-toss ceiling  61.4 %   point-LR Bayes ceiling  79.9 %   prior-only  61.0 %
+
+median calls per planet-molecule 569, median 162.3 s
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
