@@ -7,7 +7,7 @@ published abundances over the same bins, the twins with a grey deck at the popul
 spectrum. The muting factor is clear twin / real. For comparison, the muting factor of a random sample of POP-I
 planets: their rendered spectrum (with the population's own cloud deck) against their clear twin.
 
-Usage: python jwst_muting_census.py [--pop 150]   -> results/jwst_panel/muting_census.{txt,csv}
+Usage: python jwst_muting_census.py [--pop 955]   -> results/jwst_panel/muting_census.{txt,csv}
 """
 import argparse, os, sys, warnings
 import numpy as np, pandas as pd
@@ -44,7 +44,7 @@ def render(r, cp=None):
 def disp(x, m): return float(np.std(x[m]) * 1e6)
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument("--pop", type=int, default=150); a = ap.parse_args()
+    ap = argparse.ArgumentParser(); ap.add_argument("--pop", type=int, default=955); a = ap.parse_args()
     L, rows = [], []
     L.append("Muting census: dispersion (std over the measured Tier-3 bins, ppm) of the real spectrum, noise-corrected, against its clear H2/He twin")
     L.append("and the twin under grey decks; muting = clear twin / real; the population's cloud prior stops at 5e2 Pa; 'prior' = clear twin / the most muted")

@@ -431,7 +431,7 @@ its clear H₂/He twin at the published abundances over the same bins; the twin 
 population's lowest allowed cloud top (5 × 10² Pa) down to 1 Pa; the twin at the population's coldest
 allowed temperature (0.7 T_eq, the floor of its prior) with the 5 × 10² Pa deck, which is the most muted
 atmosphere the population can draw at those bulk parameters; and the cloud-only muting of a random
-sample of 150 POP-I planets, their rendered spectrum against their own clear twin
+whole of POP-I (955 planets; the first pass used a sample of 150), their rendered spectrum against their own clear twin
 (`jwst_muting_census.py`; `results/jwst_panel/muting_census.{txt,csv}`, `muting_population.csv`).
 
 | planet | real, corrected (ppm) | clear twin (ppm) | muting | most the prior allows | beyond the prior | AIRS bins only: muting / prior |
@@ -459,15 +459,17 @@ abundance between 10⁻² and 10⁻³ moves its dispersion by 10–30 %, an orde
 muting. The last column repeats the measure over the AIRS bins alone (1.95–7.8 µm), which excludes the
 optical slope: it changes nothing by more than 0.4, so the muting is in the molecular bands, not in a
 haze slope. Within the population the cloud-only muting over the AIRS bins has median 1.00, 90th
-percentile 1.09, 99th 2.12 and maximum 2.59 of 150.
+percentile 1.08, 99th 2.27 and maximum 5.56 of 955.
 
 Every warm giant with a published abundance set (HAT-P-26 b, WASP-107 b, WASP-39 b, GJ 3470 b, WASP-166 b)
 is muted by a factor of 3 to 5 against its clear twin, and by 1.5 to 2.2 beyond the coldest, cloudiest
 atmosphere the population allows at its mass, radius and irradiation. For five planets no grey deck at any
 pressure in the model reaches the real amplitude, because their photospheres sit above the population's
 cloud floor. Within the population, clouds mute the median planet by 1 %, the 90th percentile by 23 %,
-the 99th by a factor of 2.4, and the most muted of 150 by 3.1; none of the sampled planets is as muted
-as any of the five giants. The three sub-Neptunes with retrieved methane-rich atmospheres (K2-18 b,
+the 99th by a factor of 2.5, and the most muted of 955 by 6.3 (TOI-836.01, a deck at 649 Pa, just above the prior's
+5 × 10² Pa floor, on a small cool planet). Six planets of 955 (0.6 %) are muted as much as WASP-166 b, three (0.3 %) as
+much as WASP-39 b, and one as much as WASP-107 b or HAT-P-26 b; so the population can reach the giants' muting, but
+only at its cloud floor and in fewer than one planet in a hundred, whereas five of five real giants sit there. The three sub-Neptunes with retrieved methane-rich atmospheres (K2-18 b,
 TOI-270 d, TOI-1231 b, six reductions) are the only real planets whose amplitude the population covers,
 because their twins are already heavy, and the classifier missed CH₄ on all six for the different reason
 of F2 (the shape the optical points carry).

@@ -17,6 +17,6 @@ TOI-1231b     74     57     39     41     63      56      46      38      29    
 K2-18b-hu     88     44     25     36     71      48      34      23      17      11       8     59     67    2.00      27         2.65         117 |  75     30     68   2.22   2.58
 TOI-270d-hm   41     60     36     48     50      47      40      31      24      18      13     74     82    1.04      26         1.92    7.07e+03 |  41     48     50   1.04   1.92
 
-POP-I sample of 150 planets, muting of the rendered spectrum (its own deck, 5e2-1e6 Pa) against its clear twin: median 1.01, 90th 1.23, 99th 2.36, max 3.07
-  the same over the AIRS bins: median 1.00, 90th 1.09, 99th 2.12, max 2.59
-fraction of POP-I planets muted at least as much as each real planet: TOI-270d 100.0 %, K2-18b 100.0 %, K2-18b-alt 4.0 %, TOI-421b 0.0 %, HAT-P-18b 0.0 %, WASP-107b 0.0 %, HD189733b 4.0 %, HAT-P-26b 0.0 %, GJ3470b 0.0 %, WASP-166b 0.7 %, WASP-39b 0.0 %, TOI-1231b 5.3 %, K2-18b-hu 2.7 %, TOI-270d-hm 37.3 %
+POP-I sample of 955 planets, muting of the rendered spectrum (its own deck, 5e2-1e6 Pa) against its clear twin: median 1.01, 90th 1.20, 99th 2.50, max 6.26
+  the same over the AIRS bins: median 1.00, 90th 1.08, 99th 2.27, max 5.56
+fraction of POP-I planets muted at least as much as each real planet: TOI-270d 100.0 %, K2-18b 100.0 %, K2-18b-alt 3.2 %, TOI-421b 0.5 %, HAT-P-18b 0.3 %, WASP-107b 0.1 %, HD189733b 3.1 %, HAT-P-26b 0.1 %, GJ3470b 0.5 %, WASP-166b 0.6 %, WASP-39b 0.3 %, TOI-1231b 4.4 %, K2-18b-hu 1.8 %, TOI-270d-hm 34.8 %
