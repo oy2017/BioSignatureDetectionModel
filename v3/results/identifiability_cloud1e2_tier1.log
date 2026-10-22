@@ -1,0 +1,100 @@
+Numba not installed, using numpy instead
+cloud1e2_tier1: 955 planets, 955 to do, 3 starts, 8 jobs
+  16/955 planets, 878 s, median 98.1 s and 522 calls per planet-molecule
+  32/955 planets, 1670 s, median 91.3 s and 514 calls per planet-molecule
+  48/955 planets, 2458 s, median 94.6 s and 529 calls per planet-molecule
+  64/955 planets, 3277 s, median 93.9 s and 532 calls per planet-molecule
+  80/955 planets, 4132 s, median 98.5 s and 550 calls per planet-molecule
+  96/955 planets, 4978 s, median 99.0 s and 570 calls per planet-molecule
+  112/955 planets, 5859 s, median 97.1 s and 553 calls per planet-molecule
+  128/955 planets, 6705 s, median 97.8 s and 554 calls per planet-molecule
+  144/955 planets, 7509 s, median 91.5 s and 525 calls per planet-molecule
+  160/955 planets, 8390 s, median 98.1 s and 550 calls per planet-molecule
+  176/955 planets, 9250 s, median 98.1 s and 538 calls per planet-molecule
+  192/955 planets, 10138 s, median 100.6 s and 544 calls per planet-molecule
+  208/955 planets, 11055 s, median 104.8 s and 552 calls per planet-molecule
+  224/955 planets, 11981 s, median 107.1 s and 551 calls per planet-molecule
+  240/955 planets, 12909 s, median 103.7 s and 538 calls per planet-molecule
+  256/955 planets, 13817 s, median 108.8 s and 542 calls per planet-molecule
+  272/955 planets, 14697 s, median 101.2 s and 515 calls per planet-molecule
+  288/955 planets, 15670 s, median 111.1 s and 568 calls per planet-molecule
+  304/955 planets, 16522 s, median 96.9 s and 530 calls per planet-molecule
+  320/955 planets, 17323 s, median 93.4 s and 531 calls per planet-molecule
+  336/955 planets, 18222 s, median 94.9 s and 546 calls per planet-molecule
+  352/955 planets, 19026 s, median 93.3 s and 534 calls per planet-molecule
+  368/955 planets, 19932 s, median 100.4 s and 580 calls per planet-molecule
+  384/955 planets, 20741 s, median 94.3 s and 555 calls per planet-molecule
+  400/955 planets, 21584 s, median 95.6 s and 557 calls per planet-molecule
+  416/955 planets, 22434 s, median 99.3 s and 551 calls per planet-molecule
+  432/955 planets, 23282 s, median 96.7 s and 549 calls per planet-molecule
+  448/955 planets, 24100 s, median 97.2 s and 554 calls per planet-molecule
+  464/955 planets, 24974 s, median 104.0 s and 608 calls per planet-molecule
+  480/955 planets, 25784 s, median 94.3 s and 530 calls per planet-molecule
+  496/955 planets, 26633 s, median 93.4 s and 544 calls per planet-molecule
+  512/955 planets, 27449 s, median 94.7 s and 544 calls per planet-molecule
+  528/955 planets, 28264 s, median 94.5 s and 534 calls per planet-molecule
+  544/955 planets, 29093 s, median 97.2 s and 540 calls per planet-molecule
+  560/955 planets, 29929 s, median 98.7 s and 545 calls per planet-molecule
+  576/955 planets, 30767 s, median 95.9 s and 540 calls per planet-molecule
+  592/955 planets, 31619 s, median 90.9 s and 552 calls per planet-molecule
+  608/955 planets, 32439 s, median 90.3 s and 526 calls per planet-molecule
+  624/955 planets, 33268 s, median 87.5 s and 519 calls per planet-molecule
+  640/955 planets, 34044 s, median 90.6 s and 516 calls per planet-molecule
+  656/955 planets, 34880 s, median 95.7 s and 568 calls per planet-molecule
+  672/955 planets, 35679 s, median 92.6 s and 536 calls per planet-molecule
+  688/955 planets, 36483 s, median 90.9 s and 520 calls per planet-molecule
+  704/955 planets, 37437 s, median 106.6 s and 535 calls per planet-molecule
+  720/955 planets, 38360 s, median 103.2 s and 554 calls per planet-molecule
+  736/955 planets, 39177 s, median 94.3 s and 512 calls per planet-molecule
+  752/955 planets, 40025 s, median 96.5 s and 545 calls per planet-molecule
+  768/955 planets, 40857 s, median 94.2 s and 542 calls per planet-molecule
+  784/955 planets, 41656 s, median 86.9 s and 506 calls per planet-molecule
+  800/955 planets, 42525 s, median 98.7 s and 564 calls per planet-molecule
+  816/955 planets, 43364 s, median 94.8 s and 559 calls per planet-molecule
+  832/955 planets, 44174 s, median 91.7 s and 543 calls per planet-molecule
+  848/955 planets, 45039 s, median 99.9 s and 574 calls per planet-molecule
+  864/955 planets, 45912 s, median 101.4 s and 584 calls per planet-molecule
+  880/955 planets, 46807 s, median 99.6 s and 604 calls per planet-molecule
+  896/955 planets, 47622 s, median 92.6 s and 530 calls per planet-molecule
+  912/955 planets, 48414 s, median 90.8 s and 530 calls per planet-molecule
+  928/955 planets, 49286 s, median 97.9 s and 574 calls per planet-molecule
+  944/955 planets, 50131 s, median 96.7 s and 558 calls per planet-molecule
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+  955/955 planets, 50732 s, median 72.6 s and 548 calls per planet-molecule
+Identifiability of the consortium labels (log10 abundance > -4) [cloud1e2_tier1]: 955 planets
+dchi2 = min chi^2 of the opposite class (offset-free, 104 Tier-3 bins, the planet's per-bin sigma)
+
+== undecidable fraction at 95 % one-sided (dchi2 < 3.84)
+  CH4  all  66.8 %   present  44.0 %   absent  80.5 %   within 0.5 dex of the threshold 100.0 %
+  H2O  all  85.7 %   present  72.5 %   absent  93.7 %   within 0.5 dex of the threshold  98.0 %
+  CO2  all  74.3 %   present  73.3 %   absent  75.0 %   within 0.5 dex of the threshold  96.7 %
+  NH3  all  70.4 %   present  48.7 %   absent  84.2 %   within 0.5 dex of the threshold  96.1 %
+
+== undecidable fraction at 3 sigma (dchi2 < 9)
+  CH4  all  80.0 %   present  61.6 %   absent  91.1 %   within 0.5 dex of the threshold 100.0 %
+  H2O  all  91.3 %   present  82.7 %   absent  96.6 %   within 0.5 dex of the threshold  98.5 %
+  CO2  all  86.5 %   present  83.9 %   absent  88.2 %   within 0.5 dex of the threshold  98.4 %
+  NH3  all  82.0 %   present  65.6 %   absent  92.5 %   within 0.5 dex of the threshold  97.8 %
+
+== undecidable fraction at 5 sigma (dchi2 < 25)
+  CH4  all  89.8 %   present  79.4 %   absent  96.1 %   within 0.5 dex of the threshold 100.0 %
+  H2O  all  96.3 %   present  93.4 %   absent  98.1 %   within 0.5 dex of the threshold 100.0 %
+  CO2  all  93.4 %   present  91.7 %   absent  94.6 %   within 0.5 dex of the threshold  99.5 %
+  NH3  all  92.0 %   present  85.5 %   absent  96.2 %   within 0.5 dex of the threshold  98.9 %
+
+== accuracy ceilings: (i) coin toss on the 3-sigma-undecidable labels, 1 - undecidable/2; (ii) Bayes classifier when the
+   opposite class is represented by its best-fitting point, likelihood ratio exp(dchi2/2) times the class prior; (ii) is a lower
+   bound on the true ceiling because the best point over-credits the opposite class (the retrieval calibration integrates over it)
+  CH4  coin-toss ceiling  60.0 %   point-LR Bayes ceiling  78.4 %   prior-only  62.4 %
+  H2O  coin-toss ceiling  54.3 %   point-LR Bayes ceiling  68.7 %   prior-only  61.9 %
+  CO2  coin-toss ceiling  56.8 %   point-LR Bayes ceiling  73.3 %   prior-only  59.6 %
+  NH3  coin-toss ceiling  59.0 %   point-LR Bayes ceiling  76.2 %   prior-only  61.0 %
+
+median calls per planet-molecule 543, median 96.6 s
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead

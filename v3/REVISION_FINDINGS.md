@@ -339,8 +339,7 @@ They are the opposite class. Under noise × 2 the undecidable fraction rises to 
 recoverable at × 2 and 56/23/10/41 % at × 3, all errors 45/20/17/36 % and 41/13/8/28 %. B4's noise
 × 3 clause (at most 30 % of the errors recoverable) is met for H₂O, CO₂ and NH₃ and missed by CH₄
 (41 %). So the two classes separate on the population as the editor asked: a haze error is in the
-spectrum's reach and a noise error is not, and the same test tells them apart label by label. The
-deep-deck run (running) completes the table.
+spectrum's reach and a noise error is not, and the same test tells them apart label by label.
 
 **Identifiability under spots (2026-10-21).** The Δχ² test rerun with 20 % unocculted spots in the
 spectrum and in the counterfactual model (`identifiability.py --departure spots20`; 955 planets, none
@@ -383,6 +382,54 @@ recoverable for CH₄ and NH₃, two thirds for H₂O and 57 % for CO₂, agains
 threefold noise adds. The spots' errors fall on undecidable labels more often than the haze's do (all
 errors 43–66 % recoverable against 45–75 %), which is a smaller departure adding fewer errors on the
 decidable labels, not a loss of information: the decidable fractions did not move.
+
+**Identifiability under the deep deck (2026-10-22).** The Δχ² test rerun on the population rendered
+with a grey deck at 10² Pa, two decades above the prior's 5 × 10² Pa top, with the deck held at its
+true pressure in the counterfactual model and temperature and the other abundances free
+(`identifiability.py --departure cloud1e2`; 955 planets, none errored; 106 core-hours;
+`results/identifiability_cloud1e2_tier1.{csv,txt}`). Unlike the haze and the spots, the deck removes
+information. At the calibrated thresholds:
+
+| decidable labels | clean | deck 10² Pa | both | clean only | deck only | median log₁₀ Δχ² ratio |
+| :-- | :-- | :-- | :-- | :-- | :-- | :-- |
+| CH₄ | 71.3 % | 69.8 % | 64.7 % | 6.6 % | 5.1 % | −0.02 |
+| H₂O | 44.0 % | 27.9 % | 26.1 % | 17.9 % | 1.8 % | −0.36 |
+| CO₂ | 58.8 % | 53.2 % | 48.7 % | 10.2 % | 4.5 % | −0.10 |
+| NH₃ | 71.1 % | 63.0 % | 58.0 % | 13.1 % | 5.0 % | −0.22 |
+
+The loss falls almost entirely on absent labels: present labels decidable CH₄ 277 → 286 of 359, H₂O
+194 → 173 of 364, CO₂ 205 → 198 of 386, NH₃ 254 → 260 of 372, against absent labels decidable 404 →
+381 of 596, 226 → 93 of 591, 357 → 310 of 569 and 425 → 342 of 583. The deck hides the deep
+atmosphere where a small abundance would have shown, so the floor on an absence rises and an
+"absent" label that the clear spectrum could prove becomes undecidable; a present label above the
+threshold still shows in the bands above the deck. The counterfactual temperature moves by 23–55 K
+at the median, so the deck also changes the temperature–abundance degeneracy the test exploits.
+
+Departure-aware error classes under the deck (section 3d, `results/diagnostic_departure_classes.csv`;
+means over the four learners):
+
+| | CH₄ | H₂O | CO₂ | NH₃ |
+| :-- | :-- | :-- | :-- | :-- |
+| undecidable labels under the deck | 30 % | 72 % | 47 % | 37 % |
+| accuracy clean → deck | 84.3 → 75.1 % | 75.3 → 67.3 % | 80.7 → 73.5 % | 84.6 → 69.8 % |
+| recall on decidable present labels, clean → deck | 83 → 45 % | 65 → 36 % | 82 → 58 % | 84 → 34 % |
+| errors per learner, clean → deck | 150 → 238 | 236 → 312 | 184 → 253 | 147 → 288 |
+| errors the deck introduces | 129 | 107 | 104 | 166 |
+| of which recoverable (label decidable under the deck) | 81.7 % | 51.2 % | 51.5 % | 76.1 % |
+| errors shared with the clean spectrum | 110 | 205 | 148 | 122 |
+| of which recoverable | 51 % | 27 % | 26 % | 39 % |
+| clean errors the deck removes | 40 | 30 | 36 | 25 |
+| all deck errors recoverable | 68 % | 36 % | 36 % | 61 % |
+
+So the deck is a third case between the haze and the noise. On CH₄ and NH₃, whose bands sit high,
+its errors are four fifths recoverable as under haze; on H₂O and CO₂ only half, because the deck has
+made undecidable a sixth of the H₂O labels and a tenth of the CO₂ labels that the clean spectrum could
+decide, and the classifier's errors on those are the atmosphere's, not its own. The three departure
+families therefore separate on the population: haze and spots take nothing from the spectrum
+(recoverable 57–87 % of introduced errors, decidability unchanged), threefold noise takes information
+through the instrument (10–56 %, decidability halved), and a deep deck takes it through the
+atmosphere (51–82 %, decidability down 2–16 points, on absent labels). The table of departures is
+complete.
 
 Self-consistency: on decidable labels the learners score 93.5–95.7 % (CH₄), 76–93 % (H₂O), 92–95 %
 (CO₂) and 91–98 % (NH₃); on undecidable ones 60–68, 61–66, 61–70 and 58–63 % against majority rates
@@ -644,11 +691,10 @@ a third of the CH₄ targets haze would lose from Ariel's Tier-2 queue; the old 
 than ranking by the band metric alone. With a nested-sampling retrieval of every planet
 (365 core-hours), a third to a half of the consortium labels are undecidable at Tier-1 noise, the
 classifier sits 9–16 points below the retrieval's accuracy, three quarters of its clean errors are
-irrecoverable, the errors haze and spots add are 57–87 % recoverable and the errors threefold noise
-adds 10–56 %, the retrieval of every
+irrecoverable, the errors haze and spots add are 57–87 % recoverable, a deep deck's 51–82 % and
+threefold noise's 10–56 %, the retrieval of every
 planet is the Tier-2 selection oracle on clean spectra, and no diagnostic routes a partial retrieval
 budget better than chance, the confidence rules worse. The muting census (F7) turns the one-planet WASP-39 b
 result into a population statement: five of five warm giants with retrieved abundances are muted beyond
 anything the simulator population can draw at their bulk parameters, which no normalised-input rule can
-see. The remaining pieces are the deep-deck identifiability run, the two full-population haze retrievals,
-Figures 4 and 5, and the manuscript trim.
+see. The remaining pieces are the two full-population haze retrievals and the manuscript trim.
