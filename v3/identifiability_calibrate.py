@@ -99,6 +99,8 @@ def retrieve_one(i, row, obs, sig, wl, edges, npoints, maxcall, seed, haze=None,
                 tm[m] = 10.0 ** x[2 + k]
             try:
                 wn, d = tm.model()[:2]
+            except TimeoutError:
+                raise                              # the wall-clock alarm fires inside the model call more often than not
             except Exception:
                 return -1e10
             w = 1e4 / np.asarray(wn, float); o = np.argsort(w)
