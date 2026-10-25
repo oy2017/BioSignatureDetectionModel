@@ -507,10 +507,38 @@ and more confidently than the classifier (which at least reverts to "absent" wit
 labels are decidable (the haze identifiability above), so these are recoverable errors in the
 editor's sense, recoverable by a model that carries the haze, which is the modelled-haze retrieval
 (running on the same sixty) and, at the classifier's cost, the AIRS-only routing of F5. The remaining
-caveats: 55 planets, to be replaced by the full population (running, ~365 core-hours); the retrieval
+caveat: the retrieval
 holds the planet radius fixed with only a ±5 × 10⁻³ depth offset, so a retrieval with a free radius
 and a haze parameter, as the consortium would run on a flagged planet, is a different and fairer
 comparison, which is what the modelled run measures.
+
+**The clear-model retrieval on the hazed population (2026-10-24; `identifiability_calibrate.py
+--departure haze3e7 --n 1000`, `results/identifiability_calibration_haze3e7.{csv,txt}`; 500
+core-hours).** The sixty-planet pilot above is superseded. The same nested-sampling retrieval, with
+the training forward model (clear H₂/He, grey deck, no haze), on the 3 × 10⁷ m⁻³ hazed spectrum of
+every one of the 954 planets with one, at Tier-1 noise. It failed to complete on 18: 14 sampler
+aborts on a degenerate likelihood ("array must not contain infs or NaNs" in nestle's ellipsoid
+update, when every live point sits at the same misfit) and 4 at the three-hour wall-clock cap, against
+no failure in 955 on the clean spectra. (One planet ran past four hours under the cap because the
+alarm's exception was raised inside the forward-model call and swallowed by its catch-all; the
+likelihood now re-raises it; the run was stopped and its last eight planets rerun.) On the 936 it
+completed, against the clean retrieval of the same planets:
+
+| | CH₄ | H₂O | CO₂ | NH₃ |
+| :-- | :-- | :-- | :-- | :-- |
+| accuracy clean → hazed | 93.6 → 62.5 % | 91.5 → 61.5 % | 93.7 → 59.3 % | 93.8 → 60.3 % |
+| recall of present labels | 88.1 → 0.6 % | 81.3 → 0.6 % | 88.2 → 0.3 % | 88.3 → 0.3 % |
+| present labels confidently wrong (p_true < 0.05) | 99.4 % | 99.4 % | 99.7 % | 99.7 % |
+| all labels confidently wrong | 0.0 → 37.5 % | 0.0 → 38.5 % | 0.0 → 40.7 % | 0.1 → 39.7 % |
+| median posterior shift of log X | −3.6 dex | −3.5 dex | −4.1 dex | −3.8 dex |
+
+The accuracies are the absent fractions: the retrieval calls every present label absent, with the
+posterior of the true class below 0.05 on 99 % of them. Of the 219 planets with CH₄ present and
+decidable on the clean spectrum it recovers two (recall 0.9 %, median p_true 0.000). The evidence
+shows the misfit (median log Z −12.3 on clean spectra, −252 on hazed, down to −4 × 10⁸). The pilot's
+headline numbers (98 → 36 % accuracy, 64 % confidently wrong) were those of a sample chosen half
+from CH₄-present decidable planets; on the population the accuracy loss is 31–34 points and the
+confident-error rate 38–41 %, and the mechanism is the same.
 
 **The modelled-haze retrieval on the same sixty (2026-10-21; `identifiability_calibrate.py --departure
 haze3e7 --model-departure`, `results/identifiability_calibration_haze3e7_modelled.{csv,txt}`; 60 of 60,
@@ -529,9 +557,9 @@ Of the 33 planets with CH₄ present and decidable on the clean spectrum, the mo
 all 33 (median p_true 1.000) and 94 % stay decidable; the evidence is unchanged (median log Z −13.4 →
 −13.5). So the posterior says what the Δχ² test said: the haze removes no information the labels need
 (H₂O loses a little decidability, CO₂ gains some, as in the Δχ² table above), and the clear-model
-retrieval's zero recall and 64 % confident errors on the same spectra are entirely the model's. This is
+retrieval's zero recall and 38–41 % confident errors on the same spectra are entirely the model's. This is
 the posterior-based form of B4, met for all four molecules on the sixty. The full-population modelled
-run is queued after the clear-model one (both ~365 core-hours).
+run (894 planets, 8 workers) started 2026-10-24 18:25 and reports on 2026-10-26.
 
 ### F7. Muting census: six of the fourteen real JWST spectra are more muted than any atmosphere the simulator population can produce at their bulk parameters, and the distance rule cannot see it because it normalises amplitude away
 
@@ -697,4 +725,4 @@ planet is the Tier-2 selection oracle on clean spectra, and no diagnostic routes
 budget better than chance, the confidence rules worse. The muting census (F7) turns the one-planet WASP-39 b
 result into a population statement: five of five warm giants with retrieved abundances are muted beyond
 anything the simulator population can draw at their bulk parameters, which no normalised-input rule can
-see. The remaining pieces are the two full-population haze retrievals and the manuscript trim.
+see. The remaining pieces are the full-population modelled-haze retrieval and the manuscript trim.

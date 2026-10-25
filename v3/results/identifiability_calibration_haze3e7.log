@@ -49,3 +49,142 @@ joblib.externals.loky.process_executor.TerminatedWorkerError: A worker process m
 
 The exit codes of the workers are {SIGTERM(-15)}
 Detailed tracebacks of the workers should have been printed to stderr in the executor process if faulthandler was not disabled.
+Numba not installed, using numpy instead
+954 planets selected, 896 to retrieve, 8 jobs, 100 live points, cap 20000 calls
+  8/896  2795 s  median 28.5 min, 6438 calls per planet
+  16/896  4354 s  median 28.8 min, 6637 calls per planet
+  24/896  6321 s  median 27.6 min, 6326 calls per planet
+  32/896  7945 s  median 28.6 min, 6231 calls per planet
+  40/896  9752 s  median 31.0 min, 6740 calls per planet
+  48/896  11413 s  median 27.5 min, 6300 calls per planet
+  56/896  13785 s  median 30.2 min, 6814 calls per planet
+  64/896  15209 s  median 26.9 min, 6178 calls per planet
+  72/896  16761 s  median 30.7 min, 6998 calls per planet
+  80/896  18736 s  median 28.4 min, 6241 calls per planet
+  88/896  20282 s  median 25.1 min, 5995 calls per planet
+  96/896  21712 s  median 29.5 min, 6774 calls per planet
+  104/896  23422 s  median 28.2 min, 6425 calls per planet
+  112/896  25240 s  median 29.4 min, 6632 calls per planet
+  120/896  27076 s  median 29.9 min, 6808 calls per planet
+  128/896  29010 s  median 26.6 min, 6096 calls per planet
+  136/896  30405 s  median 29.1 min, 6534 calls per planet
+  144/896  32218 s  median 26.6 min, 6059 calls per planet
+  152/896  33745 s  median 24.0 min, 5510 calls per planet
+  160/896  35891 s  median 32.3 min, 7184 calls per planet
+  168/896  38013 s  median 34.5 min, 7742 calls per planet
+  176/896  40370 s  median 34.5 min, 7763 calls per planet
+  184/896  42584 s  median 40.6 min, 8508 calls per planet
+  192/896  44612 s  median 33.4 min, 7512 calls per planet
+  200/896  46475 s  median 36.2 min, 7142 calls per planet
+  208/896  48493 s  median 32.1 min, 7188 calls per planet
+  216/896  50564 s  median 27.7 min, 5738 calls per planet
+  224/896  52394 s  median 27.6 min, 6249 calls per planet
+  232/896  53967 s  median 26.2 min, 5970 calls per planet
+  240/896  55844 s  median 27.4 min, 6071 calls per planet
+  248/896  57970 s  median 29.8 min, 6212 calls per planet
+  256/896  60137 s  median 35.1 min, 6967 calls per planet
+  264/896  61982 s  median 32.6 min, 6465 calls per planet
+  272/896  64119 s  median 33.5 min, 7180 calls per planet
+  280/896  66500 s  median 33.7 min, 7345 calls per planet
+  288/896  68985 s  median 32.2 min, 6398 calls per planet
+  296/896  71192 s  median 32.9 min, 6779 calls per planet
+  304/896  73614 s  median 33.5 min, 6880 calls per planet
+  312/896  75483 s  median 29.9 min, 6100 calls per planet
+  320/896  77275 s  median 32.2 min, 6484 calls per planet
+  328/896  79340 s  median 30.9 min, 6262 calls per planet
+  336/896  81299 s  median 31.7 min, 6506 calls per planet
+  344/896  82667 s  median 33.9 min, 6796 calls per planet
+  352/896  84737 s  median 34.3 min, 6576 calls per planet
+  360/896  86651 s  median 29.0 min, 5956 calls per planet
+  368/896  88200 s  median 32.3 min, 6610 calls per planet
+  376/896  90209 s  median 32.8 min, 7213 calls per planet
+  384/896  92458 s  median 24.5 min, 5494 calls per planet
+  392/896  94377 s  median 31.6 min, 6822 calls per planet
+  400/896  96401 s  median 29.5 min, 6543 calls per planet
+  408/896  98568 s  median 31.2 min, 6426 calls per planet
+  416/896  100419 s  median 25.2 min, 5410 calls per planet
+  424/896  102064 s  median 31.5 min, 6612 calls per planet
+  432/896  103972 s  median 29.7 min, 6192 calls per planet
+  440/896  105758 s  median 29.4 min, 6528 calls per planet
+  448/896  107564 s  median 29.0 min, 6614 calls per planet
+  456/896  109171 s  median 26.1 min, 5966 calls per planet
+  464/896  110664 s  median 26.6 min, 6030 calls per planet
+  472/896  112395 s  median 29.1 min, 6288 calls per planet
+  480/896  113984 s  median 27.8 min, 6268 calls per planet
+  488/896  115577 s  median 27.0 min, 6154 calls per planet
+  496/896  117632 s  median 26.5 min, 6008 calls per planet
+  504/896  119418 s  median 27.4 min, 6188 calls per planet
+  512/896  121250 s  median 30.3 min, 6804 calls per planet
+  520/896  123075 s  median 26.6 min, 6068 calls per planet
+  528/896  124630 s  median 27.4 min, 6214 calls per planet
+  536/896  125857 s  median 27.2 min, 6118 calls per planet
+  544/896  127889 s  median 26.7 min, 6022 calls per planet
+  552/896  129637 s  median 26.9 min, 6126 calls per planet
+  560/896  131336 s  median 29.1 min, 6533 calls per planet
+  568/896  132889 s  median 28.3 min, 6394 calls per planet
+  576/896  134789 s  median 27.9 min, 6305 calls per planet
+  584/896  136573 s  median 26.4 min, 5930 calls per planet
+  592/896  138768 s  median 31.3 min, 7020 calls per planet
+  600/896  140559 s  median 28.2 min, 5734 calls per planet
+  608/896  142471 s  median 28.6 min, 6474 calls per planet
+  616/896  144609 s  median 27.2 min, 6247 calls per planet
+  624/896  145851 s  median 29.2 min, 6698 calls per planet
+  632/896  147431 s  median 23.4 min, 5070 calls per planet
+  640/896  149172 s  median 28.2 min, 6148 calls per planet
+  648/896  151243 s  median 34.5 min, 7668 calls per planet
+  656/896  153004 s  median 26.7 min, 6106 calls per planet
+  664/896  154594 s  median 26.2 min, 5888 calls per planet
+  672/896  156367 s  median 29.3 min, 7085 calls per planet
+  680/896  158176 s  median 25.4 min, 5857 calls per planet
+  688/896  159616 s  median 26.6 min, 6132 calls per planet
+  696/896  161153 s  median 21.4 min, 4952 calls per planet
+  704/896  162980 s  median 27.2 min, 6221 calls per planet
+  712/896  164327 s  median 28.1 min, 6406 calls per planet
+  720/896  165729 s  median 23.2 min, 5320 calls per planet
+  728/896  167244 s  median 22.5 min, 5260 calls per planet
+  736/896  168862 s  median 26.7 min, 6230 calls per planet
+  744/896  171615 s  median 26.3 min, 6416 calls per planet
+  752/896  173335 s  median 27.9 min, 6080 calls per planet
+  760/896  175241 s  median 29.6 min, 6102 calls per planet
+  768/896  177197 s  median 25.3 min, 6154 calls per planet
+  776/896  178875 s  median 25.9 min, 6321 calls per planet
+  784/896  180530 s  median 24.9 min, 6023 calls per planet
+  792/896  182883 s  median 26.1 min, 6080 calls per planet
+  800/896  184479 s  median 28.9 min, 6958 calls per planet
+  808/896  186745 s  median 25.2 min, 6269 calls per planet
+  816/896  189355 s  median 27.2 min, 6830 calls per planet
+  824/896  191325 s  median 26.5 min, 6692 calls per planet
+  832/896  193489 s  median 25.4 min, 6218 calls per planet
+  840/896  195279 s  median 24.4 min, 5570 calls per planet
+  848/896  197821 s  median 40.8 min, 6983 calls per planet
+  856/896  202205 s  median 39.2 min, 6405 calls per planet
+  864/896  204823 s  median 44.4 min, 7248 calls per planet
+  872/896  206935 s  median 34.9 min, 7164 calls per planet
+  880/896  208657 s  median 28.1 min, 6413 calls per planet
+  888/896  210364 s  median 27.3 min, 6338 calls per planet
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+/Users/fanyang/tfenv/lib/python3.10/site-packages/joblib/externals/loky/backend/resource_tracker.py:444: UserWarning: resource_tracker: There appear to be 7 leaked semlock objects to clean up at shutdown: {'/loky-96320-q5q38pzo': 1, '/loky-96320-0__czwlc': 1, '/loky-96320-fxwuicfn': 1, '/loky-96320-15n1l1d2': 1, '/loky-96320-cihvxeon': 1, '/loky-96320-9se92wx8': 1, '/loky-96320-hqxuqhlo': 1}
+  warnings.warn(
+/Users/fanyang/tfenv/lib/python3.10/site-packages/joblib/externals/loky/backend/resource_tracker.py:444: UserWarning: resource_tracker: There appear to be 2 leaked folder objects to clean up at shutdown: {'/var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_96320_bb6e33a6180049daa0181f30cc783531_0ab9446c018142ef997a4d95d049b4d2': 1, '/var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_96320_bb6e33a6180049daa0181f30cc783531_7754a992dc2f49e7a1c79a4b65ad9e8c': 1}
+  warnings.warn(
+/Users/fanyang/tfenv/lib/python3.10/site-packages/joblib/externals/loky/backend/resource_tracker.py:468: UserWarning: resource_tracker: /var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_96320_bb6e33a6180049daa0181f30cc783531_0ab9446c018142ef997a4d95d049b4d2: FileNotFoundError(2, 'No such file or directory')
+  warnings.warn('resource_tracker: %s: %r' % (name, e))
+/Users/fanyang/tfenv/lib/python3.10/site-packages/joblib/externals/loky/backend/resource_tracker.py:468: UserWarning: resource_tracker: /var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_96320_bb6e33a6180049daa0181f30cc783531_7754a992dc2f49e7a1c79a4b65ad9e8c: FileNotFoundError(2, 'No such file or directory')
+  warnings.warn('resource_tracker: %s: %r' % (name, e))
+Numba not installed, using numpy instead
+954 planets selected, 8 to retrieve, 8 jobs, 100 live points, cap 20000 calls
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+  8/8  10801 s  median 60.3 min, 6286 calls per planet
+Numba not installed, using numpy instead
