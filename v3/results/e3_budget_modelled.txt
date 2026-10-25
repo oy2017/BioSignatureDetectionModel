@@ -1,0 +1,68 @@
+E3 fixed-budget selection on a mixed population: 124 POP-I planets, each hazed (3e7 m^-3) with probability q; 10 draws; 60 % Tier-2 slots; fallback retrieval: modelled (clean-side posteriors from the clean retrieval; identifiability_calibration_freehaze.csv not yet available)
+
+== q = 0.2, target CH4 (60 targets on average): targets lost, mean over draws
+  AIRS-only routing by optical excess (no retrieval)            2.8 ±  0.6   acc  84.7 %  recall hazed/clean targets  67/ 75 %
+  classifier alone                                              4.0 ±  1.3   acc  79.5 %  recall hazed/clean targets   4/ 77 %
+  clear-model retrieval of every planet (existing method)      10.8 ±  3.3   acc  87.1 %  recall hazed/clean targets   0/ 91 %
+  modelled retrieval of every planet                            0.0 ±  0.0   acc  95.5 %  recall hazed/clean targets  94/ 91 %
+  ordering of the retrieval budget            f=10%    f=20%    f=30%    f=50%   | at f=20 %: acc, recall hazed/clean
+  + random                                      3.4      2.6      2.5      1.5   |  83.2 %   27/ 80 %
+  + optical                                     2.7      2.1      1.8      0.9   |  87.2 %   87/ 77 %
+  + disagree                                    2.8      2.5      2.4      2.0   |  85.3 %   50/ 80 %
+  + bandmetric                                  3.9      3.8      2.8      2.1   |  81.1 %   11/ 77 %
+  + margin                                      4.0      3.8      3.2      2.8   |  84.4 %    4/ 89 %
+  + ensemble                                    4.0      4.0      3.9      3.0   |  84.0 %    4/ 87 %
+  + mahalanobis                                 2.8      1.9      1.9      0.8   |  86.9 %   83/ 77 %
+  + knn                                         3.2      2.5      1.6      0.4   |  84.6 %   62/ 77 %
+  + pca_recon                                   2.7      1.9      1.4      1.2   |  86.3 %   70/ 79 %
+  + oracle (knows the hazed)                    3.0      2.0      1.6      1.4   |  86.9 %   88/ 77 %
+  + random, clear-model retrieval               4.8      5.3      5.2      6.5   |  81.2 %    4/ 80 %
+  + optical, clear-model retrieval              7.1     11.8     12.2     11.2   |  79.4 %    0/ 77 %
+
+== q = 0.2, target H2O (51 targets on average): targets lost, mean over draws
+  AIRS-only routing by optical excess (no retrieval)            7.9 ±  1.0   acc  76.1 %  recall hazed/clean targets  35/ 48 %
+  classifier alone                                             12.0 ±  2.4   acc  73.6 %  recall hazed/clean targets   0/ 48 %
+  clear-model retrieval of every planet (existing method)      10.8 ±  3.4   acc  84.1 %  recall hazed/clean targets   1/ 80 %
+  modelled retrieval of every planet                            0.0 ±  0.0   acc  90.3 %  recall hazed/clean targets  78/ 80 %
+  ordering of the retrieval budget            f=10%    f=20%    f=30%    f=50%   | at f=20 %: acc, recall hazed/clean
+  + random                                     10.1      8.6      7.6      5.5   |  77.7 %   22/ 54 %
+  + optical                                     8.9      5.8      4.6      3.5   |  79.4 %   71/ 48 %
+  + disagree                                    9.7      8.4      7.9      5.5   |  77.2 %   40/ 50 %
+  + bandmetric                                 11.0      9.0      7.6      5.0   |  76.1 %   13/ 52 %
+  + margin                                     11.5     11.2     10.2      8.4   |  78.0 %    0/ 62 %
+  + ensemble                                   11.0     10.5      9.3      6.8   |  77.7 %    0/ 61 %
+  + mahalanobis                                 8.7      5.9      4.8      3.5   |  79.4 %   63/ 51 %
+  + knn                                         9.1      7.0      5.2      3.9   |  79.0 %   58/ 50 %
+  + pca_recon                                   9.6      6.5      5.6      3.9   |  79.0 %   60/ 50 %
+  + oracle (knows the hazed)                    8.8      6.0      4.5      3.3   |  79.4 %   70/ 49 %
+  + random, clear-model retrieval              11.4     11.2     10.9     10.6   |  75.7 %    0/ 54 %
+  + optical, clear-model retrieval             12.8     14.2     14.0     12.6   |  73.9 %    1/ 48 %
+
+== q = 0.2, target joint (84 targets on average): targets lost, mean over draws
+  AIRS-only routing by optical excess (no retrieval)           16.7 ±  0.8
+  classifier alone                                             18.3 ±  1.4
+  clear-model retrieval of every planet (existing method)      16.9 ±  3.4
+  modelled retrieval of every planet                           10.9 ±  0.6
+  ordering of the retrieval budget            f=10%    f=20%    f=30%    f=50%
+  + random                                     17.1     16.5     15.5     13.8
+  + optical                                    16.4     15.0     14.2     12.7
+  + disagree                                   16.4     14.6     14.0     12.4
+  + bandmetric                                 18.1     17.0     15.5     14.1
+  + margin                                     18.3     16.0     15.9     14.4
+  + ensemble                                   17.2     17.2     16.3     13.6
+  + mahalanobis                                16.5     15.2     13.3     12.5
+  + knn                                        16.6     15.6     13.6     12.8
+  + pca_recon                                  16.4     15.2     14.6     12.6
+  + oracle (knows the hazed)                   16.6     15.4     13.9     12.7
+  + random, clear-model retrieval              17.8     17.6     17.5     17.7
+  + optical, clear-model retrieval             18.9     21.1     20.9     19.8
+
+== detection: share of hazed / clean planets inside the fraction f each rule ranks most suspect (q = 0.2, mean over draws)
+  optical        f=10%:  53 /   0 %  f=20%:  99 /   2 %  f=30%: 100 /  14 %  f=50%: 100 /  39 %
+  disagree       f=10%:  27 /   6 %  f=20%:  52 /  13 %  f=30%:  64 /  22 %  f=50%:  87 /  42 %
+  bandmetric     f=10%:  19 /   8 %  f=20%:  22 /  20 %  f=30%:  33 /  29 %  f=50%:  52 /  49 %
+  margin         f=10%:   0 /  12 %  f=20%:   0 /  25 %  f=30%:   1 /  36 %  f=50%:  11 /  59 %
+  ensemble       f=10%:   0 /  12 %  f=20%:   1 /  24 %  f=30%:   2 /  36 %  f=50%:  15 /  58 %
+  mahalanobis    f=10%:  48 /   1 %  f=20%:  83 /   6 %  f=30%:  88 /  17 %  f=50%: 100 /  39 %
+  knn            f=10%:  53 /   0 %  f=20%:  84 /   6 %  f=30%:  89 /  16 %  f=50%:  96 /  40 %
+  pca_recon      f=10%:  46 /   1 %  f=20%:  75 /   8 %  f=30%:  86 /  17 %  f=50%:  97 /  39 %

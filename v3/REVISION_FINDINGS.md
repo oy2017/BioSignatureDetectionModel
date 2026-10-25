@@ -196,6 +196,31 @@ cost ranking is the same at every lost-target weight; the weight only matters if
 For H₂O no candidate helps (78 lost under haze for the classifier, 82 with disagreement): the haze
 loss on H₂O is not routed through the optical points to the same degree.
 
+**E3 fixed-budget test, committed before the data (2026-10-24, `e3_budget.py`).** The selection simulation
+above gives the classifier a fallback (the AIRS-only learner) but no retrieval, and the triage table of F6
+gives the retrieval a budget on clean spectra only, where every rule is within noise of random. The test that
+E3 actually needs is a mixed population: each POP-I planet hazed with probability q (0.1, 0.2, 0.5), a
+retrieval budget for a fraction f of the planets (10–50 %), each rule choosing which planets get it, and the
+retrieval being the fallback a pipeline could run on any spectrum, the training model plus a haze with free
+density (`identifiability_calibrate.py --free-haze`, running on the hazed population, 954 planets, then on
+the clean one). Metrics: CH₄ (H₂O, joint) targets lost at the 60 % selection, the pipeline's accuracy, and
+its recall on the hazed targets. Baselines: classifier alone, the five existing rules and random as
+orderings, an oracle that knows which planets are hazed, the existing fallback (a clear-model retrieval,
+of every planet and routed), and the free-haze retrieval of every planet.
+
+Expectations, from the preview on the 124 planets with fixed-density posteriors (CH₄, q = 0.2, f = 20 %:
+recall on hazed targets 4 % classifier alone, 27 % random budget, 87 % optical-excess budget, 88 % oracle,
+83 % Mahalanobis, 4 % margin and ensemble; targets lost 4.0 → 2.1 against 2.6 random; the clear-model
+retrieval of every planet loses 10.8 and recovers no hazed target): on the population with the free-haze
+fallback, (i) the optical-excess ordering at f = 20 % raises CH₄ recall on hazed targets from below 15 % to
+above 70 % and halves the targets the classifier alone loses; (ii) it beats every confidence rule (margin,
+ensemble, band metric) by more than 40 points of hazed recall and random by more than 30; (iii) the
+distance rules (Mahalanobis, PCA, k-NN), used as routers rather than decliners, come within 20 points of it,
+so the claim is about the use (route a shift flag to a departure-aware retrieval), with the optical score
+the most selective flag (99 % of hazed against 2 % of clean planets inside the top 20 %); (iv) routing the
+existing clear-model retrieval is worse than no retrieval; (v) the free-haze retrieval of every planet loses
+at most as many clean targets as the clean retrieval plus 5. If (i) fails, E3 is reported as not met.
+
 Error classes (C2, C4) and the comparison with a retrieval of every planet (E3): see F6, which
 supersedes the uncalibrated prevalence (93–96 % irrecoverable at 3σ) first reported here and shows
 that on clean simulated spectra the retrieval, not the classifier with any diagnostic, is the
