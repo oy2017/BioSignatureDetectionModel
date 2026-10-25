@@ -18,7 +18,9 @@ logit(p_true) per molecule, and the dchi2 at which a logistic fit of p_true cros
 Departure spot checks (--departure haze3e7 | cloud1e2 | noise_x2 | noise_x3): the observed spectrum carries the
 departure while the retrieval's forward model stays the clear-atmosphere one the classifier was trained on
 (so the retrieval is tested under the same model error), or, with --model-departure, includes the haze
-(the identifiability question: is the label decidable given a correct model). The sample (--n) is half
+(the identifiability question: is the label decidable given a correct model), or, with --free-haze, includes the
+haze with its density a free parameter (the fallback retrieval a pipeline could run on any spectrum, also
+meaningful with --departure none). The sample (--n) is half
 planets whose CH4 label is present and decidable on the clean retrieval, half random, so the CH4 recall
 under the departure is measurable. --summarize for a departure compares its posteriors with the clean
 run's on the same planets.
@@ -29,7 +31,8 @@ Usage:
   python identifiability_calibrate.py --summarize                  # the mapping, once both CSVs exist
   python identifiability_calibrate.py --departure haze3e7 --n 60 --jobs 2 [--model-departure]
   python identifiability_calibrate.py --departure haze3e7 --summarize [--model-departure]
-Writes results/identifiability_calibration[_<departure>[_modelled]].csv / .txt
+  python identifiability_calibrate.py [--departure haze3e7] --free-haze --n 1000 --jobs 9
+Writes results/identifiability_calibration[_<departure>][_modelled][_freehaze].csv / .txt
 """
 import argparse
 import os
@@ -72,7 +75,10 @@ def select_departure(Pte, n, seed=SEED):
     return np.sort(np.concatenate([a, b]))
 
 
-def retrieve_one(i, row, obs, sig, wl, edges, npoints, maxcall, seed, haze=None, timeout=10800):
+HAZE_LOG_RANGE = (3.0, 10.0)   # log10 particle mixing ratio (m^-3) when the haze density is a free parameter; 10^3 is haze-free to < 1 ppm
+
+
+def retrieve_one(i, row, obs, sig, wl, edges, npoints, maxcall, seed, haze=None, timeout=10800, free_haze=False):
     """One nested-sampling retrieval; `timeout` (s) is a wall-clock cap, because nestle's inner rejection loop has no
     call cap and a pathological likelihood (a departed spectrum the model cannot fit) can spin in it for hours."""
     import signal
@@ -87,8 +93,9 @@ def retrieve_one(i, row, obs, sig, wl, edges, npoints, maxcall, seed, haze=None,
     try:
         r = dict(row); tm = FM.build_model(r, list(G.GASES), AF.FILL, cloud_pressure=float(r["cloud_pressure"]), haze=haze)
         T_p = float(r["T_p"])
-        lo = np.array([T_RANGE[0] * T_p, LOGP_RANGE[0]] + [AB_RANGE[0]] * 4 + [-OFFSET])
-        hi = np.array([T_RANGE[1] * T_p, LOGP_RANGE[1]] + [AB_RANGE[1]] * 4 + [OFFSET])
+        lo = np.array([T_RANGE[0] * T_p, LOGP_RANGE[0]] + [AB_RANGE[0]] * 4 + [-OFFSET] + ([HAZE_LOG_RANGE[0]] if free_haze else []))
+        hi = np.array([T_RANGE[1] * T_p, LOGP_RANGE[1]] + [AB_RANGE[1]] * 4 + [OFFSET] + ([HAZE_LOG_RANGE[1]] if free_haze else []))
+        ndim = len(lo)
 
         def prior(u):
             return lo + u * (hi - lo)
@@ -97,6 +104,8 @@ def retrieve_one(i, row, obs, sig, wl, edges, npoints, maxcall, seed, haze=None,
             tm["T"] = x[0]; tm["clouds_pressure"] = 10.0 ** x[1]
             for k, m in enumerate(MOLS):
                 tm[m] = 10.0 ** x[2 + k]
+            if free_haze:
+                tm["lee_mie_mix_ratio"] = 10.0 ** x[7]
             try:
                 wn, d = tm.model()[:2]
             except TimeoutError:
@@ -112,12 +121,15 @@ def retrieve_one(i, row, obs, sig, wl, edges, npoints, maxcall, seed, haze=None,
             return ll if np.isfinite(ll) else -1e10
 
         rng = np.random.RandomState(seed)
-        res = nestle.sample(loglike, prior, 7, method="multi", npoints=npoints, maxcall=maxcall, rstate=rng); signal.alarm(0)
+        res = nestle.sample(loglike, prior, ndim, method="multi", npoints=npoints, maxcall=maxcall, rstate=rng); signal.alarm(0)
         w = res.weights / res.weights.sum(); out = dict(index=int(i), name=r["name"], ncall=int(res.ncall), minutes=(time.time() - t0) / 60, logz=float(res.logz))
         for k, m in enumerate(MOLS):
             s = res.samples[:, 2 + k]; p = float(w[s > THRESH].sum()); lab = int(r[f"atm {m}"] > THRESH)
             q = lambda f: float(np.interp(f, np.cumsum(w[np.argsort(s)]), np.sort(s)))
             out.update({f"{m}_label": lab, f"{m}_p_present": p, f"{m}_p_true": p if lab else 1 - p, f"{m}_med": q(0.5), f"{m}_lo": q(0.16), f"{m}_hi": q(0.84), f"{m}_true": float(r[f"atm {m}"])})
+        if free_haze:
+            s = res.samples[:, 7]; q = lambda f: float(np.interp(f, np.cumsum(w[np.argsort(s)]), np.sort(s)))
+            out.update(dict(haze_med=q(0.5), haze_lo=q(0.16), haze_hi=q(0.84)))
         return out
     except Exception as e:
         signal.alarm(0)
@@ -129,8 +141,9 @@ def summarize_departure(tag):
     cal = pd.read_csv(os.path.join(RESULTS, f"identifiability_calibration_{tag}.csv"))
     cal = (cal[cal["error"].isna()] if "error" in cal else cal).reset_index(drop=True)
     ref = pd.read_csv(os.path.join(RESULTS, "identifiability_calibration.csv")).set_index("index").loc[cal["index"]].reset_index()
-    L = [f"retrieval of {len(cal)} planets under {tag} (observed spectrum with the departure; forward model "
-         f"{'with the haze' if tag.endswith('_modelled') else 'clear, as trained'}), against the clean retrieval of the same planets", ""]
+    model = ('with the haze at its true density' if tag.endswith('_modelled') else 'with the haze density free' if tag.endswith('freehaze') else 'clear, as trained')
+    spec = 'the clean spectrum' if tag.startswith('freehaze') else 'observed spectrum with the departure'
+    L = [f"retrieval of {len(cal)} planets [{tag}] ({spec}; forward model {model}), against the clean retrieval of the same planets", ""]
     for m in MOLS:
         y = cal[f"{m}_label"].to_numpy(); pd_ = cal[f"{m}_p_present"].to_numpy(); pc = ref[f"{m}_p_present"].to_numpy()
         td = cal[f"{m}_p_true"].to_numpy(); tc = ref[f"{m}_p_true"].to_numpy()
@@ -203,9 +216,10 @@ def main():
     ap.add_argument("--npoints", type=int, default=100); ap.add_argument("--maxcall", type=int, default=20000)
     ap.add_argument("--noisy", action="store_true"); ap.add_argument("--summarize", action="store_true")
     ap.add_argument("--timeout", type=float, default=10800, help="wall-clock cap per planet in seconds (recorded as an error row)")
-    ap.add_argument("--departure", default="none", choices=["none", "haze3e7", "cloud1e2"] + list(NOISE_X)); ap.add_argument("--model-departure", action="store_true")
+    ap.add_argument("--departure", default="none", choices=["none", "haze3e7", "cloud1e2"] + list(NOISE_X)); ap.add_argument("--model-departure", action="store_true", help="haze in the forward model at its true density")
+    ap.add_argument("--free-haze", action="store_true", help="haze in the forward model with its density a free parameter (the fallback a pipeline could run on any spectrum)")
     a = ap.parse_args()
-    tag = "" if a.departure == "none" else f"_{a.departure}" + ("_modelled" if a.model_departure else "")
+    tag = ("" if a.departure == "none" else f"_{a.departure}") + ("_modelled" if a.model_departure else "") + ("_freehaze" if a.free_haze else "")
     if a.summarize:
         (summarize_departure(tag[1:]) if tag else summarize()); return
     src = AF.DIRS["faithful"]; wl = np.load(os.path.join(DATA, "native_wl.npy")); edges = AF.layout_edges("tier3_r20")
@@ -213,7 +227,7 @@ def main():
     Pte = pd.read_parquet(os.path.join(src, "pop1_params.parquet")); Y = np.load(os.path.join(src, f"{nat}.npy")).astype(np.float64)
     ok = np.all(np.isfinite(Y), axis=1) & np.all(np.isfinite(np.load(os.path.join(src, "pop1_native.npy"))), axis=1)
     Pte = Pte[ok].reset_index(drop=False).rename(columns={"index": "_index"}); Y = Y[ok]
-    haze = {"radius": 0.1, "q": 40, "mix_ratio": HAZE[a.departure]} if (a.model_departure and a.departure in HAZE) else None
+    haze = {"radius": 0.1, "q": 40, "mix_ratio": HAZE[a.departure]} if (a.model_departure and a.departure in HAZE) else ({"radius": 0.1, "q": 40, "mix_ratio": 1e3} if a.free_haze else None)
     mcs = pd.read_parquet(os.path.join(DATA, "mcs", "mcs_params.parquet"))[["name", "atm temperature"]].rename(columns={"atm temperature": "T_p"})
     Pte = Pte.merge(mcs.drop_duplicates("name"), on="name", how="left")
     sig = AF.sigma(Pte, edges, "radiometric") * NOISE_X.get(a.departure, 1.0); Xb = bin_native(Y, wl, edges)
@@ -229,7 +243,7 @@ def main():
     # one pool over every planet, results streamed as they finish (no batch barrier, so a slow planet holds no one up);
     # the CSV is rewritten every `a.jobs` results and the run resumes from it
     gen = Parallel(n_jobs=a.jobs, return_as="generator_unordered")(
-        delayed(retrieve_one)(int(Pte.iloc[i]["_index"]), Pte.iloc[i].to_dict(), Xb[i], sig[i], wl, edges, a.npoints, a.maxcall, SEED + int(i), haze, a.timeout) for i in todo)
+        delayed(retrieve_one)(int(Pte.iloc[i]["_index"]), Pte.iloc[i].to_dict(), Xb[i], sig[i], wl, edges, a.npoints, a.maxcall, SEED + int(i), haze, a.timeout, a.free_haze) for i in todo)
     pending = []
     for k, row in enumerate(gen, 1):
         pending.append(row)

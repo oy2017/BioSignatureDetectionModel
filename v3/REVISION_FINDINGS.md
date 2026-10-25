@@ -543,7 +543,7 @@ confident-error rate 38–41 %, and the mechanism is the same.
 **The modelled-haze retrieval on the same sixty (2026-10-21; `identifiability_calibrate.py --departure
 haze3e7 --model-departure`, `results/identifiability_calibration_haze3e7_modelled.{csv,txt}`; 60 of 60,
 median 33.6 min and 6,062 calls per planet).** The same retrieval with the haze in the forward model
-(density free over the prior) on the same hazed spectra, against the clean retrieval of the same planets:
+(density held at its true value, as in the Δχ² counterfactual; not a free parameter) on the same hazed spectra, against the clean retrieval of the same planets:
 
 | | CH₄ | H₂O | CO₂ | NH₃ |
 | :-- | :-- | :-- | :-- | :-- |
