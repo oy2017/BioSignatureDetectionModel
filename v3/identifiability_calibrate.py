@@ -214,12 +214,12 @@ def summarize():
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--n", type=int, default=200); ap.add_argument("--jobs", type=int, default=2)
     ap.add_argument("--npoints", type=int, default=100); ap.add_argument("--maxcall", type=int, default=20000)
-    ap.add_argument("--noisy", action="store_true"); ap.add_argument("--summarize", action="store_true")
+    ap.add_argument("--noisy", action="store_true", help="retrieve the classifier's noisy realisation instead of the noise-free spectrum"); ap.add_argument("--random-sample", action="store_true", help="--n planets drawn at random by index, the same under every departure"); ap.add_argument("--summarize", action="store_true")
     ap.add_argument("--timeout", type=float, default=10800, help="wall-clock cap per planet in seconds (recorded as an error row)")
     ap.add_argument("--departure", default="none", choices=["none", "haze3e7", "cloud1e2"] + list(NOISE_X)); ap.add_argument("--model-departure", action="store_true", help="haze in the forward model at its true density")
     ap.add_argument("--free-haze", action="store_true", help="haze in the forward model with its density a free parameter (the fallback a pipeline could run on any spectrum)")
     a = ap.parse_args()
-    tag = ("" if a.departure == "none" else f"_{a.departure}") + ("_modelled" if a.model_departure else "") + ("_freehaze" if a.free_haze else "")
+    tag = ("" if a.departure == "none" else f"_{a.departure}") + ("_modelled" if a.model_departure else "") + ("_freehaze" if a.free_haze else "") + ("_noisy" if a.noisy else "")
     if a.summarize:
         (summarize_departure(tag[1:]) if tag else summarize()); return
     src = AF.DIRS["faithful"]; wl = np.load(os.path.join(DATA, "native_wl.npy")); edges = AF.layout_edges("tier3_r20")
@@ -232,8 +232,18 @@ def main():
     Pte = Pte.merge(mcs.drop_duplicates("name"), on="name", how="left")
     sig = AF.sigma(Pte, edges, "radiometric") * NOISE_X.get(a.departure, 1.0); Xb = bin_native(Y, wl, edges)
     if a.noisy:
-        Xb = Xb + np.random.default_rng(SEED + 7).normal(0, 1, Xb.shape) * sig
-    sel = np.arange(len(Pte)) if a.n >= len(Pte) else (select_departure(Pte, a.n) if tag else select(Pte, a.n))
+        # the classifier's own Tier-1 noise draw (alfnoor_diagnostic.test_cases: SEED + 405, the POP-III draw first, then one
+        # draw per native-finite POP-I planet), so the retrieval and the classifier see the same realisation
+        ok_nat = np.all(np.isfinite(np.load(os.path.join(src, "pop1_native.npy"))), axis=1)
+        n_tr = int(np.all(np.isfinite(np.load(os.path.join(src, "pop3_native.npy"))), axis=1).sum())
+        rng = np.random.default_rng(SEED + 405); _ = rng.normal(0, 1, (n_tr, len(edges) - 1)); eps = rng.normal(0, 1, (int(ok_nat.sum()), len(edges) - 1))
+        pos = (np.cumsum(ok_nat) - 1)[ok]; Xb = Xb + eps[pos] * sig
+    if a.random_sample:
+        # a fixed random subsample by planet index, the same planets under every departure (SEED + 11)
+        keep = np.random.default_rng(SEED + 11).choice(np.where(np.all(np.isfinite(np.load(os.path.join(src, "pop1_native.npy"))), axis=1))[0], a.n, replace=False)
+        sel = np.where(Pte["_index"].isin(keep).to_numpy())[0]
+    else:
+        sel = np.arange(len(Pte)) if a.n >= len(Pte) else (select_departure(Pte, a.n) if tag else select(Pte, a.n))
     out = os.path.join(RESULTS, f"identifiability_calibration{tag}.csv")
     done = pd.read_csv(out) if os.path.exists(out) and a.n > 1 else pd.DataFrame()
     todo = [i for i in sel if done.empty or int(Pte.iloc[i]["_index"]) not in set(done["index"])]
