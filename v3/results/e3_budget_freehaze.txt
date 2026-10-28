@@ -1,0 +1,182 @@
+E3 fixed-budget selection on a mixed population: 954 POP-I planets, each hazed (3e7 m^-3) with probability q; 20 draws; 60 % Tier-2 slots; fallback retrieval: freehaze (clean-side posteriors from the clean retrieval; identifiability_calibration_freehaze.csv not yet available)
+
+== q = 0.1, target CH4 (359 targets on average): targets lost, mean over draws
+  AIRS-only routing by optical excess (no retrieval)           19.9 ±  1.1   acc  85.1 %  recall hazed/clean targets  59/ 73 %
+  classifier alone                                             23.6 ±  1.5   acc  84.2 %  recall hazed/clean targets   4/ 75 %
+  clear-model retrieval of every planet (existing method)      33.2 ±  7.0   acc  90.8 %  recall hazed/clean targets   1/ 89 %
+  freehaze retrieval of every planet                            0.0 ±  0.0   acc  93.6 %  recall hazed/clean targets  81/ 89 %
+  ordering of the retrieval budget            f=10%    f=20%    f=30%    f=50%   | at f=20 %: acc, recall hazed/clean
+  + random                                     19.6     16.1     12.6      6.8   |  85.9 %   20/ 78 %
+  + optical                                    16.2     11.8      7.7      4.5   |  87.3 %   81/ 76 %
+  + disagree                                   19.1     15.3     11.2      4.3   |  86.9 %   44/ 78 %
+  + bandmetric                                 20.6     18.8     14.9      7.8   |  86.0 %   15/ 76 %
+  + margin                                     20.3     14.7     11.6      9.0   |  87.4 %    4/ 83 %
+  + ensemble                                   21.1     18.3     13.3     10.6   |  86.9 %    4/ 81 %
+  + mahalanobis                                16.3     11.4      6.8      3.4   |  86.9 %   69/ 77 %
+  + knn                                        17.6     10.3      5.6      2.6   |  86.5 %   64/ 76 %
+  + pca_recon                                  17.1     13.2      8.3      2.6   |  87.5 %   67/ 78 %
+  + oracle (knows the hazed)                   16.2     12.2      9.2      4.0   |  87.5 %   81/ 77 %
+  + random, clear-model retrieval              22.3     21.2     20.8     22.1   |  85.3 %    4/ 78 %
+  + optical, clear-model retrieval             41.9     39.0     37.8     35.0   |  84.5 %    1/ 76 %
+
+== q = 0.1, target H2O (364 targets on average): targets lost, mean over draws
+  AIRS-only routing by optical excess (no retrieval)           59.5 ±  2.3   acc  76.0 %  recall hazed/clean targets  29/ 48 %
+  classifier alone                                             64.7 ±  4.1   acc  76.6 %  recall hazed/clean targets   0/ 51 %
+  clear-model retrieval of every planet (existing method)      35.2 ±  6.3   acc  88.7 %  recall hazed/clean targets   1/ 81 %
+  freehaze retrieval of every planet                            2.1 ±  0.4   acc  91.2 %  recall hazed/clean targets  69/ 81 %
+  ordering of the retrieval budget            f=10%    f=20%    f=30%    f=50%   | at f=20 %: acc, recall hazed/clean
+  + random                                     57.8     50.5     43.5     30.1   |  79.4 %   14/ 57 %
+  + optical                                    46.4     40.0     36.1     26.1   |  80.4 %   69/ 54 %
+  + disagree                                   57.5     47.5     41.0     30.1   |  80.5 %   33/ 57 %
+  + bandmetric                                 56.9     51.1     47.8     33.9   |  80.1 %   17/ 57 %
+  + margin                                     58.4     55.6     49.6     40.5   |  80.9 %    0/ 60 %
+  + ensemble                                   60.4     53.5     50.0     35.4   |  79.5 %    1/ 58 %
+  + mahalanobis                                49.5     41.0     34.0     29.0   |  80.2 %   56/ 54 %
+  + knn                                        49.4     40.9     35.8     28.2   |  80.3 %   60/ 55 %
+  + pca_recon                                  49.7     42.7     37.8     26.4   |  80.1 %   52/ 56 %
+  + oracle (knows the hazed)                   46.3     39.7     34.2     24.1   |  80.4 %   69/ 54 %
+  + random, clear-model retrieval              60.5     56.0     52.5     43.0   |  78.9 %    0/ 57 %
+  + optical, clear-model retrieval             72.2     68.2     65.5     54.2   |  77.9 %    1/ 54 %
+
+== q = 0.1, target joint (576 targets on average): targets lost, mean over draws
+  AIRS-only routing by optical excess (no retrieval)          105.8 ±  2.5
+  classifier alone                                            113.7 ±  3.1
+  clear-model retrieval of every planet (existing method)      65.3 ±  6.5
+  freehaze retrieval of every planet                           39.8 ±  1.7
+  ordering of the retrieval budget            f=10%    f=20%    f=30%    f=50%
+  + random                                    106.0     98.8     91.8     76.8
+  + optical                                    92.0     85.8     79.6     67.6
+  + disagree                                  104.7     95.2     84.4     69.3
+  + bandmetric                                109.9    106.2     98.5     84.8
+  + margin                                    107.4     94.0     87.7     74.7
+  + ensemble                                  107.0     97.2     89.0     74.5
+  + mahalanobis                                97.5     87.8     77.8     67.3
+  + knn                                        97.7     86.2     76.5     68.0
+  + pca_recon                                  98.3     88.2     80.8     67.4
+  + oracle (knows the hazed)                   91.9     85.6     79.2     68.1
+  + random, clear-model retrieval             107.8    102.5     97.3     86.9
+  + optical, clear-model retrieval            117.1    110.2    101.5     87.0
+
+== q = 0.2, target CH4 (359 targets on average): targets lost, mean over draws
+  AIRS-only routing by optical excess (no retrieval)           20.4 ±  1.5   acc  84.4 %  recall hazed/clean targets  58/ 73 %
+  classifier alone                                             28.9 ±  4.0   acc  81.9 %  recall hazed/clean targets   3/ 75 %
+  clear-model retrieval of every planet (existing method)      68.5 ±  8.1   acc  87.6 %  recall hazed/clean targets   0/ 88 %
+  freehaze retrieval of every planet                            0.0 ±  0.0   acc  93.4 %  recall hazed/clean targets  82/ 88 %
+  ordering of the retrieval budget            f=10%    f=20%    f=30%    f=50%   | at f=20 %: acc, recall hazed/clean
+  + random                                     24.8     20.1     16.2      9.4   |  84.1 %   17/ 78 %
+  + optical                                    19.9     12.6      8.4      3.9   |  87.4 %   80/ 75 %
+  + disagree                                   23.7     17.9     13.8      6.5   |  85.0 %   37/ 77 %
+  + bandmetric                                 24.6     21.3     18.1     10.2   |  83.7 %   13/ 76 %
+  + margin                                     24.9     19.6     16.4     11.8   |  84.8 %    3/ 83 %
+  + ensemble                                   26.5     22.2     18.2     12.8   |  84.3 %    3/ 82 %
+  + mahalanobis                                21.2     12.6      8.2      3.2   |  86.4 %   64/ 76 %
+  + knn                                        21.5     13.5      7.0      2.8   |  85.6 %   54/ 76 %
+  + pca_recon                                  21.4     14.3     10.2      4.2   |  86.6 %   58/ 77 %
+  + oracle (knows the hazed)                   20.6     12.3      8.9      4.5   |  87.4 %   81/ 75 %
+  + random, clear-model retrieval              30.2     30.4     31.9     37.5   |  83.0 %    2/ 78 %
+  + optical, clear-model retrieval             47.0     71.0     70.4     69.6   |  81.7 %    0/ 75 %
+
+== q = 0.2, target H2O (364 targets on average): targets lost, mean over draws
+  AIRS-only routing by optical excess (no retrieval)           62.7 ±  2.4   acc  74.9 %  recall hazed/clean targets  27/ 48 %
+  classifier alone                                             72.8 ±  5.5   acc  75.0 %  recall hazed/clean targets   0/ 51 %
+  clear-model retrieval of every planet (existing method)      70.2 ±  7.3   acc  85.7 %  recall hazed/clean targets   0/ 81 %
+  freehaze retrieval of every planet                            2.0 ±  0.7   acc  90.8 %  recall hazed/clean targets  69/ 81 %
+  ordering of the retrieval budget            f=10%    f=20%    f=30%    f=50%   | at f=20 %: acc, recall hazed/clean
+  + random                                     65.3     58.1     50.5     34.1   |  78.2 %   13/ 58 %
+  + optical                                    57.0     39.8     34.0     24.9   |  80.0 %   68/ 52 %
+  + disagree                                   64.3     54.4     45.5     30.4   |  79.1 %   30/ 56 %
+  + bandmetric                                 65.5     57.9     51.0     36.5   |  78.4 %   15/ 57 %
+  + margin                                     69.0     61.0     55.1     44.0   |  78.9 %    0/ 60 %
+  + ensemble                                   68.0     61.0     54.4     41.0   |  78.0 %    1/ 59 %
+  + mahalanobis                                58.2     45.8     37.1     27.0   |  79.1 %   49/ 53 %
+  + knn                                        60.0     46.6     39.2     27.7   |  79.6 %   55/ 53 %
+  + pca_recon                                  59.9     46.4     39.1     27.4   |  79.5 %   48/ 54 %
+  + oracle (knows the hazed)                   57.5     39.5     33.5     23.4   |  79.9 %   68/ 51 %
+  + random, clear-model retrieval              70.3     67.0     63.1     59.1   |  77.3 %    0/ 58 %
+  + optical, clear-model retrieval             81.8     94.5     90.7     80.5   |  75.1 %    0/ 52 %
+
+== q = 0.2, target joint (576 targets on average): targets lost, mean over draws
+  AIRS-only routing by optical excess (no retrieval)          111.5 ±  2.6
+  classifier alone                                            124.0 ±  5.5
+  clear-model retrieval of every planet (existing method)     114.7 ±  8.5
+  freehaze retrieval of every planet                           40.4 ±  2.0
+  ordering of the retrieval budget            f=10%    f=20%    f=30%    f=50%
+  + random                                    115.8    108.0     99.1     81.6
+  + optical                                   109.0     87.3     80.4     68.6
+  + disagree                                  112.4    101.8     91.0     71.8
+  + bandmetric                                117.0    112.8    104.0     89.0
+  + margin                                    118.5    107.5    102.2     90.0
+  + ensemble                                  119.5    110.8    104.2     89.0
+  + mahalanobis                               108.8     93.6     82.1     67.7
+  + knn                                       110.0     95.0     82.5     66.7
+  + pca_recon                                 107.7     97.2     86.3     71.3
+  + oracle (knows the hazed)                  108.1     87.1     80.9     69.6
+  + random, clear-model retrieval             120.9    117.8    114.0    109.2
+  + optical, clear-model retrieval            129.9    140.9    137.2    127.5
+
+== q = 0.5, target CH4 (359 targets on average): targets lost, mean over draws
+  AIRS-only routing by optical excess (no retrieval)           23.4 ±  2.1   acc  83.1 %  recall hazed/clean targets  61/ 73 %
+  classifier alone                                             34.2 ±  2.5   acc  74.9 %  recall hazed/clean targets   4/ 75 %
+  clear-model retrieval of every planet (existing method)     129.7 ±  6.5   acc  78.1 %  recall hazed/clean targets   1/ 89 %
+  freehaze retrieval of every planet                            0.0 ±  0.0   acc  93.2 %  recall hazed/clean targets  83/ 89 %
+  ordering of the retrieval budget            f=10%    f=20%    f=30%    f=50%   | at f=20 %: acc, recall hazed/clean
+  + random                                     28.9     24.4     20.4     12.5   |  78.4 %   19/ 78 %
+  + optical                                    27.2     21.6     17.0      5.0   |  80.8 %   36/ 75 %
+  + disagree                                   27.3     23.1     18.8      9.8   |  79.9 %   29/ 76 %
+  + bandmetric                                 27.4     23.9     21.4     12.9   |  77.5 %   14/ 76 %
+  + margin                                     29.8     25.8     21.9     16.1   |  77.3 %    4/ 85 %
+  + ensemble                                   30.9     26.8     23.4     16.6   |  77.2 %    5/ 84 %
+  + mahalanobis                                27.1     22.9     17.8      7.2   |  79.9 %   31/ 75 %
+  + knn                                        25.6     20.9     18.1      7.3   |  78.1 %   21/ 75 %
+  + pca_recon                                  27.4     21.4     16.7      8.3   |  80.8 %   34/ 75 %
+  + oracle (knows the hazed)                   29.0     22.9     17.2      5.2   |  80.7 %   35/ 75 %
+  + random, clear-model retrieval              42.0     52.6     64.0     89.8   |  75.5 %    3/ 78 %
+  + optical, clear-model retrieval             53.0     77.0    106.8    132.8   |  74.6 %    2/ 75 %
+
+== q = 0.5, target H2O (364 targets on average): targets lost, mean over draws
+  AIRS-only routing by optical excess (no retrieval)           70.4 ±  3.2   acc  72.3 %  recall hazed/clean targets  26/ 49 %
+  classifier alone                                             89.0 ±  4.0   acc  70.5 %  recall hazed/clean targets   0/ 52 %
+  clear-model retrieval of every planet (existing method)     138.7 ±  6.0   acc  76.8 %  recall hazed/clean targets   0/ 82 %
+  freehaze retrieval of every planet                            2.1 ±  1.0   acc  89.5 %  recall hazed/clean targets  69/ 82 %
+  ordering of the retrieval budget            f=10%    f=20%    f=30%    f=50%   | at f=20 %: acc, recall hazed/clean
+  + random                                     80.3     71.2     62.6     45.3   |  74.0 %   12/ 58 %
+  + optical                                    77.7     66.1     53.2     25.4   |  75.4 %   27/ 52 %
+  + disagree                                   79.7     71.2     62.3     41.2   |  75.0 %   20/ 56 %
+  + bandmetric                                 78.1     69.4     60.5     43.9   |  74.5 %   16/ 57 %
+  + margin                                     81.0     71.2     63.1     46.9   |  73.7 %    1/ 65 %
+  + ensemble                                   80.2     71.1     62.5     46.3   |  73.3 %    2/ 62 %
+  + mahalanobis                                79.5     68.1     57.4     34.9   |  74.6 %   22/ 53 %
+  + knn                                        76.9     70.0     60.0     38.0   |  75.9 %   29/ 52 %
+  + pca_recon                                  78.5     67.3     56.1     34.0   |  75.5 %   27/ 53 %
+  + oracle (knows the hazed)                   79.9     68.2     55.5     23.9   |  75.7 %   28/ 52 %
+  + random, clear-model retrieval              86.5     85.0     87.0     98.7   |  71.7 %    0/ 58 %
+  + optical, clear-model retrieval             90.0     96.8    107.5    139.7   |  70.5 %    0/ 52 %
+
+== q = 0.5, target joint (576 targets on average): targets lost, mean over draws
+  AIRS-only routing by optical excess (no retrieval)          123.3 ±  1.9
+  classifier alone                                            149.7 ±  6.2
+  clear-model retrieval of every planet (existing method)     223.9 ±  8.1
+  freehaze retrieval of every planet                           41.8 ±  1.7
+  ordering of the retrieval budget            f=10%    f=20%    f=30%    f=50%
+  + random                                    139.3    129.2    120.0     99.9
+  + optical                                   136.9    122.2    106.0     74.2
+  + disagree                                  134.7    124.4    113.0     81.4
+  + bandmetric                                135.3    127.8    121.3     96.8
+  + margin                                    141.8    132.2    121.2    102.7
+  + ensemble                                  143.2    134.3    123.5    105.8
+  + mahalanobis                               136.9    123.5    107.8     79.2
+  + knn                                       130.7    121.5    103.7     76.8
+  + pca_recon                                 133.2    119.2    105.7     82.0
+  + oracle (knows the hazed)                  136.9    123.5    107.5     73.2
+  + random, clear-model retrieval             151.2    151.9    155.2    167.4
+  + optical, clear-model retrieval            154.2    162.2    185.6    224.2
+
+== detection: share of hazed / clean planets inside the fraction f each rule ranks most suspect (q = 0.2, mean over draws)
+  optical        f=10%:  51 /   0 %  f=20%:  98 /   1 %  f=30%: 100 /  13 %  f=50%: 100 /  38 %
+  disagree       f=10%:  21 /   7 %  f=20%:  44 /  14 %  f=30%:  59 /  23 %  f=50%:  83 /  42 %
+  bandmetric     f=10%:  18 /   8 %  f=20%:  24 /  19 %  f=30%:  32 /  30 %  f=50%:  51 /  50 %
+  margin         f=10%:   0 /  12 %  f=20%:   0 /  25 %  f=30%:   0 /  37 %  f=50%:   6 /  61 %
+  ensemble       f=10%:   0 /  12 %  f=20%:   1 /  25 %  f=30%:   2 /  37 %  f=50%:   8 /  60 %
+  mahalanobis    f=10%:  45 /   1 %  f=20%:  73 /   7 %  f=30%:  87 /  16 %  f=50%:  98 /  38 %
+  knn            f=10%:  50 /   0 %  f=20%:  77 /   6 %  f=30%:  86 /  16 %  f=50%:  95 /  39 %
+  pca_recon      f=10%:  42 /   2 %  f=20%:  67 /   9 %  f=30%:  82 /  17 %  f=50%:  94 /  39 %

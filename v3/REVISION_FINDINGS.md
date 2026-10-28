@@ -221,6 +221,52 @@ the most selective flag (99 % of hazed against 2 % of clean planets inside the t
 existing clear-model retrieval is worse than no retrieval; (v) the free-haze retrieval of every planet loses
 at most as many clean targets as the clean retrieval plus 5. If (i) fails, E3 is reported as not met.
 
+**The free-haze retrieval on the hazed population (2026-10-27; `identifiability_calibrate.py --departure
+haze3e7 --free-haze`; `results/identifiability_calibration_haze3e7_freehaze.{csv,log,txt}`).** All 954
+hazed spectra completed, none at the cap or on a sampler abort (median 34 min and 6,033 calls per planet; 9
+workers, 70.5 h wall, 635 core-hours). The haze density is recovered on every planet: median log₁₀ n 7.47
+against 7.48 true, 68 % interval 0.11 dex wide and holding the true value on 95 % of planets, no posterior
+at the haze-free end. Against the clean retrieval of the same planets: accuracy CH₄ 93.7 → 92.3, H₂O
+91.6 → 87.3, CO₂ 93.8 → 93.7, NH₃ 93.9 → 91.4 %; recall of present CH₄ 88 → 82, H₂O 82 → 69, CO₂ 88 → 85,
+NH₃ 88 → 81 %; decidable (p_true > 0.95) CH₄ 68 → 64, H₂O 46 → 34, CO₂ 56 → 63, NH₃ 68 → 61 %; confidently
+wrong 0.0–0.3 %; median posterior shift of log X −0.07 to −0.15 dex. Of the 224 planets with CH₄ present
+and decidable on the clean spectrum, 222 are recalled (99.1 %), 75 % stay decidable, median p_true 0.996.
+Evidence median log Z −15.8 against −12.4 clean (clear-model −252); four planets (GJ 1252 b, Kepler-79 d,
+TOI-544 b, TOI-6255 b) have log Z below −200 with the radius held fixed and keep their labels but one
+(TOI-544 b H₂O). This supersedes the 124-planet fixed-density pilot above, which it agrees with (pilot
+CH₄ 98 → 98 %, population 94 → 92 %), and completes E4: the haze's errors are recoverable by a retrieval
+that models it, with one free parameter, and the same retrieval without that parameter is confidently
+wrong on 99 % of the present labels.
+
+**E3 fixed-budget test, outcome (2026-10-27; `e3_budget.py --fallback freehaze --draws 20`;
+`results/e3_budget_freehaze.{csv,txt}`).** 954 planets, q = 0.1 / 0.2 / 0.5, 20 draws; the clean planets
+carry the clean retrieval's posteriors until the free-haze run on the clean spectra completes (due 31
+October). At q = 0.2, CH₄ (359 targets): classifier alone loses 28.9 and recalls 3 % of the hazed
+targets; clear-model retrieval of every planet 68.5 and 0 %; free-haze retrieval of every planet 0.0 and
+82 %. Budget orderings at f = 10 / 20 / 30 / 50 % (targets lost; hazed recall at f = 20 %): random
+24.8 / 20.1 / 16.2 / 9.4 (17 %); optical 19.9 / 12.6 / 8.4 / 3.9 (80 %); oracle 20.6 / 12.3 / 8.9 / 4.5
+(81 %); Mahalanobis 21.2 / 12.6 / 8.2 / 3.2 (64 %); PCA 21.4 / 14.3 / 10.2 / 4.2 (58 %); k-NN
+21.5 / 13.5 / 7.0 / 2.8 (54 %); disagree 23.7 / 17.9 / 13.8 / 6.5 (37 %); band metric
+24.6 / 21.3 / 18.1 / 10.2 (13 %); margin 24.9 / 19.6 / 16.4 / 11.8 (3 %); ensemble 26.5 / 22.2 / 18.2 / 12.8
+(3 %); optical → clear-model 47.0 / 71.0 / 70.4 / 69.6 (0 %); random → clear-model 30.2 / 30.4 / 31.9 / 37.5.
+Detection inside the top 20 %: optical 98 % of hazed, 1 % of clean; Mahalanobis 73 / 7; k-NN 77 / 6; PCA
+67 / 9; disagree 44 / 14; margin and ensemble 0–1 / 25. H₂O at f = 20 %: optical 39.8 against classifier
+72.8, oracle 39.5, random 58.1. At q = 0.1 optical 11.8 against oracle 12.2 (classifier 23.6); at q = 0.5 a
+20 % budget cannot cover the hazed half (21.6 against oracle 22.9, classifier 34.2) and the ordering reaches
+the oracle at f = 50 % (5.0 against 5.2).
+
+Scoring the expectations: (i) met, recall 3 → 80 %, targets lost 28.9 → 12.6; (ii) met, 77 points over
+margin and ensemble, 67 over the band metric, 63 over random; (iii) met for Mahalanobis (16 points), not
+for PCA (22) and k-NN (26), and the selectivity claim met (98 / 1 %); (iv) met, 71.0 against 28.9; (v)
+met on the hazed planets (0 CH₄ and 2.0 H₂O targets, the clean retrieval's own numbers), the clean-planet
+half provisional until the clean free-haze run. E3 is met in the sense the editor asked for: the optical
+score recognises the planets on which the classifier and the existing retrieval are unreliable (98 % of
+the hazed in its top fifth), and used to allocate a retrieval that models the departure it improves both
+classification (hazed-target recall 3 → 80 %) and target selection (29 → 13 targets lost, the oracle's
+12) against the classifier alone, the existing rules, a random budget and the existing retrieval. What it
+does not do is beat the free-haze retrieval of every planet, which costs 635 core-hours and loses nothing;
+the diagnostic's value is at a budget below that.
+
 Error classes (C2, C4) and the comparison with a retrieval of every planet (E3): see F6, which
 supersedes the uncalibrated prevalence (93–96 % irrecoverable at 3σ) first reported here and shows
 that on clean simulated spectra the retrieval, not the classifier with any diagnostic, is the
@@ -746,8 +792,15 @@ than ranking by the band metric alone. With a nested-sampling retrieval of every
 classifier sits 9–16 points below the retrieval's accuracy, three quarters of its clean errors are
 irrecoverable, the errors haze and spots add are 57–87 % recoverable, a deep deck's 51–82 % and
 threefold noise's 10–56 %, the retrieval of every
-planet is the Tier-2 selection oracle on clean spectra, and no diagnostic routes a partial retrieval
-budget better than chance, the confidence rules worse. The muting census (F7) turns the one-planet WASP-39 b
+planet is the Tier-2 selection oracle on clean spectra, and on clean spectra no diagnostic routes a
+partial retrieval budget better than chance, the confidence rules worse. On a mixed population with a
+fifth of the planets hazed, the optical score routed to a retrieval with the haze density free turns a
+20 % budget into the oracle's selection (CH₄ hazed-target recall 3 → 80 %, targets lost 29 → 13 against
+the oracle's 12), the distance rules come within 16–26 points, the confidence rules find none of the hazed
+planets, and the same budget sent to the existing clear-model retrieval is worse than no retrieval; the
+free-haze retrieval on the hazed population recovers the density on every planet and 222 of the 224 CH₄
+labels decidable on the clean spectrum, so E3 and E4 are both met. The muting census (F7) turns the one-planet WASP-39 b
 result into a population statement: five of five warm giants with retrieved abundances are muted beyond
 anything the simulator population can draw at their bulk parameters, which no normalised-input rule can
-see. The remaining pieces are the full-population modelled-haze retrieval and the manuscript trim.
+see. The remaining pieces are the free-haze retrieval of the clean population (running, due 31 October; it
+replaces the clean retrieval's posteriors on the clean side of the E3 table) and the manuscript trim.

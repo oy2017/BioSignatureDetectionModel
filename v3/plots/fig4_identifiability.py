@@ -3,9 +3,9 @@
 in the counterfactual model; the noise cases are the clean dchi2 / k^2. (b) Share of the errors each departure
 introduces that are recoverable (the label still decidable under the departure), mean over the four learners, with
 the clean bar the posterior-based share of all clean errors. (c) Posterior probability of the true CH4 class from
-the clear-model and the modelled-haze retrievals of the same hazed spectra, against the clean-spectrum posterior.
+the clear-model and the free-haze retrievals of the same hazed spectra, against the clean-spectrum posterior.
 Reads results/identifiability_{none,haze3e7,spots20,cloud1e2}_tier1.csv, results/diagnostic_departure_classes.csv,
-results/diagnostic_retrieval_classes.csv and results/identifiability_calibration{,_haze3e7,_haze3e7_modelled}.csv;
+results/diagnostic_retrieval_classes.csv and results/identifiability_calibration{,_haze3e7,_haze3e7_freehaze}.csv;
 a departure whose files are missing is left out."""
 import os, sys
 import numpy as np, pandas as pd
@@ -46,11 +46,11 @@ def main():
         panel_label(ax, letter)
     h, l = axs[0].get_legend_handles_labels()
     fig.legend(h, l, loc="lower center", ncol=len(dec), fontsize=6.8, handlelength=1.0, columnspacing=1.0, bbox_to_anchor=(0.5, -0.07))
-    # (c) CH4 p_true: clean posterior against the two haze retrievals of the same spectra
+    # (c) CH4 p_true: clean posterior against the clear-model and free-haze retrievals of the same spectra
     c = axs[2]
     clean = pd.read_csv(os.path.join(RES, "identifiability_calibration.csv")).set_index("name")
     for fn, lab, col, mk in (("identifiability_calibration_haze3e7.csv", "clear model on hazed", SERIES[1], "o"),
-                             ("identifiability_calibration_haze3e7_modelled.csv", "haze modelled", SERIES[0], "s")):
+                             ("identifiability_calibration_haze3e7_freehaze.csv", "haze density free", SERIES[0], "s")):
         p = os.path.join(RES, fn)
         if not os.path.exists(p):
             continue

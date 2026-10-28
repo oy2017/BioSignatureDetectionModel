@@ -1,0 +1,117 @@
+Numba not installed, using numpy instead
+954 planets selected, 954 to retrieve, 9 jobs, 100 live points, cap 20000 calls
+  9/954  4782 s  median 48.8 min, 5611 calls per planet
+  18/954  7535 s  median 34.3 min, 5963 calls per planet
+  27/954  10484 s  median 42.4 min, 7493 calls per planet
+  36/954  13474 s  median 40.9 min, 7458 calls per planet
+  45/954  16218 s  median 36.4 min, 6568 calls per planet
+  54/954  18735 s  median 41.9 min, 7468 calls per planet
+  63/954  20777 s  median 35.8 min, 6425 calls per planet
+  72/954  23274 s  median 32.5 min, 5830 calls per planet
+  81/954  24969 s  median 30.2 min, 5375 calls per planet
+  90/954  26965 s  median 32.0 min, 5892 calls per planet
+  99/954  29673 s  median 29.5 min, 5406 calls per planet
+  108/954  31740 s  median 29.5 min, 5357 calls per planet
+  117/954  33406 s  median 30.9 min, 5550 calls per planet
+  126/954  35224 s  median 25.7 min, 4709 calls per planet
+  135/954  37078 s  median 29.2 min, 5382 calls per planet
+  144/954  38591 s  median 27.5 min, 5158 calls per planet
+  153/954  40448 s  median 29.1 min, 5004 calls per planet
+  162/954  42581 s  median 35.6 min, 5910 calls per planet
+  171/954  46782 s  median 52.7 min, 9426 calls per planet
+  180/954  49694 s  median 47.1 min, 8190 calls per planet
+  189/954  54313 s  median 51.2 min, 8500 calls per planet
+  198/954  57180 s  median 56.3 min, 9904 calls per planet
+  207/954  61256 s  median 51.9 min, 8987 calls per planet
+  216/954  66020 s  median 59.4 min, 10404 calls per planet
+  225/954  68190 s  median 39.4 min, 6728 calls per planet
+  234/954  70439 s  median 33.1 min, 5615 calls per planet
+  243/954  72818 s  median 30.5 min, 5333 calls per planet
+  252/954  74345 s  median 40.3 min, 7048 calls per planet
+  261/954  76542 s  median 31.7 min, 5491 calls per planet
+  270/954  79483 s  median 37.1 min, 6247 calls per planet
+  279/954  82259 s  median 43.0 min, 7609 calls per planet
+  288/954  85453 s  median 43.9 min, 7906 calls per planet
+  297/954  87458 s  median 39.3 min, 7581 calls per planet
+  306/954  90231 s  median 32.3 min, 5813 calls per planet
+  315/954  92254 s  median 29.9 min, 5403 calls per planet
+  324/954  94732 s  median 31.9 min, 5664 calls per planet
+  333/954  97888 s  median 36.3 min, 6738 calls per planet
+  342/954  100022 s  median 35.2 min, 6131 calls per planet
+  351/954  102769 s  median 31.3 min, 5358 calls per planet
+  360/954  104780 s  median 44.6 min, 8028 calls per planet
+  369/954  107046 s  median 31.0 min, 5490 calls per planet
+  378/954  108781 s  median 31.7 min, 5655 calls per planet
+  387/954  110545 s  median 32.1 min, 5729 calls per planet
+  396/954  114687 s  median 32.4 min, 5747 calls per planet
+  405/954  117648 s  median 68.5 min, 11819 calls per planet
+  414/954  119906 s  median 29.6 min, 5369 calls per planet
+  423/954  121776 s  median 37.8 min, 6788 calls per planet
+  432/954  124071 s  median 40.1 min, 6909 calls per planet
+  441/954  127306 s  median 45.4 min, 8192 calls per planet
+  450/954  129641 s  median 31.8 min, 5684 calls per planet
+  459/954  131894 s  median 37.3 min, 6538 calls per planet
+  468/954  133984 s  median 36.0 min, 6479 calls per planet
+  477/954  136722 s  median 39.9 min, 6914 calls per planet
+  486/954  139421 s  median 31.3 min, 5491 calls per planet
+  495/954  141202 s  median 31.2 min, 5426 calls per planet
+  504/954  143553 s  median 36.4 min, 6487 calls per planet
+  513/954  145375 s  median 32.7 min, 5849 calls per planet
+  522/954  147410 s  median 31.6 min, 5565 calls per planet
+  531/954  149589 s  median 26.3 min, 4725 calls per planet
+  540/954  151857 s  median 37.9 min, 6579 calls per planet
+  549/954  154367 s  median 40.1 min, 7108 calls per planet
+  558/954  156293 s  median 37.8 min, 6501 calls per planet
+  567/954  158213 s  median 31.2 min, 5569 calls per planet
+  576/954  160200 s  median 26.0 min, 4852 calls per planet
+  585/954  162141 s  median 29.7 min, 5385 calls per planet
+  594/954  163936 s  median 29.6 min, 5371 calls per planet
+  603/954  166041 s  median 30.1 min, 5446 calls per planet
+  612/954  167843 s  median 33.9 min, 6147 calls per planet
+  621/954  170343 s  median 26.3 min, 4930 calls per planet
+  630/954  172447 s  median 29.6 min, 5365 calls per planet
+  639/954  175389 s  median 34.2 min, 6143 calls per planet
+  648/954  178110 s  median 37.3 min, 6592 calls per planet
+  657/954  180008 s  median 33.6 min, 6033 calls per planet
+  666/954  182345 s  median 31.9 min, 5902 calls per planet
+  675/954  184037 s  median 28.9 min, 5200 calls per planet
+  684/954  186121 s  median 34.5 min, 6007 calls per planet
+  693/954  188820 s  median 33.8 min, 6022 calls per planet
+  702/954  191695 s  median 29.7 min, 5337 calls per planet
+  711/954  193910 s  median 36.0 min, 6523 calls per planet
+  720/954  195878 s  median 34.7 min, 6627 calls per planet
+  729/954  198223 s  median 30.2 min, 5462 calls per planet
+  738/954  200013 s  median 27.2 min, 4871 calls per planet
+  747/954  201997 s  median 38.2 min, 6649 calls per planet
+  756/954  204192 s  median 31.9 min, 5802 calls per planet
+  765/954  206188 s  median 33.5 min, 5759 calls per planet
+  774/954  208465 s  median 27.3 min, 4847 calls per planet
+  783/954  210459 s  median 30.1 min, 5544 calls per planet
+  792/954  212899 s  median 31.7 min, 5751 calls per planet
+  801/954  215893 s  median 45.3 min, 7789 calls per planet
+  810/954  218539 s  median 31.9 min, 5767 calls per planet
+  819/954  220591 s  median 29.8 min, 5271 calls per planet
+  828/954  222444 s  median 32.8 min, 5840 calls per planet
+  837/954  224279 s  median 30.2 min, 5345 calls per planet
+  846/954  226531 s  median 31.5 min, 5570 calls per planet
+  855/954  228364 s  median 33.7 min, 6023 calls per planet
+  864/954  231512 s  median 29.5 min, 5322 calls per planet
+  873/954  233688 s  median 41.2 min, 7361 calls per planet
+  882/954  236443 s  median 36.8 min, 6429 calls per planet
+  891/954  238487 s  median 28.7 min, 5140 calls per planet
+  900/954  241053 s  median 31.7 min, 5626 calls per planet
+  909/954  243106 s  median 37.1 min, 6684 calls per planet
+  918/954  245516 s  median 29.3 min, 5484 calls per planet
+  927/954  248297 s  median 39.1 min, 7270 calls per planet
+  936/954  250225 s  median 41.2 min, 7552 calls per planet
+  945/954  252458 s  median 28.8 min, 5376 calls per planet
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+  954/954  253858 s  median 28.1 min, 6541 calls per planet
+Numba not installed, using numpy instead
