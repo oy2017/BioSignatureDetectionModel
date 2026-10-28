@@ -182,7 +182,7 @@ points of the frozen one, because almost nothing is flagged. The disagreement ca
 the same (77.7 % and 51.1 % under haze) at the cost of three retrained learners per molecule; the
 band-metric candidate makes things worse.
 
-Selection (C3, C6): 60 % of the 939 POP-I planets get a Tier-2 slot, ranked by the mean present
+Selection (C3, C6): 60 % of the 955 POP-I planets (573 slots) get a Tier-2 slot, ranked by the mean present
 probability of KNN, MLP and RFC. Under haze the classifier alone loses 38 of 359 CH₄-bearing targets;
 with the optical-excess routing 26; the AIRS-only classifier used everywhere 27; the best old rule
 (kNN, declined to the back) 42, and the margin and ensemble rules 105 and 112, worse than the band
