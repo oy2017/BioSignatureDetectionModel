@@ -978,7 +978,10 @@ spectra routes exactly the planets where the weaker AIRS-only learner differs fr
 so it costs 4 points there; on the real panel the differing answer is the right one. Reading: the
 router's value is set by the prevalence of the departure in the population it meets; the paper now
 states both numbers (abstract, 3.6, Discussion, Conclusion, Table 8 last column, letters). Table 11
-over ten draws with the combined router: pending (table11_spread.py rerun).
+over ten draws with the combined router (CH₄ targets lost; clean / haze / spots / deck / compound / noise ×2):
+classifier 16.0 / 35.8 / 32.6 / 28.6 / 69.5 / 37.4; optical 17.1 / 26.8 / 27.9 / 28.7 / 28.7 / 37.6; either 19.0 / 26.8 / 27.8 / 29.0 / 28.7 / 39.2;
+disagree alone 18.8 / 33.3 / 31.4 / 29.2 / 60.8 / 39.0. The combined router costs 2-3 targets on clean and noisy spectra and
+matches the optical flag everywhere else.
 
 ### What these add up to, provisionally
 

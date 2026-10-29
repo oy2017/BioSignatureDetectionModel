@@ -12,6 +12,7 @@ draw,case,strategy,targets,lost
 0,clean,routed by disagree to AIRS-only,359,21
 0,clean,routed by bandmetric to AIRS-only,359,20
 0,clean,routed by muting to AIRS-only,359,22
+0,clean,routed by either flag to AIRS-only,359,21
 0,haze3e7,classifier alone,359,38
 0,haze3e7,AIRS-only variant everywhere,359,27
 0,haze3e7,band metric alone,359,103
@@ -25,6 +26,7 @@ draw,case,strategy,targets,lost
 0,haze3e7,routed by disagree to AIRS-only,359,37
 0,haze3e7,routed by bandmetric to AIRS-only,359,38
 0,haze3e7,routed by muting to AIRS-only,359,38
+0,haze3e7,routed by either flag to AIRS-only,359,26
 0,spots20,classifier alone,359,29
 0,spots20,AIRS-only variant everywhere,359,26
 0,spots20,band metric alone,359,110
@@ -38,10 +40,39 @@ draw,case,strategy,targets,lost
 0,spots20,routed by disagree to AIRS-only,359,30
 0,spots20,routed by bandmetric to AIRS-only,359,27
 0,spots20,routed by muting to AIRS-only,359,30
+0,spots20,routed by either flag to AIRS-only,359,28
+0,cloud1e2,classifier alone,359,29
+0,cloud1e2,AIRS-only variant everywhere,359,34
+0,cloud1e2,band metric alone,359,94
+0,cloud1e2,random,359,142
+0,cloud1e2,"margin, declined to the back",359,92
+0,cloud1e2,"ensemble, declined to the back",359,122
+0,cloud1e2,"mahalanobis, declined to the back",359,73
+0,cloud1e2,"knn, declined to the back",359,60
+0,cloud1e2,"pca_recon, declined to the back",359,56
+0,cloud1e2,routed by optical to AIRS-only,359,30
+0,cloud1e2,routed by disagree to AIRS-only,359,30
+0,cloud1e2,routed by bandmetric to AIRS-only,359,31
+0,cloud1e2,routed by muting to AIRS-only,359,33
+0,cloud1e2,routed by either flag to AIRS-only,359,30
+0,compound,classifier alone,359,66
+0,compound,AIRS-only variant everywhere,359,27
+0,compound,band metric alone,359,110
+0,compound,random,359,149
+0,compound,"margin, declined to the back",359,94
+0,compound,"ensemble, declined to the back",359,94
+0,compound,"mahalanobis, declined to the back",359,87
+0,compound,"knn, declined to the back",359,72
+0,compound,"pca_recon, declined to the back",359,74
+0,compound,routed by optical to AIRS-only,359,27
+0,compound,routed by disagree to AIRS-only,359,60
+0,compound,routed by bandmetric to AIRS-only,359,67
+0,compound,routed by muting to AIRS-only,359,65
+0,compound,routed by either flag to AIRS-only,359,27
 0,white_x2,classifier alone,359,37
 0,white_x2,AIRS-only variant everywhere,359,57
 0,white_x2,band metric alone,359,108
-0,white_x2,random,359,142
+0,white_x2,random,359,139
 0,white_x2,"margin, declined to the back",359,105
 0,white_x2,"ensemble, declined to the back",359,106
 0,white_x2,"mahalanobis, declined to the back",359,82
@@ -51,6 +82,7 @@ draw,case,strategy,targets,lost
 0,white_x2,routed by disagree to AIRS-only,359,40
 0,white_x2,routed by bandmetric to AIRS-only,359,36
 0,white_x2,routed by muting to AIRS-only,359,37
+0,white_x2,routed by either flag to AIRS-only,359,40
 1,clean,classifier alone,359,15
 1,clean,AIRS-only variant everywhere,359,26
 1,clean,band metric alone,359,100
@@ -64,6 +96,7 @@ draw,case,strategy,targets,lost
 1,clean,routed by disagree to AIRS-only,359,17
 1,clean,routed by bandmetric to AIRS-only,359,16
 1,clean,routed by muting to AIRS-only,359,19
+1,clean,routed by either flag to AIRS-only,359,18
 1,haze3e7,classifier alone,359,33
 1,haze3e7,AIRS-only variant everywhere,359,31
 1,haze3e7,band metric alone,359,109
@@ -77,6 +110,7 @@ draw,case,strategy,targets,lost
 1,haze3e7,routed by disagree to AIRS-only,359,31
 1,haze3e7,routed by bandmetric to AIRS-only,359,32
 1,haze3e7,routed by muting to AIRS-only,359,33
+1,haze3e7,routed by either flag to AIRS-only,359,30
 1,spots20,classifier alone,359,37
 1,spots20,AIRS-only variant everywhere,359,31
 1,spots20,band metric alone,359,109
@@ -90,10 +124,39 @@ draw,case,strategy,targets,lost
 1,spots20,routed by disagree to AIRS-only,359,37
 1,spots20,routed by bandmetric to AIRS-only,359,33
 1,spots20,routed by muting to AIRS-only,359,41
+1,spots20,routed by either flag to AIRS-only,359,30
+1,cloud1e2,classifier alone,359,33
+1,cloud1e2,AIRS-only variant everywhere,359,39
+1,cloud1e2,band metric alone,359,99
+1,cloud1e2,random,359,140
+1,cloud1e2,"margin, declined to the back",359,83
+1,cloud1e2,"ensemble, declined to the back",359,115
+1,cloud1e2,"mahalanobis, declined to the back",359,70
+1,cloud1e2,"knn, declined to the back",359,72
+1,cloud1e2,"pca_recon, declined to the back",359,58
+1,cloud1e2,routed by optical to AIRS-only,359,34
+1,cloud1e2,routed by disagree to AIRS-only,359,35
+1,cloud1e2,routed by bandmetric to AIRS-only,359,35
+1,cloud1e2,routed by muting to AIRS-only,359,38
+1,cloud1e2,routed by either flag to AIRS-only,359,34
+1,compound,classifier alone,359,68
+1,compound,AIRS-only variant everywhere,359,30
+1,compound,band metric alone,359,113
+1,compound,random,359,150
+1,compound,"margin, declined to the back",359,92
+1,compound,"ensemble, declined to the back",359,88
+1,compound,"mahalanobis, declined to the back",359,82
+1,compound,"knn, declined to the back",359,74
+1,compound,"pca_recon, declined to the back",359,73
+1,compound,routed by optical to AIRS-only,359,30
+1,compound,routed by disagree to AIRS-only,359,60
+1,compound,routed by bandmetric to AIRS-only,359,63
+1,compound,routed by muting to AIRS-only,359,69
+1,compound,routed by either flag to AIRS-only,359,30
 1,white_x2,classifier alone,359,40
 1,white_x2,AIRS-only variant everywhere,359,47
 1,white_x2,band metric alone,359,114
-1,white_x2,random,359,140
+1,white_x2,random,359,144
 1,white_x2,"margin, declined to the back",359,87
 1,white_x2,"ensemble, declined to the back",359,107
 1,white_x2,"mahalanobis, declined to the back",359,114
@@ -103,6 +166,7 @@ draw,case,strategy,targets,lost
 1,white_x2,routed by disagree to AIRS-only,359,40
 1,white_x2,routed by bandmetric to AIRS-only,359,38
 1,white_x2,routed by muting to AIRS-only,359,40
+1,white_x2,routed by either flag to AIRS-only,359,40
 2,clean,classifier alone,359,14
 2,clean,AIRS-only variant everywhere,359,24
 2,clean,band metric alone,359,109
@@ -116,6 +180,7 @@ draw,case,strategy,targets,lost
 2,clean,routed by disagree to AIRS-only,359,13
 2,clean,routed by bandmetric to AIRS-only,359,14
 2,clean,routed by muting to AIRS-only,359,15
+2,clean,routed by either flag to AIRS-only,359,16
 2,haze3e7,classifier alone,359,32
 2,haze3e7,AIRS-only variant everywhere,359,22
 2,haze3e7,band metric alone,359,111
@@ -129,6 +194,7 @@ draw,case,strategy,targets,lost
 2,haze3e7,routed by disagree to AIRS-only,359,33
 2,haze3e7,routed by bandmetric to AIRS-only,359,32
 2,haze3e7,routed by muting to AIRS-only,359,37
+2,haze3e7,routed by either flag to AIRS-only,359,22
 2,spots20,classifier alone,359,35
 2,spots20,AIRS-only variant everywhere,359,23
 2,spots20,band metric alone,359,117
@@ -142,10 +208,39 @@ draw,case,strategy,targets,lost
 2,spots20,routed by disagree to AIRS-only,359,35
 2,spots20,routed by bandmetric to AIRS-only,359,27
 2,spots20,routed by muting to AIRS-only,359,34
+2,spots20,routed by either flag to AIRS-only,359,22
+2,cloud1e2,classifier alone,359,27
+2,cloud1e2,AIRS-only variant everywhere,359,32
+2,cloud1e2,band metric alone,359,106
+2,cloud1e2,random,359,150
+2,cloud1e2,"margin, declined to the back",359,74
+2,cloud1e2,"ensemble, declined to the back",359,109
+2,cloud1e2,"mahalanobis, declined to the back",359,70
+2,cloud1e2,"knn, declined to the back",359,69
+2,cloud1e2,"pca_recon, declined to the back",359,56
+2,cloud1e2,routed by optical to AIRS-only,359,26
+2,cloud1e2,routed by disagree to AIRS-only,359,27
+2,cloud1e2,routed by bandmetric to AIRS-only,359,27
+2,cloud1e2,routed by muting to AIRS-only,359,24
+2,cloud1e2,routed by either flag to AIRS-only,359,26
+2,compound,classifier alone,359,75
+2,compound,AIRS-only variant everywhere,359,23
+2,compound,band metric alone,359,111
+2,compound,random,359,144
+2,compound,"margin, declined to the back",359,94
+2,compound,"ensemble, declined to the back",359,100
+2,compound,"mahalanobis, declined to the back",359,86
+2,compound,"knn, declined to the back",359,83
+2,compound,"pca_recon, declined to the back",359,80
+2,compound,routed by optical to AIRS-only,359,23
+2,compound,routed by disagree to AIRS-only,359,63
+2,compound,routed by bandmetric to AIRS-only,359,71
+2,compound,routed by muting to AIRS-only,359,79
+2,compound,routed by either flag to AIRS-only,359,23
 2,white_x2,classifier alone,359,33
 2,white_x2,AIRS-only variant everywhere,359,44
 2,white_x2,band metric alone,359,117
-2,white_x2,random,359,150
+2,white_x2,random,359,143
 2,white_x2,"margin, declined to the back",359,87
 2,white_x2,"ensemble, declined to the back",359,108
 2,white_x2,"mahalanobis, declined to the back",359,92
@@ -155,6 +250,7 @@ draw,case,strategy,targets,lost
 2,white_x2,routed by disagree to AIRS-only,359,36
 2,white_x2,routed by bandmetric to AIRS-only,359,32
 2,white_x2,routed by muting to AIRS-only,359,33
+2,white_x2,routed by either flag to AIRS-only,359,36
 3,clean,classifier alone,359,22
 3,clean,AIRS-only variant everywhere,359,31
 3,clean,band metric alone,359,110
@@ -168,6 +264,7 @@ draw,case,strategy,targets,lost
 3,clean,routed by disagree to AIRS-only,359,28
 3,clean,routed by bandmetric to AIRS-only,359,21
 3,clean,routed by muting to AIRS-only,359,25
+3,clean,routed by either flag to AIRS-only,359,25
 3,haze3e7,classifier alone,359,39
 3,haze3e7,AIRS-only variant everywhere,359,37
 3,haze3e7,band metric alone,359,110
@@ -181,6 +278,7 @@ draw,case,strategy,targets,lost
 3,haze3e7,routed by disagree to AIRS-only,359,37
 3,haze3e7,routed by bandmetric to AIRS-only,359,42
 3,haze3e7,routed by muting to AIRS-only,359,41
+3,haze3e7,routed by either flag to AIRS-only,359,36
 3,spots20,classifier alone,359,40
 3,spots20,AIRS-only variant everywhere,359,34
 3,spots20,band metric alone,359,112
@@ -194,10 +292,39 @@ draw,case,strategy,targets,lost
 3,spots20,routed by disagree to AIRS-only,359,37
 3,spots20,routed by bandmetric to AIRS-only,359,32
 3,spots20,routed by muting to AIRS-only,359,41
+3,spots20,routed by either flag to AIRS-only,359,32
+3,cloud1e2,classifier alone,359,33
+3,cloud1e2,AIRS-only variant everywhere,359,40
+3,cloud1e2,band metric alone,359,104
+3,cloud1e2,random,359,132
+3,cloud1e2,"margin, declined to the back",359,68
+3,cloud1e2,"ensemble, declined to the back",359,131
+3,cloud1e2,"mahalanobis, declined to the back",359,64
+3,cloud1e2,"knn, declined to the back",359,61
+3,cloud1e2,"pca_recon, declined to the back",359,64
+3,cloud1e2,routed by optical to AIRS-only,359,33
+3,cloud1e2,routed by disagree to AIRS-only,359,33
+3,cloud1e2,routed by bandmetric to AIRS-only,359,32
+3,cloud1e2,routed by muting to AIRS-only,359,31
+3,cloud1e2,routed by either flag to AIRS-only,359,33
+3,compound,classifier alone,359,74
+3,compound,AIRS-only variant everywhere,359,32
+3,compound,band metric alone,359,112
+3,compound,random,359,145
+3,compound,"margin, declined to the back",359,94
+3,compound,"ensemble, declined to the back",359,94
+3,compound,"mahalanobis, declined to the back",359,83
+3,compound,"knn, declined to the back",359,79
+3,compound,"pca_recon, declined to the back",359,79
+3,compound,routed by optical to AIRS-only,359,32
+3,compound,routed by disagree to AIRS-only,359,62
+3,compound,routed by bandmetric to AIRS-only,359,70
+3,compound,routed by muting to AIRS-only,359,72
+3,compound,routed by either flag to AIRS-only,359,32
 3,white_x2,classifier alone,359,43
 3,white_x2,AIRS-only variant everywhere,359,51
 3,white_x2,band metric alone,359,106
-3,white_x2,random,359,132
+3,white_x2,random,359,156
 3,white_x2,"margin, declined to the back",359,78
 3,white_x2,"ensemble, declined to the back",359,118
 3,white_x2,"mahalanobis, declined to the back",359,100
@@ -207,6 +334,7 @@ draw,case,strategy,targets,lost
 3,white_x2,routed by disagree to AIRS-only,359,47
 3,white_x2,routed by bandmetric to AIRS-only,359,42
 3,white_x2,routed by muting to AIRS-only,359,43
+3,white_x2,routed by either flag to AIRS-only,359,47
 4,clean,classifier alone,359,14
 4,clean,AIRS-only variant everywhere,359,22
 4,clean,band metric alone,359,114
@@ -220,6 +348,7 @@ draw,case,strategy,targets,lost
 4,clean,routed by disagree to AIRS-only,359,17
 4,clean,routed by bandmetric to AIRS-only,359,14
 4,clean,routed by muting to AIRS-only,359,13
+4,clean,routed by either flag to AIRS-only,359,16
 4,haze3e7,classifier alone,359,29
 4,haze3e7,AIRS-only variant everywhere,359,27
 4,haze3e7,band metric alone,359,117
@@ -233,6 +362,7 @@ draw,case,strategy,targets,lost
 4,haze3e7,routed by disagree to AIRS-only,359,25
 4,haze3e7,routed by bandmetric to AIRS-only,359,33
 4,haze3e7,routed by muting to AIRS-only,359,28
+4,haze3e7,routed by either flag to AIRS-only,359,26
 4,spots20,classifier alone,359,29
 4,spots20,AIRS-only variant everywhere,359,30
 4,spots20,band metric alone,359,118
@@ -246,10 +376,39 @@ draw,case,strategy,targets,lost
 4,spots20,routed by disagree to AIRS-only,359,27
 4,spots20,routed by bandmetric to AIRS-only,359,27
 4,spots20,routed by muting to AIRS-only,359,26
+4,spots20,routed by either flag to AIRS-only,359,26
+4,cloud1e2,classifier alone,359,27
+4,cloud1e2,AIRS-only variant everywhere,359,29
+4,cloud1e2,band metric alone,359,113
+4,cloud1e2,random,359,132
+4,cloud1e2,"margin, declined to the back",359,74
+4,cloud1e2,"ensemble, declined to the back",359,130
+4,cloud1e2,"mahalanobis, declined to the back",359,64
+4,cloud1e2,"knn, declined to the back",359,80
+4,cloud1e2,"pca_recon, declined to the back",359,54
+4,cloud1e2,routed by optical to AIRS-only,359,27
+4,cloud1e2,routed by disagree to AIRS-only,359,27
+4,cloud1e2,routed by bandmetric to AIRS-only,359,26
+4,cloud1e2,routed by muting to AIRS-only,359,29
+4,cloud1e2,routed by either flag to AIRS-only,359,27
+4,compound,classifier alone,359,65
+4,compound,AIRS-only variant everywhere,359,30
+4,compound,band metric alone,359,117
+4,compound,random,359,139
+4,compound,"margin, declined to the back",359,88
+4,compound,"ensemble, declined to the back",359,96
+4,compound,"mahalanobis, declined to the back",359,82
+4,compound,"knn, declined to the back",359,74
+4,compound,"pca_recon, declined to the back",359,76
+4,compound,routed by optical to AIRS-only,359,30
+4,compound,routed by disagree to AIRS-only,359,54
+4,compound,routed by bandmetric to AIRS-only,359,69
+4,compound,routed by muting to AIRS-only,359,67
+4,compound,routed by either flag to AIRS-only,359,30
 4,white_x2,classifier alone,359,36
 4,white_x2,AIRS-only variant everywhere,359,52
 4,white_x2,band metric alone,359,121
-4,white_x2,random,359,132
+4,white_x2,random,359,148
 4,white_x2,"margin, declined to the back",359,98
 4,white_x2,"ensemble, declined to the back",359,106
 4,white_x2,"mahalanobis, declined to the back",359,106
@@ -259,6 +418,7 @@ draw,case,strategy,targets,lost
 4,white_x2,routed by disagree to AIRS-only,359,39
 4,white_x2,routed by bandmetric to AIRS-only,359,37
 4,white_x2,routed by muting to AIRS-only,359,36
+4,white_x2,routed by either flag to AIRS-only,359,39
 5,clean,classifier alone,359,13
 5,clean,AIRS-only variant everywhere,359,27
 5,clean,band metric alone,359,107
@@ -272,6 +432,7 @@ draw,case,strategy,targets,lost
 5,clean,routed by disagree to AIRS-only,359,18
 5,clean,routed by bandmetric to AIRS-only,359,13
 5,clean,routed by muting to AIRS-only,359,16
+5,clean,routed by either flag to AIRS-only,359,18
 5,haze3e7,classifier alone,359,35
 5,haze3e7,AIRS-only variant everywhere,359,26
 5,haze3e7,band metric alone,359,113
@@ -285,6 +446,7 @@ draw,case,strategy,targets,lost
 5,haze3e7,routed by disagree to AIRS-only,359,33
 5,haze3e7,routed by bandmetric to AIRS-only,359,30
 5,haze3e7,routed by muting to AIRS-only,359,35
+5,haze3e7,routed by either flag to AIRS-only,359,25
 5,spots20,classifier alone,359,30
 5,spots20,AIRS-only variant everywhere,359,29
 5,spots20,band metric alone,359,109
@@ -298,10 +460,39 @@ draw,case,strategy,targets,lost
 5,spots20,routed by disagree to AIRS-only,359,30
 5,spots20,routed by bandmetric to AIRS-only,359,27
 5,spots20,routed by muting to AIRS-only,359,29
+5,spots20,routed by either flag to AIRS-only,359,30
+5,cloud1e2,classifier alone,359,26
+5,cloud1e2,AIRS-only variant everywhere,359,36
+5,cloud1e2,band metric alone,359,103
+5,cloud1e2,random,359,150
+5,cloud1e2,"margin, declined to the back",359,66
+5,cloud1e2,"ensemble, declined to the back",359,117
+5,cloud1e2,"mahalanobis, declined to the back",359,64
+5,cloud1e2,"knn, declined to the back",359,65
+5,cloud1e2,"pca_recon, declined to the back",359,50
+5,cloud1e2,routed by optical to AIRS-only,359,27
+5,cloud1e2,routed by disagree to AIRS-only,359,27
+5,cloud1e2,routed by bandmetric to AIRS-only,359,26
+5,cloud1e2,routed by muting to AIRS-only,359,28
+5,cloud1e2,routed by either flag to AIRS-only,359,27
+5,compound,classifier alone,359,65
+5,compound,AIRS-only variant everywhere,359,33
+5,compound,band metric alone,359,109
+5,compound,random,359,143
+5,compound,"margin, declined to the back",359,88
+5,compound,"ensemble, declined to the back",359,88
+5,compound,"mahalanobis, declined to the back",359,86
+5,compound,"knn, declined to the back",359,72
+5,compound,"pca_recon, declined to the back",359,73
+5,compound,routed by optical to AIRS-only,359,33
+5,compound,routed by disagree to AIRS-only,359,63
+5,compound,routed by bandmetric to AIRS-only,359,69
+5,compound,routed by muting to AIRS-only,359,64
+5,compound,routed by either flag to AIRS-only,359,33
 5,white_x2,classifier alone,359,33
 5,white_x2,AIRS-only variant everywhere,359,45
 5,white_x2,band metric alone,359,111
-5,white_x2,random,359,150
+5,white_x2,random,359,130
 5,white_x2,"margin, declined to the back",359,86
 5,white_x2,"ensemble, declined to the back",359,111
 5,white_x2,"mahalanobis, declined to the back",359,102
@@ -311,6 +502,7 @@ draw,case,strategy,targets,lost
 5,white_x2,routed by disagree to AIRS-only,359,36
 5,white_x2,routed by bandmetric to AIRS-only,359,33
 5,white_x2,routed by muting to AIRS-only,359,33
+5,white_x2,routed by either flag to AIRS-only,359,37
 6,clean,classifier alone,359,17
 6,clean,AIRS-only variant everywhere,359,31
 6,clean,band metric alone,359,108
@@ -324,6 +516,7 @@ draw,case,strategy,targets,lost
 6,clean,routed by disagree to AIRS-only,359,21
 6,clean,routed by bandmetric to AIRS-only,359,18
 6,clean,routed by muting to AIRS-only,359,20
+6,clean,routed by either flag to AIRS-only,359,22
 6,haze3e7,classifier alone,359,43
 6,haze3e7,AIRS-only variant everywhere,359,33
 6,haze3e7,band metric alone,359,106
@@ -337,6 +530,7 @@ draw,case,strategy,targets,lost
 6,haze3e7,routed by disagree to AIRS-only,359,40
 6,haze3e7,routed by bandmetric to AIRS-only,359,40
 6,haze3e7,routed by muting to AIRS-only,359,41
+6,haze3e7,routed by either flag to AIRS-only,359,33
 6,spots20,classifier alone,359,38
 6,spots20,AIRS-only variant everywhere,359,30
 6,spots20,band metric alone,359,116
@@ -350,10 +544,39 @@ draw,case,strategy,targets,lost
 6,spots20,routed by disagree to AIRS-only,359,36
 6,spots20,routed by bandmetric to AIRS-only,359,34
 6,spots20,routed by muting to AIRS-only,359,35
+6,spots20,routed by either flag to AIRS-only,359,27
+6,cloud1e2,classifier alone,359,31
+6,cloud1e2,AIRS-only variant everywhere,359,39
+6,cloud1e2,band metric alone,359,106
+6,cloud1e2,random,359,146
+6,cloud1e2,"margin, declined to the back",359,89
+6,cloud1e2,"ensemble, declined to the back",359,121
+6,cloud1e2,"mahalanobis, declined to the back",359,70
+6,cloud1e2,"knn, declined to the back",359,77
+6,cloud1e2,"pca_recon, declined to the back",359,51
+6,cloud1e2,routed by optical to AIRS-only,359,31
+6,cloud1e2,routed by disagree to AIRS-only,359,31
+6,cloud1e2,routed by bandmetric to AIRS-only,359,29
+6,cloud1e2,routed by muting to AIRS-only,359,31
+6,cloud1e2,routed by either flag to AIRS-only,359,31
+6,compound,classifier alone,359,75
+6,compound,AIRS-only variant everywhere,359,29
+6,compound,band metric alone,359,117
+6,compound,random,359,145
+6,compound,"margin, declined to the back",359,104
+6,compound,"ensemble, declined to the back",359,100
+6,compound,"mahalanobis, declined to the back",359,87
+6,compound,"knn, declined to the back",359,80
+6,compound,"pca_recon, declined to the back",359,78
+6,compound,routed by optical to AIRS-only,359,29
+6,compound,routed by disagree to AIRS-only,359,68
+6,compound,routed by bandmetric to AIRS-only,359,73
+6,compound,routed by muting to AIRS-only,359,75
+6,compound,routed by either flag to AIRS-only,359,29
 6,white_x2,classifier alone,359,39
 6,white_x2,AIRS-only variant everywhere,359,54
 6,white_x2,band metric alone,359,108
-6,white_x2,random,359,146
+6,white_x2,random,359,136
 6,white_x2,"margin, declined to the back",359,91
 6,white_x2,"ensemble, declined to the back",359,109
 6,white_x2,"mahalanobis, declined to the back",359,106
@@ -363,6 +586,7 @@ draw,case,strategy,targets,lost
 6,white_x2,routed by disagree to AIRS-only,359,40
 6,white_x2,routed by bandmetric to AIRS-only,359,37
 6,white_x2,routed by muting to AIRS-only,359,39
+6,white_x2,routed by either flag to AIRS-only,359,41
 7,clean,classifier alone,359,14
 7,clean,AIRS-only variant everywhere,359,23
 7,clean,band metric alone,359,105
@@ -376,6 +600,7 @@ draw,case,strategy,targets,lost
 7,clean,routed by disagree to AIRS-only,359,17
 7,clean,routed by bandmetric to AIRS-only,359,14
 7,clean,routed by muting to AIRS-only,359,14
+7,clean,routed by either flag to AIRS-only,359,18
 7,haze3e7,classifier alone,359,31
 7,haze3e7,AIRS-only variant everywhere,359,27
 7,haze3e7,band metric alone,359,108
@@ -389,6 +614,7 @@ draw,case,strategy,targets,lost
 7,haze3e7,routed by disagree to AIRS-only,359,29
 7,haze3e7,routed by bandmetric to AIRS-only,359,37
 7,haze3e7,routed by muting to AIRS-only,359,31
+7,haze3e7,routed by either flag to AIRS-only,359,26
 7,spots20,classifier alone,359,29
 7,spots20,AIRS-only variant everywhere,359,31
 7,spots20,band metric alone,359,110
@@ -402,10 +628,39 @@ draw,case,strategy,targets,lost
 7,spots20,routed by disagree to AIRS-only,359,25
 7,spots20,routed by bandmetric to AIRS-only,359,23
 7,spots20,routed by muting to AIRS-only,359,30
+7,spots20,routed by either flag to AIRS-only,359,31
+7,cloud1e2,classifier alone,359,26
+7,cloud1e2,AIRS-only variant everywhere,359,30
+7,cloud1e2,band metric alone,359,108
+7,cloud1e2,random,359,138
+7,cloud1e2,"margin, declined to the back",359,66
+7,cloud1e2,"ensemble, declined to the back",359,108
+7,cloud1e2,"mahalanobis, declined to the back",359,64
+7,cloud1e2,"knn, declined to the back",359,71
+7,cloud1e2,"pca_recon, declined to the back",359,55
+7,cloud1e2,routed by optical to AIRS-only,359,26
+7,cloud1e2,routed by disagree to AIRS-only,359,28
+7,cloud1e2,routed by bandmetric to AIRS-only,359,26
+7,cloud1e2,routed by muting to AIRS-only,359,27
+7,cloud1e2,routed by either flag to AIRS-only,359,28
+7,compound,classifier alone,359,64
+7,compound,AIRS-only variant everywhere,359,30
+7,compound,band metric alone,359,115
+7,compound,random,359,144
+7,compound,"margin, declined to the back",359,88
+7,compound,"ensemble, declined to the back",359,91
+7,compound,"mahalanobis, declined to the back",359,78
+7,compound,"knn, declined to the back",359,69
+7,compound,"pca_recon, declined to the back",359,63
+7,compound,routed by optical to AIRS-only,359,30
+7,compound,routed by disagree to AIRS-only,359,55
+7,compound,routed by bandmetric to AIRS-only,359,64
+7,compound,routed by muting to AIRS-only,359,62
+7,compound,routed by either flag to AIRS-only,359,30
 7,white_x2,classifier alone,359,37
 7,white_x2,AIRS-only variant everywhere,359,47
 7,white_x2,band metric alone,359,109
-7,white_x2,random,359,138
+7,white_x2,random,359,144
 7,white_x2,"margin, declined to the back",359,93
 7,white_x2,"ensemble, declined to the back",359,105
 7,white_x2,"mahalanobis, declined to the back",359,104
@@ -415,6 +670,7 @@ draw,case,strategy,targets,lost
 7,white_x2,routed by disagree to AIRS-only,359,38
 7,white_x2,routed by bandmetric to AIRS-only,359,36
 7,white_x2,routed by muting to AIRS-only,359,37
+7,white_x2,routed by either flag to AIRS-only,359,38
 8,clean,classifier alone,359,18
 8,clean,AIRS-only variant everywhere,359,23
 8,clean,band metric alone,359,106
@@ -428,6 +684,7 @@ draw,case,strategy,targets,lost
 8,clean,routed by disagree to AIRS-only,359,22
 8,clean,routed by bandmetric to AIRS-only,359,17
 8,clean,routed by muting to AIRS-only,359,17
+8,clean,routed by either flag to AIRS-only,359,22
 8,haze3e7,classifier alone,359,43
 8,haze3e7,AIRS-only variant everywhere,359,22
 8,haze3e7,band metric alone,359,109
@@ -441,6 +698,7 @@ draw,case,strategy,targets,lost
 8,haze3e7,routed by disagree to AIRS-only,359,40
 8,haze3e7,routed by bandmetric to AIRS-only,359,40
 8,haze3e7,routed by muting to AIRS-only,359,41
+8,haze3e7,routed by either flag to AIRS-only,359,21
 8,spots20,classifier alone,359,29
 8,spots20,AIRS-only variant everywhere,359,31
 8,spots20,band metric alone,359,111
@@ -454,10 +712,39 @@ draw,case,strategy,targets,lost
 8,spots20,routed by disagree to AIRS-only,359,28
 8,spots20,routed by bandmetric to AIRS-only,359,23
 8,spots20,routed by muting to AIRS-only,359,28
+8,spots20,routed by either flag to AIRS-only,359,29
+8,cloud1e2,classifier alone,359,29
+8,cloud1e2,AIRS-only variant everywhere,359,30
+8,cloud1e2,band metric alone,359,105
+8,cloud1e2,random,359,148
+8,cloud1e2,"margin, declined to the back",359,66
+8,cloud1e2,"ensemble, declined to the back",359,130
+8,cloud1e2,"mahalanobis, declined to the back",359,65
+8,cloud1e2,"knn, declined to the back",359,55
+8,cloud1e2,"pca_recon, declined to the back",359,59
+8,cloud1e2,routed by optical to AIRS-only,359,29
+8,cloud1e2,routed by disagree to AIRS-only,359,29
+8,cloud1e2,routed by bandmetric to AIRS-only,359,28
+8,cloud1e2,routed by muting to AIRS-only,359,27
+8,cloud1e2,routed by either flag to AIRS-only,359,29
+8,compound,classifier alone,359,71
+8,compound,AIRS-only variant everywhere,359,31
+8,compound,band metric alone,359,118
+8,compound,random,359,143
+8,compound,"margin, declined to the back",359,98
+8,compound,"ensemble, declined to the back",359,99
+8,compound,"mahalanobis, declined to the back",359,77
+8,compound,"knn, declined to the back",359,72
+8,compound,"pca_recon, declined to the back",359,74
+8,compound,routed by optical to AIRS-only,359,31
+8,compound,routed by disagree to AIRS-only,359,62
+8,compound,routed by bandmetric to AIRS-only,359,70
+8,compound,routed by muting to AIRS-only,359,66
+8,compound,routed by either flag to AIRS-only,359,31
 8,white_x2,classifier alone,359,36
 8,white_x2,AIRS-only variant everywhere,359,44
 8,white_x2,band metric alone,359,118
-8,white_x2,random,359,148
+8,white_x2,random,359,151
 8,white_x2,"margin, declined to the back",359,84
 8,white_x2,"ensemble, declined to the back",359,97
 8,white_x2,"mahalanobis, declined to the back",359,97
@@ -467,6 +754,7 @@ draw,case,strategy,targets,lost
 8,white_x2,routed by disagree to AIRS-only,359,36
 8,white_x2,routed by bandmetric to AIRS-only,359,37
 8,white_x2,routed by muting to AIRS-only,359,36
+8,white_x2,routed by either flag to AIRS-only,359,36
 9,clean,classifier alone,359,13
 9,clean,AIRS-only variant everywhere,359,24
 9,clean,band metric alone,359,105
@@ -480,6 +768,7 @@ draw,case,strategy,targets,lost
 9,clean,routed by disagree to AIRS-only,359,14
 9,clean,routed by bandmetric to AIRS-only,359,14
 9,clean,routed by muting to AIRS-only,359,12
+9,clean,routed by either flag to AIRS-only,359,14
 9,haze3e7,classifier alone,359,35
 9,haze3e7,AIRS-only variant everywhere,359,24
 9,haze3e7,band metric alone,359,108
@@ -493,6 +782,7 @@ draw,case,strategy,targets,lost
 9,haze3e7,routed by disagree to AIRS-only,359,28
 9,haze3e7,routed by bandmetric to AIRS-only,359,33
 9,haze3e7,routed by muting to AIRS-only,359,34
+9,haze3e7,routed by either flag to AIRS-only,359,23
 9,spots20,classifier alone,359,30
 9,spots20,AIRS-only variant everywhere,359,25
 9,spots20,band metric alone,359,112
@@ -506,10 +796,39 @@ draw,case,strategy,targets,lost
 9,spots20,routed by disagree to AIRS-only,359,29
 9,spots20,routed by bandmetric to AIRS-only,359,27
 9,spots20,routed by muting to AIRS-only,359,32
+9,spots20,routed by either flag to AIRS-only,359,23
+9,cloud1e2,classifier alone,359,25
+9,cloud1e2,AIRS-only variant everywhere,359,32
+9,cloud1e2,band metric alone,359,102
+9,cloud1e2,random,359,144
+9,cloud1e2,"margin, declined to the back",359,71
+9,cloud1e2,"ensemble, declined to the back",359,108
+9,cloud1e2,"mahalanobis, declined to the back",359,56
+9,cloud1e2,"knn, declined to the back",359,72
+9,cloud1e2,"pca_recon, declined to the back",359,38
+9,cloud1e2,routed by optical to AIRS-only,359,24
+9,cloud1e2,routed by disagree to AIRS-only,359,25
+9,cloud1e2,routed by bandmetric to AIRS-only,359,30
+9,cloud1e2,routed by muting to AIRS-only,359,28
+9,cloud1e2,routed by either flag to AIRS-only,359,25
+9,compound,classifier alone,359,72
+9,compound,AIRS-only variant everywhere,359,22
+9,compound,band metric alone,359,116
+9,compound,random,359,143
+9,compound,"margin, declined to the back",359,97
+9,compound,"ensemble, declined to the back",359,98
+9,compound,"mahalanobis, declined to the back",359,93
+9,compound,"knn, declined to the back",359,72
+9,compound,"pca_recon, declined to the back",359,72
+9,compound,routed by optical to AIRS-only,359,22
+9,compound,routed by disagree to AIRS-only,359,61
+9,compound,routed by bandmetric to AIRS-only,359,68
+9,compound,routed by muting to AIRS-only,359,67
+9,compound,routed by either flag to AIRS-only,359,22
 9,white_x2,classifier alone,359,40
 9,white_x2,AIRS-only variant everywhere,359,43
 9,white_x2,band metric alone,359,111
-9,white_x2,random,359,144
+9,white_x2,random,359,143
 9,white_x2,"margin, declined to the back",359,88
 9,white_x2,"ensemble, declined to the back",359,95
 9,white_x2,"mahalanobis, declined to the back",359,82
@@ -519,3 +838,4 @@ draw,case,strategy,targets,lost
 9,white_x2,routed by disagree to AIRS-only,359,38
 9,white_x2,routed by bandmetric to AIRS-only,359,40
 9,white_x2,routed by muting to AIRS-only,359,40
+9,white_x2,routed by either flag to AIRS-only,359,38
