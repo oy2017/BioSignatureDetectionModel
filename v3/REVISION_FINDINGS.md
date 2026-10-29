@@ -840,8 +840,23 @@ corr(p_true) 0.72–0.76; accuracy 96.5 → 93.0, 84.0 → 80.0, 94.5 → 88.0, 
 wrong (p_true < 0.05) 2 → 12 of 800. Of the four learners' 1,177 errors on the same realisation,
 37.8 % are recoverable by the noise-free posterior and 38.1 % decidable by the noisy one; the noisy
 retrieval gets 72.3 % of them right (noise-free 78.9 %). So Table 9's repair is of the realisation,
-not only of the expectation; the clear-model retrieval of the same noisy hazed subsample (the
-"zero recall" row) is running next in the chain. Added to Section 3.6 and the limitations.
+not only of the expectation. Added to Section 3.6 and the limitations.
+
+### F8c. The clear-model failure on hazed spectra is noise-invariant: the misled class is a property of the model, not of the draw
+
+`identifiability_calibrate.py --departure haze3e7 --noisy --random-sample --n 200` finished 2026-10-29
+11:45 (13.1 h, median 32 min per planet; 196 completed, 2 timeouts and 2 inf/NaN failures against 18 of
+954 noise-free); `noisy_vs_noisefree.py --departure haze3e7` writes `results/noisy_vs_noisefree_haze3e7.{txt,csv}`.
+Against the noise-free clear-model retrieval of the same hazed spectra nothing moved: decidable
+fractions identical to the tenth of a point (CH₄ 62.2 / 62.2 %, H₂O 59.7 / 59.7, CO₂ 62.2 / 62.2, NH₃
+59.7 / 59.7, all of it absent labels; present labels 0 → 0 % decidable), no label lost or gained
+decidability, corr(p_true) 1.00, median |Δp_true| 0.000, confidently wrong labels 74 → 74 (CH₄, CO₂)
+and 79 → 79 (H₂O, NH₃) of 196, the largest p_present on any present label 6 × 10⁻⁷ → 2 × 10⁻⁴, median
+abundance shift 0.03–0.04 dex, and the evidence fell a further 47 in median log Z (−259 → −306).
+Reading: on a right model the noise draw moves labels by a few points (F8, F8b); on a wrong model it
+moves nothing, because the posterior is pinned by the misfit, not the data. So the recoverable /
+irrecoverable split survives the realisation on both sides, and a "confidently wrong" rate measured on
+noise-free spectra under a wrong model is the rate on data. Added to Section 3.6 and the limitations.
 
 ### F9. Dose-response of the diagnostic: at a haze density that costs 12 points of accuracy, the optical flag sees 60 % of the hazed planets, the CH₄ selection loses nothing, and the loss moves to H₂O where the routing recovers a seventh of it
 
