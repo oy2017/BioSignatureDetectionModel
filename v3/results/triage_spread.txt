@@ -1,0 +1,27 @@
+Clean-spectrum triage: targets lost at the 60 % selection when the top fraction f by each ordering is re-scored by the retrieval;
+random = mean +/- sd over 200 draws (alfnoor_diagnostic.py reports one draw)
+
+== CH4 (359 targets)      f=10%      f=20%      f=30%      f=50%      f=70%      
+  random               16.2 +/- 1.4   12.3 +/- 1.6    9.5 +/- 1.7    4.4 +/- 1.6    1.7 +/- 1.1  
+  retrieval's own p_true (unattainable)     7            7            4            1            0        
+  margin                 17           13            9            6            2        
+  ensemble               17           15           11            3            1        
+  mahalanobis            13            9            7            3            1        
+  knn                    13            8            5            3            1        
+  pca_recon              15           12            8            3            2        
+  optical                15           12            9            5            2        
+  disagree               17           14           12            6            1        
+  bandmetric             19           15           13            8            2        
+
+== H2O (364 targets)      f=10%      f=20%      f=30%      f=50%      f=70%      
+  random               44.3 +/- 1.8   38.2 +/- 2.6   33.3 +/- 2.6   23.3 +/- 2.9   13.0 +/- 2.4  
+  retrieval's own p_true (unattainable)    37           24           22           11            8        
+  margin                 46           47           42           34           21        
+  ensemble               47           44           40           23            8        
+  mahalanobis            42           38           35           30           16        
+  knn                    42           38           35           29           17        
+  pca_recon              44           39           37           26           15        
+  optical                45           40           37           27           15        
+  disagree               47           44           38           33           19        
+  bandmetric             46           45           44           36           24        
+
