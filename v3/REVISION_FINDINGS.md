@@ -948,6 +948,38 @@ recognising the class is bounded and small for selection. Its value is as a with
 the paper's recommendation. Abstract, 3.6, Discussion, Conclusion, Table C1 (C2), the response letter
 (E3, E4) and the cover letter now say this instead of "nothing cheap recognises".
 
+### F13. Routed by either flag, the classifier recovers methane on four of the six real reductions and 27 of 35 labels, at 4.6 points of clean accuracy in simulation
+
+The paper had said the optical flag "did not fire on the real misses" while noting that input
+disagreement flagged four of six. `router_real.py` (2026-10-29; `results/jwst_panel/router_real.{txt,csv}`)
+applies the routing of F5 to the 13 panel reductions cell by cell: a (molecule, learner) cell takes the
+AIRS-only learner's verdict when the optical-excess score or the learner's input disagreement exceeds
+its clean 10 % threshold, the all-input verdict otherwise; the planet's verdict is the majority of four.
+
+| router | scored labels correct | CH₄ on the six methane reductions (present / split / absent) | cells routed |
+| none (all inputs) | 22/35 | 0 / 1 / 5 | 0/208 |
+| optical | 24/35 | 2 / 1 / 3 | 48/208 |
+| disagree | 26/35 | 3 / 1 / 2 | 30/208 |
+| either | 27/35 | 4 / 1 / 1 | 72/208 |
+| AIRS-only everywhere | 29/37 | 5 / 1 / 0 | 208/208 |
+
+Per reduction (either): K2-18b absent → present (4/4 routed, optical), K2-18b-alt absent → present
+(optical), TOI-270d-hm absent → present (4/4, disagreement), TOI-1231b split → present (3/4,
+disagreement), K2-18b-hu absent → split (1/4), TOI-270d (muting 0.7, in prior) absent → absent (0/4).
+Other changes: GJ3470b CO₂ split → present [present], WASP-166b CO₂ absent → present [present],
+HD189733b H₂O absent → present [ambiguous], HD189733b CO₂ absent → split [absent] (the one loss).
+
+Simulated cost (diagnostic.txt remedy block, rerun with "either"): flagged on clean 9 % (disagree),
+10 % (optical), 17 % (either); mean accuracy on clean 81.2 → 77.1 (disagree), 79.7 (optical), 76.6
+(either); under haze 63.5 → 72.4 / 73.3 / 73.3; spots 70.4 → 73.5 / 73.8 / 73.9; noise ×2 71.9 →
+70.3 / 71.5 / 70.2. CH₄ under haze: either 66.6 → 78.3 %, recall 11.6 → 53.7 % (same as optical).
+Budget test: "either" ordering = optical's (12.6 at f = 20 %, 3e7). The disagreement flag on clean
+spectra routes exactly the planets where the weaker AIRS-only learner differs from the all-input one,
+so it costs 4 points there; on the real panel the differing answer is the right one. Reading: the
+router's value is set by the prevalence of the departure in the population it meets; the paper now
+states both numbers (abstract, 3.6, Discussion, Conclusion, Table 8 last column, letters). Table 11
+over ten draws with the combined router: pending (table11_spread.py rerun).
+
 ### What these add up to, provisionally
 
 A simulator-trained classifier that reproduces its published in-simulator accuracies is mostly right

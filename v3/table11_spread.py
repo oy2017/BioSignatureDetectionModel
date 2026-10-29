@@ -11,7 +11,7 @@ HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 from common import RESULTS, SEED  # noqa: E402
 import alfnoor_diagnostic as D  # noqa: E402
 
-CASES = ["clean", "haze3e7", "spots20", "white_x2"]; LEARN = ("KNN", "MLP", "RFC")
+CASES = ["clean", "haze3e7", "spots20", "cloud1e2", "compound", "white_x2"]; LEARN = ("KNN", "MLP", "RFC")
 
 
 def main():
@@ -27,11 +27,13 @@ def main():
         for c in CASES:
             score = np.mean([P[c]["all"][("CH4", k)] for k in LEARN], axis=0); fb = np.mean([P[c]["airs_only"][("CH4", k)] for k in LEARN], axis=0)
             strat = {"classifier alone": score, "AIRS-only variant everywhere": fb, "band metric alone": M[c]["CH4"], "random": rng.uniform(0, 1, n)}
+            flags = {}
             for rule in D.OLD_RULES + ["optical", "disagree", "bandmetric", "muting"]:
                 s = np.nanmean(np.column_stack([sc.get(S[c], rule, "CH4", k) for k in LEARN]), axis=1)
                 s0 = np.nanmean(np.column_stack([sc.get(S["clean"], rule, "CH4", k) for k in LEARN]), axis=1); v = np.isfinite(s0)
-                thr = np.quantile(s0[v], 1 - D.DECLINE); flag = np.isfinite(s) & (s > thr)
+                thr = np.quantile(s0[v], 1 - D.DECLINE); flag = np.isfinite(s) & (s > thr); flags[rule] = flag
                 strat[f"{rule}, declined to the back" if rule in D.OLD_RULES else f"routed by {rule} to AIRS-only"] = np.where(flag, score - 10, score) if rule in D.OLD_RULES else np.where(flag, fb, score)
+            strat["routed by either flag to AIRS-only"] = np.where(flags["optical"] | flags["disagree"], fb, score)
             for name, s_ in strat.items():
                 sel = np.zeros(n, bool); sel[np.argsort(-s_)[:slots]] = True
                 rows.append(dict(draw=d, case=c, strategy=name, targets=int(y.sum()), lost=int(y.sum() - (sel & (y == 1)).sum())))
@@ -40,7 +42,7 @@ def main():
     g = df.groupby(["strategy", "case"]).lost.agg(["mean", "std"]).reset_index()
     L = [f"Table 11 over {a.draws} test-noise draws: CH4-bearing targets lost (of {int(df.targets.iloc[0])}) at the 60 % selection, mean +/- sd over draws (draw 0 is the committed realisation)", ""]
     L.append(f"{'strategy':<42}" + "".join(f"{c:>16}" for c in CASES))
-    for name in ["classifier alone", "routed by optical to AIRS-only", "AIRS-only variant everywhere", "routed by disagree to AIRS-only", "routed by bandmetric to AIRS-only", "routed by muting to AIRS-only",
+    for name in ["classifier alone", "routed by optical to AIRS-only", "routed by disagree to AIRS-only", "routed by either flag to AIRS-only", "AIRS-only variant everywhere", "routed by bandmetric to AIRS-only", "routed by muting to AIRS-only",
                  "knn, declined to the back", "mahalanobis, declined to the back", "pca_recon, declined to the back", "margin, declined to the back", "ensemble, declined to the back", "band metric alone", "random"]:
         gg = g[g.strategy == name].set_index("case"); L.append(f"{name:<42}" + "".join(f"{gg.loc[c]['mean']:8.1f} ± {gg.loc[c]['std']:4.1f}".rjust(16) for c in CASES))
     d0 = df[df.draw == 0].groupby(["strategy", "case"]).lost.first()

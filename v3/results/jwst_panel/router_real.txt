@@ -1,0 +1,22 @@
+The routed pipeline on the real panel (13 reductions; flag thresholds decline 10 % of clean POP-I planets; verdict = majority of four learners; scored labels only)
+
+router                  scored correct    CH4 on the six methane reductions: present / split / absent  cells routed
+none                        22/35                           0 / 1 / 5                                 0/208
+optical                     24/35                           2 / 1 / 3                                48/208
+disagree                    26/35                           3 / 1 / 2                                30/208
+either                      27/35                           4 / 1 / 1                                72/208
+AIRS-only everywhere        29/37                           5 / 1 / 0                               208/208
+
+CH4 on the methane reductions, learners routed and verdict (all-input -> routed), per router:
+  TOI-270d     optical: 0/4 routed, absent -> absent; disagree: 0/4 routed, absent -> absent; either: 0/4 routed, absent -> absent; AIRS-only everywhere: 4/4 routed, absent -> split
+  K2-18b       optical: 4/4 routed, absent -> present; disagree: 3/4 routed, absent -> present; either: 4/4 routed, absent -> present; AIRS-only everywhere: 4/4 routed, absent -> present
+  K2-18b-alt   optical: 4/4 routed, absent -> present; disagree: 0/4 routed, absent -> absent; either: 4/4 routed, absent -> present; AIRS-only everywhere: 4/4 routed, absent -> present
+  TOI-1231b    optical: 0/4 routed, split -> split; disagree: 3/4 routed, split -> present; either: 3/4 routed, split -> present; AIRS-only everywhere: 4/4 routed, split -> present
+  K2-18b-hu    optical: 0/4 routed, absent -> absent; disagree: 1/4 routed, absent -> split; either: 1/4 routed, absent -> split; AIRS-only everywhere: 4/4 routed, absent -> present
+  TOI-270d-hm  optical: 0/4 routed, absent -> absent; disagree: 4/4 routed, absent -> present; either: 4/4 routed, absent -> present; AIRS-only everywhere: 4/4 routed, absent -> present
+
+labels that change under each router (planet molecule: all-input -> routed [label]):
+  optical: K2-18b CH4: absent -> present [present]; K2-18b-alt CH4: absent -> present [present]
+  disagree: K2-18b CH4: absent -> present [present]; HD189733b H2O: absent -> present [amb.]; HD189733b CO2: absent -> split [absent]; GJ3470b CO2: split -> present [present]; WASP-166b CO2: absent -> present [present]; TOI-1231b CH4: split -> present [present]; K2-18b-hu CH4: absent -> split [present]; TOI-270d-hm CH4: absent -> present [present]
+  either: K2-18b CH4: absent -> present [present]; K2-18b-alt CH4: absent -> present [present]; HD189733b H2O: absent -> present [amb.]; HD189733b CO2: absent -> split [absent]; GJ3470b CO2: split -> present [present]; WASP-166b CO2: absent -> present [present]; TOI-1231b CH4: split -> present [present]; K2-18b-hu CH4: absent -> split [present]; TOI-270d-hm CH4: absent -> present [present]
+  AIRS-only everywhere: TOI-270d CH4: absent -> split [present]; K2-18b CH4: absent -> present [present]; K2-18b-alt CH4: absent -> present [present]; HD189733b H2O: absent -> present [amb.]; HD189733b CO2: absent -> present [absent]; HAT-P-26b CO2: split -> present [present]; GJ3470b CO2: split -> present [present]; WASP-166b CO2: absent -> present [present]; TOI-1231b CH4: split -> present [present]; K2-18b-hu CH4: absent -> present [present]; TOI-270d-hm CH4: absent -> present [present]

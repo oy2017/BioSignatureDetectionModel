@@ -1,0 +1,261 @@
+planet,molecule,router,flagged_learners,learners_present,verdict,label,correct
+TOI-270d,CH4,none,0,1,absent,present,False
+TOI-270d,CH4,optical,0,1,absent,present,False
+TOI-270d,CH4,disagree,0,1,absent,present,False
+TOI-270d,CH4,either,0,1,absent,present,False
+TOI-270d,CH4,AIRS-only everywhere,4,2,split,present,
+TOI-270d,H2O,none,0,0,absent,,
+TOI-270d,H2O,optical,0,0,absent,,
+TOI-270d,H2O,disagree,0,0,absent,,
+TOI-270d,H2O,either,0,0,absent,,
+TOI-270d,H2O,AIRS-only everywhere,4,0,absent,,
+TOI-270d,CO2,none,0,0,absent,present,False
+TOI-270d,CO2,optical,0,0,absent,present,False
+TOI-270d,CO2,disagree,0,0,absent,present,False
+TOI-270d,CO2,either,0,0,absent,present,False
+TOI-270d,CO2,AIRS-only everywhere,4,0,absent,present,False
+TOI-270d,NH3,none,0,0,absent,absent,True
+TOI-270d,NH3,optical,0,0,absent,absent,True
+TOI-270d,NH3,disagree,0,0,absent,absent,True
+TOI-270d,NH3,either,0,0,absent,absent,True
+TOI-270d,NH3,AIRS-only everywhere,4,0,absent,absent,True
+K2-18b,CH4,none,0,0,absent,present,False
+K2-18b,CH4,optical,4,4,present,present,True
+K2-18b,CH4,disagree,3,3,present,present,True
+K2-18b,CH4,either,4,4,present,present,True
+K2-18b,CH4,AIRS-only everywhere,4,4,present,present,True
+K2-18b,H2O,none,0,0,absent,absent,True
+K2-18b,H2O,optical,4,0,absent,absent,True
+K2-18b,H2O,disagree,0,0,absent,absent,True
+K2-18b,H2O,either,4,0,absent,absent,True
+K2-18b,H2O,AIRS-only everywhere,4,0,absent,absent,True
+K2-18b,CO2,none,0,0,absent,,
+K2-18b,CO2,optical,4,0,absent,,
+K2-18b,CO2,disagree,1,0,absent,,
+K2-18b,CO2,either,4,0,absent,,
+K2-18b,CO2,AIRS-only everywhere,4,0,absent,,
+K2-18b,NH3,none,0,0,absent,absent,True
+K2-18b,NH3,optical,4,0,absent,absent,True
+K2-18b,NH3,disagree,0,0,absent,absent,True
+K2-18b,NH3,either,4,0,absent,absent,True
+K2-18b,NH3,AIRS-only everywhere,4,0,absent,absent,True
+K2-18b-alt,CH4,none,0,1,absent,present,False
+K2-18b-alt,CH4,optical,4,3,present,present,True
+K2-18b-alt,CH4,disagree,0,1,absent,present,False
+K2-18b-alt,CH4,either,4,3,present,present,True
+K2-18b-alt,CH4,AIRS-only everywhere,4,3,present,present,True
+K2-18b-alt,H2O,none,0,0,absent,absent,True
+K2-18b-alt,H2O,optical,4,0,absent,absent,True
+K2-18b-alt,H2O,disagree,0,0,absent,absent,True
+K2-18b-alt,H2O,either,4,0,absent,absent,True
+K2-18b-alt,H2O,AIRS-only everywhere,4,0,absent,absent,True
+K2-18b-alt,CO2,none,0,0,absent,,
+K2-18b-alt,CO2,optical,4,0,absent,,
+K2-18b-alt,CO2,disagree,0,0,absent,,
+K2-18b-alt,CO2,either,4,0,absent,,
+K2-18b-alt,CO2,AIRS-only everywhere,4,0,absent,,
+K2-18b-alt,NH3,none,0,0,absent,absent,True
+K2-18b-alt,NH3,optical,4,0,absent,absent,True
+K2-18b-alt,NH3,disagree,0,0,absent,absent,True
+K2-18b-alt,NH3,either,4,0,absent,absent,True
+K2-18b-alt,NH3,AIRS-only everywhere,4,0,absent,absent,True
+TOI-421b,CH4,none,0,0,absent,absent,True
+TOI-421b,CH4,optical,0,0,absent,absent,True
+TOI-421b,CH4,disagree,0,0,absent,absent,True
+TOI-421b,CH4,either,0,0,absent,absent,True
+TOI-421b,CH4,AIRS-only everywhere,4,0,absent,absent,True
+TOI-421b,H2O,none,0,1,absent,,
+TOI-421b,H2O,optical,0,1,absent,,
+TOI-421b,H2O,disagree,0,1,absent,,
+TOI-421b,H2O,either,0,1,absent,,
+TOI-421b,H2O,AIRS-only everywhere,4,1,absent,,
+TOI-421b,CO2,none,0,1,absent,absent,True
+TOI-421b,CO2,optical,0,1,absent,absent,True
+TOI-421b,CO2,disagree,0,1,absent,absent,True
+TOI-421b,CO2,either,0,1,absent,absent,True
+TOI-421b,CO2,AIRS-only everywhere,4,0,absent,absent,True
+TOI-421b,NH3,none,0,0,absent,,
+TOI-421b,NH3,optical,0,0,absent,,
+TOI-421b,NH3,disagree,0,0,absent,,
+TOI-421b,NH3,either,0,0,absent,,
+TOI-421b,NH3,AIRS-only everywhere,4,1,absent,,
+HAT-P-18b,CH4,none,0,0,absent,absent,True
+HAT-P-18b,CH4,optical,4,0,absent,absent,True
+HAT-P-18b,CH4,disagree,0,0,absent,absent,True
+HAT-P-18b,CH4,either,4,0,absent,absent,True
+HAT-P-18b,CH4,AIRS-only everywhere,4,0,absent,absent,True
+HAT-P-18b,H2O,none,0,3,present,,
+HAT-P-18b,H2O,optical,4,4,present,,
+HAT-P-18b,H2O,disagree,2,4,present,,
+HAT-P-18b,H2O,either,4,4,present,,
+HAT-P-18b,H2O,AIRS-only everywhere,4,4,present,,
+HAT-P-18b,CO2,none,0,0,absent,absent,True
+HAT-P-18b,CO2,optical,4,0,absent,absent,True
+HAT-P-18b,CO2,disagree,0,0,absent,absent,True
+HAT-P-18b,CO2,either,4,0,absent,absent,True
+HAT-P-18b,CO2,AIRS-only everywhere,4,0,absent,absent,True
+HAT-P-18b,NH3,none,0,0,absent,absent,True
+HAT-P-18b,NH3,optical,4,0,absent,absent,True
+HAT-P-18b,NH3,disagree,0,0,absent,absent,True
+HAT-P-18b,NH3,either,4,0,absent,absent,True
+HAT-P-18b,NH3,AIRS-only everywhere,4,0,absent,absent,True
+WASP-107b,CH4,none,0,0,absent,absent,True
+WASP-107b,CH4,optical,0,0,absent,absent,True
+WASP-107b,CH4,disagree,0,0,absent,absent,True
+WASP-107b,CH4,either,0,0,absent,absent,True
+WASP-107b,CH4,AIRS-only everywhere,4,0,absent,absent,True
+WASP-107b,H2O,none,0,0,absent,present,False
+WASP-107b,H2O,optical,0,0,absent,present,False
+WASP-107b,H2O,disagree,0,0,absent,present,False
+WASP-107b,H2O,either,0,0,absent,present,False
+WASP-107b,H2O,AIRS-only everywhere,4,0,absent,present,False
+WASP-107b,CO2,none,0,3,present,,
+WASP-107b,CO2,optical,0,3,present,,
+WASP-107b,CO2,disagree,2,4,present,,
+WASP-107b,CO2,either,2,4,present,,
+WASP-107b,CO2,AIRS-only everywhere,4,4,present,,
+WASP-107b,NH3,none,0,0,absent,absent,True
+WASP-107b,NH3,optical,0,0,absent,absent,True
+WASP-107b,NH3,disagree,0,0,absent,absent,True
+WASP-107b,NH3,either,0,0,absent,absent,True
+WASP-107b,NH3,AIRS-only everywhere,4,0,absent,absent,True
+HD189733b,CH4,none,0,0,absent,absent,True
+HD189733b,CH4,optical,0,0,absent,absent,True
+HD189733b,CH4,disagree,0,0,absent,absent,True
+HD189733b,CH4,either,0,0,absent,absent,True
+HD189733b,CH4,AIRS-only everywhere,4,0,absent,absent,True
+HD189733b,H2O,none,0,1,absent,,
+HD189733b,H2O,optical,0,1,absent,,
+HD189733b,H2O,disagree,3,3,present,,
+HD189733b,H2O,either,3,3,present,,
+HD189733b,H2O,AIRS-only everywhere,4,4,present,,
+HD189733b,CO2,none,0,1,absent,absent,True
+HD189733b,CO2,optical,0,1,absent,absent,True
+HD189733b,CO2,disagree,1,2,split,absent,
+HD189733b,CO2,either,1,2,split,absent,
+HD189733b,CO2,AIRS-only everywhere,4,3,present,absent,False
+HD189733b,NH3,none,0,0,absent,absent,True
+HD189733b,NH3,optical,0,0,absent,absent,True
+HD189733b,NH3,disagree,0,0,absent,absent,True
+HD189733b,NH3,either,0,0,absent,absent,True
+HD189733b,NH3,AIRS-only everywhere,4,0,absent,absent,True
+HAT-P-26b,CH4,none,0,0,absent,absent,True
+HAT-P-26b,CH4,optical,0,0,absent,absent,True
+HAT-P-26b,CH4,disagree,0,0,absent,absent,True
+HAT-P-26b,CH4,either,0,0,absent,absent,True
+HAT-P-26b,CH4,AIRS-only everywhere,4,0,absent,absent,True
+HAT-P-26b,H2O,none,0,0,absent,present,False
+HAT-P-26b,H2O,optical,0,0,absent,present,False
+HAT-P-26b,H2O,disagree,0,0,absent,present,False
+HAT-P-26b,H2O,either,0,0,absent,present,False
+HAT-P-26b,H2O,AIRS-only everywhere,4,1,absent,present,False
+HAT-P-26b,CO2,none,0,2,split,present,
+HAT-P-26b,CO2,optical,0,2,split,present,
+HAT-P-26b,CO2,disagree,1,2,split,present,
+HAT-P-26b,CO2,either,1,2,split,present,
+HAT-P-26b,CO2,AIRS-only everywhere,4,3,present,present,True
+HAT-P-26b,NH3,none,0,0,absent,absent,True
+HAT-P-26b,NH3,optical,0,0,absent,absent,True
+HAT-P-26b,NH3,disagree,1,1,absent,absent,True
+HAT-P-26b,NH3,either,1,1,absent,absent,True
+HAT-P-26b,NH3,AIRS-only everywhere,4,1,absent,absent,True
+GJ3470b,CH4,none,0,0,absent,,
+GJ3470b,CH4,optical,0,0,absent,,
+GJ3470b,CH4,disagree,0,0,absent,,
+GJ3470b,CH4,either,0,0,absent,,
+GJ3470b,CH4,AIRS-only everywhere,4,0,absent,,
+GJ3470b,H2O,none,0,0,absent,present,False
+GJ3470b,H2O,optical,0,0,absent,present,False
+GJ3470b,H2O,disagree,0,0,absent,present,False
+GJ3470b,H2O,either,0,0,absent,present,False
+GJ3470b,H2O,AIRS-only everywhere,4,0,absent,present,False
+GJ3470b,CO2,none,0,2,split,present,
+GJ3470b,CO2,optical,0,2,split,present,
+GJ3470b,CO2,disagree,2,4,present,present,True
+GJ3470b,CO2,either,2,4,present,present,True
+GJ3470b,CO2,AIRS-only everywhere,4,4,present,present,True
+GJ3470b,NH3,none,0,0,absent,absent,True
+GJ3470b,NH3,optical,0,0,absent,absent,True
+GJ3470b,NH3,disagree,0,0,absent,absent,True
+GJ3470b,NH3,either,0,0,absent,absent,True
+GJ3470b,NH3,AIRS-only everywhere,4,0,absent,absent,True
+WASP-166b,CH4,none,0,0,absent,absent,True
+WASP-166b,CH4,optical,0,0,absent,absent,True
+WASP-166b,CH4,disagree,0,0,absent,absent,True
+WASP-166b,CH4,either,0,0,absent,absent,True
+WASP-166b,CH4,AIRS-only everywhere,4,0,absent,absent,True
+WASP-166b,H2O,none,0,0,absent,present,False
+WASP-166b,H2O,optical,0,0,absent,present,False
+WASP-166b,H2O,disagree,2,0,absent,present,False
+WASP-166b,H2O,either,2,0,absent,present,False
+WASP-166b,H2O,AIRS-only everywhere,4,0,absent,present,False
+WASP-166b,CO2,none,0,1,absent,present,False
+WASP-166b,CO2,optical,0,1,absent,present,False
+WASP-166b,CO2,disagree,3,4,present,present,True
+WASP-166b,CO2,either,3,4,present,present,True
+WASP-166b,CO2,AIRS-only everywhere,4,4,present,present,True
+WASP-166b,NH3,none,0,0,absent,,
+WASP-166b,NH3,optical,0,0,absent,,
+WASP-166b,NH3,disagree,0,0,absent,,
+WASP-166b,NH3,either,0,0,absent,,
+WASP-166b,NH3,AIRS-only everywhere,4,0,absent,,
+TOI-1231b,CH4,none,0,2,split,present,
+TOI-1231b,CH4,optical,0,2,split,present,
+TOI-1231b,CH4,disagree,3,4,present,present,True
+TOI-1231b,CH4,either,3,4,present,present,True
+TOI-1231b,CH4,AIRS-only everywhere,4,4,present,present,True
+TOI-1231b,H2O,none,0,0,absent,,
+TOI-1231b,H2O,optical,0,0,absent,,
+TOI-1231b,H2O,disagree,0,0,absent,,
+TOI-1231b,H2O,either,0,0,absent,,
+TOI-1231b,H2O,AIRS-only everywhere,4,0,absent,,
+TOI-1231b,CO2,none,0,0,absent,present,False
+TOI-1231b,CO2,optical,0,0,absent,present,False
+TOI-1231b,CO2,disagree,0,0,absent,present,False
+TOI-1231b,CO2,either,0,0,absent,present,False
+TOI-1231b,CO2,AIRS-only everywhere,4,0,absent,present,False
+TOI-1231b,NH3,none,0,0,absent,,
+TOI-1231b,NH3,optical,0,0,absent,,
+TOI-1231b,NH3,disagree,0,0,absent,,
+TOI-1231b,NH3,either,0,0,absent,,
+TOI-1231b,NH3,AIRS-only everywhere,4,0,absent,,
+K2-18b-hu,CH4,none,0,1,absent,present,False
+K2-18b-hu,CH4,optical,0,1,absent,present,False
+K2-18b-hu,CH4,disagree,1,2,split,present,
+K2-18b-hu,CH4,either,1,2,split,present,
+K2-18b-hu,CH4,AIRS-only everywhere,4,3,present,present,True
+K2-18b-hu,H2O,none,0,0,absent,absent,True
+K2-18b-hu,H2O,optical,0,0,absent,absent,True
+K2-18b-hu,H2O,disagree,0,0,absent,absent,True
+K2-18b-hu,H2O,either,0,0,absent,absent,True
+K2-18b-hu,H2O,AIRS-only everywhere,4,0,absent,absent,True
+K2-18b-hu,CO2,none,0,0,absent,,
+K2-18b-hu,CO2,optical,0,0,absent,,
+K2-18b-hu,CO2,disagree,0,0,absent,,
+K2-18b-hu,CO2,either,0,0,absent,,
+K2-18b-hu,CO2,AIRS-only everywhere,4,0,absent,,
+K2-18b-hu,NH3,none,0,0,absent,absent,True
+K2-18b-hu,NH3,optical,0,0,absent,absent,True
+K2-18b-hu,NH3,disagree,0,0,absent,absent,True
+K2-18b-hu,NH3,either,0,0,absent,absent,True
+K2-18b-hu,NH3,AIRS-only everywhere,4,0,absent,absent,True
+TOI-270d-hm,CH4,none,0,0,absent,present,False
+TOI-270d-hm,CH4,optical,0,0,absent,present,False
+TOI-270d-hm,CH4,disagree,4,3,present,present,True
+TOI-270d-hm,CH4,either,4,3,present,present,True
+TOI-270d-hm,CH4,AIRS-only everywhere,4,3,present,present,True
+TOI-270d-hm,H2O,none,0,0,absent,,
+TOI-270d-hm,H2O,optical,0,0,absent,,
+TOI-270d-hm,H2O,disagree,0,0,absent,,
+TOI-270d-hm,H2O,either,0,0,absent,,
+TOI-270d-hm,H2O,AIRS-only everywhere,4,0,absent,,
+TOI-270d-hm,CO2,none,0,0,absent,present,False
+TOI-270d-hm,CO2,optical,0,0,absent,present,False
+TOI-270d-hm,CO2,disagree,1,1,absent,present,False
+TOI-270d-hm,CO2,either,1,1,absent,present,False
+TOI-270d-hm,CO2,AIRS-only everywhere,4,1,absent,present,False
+TOI-270d-hm,NH3,none,0,0,absent,absent,True
+TOI-270d-hm,NH3,optical,0,0,absent,absent,True
+TOI-270d-hm,NH3,disagree,0,0,absent,absent,True
+TOI-270d-hm,NH3,either,0,0,absent,absent,True
+TOI-270d-hm,NH3,AIRS-only everywhere,4,0,absent,absent,True

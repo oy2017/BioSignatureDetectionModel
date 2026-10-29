@@ -9,6 +9,7 @@ E3 fixed-budget selection on a mixed population: 954 POP-I planets, each hazed (
   + random                                     19.6     16.1     12.6      6.8   |  85.9 %   20/ 78 %
   + optical                                    16.2     11.8      7.7      4.5   |  87.3 %   81/ 76 %
   + disagree                                   19.1     15.3     11.2      4.3   |  86.9 %   44/ 78 %
+  + either                                     16.2     12.1     10.2      3.6   |  87.0 %   81/ 75 %
   + bandmetric                                 20.6     18.8     14.9      7.8   |  86.0 %   15/ 76 %
   + margin                                     20.3     14.7     11.6      9.0   |  87.4 %    4/ 83 %
   + ensemble                                   21.1     18.3     13.3     10.6   |  86.9 %    4/ 81 %
@@ -28,6 +29,7 @@ E3 fixed-budget selection on a mixed population: 954 POP-I planets, each hazed (
   + random                                     57.8     50.5     43.5     30.1   |  79.4 %   14/ 57 %
   + optical                                    46.4     40.0     36.1     26.1   |  80.4 %   69/ 54 %
   + disagree                                   57.5     47.5     41.0     30.1   |  80.5 %   33/ 57 %
+  + either                                     46.4     39.8     35.5     27.4   |  80.5 %   69/ 54 %
   + bandmetric                                 56.9     51.1     47.8     33.9   |  80.1 %   17/ 57 %
   + margin                                     58.4     55.6     49.6     40.5   |  80.9 %    0/ 60 %
   + ensemble                                   60.4     53.5     50.0     35.4   |  79.5 %    1/ 58 %
@@ -47,6 +49,7 @@ E3 fixed-budget selection on a mixed population: 954 POP-I planets, each hazed (
   + random                                    106.0     98.8     91.8     76.8
   + optical                                    92.0     85.8     79.6     67.6
   + disagree                                  104.7     95.2     84.4     69.3
+  + either                                     92.0     86.7     81.0     70.2
   + bandmetric                                109.9    106.2     98.5     84.8
   + margin                                    107.4     94.0     87.7     74.7
   + ensemble                                  107.0     97.2     89.0     74.5
@@ -66,6 +69,7 @@ E3 fixed-budget selection on a mixed population: 954 POP-I planets, each hazed (
   + random                                     24.8     20.1     16.2      9.4   |  84.1 %   17/ 78 %
   + optical                                    19.9     12.6      8.4      3.9   |  87.4 %   80/ 75 %
   + disagree                                   23.7     17.9     13.8      6.5   |  85.0 %   37/ 77 %
+  + either                                     19.9     12.6      8.8      4.3   |  87.4 %   80/ 75 %
   + bandmetric                                 24.6     21.3     18.1     10.2   |  83.7 %   13/ 76 %
   + margin                                     24.9     19.6     16.4     11.8   |  84.8 %    3/ 83 %
   + ensemble                                   26.5     22.2     18.2     12.8   |  84.3 %    3/ 82 %
@@ -85,6 +89,7 @@ E3 fixed-budget selection on a mixed population: 954 POP-I planets, each hazed (
   + random                                     65.3     58.1     50.5     34.1   |  78.2 %   13/ 58 %
   + optical                                    57.0     39.8     34.0     24.9   |  80.0 %   68/ 52 %
   + disagree                                   64.3     54.4     45.5     30.4   |  79.1 %   30/ 56 %
+  + either                                     57.0     39.8     33.8     24.4   |  80.0 %   68/ 52 %
   + bandmetric                                 65.5     57.9     51.0     36.5   |  78.4 %   15/ 57 %
   + margin                                     69.0     61.0     55.1     44.0   |  78.9 %    0/ 60 %
   + ensemble                                   68.0     61.0     54.4     41.0   |  78.0 %    1/ 59 %
@@ -104,6 +109,7 @@ E3 fixed-budget selection on a mixed population: 954 POP-I planets, each hazed (
   + random                                    115.8    108.0     99.1     81.6
   + optical                                   109.0     87.3     80.4     68.6
   + disagree                                  112.4    101.8     91.0     71.8
+  + either                                    109.0     87.3     81.0     69.5
   + bandmetric                                117.0    112.8    104.0     89.0
   + margin                                    118.5    107.5    102.2     90.0
   + ensemble                                  119.5    110.8    104.2     89.0
@@ -123,6 +129,7 @@ E3 fixed-budget selection on a mixed population: 954 POP-I planets, each hazed (
   + random                                     28.9     24.4     20.4     12.5   |  78.4 %   19/ 78 %
   + optical                                    27.2     21.6     17.0      5.0   |  80.8 %   36/ 75 %
   + disagree                                   27.3     23.1     18.8      9.8   |  79.9 %   29/ 76 %
+  + either                                     27.2     21.6     17.0      5.0   |  80.8 %   36/ 75 %
   + bandmetric                                 27.4     23.9     21.4     12.9   |  77.5 %   14/ 76 %
   + margin                                     29.8     25.8     21.9     16.1   |  77.3 %    4/ 85 %
   + ensemble                                   30.9     26.8     23.4     16.6   |  77.2 %    5/ 84 %
@@ -142,6 +149,7 @@ E3 fixed-budget selection on a mixed population: 954 POP-I planets, each hazed (
   + random                                     80.3     71.2     62.6     45.3   |  74.0 %   12/ 58 %
   + optical                                    77.7     66.1     53.2     25.4   |  75.4 %   27/ 52 %
   + disagree                                   79.7     71.2     62.3     41.2   |  75.0 %   20/ 56 %
+  + either                                     77.7     66.1     53.2     25.4   |  75.4 %   27/ 52 %
   + bandmetric                                 78.1     69.4     60.5     43.9   |  74.5 %   16/ 57 %
   + margin                                     81.0     71.2     63.1     46.9   |  73.7 %    1/ 65 %
   + ensemble                                   80.2     71.1     62.5     46.3   |  73.3 %    2/ 62 %
@@ -161,6 +169,7 @@ E3 fixed-budget selection on a mixed population: 954 POP-I planets, each hazed (
   + random                                    139.3    129.2    120.0     99.9
   + optical                                   136.9    122.2    106.0     74.2
   + disagree                                  134.7    124.4    113.0     81.4
+  + either                                    136.9    122.2    105.8     74.2
   + bandmetric                                135.3    127.8    121.3     96.8
   + margin                                    141.8    132.2    121.2    102.7
   + ensemble                                  143.2    134.3    123.5    105.8
@@ -174,6 +183,7 @@ E3 fixed-budget selection on a mixed population: 954 POP-I planets, each hazed (
 == detection: share of hazed / clean planets inside the fraction f each rule ranks most suspect (q = 0.2, mean over draws)
   optical        f=10%:  51 /   0 %  f=20%:  98 /   1 %  f=30%: 100 /  13 %  f=50%: 100 /  38 %
   disagree       f=10%:  21 /   7 %  f=20%:  44 /  14 %  f=30%:  59 /  23 %  f=50%:  83 /  42 %
+  either         f=10%:  51 /   0 %  f=20%:  98 /   1 %  f=30%: 100 /  13 %  f=50%: 100 /  38 %
   bandmetric     f=10%:  18 /   8 %  f=20%:  24 /  19 %  f=30%:  32 /  30 %  f=50%:  51 /  50 %
   margin         f=10%:   0 /  12 %  f=20%:   0 /  25 %  f=30%:   0 /  37 %  f=50%:   6 /  61 %
   ensemble       f=10%:   0 /  12 %  f=20%:   1 /  25 %  f=30%:   2 /  37 %  f=50%:   8 /  60 %

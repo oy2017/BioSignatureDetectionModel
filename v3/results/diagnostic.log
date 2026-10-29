@@ -35,11 +35,13 @@ rule                                 clean                       haze3e7        
               flag% frozen fallbk remedied  flag% frozen fallbk remedied  flag% frozen fallbk remedied  flag% frozen fallbk remedied  flag% frozen fallbk remedied  flag% frozen fallbk remedied  flag% frozen fallbk remedied
 disagree            9   81.2   73.8   77.1       36   63.5   73.3   72.4       21   70.4   74.0   73.5        5   71.4   72.1   71.8       40   62.3   73.5   72.9        6   71.9   68.3   70.3        5   67.6   65.5   66.6
 optical            10   81.2   73.8   79.7      100   63.5   73.3   73.3       66   70.4   74.0   73.8        1   71.4   72.1   71.4      100   62.3   73.5   73.5        3   71.9   68.3   71.5        2   67.6   65.5   67.3
+either             17   81.2   73.8   76.6      100   63.5   73.3   73.3       68   70.4   74.0   73.9        6   71.4   72.1   71.8      100   62.3   73.5   73.5        8   71.9   68.3   70.2        7   67.6   65.5   66.5
 bandmetric          8   80.1   65.6   73.5       24   64.1   63.0   61.9       20   70.9   62.4   64.1        8   72.0   65.9   67.7       35   62.6   59.7   58.7        7   71.4   63.2   67.0        8   67.3   61.9   63.8
 muting             10   81.2   73.8   80.3       11   63.5   73.3   64.1        8   70.4   74.0   70.5       14   71.4   72.1   71.2        8   62.3   73.5   62.9        0   71.9   68.3   71.9        0   67.6   65.5   67.6
   CH4 under haze3e7, per candidate: accuracy frozen -> remedied, recall frozen -> remedied
     disagree     66.6 ->  77.7   recall  11.6 ->  51.1
     optical      66.6 ->  78.3   recall  11.6 ->  53.7
+    either       66.6 ->  78.3   recall  11.6 ->  53.7
     bandmetric   66.6 ->  65.0   recall  11.6 ->  31.4
     muting       66.6 ->  67.0   recall  11.6 ->  14.3
 

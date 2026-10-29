@@ -25,7 +25,7 @@ from common import RESULTS, SEED  # noqa: E402
 import alfnoor_diagnostic as D  # noqa: E402
 
 MOLS = D.MOLS; BUDGET = D.BUDGET
-RULES = ["random", "optical", "disagree", "bandmetric", "margin", "ensemble", "mahalanobis", "knn", "pca_recon", "oracle (knows the hazed)"]
+RULES = ["random", "optical", "disagree", "either", "bandmetric", "margin", "ensemble", "mahalanobis", "knn", "pca_recon", "oracle (knows the hazed)"]
 FS = [0.0, 0.1, 0.2, 0.3, 0.5, 1.0]
 FILES = {"freehaze": ("identifiability_calibration_{haze}_freehaze.csv", "identifiability_calibration_freehaze.csv"),
          "modelled": ("identifiability_calibration_{haze}_modelled.csv", "identifiability_calibration_freehaze.csv"),
@@ -55,6 +55,12 @@ def main():
     X = {c: cases[c] for c in ("clean", H)}; S, P = {}, {}
     for c in X:
         S[c], P[c], _ = sc.scores(X[c]); print("scored", c, flush=True)
+    # "either": the optical-excess score or the input disagreement, each in units of its clean 90th percentile (so > 1 = flagged by that rule)
+    q = lambda s: np.quantile(s[np.isfinite(s)], 1 - D.DECLINE)
+    for c in X:
+        for m in MOLS:
+            for k in ("KNN", "MLP", "RFC", "SVC"):
+                S[c][("either", (m, k))] = np.fmax(S[c][("optical", None)] / q(S["clean"][("optical", None)]), S[c][("disagree", (m, k))] / q(S["clean"][("disagree", (m, k))]))
     y_true = {m: (Pte[f"atm {m}"].to_numpy() > D.THRESH if hasattr(D, "THRESH") else Pte[f"atm {m}"].to_numpy() > -4).astype(int) for m in MOLS}
     haz_fn, cln_fn = (f.format(haze=H) for f in FILES[a.fallback])
     R_h, n_h = posteriors(Pte, haz_fn); R_c, n_c = posteriors(Pte, cln_fn)

@@ -269,13 +269,19 @@ def evaluate(cases, Pte, edges, sig_te, sc):
     for mol in MOLS:
         y = y_true[mol]
         for k in LEARNERS:
-            for rule in ["disagree", "optical", "bandmetric", "muting"]:
-                s0 = sc.get(S["clean"], rule, mol, k); valid = np.isfinite(s0)
-                if valid.sum() < 50:
-                    continue
-                thr = np.quantile(s0[valid], 1 - DECLINE)
+            thr_of = lambda rule: np.quantile(sc.get(S["clean"], rule, mol, k)[np.isfinite(sc.get(S["clean"], rule, mol, k))], 1 - DECLINE)
+            for rule in ["disagree", "optical", "either", "bandmetric", "muting"]:
+                if rule != "either":
+                    s0 = sc.get(S["clean"], rule, mol, k); valid = np.isfinite(s0)
+                    if valid.sum() < 50:
+                        continue
+                    thr = np.quantile(s0[valid], 1 - DECLINE)
                 for c in CASES:
-                    p = P[c]["all"][(mol, k)]; s = sc.get(S[c], rule, mol, k); flag = np.isfinite(s) & (s > thr)
+                    p = P[c]["all"][(mol, k)]
+                    if rule == "either":   # flagged by the optical excess or by the input disagreement, each at its own clean threshold
+                        flag = (sc.get(S[c], "optical", mol, k) > thr_of("optical")) | (sc.get(S[c], "disagree", mol, k) > thr_of("disagree"))
+                    else:
+                        s = sc.get(S[c], rule, mol, k); flag = np.isfinite(s) & (s > thr)
                     fb = P[c]["airs_only"][(mol, k)] if rule != "bandmetric" else (M[c][mol] >= FLAGS[mol]).astype(float)
                     p_rem = np.where(flag, fb, p)
                     rows.append(dict(molecule=mol, classifier=k, rule=rule, case=c, flagged=flag.mean(), frozen=((p >= 0.5) == y).mean(),
@@ -450,11 +456,11 @@ def write_summary(credit, remedy, classes, selection, consistency=None, retclass
     L.append(""); L.append("== remedy: accuracy over all planets when flagged planets take the fallback (points; mean over molecules and learners)")
     g = remedy.groupby(["rule", "case"])[["flagged", "frozen", "fallback_everywhere", "remedied", "recall_frozen", "recall_remedied"]].mean()
     L.append(f"{'rule':<12}" + "".join(f"{c:>30}" for c in CASES)); L.append(f"{'':<12}" + "".join(f"{'flag% frozen fallbk remedied':>30}" for c in CASES))
-    for rule in ["disagree", "optical", "bandmetric", "muting"]:
+    for rule in ["disagree", "optical", "either", "bandmetric", "muting"]:
         L.append(f"{rule:<12}" + "".join(f"{100*g.loc[(rule,c)].flagged:5.0f} {100*g.loc[(rule,c)].frozen:6.1f} {100*g.loc[(rule,c)].fallback_everywhere:6.1f} {100*g.loc[(rule,c)].remedied:6.1f}".rjust(30) for c in CASES))
     gm = remedy.groupby(["rule", "molecule", "case"])[["frozen", "remedied", "recall_frozen", "recall_remedied"]].mean()
     L.append("  CH4 under haze3e7, per candidate: accuracy frozen -> remedied, recall frozen -> remedied")
-    for rule in ["disagree", "optical", "bandmetric", "muting"]:
+    for rule in ["disagree", "optical", "either", "bandmetric", "muting"]:
         r = gm.loc[(rule, "CH4", "haze3e7")]; L.append(f"    {rule:<11} {100*r.frozen:5.1f} -> {100*r.remedied:5.1f}   recall {100*r.recall_frozen:5.1f} -> {100*r.recall_remedied:5.1f}")
     if classes is not None and len(classes):
         L.append(""); L.append("== (d) error classes on the planets the identifiability test has reached: AUROC of predicted (and oracle) decidability for irrecoverable vs recoverable errors")
