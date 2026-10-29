@@ -15,7 +15,7 @@ After the subset: the Spearman correlation between dchi2 (from identifiability.p
 logit(p_true) per molecule, and the dchi2 at which a logistic fit of p_true crosses 0.95 and
 0.84: the calibrated thresholds for "decidable".
 
-Departure spot checks (--departure haze3e7 | cloud1e2 | noise_x2 | noise_x3): the observed spectrum carries the
+Departure spot checks (--departure haze3e7 | cloud1e2 | spots20 | noise_x2 | noise_x3): the observed spectrum carries the
 departure while the retrieval's forward model stays the clear-atmosphere one the classifier was trained on
 (so the retrieval is tested under the same model error), or, with --model-departure, includes the haze
 (the identifiability question: is the label decidable given a correct model), or, with --free-haze, includes the
@@ -216,7 +216,7 @@ def main():
     ap.add_argument("--npoints", type=int, default=100); ap.add_argument("--maxcall", type=int, default=20000)
     ap.add_argument("--noisy", action="store_true", help="retrieve the classifier's noisy realisation instead of the noise-free spectrum"); ap.add_argument("--random-sample", action="store_true", help="--n planets drawn at random by index, the same under every departure"); ap.add_argument("--summarize", action="store_true")
     ap.add_argument("--timeout", type=float, default=10800, help="wall-clock cap per planet in seconds (recorded as an error row)")
-    ap.add_argument("--departure", default="none", choices=["none", "haze3e7", "cloud1e2"] + list(NOISE_X)); ap.add_argument("--model-departure", action="store_true", help="haze in the forward model at its true density")
+    ap.add_argument("--departure", default="none", choices=["none", "haze3e7", "cloud1e2", "spots20"] + list(NOISE_X)); ap.add_argument("--model-departure", action="store_true", help="haze in the forward model at its true density")
     ap.add_argument("--free-haze", action="store_true", help="haze in the forward model with its density a free parameter (the fallback a pipeline could run on any spectrum)")
     a = ap.parse_args()
     tag = ("" if a.departure == "none" else f"_{a.departure}") + ("_modelled" if a.model_departure else "") + ("_freehaze" if a.free_haze else "") + ("_noisy" if a.noisy else "")
@@ -227,6 +227,11 @@ def main():
     Pte = pd.read_parquet(os.path.join(src, "pop1_params.parquet")); Y = np.load(os.path.join(src, f"{nat}.npy")).astype(np.float64)
     ok = np.all(np.isfinite(Y), axis=1) & np.all(np.isfinite(np.load(os.path.join(src, "pop1_native.npy"))), axis=1)
     Pte = Pte[ok].reset_index(drop=False).rename(columns={"index": "_index"}); Y = Y[ok]
+    if a.departure == "spots20":
+        # 20 % unocculted spots applied to the clean native spectrum exactly as alfnoor_diagnostic.test_cases does
+        import shift_tlse as T
+        T.set_grid(wl); logg = np.log10(T.G_SUN * Pte["s mass"].to_numpy() / Pte["s radius"].to_numpy() ** 2 * 100)
+        Y = Y * T.contamination(Pte["s temperature"].to_numpy(), logg, 0.20, 0.0)
     haze = {"radius": 0.1, "q": 40, "mix_ratio": HAZE[a.departure]} if (a.model_departure and a.departure in HAZE) else ({"radius": 0.1, "q": 40, "mix_ratio": 1e3} if a.free_haze else None)
     mcs = pd.read_parquet(os.path.join(DATA, "mcs", "mcs_params.parquet"))[["name", "atm temperature"]].rename(columns={"atm temperature": "T_p"})
     Pte = Pte.merge(mcs.drop_duplicates("name"), on="name", how="left")
