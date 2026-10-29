@@ -1,0 +1,133 @@
+test,molecule,score,auroc,coverage
+auroc_undecidable,CH4,margin,0.7294773693423355,
+auroc_undecidable,CH4,ensemble,0.7417254313578394,
+auroc_undecidable,CH4,mahalanobis,0.598494623655914,
+auroc_undecidable,CH4,knn,0.608892223055764,
+auroc_undecidable,CH4,pca_recon,0.5450912728182046,
+auroc_undecidable,CH4,optical,0.5770342585646413,
+auroc_undecidable,CH4,disagree,0.6043985996499125,
+auroc_undecidable,CH4,bandmetric,0.5933391681253647,
+auroc_undecidable,CH4,muting,0.6204276069017256,
+auroc_undecidable,CH4,bulk-regressor,0.6108977244311078,
+auroc_undecidable,H2O,margin,0.6129711764723206,
+auroc_undecidable,H2O,ensemble,0.5897749662051721,
+auroc_undecidable,H2O,mahalanobis,0.6848599171253634,
+auroc_undecidable,H2O,knn,0.6839631393407138,
+auroc_undecidable,H2O,pca_recon,0.6274219626622373,
+auroc_undecidable,H2O,optical,0.4634662449307758,
+auroc_undecidable,H2O,disagree,0.4868126544327917,
+auroc_undecidable,H2O,bandmetric,0.5299941981864179,
+auroc_undecidable,H2O,muting,0.5968785064894905,
+auroc_undecidable,H2O,bulk-regressor,0.662988257953933,
+auroc_undecidable,CO2,margin,0.7128344433280279,
+auroc_undecidable,CO2,ensemble,0.720263553346434,
+auroc_undecidable,CO2,mahalanobis,0.6193281345864863,
+auroc_undecidable,CO2,knn,0.6284066759734313,
+auroc_undecidable,CO2,pca_recon,0.5597440936130106,
+auroc_undecidable,CO2,optical,0.46121835625939206,
+auroc_undecidable,CO2,disagree,0.6214555009203027,
+auroc_undecidable,CO2,bandmetric,0.6937281594835634,
+auroc_undecidable,CO2,muting,0.5559939713505775,
+auroc_undecidable,CO2,bulk-regressor,0.6337284262379627,
+auroc_undecidable,NH3,margin,0.740746615372737,
+auroc_undecidable,NH3,ensemble,0.768784555424635,
+auroc_undecidable,NH3,mahalanobis,0.6152149611770749,
+auroc_undecidable,NH3,knn,0.6251498031159048,
+auroc_undecidable,NH3,pca_recon,0.5507819974420174,
+auroc_undecidable,NH3,optical,0.3909584378178595,
+auroc_undecidable,NH3,disagree,0.5859710430996573,
+auroc_undecidable,NH3,bandmetric,,
+auroc_undecidable,NH3,muting,0.601903884306676,
+auroc_undecidable,NH3,bulk-regressor,0.6149128372458382,
+auroc_learned,CH4,spectrum+bulk,0.7298224556139036,
+auroc_learned,CH4,spectrum,0.7239459864966242,
+auroc_learned,CH4,bulk,0.6055413853463366,
+accepted_accuracy,CH4,learned,0.8835855646100117,0.9
+accepted_accuracy,CH4,margin,0.89988358556461,0.9
+accepted_accuracy,CH4,learned,0.8926701570680629,0.8
+accepted_accuracy,CH4,margin,0.918848167539267,0.8
+accepted_accuracy,CH4,learned,0.9101796407185628,0.7
+accepted_accuracy,CH4,margin,0.9461077844311377,0.7
+auroc_learned,H2O,spectrum+bulk,0.7374031435816333,
+auroc_learned,H2O,spectrum,0.7309843351033283,
+auroc_learned,H2O,bulk,0.6819133615472288,
+accepted_accuracy,H2O,learned,0.7857974388824214,0.9
+accepted_accuracy,H2O,margin,0.8009313154831199,0.9
+accepted_accuracy,H2O,learned,0.8010471204188482,0.8
+accepted_accuracy,H2O,margin,0.8180628272251309,0.8
+accepted_accuracy,H2O,learned,0.811377245508982,0.7
+accepted_accuracy,H2O,margin,0.8413173652694611,0.7
+auroc_learned,CO2,spectrum+bulk,0.7324142162311161,
+auroc_learned,CO2,spectrum,0.7125054462356508,
+auroc_learned,CO2,bulk,0.640961916363604,
+accepted_accuracy,CO2,learned,0.8346915017462165,0.9
+accepted_accuracy,CO2,margin,0.860302677532014,0.9
+accepted_accuracy,CO2,learned,0.8586387434554974,0.8
+accepted_accuracy,CO2,margin,0.8821989528795812,0.8
+accepted_accuracy,CO2,learned,0.8712574850299402,0.7
+accepted_accuracy,CO2,margin,0.9221556886227544,0.7
+auroc_learned,NH3,spectrum+bulk,0.6911135281025611,
+auroc_learned,NH3,spectrum,0.6754886854587753,
+auroc_learned,NH3,bulk,0.6101191375368843,
+accepted_accuracy,NH3,learned,0.880093131548312,0.9
+accepted_accuracy,NH3,margin,0.8940628637951106,0.9
+accepted_accuracy,NH3,learned,0.887434554973822,0.8
+accepted_accuracy,NH3,margin,0.912303664921466,0.8
+accepted_accuracy,NH3,learned,0.8907185628742516,0.7
+accepted_accuracy,NH3,margin,0.9311377245508982,0.7
+budget,CH4,random (mean of 200),16.235,0.1
+budget,CH4,random (mean of 200),12.33,0.2
+budget,CH4,random (mean of 200),9.58,0.3
+budget,CH4,random (mean of 200),4.43,0.5
+budget,CH4,learned flag,13.0,0.1
+budget,CH4,learned flag,10.0,0.2
+budget,CH4,learned flag,7.0,0.3
+budget,CH4,learned flag,4.0,0.5
+budget,CH4,margin,17.0,0.1
+budget,CH4,margin,14.0,0.2
+budget,CH4,margin,11.0,0.3
+budget,CH4,margin,5.0,0.5
+budget,CH4,knn,13.0,0.1
+budget,CH4,knn,8.0,0.2
+budget,CH4,knn,5.0,0.3
+budget,CH4,knn,3.0,0.5
+budget,CH4,mahalanobis,13.0,0.1
+budget,CH4,mahalanobis,9.0,0.2
+budget,CH4,mahalanobis,7.0,0.3
+budget,CH4,mahalanobis,3.0,0.5
+budget,CH4,dchi2 measured (oracle),13.0,0.1
+budget,CH4,dchi2 measured (oracle),8.0,0.2
+budget,CH4,dchi2 measured (oracle),4.0,0.3
+budget,CH4,dchi2 measured (oracle),2.0,0.5
+budget,CH4,p_true (retrieval's own),7.0,0.1
+budget,CH4,p_true (retrieval's own),7.0,0.2
+budget,CH4,p_true (retrieval's own),4.0,0.3
+budget,CH4,p_true (retrieval's own),1.0,0.5
+budget,H2O,random (mean of 200),44.215,0.1
+budget,H2O,random (mean of 200),38.4,0.2
+budget,H2O,random (mean of 200),33.225,0.3
+budget,H2O,random (mean of 200),23.085,0.5
+budget,H2O,learned flag,45.0,0.1
+budget,H2O,learned flag,37.0,0.2
+budget,H2O,learned flag,34.0,0.3
+budget,H2O,learned flag,26.0,0.5
+budget,H2O,margin,47.0,0.1
+budget,H2O,margin,46.0,0.2
+budget,H2O,margin,43.0,0.3
+budget,H2O,margin,34.0,0.5
+budget,H2O,knn,42.0,0.1
+budget,H2O,knn,38.0,0.2
+budget,H2O,knn,35.0,0.3
+budget,H2O,knn,29.0,0.5
+budget,H2O,mahalanobis,42.0,0.1
+budget,H2O,mahalanobis,38.0,0.2
+budget,H2O,mahalanobis,35.0,0.3
+budget,H2O,mahalanobis,30.0,0.5
+budget,H2O,dchi2 measured (oracle),50.0,0.1
+budget,H2O,dchi2 measured (oracle),38.0,0.2
+budget,H2O,dchi2 measured (oracle),32.0,0.3
+budget,H2O,dchi2 measured (oracle),18.0,0.5
+budget,H2O,p_true (retrieval's own),37.0,0.1
+budget,H2O,p_true (retrieval's own),24.0,0.2
+budget,H2O,p_true (retrieval's own),22.0,0.3
+budget,H2O,p_true (retrieval's own),11.0,0.5

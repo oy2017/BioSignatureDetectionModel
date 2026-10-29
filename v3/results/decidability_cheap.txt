@@ -1,0 +1,33 @@
+Cheap recognition of the irrecoverable class on clean POP-I spectra (truth: retrieval of every planet; undecidable = p_true <= 0.95)
+
+== 1. AUROC for undecidability (mean over the three learners where a score is per learner); n planets with a posterior
+  mol     n  undec%      margin    ensemble    mahalan.         knn         pca     optical    disagree  bandmetric      muting   bulk-regr
+  CH4   955    32.5       0.729       0.742       0.598       0.609       0.545       0.577       0.604       0.593       0.620       0.611
+  H2O   955    54.2       0.613       0.590       0.685       0.684       0.627       0.463       0.487       0.530       0.597       0.663
+  CO2   955    44.2       0.713       0.720       0.619       0.628       0.560       0.461       0.621       0.694       0.556       0.634
+  NH3   955    32.0       0.741       0.769       0.615       0.625       0.551       0.391       0.586         nan       0.602       0.615
+
+== 2. learned flag (random forest, 5-fold out of fold): AUROC for undecidability from the spectrum + bulk features, spectrum only, bulk only;
+      then the classifier's accuracy (mean of KNN/MLP/RFC probabilities) on the planets kept when the most undecidable 10/20/30 % are declined, vs declining by the margin at equal coverage
+  CH4  AUROC spectrum+bulk 0.730  spectrum 0.724  bulk 0.606   accuracy all  86.4 %; declining 10/20/30 %: learned  88.4 /  89.3 /  91.0   margin  90.0 /  91.9 /  94.6
+  H2O  AUROC spectrum+bulk 0.737  spectrum 0.731  bulk 0.682   accuracy all  78.2 %; declining 10/20/30 %: learned  78.6 /  80.1 /  81.1   margin  80.1 /  81.8 /  84.1
+  CO2  AUROC spectrum+bulk 0.732  spectrum 0.713  bulk 0.641   accuracy all  82.2 %; declining 10/20/30 %: learned  83.5 /  85.9 /  87.1   margin  86.0 /  88.2 /  92.2
+  NH3  AUROC spectrum+bulk 0.691  spectrum 0.675  bulk 0.610   accuracy all  86.7 %; declining 10/20/30 %: learned  88.0 /  88.7 /  89.1   margin  89.4 /  91.2 /  93.1
+
+== 3. retrieval budget: targets lost at the 60 % selection when the fraction f ranked most suspect is re-scored by the retrieval (planets with a posterior)
+-- CH4 (359 targets): lost at f =  10%   20%   30%   50%   (classifier alone 20)
+   random (mean of 200)           16    12    10     4
+   learned flag                   13    10     7     4
+   margin                         17    14    11     5
+   knn                            13     8     5     3
+   mahalanobis                    13     9     7     3
+   dchi2 measured (oracle)        13     8     4     2
+   p_true (retrieval's own)        7     7     4     1
+-- H2O (364 targets): lost at f =  10%   20%   30%   50%   (classifier alone 51)
+   random (mean of 200)           44    38    33    23
+   learned flag                   45    37    34    26
+   margin                         47    46    43    34
+   knn                            42    38    35    29
+   mahalanobis                    42    38    35    30
+   dchi2 measured (oracle)        50    38    32    18
+   p_true (retrieval's own)       37    24    22    11

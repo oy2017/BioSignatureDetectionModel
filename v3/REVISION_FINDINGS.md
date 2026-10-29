@@ -919,6 +919,35 @@ scatter and the sub-point residual.
   thirds), and the spot benefit (1 in the committed draw) is 5 of 17 on average. Declined-to-the-back rules 22-108;
   band metric alone 107-112; random 142-147. Manuscript 3.6, Table 11 caption and limitations updated.
 
+### F12. The irrecoverable class is recognised in part by the classifier's own confidence, no cheap flag does better, and perfect recognition is worth four targets in 359
+
+Asked why the paper has no cheap, novel diagnostic. The paper's "nothing cheap recognises the
+irrecoverable class" rested on the bulk-feature regressor (AUROC 0.47-0.63), which never saw the
+spectrum. `decidability_cheap.py` (2026-10-29, minutes; `results/decidability_cheap.{txt,csv}`) tests
+on the clean POP-I spectra, with the retrieval of every planet as truth (undecidable = p_true ≤ 0.95):
+
+* **Existing scores, AUROC for undecidability:** margin 0.73 / 0.61 / 0.71 / 0.74 and ensemble spread
+  0.74 / 0.59 / 0.72 / 0.77 (CH₄ / H₂O / CO₂ / NH₃); Mahalanobis and k-NN 0.60-0.69 (0.68 for H₂O,
+  the best there); optical 0.39-0.58; disagree 0.49-0.62; band metric 0.53-0.69; muting 0.56-0.62;
+  bulk regressor 0.61-0.66. So the classifier's own confidence does recognise the class, imperfectly.
+* **A learned flag** (random forest, 5-fold out of fold, spectrum + bulk features, the retrieval's
+  labels as target): 0.73 / 0.74 / 0.73 / 0.69; spectrum only 0.72 / 0.73 / 0.71 / 0.68; bulk only
+  0.61-0.68. It beats the margin only for H₂O (0.74 vs 0.61) and ties it elsewhere. Declining the
+  10/20/30 % most undecidable by the flag raises CH₄ accuracy 86.4 → 88.4 / 89.3 / 91.0 %; by the
+  margin 90.0 / 91.9 / 94.6 % (the margin ranks errors, not only undecidables).
+* **Retrieval budget** (CH₄ targets lost at 60 %, f = 10/20/30/50 %): random 16/12/10/4; learned flag
+  13/10/7/4; margin 17/14/11/5; k-NN 13/8/5/3; Mahalanobis 13/9/7/3; measured Δχ² (an oracle that
+  knows decidability) 13/8/4/2; the retrieval's own p_true 7/7/4/1. For H₂O nothing short of p_true
+  beats random until f = 50 %. The ceiling of any decidability recogniser is the Δχ² row: four
+  targets of 359 at f = 20 %, because the undecidable planets are the ones the retrieval cannot help
+  either.
+
+Reading: a cheap recogniser of the irrecoverable class exists and is not novel (the classifier's
+confidence); a novel one cannot beat it by much (the spectrum-trained flag ties it); and the value of
+recognising the class is bounded and small for selection. Its value is as a withheld verdict, which is
+the paper's recommendation. Abstract, 3.6, Discussion, Conclusion, Table C1 (C2), the response letter
+(E3, E4) and the cover letter now say this instead of "nothing cheap recognises".
+
 ### What these add up to, provisionally
 
 A simulator-trained classifier that reproduces its published in-simulator accuracies is mostly right
