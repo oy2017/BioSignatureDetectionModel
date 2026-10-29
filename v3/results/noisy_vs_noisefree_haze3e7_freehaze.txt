@@ -1,0 +1,22 @@
+Noise-free vs noisy-realisation retrieval, 200 planets, spectrum case 'haze3e7' (free-haze model)
+  decidable = p_true > 0.95; the noisy run retrieves the classifier's own realisation of each spectrum
+
+== decidable fraction (p_true > 0.95): noise-free / noisy / both / lost under noise / gained under noise; by true class
+  CH4  n=200   64.5 /  63.0 /  55.0 /   9.5 /   8.0 %   present  45.9 ->  51.4 %  absent  75.4 ->  69.8 %   corr(p_true) 0.72  median |dp_true| 0.013
+  H2O  n=200   33.5 /  37.5 /  27.0 /   6.5 /  10.5 %   present  23.8 ->  27.5 %  absent  40.0 ->  44.2 %   corr(p_true) 0.76  median |dp_true| 0.050
+  CO2  n=200   62.5 /  64.0 /  55.5 /   7.0 /   8.5 %   present  40.5 ->  40.5 %  absent  75.4 ->  77.8 %   corr(p_true) 0.72  median |dp_true| 0.014
+  NH3  n=200   60.5 /  60.5 /  53.0 /   7.5 /   7.5 %   present  46.9 ->  40.7 %  absent  69.7 ->  73.9 %   corr(p_true) 0.74  median |dp_true| 0.017
+
+== retrieval accuracy (p_present >= 0.5) and confidently wrong labels (p_true < 0.05): noise-free -> noisy
+  CH4  acc  96.5 ->  93.0 %   confidently wrong   0 ->   0 of 200
+  H2O  acc  84.0 ->  80.0 %   confidently wrong   1 ->   7 of 200
+  CO2  acc  94.5 ->  88.0 %   confidently wrong   0 ->   0 of 200
+  NH3  acc  90.5 ->  86.5 %   confidently wrong   1 ->   5 of 200
+
+== the classifier's errors on the same realisation (four learners pooled, all bins): share 'recoverable' by the noise-free posterior
+   (p_true > 0.95), share decidable by the noisy posterior, and share each retrieval gets right at p_present >= 0.5
+  CH4  wrong  266   recoverable (noise-free)  42.9 %   decidable (noisy)  47.7 %   retrieval right: noise-free  89.5 %  noisy  85.0 %
+  H2O  wrong  317   recoverable (noise-free)  23.3 %   decidable (noisy)  27.1 %   retrieval right: noise-free  62.8 %  noisy  59.0 %
+  CO2  wrong  273   recoverable (noise-free)  39.2 %   decidable (noisy)  38.8 %   retrieval right: noise-free  84.6 %  noisy  73.6 %
+  NH3  wrong  321   recoverable (noise-free)  46.7 %   decidable (noisy)  40.5 %   retrieval right: noise-free  81.3 %  noisy  73.8 %
+  all  wrong 1177   recoverable (noise-free)  37.8 %   decidable (noisy)  38.1 %   retrieval right: noise-free  78.9 %  noisy  72.3 %

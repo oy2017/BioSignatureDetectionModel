@@ -828,6 +828,21 @@ published abundance sets keep 68 % intervals of 4.35–4.55 (WASP-107 b), 5.13�
 (GJ 3470 b), 2.66–3.86 (WASP-166 b) and 3.67–3.79 (WASP-39 b), beyond the population's maximum at their bulk
 parameters in 100 % of resamples; the sub-Neptunes' intervals (0.6–2.6) sit inside the population's range.
 
+### F8b. The free-haze repair of hazed spectra survives the noise realisation
+
+Follow-up to the noisy-realisation check on clean spectra (above). `identifiability_calibrate.py
+--departure haze3e7 --free-haze --noisy --random-sample --n 200` finished 2026-10-28 22:38 (15.5 h,
+median 43 min per planet); `noisy_vs_noisefree.py --departure haze3e7 --free-haze` writes
+`results/noisy_vs_noisefree_haze3e7_freehaze.{txt,csv}`. Against the noise-free free-haze retrieval of
+the same 200 hazed spectra: decidable fractions 64.5 → 63.0 % (CH₄), 33.5 → 37.5 (H₂O), 62.5 → 64.0
+(CO₂), 60.5 → 60.5 (NH₃); 6.5–9.5 % of labels lose decidability under the draw and 7.5–10.5 % gain it;
+corr(p_true) 0.72–0.76; accuracy 96.5 → 93.0, 84.0 → 80.0, 94.5 → 88.0, 90.5 → 86.5 %; confidently
+wrong (p_true < 0.05) 2 → 12 of 800. Of the four learners' 1,177 errors on the same realisation,
+37.8 % are recoverable by the noise-free posterior and 38.1 % decidable by the noisy one; the noisy
+retrieval gets 72.3 % of them right (noise-free 78.9 %). So Table 9's repair is of the realisation,
+not only of the expectation; the clear-model retrieval of the same noisy hazed subsample (the
+"zero recall" row) is running next in the chain. Added to Section 3.6 and the limitations.
+
 ### F9. Dose-response of the diagnostic: at a haze density that costs 12 points of accuracy, the optical flag sees 60 % of the hazed planets, the CH₄ selection loses nothing, and the loss moves to H₂O where the routing recovers a seventh of it
 
 The mixed-population test (F5/F6, Table 10) hazed every planet at 3 × 10⁷ m⁻³, where the optical score
