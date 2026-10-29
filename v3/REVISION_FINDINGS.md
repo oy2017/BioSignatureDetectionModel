@@ -878,6 +878,42 @@ will sit between random and the oracle rather than on the oracle (at 3 × 10⁷ 
 Added to the manuscript in Sections 2.7, 3.6 and the limitations; the response letter's E3 paragraph
 states it.
 
+### F10. The reproduction's deviations from the published accuracies are sampling scatter with a sub-point systematic offset; the two non-monotone pairs move with the seed
+
+Asked why "two of sixteen pairs differ" was called unfixable: it was mis-stated. The 14 of 16 is the
+monotone-with-threshold pattern, broken for CO₂ at 10⁻⁵ by the forest (79.6 vs 77.7 at 10⁻⁴) and the
+support vector (81.3 vs 80.9), deviations of 2–4 points from the published cells. `alfnoor_faithful.py
+--fit --noise radiometric --seed N` (new option; outputs tagged `_seedN`) refit the design with five other
+noise draws and learner seeds (2026-10-28, 2.5 min each); `reproduction_seeds.py` compares
+(`results/reproduction_seeds.{txt,csv}`): seed sd per cell median 0.71, max 1.77 points; the published
+value lies inside the seed range in 32 of 48 cells, so seed noise alone does not explain the deviations;
+adding the binomial scatter of one 954-planet test set (the published run is one population draw) and
+the integer rounding gives 1.5 points per cell, against which 5 of 48 deviations exceed 2σ (2.3 expected),
+none 3σ, χ² 68 for 48 cells; mean signed offset by threshold +0.56, −0.15, +0.91 and by molecule +0.07 to
++0.70. The monotone pairs are 12–14 of 16 across the six fits. Manuscript 3.1 and Table A1 now state the
+scatter and the sub-point residual.
+
+### F11. Cheap rigour checks: the muting score in simulation is a null result, decline thresholds held out, Table 11 over noise draws
+
+* **Muting score** (`alfnoor_diagnostic.Scorer.muting`, new rule "muting"): the simulated form of the
+  census (F7), the noise-corrected dispersion of the AIRS bins against the 10th percentile of the 50
+  training spectra nearest in (modulation_5H, T_eq, T_host, R_p). Over all 104 bins the Lee–Mie haze
+  *raises* dispersion (its optical slope), so the score was restricted to the AIRS bins; there it flags
+  10–14 % of hazed, 8 % of spotted and 14 % of deep-deck spectra at a 10 % clean rate (AUROC 0.43–0.58),
+  and its selective credit is as negative as every other rule's (−9 to −19). The simulated departures
+  stay inside the amplitude range the training decks (5 × 10²–10⁶ Pa) already span; the real giants
+  (1.7–2.2× beyond) do not. Excess white noise, by contrast, it separates almost perfectly in the other
+  direction (AUROC 0.04/0.02 for ×2/×3), i.e. a variance-excess check. Reported as one sentence in the
+  Discussion; not a router candidate in the budget test. The full diagnostic was rerun with the rule;
+  every other rule's row is unchanged.
+* **Held-out thresholds** (`threshold_holdout.py`, `results/threshold_holdout.{txt,csv}`): thresholds set on a random
+  half of POP-I and applied to the other half, 20 splits. Every rule's decline rate under every departure is
+  reproduced within 0.5 points of the in-sample value (e.g. optical under haze 99.8 vs 99.8 %, Mahalanobis 79.4
+  vs 79.3 %, k-NN under spots 45.6 vs 45.4 %); the clean rates are 7.6-10.7 % (margin 7.6 % because of ties,
+  as in-sample). The "thresholds not held out" limitation is closed; stated in the limitations.
+* **Table 11 over noise draws** (`table11_spread.py`, `test_cases(noise_seed=d)`): see
+  `results/table11_spread.txt` (filled below).
+
 ### What these add up to, provisionally
 
 A simulator-trained classifier that reproduces its published in-simulator accuracies is mostly right

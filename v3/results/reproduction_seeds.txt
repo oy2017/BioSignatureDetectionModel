@@ -1,0 +1,58 @@
+Reproduction seed scatter: 6 fits (committed seed + 5 others), 48 published accuracies (rounded to integers, so a published value within 0.5 of the seed range counts as inside)
+
+per-cell sd across seeds: median 0.71, max 1.77 points; seed range (max - min): median 1.9, max 4.9
+published inside the seed range: 32 of 48; |committed - published| mean 1.44, |seed mean - published| mean 1.32
+cells where |committed - published| exceeds 2 seed sd: 26 of 48 (the seed sd omits the test-set sampling scatter: the published run is one draw of the population)
+combined scatter per cell (seed sd, binomial sd of a 954-planet test set, rounding to integers): median 1.48 points; cells beyond 2 combined sd: 5 of 48 (2.3 expected by chance); beyond 3: 0; chi2 of the 48 deviations against the combined scatter: 68 for 48 cells
+mean signed deviation (committed - published) by molecule: CH4 +0.43, H2O +0.56, CO2 +0.70, NH3 +0.07; by threshold: 1e-5 +0.56, 1e-4 -0.15, 1e-3 +0.91
+classifier-molecule pairs with accuracy non-decreasing in the threshold, per seed (16 published): [14, 13, 12, 14, 13, 13]
+
+modelmol  thr     publ  commit   mean    sd    min    max  inside
+KNN  CH4  1e-5      79    80.0   80.0  0.70   78.9   80.6  yes
+KNN  CH4  1e-4      83    84.6   84.3  0.60   83.2   85.0  yes
+KNN  CH4  1e-3      85    85.0   84.0  0.66   83.1   85.0  yes
+KNN  H2O  1e-5      64    60.9   60.7  1.09   59.2   62.5  NO
+KNN  H2O  1e-4      71    68.8   68.7  0.94   67.3   70.2  NO
+KNN  H2O  1e-3      82    83.9   83.1  0.53   82.5   83.9  yes
+KNN  CO2  1e-5      77    77.8   78.0  0.90   76.5   79.0  yes
+KNN  CO2  1e-4      79    78.7   77.8  0.78   76.8   78.7  yes
+KNN  CO2  1e-3      82    82.2   82.2  1.04   81.3   84.2  yes
+KNN  NH3  1e-5      75    73.2   75.1  1.54   73.2   76.7  yes
+KNN  NH3  1e-4      82    80.7   80.9  0.75   79.6   81.8  yes
+KNN  NH3  1e-3      84    86.2   85.5  0.75   84.3   86.2  yes
+MLP  CH4  1e-5      78    80.8   80.9  0.76   80.0   81.8  NO
+MLP  CH4  1e-4      85    86.4   85.6  0.68   84.7   86.4  yes
+MLP  CH4  1e-3      87    87.4   87.2  0.44   86.6   87.6  yes
+MLP  H2O  1e-5      70    70.8   71.6  0.73   70.8   72.5  NO
+MLP  H2O  1e-4      76    77.6   78.0  0.56   77.6   78.8  NO
+MLP  H2O  1e-3      84    87.3   87.1  0.97   85.2   87.7  NO
+MLP  CO2  1e-5      77    80.7   78.6  1.21   77.1   80.7  yes
+MLP  CO2  1e-4      81    80.8   79.7  1.59   77.9   81.7  yes
+MLP  CO2  1e-3      83    82.5   84.1  0.92   82.5   85.0  yes
+MLP  NH3  1e-5      80    80.4   81.3  1.77   79.4   84.3  yes
+MLP  NH3  1e-4      86    86.0   85.7  0.37   85.0   86.1  yes
+MLP  NH3  1e-3      87    88.6   88.0  0.49   87.2   88.6  yes
+RFC  CH4  1e-5      77    77.3   77.3  0.35   76.8   77.7  yes
+RFC  CH4  1e-4      82    82.6   82.5  0.62   81.3   83.2  yes
+RFC  CH4  1e-3      87    84.0   84.1  0.32   83.8   84.6  NO
+RFC  H2O  1e-5      69    67.4   67.6  0.68   66.6   68.4  NO
+RFC  H2O  1e-4      74    75.5   74.9  0.63   74.2   75.8  yes
+RFC  H2O  1e-3      82    85.3   85.0  0.51   84.3   85.5  NO
+RFC  CO2  1e-5      76    79.6   77.5  1.10   76.4   79.6  yes
+RFC  CO2  1e-4      79    77.7   76.7  0.78   75.6   77.7  NO
+RFC  CO2  1e-3      83    83.1   83.8  0.45   83.1   84.2  yes
+RFC  NH3  1e-5      78    79.0   79.2  0.44   78.5   79.7  NO
+RFC  NH3  1e-4      85    84.9   83.7  0.72   82.9   84.9  yes
+RFC  NH3  1e-3      87    87.8   87.3  0.43   86.9   87.8  yes
+SVC  CH4  1e-5      79    81.0   80.7  0.54   80.1   81.3  NO
+SVC  CH4  1e-4      86    86.0   86.1  0.25   85.7   86.4  yes
+SVC  CH4  1e-3      89    87.2   86.7  0.74   85.3   87.4  NO
+SVC  H2O  1e-5      69    68.7   69.8  0.95   68.7   71.2  yes
+SVC  H2O  1e-4      78    77.7   77.8  0.92   76.6   79.5  yes
+SVC  H2O  1e-3      84    86.1   85.5  0.60   84.4   86.1  yes
+SVC  CO2  1e-5      79    81.3   80.1  0.83   79.4   81.3  yes
+SVC  CO2  1e-4      83    80.9   80.3  0.86   79.0   81.6  NO
+SVC  CO2  1e-3      84    86.1   85.1  0.55   84.6   86.1  NO
+SVC  NH3  1e-5      81    78.2   80.0  1.15   78.2   81.2  yes
+SVC  NH3  1e-4      87    86.0   85.3  0.41   84.8   86.0  NO
+SVC  NH3  1e-3      87    88.9   87.9  0.66   86.9   88.9  yes

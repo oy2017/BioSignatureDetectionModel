@@ -127,7 +127,7 @@ def sigma(P, edges, mode, factor=1.0):
     return out
 
 
-def do_fit(natives, layout, mode, factor=1.0):
+def do_fit(natives, layout, mode, factor=1.0, seed=0):
     from sklearn.neighbors import KNeighborsClassifier, NearestNeighbors
     from sklearn.neural_network import MLPClassifier
     from sklearn.ensemble import RandomForestClassifier
@@ -145,7 +145,7 @@ def do_fit(natives, layout, mode, factor=1.0):
     T.set_grid(wl); Tst = Pte["s temperature"].to_numpy(); logg = np.log10(T.G_SUN * Pte["s mass"].to_numpy() / Pte["s radius"].to_numpy() ** 2 * 100)
     for f in (0.10, 0.20):
         cases[f"spots{int(f*100)}"] = cases["clean"] * T.contamination(Tst, logg, f, 0.0)
-    rng = np.random.default_rng(SEED + 405)
+    rng = np.random.default_rng(SEED + 405 + seed)   # seed > 0: another noise realisation and learner initialisation (seed-to-seed scatter of the reproduction)
     Xtr = bin_native(Xtr_n, wl, edges); Xtr = Xtr + rng.normal(0, 1, Xtr.shape) * sigma(Ptr, edges, mode, factor)
     binned = {k: bin_native(v, wl, edges) for k, v in cases.items()}
     sig = sigma(Pte, edges, mode, factor); eps = rng.normal(0, 1, sig.shape)
@@ -156,9 +156,9 @@ def do_fit(natives, layout, mode, factor=1.0):
     amp = np.ptp(binned["clean"], axis=1)
     t1_equiv = sigma(Pte, np.array(configs()["tier1"]["edges"]), mode, factor)
     snr_t1 = np.median(Pte["modulation_5H"].to_numpy()[:, None] / t1_equiv, axis=1)
-    makers = {"KNN": lambda: KNeighborsClassifier(), "MLP": lambda: MLPClassifier(random_state=SEED),
-              "RFC": lambda: RandomForestClassifier(random_state=SEED, n_jobs=8), "SVC": lambda: SVC()}
-    tag = f"{natives}_{layout}_{mode}" + ("" if factor == 1.0 else f"_x{factor:g}")
+    makers = {"KNN": lambda: KNeighborsClassifier(), "MLP": lambda: MLPClassifier(random_state=SEED + seed),
+              "RFC": lambda: RandomForestClassifier(random_state=SEED + seed, n_jobs=8), "SVC": lambda: SVC()}
+    tag = f"{natives}_{layout}_{mode}" + ("" if factor == 1.0 else f"_x{factor:g}") + ("" if seed == 0 else f"_seed{seed}")
     L = [f"Mugnai et al. 2021 Tier-1 screen, faithful rebuild [{tag}]: natives {natives}, layout {layout} ({len(edges)-1} bins), noise {mode} x {factor}",
          f"train {len(Ztr)} spectra, test {len(Pte)} planets; Tier-1 SNR on 5H modulation, median {np.median(snr_t1):.1f} (IQR {np.percentile(snr_t1,25):.1f}-{np.percentile(snr_t1,75):.1f})",
          f"median peak-to-peak of the clean binned spectra {np.median(amp)*1e6:.0f} ppm; median per-bin sigma {np.median(sig)*1e6:.0f} ppm",
@@ -207,9 +207,9 @@ def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--render", action="store_true"); ap.add_argument("--fit", action="store_true")
     ap.add_argument("--jobs", type=int, default=8); ap.add_argument("--natives", default="faithful", choices=list(DIRS))
     ap.add_argument("--layout", default="tier3_r20"); ap.add_argument("--noise", default="exactN", choices=["requirement", "exactN", "radiometric"])
-    ap.add_argument("--factor", type=float, default=1.0); a = ap.parse_args()
+    ap.add_argument("--factor", type=float, default=1.0); ap.add_argument("--seed", type=int, default=0, help="offset of the noise draw and learner seeds; outputs tagged _seed<N>"); a = ap.parse_args()
     if a.render: do_render(a.jobs)
-    if a.fit: do_fit(a.natives, a.layout, a.noise, a.factor)
+    if a.fit: do_fit(a.natives, a.layout, a.noise, a.factor, a.seed)
 
 
 if __name__ == "__main__":

@@ -78,7 +78,7 @@ def select_departure(Pte, n, seed=SEED):
 HAZE_LOG_RANGE = (3.0, 10.0)   # log10 particle mixing ratio (m^-3) when the haze density is a free parameter; 10^3 is haze-free to < 1 ppm
 
 
-def retrieve_one(i, row, obs, sig, wl, edges, npoints, maxcall, seed, haze=None, timeout=10800, free_haze=False):
+def retrieve_one(i, row, obs, sig, wl, edges, npoints, maxcall, seed, haze=None, timeout=10800, free_haze=False, ab_range=AB_RANGE, fill=None):
     """One nested-sampling retrieval; `timeout` (s) is a wall-clock cap, because nestle's inner rejection loop has no
     call cap and a pathological likelihood (a departed spectrum the model cannot fit) can spin in it for hours."""
     import signal
@@ -88,13 +88,13 @@ def retrieve_one(i, row, obs, sig, wl, edges, npoints, maxcall, seed, haze=None,
     def _alarm(signum, frame):
         raise TimeoutError(f"timeout after {timeout} s")
     signal.signal(signal.SIGALRM, _alarm); signal.alarm(int(timeout))
-    G.FILL_GAS = AF.FILL
+    fill = AF.FILL if fill is None else fill; G.FILL_GAS = fill
     t0 = time.time()
     try:
-        r = dict(row); tm = FM.build_model(r, list(G.GASES), AF.FILL, cloud_pressure=float(r["cloud_pressure"]), haze=haze)
+        r = dict(row); tm = FM.build_model(r, list(G.GASES), fill, cloud_pressure=float(r["cloud_pressure"]), haze=haze)
         T_p = float(r["T_p"])
-        lo = np.array([T_RANGE[0] * T_p, LOGP_RANGE[0]] + [AB_RANGE[0]] * 4 + [-OFFSET] + ([HAZE_LOG_RANGE[0]] if free_haze else []))
-        hi = np.array([T_RANGE[1] * T_p, LOGP_RANGE[1]] + [AB_RANGE[1]] * 4 + [OFFSET] + ([HAZE_LOG_RANGE[1]] if free_haze else []))
+        lo = np.array([T_RANGE[0] * T_p, LOGP_RANGE[0]] + [ab_range[0]] * 4 + [-OFFSET] + ([HAZE_LOG_RANGE[0]] if free_haze else []))
+        hi = np.array([T_RANGE[1] * T_p, LOGP_RANGE[1]] + [ab_range[1]] * 4 + [OFFSET] + ([HAZE_LOG_RANGE[1]] if free_haze else []))
         ndim = len(lo)
 
         def prior(u):
@@ -218,14 +218,26 @@ def main():
     ap.add_argument("--timeout", type=float, default=10800, help="wall-clock cap per planet in seconds (recorded as an error row)")
     ap.add_argument("--departure", default="none", choices=["none", "haze3e7", "haze2e6", "cloud1e2", "spots20"] + list(NOISE_X)); ap.add_argument("--model-departure", action="store_true", help="haze in the forward model at its true density")
     ap.add_argument("--free-haze", action="store_true", help="haze in the forward model with its density a free parameter (the fallback a pipeline could run on any spectrum)")
+    ap.add_argument("--population", default="pop1", choices=["pop1", "mcs"], help="mcs: the Mission Candidate Sample population of mcs_testset.py (equilibrium chemistry, clear, pure-H2 fill), tag _mcs")
+    ap.add_argument("--prior", default="train", choices=["train", "population"], help="abundance prior: the training grid's 1e-9..1e-2 (default) or the test population's 1e-7..1e-2 (tag _popprior)")
+    ap.add_argument("--seed-offset", type=int, default=0, help="offset of the nested-sampling seed (repeat-seed check)"); ap.add_argument("--tag", default="", help="extra output tag")
     a = ap.parse_args()
-    tag = ("" if a.departure == "none" else f"_{a.departure}") + ("_modelled" if a.model_departure else "") + ("_freehaze" if a.free_haze else "") + ("_noisy" if a.noisy else "")
+    tag = ("_mcs" if a.population == "mcs" else "") + ("" if a.departure == "none" else f"_{a.departure}") + ("_modelled" if a.model_departure else "") + ("_freehaze" if a.free_haze else "") + ("_noisy" if a.noisy else "") + ("_popprior" if a.prior == "population" else "") + (f"_{a.tag}" if a.tag else "")
+    ab_range = (-7.0, -2.0) if a.prior == "population" else AB_RANGE
+    if a.population == "mcs" and (a.noisy or a.departure != "none" or a.prior == "population"):
+        sys.exit("--population mcs: no --noisy, --departure or --prior population (the MCS population has no uniform prior)")
     if a.summarize:
         (summarize_departure(tag[1:]) if tag else summarize()); return
     src = AF.DIRS["faithful"]; wl = np.load(os.path.join(DATA, "native_wl.npy")); edges = AF.layout_edges("tier3_r20")
     nat = {"haze3e7": "pop1_native_haze3e7", "haze2e6": "pop1_native_haze2e6", "cloud1e2": "pop1_native_cloud1e2"}.get(a.departure, "pop1_native")
-    Pte = pd.read_parquet(os.path.join(src, "pop1_params.parquet")); Y = np.load(os.path.join(src, f"{nat}.npy")).astype(np.float64)
-    ok = np.all(np.isfinite(Y), axis=1) & np.all(np.isfinite(np.load(os.path.join(src, "pop1_native.npy"))), axis=1)
+    if a.population == "mcs":
+        # real Ariel targets with FastChem equilibrium chemistry (mcs_testset.py): clear atmospheres (the retrieval's deck stays free),
+        # pure-H2 fill as rendered, Tier-1 radiometric noise from the catalogue's transit counts
+        Pte = pd.read_parquet(os.path.join(DATA, "mcs", "mcs_params.parquet")); Y = np.load(os.path.join(DATA, "mcs", "mcs_native.npy")).astype(np.float64)
+        Pte["cloud_pressure"] = 1e6; Pte["T_p"] = Pte["atm temperature"]; fill = "H2"
+    else:
+        Pte = pd.read_parquet(os.path.join(src, "pop1_params.parquet")); Y = np.load(os.path.join(src, f"{nat}.npy")).astype(np.float64); fill = None
+    ok = np.all(np.isfinite(Y), axis=1) & (np.all(np.isfinite(np.load(os.path.join(src, "pop1_native.npy"))), axis=1) if a.population == "pop1" else True)
     Pte = Pte[ok].reset_index(drop=False).rename(columns={"index": "_index"}); Y = Y[ok]
     if a.departure == "spots20":
         # 20 % unocculted spots applied to the clean native spectrum exactly as alfnoor_diagnostic.test_cases does
@@ -233,8 +245,9 @@ def main():
         T.set_grid(wl); logg = np.log10(T.G_SUN * Pte["s mass"].to_numpy() / Pte["s radius"].to_numpy() ** 2 * 100)
         Y = Y * T.contamination(Pte["s temperature"].to_numpy(), logg, 0.20, 0.0)
     haze = {"radius": 0.1, "q": 40, "mix_ratio": HAZE[a.departure]} if (a.model_departure and a.departure in HAZE) else ({"radius": 0.1, "q": 40, "mix_ratio": 1e3} if a.free_haze else None)
-    mcs = pd.read_parquet(os.path.join(DATA, "mcs", "mcs_params.parquet"))[["name", "atm temperature"]].rename(columns={"atm temperature": "T_p"})
-    Pte = Pte.merge(mcs.drop_duplicates("name"), on="name", how="left")
+    if a.population == "pop1":
+        mcs = pd.read_parquet(os.path.join(DATA, "mcs", "mcs_params.parquet"))[["name", "atm temperature"]].rename(columns={"atm temperature": "T_p"})
+        Pte = Pte.merge(mcs.drop_duplicates("name"), on="name", how="left")
     sig = AF.sigma(Pte, edges, "radiometric") * NOISE_X.get(a.departure, 1.0); Xb = bin_native(Y, wl, edges)
     if a.noisy:
         # the classifier's own Tier-1 noise draw (alfnoor_diagnostic.test_cases: SEED + 405, the POP-III draw first, then one
@@ -245,7 +258,10 @@ def main():
         pos = (np.cumsum(ok_nat) - 1)[ok]; Xb = Xb + eps[pos] * sig
     if a.random_sample:
         # a fixed random subsample by planet index, the same planets under every departure (SEED + 11)
-        keep = np.random.default_rng(SEED + 11).choice(np.where(np.all(np.isfinite(np.load(os.path.join(src, "pop1_native.npy"))), axis=1))[0], a.n, replace=False)
+        if a.population == "mcs":
+            keep = np.random.default_rng(SEED + 12).choice(Pte["_index"].to_numpy(), a.n, replace=False)   # fixed random subsample of the MCS planets (SEED + 12)
+        else:
+            keep = np.random.default_rng(SEED + 11).choice(np.where(np.all(np.isfinite(np.load(os.path.join(src, "pop1_native.npy"))), axis=1))[0], a.n, replace=False)
         sel = np.where(Pte["_index"].isin(keep).to_numpy())[0]
     else:
         sel = np.arange(len(Pte)) if a.n >= len(Pte) else (select_departure(Pte, a.n) if tag else select(Pte, a.n))
@@ -258,7 +274,7 @@ def main():
     # one pool over every planet, results streamed as they finish (no batch barrier, so a slow planet holds no one up);
     # the CSV is rewritten every `a.jobs` results and the run resumes from it
     gen = Parallel(n_jobs=a.jobs, return_as="generator_unordered")(
-        delayed(retrieve_one)(int(Pte.iloc[i]["_index"]), Pte.iloc[i].to_dict(), Xb[i], sig[i], wl, edges, a.npoints, a.maxcall, SEED + int(i), haze, a.timeout, a.free_haze) for i in todo)
+        delayed(retrieve_one)(int(Pte.iloc[i]["_index"]), Pte.iloc[i].to_dict(), Xb[i], sig[i], wl, edges, a.npoints, a.maxcall, SEED + int(i) + a.seed_offset, haze, a.timeout, a.free_haze, ab_range, fill) for i in todo)
     pending = []
     for k, row in enumerate(gen, 1):
         pending.append(row)

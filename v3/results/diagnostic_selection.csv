@@ -22,6 +22,8 @@ CH4,clean,+ optical (flagged re-scored by the fallback),359,19,233,252,290,423
 CH4,clean,+ optical (flagged re-scored by the retrieval),359,15,229,244,274,379
 CH4,clean,+ bandmetric (flagged re-scored by the fallback),359,20,234,254,294,434
 CH4,clean,+ bandmetric (flagged re-scored by the retrieval),359,19,233,252,290,423
+CH4,clean,+ muting (flagged re-scored by the fallback),359,22,236,258,302,456
+CH4,clean,+ muting (flagged re-scored by the retrieval),359,15,229,244,274,379
 CH4,clean,+ decidable (undecidable ranked by decidability),359,46,260,306,398,720
 CH4,clean,+ decidable (flagged re-scored by the retrieval),359,16,230,246,278,390
 CH4,haze3e7,classifier,359,38,252,290,366,632
@@ -37,6 +39,7 @@ CH4,haze3e7,+ pca_recon (declined to the back),359,69,283,352,490,973
 CH4,haze3e7,+ disagree (flagged re-scored by the fallback),359,37,251,288,362,621
 CH4,haze3e7,+ optical (flagged re-scored by the fallback),359,26,240,266,318,500
 CH4,haze3e7,+ bandmetric (flagged re-scored by the fallback),359,38,252,290,366,632
+CH4,haze3e7,+ muting (flagged re-scored by the fallback),359,38,252,290,366,632
 CH4,haze3e7,+ decidable (undecidable ranked by decidability),359,61,275,336,458,885
 CH4,spots20,classifier,359,29,243,272,330,533
 CH4,spots20,oracle,359,0,214,214,214,214
@@ -51,6 +54,7 @@ CH4,spots20,+ pca_recon (declined to the back),359,74,288,362,510,1028
 CH4,spots20,+ disagree (flagged re-scored by the fallback),359,30,244,274,334,544
 CH4,spots20,+ optical (flagged re-scored by the fallback),359,28,242,270,326,522
 CH4,spots20,+ bandmetric (flagged re-scored by the fallback),359,27,241,268,322,511
+CH4,spots20,+ muting (flagged re-scored by the fallback),359,30,244,274,334,544
 CH4,spots20,+ decidable (undecidable ranked by decidability),359,51,265,316,418,775
 CH4,cloud1e2,classifier,359,29,243,272,330,533
 CH4,cloud1e2,oracle,359,0,214,214,214,214
@@ -65,6 +69,7 @@ CH4,cloud1e2,+ pca_recon (declined to the back),359,56,270,326,438,830
 CH4,cloud1e2,+ disagree (flagged re-scored by the fallback),359,30,244,274,334,544
 CH4,cloud1e2,+ optical (flagged re-scored by the fallback),359,30,244,274,334,544
 CH4,cloud1e2,+ bandmetric (flagged re-scored by the fallback),359,31,245,276,338,555
+CH4,cloud1e2,+ muting (flagged re-scored by the fallback),359,33,247,280,346,577
 CH4,cloud1e2,+ decidable (undecidable ranked by decidability),359,54,268,322,430,808
 CH4,compound,classifier,359,66,280,346,478,940
 CH4,compound,oracle,359,0,214,214,214,214
@@ -79,6 +84,7 @@ CH4,compound,+ pca_recon (declined to the back),359,74,288,362,510,1028
 CH4,compound,+ disagree (flagged re-scored by the fallback),359,60,274,334,454,874
 CH4,compound,+ optical (flagged re-scored by the fallback),359,27,241,268,322,511
 CH4,compound,+ bandmetric (flagged re-scored by the fallback),359,67,281,348,482,951
+CH4,compound,+ muting (flagged re-scored by the fallback),359,65,279,344,474,929
 CH4,compound,+ decidable (undecidable ranked by decidability),359,78,292,370,526,1072
 CH4,white_x2,classifier,359,37,251,288,362,621
 CH4,white_x2,oracle,359,0,214,214,214,214
@@ -93,6 +99,7 @@ CH4,white_x2,+ pca_recon (declined to the back),359,64,278,342,470,918
 CH4,white_x2,+ disagree (flagged re-scored by the fallback),359,40,254,294,374,654
 CH4,white_x2,+ optical (flagged re-scored by the fallback),359,37,251,288,362,621
 CH4,white_x2,+ bandmetric (flagged re-scored by the fallback),359,36,250,286,358,610
+CH4,white_x2,+ muting (flagged re-scored by the fallback),359,37,251,288,362,621
 CH4,white_x2,+ decidable (undecidable ranked by decidability),359,59,273,332,450,863
 CH4,white_x3,classifier,359,56,270,326,438,830
 CH4,white_x3,oracle,359,0,214,214,214,214
@@ -107,6 +114,7 @@ CH4,white_x3,+ pca_recon (declined to the back),359,81,295,376,538,1105
 CH4,white_x3,+ disagree (flagged re-scored by the fallback),359,60,274,334,454,874
 CH4,white_x3,+ optical (flagged re-scored by the fallback),359,57,271,328,442,841
 CH4,white_x3,+ bandmetric (flagged re-scored by the fallback),359,55,269,324,434,819
+CH4,white_x3,+ muting (flagged re-scored by the fallback),359,56,270,326,438,830
 CH4,white_x3,+ decidable (undecidable ranked by decidability),359,75,289,364,514,1039
 H2O,clean,classifier,364,51,260,311,413,770
 H2O,clean,oracle,364,0,209,209,209,209
@@ -131,6 +139,8 @@ H2O,clean,+ optical (flagged re-scored by the fallback),364,56,265,321,433,825
 H2O,clean,+ optical (flagged re-scored by the retrieval),364,45,254,299,389,704
 H2O,clean,+ bandmetric (flagged re-scored by the fallback),364,53,262,315,421,792
 H2O,clean,+ bandmetric (flagged re-scored by the retrieval),364,46,255,301,393,715
+H2O,clean,+ muting (flagged re-scored by the fallback),364,55,264,319,429,814
+H2O,clean,+ muting (flagged re-scored by the retrieval),364,44,253,297,385,693
 H2O,clean,+ decidable (undecidable ranked by decidability),364,80,289,369,529,1089
 H2O,clean,+ decidable (flagged re-scored by the retrieval),364,42,251,293,377,671
 H2O,haze3e7,classifier,364,78,287,365,521,1067
@@ -146,6 +156,7 @@ H2O,haze3e7,+ pca_recon (declined to the back),364,107,316,423,637,1386
 H2O,haze3e7,+ disagree (flagged re-scored by the fallback),364,82,291,373,537,1111
 H2O,haze3e7,+ optical (flagged re-scored by the fallback),364,85,294,379,549,1144
 H2O,haze3e7,+ bandmetric (flagged re-scored by the fallback),364,91,300,391,573,1210
+H2O,haze3e7,+ muting (flagged re-scored by the fallback),364,81,290,371,533,1100
 H2O,haze3e7,+ decidable (undecidable ranked by decidability),364,98,307,405,601,1287
 H2O,spots20,classifier,364,75,284,359,509,1034
 H2O,spots20,oracle,364,0,209,209,209,209
@@ -160,6 +171,7 @@ H2O,spots20,+ pca_recon (declined to the back),364,103,312,415,621,1342
 H2O,spots20,+ disagree (flagged re-scored by the fallback),364,69,278,347,485,968
 H2O,spots20,+ optical (flagged re-scored by the fallback),364,73,282,355,501,1012
 H2O,spots20,+ bandmetric (flagged re-scored by the fallback),364,73,282,355,501,1012
+H2O,spots20,+ muting (flagged re-scored by the fallback),364,75,284,359,509,1034
 H2O,spots20,+ decidable (undecidable ranked by decidability),364,92,301,393,577,1221
 H2O,cloud1e2,classifier,364,88,297,385,561,1177
 H2O,cloud1e2,oracle,364,0,209,209,209,209
@@ -174,6 +186,7 @@ H2O,cloud1e2,+ pca_recon (declined to the back),364,102,311,413,617,1331
 H2O,cloud1e2,+ disagree (flagged re-scored by the fallback),364,88,297,385,561,1177
 H2O,cloud1e2,+ optical (flagged re-scored by the fallback),364,87,296,383,557,1166
 H2O,cloud1e2,+ bandmetric (flagged re-scored by the fallback),364,85,294,379,549,1144
+H2O,cloud1e2,+ muting (flagged re-scored by the fallback),364,89,298,387,565,1188
 H2O,cloud1e2,+ decidable (undecidable ranked by decidability),364,102,311,413,617,1331
 H2O,compound,classifier,364,103,312,415,621,1342
 H2O,compound,oracle,364,0,209,209,209,209
@@ -188,6 +201,7 @@ H2O,compound,+ pca_recon (declined to the back),364,105,314,419,629,1364
 H2O,compound,+ disagree (flagged re-scored by the fallback),364,95,304,399,589,1254
 H2O,compound,+ optical (flagged re-scored by the fallback),364,83,292,375,541,1122
 H2O,compound,+ bandmetric (flagged re-scored by the fallback),364,112,321,433,657,1441
+H2O,compound,+ muting (flagged re-scored by the fallback),364,100,309,409,609,1309
 H2O,compound,+ decidable (undecidable ranked by decidability),364,113,322,435,661,1452
 H2O,white_x2,classifier,364,67,276,343,477,946
 H2O,white_x2,oracle,364,0,209,209,209,209
@@ -202,6 +216,7 @@ H2O,white_x2,+ pca_recon (declined to the back),364,100,309,409,609,1309
 H2O,white_x2,+ disagree (flagged re-scored by the fallback),364,74,283,357,505,1023
 H2O,white_x2,+ optical (flagged re-scored by the fallback),364,69,278,347,485,968
 H2O,white_x2,+ bandmetric (flagged re-scored by the fallback),364,67,276,343,477,946
+H2O,white_x2,+ muting (flagged re-scored by the fallback),364,67,276,343,477,946
 H2O,white_x2,+ decidable (undecidable ranked by decidability),364,89,298,387,565,1188
 H2O,white_x3,classifier,364,89,298,387,565,1188
 H2O,white_x3,oracle,364,0,209,209,209,209
@@ -216,6 +231,7 @@ H2O,white_x3,+ pca_recon (declined to the back),364,118,327,445,681,1507
 H2O,white_x3,+ disagree (flagged re-scored by the fallback),364,91,300,391,573,1210
 H2O,white_x3,+ optical (flagged re-scored by the fallback),364,92,301,393,577,1221
 H2O,white_x3,+ bandmetric (flagged re-scored by the fallback),364,90,299,389,569,1199
+H2O,white_x3,+ muting (flagged re-scored by the fallback),364,89,298,387,565,1188
 H2O,white_x3,+ decidable (undecidable ranked by decidability),364,110,319,429,649,1419
 joint,clean,classifier,576,95,92,187,377,1042
 joint,clean,oracle,576,3,0,3,9,30
@@ -240,6 +256,8 @@ joint,clean,+ optical (flagged re-scored by the fallback),576,102,99,201,405,111
 joint,clean,+ optical (flagged re-scored by the retrieval),576,89,86,175,353,976
 joint,clean,+ bandmetric (flagged re-scored by the fallback),576,99,96,195,393,1086
 joint,clean,+ bandmetric (flagged re-scored by the retrieval),576,92,89,181,365,1009
+joint,clean,+ muting (flagged re-scored by the fallback),576,101,98,199,401,1108
+joint,clean,+ muting (flagged re-scored by the retrieval),576,93,90,183,369,1020
 joint,haze3e7,classifier,576,150,147,297,597,1647
 joint,haze3e7,oracle,576,3,0,3,9,30
 joint,haze3e7,random,576,222,219,441,885,2439
@@ -253,6 +271,7 @@ joint,haze3e7,+ pca_recon (declined to the back),576,183,180,363,729,2010
 joint,haze3e7,+ disagree (flagged re-scored by the fallback),576,146,143,289,581,1603
 joint,haze3e7,+ optical (flagged re-scored by the fallback),576,141,138,279,561,1548
 joint,haze3e7,+ bandmetric (flagged re-scored by the fallback),576,151,148,299,601,1658
+joint,haze3e7,+ muting (flagged re-scored by the fallback),576,152,149,301,605,1669
 joint,spots20,classifier,576,132,129,261,525,1449
 joint,spots20,oracle,576,3,0,3,9,30
 joint,spots20,random,576,227,224,451,905,2494
@@ -266,6 +285,7 @@ joint,spots20,+ pca_recon (declined to the back),576,186,183,369,741,2043
 joint,spots20,+ disagree (flagged re-scored by the fallback),576,134,131,265,533,1471
 joint,spots20,+ optical (flagged re-scored by the fallback),576,132,129,261,525,1449
 joint,spots20,+ bandmetric (flagged re-scored by the fallback),576,132,129,261,525,1449
+joint,spots20,+ muting (flagged re-scored by the fallback),576,138,135,273,549,1515
 joint,cloud1e2,classifier,576,127,124,251,505,1394
 joint,cloud1e2,oracle,576,3,0,3,9,30
 joint,cloud1e2,random,576,242,239,481,965,2659
@@ -279,6 +299,7 @@ joint,cloud1e2,+ pca_recon (declined to the back),576,148,145,293,589,1625
 joint,cloud1e2,+ disagree (flagged re-scored by the fallback),576,129,126,255,513,1416
 joint,cloud1e2,+ optical (flagged re-scored by the fallback),576,128,125,253,509,1405
 joint,cloud1e2,+ bandmetric (flagged re-scored by the fallback),576,126,123,249,501,1383
+joint,cloud1e2,+ muting (flagged re-scored by the fallback),576,131,128,259,521,1438
 joint,compound,classifier,576,183,180,363,729,2010
 joint,compound,oracle,576,3,0,3,9,30
 joint,compound,random,576,220,217,437,877,2417
@@ -292,6 +313,7 @@ joint,compound,+ pca_recon (declined to the back),576,191,188,379,761,2098
 joint,compound,+ disagree (flagged re-scored by the fallback),576,164,161,325,653,1801
 joint,compound,+ optical (flagged re-scored by the fallback),576,140,137,277,557,1537
 joint,compound,+ bandmetric (flagged re-scored by the fallback),576,188,185,373,749,2065
+joint,compound,+ muting (flagged re-scored by the fallback),576,186,183,369,741,2043
 joint,white_x2,classifier,576,134,131,265,533,1471
 joint,white_x2,oracle,576,3,0,3,9,30
 joint,white_x2,random,576,221,218,439,881,2428
@@ -305,6 +327,7 @@ joint,white_x2,+ pca_recon (declined to the back),576,156,153,309,621,1713
 joint,white_x2,+ disagree (flagged re-scored by the fallback),576,136,133,269,541,1493
 joint,white_x2,+ optical (flagged re-scored by the fallback),576,136,133,269,541,1493
 joint,white_x2,+ bandmetric (flagged re-scored by the fallback),576,133,130,263,529,1460
+joint,white_x2,+ muting (flagged re-scored by the fallback),576,134,131,265,533,1471
 joint,white_x3,classifier,576,165,162,327,657,1812
 joint,white_x3,oracle,576,3,0,3,9,30
 joint,white_x3,random,576,241,238,479,961,2648
@@ -318,3 +341,4 @@ joint,white_x3,+ pca_recon (declined to the back),576,184,181,365,733,2021
 joint,white_x3,+ disagree (flagged re-scored by the fallback),576,168,165,333,669,1845
 joint,white_x3,+ optical (flagged re-scored by the fallback),576,169,166,335,673,1856
 joint,white_x3,+ bandmetric (flagged re-scored by the fallback),576,162,159,321,645,1779
+joint,white_x3,+ muting (flagged re-scored by the fallback),576,165,162,327,657,1812

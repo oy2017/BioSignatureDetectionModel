@@ -59,13 +59,15 @@ import jwst_to_ariel as J  # noqa: E402
 CASES = ["clean", "haze3e7", "spots20", "cloud1e2", "compound", "white_x2", "white_x3"]
 MOLS = ["CH4", "H2O", "CO2", "NH3"]; LEARNERS = ["KNN", "MLP", "RFC", "SVC"]
 FLAGS = {"H2O": 0.80, "CH4": 0.22, "CO2": 0.26}
-OLD_RULES = ["margin", "ensemble", "mahalanobis", "knn", "pca_recon"]; NEW = ["disagree", "optical", "bandmetric", "decidable"]
+OLD_RULES = ["margin", "ensemble", "mahalanobis", "knn", "pca_recon"]; NEW = ["disagree", "optical", "bandmetric", "muting", "decidable"]
+MUTING_FEATS = ["modulation_5H", "atm temperature", "s temperature", "p_radius"]; MUTING_K = 50; MUTING_Q = 0.10; MUTING_WL = 1.95   # score over the AIRS bins (> 1.95 um), where the molecular features are
 DECLINE = 0.10; BUDGET = 0.60; WEIGHTS = (1, 3, 10)
 
 
-def test_cases(extra=()):
+def test_cases(extra=(), noise_seed=0):
     """POP-I under each case (plus any extra re-rendered case, e.g. "haze2e6"), binned and noised exactly as
-    alfnoor_haze_mechanism; returns (cases, Pte, edges, sigma)."""
+    alfnoor_haze_mechanism; returns (cases, Pte, edges, sigma). noise_seed > 0: another test-noise realisation (the
+    training draw, and so the learners, unchanged)."""
     import shift_tlse as T
     from scipy.ndimage import gaussian_filter1d
     wl = np.load(os.path.join(DATA, "native_wl.npy")); e = F.layout_edges("tier3_r20"); src = F.DIRS["faithful"]
@@ -75,6 +77,8 @@ def test_cases(extra=()):
     rng = np.random.default_rng(SEED + 405); _ = rng.normal(0, 1, (int(ok_tr.sum()), len(e) - 1))     # the training draw comes first
     sig_te = F.sigma(Pte, e, "radiometric"); eps_te = rng.normal(0, 1, sig_te.shape)
     eps2 = np.random.default_rng(SEED + 407).normal(0, 1, sig_te.shape)
+    if noise_seed:
+        eps_te = np.random.default_rng(SEED + 9000 + noise_seed).normal(0, 1, sig_te.shape); eps2 = np.random.default_rng(SEED + 9500 + noise_seed).normal(0, 1, sig_te.shape)
     T.set_grid(wl); logg = np.log10(T.G_SUN * Pte["s mass"].to_numpy() / Pte["s radius"].to_numpy() ** 2 * 100)
     contam = lambda f: T.contamination(Pte["s temperature"].to_numpy(), logg, f, 0.0)
     B = lambda X: bin_native(X, wl, e)
@@ -105,7 +109,37 @@ class Scorer:
         self.nn = NearestNeighbors(n_neighbors=10).fit(Ztr); self.pca = PCA(n_components=0.99, random_state=SEED).fit(Ztr)
         self.opt, self.nir = cen < 1.1, (cen > 1.1) & (cen < 1.95)
         xo = self._optical(Ztr); self.opt_mu, self.opt_sd = xo.mean(), xo.std()
+        # muting reference: the noise-free training spectra (their own decks) in bulk-parameter space, so a test
+        # spectrum can be asked whether its feature amplitude is below what the training prior produces at its
+        # bulk parameters (the simulated form of the muting census of jwst_muting_census.py; no label needed)
+        src = F.DIRS["faithful"]; wl = np.load(os.path.join(DATA, "native_wl.npy"))
+        Xn = np.load(os.path.join(src, "pop3_native.npy")).astype(np.float64); okn = np.all(np.isfinite(Xn), axis=1)
+        self.ref_X = bin_native(Xn[okn], wl, edges); self.ref_P = pd.read_parquet(os.path.join(src, "pop3_params.parquet"))[okn].reset_index(drop=True)
+        Fb = self._bulk(self.ref_P); self.bulk_mu, self.bulk_sd = Fb.mean(0), Fb.std(0) + 1e-12
+        self.bulk_nn = NearestNeighbors(n_neighbors=MUTING_K).fit((Fb - self.bulk_mu) / self.bulk_sd)
         self.reg = None
+
+    @staticmethod
+    def _bulk(P):
+        return np.column_stack([np.log10(P[c].to_numpy(float)) for c in MUTING_FEATS])
+
+    def muting(self, X, P, sig=None, mask=None):
+        """Muting score per planet: log10 of the 10th-percentile dispersion (std over the AIRS bins) of the 50 training
+        spectra nearest in bulk parameters, minus log10 of the planet's own noise-corrected dispersion. Positive:
+        the spectrum is flatter than almost anything the training prior produces at its bulk parameters.
+        `mask` (bins to use; one row per planet or one for all) restricts both sides to the measured bins."""
+        n = len(X); mask = np.ones((n, X.shape[1]), bool) if mask is None else np.broadcast_to(np.asarray(mask, bool), (n, X.shape[1]))
+        mask = mask & (self.cen > MUTING_WL)[None, :]
+        _, nb = self.bulk_nn.kneighbors((self._bulk(P) - self.bulk_mu) / self.bulk_sd)
+        out = np.full(n, np.nan)
+        for i in range(n):
+            m = mask[i]
+            if m.sum() < 8:
+                continue
+            var = np.var(X[i, m]) - (np.mean(np.asarray(sig[i])[m] ** 2) if sig is not None else 0.0)
+            d_obs = np.sqrt(max(var, 1e-14)); d_ref = np.quantile(np.std(self.ref_X[nb[i]][:, m], axis=1), MUTING_Q)
+            out[i] = np.log10(d_ref) - np.log10(d_obs)
+        return out
 
     def _optical(self, Z):
         return Z[:, self.opt].mean(1) - Z[:, self.nir].mean(1)
@@ -120,9 +154,11 @@ class Scorer:
     def band(self, X):
         return {mol: np.array([J.band_metric(x, self.edges, mol) for x in X]) for mol in FLAGS}
 
-    def scores(self, X, P=None, M=None):
-        """Per-planet scores: molecule-independent ones under key None, the rest under (mol, learner)."""
+    def scores(self, X, P=None, M=None, sig=None, Pb=None, mask=None):
+        """Per-planet scores: molecule-independent ones under key None, the rest under (mol, learner). `Pb` (bulk
+        parameters, one row per spectrum) enables the muting score, with `sig` for the noise correction."""
         P = P or self.probs(X); M = M or self.band(X); Z = AT.norm(X); d = Z - self.mu; S = {}
+        S[("muting", None)] = self.muting(X, Pb, sig, mask) if Pb is not None else np.full(len(X), np.nan)
         S[("mahalanobis", None)] = np.sqrt(np.einsum("ij,jk,ik->i", d, self.Ci, d)); S[("knn", None)] = self.nn.kneighbors(Z)[0].mean(1)
         S[("pca_recon", None)] = np.linalg.norm(Z - self.pca.inverse_transform(self.pca.transform(Z)), axis=1)
         S[("optical", None)] = np.abs(self._optical(Z) - self.opt_mu) / self.opt_sd
@@ -195,7 +231,7 @@ def evaluate(cases, Pte, edges, sig_te, sc):
     y_true = {mol: (Pte[f"atm {mol}"] > -4).astype(int).to_numpy() for mol in MOLS}
     S, P, M = {}, {}, {}
     for c, X in cases.items():
-        S[c], P[c], M[c] = sc.scores(X); print(f"scored {c}", flush=True)
+        S[c], P[c], M[c] = sc.scores(X, sig=sig_te, Pb=Pte); print(f"scored {c}", flush=True)
     # (d): out-of-fold predicted decidability on the reached planets (the clean case's features; the score is per planet x molecule)
     dec, feats = decidability_regressor(Pte, sig_te, cases["clean"])
     reached = {}
@@ -233,7 +269,7 @@ def evaluate(cases, Pte, edges, sig_te, sc):
     for mol in MOLS:
         y = y_true[mol]
         for k in LEARNERS:
-            for rule in ["disagree", "optical", "bandmetric"]:
+            for rule in ["disagree", "optical", "bandmetric", "muting"]:
                 s0 = sc.get(S["clean"], rule, mol, k); valid = np.isfinite(s0)
                 if valid.sum() < 50:
                     continue
@@ -408,17 +444,17 @@ def write_summary(credit, remedy, classes, selection, consistency=None, retclass
         if rule not in g.index.get_level_values(0): continue
         L.append(f"{rule:<12}" + "".join(f"{100*g.loc[(rule,c)].coverage:5.0f} {100*g.loc[(rule,c)].credit:+6.1f} {g.loc[(rule,c)].auroc_error:7.3f}".rjust(22) for c in CASES))
     L.append(""); L.append("== per-molecule credit of the new candidates under haze3e7 and spots20 (mean over learners)")
-    for rule in ["disagree", "optical", "bandmetric"]:
+    for rule in ["disagree", "optical", "bandmetric", "muting"]:
         gm = credit[credit.rule == rule].groupby(["molecule", "case"]).credit.mean()
         L.append(f"  {rule:<11}" + "  ".join(f"{m} haze {100*gm.get((m,'haze3e7'), np.nan):+5.1f} spots {100*gm.get((m,'spots20'), np.nan):+5.1f}" for m in MOLS if (m, "haze3e7") in gm))
     L.append(""); L.append("== remedy: accuracy over all planets when flagged planets take the fallback (points; mean over molecules and learners)")
     g = remedy.groupby(["rule", "case"])[["flagged", "frozen", "fallback_everywhere", "remedied", "recall_frozen", "recall_remedied"]].mean()
     L.append(f"{'rule':<12}" + "".join(f"{c:>30}" for c in CASES)); L.append(f"{'':<12}" + "".join(f"{'flag% frozen fallbk remedied':>30}" for c in CASES))
-    for rule in ["disagree", "optical", "bandmetric"]:
+    for rule in ["disagree", "optical", "bandmetric", "muting"]:
         L.append(f"{rule:<12}" + "".join(f"{100*g.loc[(rule,c)].flagged:5.0f} {100*g.loc[(rule,c)].frozen:6.1f} {100*g.loc[(rule,c)].fallback_everywhere:6.1f} {100*g.loc[(rule,c)].remedied:6.1f}".rjust(30) for c in CASES))
     gm = remedy.groupby(["rule", "molecule", "case"])[["frozen", "remedied", "recall_frozen", "recall_remedied"]].mean()
     L.append("  CH4 under haze3e7, per candidate: accuracy frozen -> remedied, recall frozen -> remedied")
-    for rule in ["disagree", "optical", "bandmetric"]:
+    for rule in ["disagree", "optical", "bandmetric", "muting"]:
         r = gm.loc[(rule, "CH4", "haze3e7")]; L.append(f"    {rule:<11} {100*r.frozen:5.1f} -> {100*r.remedied:5.1f}   recall {100*r.recall_frozen:5.1f} -> {100*r.recall_remedied:5.1f}")
     if classes is not None and len(classes):
         L.append(""); L.append("== (d) error classes on the planets the identifiability test has reached: AUROC of predicted (and oracle) decidability for irrecoverable vs recoverable errors")
