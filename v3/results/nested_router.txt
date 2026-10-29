@@ -1,0 +1,41 @@
+Nested-input disagreement (D1 = |p_all - p_no_optical|, D2 = |p_no_optical - p_airs_only|; thresholds = 90th percentile of clean POP-I per molecule and learner)
+mean over the four molecules and four learners; accuracy at the 1e-4 threshold on POP-I (954 planets)
+
+case        D1 fires  D2 fires  optical  either |    all  no_opt   AIRS  opt->A either->A D1->noopt  nested | recall all  either  nested
+clean           9.0%      9.1%    10.1%   17.3% |   81.2    77.4   73.8    79.7      76.6      78.8    76.1 |      63.7%   51.6%   50.6%
+haze3e7        34.5%     16.0%    99.8%   99.8% |   63.5    71.8   73.3    73.3      73.3      71.3    72.6 |       6.4%   44.2%   40.6%
+haze2e6        25.4%      9.0%    56.4%   60.4% |   69.2    76.9   73.6    72.5      73.2      76.2    74.2 |      23.6%   42.4%   44.4%
+spots20        21.5%     12.4%    65.7%   68.0% |   70.4    74.2   74.0    73.8      73.9      73.4    73.7 |      26.5%   45.1%   43.9%
+cloud1e2        4.7%      8.1%     1.5%    6.4% |   71.4    72.3   72.1    71.4      71.8      71.9    71.9 |      31.8%   34.5%   36.1%
+compound       34.8%     23.3%    99.9%   99.9% |   62.3    69.7   73.5    73.5      73.5      69.2    72.7 |       2.8%   45.3%   41.7%
+white_x2        6.0%      7.4%     3.0%    8.2% |   71.9    69.6   68.3    71.5      70.2      70.6    69.8 |      36.5%   32.7%   32.3%
+
+per molecule (mean over learners): D1 / D2 firing and accuracy all -> either -> nested
+  clean      CH4  D1   8.5%  D2   9.2%   acc  84.3 ->  80.3 ->  80.4   recall  72.3 ->  60.9 ->  61.3
+  clean      H2O  D1   8.7%  D2   8.7%   acc  75.3 ->  70.4 ->  70.0   recall  47.1 ->  34.9 ->  34.2
+  clean      CO2  D1   9.0%  D2   9.3%   acc  80.7 ->  77.9 ->  77.4   recall  66.6 ->  58.7 ->  57.6
+  clean      NH3  D1   9.9%  D2   9.1%   acc  84.6 ->  77.7 ->  76.6   recall  68.7 ->  51.7 ->  49.5
+  haze3e7    CH4  D1  34.7%  D2  12.2%   acc  66.6 ->  78.3 ->  78.7   recall  11.6 ->  53.7 ->  53.6
+  haze3e7    H2O  D1  40.8%  D2   9.8%   acc  62.1 ->  65.7 ->  66.1   recall   1.1 ->  22.5 ->  21.0
+  haze3e7    CO2  D1  40.2%  D2  21.4%   acc  63.6 ->  76.6 ->  75.2   recall  11.2 ->  56.0 ->  51.8
+  haze3e7    NH3  D1  22.5%  D2  20.8%   acc  61.6 ->  72.6 ->  70.4   recall   1.5 ->  44.8 ->  36.0
+  haze2e6    CH4  D1  27.4%  D2   9.2%   acc  73.9 ->  78.8 ->  79.6   recall  34.3 ->  56.4 ->  57.7
+  haze2e6    H2O  D1  26.3%  D2   8.8%   acc  64.5 ->  66.5 ->  67.9   recall   9.5 ->  24.3 ->  27.5
+  haze2e6    CO2  D1  26.7%  D2   9.8%   acc  70.8 ->  75.6 ->  76.0   recall  32.7 ->  52.3 ->  52.6
+  haze2e6    NH3  D1  21.1%  D2   8.1%   acc  67.6 ->  72.1 ->  73.4   recall  18.0 ->  36.6 ->  40.1
+  spots20    CH4  D1  19.9%  D2   8.3%   acc  74.6 ->  79.1 ->  78.8   recall  35.5 ->  53.8 ->  52.9
+  spots20    H2O  D1  28.6%  D2  10.2%   acc  67.8 ->  68.1 ->  68.3   recall  18.8 ->  30.6 ->  31.2
+  spots20    CO2  D1  25.4%  D2  16.9%   acc  70.3 ->  76.2 ->  75.8   recall  31.0 ->  55.0 ->  53.2
+  spots20    NH3  D1  11.9%  D2  14.5%   acc  68.8 ->  72.4 ->  72.0   recall  20.7 ->  40.9 ->  38.2
+  cloud1e2   CH4  D1   5.1%  D2   9.8%   acc  75.1 ->  75.8 ->  76.7   recall  37.9 ->  42.4 ->  45.2
+  cloud1e2   H2O  D1   4.0%  D2   5.2%   acc  67.3 ->  66.6 ->  66.0   recall  21.0 ->  20.7 ->  21.2
+  cloud1e2   CO2  D1   4.9%  D2  10.3%   acc  73.5 ->  74.5 ->  74.7   recall  42.4 ->  46.0 ->  47.1
+  cloud1e2   NH3  D1   4.9%  D2   6.9%   acc  69.8 ->  70.3 ->  70.1   recall  25.9 ->  28.9 ->  30.9
+  compound   CH4  D1  31.8%  D2  15.4%   acc  64.3 ->  78.0 ->  77.2   recall   5.4 ->  50.3 ->  47.6
+  compound   H2O  D1  45.3%  D2  14.1%   acc  62.0 ->  66.6 ->  66.8   recall   0.4 ->  24.9 ->  24.1
+  compound   CO2  D1  43.3%  D2  32.8%   acc  61.5 ->  76.5 ->  75.5   recall   4.8 ->  57.8 ->  54.4
+  compound   NH3  D1  18.9%  D2  31.1%   acc  61.3 ->  73.0 ->  71.2   recall   0.7 ->  48.4 ->  40.7
+  white_x2   CH4  D1   5.7%  D2   8.4%   acc  75.2 ->  73.7 ->  73.6   recall  42.9 ->  39.1 ->  39.5
+  white_x2   H2O  D1   6.3%  D2   6.4%   acc  69.2 ->  67.2 ->  66.6   recall  29.2 ->  24.7 ->  23.8
+  white_x2   CO2  D1   5.4%  D2   7.5%   acc  69.7 ->  69.1 ->  69.3   recall  34.2 ->  32.5 ->  33.2
+  white_x2   NH3  D1   6.6%  D2   7.6%   acc  73.7 ->  70.7 ->  69.5   recall  39.6 ->  34.6 ->  32.9

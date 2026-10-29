@@ -983,6 +983,25 @@ classifier 16.0 / 35.8 / 32.6 / 28.6 / 69.5 / 37.4; optical 17.1 / 26.8 / 27.9 /
 disagree alone 18.8 / 33.3 / 31.4 / 29.2 / 60.8 / 39.0. The combined router costs 2-3 targets on clean and noisy spectra and
 matches the optical flag everywhere else.
 
+### F14. Nested-input disagreement locates the departure but a three-level router ties the two-level one
+
+Script `nested_router.py` → `results/nested_router.{txt,csv}`. The classifier's three input sets are nested
+(all ⊃ no-optical ⊃ AIRS-only), so the disagreement splits into D₁ = |p_all − p_no-optical| (sensitive to
+the three optical points) and D₂ = |p_no-optical − p_AIRS-only| (sensitive to the NIRSpec range), each at the
+90th percentile of its clean distribution. Firing rates (mean over molecules and learners), D₁ / D₂:
+clean 9.0 / 9.1 %; haze 3e7 34.5 / 16.0; haze 2e6 25.4 / 9.0; spots 21.5 / 12.4; cloud deck 4.7 / 8.1;
+compound 34.8 / 23.3; noise ×2 6.0 / 7.4. So D₂ stays at its clean rate at the weaker haze (the slope is
+confined to the optical points) and rises at 3e7 and under the compound departure for CO₂ and NH₃
+(21 and 21 %; compound 33 and 31 %), whose bands the slope reaches in NIRSpec. The localisation works.
+As a router (accuracy, mean over molecules and learners; clean / haze3e7 / haze2e6 / spots / deck / compound / noise×2):
+classifier 81.2 / 63.5 / 69.2 / 70.4 / 71.4 / 62.3 / 71.9; combined flag → AIRS 76.6 / 73.3 / 73.2 / 73.9 / 71.8 / 73.5 / 70.2;
+nested three-level 76.1 / 72.6 / 74.2 / 73.7 / 71.9 / 72.7 / 69.8; D₁ only → no-optical 78.8 / 71.3 / 76.2 / 73.4 / 71.9 / 69.2 / 70.6.
+Reading: the three-level router ties the combined flag everywhere (within a point); the cheaper fallback
+(no-optical) halves the clean cost and wins at the weaker haze but loses 4 points under the compound
+departure, so which input set to fall back on depends on how far the departure reaches, which is what the
+two levels measure. Paper-worthy as a sentence group in 3.6 and the Methods, not as a new method: it is
+the principle "route to the largest agreeing input set", and here it buys localisation, not accuracy.
+
 ### What these add up to, provisionally
 
 A simulator-trained classifier that reproduces its published in-simulator accuracies is mostly right
