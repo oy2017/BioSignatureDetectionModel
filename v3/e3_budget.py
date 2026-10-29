@@ -12,8 +12,11 @@ new ones (optical excess, input disagreement, band metric), random, and an oracl
 hazed. Baselines: classifier alone; the existing method, a clear-model retrieval of every planet (which fails on
 hazed spectra); the free-haze retrieval of every planet (f = 1); the AIRS-only routing of F5 (no retrieval).
 
-Usage: python e3_budget.py [--fallback freehaze|modelled|clear] [--q 0.1 0.2 0.5] [--draws 20]
-Writes results/e3_budget.csv and results/e3_budget.txt.
+Usage: python e3_budget.py [--fallback freehaze|modelled|clear] [--haze haze3e7|haze2e6] [--q 0.1 0.2 0.5] [--draws 20]
+Writes results/e3_budget_<fallback>[_<haze>].csv and .txt. --haze haze2e6 is the dose-response point at the weaker
+density (pop1_native_haze2e6, rendered by alfnoor_trust.py render); when no fallback posteriors exist yet for that
+density the script reports the no-retrieval strategies and each rule's detection of the hazed planets only
+(suffix _noretrieval).
 """
 import argparse, os, sys
 import numpy as np, pandas as pd
@@ -24,9 +27,10 @@ import alfnoor_diagnostic as D  # noqa: E402
 MOLS = D.MOLS; BUDGET = D.BUDGET
 RULES = ["random", "optical", "disagree", "bandmetric", "margin", "ensemble", "mahalanobis", "knn", "pca_recon", "oracle (knows the hazed)"]
 FS = [0.0, 0.1, 0.2, 0.3, 0.5, 1.0]
-FILES = {"freehaze": ("identifiability_calibration_haze3e7_freehaze.csv", "identifiability_calibration_freehaze.csv"),
-         "modelled": ("identifiability_calibration_haze3e7_modelled.csv", "identifiability_calibration_freehaze.csv"),
-         "clear": ("identifiability_calibration_haze3e7.csv", "identifiability_calibration.csv")}
+FILES = {"freehaze": ("identifiability_calibration_{haze}_freehaze.csv", "identifiability_calibration_freehaze.csv"),
+         "modelled": ("identifiability_calibration_{haze}_modelled.csv", "identifiability_calibration_freehaze.csv"),
+         "clear": ("identifiability_calibration_{haze}.csv", "identifiability_calibration.csv")}
+DENSITY = {"haze3e7": "3e7 m^-3", "haze2e6": "2e6 m^-3"}
 
 
 def posteriors(Pte, fn):
@@ -45,22 +49,29 @@ def posteriors(Pte, fn):
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--fallback", default="freehaze", choices=list(FILES))
     ap.add_argument("--q", type=float, nargs="+", default=[0.1, 0.2, 0.5]); ap.add_argument("--draws", type=int, default=20)
+    ap.add_argument("--haze", default="haze3e7", choices=list(DENSITY))
     a = ap.parse_args()
-    cases, Pte, e, sig = D.test_cases(); sc = D.Scorer(e); n = len(Pte)
-    X = {c: cases[c] for c in ("clean", "haze3e7")}; S, P = {}, {}
+    H = a.haze; cases, Pte, e, sig = D.test_cases(extra=[H]); sc = D.Scorer(e); n = len(Pte)
+    X = {c: cases[c] for c in ("clean", H)}; S, P = {}, {}
     for c in X:
         S[c], P[c], _ = sc.scores(X[c]); print("scored", c, flush=True)
     y_true = {m: (Pte[f"atm {m}"].to_numpy() > D.THRESH if hasattr(D, "THRESH") else Pte[f"atm {m}"].to_numpy() > -4).astype(int) for m in MOLS}
-    haz_fn, cln_fn = FILES[a.fallback]
+    haz_fn, cln_fn = (f.format(haze=H) for f in FILES[a.fallback])
     R_h, n_h = posteriors(Pte, haz_fn); R_c, n_c = posteriors(Pte, cln_fn)
     note = ""
-    if R_c is None:
-        R_c, n_c = posteriors(Pte, "identifiability_calibration.csv"); note = f"(clean-side posteriors from the clean retrieval; {cln_fn} not yet available)"
-    R_clear_h, _ = posteriors(Pte, FILES["clear"][0]); R_clear_c, _ = posteriors(Pte, FILES["clear"][1])
-    if R_h is None:
-        sys.exit(f"no posteriors: {haz_fn}")
+    if R_c is None or n_c < 0.9 * max(n_h, 1):
+        # the clean-side fallback file is used only once it covers the population; a partial file (the run resumes
+        # in instalments) would shrink the population to the planets it has reached
+        have_c = f"has {n_c} planets" if R_c is not None else "not yet available"
+        R_c, n_c = posteriors(Pte, "identifiability_calibration.csv"); note = f"(clean-side posteriors from the clean retrieval; {cln_fn} {have_c})"
+    R_clear_h, _ = posteriors(Pte, FILES["clear"][0].format(haze=H)); R_clear_c, _ = posteriors(Pte, FILES["clear"][1])
+    no_ret = R_h is None
+    if no_ret:
+        print(f"no fallback posteriors for {H} ({haz_fn}): no-retrieval strategies and detection only", flush=True)
+        R_h = {m: np.full(n, np.nan) for m in MOLS}; R_clear_h = None
     # the population: planets with a fallback posterior on both spectra (so every assignment is scorable)
-    have = np.isfinite(R_h["CH4"]) & np.isfinite(R_c["CH4"])
+    have = np.isfinite(np.asarray(R_h["CH4"])) & np.isfinite(R_c["CH4"]) if not no_ret else np.ones(n, bool)
+    sfx = ("" if H == "haze3e7" else f"_{H}") + ("_noretrieval" if no_ret else "")
     print(f"fallback {a.fallback}: posteriors on {n_h} hazed and {n_c} clean spectra; population {int(have.sum())} of {n} planets {note}", flush=True)
     idx = np.where(have)[0]; N = len(idx); slots = int(round(BUDGET * N))
     rng = np.random.default_rng(SEED)
@@ -76,18 +87,19 @@ def main():
             for target in ("CH4", "H2O", "joint"):
                 mols = ["CH4", "H2O"] if target == "joint" else [target]
                 y = np.clip(sum(y_true[m][idx] for m in mols), 0, 1); ntar = int(y.sum())
-                score = sum(pick(cls["clean"][m], cls["haze3e7"][m]) for m in mols)
-                fb = sum(pick(airs["clean"][m], airs["haze3e7"][m]) for m in mols)
+                score = sum(pick(cls["clean"][m], cls[H][m]) for m in mols)
+                fb = sum(pick(airs["clean"][m], airs[H][m]) for m in mols)
                 ret = sum(pick(R_c[m], R_h[m]) for m in mols)
                 ret_clear = sum(pick(R_clear_c[m], R_clear_h[m]) for m in mols) if R_clear_h is not None else None
-                strategies = {("classifier alone", 0.0): score, ("AIRS-only routing by optical excess (no retrieval)", 0.0): np.where(pick(rule_s["clean"]["optical"], rule_s["haze3e7"]["optical"]) > np.quantile(rule_s["clean"]["optical"], 0.9), fb, score),
-                              (f"{a.fallback} retrieval of every planet", 1.0): ret}
+                strategies = {("classifier alone", 0.0): score, ("AIRS-only routing by optical excess (no retrieval)", 0.0): np.where(pick(rule_s["clean"]["optical"], rule_s[H]["optical"]) > np.quantile(rule_s["clean"]["optical"], 0.9), fb, score)}
+                if not no_ret:
+                    strategies[(f"{a.fallback} retrieval of every planet", 1.0)] = ret
                 if ret_clear is not None:
                     strategies[("clear-model retrieval of every planet (existing method)", 1.0)] = np.where(np.isfinite(ret_clear), ret_clear, score)
-                for r in RULES:
+                for r in ([] if no_ret else RULES):
                     if r == "random": s = rng.uniform(0, 1, N)
                     elif r.startswith("oracle"): s = h + rng.uniform(0, 1e-3, N)
-                    else: s = pick(rule_s["clean"][r], rule_s["haze3e7"][r]); s = np.where(np.isfinite(s), s, -np.inf)
+                    else: s = pick(rule_s["clean"][r], rule_s[H][r]); s = np.where(np.isfinite(s), s, -np.inf)
                     order = np.argsort(-s)
                     for f in FS[1:-1]:
                         flag = np.zeros(N, bool); flag[order[:int(round(f * N))]] = True
@@ -103,9 +115,9 @@ def main():
                     rec_c = float(dec[~h & (y == 1)].mean()) if dec is not None and (~h & (y == 1)).any() else np.nan
                     rows.append(dict(q=q, draw=d, target=target, strategy=name, f=f, targets=ntar, lost=int(ntar - (sel & (y == 1)).sum()),
                                      wasted=int((sel & (y == 0)).sum()), acc=acc, recall_hazed=rec_h, recall_clean=rec_c))
-    df = pd.DataFrame(rows); df.to_csv(os.path.join(RESULTS, f"e3_budget_{a.fallback}.csv"), index=False)
+    df = pd.DataFrame(rows); df.to_csv(os.path.join(RESULTS, f"e3_budget_{a.fallback}{sfx}.csv"), index=False)
     # detection operating points of each rule on the mixed population
-    L = [f"E3 fixed-budget selection on a mixed population: {N} POP-I planets, each hazed (3e7 m^-3) with probability q; {a.draws} draws; "
+    L = [f"E3 fixed-budget selection on a mixed population: {N} POP-I planets, each hazed ({DENSITY[H]}) with probability q; {a.draws} draws; "
          f"{int(BUDGET*100)} % Tier-2 slots; fallback retrieval: {a.fallback} {note}", ""]
     g = df.groupby(["q", "target", "strategy", "f"]).agg(lost=("lost", "mean"), sd=("lost", "std"), targets=("targets", "mean"), acc=("acc", "mean"), rh=("recall_hazed", "mean"), rc=("recall_clean", "mean")).reset_index()
     for q in a.q:
@@ -128,11 +140,11 @@ def main():
         hz, cl = {f: [] for f in FS[1:-1]}, {f: [] for f in FS[1:-1]}
         for d in range(a.draws):
             h = np.random.default_rng(SEED + 1000 + d).uniform(0, 1, N) < q
-            s = np.where(h, rule_s["haze3e7"][r][idx], rule_s["clean"][r][idx]); s = np.where(np.isfinite(s), s, -np.inf); order = np.argsort(-s)
+            s = np.where(h, rule_s[H][r][idx], rule_s["clean"][r][idx]); s = np.where(np.isfinite(s), s, -np.inf); order = np.argsort(-s)
             for f in FS[1:-1]:
                 flag = np.zeros(N, bool); flag[order[:int(round(f * N))]] = True; hz[f].append(flag[h].mean()); cl[f].append(flag[~h].mean())
         L.append(f"  {r:<14} " + "  ".join(f"f={f:.0%}: {100*np.mean(hz[f]):3.0f} / {100*np.mean(cl[f]):3.0f} %" for f in FS[1:-1]))
-    txt = "\n".join(L); print(txt); open(os.path.join(RESULTS, f"e3_budget_{a.fallback}.txt"), "w").write(txt + "\n")
+    txt = "\n".join(L); print(txt); open(os.path.join(RESULTS, f"e3_budget_{a.fallback}{sfx}.txt"), "w").write(txt + "\n")
 
 
 if __name__ == "__main__":

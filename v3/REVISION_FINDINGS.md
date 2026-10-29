@@ -828,6 +828,41 @@ published abundance sets keep 68 % intervals of 4.35–4.55 (WASP-107 b), 5.13�
 (GJ 3470 b), 2.66–3.86 (WASP-166 b) and 3.67–3.79 (WASP-39 b), beyond the population's maximum at their bulk
 parameters in 100 % of resamples; the sub-Neptunes' intervals (0.6–2.6) sit inside the population's range.
 
+### F9. Dose-response of the diagnostic: at a haze density that costs 12 points of accuracy, the optical flag sees 60 % of the hazed planets, the CH₄ selection loses nothing, and the loss moves to H₂O where the routing recovers a seventh of it
+
+The mixed-population test (F5/F6, Table 10) hazed every planet at 3 × 10⁷ m⁻³, where the optical score
+flags 98 % of hazed planets at a 1 % clean rate; the manuscript listed the dose-response at weaker
+densities as not reported. On 2026-10-28 POP-I was re-rendered with the Lee–Mie haze at 2 × 10⁶ m⁻³
+(the lowest density at which the stress test measured a loss: 69.0 % accuracy, −12.1 points, Table 4;
+`alfnoor_trust.py render` writes the same file) and `e3_budget.py --haze haze2e6 --q 0 0.1 0.2 0.5 1.0`
+was run with no fallback posteriors yet (`results/e3_budget_freehaze_haze2e6_noretrieval.{csv,txt}`;
+955 planets, 20 draws). Findings:
+
+* **Everyone hazed at 2 × 10⁶ (q = 1):** CH₄ accuracy 86.4 → 72.7 %, CH₄ recall at 0.5 75 → 27 %, yet
+  CH₄ targets lost at the 60 % selection 20 → 19: the haze flattens the probabilities but keeps the
+  CH₄ ranking. H₂O targets lost 51 → 86 (accuracy 78.2 → 64.1 %, recall 51 → 7 %); joint 95 → 122.
+* **Routing by the optical flag to the AIRS-only variant (no retrieval):** CH₄ 19 (unchanged), hazed CH₄
+  recall 27 → 54 %; H₂O 86 → 81 (5 of the 35 added targets recovered); joint worse, 122 → 139, because
+  the AIRS-only variant is weaker on H₂O. At 3 × 10⁷ the same routing recovered 12 of the 18 CH₄
+  targets the haze added (Table 11).
+* **Detection at q = 0.2, top 20 % most suspect (hazed / clean inside):** optical 60 / 10 % (98 / 1 % at
+  3 × 10⁷); PCA 56 / 11; Mahalanobis 46 / 14; k-NN 31 / 17; input disagreement 29 / 18; band metric
+  14 / 21; margin 6 / 23; ensemble 9 / 23. The confidence rules again hold fewer hazed planets than
+  clean ones. At f = 50 % the optical and PCA scores hold 86 % of the hazed planets.
+* **Mixed population q = 0.2:** classifier alone 19.1 ± 1.1 CH₄ targets lost (28.9 ± 4.0 at 3 × 10⁷),
+  routed 20.0 ± 1.6; H₂O 62.1 ± 2.3 vs routed 60.8 ± 1.8.
+
+Reading: the departure the flag detects fully is also the one that moves CH₄ targets out of the
+selection; the one it detects by half costs accuracy and H₂O targets but almost no CH₄ targets, and the
+no-retrieval remedy recovers little there. What the budgeted free-haze retrieval buys at 2 × 10⁶ is
+queued on the 200-planet random subsample (`identifiability_calibrate.py --departure haze2e6 --free-haze
+--random-sample --n 200`, then the clear model on the same planets for a Table 9 row), behind the
+noisy-realisation chain. Expectation written before that run: the free-haze retrieval recovers most of
+the H₂O loss on the planets it reaches, but with the flag at 60 % sensitivity a 20 % budget routed by it
+will sit between random and the oracle rather than on the oracle (at 3 × 10⁷ it matched the oracle).
+Added to the manuscript in Sections 2.7, 3.6 and the limitations; the response letter's E3 paragraph
+states it.
+
 ### What these add up to, provisionally
 
 A simulator-trained classifier that reproduces its published in-simulator accuracies is mostly right

@@ -63,8 +63,9 @@ OLD_RULES = ["margin", "ensemble", "mahalanobis", "knn", "pca_recon"]; NEW = ["d
 DECLINE = 0.10; BUDGET = 0.60; WEIGHTS = (1, 3, 10)
 
 
-def test_cases():
-    """POP-I under each case, binned and noised exactly as alfnoor_haze_mechanism; returns (cases, Pte, edges)."""
+def test_cases(extra=()):
+    """POP-I under each case (plus any extra re-rendered case, e.g. "haze2e6"), binned and noised exactly as
+    alfnoor_haze_mechanism; returns (cases, Pte, edges, sigma)."""
     import shift_tlse as T
     from scipy.ndimage import gaussian_filter1d
     wl = np.load(os.path.join(DATA, "native_wl.npy")); e = F.layout_edges("tier3_r20"); src = F.DIRS["faithful"]
@@ -81,7 +82,7 @@ def test_cases():
     def shifted(name):
         Y = np.load(os.path.join(src, f"pop1_native_{name}.npy")).astype(float)[ok]; bad = ~np.isfinite(Y).all(1); Y[bad] = clean_n[bad]; return Y
     Bc = B(clean_n); out = {}
-    for c in CASES:
+    for c in list(CASES) + [c for c in extra if c not in CASES]:
         if c == "clean": out[c] = Bc + eps_te * sig_te
         elif c.startswith("spots"): out[c] = B(clean_n * contam(int(c[5:]) / 100)) + eps_te * sig_te
         elif c == "compound": out[c] = B(shifted("haze3e7") * contam(0.20)) + eps_te * sig_te

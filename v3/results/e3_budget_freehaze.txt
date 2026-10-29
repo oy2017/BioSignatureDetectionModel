@@ -1,4 +1,4 @@
-E3 fixed-budget selection on a mixed population: 954 POP-I planets, each hazed (3e7 m^-3) with probability q; 20 draws; 60 % Tier-2 slots; fallback retrieval: freehaze (clean-side posteriors from the clean retrieval; identifiability_calibration_freehaze.csv not yet available)
+E3 fixed-budget selection on a mixed population: 954 POP-I planets, each hazed (3e7 m^-3) with probability q; 20 draws; 60 % Tier-2 slots; fallback retrieval: freehaze (clean-side posteriors from the clean retrieval; identifiability_calibration_freehaze.csv has 27 planets)
 
 == q = 0.1, target CH4 (359 targets on average): targets lost, mean over draws
   AIRS-only routing by optical excess (no retrieval)           19.9 ±  1.1   acc  85.1 %  recall hazed/clean targets  59/ 73 %

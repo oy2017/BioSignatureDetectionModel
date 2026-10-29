@@ -1,0 +1,86 @@
+E3 fixed-budget selection on a mixed population: 955 POP-I planets, each hazed (2e6 m^-3) with probability q; 20 draws; 60 % Tier-2 slots; fallback retrieval: freehaze 
+
+== q = 0.0, target CH4 (359 targets on average): targets lost, mean over draws
+  AIRS-only routing by optical excess (no retrieval)           19.0 ±  0.0   acc  85.7 %  recall hazed/clean targets nan/ 73 %
+  classifier alone                                             20.0 ±  0.0   acc  86.4 %  recall hazed/clean targets nan/ 75 %
+  ordering of the retrieval budget            f=10%    f=20%    f=30%    f=50%   | at f=20 %: acc, recall hazed/clean
+
+== q = 0.0, target H2O (364 targets on average): targets lost, mean over draws
+  AIRS-only routing by optical excess (no retrieval)           56.0 ±  0.0   acc  76.9 %  recall hazed/clean targets nan/ 48 %
+  classifier alone                                             51.0 ±  0.0   acc  78.2 %  recall hazed/clean targets nan/ 51 %
+  ordering of the retrieval budget            f=10%    f=20%    f=30%    f=50%   | at f=20 %: acc, recall hazed/clean
+
+== q = 0.0, target joint (576 targets on average): targets lost, mean over draws
+  AIRS-only routing by optical excess (no retrieval)          102.0 ±  0.0
+  classifier alone                                             95.0 ±  0.0
+  ordering of the retrieval budget            f=10%    f=20%    f=30%    f=50%
+
+== q = 0.1, target CH4 (359 targets on average): targets lost, mean over draws
+  AIRS-only routing by optical excess (no retrieval)           19.9 ±  1.1   acc  85.0 %  recall hazed/clean targets  53/ 73 %
+  classifier alone                                             20.1 ±  1.3   acc  85.0 %  recall hazed/clean targets  25/ 75 %
+  ordering of the retrieval budget            f=10%    f=20%    f=30%    f=50%   | at f=20 %: acc, recall hazed/clean
+
+== q = 0.1, target H2O (364 targets on average): targets lost, mean over draws
+  AIRS-only routing by optical excess (no retrieval)           58.4 ±  1.4   acc  75.8 %  recall hazed/clean targets  23/ 48 %
+  classifier alone                                             56.1 ±  2.1   acc  76.7 %  recall hazed/clean targets   6/ 51 %
+  ordering of the retrieval budget            f=10%    f=20%    f=30%    f=50%   | at f=20 %: acc, recall hazed/clean
+
+== q = 0.1, target joint (576 targets on average): targets lost, mean over draws
+  AIRS-only routing by optical excess (no retrieval)          107.8 ±  2.6
+  classifier alone                                            107.1 ±  2.6
+  ordering of the retrieval budget            f=10%    f=20%    f=30%    f=50%
+
+== q = 0.2, target CH4 (359 targets on average): targets lost, mean over draws
+  AIRS-only routing by optical excess (no retrieval)           19.9 ±  1.4   acc  84.3 %  recall hazed/clean targets  54/ 73 %
+  classifier alone                                             19.2 ±  1.1   acc  83.8 %  recall hazed/clean targets  29/ 75 %
+  ordering of the retrieval budget            f=10%    f=20%    f=30%    f=50%   | at f=20 %: acc, recall hazed/clean
+
+== q = 0.2, target H2O (364 targets on average): targets lost, mean over draws
+  AIRS-only routing by optical excess (no retrieval)           61.8 ±  2.4   acc  74.7 %  recall hazed/clean targets  21/ 48 %
+  classifier alone                                             62.6 ±  3.6   acc  75.4 %  recall hazed/clean targets   6/ 51 %
+  ordering of the retrieval budget            f=10%    f=20%    f=30%    f=50%   | at f=20 %: acc, recall hazed/clean
+
+== q = 0.2, target joint (576 targets on average): targets lost, mean over draws
+  AIRS-only routing by optical excess (no retrieval)          112.5 ±  3.3
+  classifier alone                                            109.2 ±  2.7
+  ordering of the retrieval budget            f=10%    f=20%    f=30%    f=50%
+
+== q = 0.5, target CH4 (359 targets on average): targets lost, mean over draws
+  AIRS-only routing by optical excess (no retrieval)           19.6 ±  1.3   acc  82.1 %  recall hazed/clean targets  54/ 73 %
+  classifier alone                                             18.8 ±  1.7   acc  79.4 %  recall hazed/clean targets  28/ 74 %
+  ordering of the retrieval budget            f=10%    f=20%    f=30%    f=50%   | at f=20 %: acc, recall hazed/clean
+
+== q = 0.5, target H2O (364 targets on average): targets lost, mean over draws
+  AIRS-only routing by optical excess (no retrieval)           71.2 ±  3.0   acc  71.5 %  recall hazed/clean targets  22/ 48 %
+  classifier alone                                             74.3 ±  3.7   acc  71.1 %  recall hazed/clean targets   7/ 51 %
+  ordering of the retrieval budget            f=10%    f=20%    f=30%    f=50%   | at f=20 %: acc, recall hazed/clean
+
+== q = 0.5, target joint (576 targets on average): targets lost, mean over draws
+  AIRS-only routing by optical excess (no retrieval)          124.7 ±  3.5
+  classifier alone                                            118.4 ±  4.2
+  ordering of the retrieval budget            f=10%    f=20%    f=30%    f=50%
+
+== q = 1.0, target CH4 (359 targets on average): targets lost, mean over draws
+  AIRS-only routing by optical excess (no retrieval)           19.0 ±  0.0   acc  78.5 %  recall hazed/clean targets  54/nan %
+  classifier alone                                             19.0 ±  0.0   acc  72.7 %  recall hazed/clean targets  27/nan %
+  ordering of the retrieval budget            f=10%    f=20%    f=30%    f=50%   | at f=20 %: acc, recall hazed/clean
+
+== q = 1.0, target H2O (364 targets on average): targets lost, mean over draws
+  AIRS-only routing by optical excess (no retrieval)           81.0 ±  0.0   acc  66.2 %  recall hazed/clean targets  22/nan %
+  classifier alone                                             86.0 ±  0.0   acc  64.1 %  recall hazed/clean targets   7/nan %
+  ordering of the retrieval budget            f=10%    f=20%    f=30%    f=50%   | at f=20 %: acc, recall hazed/clean
+
+== q = 1.0, target joint (576 targets on average): targets lost, mean over draws
+  AIRS-only routing by optical excess (no retrieval)          139.0 ±  0.0
+  classifier alone                                            122.0 ±  0.0
+  ordering of the retrieval budget            f=10%    f=20%    f=30%    f=50%
+
+== detection: share of hazed / clean planets inside the fraction f each rule ranks most suspect (q = 0.2, mean over draws)
+  optical        f=10%:  35 /   4 %  f=20%:  60 /  10 %  f=30%:  71 /  20 %  f=50%:  86 /  41 %
+  disagree       f=10%:  13 /   9 %  f=20%:  29 /  18 %  f=30%:  44 /  26 %  f=50%:  66 /  46 %
+  bandmetric     f=10%:   7 /  11 %  f=20%:  14 /  21 %  f=30%:  24 /  32 %  f=50%:  39 /  53 %
+  margin         f=10%:   2 /  12 %  f=20%:   6 /  23 %  f=30%:  12 /  34 %  f=50%:  29 /  55 %
+  ensemble       f=10%:   4 /  11 %  f=20%:   9 /  23 %  f=30%:  16 /  33 %  f=50%:  34 /  54 %
+  mahalanobis    f=10%:  31 /   5 %  f=20%:  46 /  14 %  f=30%:  61 /  22 %  f=50%:  80 /  43 %
+  knn            f=10%:  19 /   8 %  f=20%:  31 /  17 %  f=30%:  43 /  27 %  f=50%:  65 /  46 %
+  pca_recon      f=10%:  36 /   4 %  f=20%:  56 /  11 %  f=30%:  69 /  20 %  f=50%:  86 /  41 %
