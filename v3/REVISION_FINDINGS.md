@@ -774,6 +774,60 @@ errors of F2 are of the recoverable class for the muted planets and not for the 
 clean-accuracy cost and the fact that it recovers fewer CH₄ reductions (2–3 of 6) than the AIRS-only
 routing (5 of 6) at no retraining. It is not the contribution; the error-class result is.
 
+**Four independent reviews of the manuscript, and what they changed (2026-10-28).** Four reviewers (a
+referee in the field, a methods and reporting referee, a numbers auditor and an editorial reader) read the
+28 October draft independently. Two found, and the code confirms, that every retrieval in the paper runs on
+the noise-free spectrum with the Tier-1 σ only in the likelihood (`identifiability_calibrate.py` adds a noise
+draw only under `--noisy`), while the classifier is scored on one noisy realisation; the paper did not say so.
+They also found that the retrieval's abundance prior (10⁻⁹–10⁻², POP-III's) is wider than POP-I's
+(10⁻⁷–10⁻²), so an uninformative spectrum already gives p_true = 5/7 = 0.71 for an absent label and 0.29 for a
+present one: an absent label reaches 0.95 on a Bayes factor of 8, a present one needs 47, and the retrieval's
+"ceiling" (92–94 %) is 97–98 % on absent labels and 82–88 % on present ones. Other verified items: the five
+decline rules' thresholds are quantiles of the clean POP-I *test* scores (`np.quantile(s0[valid], 1 -
+DECLINE)` on `S["clean"]`), not held out, so "flags 10 % of clean" is by construction; Table 8's random row is
+one draw; the 0.84 level, the introduced/shared split and the E3 expectations (set after the 124-planet pilot
+of the same test) are post hoc relative to the 16 October file; Table 10 omitted several committed
+expectations (A2's CO₂ clause, A4, A7, P4, P5, C4, C5, and B5–B7, never run); Jaeger et al. (ref. 16) is cited
+for a claim its paper argues against; and twenty numbers disagreed with the result files (the auditor's list:
+14 not 15 of 16 pairs, 7–17 % not 7–16 %, −17.5 not −17.8, TOI-270 d's AIRS-only retrained verdict, the
+H₂O labels of the three AIRS-only planets counted in 22/35, filled-bin ranges, retraining shares, muting 3.1–5.3
+and 1.7–2.2, 0.5 not 0.3 points, a third not a sixth of H₂O labels, H₂O omitted from two ranges, NH₃ 19 % at
+0.84, 98 % against ≥ 99 %, AUROC 0.47–0.63, 0.44–0.52, CO₂ shared 53 %). All are corrected in the rewrite.
+
+**The retrieval on the classifier's own noisy realisation, clean spectra (2026-10-28;
+`identifiability_calibrate.py --noisy --random-sample --n 200 --jobs 9`, 7.4 h; `noisy_vs_noisefree.py`).**
+A fixed random 200 of the 955 planets (SEED + 11), retrieved on the same noise draw the classifier reads
+(SEED + 405, the training draw consumed first). Against the noise-free posteriors of the same planets:
+decidable fractions at 0.95 move by at most 5 points (CH₄ 70.5 → 65.0 %, H₂O 44.0 → 48.5, CO₂ 55.0 → 55.5,
+NH₃ 66.5 → 65.5), but the labels move under them: 5–11 % of labels lose decidability under the draw and 5–12 %
+gain it, the correlation of p_true between the two runs is 0.67–0.79. The retrieval's accuracy on the
+realisation is 3–6 points lower (CH₄ 95.5 → 92.5, H₂O 90.0 → 84.0, CO₂ 95.0 → 89.5, NH₃ 92.5 → 91.0 %), and
+labels with p_true < 0.05 appear: 0 of 800 noise-free, 8 of 800 (1.0 %) on the realisation; the "one misled
+label in 3,820" of the noise-free population is a property of noise-free data. Of the four learners' 590
+errors on these 200 realisations, 18.5 % are "recoverable" by the noise-free posterior (CH₄ 29.6, H₂O 16.1, CO₂
+14.1, NH₃ 17.0 %), 14.9 % are decidable by the noisy posterior, and the noisy retrieval gets 60 % of them
+right at p ≥ 0.5 (noise-free: 73 %), most of that from the prior's absent default. So on clean spectra the
+recoverable share defined by the expected posterior is an upper bound that overstates by about a fifth of
+itself, the population prevalence of undecidable labels is robust to the definition, and the retrieval's
+confident-error rate on data is about 1 % rather than 0.03 %. The hazed-spectrum runs (free-haze and
+clear-model on the same 200 realisations) follow.
+
+**Cheap checks from data in hand (2026-10-28).** Table 8's random row over 200 draws (`triage_spread.py`):
+CH₄ 16.2 ± 1.4, 12.3 ± 1.6, 9.5 ± 1.7, 4.4 ± 1.6, 1.7 ± 1.1 targets at f = 10–70 %, so k-NN (8 at 20 %)
+and Mahalanobis (9) beat random by 2–3 standard deviations at f = 20–30 % and nothing else does; for H₂O
+every rule is within noise of random or worse. Table 9 spreads over the 20 draws (q = 0.2, f = 20 %): optical
+12.6 ± 2.1, oracle 12.4 ± 1.9, Mahalanobis 12.6 ± 1.7, k-NN 13.5 ± 2.0, PCA 14.4 ± 1.8, random 20.1 ± 3.6,
+margin 19.6 ± 3.5, optical → clear-model 71.0 ± 7.7; hazed recall optical 80 ± 4, oracle 81 ± 4, Mahalanobis
+64 ± 4 %. The optical score, the oracle and the Mahalanobis rule are within one standard deviation of each
+other in targets lost; the score's advantage over the distance rules is recall and selectivity, not targets at
+this budget. Decidability by Bayes factor > 19 against the retrieval prior's odds instead of p_true > 0.95:
+undecidable 39/62/50/35 % (CH₄/H₂O/CO₂/NH₃) against 32/54/44/32 %; by class at 0.95, present labels are
+undecidable in 38/57/58/46 % and absent in 29/52/35/23 %. Muting bootstrap (`muting_bootstrap.py`, 2,000
+resamples of the real depths with their errors, correction for the doubled noise): the five giants with
+published abundance sets keep 68 % intervals of 4.35–4.55 (WASP-107 b), 5.13–5.55 (HAT-P-26 b), 3.11–3.95
+(GJ 3470 b), 2.66–3.86 (WASP-166 b) and 3.67–3.79 (WASP-39 b), beyond the population's maximum at their bulk
+parameters in 100 % of resamples; the sub-Neptunes' intervals (0.6–2.6) sit inside the population's range.
+
 ### What these add up to, provisionally
 
 A simulator-trained classifier that reproduces its published in-simulator accuracies is mostly right

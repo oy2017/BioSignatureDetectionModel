@@ -1,0 +1,16 @@
+Bootstrap of the muting factors (2000 resamples of the real depths with their per-bin errors); muting = clear twin / noise-corrected real dispersion
+planet      bins  muting   16th   84th max in prior P(muting > max in prior)
+TOI-270d      87    0.66   0.62   0.73         1.97                     0.00
+K2-18b        99    0.72   0.66   0.83         2.62                     0.00
+K2-18b-alt    88    1.71   1.22   2.57         2.65                     0.25   (249 resamples with no excess over noise)
+TOI-421b      89    3.39   2.33   5.40         3.67                     0.48   (371 resamples with no excess over noise)
+HAT-P-18b     48    3.70   3.22   4.57         3.27                     0.82
+WASP-107b     54    4.45   4.35   4.55         2.19                     1.00
+HD189733b     56    1.73   1.69   1.79         2.25                     0.00
+HAT-P-26b     35    5.32   5.13   5.55         2.37                     1.00
+GJ3470b       53    3.45   3.11   3.95         1.95                     1.00
+WASP-166b     90    3.07   2.66   3.86         1.78                     1.00
+WASP-39b     103    3.73   3.67   3.79         2.04                     1.00
+TOI-1231b     74    1.55   1.31   2.05         1.88                     0.24   (4 resamples with no excess over noise)
+K2-18b-hu     88    2.00   1.77   2.32         2.65                     0.03
+TOI-270d-hm   41    1.04   0.91   1.29         1.92                     0.01
