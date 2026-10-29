@@ -911,8 +911,13 @@ scatter and the sub-point residual.
   reproduced within 0.5 points of the in-sample value (e.g. optical under haze 99.8 vs 99.8 %, Mahalanobis 79.4
   vs 79.3 %, k-NN under spots 45.6 vs 45.4 %); the clean rates are 7.6-10.7 % (margin 7.6 % because of ties,
   as in-sample). The "thresholds not held out" limitation is closed; stated in the limitations.
-* **Table 11 over noise draws** (`table11_spread.py`, `test_cases(noise_seed=d)`): see
-  `results/table11_spread.txt` (filled below).
+* **Table 11 over noise draws** (`table11_spread.py`, `test_cases(noise_seed=d)`, `results/table11_spread.{txt,csv}`;
+  ten draws, learners fixed): CH₄ targets lost, classifier alone 16.0 ± 3.1 clean / 35.8 ± 4.8 haze / 32.6 ± 4.4
+  spots / 37.4 ± 3.2 noise ×2; routed by the optical flag 17.1 ± 3.1 / 26.8 ± 4.8 / 27.9 ± 3.4 / 37.6 ± 2.9;
+  AIRS-only everywhere 25.8 / 27.6 / 29.0 / 48.4. The committed draw (20 / 38 / 29 / 37; routed 19 / 26 / 28 / 37)
+  is a high clean draw, so "recovers 12 of the 18 targets haze adds" becomes 9 of 20 on average (half, not two
+  thirds), and the spot benefit (1 in the committed draw) is 5 of 17 on average. Declined-to-the-back rules 22-108;
+  band metric alone 107-112; random 142-147. Manuscript 3.6, Table 11 caption and limitations updated.
 
 ### What these add up to, provisionally
 

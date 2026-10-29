@@ -1,0 +1,521 @@
+draw,case,strategy,targets,lost
+0,clean,classifier alone,359,20
+0,clean,AIRS-only variant everywhere,359,27
+0,clean,band metric alone,359,102
+0,clean,random,359,136
+0,clean,"margin, declined to the back",359,65
+0,clean,"ensemble, declined to the back",359,62
+0,clean,"mahalanobis, declined to the back",359,26
+0,clean,"knn, declined to the back",359,21
+0,clean,"pca_recon, declined to the back",359,38
+0,clean,routed by optical to AIRS-only,359,19
+0,clean,routed by disagree to AIRS-only,359,21
+0,clean,routed by bandmetric to AIRS-only,359,20
+0,clean,routed by muting to AIRS-only,359,22
+0,haze3e7,classifier alone,359,38
+0,haze3e7,AIRS-only variant everywhere,359,27
+0,haze3e7,band metric alone,359,103
+0,haze3e7,random,359,155
+0,haze3e7,"margin, declined to the back",359,105
+0,haze3e7,"ensemble, declined to the back",359,112
+0,haze3e7,"mahalanobis, declined to the back",359,53
+0,haze3e7,"knn, declined to the back",359,42
+0,haze3e7,"pca_recon, declined to the back",359,69
+0,haze3e7,routed by optical to AIRS-only,359,26
+0,haze3e7,routed by disagree to AIRS-only,359,37
+0,haze3e7,routed by bandmetric to AIRS-only,359,38
+0,haze3e7,routed by muting to AIRS-only,359,38
+0,spots20,classifier alone,359,29
+0,spots20,AIRS-only variant everywhere,359,26
+0,spots20,band metric alone,359,110
+0,spots20,random,359,145
+0,spots20,"margin, declined to the back",359,79
+0,spots20,"ensemble, declined to the back",359,79
+0,spots20,"mahalanobis, declined to the back",359,99
+0,spots20,"knn, declined to the back",359,111
+0,spots20,"pca_recon, declined to the back",359,74
+0,spots20,routed by optical to AIRS-only,359,28
+0,spots20,routed by disagree to AIRS-only,359,30
+0,spots20,routed by bandmetric to AIRS-only,359,27
+0,spots20,routed by muting to AIRS-only,359,30
+0,white_x2,classifier alone,359,37
+0,white_x2,AIRS-only variant everywhere,359,57
+0,white_x2,band metric alone,359,108
+0,white_x2,random,359,142
+0,white_x2,"margin, declined to the back",359,105
+0,white_x2,"ensemble, declined to the back",359,106
+0,white_x2,"mahalanobis, declined to the back",359,82
+0,white_x2,"knn, declined to the back",359,90
+0,white_x2,"pca_recon, declined to the back",359,64
+0,white_x2,routed by optical to AIRS-only,359,37
+0,white_x2,routed by disagree to AIRS-only,359,40
+0,white_x2,routed by bandmetric to AIRS-only,359,36
+0,white_x2,routed by muting to AIRS-only,359,37
+1,clean,classifier alone,359,15
+1,clean,AIRS-only variant everywhere,359,26
+1,clean,band metric alone,359,100
+1,clean,random,359,145
+1,clean,"margin, declined to the back",359,64
+1,clean,"ensemble, declined to the back",359,60
+1,clean,"mahalanobis, declined to the back",359,23
+1,clean,"knn, declined to the back",359,29
+1,clean,"pca_recon, declined to the back",359,37
+1,clean,routed by optical to AIRS-only,359,17
+1,clean,routed by disagree to AIRS-only,359,17
+1,clean,routed by bandmetric to AIRS-only,359,16
+1,clean,routed by muting to AIRS-only,359,19
+1,haze3e7,classifier alone,359,33
+1,haze3e7,AIRS-only variant everywhere,359,31
+1,haze3e7,band metric alone,359,109
+1,haze3e7,random,359,146
+1,haze3e7,"margin, declined to the back",359,85
+1,haze3e7,"ensemble, declined to the back",359,99
+1,haze3e7,"mahalanobis, declined to the back",359,46
+1,haze3e7,"knn, declined to the back",359,43
+1,haze3e7,"pca_recon, declined to the back",359,62
+1,haze3e7,routed by optical to AIRS-only,359,30
+1,haze3e7,routed by disagree to AIRS-only,359,31
+1,haze3e7,routed by bandmetric to AIRS-only,359,32
+1,haze3e7,routed by muting to AIRS-only,359,33
+1,spots20,classifier alone,359,37
+1,spots20,AIRS-only variant everywhere,359,31
+1,spots20,band metric alone,359,109
+1,spots20,random,359,146
+1,spots20,"margin, declined to the back",359,73
+1,spots20,"ensemble, declined to the back",359,87
+1,spots20,"mahalanobis, declined to the back",359,96
+1,spots20,"knn, declined to the back",359,99
+1,spots20,"pca_recon, declined to the back",359,83
+1,spots20,routed by optical to AIRS-only,359,31
+1,spots20,routed by disagree to AIRS-only,359,37
+1,spots20,routed by bandmetric to AIRS-only,359,33
+1,spots20,routed by muting to AIRS-only,359,41
+1,white_x2,classifier alone,359,40
+1,white_x2,AIRS-only variant everywhere,359,47
+1,white_x2,band metric alone,359,114
+1,white_x2,random,359,140
+1,white_x2,"margin, declined to the back",359,87
+1,white_x2,"ensemble, declined to the back",359,107
+1,white_x2,"mahalanobis, declined to the back",359,114
+1,white_x2,"knn, declined to the back",359,86
+1,white_x2,"pca_recon, declined to the back",359,54
+1,white_x2,routed by optical to AIRS-only,359,39
+1,white_x2,routed by disagree to AIRS-only,359,40
+1,white_x2,routed by bandmetric to AIRS-only,359,38
+1,white_x2,routed by muting to AIRS-only,359,40
+2,clean,classifier alone,359,14
+2,clean,AIRS-only variant everywhere,359,24
+2,clean,band metric alone,359,109
+2,clean,random,359,139
+2,clean,"margin, declined to the back",359,64
+2,clean,"ensemble, declined to the back",359,67
+2,clean,"mahalanobis, declined to the back",359,30
+2,clean,"knn, declined to the back",359,24
+2,clean,"pca_recon, declined to the back",359,36
+2,clean,routed by optical to AIRS-only,359,16
+2,clean,routed by disagree to AIRS-only,359,13
+2,clean,routed by bandmetric to AIRS-only,359,14
+2,clean,routed by muting to AIRS-only,359,15
+2,haze3e7,classifier alone,359,32
+2,haze3e7,AIRS-only variant everywhere,359,22
+2,haze3e7,band metric alone,359,111
+2,haze3e7,random,359,143
+2,haze3e7,"margin, declined to the back",359,93
+2,haze3e7,"ensemble, declined to the back",359,114
+2,haze3e7,"mahalanobis, declined to the back",359,45
+2,haze3e7,"knn, declined to the back",359,41
+2,haze3e7,"pca_recon, declined to the back",359,64
+2,haze3e7,routed by optical to AIRS-only,359,22
+2,haze3e7,routed by disagree to AIRS-only,359,33
+2,haze3e7,routed by bandmetric to AIRS-only,359,32
+2,haze3e7,routed by muting to AIRS-only,359,37
+2,spots20,classifier alone,359,35
+2,spots20,AIRS-only variant everywhere,359,23
+2,spots20,band metric alone,359,117
+2,spots20,random,359,155
+2,spots20,"margin, declined to the back",359,72
+2,spots20,"ensemble, declined to the back",359,95
+2,spots20,"mahalanobis, declined to the back",359,111
+2,spots20,"knn, declined to the back",359,102
+2,spots20,"pca_recon, declined to the back",359,86
+2,spots20,routed by optical to AIRS-only,359,22
+2,spots20,routed by disagree to AIRS-only,359,35
+2,spots20,routed by bandmetric to AIRS-only,359,27
+2,spots20,routed by muting to AIRS-only,359,34
+2,white_x2,classifier alone,359,33
+2,white_x2,AIRS-only variant everywhere,359,44
+2,white_x2,band metric alone,359,117
+2,white_x2,random,359,150
+2,white_x2,"margin, declined to the back",359,87
+2,white_x2,"ensemble, declined to the back",359,108
+2,white_x2,"mahalanobis, declined to the back",359,92
+2,white_x2,"knn, declined to the back",359,83
+2,white_x2,"pca_recon, declined to the back",359,70
+2,white_x2,routed by optical to AIRS-only,359,34
+2,white_x2,routed by disagree to AIRS-only,359,36
+2,white_x2,routed by bandmetric to AIRS-only,359,32
+2,white_x2,routed by muting to AIRS-only,359,33
+3,clean,classifier alone,359,22
+3,clean,AIRS-only variant everywhere,359,31
+3,clean,band metric alone,359,110
+3,clean,random,359,156
+3,clean,"margin, declined to the back",359,69
+3,clean,"ensemble, declined to the back",359,59
+3,clean,"mahalanobis, declined to the back",359,27
+3,clean,"knn, declined to the back",359,25
+3,clean,"pca_recon, declined to the back",359,43
+3,clean,routed by optical to AIRS-only,359,23
+3,clean,routed by disagree to AIRS-only,359,28
+3,clean,routed by bandmetric to AIRS-only,359,21
+3,clean,routed by muting to AIRS-only,359,25
+3,haze3e7,classifier alone,359,39
+3,haze3e7,AIRS-only variant everywhere,359,37
+3,haze3e7,band metric alone,359,110
+3,haze3e7,random,359,128
+3,haze3e7,"margin, declined to the back",359,91
+3,haze3e7,"ensemble, declined to the back",359,112
+3,haze3e7,"mahalanobis, declined to the back",359,49
+3,haze3e7,"knn, declined to the back",359,48
+3,haze3e7,"pca_recon, declined to the back",359,65
+3,haze3e7,routed by optical to AIRS-only,359,36
+3,haze3e7,routed by disagree to AIRS-only,359,37
+3,haze3e7,routed by bandmetric to AIRS-only,359,42
+3,haze3e7,routed by muting to AIRS-only,359,41
+3,spots20,classifier alone,359,40
+3,spots20,AIRS-only variant everywhere,359,34
+3,spots20,band metric alone,359,112
+3,spots20,random,359,136
+3,spots20,"margin, declined to the back",359,69
+3,spots20,"ensemble, declined to the back",359,97
+3,spots20,"mahalanobis, declined to the back",359,98
+3,spots20,"knn, declined to the back",359,112
+3,spots20,"pca_recon, declined to the back",359,93
+3,spots20,routed by optical to AIRS-only,359,32
+3,spots20,routed by disagree to AIRS-only,359,37
+3,spots20,routed by bandmetric to AIRS-only,359,32
+3,spots20,routed by muting to AIRS-only,359,41
+3,white_x2,classifier alone,359,43
+3,white_x2,AIRS-only variant everywhere,359,51
+3,white_x2,band metric alone,359,106
+3,white_x2,random,359,132
+3,white_x2,"margin, declined to the back",359,78
+3,white_x2,"ensemble, declined to the back",359,118
+3,white_x2,"mahalanobis, declined to the back",359,100
+3,white_x2,"knn, declined to the back",359,98
+3,white_x2,"pca_recon, declined to the back",359,69
+3,white_x2,routed by optical to AIRS-only,359,43
+3,white_x2,routed by disagree to AIRS-only,359,47
+3,white_x2,routed by bandmetric to AIRS-only,359,42
+3,white_x2,routed by muting to AIRS-only,359,43
+4,clean,classifier alone,359,14
+4,clean,AIRS-only variant everywhere,359,22
+4,clean,band metric alone,359,114
+4,clean,random,359,152
+4,clean,"margin, declined to the back",359,66
+4,clean,"ensemble, declined to the back",359,55
+4,clean,"mahalanobis, declined to the back",359,34
+4,clean,"knn, declined to the back",359,24
+4,clean,"pca_recon, declined to the back",359,42
+4,clean,routed by optical to AIRS-only,359,15
+4,clean,routed by disagree to AIRS-only,359,17
+4,clean,routed by bandmetric to AIRS-only,359,14
+4,clean,routed by muting to AIRS-only,359,13
+4,haze3e7,classifier alone,359,29
+4,haze3e7,AIRS-only variant everywhere,359,27
+4,haze3e7,band metric alone,359,117
+4,haze3e7,random,359,146
+4,haze3e7,"margin, declined to the back",359,86
+4,haze3e7,"ensemble, declined to the back",359,109
+4,haze3e7,"mahalanobis, declined to the back",359,54
+4,haze3e7,"knn, declined to the back",359,46
+4,haze3e7,"pca_recon, declined to the back",359,69
+4,haze3e7,routed by optical to AIRS-only,359,26
+4,haze3e7,routed by disagree to AIRS-only,359,25
+4,haze3e7,routed by bandmetric to AIRS-only,359,33
+4,haze3e7,routed by muting to AIRS-only,359,28
+4,spots20,classifier alone,359,29
+4,spots20,AIRS-only variant everywhere,359,30
+4,spots20,band metric alone,359,118
+4,spots20,random,359,153
+4,spots20,"margin, declined to the back",359,70
+4,spots20,"ensemble, declined to the back",359,89
+4,spots20,"mahalanobis, declined to the back",359,108
+4,spots20,"knn, declined to the back",359,109
+4,spots20,"pca_recon, declined to the back",359,97
+4,spots20,routed by optical to AIRS-only,359,26
+4,spots20,routed by disagree to AIRS-only,359,27
+4,spots20,routed by bandmetric to AIRS-only,359,27
+4,spots20,routed by muting to AIRS-only,359,26
+4,white_x2,classifier alone,359,36
+4,white_x2,AIRS-only variant everywhere,359,52
+4,white_x2,band metric alone,359,121
+4,white_x2,random,359,132
+4,white_x2,"margin, declined to the back",359,98
+4,white_x2,"ensemble, declined to the back",359,106
+4,white_x2,"mahalanobis, declined to the back",359,106
+4,white_x2,"knn, declined to the back",359,90
+4,white_x2,"pca_recon, declined to the back",359,67
+4,white_x2,routed by optical to AIRS-only,359,37
+4,white_x2,routed by disagree to AIRS-only,359,39
+4,white_x2,routed by bandmetric to AIRS-only,359,37
+4,white_x2,routed by muting to AIRS-only,359,36
+5,clean,classifier alone,359,13
+5,clean,AIRS-only variant everywhere,359,27
+5,clean,band metric alone,359,107
+5,clean,random,359,155
+5,clean,"margin, declined to the back",359,72
+5,clean,"ensemble, declined to the back",359,51
+5,clean,"mahalanobis, declined to the back",359,26
+5,clean,"knn, declined to the back",359,16
+5,clean,"pca_recon, declined to the back",359,35
+5,clean,routed by optical to AIRS-only,359,13
+5,clean,routed by disagree to AIRS-only,359,18
+5,clean,routed by bandmetric to AIRS-only,359,13
+5,clean,routed by muting to AIRS-only,359,16
+5,haze3e7,classifier alone,359,35
+5,haze3e7,AIRS-only variant everywhere,359,26
+5,haze3e7,band metric alone,359,113
+5,haze3e7,random,359,124
+5,haze3e7,"margin, declined to the back",359,85
+5,haze3e7,"ensemble, declined to the back",359,102
+5,haze3e7,"mahalanobis, declined to the back",359,53
+5,haze3e7,"knn, declined to the back",359,46
+5,haze3e7,"pca_recon, declined to the back",359,56
+5,haze3e7,routed by optical to AIRS-only,359,25
+5,haze3e7,routed by disagree to AIRS-only,359,33
+5,haze3e7,routed by bandmetric to AIRS-only,359,30
+5,haze3e7,routed by muting to AIRS-only,359,35
+5,spots20,classifier alone,359,30
+5,spots20,AIRS-only variant everywhere,359,29
+5,spots20,band metric alone,359,109
+5,spots20,random,359,139
+5,spots20,"margin, declined to the back",359,69
+5,spots20,"ensemble, declined to the back",359,89
+5,spots20,"mahalanobis, declined to the back",359,110
+5,spots20,"knn, declined to the back",359,101
+5,spots20,"pca_recon, declined to the back",359,78
+5,spots20,routed by optical to AIRS-only,359,30
+5,spots20,routed by disagree to AIRS-only,359,30
+5,spots20,routed by bandmetric to AIRS-only,359,27
+5,spots20,routed by muting to AIRS-only,359,29
+5,white_x2,classifier alone,359,33
+5,white_x2,AIRS-only variant everywhere,359,45
+5,white_x2,band metric alone,359,111
+5,white_x2,random,359,150
+5,white_x2,"margin, declined to the back",359,86
+5,white_x2,"ensemble, declined to the back",359,111
+5,white_x2,"mahalanobis, declined to the back",359,102
+5,white_x2,"knn, declined to the back",359,104
+5,white_x2,"pca_recon, declined to the back",359,70
+5,white_x2,routed by optical to AIRS-only,359,34
+5,white_x2,routed by disagree to AIRS-only,359,36
+5,white_x2,routed by bandmetric to AIRS-only,359,33
+5,white_x2,routed by muting to AIRS-only,359,33
+6,clean,classifier alone,359,17
+6,clean,AIRS-only variant everywhere,359,31
+6,clean,band metric alone,359,108
+6,clean,random,359,149
+6,clean,"margin, declined to the back",359,69
+6,clean,"ensemble, declined to the back",359,62
+6,clean,"mahalanobis, declined to the back",359,31
+6,clean,"knn, declined to the back",359,22
+6,clean,"pca_recon, declined to the back",359,32
+6,clean,routed by optical to AIRS-only,359,19
+6,clean,routed by disagree to AIRS-only,359,21
+6,clean,routed by bandmetric to AIRS-only,359,18
+6,clean,routed by muting to AIRS-only,359,20
+6,haze3e7,classifier alone,359,43
+6,haze3e7,AIRS-only variant everywhere,359,33
+6,haze3e7,band metric alone,359,106
+6,haze3e7,random,359,147
+6,haze3e7,"margin, declined to the back",359,99
+6,haze3e7,"ensemble, declined to the back",359,107
+6,haze3e7,"mahalanobis, declined to the back",359,51
+6,haze3e7,"knn, declined to the back",359,48
+6,haze3e7,"pca_recon, declined to the back",359,62
+6,haze3e7,routed by optical to AIRS-only,359,33
+6,haze3e7,routed by disagree to AIRS-only,359,40
+6,haze3e7,routed by bandmetric to AIRS-only,359,40
+6,haze3e7,routed by muting to AIRS-only,359,41
+6,spots20,classifier alone,359,38
+6,spots20,AIRS-only variant everywhere,359,30
+6,spots20,band metric alone,359,116
+6,spots20,random,359,141
+6,spots20,"margin, declined to the back",359,85
+6,spots20,"ensemble, declined to the back",359,89
+6,spots20,"mahalanobis, declined to the back",359,98
+6,spots20,"knn, declined to the back",359,104
+6,spots20,"pca_recon, declined to the back",359,86
+6,spots20,routed by optical to AIRS-only,359,27
+6,spots20,routed by disagree to AIRS-only,359,36
+6,spots20,routed by bandmetric to AIRS-only,359,34
+6,spots20,routed by muting to AIRS-only,359,35
+6,white_x2,classifier alone,359,39
+6,white_x2,AIRS-only variant everywhere,359,54
+6,white_x2,band metric alone,359,108
+6,white_x2,random,359,146
+6,white_x2,"margin, declined to the back",359,91
+6,white_x2,"ensemble, declined to the back",359,109
+6,white_x2,"mahalanobis, declined to the back",359,106
+6,white_x2,"knn, declined to the back",359,99
+6,white_x2,"pca_recon, declined to the back",359,75
+6,white_x2,routed by optical to AIRS-only,359,40
+6,white_x2,routed by disagree to AIRS-only,359,40
+6,white_x2,routed by bandmetric to AIRS-only,359,37
+6,white_x2,routed by muting to AIRS-only,359,39
+7,clean,classifier alone,359,14
+7,clean,AIRS-only variant everywhere,359,23
+7,clean,band metric alone,359,105
+7,clean,random,359,140
+7,clean,"margin, declined to the back",359,67
+7,clean,"ensemble, declined to the back",359,56
+7,clean,"mahalanobis, declined to the back",359,27
+7,clean,"knn, declined to the back",359,20
+7,clean,"pca_recon, declined to the back",359,37
+7,clean,routed by optical to AIRS-only,359,17
+7,clean,routed by disagree to AIRS-only,359,17
+7,clean,routed by bandmetric to AIRS-only,359,14
+7,clean,routed by muting to AIRS-only,359,14
+7,haze3e7,classifier alone,359,31
+7,haze3e7,AIRS-only variant everywhere,359,27
+7,haze3e7,band metric alone,359,108
+7,haze3e7,random,359,143
+7,haze3e7,"margin, declined to the back",359,81
+7,haze3e7,"ensemble, declined to the back",359,115
+7,haze3e7,"mahalanobis, declined to the back",359,55
+7,haze3e7,"knn, declined to the back",359,48
+7,haze3e7,"pca_recon, declined to the back",359,61
+7,haze3e7,routed by optical to AIRS-only,359,26
+7,haze3e7,routed by disagree to AIRS-only,359,29
+7,haze3e7,routed by bandmetric to AIRS-only,359,37
+7,haze3e7,routed by muting to AIRS-only,359,31
+7,spots20,classifier alone,359,29
+7,spots20,AIRS-only variant everywhere,359,31
+7,spots20,band metric alone,359,110
+7,spots20,random,359,144
+7,spots20,"margin, declined to the back",359,72
+7,spots20,"ensemble, declined to the back",359,93
+7,spots20,"mahalanobis, declined to the back",359,105
+7,spots20,"knn, declined to the back",359,114
+7,spots20,"pca_recon, declined to the back",359,81
+7,spots20,routed by optical to AIRS-only,359,31
+7,spots20,routed by disagree to AIRS-only,359,25
+7,spots20,routed by bandmetric to AIRS-only,359,23
+7,spots20,routed by muting to AIRS-only,359,30
+7,white_x2,classifier alone,359,37
+7,white_x2,AIRS-only variant everywhere,359,47
+7,white_x2,band metric alone,359,109
+7,white_x2,random,359,138
+7,white_x2,"margin, declined to the back",359,93
+7,white_x2,"ensemble, declined to the back",359,105
+7,white_x2,"mahalanobis, declined to the back",359,104
+7,white_x2,"knn, declined to the back",359,83
+7,white_x2,"pca_recon, declined to the back",359,82
+7,white_x2,routed by optical to AIRS-only,359,37
+7,white_x2,routed by disagree to AIRS-only,359,38
+7,white_x2,routed by bandmetric to AIRS-only,359,36
+7,white_x2,routed by muting to AIRS-only,359,37
+8,clean,classifier alone,359,18
+8,clean,AIRS-only variant everywhere,359,23
+8,clean,band metric alone,359,106
+8,clean,random,359,152
+8,clean,"margin, declined to the back",359,64
+8,clean,"ensemble, declined to the back",359,60
+8,clean,"mahalanobis, declined to the back",359,28
+8,clean,"knn, declined to the back",359,24
+8,clean,"pca_recon, declined to the back",359,37
+8,clean,routed by optical to AIRS-only,359,19
+8,clean,routed by disagree to AIRS-only,359,22
+8,clean,routed by bandmetric to AIRS-only,359,17
+8,clean,routed by muting to AIRS-only,359,17
+8,haze3e7,classifier alone,359,43
+8,haze3e7,AIRS-only variant everywhere,359,22
+8,haze3e7,band metric alone,359,109
+8,haze3e7,random,359,138
+8,haze3e7,"margin, declined to the back",359,94
+8,haze3e7,"ensemble, declined to the back",359,108
+8,haze3e7,"mahalanobis, declined to the back",359,51
+8,haze3e7,"knn, declined to the back",359,48
+8,haze3e7,"pca_recon, declined to the back",359,61
+8,haze3e7,routed by optical to AIRS-only,359,21
+8,haze3e7,routed by disagree to AIRS-only,359,40
+8,haze3e7,routed by bandmetric to AIRS-only,359,40
+8,haze3e7,routed by muting to AIRS-only,359,41
+8,spots20,classifier alone,359,29
+8,spots20,AIRS-only variant everywhere,359,31
+8,spots20,band metric alone,359,111
+8,spots20,random,359,142
+8,spots20,"margin, declined to the back",359,78
+8,spots20,"ensemble, declined to the back",359,83
+8,spots20,"mahalanobis, declined to the back",359,104
+8,spots20,"knn, declined to the back",359,114
+8,spots20,"pca_recon, declined to the back",359,77
+8,spots20,routed by optical to AIRS-only,359,29
+8,spots20,routed by disagree to AIRS-only,359,28
+8,spots20,routed by bandmetric to AIRS-only,359,23
+8,spots20,routed by muting to AIRS-only,359,28
+8,white_x2,classifier alone,359,36
+8,white_x2,AIRS-only variant everywhere,359,44
+8,white_x2,band metric alone,359,118
+8,white_x2,random,359,148
+8,white_x2,"margin, declined to the back",359,84
+8,white_x2,"ensemble, declined to the back",359,97
+8,white_x2,"mahalanobis, declined to the back",359,97
+8,white_x2,"knn, declined to the back",359,92
+8,white_x2,"pca_recon, declined to the back",359,61
+8,white_x2,routed by optical to AIRS-only,359,35
+8,white_x2,routed by disagree to AIRS-only,359,36
+8,white_x2,routed by bandmetric to AIRS-only,359,37
+8,white_x2,routed by muting to AIRS-only,359,36
+9,clean,classifier alone,359,13
+9,clean,AIRS-only variant everywhere,359,24
+9,clean,band metric alone,359,105
+9,clean,random,359,148
+9,clean,"margin, declined to the back",359,60
+9,clean,"ensemble, declined to the back",359,58
+9,clean,"mahalanobis, declined to the back",359,23
+9,clean,"knn, declined to the back",359,19
+9,clean,"pca_recon, declined to the back",359,29
+9,clean,routed by optical to AIRS-only,359,13
+9,clean,routed by disagree to AIRS-only,359,14
+9,clean,routed by bandmetric to AIRS-only,359,14
+9,clean,routed by muting to AIRS-only,359,12
+9,haze3e7,classifier alone,359,35
+9,haze3e7,AIRS-only variant everywhere,359,24
+9,haze3e7,band metric alone,359,108
+9,haze3e7,random,359,145
+9,haze3e7,"margin, declined to the back",359,84
+9,haze3e7,"ensemble, declined to the back",359,98
+9,haze3e7,"mahalanobis, declined to the back",359,53
+9,haze3e7,"knn, declined to the back",359,45
+9,haze3e7,"pca_recon, declined to the back",359,54
+9,haze3e7,routed by optical to AIRS-only,359,23
+9,haze3e7,routed by disagree to AIRS-only,359,28
+9,haze3e7,routed by bandmetric to AIRS-only,359,33
+9,haze3e7,routed by muting to AIRS-only,359,34
+9,spots20,classifier alone,359,30
+9,spots20,AIRS-only variant everywhere,359,25
+9,spots20,band metric alone,359,112
+9,spots20,random,359,142
+9,spots20,"margin, declined to the back",359,86
+9,spots20,"ensemble, declined to the back",359,81
+9,spots20,"mahalanobis, declined to the back",359,106
+9,spots20,"knn, declined to the back",359,104
+9,spots20,"pca_recon, declined to the back",359,82
+9,spots20,routed by optical to AIRS-only,359,23
+9,spots20,routed by disagree to AIRS-only,359,29
+9,spots20,routed by bandmetric to AIRS-only,359,27
+9,spots20,routed by muting to AIRS-only,359,32
+9,white_x2,classifier alone,359,40
+9,white_x2,AIRS-only variant everywhere,359,43
+9,white_x2,band metric alone,359,111
+9,white_x2,random,359,144
+9,white_x2,"margin, declined to the back",359,88
+9,white_x2,"ensemble, declined to the back",359,95
+9,white_x2,"mahalanobis, declined to the back",359,82
+9,white_x2,"knn, declined to the back",359,97
+9,white_x2,"pca_recon, declined to the back",359,65
+9,white_x2,routed by optical to AIRS-only,359,40
+9,white_x2,routed by disagree to AIRS-only,359,38
+9,white_x2,routed by bandmetric to AIRS-only,359,40
+9,white_x2,routed by muting to AIRS-only,359,40
