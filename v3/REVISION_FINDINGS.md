@@ -1002,6 +1002,34 @@ departure, so which input set to fall back on depends on how far the departure r
 two levels measure. Paper-worthy as a sentence group in 3.6 and the Methods, not as a new method: it is
 the principle "route to the largest agreeing input set", and here it buys localisation, not accuracy.
 
+### F15. The panel extended from 13 to 22 reductions: the routing result holds on planets it had not seen
+
+Nine planets added (data via `fetch_jwst_data.sh`; labels fixed from the free-chemistry retrievals before any
+verdict was computed, 2026-10-29): GJ 9827 d, WASP-52 b, L 98-59 d, GJ 1214 b, TOI-732 c (LTT 3780 c),
+WASP-80 b, HD 209458 b, WASP-96 b, WASP-17 b; WASP-39 b is scored on the router too. Not obtainable: LTT 9779 b,
+WASP-69 b (transmission unpublished or MAST-only), WASP-52 b NIRISS (MAST-only; the G395H reduction of Pan et al.
+2026 is used instead). Scores (`results/jwst_panel/panel_summary.txt`): all inputs 35/51 (first batch 22/35),
+no-optical 40/53, AIRS-only 45/56; on the second batch alone 13/16, 15/18, 15/19, the same ordering.
+Router (`router_real.txt`, 23 reductions with WASP-39 b): none 37/53, optical 39/53, disagree 43/54, either 44/54,
+AIRS-only everywhere 47/58. Methane, eight reductions of five planets: all-input absent on 7, split on 1;
+either-router present on 5, split 1, absent 2 (TOI-270 d Felix; GJ 1214 b, whose label is a 3σ "suggestive" CH₄
+in a CO₂-dominated atmosphere). On the second batch the disagreement flag turned TOI-732 c's CH₄ absent → present
+and WASP-96 b's H₂O split → present, and changed no second-batch label for the worse; WASP-52 b's NH₃ goes
+absent → present under routing where the paper reports no evidence but no limit (unscored). Twin controls for
+TOI-732 c: real kNN 11.30 (declined), twin masked 5.91, twin CH₄ found 67 % (77 % with real errors), real 22 %;
+muting 0.97 (0.76-1.47), inside the prior; the retrained sets do not move it, consistent with the within-prior rule.
+Muting census now ten giants: WASP-17 b 3.99 (3.84-4.18) vs prior max 1.96, WASP-80 b 2.89 (2.48-3.71) vs 1.66,
+HD 209458 b 2.35 (2.28-2.44) vs 1.33, all beyond in every resample; WASP-96 b 1.49 (1.39-1.61) vs 1.94 and
+WASP-52 b 2.26 (2.17-2.36) vs 2.39 inside. So eight of ten giants beyond the prior, the two inside being the two
+least muted; "five of five" is replaced throughout. GJ 9827 d: no dispersion above its errors in 63 % of resamples
+(muting undefined); its H₂O is missed by every variant although the twin is found in 99 %, the data's precision.
+Retrained design on the extended panel: haze 41/54, haze + deck 43/54 (was 26/36, 27/36). Distance rule: five of
+the eight methane reductions declined (GJ 1214 b 11.32, TOI-732 c 11.30 join the three), the giants not.
+Reading: the real-panel routing result was a count of six on three planets; it is now a count of eight on five,
+with two of the three added methane-bearing spectra recovered by the flags and the one not recovered the weakest
+label of the set. The giants' muting generalises with two informative exceptions. Written into the abstract, 2.6
+(Table 3), 3.5 (Table 8, Figure 4), 3.6, Discussion, Table C1 and both letters; refs 70-81 added.
+
 ### What these add up to, provisionally
 
 A simulator-trained classifier that reproduces its published in-simulator accuracies is mostly right

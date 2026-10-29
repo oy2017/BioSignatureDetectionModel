@@ -1,0 +1,65 @@
+GJ9827d: Piaulet-Ghorayeb et al. 2024 (ApJL machine-readable table A2), supreme-SPOON NIRISS SOSS at R = 100
+segments: SOSS-o2 35 pts 0.60-0.85 um, offset +0 ppm; SOSS-o1 121 pts 0.85-2.81 um, offset +0 ppm
+coverage by channel: AIRS-CH0 32/69 filled, AIRS-CH1 21/21 filled, FGS1 0/1 filled, FGS2 0/1 filled, NIRSpec 0/11 filled, VISPhot 1/1 filled
+== GJ9827d [Piaulet-Ghorayeb et al. 2024 (ApJL machine-readable table A2), supreme-SPOON NIRISS SOSS at R = 100; 54 of 104 bins flat-filled]: verdicts at the delivered precision (1 = present)
+-- threshold 1e-5
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       0.0  1.0  0.0  0.0
+           CO2       1.0  1.0  0.0  0.0
+           H2O       1.0  0.0  0.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  0.0  0.0  0.0
+           H2O       0.0  1.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  0.0  0.0  0.0
+           H2O       1.0  1.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+-- threshold 1e-4
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  1.0  0.0  0.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  0.0  0.0  0.0
+           H2O       0.0  1.0  0.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  0.0  0.0  0.0
+           H2O       0.0  1.0  0.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+-- threshold 1e-3
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  0.0  0.0  0.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+== GJ9827d [Piaulet-Ghorayeb et al. 2024 (ApJL machine-readable table A2), supreme-SPOON NIRISS SOSS at R = 100; 54 of 104 bins flat-filled]: fraction of 500 Ariel tier1 noise draws called present (threshold 1e-4)
+learner               KNN   MLP  RFC   SVC
+variant    molecule                       
+airs_only  CH4        6.0   6.0  0.0   0.0
+           CO2       19.0   7.0  0.0   0.0
+           H2O       24.0  24.0  2.0   9.0
+           NH3       17.0  19.0  2.0   7.0
+all        CH4        2.0   3.0  0.0   0.0
+           CO2       19.0   7.0  0.0   0.0
+           H2O       26.0  30.0  2.0  13.0
+           NH3       11.0   9.0  0.0   2.0
+no_optical CH4        4.0   2.0  0.0   0.0
+           CO2       18.0   6.0  0.0   0.0
+           H2O       26.0  32.0  3.0  12.0
+           NH3       16.0   9.0  0.0   5.0
+== band metric (Mugnai et al. 2021, Eq. 3): M_H2O = 0.15, M_CH4 = 0.35, M_CO2 = 0.24  (their flags: CH4 >= 0.22, CO2 >= 0.26, H2O >= 0.80)

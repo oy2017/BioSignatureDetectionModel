@@ -33,8 +33,15 @@ TWINS = {"TOI-270d": {"CH4": -1.64, "H2O": -1.10, "CO2": -1.67, "NH3": -5.0},
          "WASP-39b": {"CH4": -7.0, "H2O": -2.3, "CO2": -4.5, "NH3": -7.0},
          "TOI-1231b": {"CH4": -0.85, "H2O": -3.0, "CO2": -1.90, "NH3": -4.0},   # Sarkar+2026; H2O and NH3 at their 95 % upper limits' side
          "K2-18b-hu": {"CH4": -1.74, "H2O": -4.0, "CO2": -3.35, "NH3": -5.6},
-         "TOI-270d-hm": {"CH4": -1.64, "H2O": -1.10, "CO2": -1.67, "NH3": -5.0}}
-ASSUMED = {"TOI-421b", "HAT-P-18b", "HD189733b"}
+         "TOI-270d-hm": {"CH4": -1.64, "H2O": -1.10, "CO2": -1.67, "NH3": -5.0},
+         "LTT3780c": {"CH4": -2.34, "H2O": -3.0, "CO2": -4.0, "NH3": -5.0},    # TOI-732 c, Rigby+2025: CH4 -2.34; H2O < -1.78, CO2 < -2.56, NH3 < -4.44 (95 %) taken a dex inside their limits
+         "WASP-96b": {"CH4": -7.0, "H2O": -2.61, "CO2": -4.65, "NH3": -7.0},   # Radica+2026 (POSEIDON free): CH4 < -5.91, NH3 < -5.47
+         "WASP-17b": {"CH4": -7.0, "H2O": -2.96, "CO2": -5.80, "NH3": -7.0},   # Louie+2025 (POSEIDON free, full data)
+         "WASP-80b": {"CH4": -4.2, "H2O": -1.8, "CO2": -4.0, "NH3": -4.0},     # Bell+2023 (free): CH4 -4.2, H2O -1.8; CO2 < -3.09, NH3 < -3.12 (3 sigma) taken a dex inside
+         "HD209458b": {"CH4": -7.0, "H2O": -1.62, "CO2": -5.31, "NH3": -7.0},  # SANSAR free reanalysis of Xue+2024 (arXiv:2505.04413); Xue's own retrieval is equilibrium
+         "WASP-52b": {"CH4": -7.0, "H2O": -3.41, "CO2": -5.09, "NH3": -7.0},   # Pan+2026 (POSEIDON free, spots)
+         "GJ9827d": {"CH4": -7.0, "H2O": -1.86, "CO2": -7.0, "NH3": -7.0}}     # Piaulet-Ghorayeb+2024: H2O > -1.86 (SCARLET, 95 % lower limit); others at the floor}
+ASSUMED = {"TOI-421b", "HAT-P-18b", "HD189733b", "HD209458b", "GJ9827d"}
 DECKS = [5e2, 1e2, 3e1, 1e1, 3e0, 1e0]        # Pa; 5e2 is the population's lowest cloud-top pressure
 
 def render(r, cp=None):

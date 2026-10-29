@@ -1,0 +1,65 @@
+HD209458b: Xue et al. 2024 (Zenodo 10557924), NIRCam F322W2 + F444W, Eureka! reduction
+segments: NIRCam 69 pts 2.38-4.98 um, offset +0 ppm
+coverage by channel: AIRS-CH0 19/69 filled, AIRS-CH1 13/21 filled, FGS1 1/1 filled, FGS2 1/1 filled, NIRSpec 11/11 filled, VISPhot 1/1 filled
+== HD209458b [Xue et al. 2024 (Zenodo 10557924), NIRCam F322W2 + F444W, Eureka! reduction; 46 of 104 bins flat-filled]: verdicts at the delivered precision (1 = present)
+-- threshold 1e-5
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       1.0  1.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       1.0  1.0  0.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       1.0  1.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+-- threshold 1e-4
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       1.0  1.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       1.0  0.0  0.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       1.0  1.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+-- threshold 1e-3
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       1.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       1.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       1.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+== HD209458b [Xue et al. 2024 (Zenodo 10557924), NIRCam F322W2 + F444W, Eureka! reduction; 46 of 104 bins flat-filled]: fraction of 500 Ariel tier1 noise draws called present (threshold 1e-4)
+learner               KNN   MLP   RFC   SVC
+variant    molecule                        
+airs_only  CH4        0.0   0.0   0.0   0.0
+           CO2       38.0   6.0   0.0   5.0
+           H2O       65.0  70.0  51.0  92.0
+           NH3        6.0  12.0   1.0   7.0
+all        CH4        0.0   0.0   0.0   0.0
+           CO2       44.0   1.0   0.0   0.0
+           H2O       56.0  25.0   0.0  28.0
+           NH3        1.0   0.0   0.0   0.0
+no_optical CH4        0.0   0.0   0.0   0.0
+           CO2       41.0   1.0   0.0   1.0
+           H2O       64.0  47.0  10.0  77.0
+           NH3        2.0   2.0   0.0   0.0
+== band metric (Mugnai et al. 2021, Eq. 3): M_H2O = 9.56, M_CH4 = 0.31, M_CO2 = 1.03  (their flags: CH4 >= 0.22, CO2 >= 0.26, H2O >= 0.80)

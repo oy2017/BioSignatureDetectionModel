@@ -11,7 +11,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from style import INK, INK2, MUTED, GRID, SERIES, figure, panel_label, save  # noqa: E402
 V3 = os.path.dirname(os.path.dirname(os.path.abspath(__file__))); RES = os.path.join(V3, "results", "jwst_panel")
 SUFFIX = {"-alt": " (Schmidt & MacDonald)", "-hu": " (Hu et al.)", "-hm": " (Holmberg & Madhusudhan)"}
-GIANTS = ["HAT-P-26b", "WASP-107b", "WASP-39b", "GJ3470b", "WASP-166b"]
+GIANTS = ["HAT-P-26b", "WASP-107b", "WASP-39b", "GJ3470b", "WASP-166b", "WASP-96b", "WASP-17b", "WASP-80b", "HD209458b", "WASP-52b"]
 
 def pretty(n):
     suf = ""

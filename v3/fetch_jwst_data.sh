@@ -44,12 +44,24 @@ if [ "$WHAT" = all ] || [ "$WHAT" = panel ]; then
   zget 10891400 "$P/WASP-107b" Sing_2024_Fig2_WASP107b_transit_spec_data.csv                  # Sing et al. 2024
   zget 11459715 "$P/HD189733b/zenodo"                                                         # Fu et al. 2024
   zget 15122285 "$P/WASP-166b/extracted"                                                      # Mayo et al. 2025
-  zget 10557924 "$P/HD209458b/Xue2024_zenodo10557924"                                         # Xue et al. 2024
-  zget 8360121  "$P/WASP-17b/Grant2023_zenodo8360121"                                         # Grant et al. 2023
+  zget 10557924 "$P/HD209458b/Xue2024_zenodo10557924" spectra_final.csv                       # Xue et al. 2024
+  zget 8360121  "$P/WASP-17b/Grant2023_zenodo8360121"                                         # Grant et al. 2023 (ExoTiC-MIRI/ inside)
+  zget 14193061 "$P/WASP-17b/Louie2025_zenodo14193061"                                        # Louie et al. 2025 (Data_reduction_Ahsoka/ inside)
+  zget 17065171 "$P/WASP-96b/Radica2026_zenodo17065171"                                       # Radica et al. 2026 (WASP-96b_Zenodo/ inside)
+  zget 18734230 "$P/WASP52b/Pan2026_zenodo18734230" data_behind_figures.csv                   # Pan et al. 2026
+  mkdir -p "$P/TOI-732c/Rigby2025_osf_wsjmu"                                                  # Rigby et al. 2025 (TOI-732 c), individual OSF files
+  for kv in README.txt:s9rwg TOI-732c_niriss.txt:8t23g TOI-732c_nirspec_g395h_nrs1.txt:nk7t4 TOI-732c_nirspec_g395h_nrs2.txt:a2t9w TOI-732c_miri_JexoPipe.txt:t8b3a TOI-732c_miri_JexoRes.txt:9trv6; do
+    f=${kv%%:*}; id=${kv##*:}; [ -e "$P/TOI-732c/Rigby2025_osf_wsjmu/$f" ] || curl -sL -o "$P/TOI-732c/Rigby2025_osf_wsjmu/$f" "https://osf.io/download/$id/"; done
+  mkdir -p "$P/GJ9827d/PiauletGhorayeb2024_apjl_ad6f00_mrt" "$P/GJ1214b/Schlawin2024_apjl_ad7fef_fig2data" "$P/WASP-80b/Bell2023_nature_s41586-023-06687-0_sourcedata"
+  [ -e "$P/GJ9827d/PiauletGhorayeb2024_apjl_ad6f00_mrt/apjlad6f00t4_mrt.txt" ] || curl -sL -o "$P/GJ9827d/PiauletGhorayeb2024_apjl_ad6f00_mrt/apjlad6f00t4_mrt.txt" "https://content.cld.iop.org/journals/2041-8205/974/1/L10/revision1/apjlad6f00t4_mrt.txt"   # Piaulet-Ghorayeb et al. 2024
+  if [ ! -e "$P/GJ1214b/Schlawin2024_apjl_ad7fef_fig2data/fig2_spec_fig2_tshirt.mrt" ]; then                                                                                           # Schlawin et al. 2024, figure 2 data
+    curl -sL -o "$P/GJ1214b/Schlawin2024_apjl_ad7fef_fig2data/apjlad7feff2.tar.gz" "https://content.cld.iop.org/journals/2041-8205/974/2/L33/revision1/apjlad7feff2.tar.gz"; tar -xzf "$P/GJ1214b/Schlawin2024_apjl_ad7fef_fig2data/apjlad7feff2.tar.gz" -C "$P/GJ1214b/Schlawin2024_apjl_ad7fef_fig2data"; fi
+  [ -e "$P/WASP-80b/Bell2023_nature_s41586-023-06687-0_sourcedata/41586_2023_6687_MOESM5_ESM.xlsx" ] || curl -sL -o "$P/WASP-80b/Bell2023_nature_s41586-023-06687-0_sourcedata/41586_2023_6687_MOESM5_ESM.xlsx" "https://static-content.springer.com/esm/art%3A10.1038%2Fs41586-023-06687-0/MediaObjects/41586_2023_6687_MOESM5_ESM.xlsx"   # Bell et al. 2023 source data
   cat <<'MANUAL'
-Two sources have no stable direct URL and are fetched by hand from the journal pages:
+Three sources have no stable direct URL and are fetched by hand from the journal pages:
   HAT-P-26b  Gressier et al. 2025, AJ: "figure data" tar.gz for figures 1-2 from the article page -> data/jwst/panel/HAT-P-26b/Gressier2025_IOP_figdata/{f1,f2}/
   GJ3470b    Beatty et al. 2024, ApJL 970 L10: machine-readable tables 3-4 -> data/jwst/panel/GJ3470b/Beatty2024_apjlad55e9t{3,4}_mrt.txt
+  L98-59d    Gressier et al. 2024, ApJL 975 L10: machine-readable table 3 (the link is time-limited) -> data/jwst/panel/L98-59d/Gressier2024_apjl_ad73d1_mrt/apjlad73d1t3_mrt.dat
 MANUAL
 fi
 if [ "$WHAT" = all ] || [ "$WHAT" = wasp39 ]; then

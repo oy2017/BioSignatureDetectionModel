@@ -43,12 +43,24 @@ LABELS = {
     "TOI-1231b": {"CH4": P, "H2O": None, "CO2": P, "NH3": None},       # Sarkar et al. 2026: CH4 -0.85, CO2 -1.90; H2O < -2.24, NH3 < -3.34 (95 %)
     "K2-18b-hu": {"CH4": P, "H2O": A, "CO2": None, "NH3": A},          # Hu et al. 2025 reduction of the same planet (adds G235H)
     "TOI-270d-hm": {"CH4": P, "H2O": None, "CO2": P, "NH3": A},        # Holmberg & Madhusudhan 2024 discovery-team G395H only
+    # second batch (free-chemistry constraints at the same rule: P if the 1-sigma lower bound is above -4, A if the upper bound or 95 % limit is below it)
+    "GJ9827d": {"CH4": None, "H2O": P, "CO2": None, "NH3": None},     # Piaulet-Ghorayeb et al. 2024: H2O > -1.86 (SCARLET) / > -0.50; CH4 < -3.6, NH3 < -3.55, CO2 < -1.7 (95 %)
+    "WASP-52b": {"CH4": A, "H2O": None, "CO2": None, "NH3": None},    # Pan et al. 2026 G395H (POSEIDON, spots): H2O -3.41 +/- 1.04; CO2 -5.09 +1.09/-1.14; CH4 < -7.39 (2 sigma); NH3 no constraint
+    "L98-59d": {"CH4": A, "H2O": A, "CO2": None, "NH3": A},           # Gressier et al. 2024 (TauREx free): H2O < -5, CH4 < -6, NH3 < -6, CO2 < -2.5 (level of the limits not stated); H2S/SO2 spectrum
+    "GJ1214b": {"CH4": P, "H2O": None, "CO2": P, "NH3": None},        # Schlawin et al. 2024 (Aurora free): CH4 -2.25 +0.72/-1.08 "suggestive" (3.3 sigma), CO2-rich 91 % (+8/-45); others unconstrained
+    "LTT3780c": {"CH4": P, "H2O": None, "CO2": None, "NH3": A},       # TOI-732 c, Rigby et al. 2025 (6+2X free): CH4 -2.34 +0.71/-0.80 (3.2 sigma); CO2 < -2.56, H2O < -1.78, NH3 < -4.44 (95 %)
+    "WASP-80b": {"CH4": None, "H2O": P, "CO2": None, "NH3": None},    # Bell et al. 2023 (free, transmission): H2O -1.8 +0.6/-1.0; CH4 -4.2 +0.5/-0.7 straddles the threshold; CO2 < -3.09, NH3 < -3.12 (3 sigma)
+    "HD209458b": {"CH4": A, "H2O": None, "CO2": None, "NH3": A},      # Xue et al. 2024: equilibrium retrieval for H2O/CO2 (no free value); free 3-sigma limits CH4 < -5.6, NH3 < -4.2
+    "WASP-96b": {"CH4": A, "H2O": P, "CO2": A, "NH3": A},             # Radica et al. 2026 (POSEIDON free, SOSS + G395H): H2O -2.61 +0.27/-0.30; CO2 -4.65 +0.34/-0.39; CH4 < -5.91; NH3 < -5.47
+    "WASP-17b": {"CH4": A, "H2O": P, "CO2": A, "NH3": None},          # Louie et al. 2025 (POSEIDON free, full data): H2O -2.96 +0.31/-0.24; CO2 -5.80 +0.62/-1.31; CH4 -9.06 +2.04; NH3 not reported
 }
-FULL = {"TOI-270d", "K2-18b", "K2-18b-alt", "K2-18b-hu", "TOI-421b", "HAT-P-18b", "WASP-166b", "TOI-1231b"}        # optical + AIRS covered by data
+TENTATIVE = {("GJ1214b", "CH4"), ("GJ1214b", "CO2"), ("LTT3780c", "CH4")}   # labels resting on 3-sigma-level detections; reported separately
+FULL = {"TOI-270d", "K2-18b", "K2-18b-alt", "K2-18b-hu", "TOI-421b", "HAT-P-18b", "WASP-166b", "TOI-1231b", "WASP-96b"}        # optical + AIRS covered by data
 
 
-def numeric_rows(path, delimiter=None, skip=0):
-    """Rows of a text table that begin with a number (headers, dashes and comments skipped)."""
+def numeric_rows(path, delimiter=None, skip=0, lead=0, tolerant=False):
+    """Rows of a text table that begin with a number (headers, dashes and comments skipped). `lead` text tokens are
+    dropped from the front of each row first; `tolerant` keeps the leading numeric run of a row that ends in text."""
     rows = []
     for k, line in enumerate(open(path, errors="replace")):
         if k < skip:
@@ -56,10 +68,18 @@ def numeric_rows(path, delimiter=None, skip=0):
         s = line.strip().replace(",", " ") if delimiter == "," else line.strip()
         if not s or s[0] == "#":
             continue
-        tok = s.split()
+        tok = s.split()[lead:]
+        if len(tok) < 2:
+            continue
         try:
             rows.append([float(t) for t in tok])
         except ValueError:
+            if tolerant:
+                num = []
+                for t in tok:
+                    try: num.append(float(t))
+                    except ValueError: break
+                if len(num) >= 3: rows.append(num)
             continue
     n = min(len(r) for r in rows)
     return np.array([r[:n] for r in rows], float)
@@ -144,6 +164,40 @@ def segments(root, planet):
         d = r("GJ3470b")
         return {"F322W2": seg(numeric_rows(f"{d}/Beatty2024_apjlad55e9t3_mrt.txt"), None, 2, 3, 1e-6, bounds=(0, 1)),
                 "F444W": seg(numeric_rows(f"{d}/Beatty2024_apjlad55e9t4_mrt.txt"), None, 2, 3, 1e-6, bounds=(0, 1))}, "Beatty et al. 2024 (ApJL machine-readable tables), NIRCam"
+    if planet == "GJ9827d":
+        rows = [l.split() for l in open(r("GJ9827d", "PiauletGhorayeb2024_apjl_ad6f00_mrt", "apjlad6f00t4_mrt.txt")) if l.startswith("NIRISS_SOSS")]   # Inst Min Max Depth +err -err
+        o2 = np.array([x[1:] for x in rows if x[0] == "NIRISS_SOSS2"], float); o1 = np.array([x[1:] for x in rows if x[0] == "NIRISS_SOSS1"], float)
+        return {"SOSS-o2": seg(o2, None, 2, 3, 1e-6, bounds=(0, 1), err2=4), "SOSS-o1": seg(o1, None, 2, 3, 1e-6, bounds=(0, 1), err2=4)}, "Piaulet-Ghorayeb et al. 2024 (ApJL machine-readable table A2), supreme-SPOON NIRISS SOSS at R = 100"
+    if planet == "WASP-52b":
+        import pandas as pd
+        t = pd.read_csv(r("WASP52b", "Pan2026_zenodo18734230", "data_behind_figures.csv")); t = t[t.dataset.str.startswith("transitspectroscopy")]
+        f = lambda d: seg(t[t.dataset == d][["wavelength", "half_bin_width", "transit_depth", "error"]].to_numpy(float), 0, 2, 3, halfwidth=1)
+        return {"NRS1": f("transitspectroscopy_NRS1"), "NRS2": f("transitspectroscopy_NRS2")}, "Pan et al. 2026 (Zenodo 18734230), NIRSpec G395H, transitspectroscopy reduction"
+    if planet == "L98-59d":
+        return {"G395H": seg(numeric_rows(r("L98-59d", "Gressier2024_apjl_ad73d1_mrt", "apjlad73d1t3_mrt.dat")), 0, 1, 2, halfwidth=3)}, "Gressier et al. 2024 (ApJL machine-readable table 3), NIRSpec G395H, transitspectroscopy at R ~ 100"
+    if planet == "GJ1214b":
+        return {"G395H": seg(numeric_rows(r("GJ1214b", "Schlawin2024_apjl_ad7fef_fig2data", "fig2_spec_fig2_tshirt.mrt"), tolerant=True), 0, 2, 3, width=1)}, "Schlawin et al. 2024 (ApJL figure 2 data), NIRSpec G395H, tshirt reduction at R = 100"
+    if planet == "LTT3780c":
+        d = r("TOI-732c", "Rigby2025_osf_wsjmu"); f = lambda name: seg(numeric_rows(f"{d}/TOI-732c_{name}.txt"), 0, 2, 3, halfwidth=1)
+        return {"SOSS": f("niriss"), "NRS1": f("nirspec_g395h_nrs1"), "NRS2": f("nirspec_g395h_nrs2"), "MIRI": f("miri_JexoRes")}, "TOI-732 c, Rigby et al. 2025 (OSF wsjmu): JexoRes NIRISS order 1, NIRSpec G395H and MIRI LRS at native resolution"
+    if planet == "WASP-80b":
+        import pandas as pd
+        x = pd.read_excel(r("WASP-80b", "Bell2023_nature_s41586-023-06687-0_sourcedata", "41586_2023_6687_MOESM5_ESM.xlsx"), sheet_name="Transmission_Data").to_numpy(float)
+        return {"F322W2": seg(x, 0, 2, 3, halfwidth=1)}, "Bell et al. 2023 (Nature source data, Eureka!), NIRCam F322W2"
+    if planet == "HD209458b":
+        a = numeric_rows(r("HD209458b", "Xue2024_zenodo10557924", "spectra_final.csv"), ",")   # Eureka! start, end, depth %, err %, best fit; then SPARTA
+        return {"NIRCam": seg(a, None, 2, 3, 1e-2, bounds=(0, 1))}, "Xue et al. 2024 (Zenodo 10557924), NIRCam F322W2 + F444W, Eureka! reduction"
+    if planet == "WASP-96b":
+        d = r("WASP-96b", "Radica2026_zenodo17065171", "WASP-96b_Zenodo", "Transmission_Spectra")
+        f = lambda name: seg(numeric_rows(f"{d}/WASP-96b_{name}_transmission_spectrum_PriorLD_Slope_R300.csv", ","), 0, 2, 3, 1e-6, halfwidth=1)
+        return {"SOSS": f("NIRISS_SOSS"), "NRS1": f("NIRSpec_G395H_NRS1"), "NRS2": f("NIRSpec_G395H_NRS2")}, "Radica et al. 2026 (Zenodo 17065171): exoTEDRF NIRISS SOSS and NIRSpec G395H at R = 300"
+    if planet == "WASP-17b":
+        import xarray as xr
+        d = r("WASP-17b", "Louie2025_zenodo14193061", "Data_reduction_Ahsoka", "Ahsoka_Transmission_Spectra")
+        f = lambda o: seg(numeric_rows(f"{d}/wasp17b_visit101_transit_SOSSorder{o}_R100_LDfitAtPixelLevel_Ahsoka.txt"), 0, 2, 3, 1e-6, halfwidth=1)
+        m = xr.open_dataset(r("WASP-17b", "Grant2023_zenodo8360121", "ExoTiC-MIRI", "transmission_spectrum_vfinal_bin0.25_utc20230606_125313.nc"))
+        mi = np.column_stack([m.central_wavelength.values, m.bin_half_width.values, m.transit_depth.values, m.transit_depth_error.values])
+        return {"SOSS-o1": f(1), "SOSS-o2": f(2), "MIRI": seg(mi, 0, 2, 3, halfwidth=1)}, "Louie et al. 2025 (Zenodo 14193061) Ahsoka NIRISS SOSS at R = 100; Grant et al. 2023 (Zenodo 8360121) ExoTiC-MIRI LRS, 0.25 um bins"
     raise KeyError(planet)
 
 
