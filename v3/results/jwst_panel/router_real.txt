@@ -1,11 +1,11 @@
-The routed pipeline on the real panel (13 reductions; flag thresholds decline 10 % of clean POP-I planets; verdict = majority of four learners; scored labels only)
+The routed pipeline on the real panel (14 reductions, WASP-39 b included; flag thresholds decline 10 % of clean POP-I planets; verdict = majority of four learners; scored labels only)
 
 router                  scored correct    CH4 on the six methane reductions: present / split / absent  cells routed
-none                        22/35                           0 / 1 / 5                                 0/208
-optical                     24/35                           2 / 1 / 3                                48/208
-disagree                    26/35                           3 / 1 / 2                                30/208
-either                      27/35                           4 / 1 / 1                                72/208
-AIRS-only everywhere        29/37                           5 / 1 / 0                               208/208
+none                        24/37                           0 / 1 / 5                                 0/224
+optical                     26/37                           2 / 1 / 3                                48/224
+disagree                    28/37                           3 / 1 / 2                                30/224
+either                      29/37                           4 / 1 / 1                                72/224
+AIRS-only everywhere        31/39                           5 / 1 / 0                               224/224
 
 CH4 on the methane reductions, learners routed and verdict (all-input -> routed), per router:
   TOI-270d     optical: 0/4 routed, absent -> absent; disagree: 0/4 routed, absent -> absent; either: 0/4 routed, absent -> absent; AIRS-only everywhere: 4/4 routed, absent -> split

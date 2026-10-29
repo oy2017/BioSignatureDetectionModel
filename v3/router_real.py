@@ -13,7 +13,15 @@ from common import RESULTS  # noqa: E402
 import alfnoor_diagnostic as D, jwst_panel as JP  # noqa: E402
 
 OUT = os.path.join(RESULTS, "jwst_panel"); ROUTERS = ["none", "optical", "disagree", "either", "AIRS-only everywhere"]
-METHANE = [p for p, lab in JP.LABELS.items() if lab.get("CH4") == JP.P]
+# WASP-39 b, the external-validation target of Section 3.5, scored here too from its benchmark assembly (wasp39_assemble.py).
+# Labels at the 1e-4 threshold from free-chemistry retrievals of the same JWST data: H2O log -2.08 +/- 0.09 (Deka et al. 2025,
+# NEXOTRANS, 0.6-12 um) -> P; CO2 -3.74 +/- 0.10 with patchy clouds but -4.33 +/- 0.09 with Mie aerosols (same paper) -> ambiguous;
+# CH4 VMR < 5e-6 (Rustamkulov et al. 2023, PRISM) -> A; NH3 unconstrained in the published free retrievals -> ambiguous.
+EXTRA = {"WASP-39b": dict(labels={"CH4": JP.A, "H2O": JP.P, "CO2": None, "NH3": None},
+                          coverage=os.path.join(RESULTS, "wasp39", "coverage_benchmark.csv"), verdicts=os.path.join(RESULTS, "wasp39", "verdicts_benchmark.csv"))}
+PANEL = {pl: dict(labels=labs, coverage=os.path.join(OUT, f"{pl}_coverage.csv"), verdicts=os.path.join(OUT, f"{pl}_verdicts.csv")) for pl, labs in JP.LABELS.items()}
+PANEL.update(EXTRA)
+METHANE = [p for p, d in PANEL.items() if d["labels"].get("CH4") == JP.P]
 
 
 def main():
@@ -21,9 +29,12 @@ def main():
     q = lambda s: np.quantile(s[np.isfinite(s)], 1 - D.DECLINE)
     thr_opt = q(S0[("optical", None)]); thr_dis = {(m, k): q(S0[("disagree", (m, k))]) for m in D.MOLS for k in D.LEARNERS}
     rows = []
-    for pl, labs in JP.LABELS.items():
-        cov = pd.read_csv(os.path.join(OUT, f"{pl}_coverage.csv")); x = cov.depth.to_numpy().copy(); filled = cov.filled.to_numpy(bool); x[filled] = np.nanmean(x[~filled])
-        S, _, _ = sc.scores(x[None, :]); V = pd.read_csv(os.path.join(OUT, f"{pl}_verdicts.csv")); V = V[np.isclose(V.threshold.astype(float), 1e-4)]
+    for pl, d in PANEL.items():
+        labs = d["labels"]
+        if not os.path.exists(d["coverage"]):
+            print(f"{pl}: no coverage file, skipped", flush=True); continue
+        cov = pd.read_csv(d["coverage"]); x = cov.depth.to_numpy().copy(); filled = cov.filled.to_numpy(bool); x[filled] = np.nanmean(x[~filled])
+        S, _, _ = sc.scores(x[None, :]); V = pd.read_csv(d["verdicts"]); V = V[np.isclose(V.threshold.astype(float), 1e-4)]
         pres = {(v, m, k): int(V[(V.variant == v) & (V.molecule == m) & (V.learner == k)].present.iloc[0]) for v in ("all", "airs_only") for m in D.MOLS for k in D.LEARNERS}
         f_opt = bool(S[("optical", None)][0] > thr_opt)
         for m in D.MOLS:
@@ -37,7 +48,7 @@ def main():
                 rows.append(dict(planet=pl, molecule=m, router=router, flagged_learners=n_flag, learners_present=n_present, verdict=verdict, label=lab,
                                  correct=None if lab is None or verdict == "split" else bool(verdict == lab)))
     df = pd.DataFrame(rows); df.to_csv(os.path.join(OUT, "router_real.csv"), index=False)
-    L = ["The routed pipeline on the real panel (13 reductions; flag thresholds decline 10 % of clean POP-I planets; verdict = majority of four learners; scored labels only)", ""]
+    L = [f"The routed pipeline on the real panel ({df.planet.nunique()} reductions, WASP-39 b included; flag thresholds decline 10 % of clean POP-I planets; verdict = majority of four learners; scored labels only)", ""]
     L.append(f"{'router':<22} {'scored correct':>15} {'CH4 on the six methane reductions: present / split / absent':>62} {'cells routed':>13}")
     for r in ROUTERS:
         d = df[df.router == r]; sc_ = d[d.correct.notna()]; ch4 = d[(d.molecule == "CH4") & d.planet.isin(METHANE)]

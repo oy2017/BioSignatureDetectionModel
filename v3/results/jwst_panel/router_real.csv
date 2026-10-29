@@ -259,3 +259,23 @@ TOI-270d-hm,NH3,optical,0,0,absent,absent,True
 TOI-270d-hm,NH3,disagree,0,0,absent,absent,True
 TOI-270d-hm,NH3,either,0,0,absent,absent,True
 TOI-270d-hm,NH3,AIRS-only everywhere,4,0,absent,absent,True
+WASP-39b,CH4,none,0,0,absent,absent,True
+WASP-39b,CH4,optical,0,0,absent,absent,True
+WASP-39b,CH4,disagree,0,0,absent,absent,True
+WASP-39b,CH4,either,0,0,absent,absent,True
+WASP-39b,CH4,AIRS-only everywhere,4,0,absent,absent,True
+WASP-39b,H2O,none,0,3,present,present,True
+WASP-39b,H2O,optical,0,3,present,present,True
+WASP-39b,H2O,disagree,0,3,present,present,True
+WASP-39b,H2O,either,0,3,present,present,True
+WASP-39b,H2O,AIRS-only everywhere,4,3,present,present,True
+WASP-39b,CO2,none,0,0,absent,,
+WASP-39b,CO2,optical,0,0,absent,,
+WASP-39b,CO2,disagree,0,0,absent,,
+WASP-39b,CO2,either,0,0,absent,,
+WASP-39b,CO2,AIRS-only everywhere,4,0,absent,,
+WASP-39b,NH3,none,0,0,absent,,
+WASP-39b,NH3,optical,0,0,absent,,
+WASP-39b,NH3,disagree,0,0,absent,,
+WASP-39b,NH3,either,0,0,absent,,
+WASP-39b,NH3,AIRS-only everywhere,4,0,absent,,
