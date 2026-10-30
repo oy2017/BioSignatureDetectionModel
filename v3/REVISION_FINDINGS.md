@@ -1076,6 +1076,22 @@ amplitude flag is computable only after a retrieval (or from the literature, as 
 retrained design everywhere plus the either flag. Added to Sections 3.5, 3.6, the Discussion, the abstract and the
 Conclusion.
 
+### F17. Scale-height normalisation of the input: 1-2 points worse on clean spectra, half the loss under extra noise (2026-10-29; `alfnoor_faithful.py --norm scaleheight`)
+
+Candidate new input, written before the run with the expectation that keeping the amplitude the z-score removes would
+help on clean spectra and hurt on muted real spectra. Each spectrum's depth deviations are divided by one scale height's
+modulation (2 H R_p / R_s^2 at T_eq, the catalogue's `modulation_5H` / 5) instead of by its own standard deviation; the
+four learners retrained on POP-III and scored on POP-I under every departure
+(`results/alfnoor_faithful_faithful_tier3_r20_radiometric_scaleheight.{txt,csv}`). Mean over the four learners at 10⁻⁴,
+z-score → scale-height: clean CH₄ 84.9 → 83.8, H₂O 74.9 → 73.9, CO₂ 79.5 → 77.3, NH₃ 84.4 → 83.6 %; haze, deck and spot
+costs unchanged within a point (haze +18.6 → +19.1, +12.7 → +11.9, +16.0 → +15.9, +22.7 → +22.7); the noise costs fall
+by a third to a half: noise × 2 +9.3 → +5.1 (CH₄), +6.2 → +4.8, +9.7 → +5.0, +10.7 → +6.8; noise × 3 +14.5 → +10.9,
++9.3 → +9.6, +13.2 → +10.3, +16.1 → +11.8. Reading: the amplitude carries no usable label information on clean spectra
+(the unknown temperature and deck make it a nuisance, hence the 1-2 point cost), but the z-score's division by the
+spectrum's own dispersion lets noise rescale the features, and a physical scale removes that. The expectation was half
+wrong: no clean gain. Not run on the real panel (needs the bulk parameters threaded through alfnoor_jwst.znorm); the
+prediction for the muted giants stands. Reportable as a design note, not as the remedy for any class the paper names.
+
 ### What these add up to, provisionally
 
 A simulator-trained classifier that reproduces its published in-simulator accuracies is mostly right

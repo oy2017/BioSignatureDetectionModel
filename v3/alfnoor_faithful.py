@@ -127,7 +127,7 @@ def sigma(P, edges, mode, factor=1.0):
     return out
 
 
-def do_fit(natives, layout, mode, factor=1.0, seed=0):
+def do_fit(natives, layout, mode, factor=1.0, seed=0, norm_mode="z"):
     from sklearn.neighbors import KNeighborsClassifier, NearestNeighbors
     from sklearn.neural_network import MLPClassifier
     from sklearn.ensemble import RandomForestClassifier
@@ -151,14 +151,21 @@ def do_fit(natives, layout, mode, factor=1.0, seed=0):
     sig = sigma(Pte, edges, mode, factor); eps = rng.normal(0, 1, sig.shape)
     noisy = {k: v + eps * sig for k, v in binned.items()}
     noisy["noise_x2"] = binned["clean"] + eps * 2 * sig; noisy["noise_x3"] = binned["clean"] + eps * 3 * sig
-    norm = lambda X: (X - X.mean(1, keepdims=True)) / (X.std(1, keepdims=True) + 1e-12)
-    Ztr = norm(Xtr); Z = {k: norm(v) for k, v in noisy.items()}
+    if norm_mode == "scaleheight":
+        # physical normalisation: depth deviations in units of one scale height's modulation (2 H R_p / R_s^2) at the planet's
+        # equilibrium temperature and bulk parameters, which keeps the feature amplitude the z-score removes
+        a_tr = Ptr["modulation_5H"].to_numpy() / 5.0; a_te = Pte["modulation_5H"].to_numpy() / 5.0
+        norm_a = lambda X, a: (X - X.mean(1, keepdims=True)) / a[:, None]
+        Ztr = norm_a(Xtr, a_tr); Z = {k: norm_a(v, a_te) for k, v in noisy.items()}
+    else:
+        norm = lambda X: (X - X.mean(1, keepdims=True)) / (X.std(1, keepdims=True) + 1e-12)
+        Ztr = norm(Xtr); Z = {k: norm(v) for k, v in noisy.items()}
     amp = np.ptp(binned["clean"], axis=1)
     t1_equiv = sigma(Pte, np.array(configs()["tier1"]["edges"]), mode, factor)
     snr_t1 = np.median(Pte["modulation_5H"].to_numpy()[:, None] / t1_equiv, axis=1)
     makers = {"KNN": lambda: KNeighborsClassifier(), "MLP": lambda: MLPClassifier(random_state=SEED + seed),
               "RFC": lambda: RandomForestClassifier(random_state=SEED + seed, n_jobs=8), "SVC": lambda: SVC()}
-    tag = f"{natives}_{layout}_{mode}" + ("" if factor == 1.0 else f"_x{factor:g}") + ("" if seed == 0 else f"_seed{seed}")
+    tag = f"{natives}_{layout}_{mode}" + ("" if factor == 1.0 else f"_x{factor:g}") + ("" if seed == 0 else f"_seed{seed}") + ("" if norm_mode == "z" else f"_{norm_mode}")
     L = [f"Mugnai et al. 2021 Tier-1 screen, faithful rebuild [{tag}]: natives {natives}, layout {layout} ({len(edges)-1} bins), noise {mode} x {factor}",
          f"train {len(Ztr)} spectra, test {len(Pte)} planets; Tier-1 SNR on 5H modulation, median {np.median(snr_t1):.1f} (IQR {np.percentile(snr_t1,25):.1f}-{np.percentile(snr_t1,75):.1f})",
          f"median peak-to-peak of the clean binned spectra {np.median(amp)*1e6:.0f} ppm; median per-bin sigma {np.median(sig)*1e6:.0f} ppm",
@@ -207,9 +214,9 @@ def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--render", action="store_true"); ap.add_argument("--fit", action="store_true")
     ap.add_argument("--jobs", type=int, default=8); ap.add_argument("--natives", default="faithful", choices=list(DIRS))
     ap.add_argument("--layout", default="tier3_r20"); ap.add_argument("--noise", default="exactN", choices=["requirement", "exactN", "radiometric"])
-    ap.add_argument("--factor", type=float, default=1.0); ap.add_argument("--seed", type=int, default=0, help="offset of the noise draw and learner seeds; outputs tagged _seed<N>"); a = ap.parse_args()
+    ap.add_argument("--norm", default="z", choices=["z", "scaleheight"], help="input normalisation: z-score per spectrum (published) or scale-height units (keeps amplitude)"); ap.add_argument("--factor", type=float, default=1.0); ap.add_argument("--seed", type=int, default=0, help="offset of the noise draw and learner seeds; outputs tagged _seed<N>"); a = ap.parse_args()
     if a.render: do_render(a.jobs)
-    if a.fit: do_fit(a.natives, a.layout, a.noise, a.factor, a.seed)
+    if a.fit: do_fit(a.natives, a.layout, a.noise, a.factor, a.seed, a.norm)
 
 
 if __name__ == "__main__":
