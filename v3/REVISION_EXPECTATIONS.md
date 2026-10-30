@@ -151,3 +151,6 @@ Expected:
 - I1. matched+amp finds more present labels than the frozen method on the 35 planets at JWST precision.
 - I2. It raises the score on the fourth batch above 16.0 of 24 at JWST precision, with no more false present calls than the frozen method's 2.5 lost there.
 - I3. Its AUROC at Tier-1 on the fourth batch exceeds the frozen method's 0.60.
+
+Added before its first run, the same design for Ariel, where coverage is complete and one set of learners serves every planet (`matched_ariel.py`): the pooled natives at the Tier-1 noise of each training planet, the muting factor on half the rows, and the dispersion-over-noise input; scored as `pipeline_sim.py` on POP-I.
+- I4. Clean accuracy within 3 points of the published design (81.2), and above it under haze3e7 by at least 5 points and under mute3.

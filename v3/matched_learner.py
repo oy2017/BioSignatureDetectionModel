@@ -26,7 +26,7 @@ import router_real as RR  # noqa: E402
 
 OUT = os.path.join(RESULTS, "matched_learner"); os.makedirs(OUT, exist_ok=True); MOLS = ["CH4", "H2O", "CO2", "NH3"]; DRAWS = 200
 BASE = lambda s: s.replace("-alt", "").replace("-hu", "").replace("-hm", "")
-MAKERS = {"KNN": lambda: KNeighborsClassifier(), "MLP": lambda: MLPClassifier(random_state=SEED), "RFC": lambda: RandomForestClassifier(random_state=SEED, n_jobs=1), "SVC": lambda: SVC()}
+MAKERS = lambda o=0: {"KNN": lambda: KNeighborsClassifier(), "MLP": lambda: MLPClassifier(random_state=SEED + o), "RFC": lambda: RandomForestClassifier(random_state=SEED + o, n_jobs=1), "SVC": lambda: SVC()}
 
 
 def training():
@@ -42,7 +42,7 @@ def features(X, meas, noise, amp):
     return np.column_stack([Z, np.log10(Y.std(1) / noise)]) if amp else Z
 
 
-def fit_one(pl, labs, x, err, filled, sig_t1, Xtr, Ptr, md, prec, design, seed):
+def fit_one(pl, labs, x, err, filled, sig_t1, Xtr, Ptr, md, prec, design, seed, o=0):
     meas = ~filled; rng = np.random.default_rng(seed); amp = design == "matched+amp"; e = np.nan_to_num(err[meas]); e = np.sqrt(e ** 2 + sig_t1[meas] ** 2) if prec == "Tier-1" else e
     D = Xtr - Xtr[:, meas].mean(1, keepdims=True); f = md / Ptr["modulation_5H"].to_numpy()
     if amp: f = f * np.where(rng.uniform(size=len(f)) < 0.5, 10 ** rng.uniform(-1, 0, len(f)), 1.0)
@@ -53,7 +53,7 @@ def fit_one(pl, labs, x, err, filled, sig_t1, Xtr, Ptr, md, prec, design, seed):
     for m in MOLS:
         if labs.get(m) is None: continue
         y = (Ptr[f"atm {m}"] > -4).astype(int).to_numpy(); v = np.zeros(len(Zte))
-        for k, mk in MAKERS.items(): v += mk().fit(Ztr, y).predict(Zte)
+        for k, mk in MAKERS(o).items(): v += mk().fit(Ztr, y).predict(Zte)
         pr, ab = v >= 3, v <= 1; sp = ~(pr | ab); lab = labs[m]; cr = float(np.mean((pr if lab == "present" else ab) + 0.5 * sp))
         rows.append(dict(precision=prec, planet=pl, molecule=m, design=design, label=lab, credit=cr, present=float(pr.mean()), split=float(sp.mean()), absent=float(ab.mean()), batch=None))
     return rows
@@ -69,13 +69,13 @@ def jobs_list():
 
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument("--jobs", type=int, default=3); a = ap.parse_args(); Xtr, Ptr = training(); print(Xtr.shape, flush=True)
+    ap = argparse.ArgumentParser(); ap.add_argument("--jobs", type=int, default=3); ap.add_argument("--seed-offset", type=int, default=0); a = ap.parse_args(); o = a.seed_offset; Xtr, Ptr = training(); print(Xtr.shape, flush=True)
     def run(i, j, prec, design):
-        batch, pl, labs, x, err, filled, s, md = j; r = fit_one(pl, labs, x, err, filled, s, Xtr, Ptr, md, prec, design, SEED + 700 + i)
+        batch, pl, labs, x, err, filled, s, md = j; r = fit_one(pl, labs, x, err, filled, s, Xtr, Ptr, md, prec, design, SEED + 700 + i + 1000 * o, o)
         for q in r: q["batch"] = batch
         return r
     J_ = jobs_list(); out = Parallel(n_jobs=a.jobs, verbose=5)(delayed(run)(i, j, p, d) for i, j in enumerate(J_) for p in ("JWST", "Tier-1") for d in ("matched", "matched+amp"))
-    df = pd.DataFrame([r for x in out for r in x]); df.to_csv(os.path.join(OUT, "matched_learner.csv"), index=False)
+    df = pd.DataFrame([r for x in out for r in x]); df.to_csv(os.path.join(OUT, "matched_learner.csv" if o == 0 else f"matched_learner_seed{o}.csv"), index=False)
 
 
 if __name__ == "__main__":
