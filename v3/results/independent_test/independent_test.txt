@@ -1,0 +1,44 @@
+== all 17 labels
+  published              score  15.5/17  present  7.0/7  absent  8.5/10  balanced 0.925  vs method +2.0 (-1.5,+5.5)
+  AIRS-only              score  11.0/17  present  1.0/7  absent 10.0/10  balanced 0.571  vs method -2.5 (-6.0,+0.5)
+  shape flag             score  11.0/17  present  1.0/7  absent 10.0/10  balanced 0.571  vs method -2.5 (-6.0,+0.5)
+  haze+deck-retrained    score  16.0/17  present  7.0/7  absent  9.0/10  balanced 0.950  vs method +2.5 (-0.5,+6.0)
+  the method             score  13.5/17  present  4.0/7  absent  9.5/10  balanced 0.761  vs method +0.0 (+0.0,+0.0)
+  matched                score  13.5/17  present  3.5/7  absent 10.0/10  balanced 0.750  vs method +0.0 (-3.0,+3.0)
+  matched+amp            score  14.0/17  present  4.0/7  absent 10.0/10  balanced 0.786  vs method +0.5 (-2.5,+3.5)
+== HST water, 11 labels
+  published              score   9.5/11  present  6.0/6  absent  3.5/5  balanced 0.850  vs method +2.0 (-1.0,+5.5)
+  AIRS-only              score   5.0/11  present  0.0/6  absent  5.0/5  balanced 0.500  vs method -2.5 (-6.0,+0.5)
+  shape flag             score   5.0/11  present  0.0/6  absent  5.0/5  balanced 0.500  vs method -2.5 (-6.0,+0.5)
+  haze+deck-retrained    score  10.0/11  present  6.0/6  absent  4.0/5  balanced 0.900  vs method +2.5 (-0.5,+6.0)
+  the method             score   7.5/11  present  3.0/6  absent  4.5/5  balanced 0.700  vs method +0.0 (+0.0,+0.0)
+  matched                score   7.5/11  present  2.5/6  absent  5.0/5  balanced 0.708  vs method +0.0 (-3.0,+3.0)
+  matched+amp            score   8.0/11  present  3.0/6  absent  5.0/5  balanced 0.750  vs method +0.5 (-2.5,+3.5)
+== JWST, 6 labels
+  published              score   6.0/6  present  1.0/1  absent  5.0/5  balanced 1.000  vs method +0.0 (+0.0,+0.0)
+  AIRS-only              score   6.0/6  present  1.0/1  absent  5.0/5  balanced 1.000  vs method +0.0 (+0.0,+0.0)
+  shape flag             score   6.0/6  present  1.0/1  absent  5.0/5  balanced 1.000  vs method +0.0 (+0.0,+0.0)
+  haze+deck-retrained    score   6.0/6  present  1.0/1  absent  5.0/5  balanced 1.000  vs method +0.0 (+0.0,+0.0)
+  the method             score   6.0/6  present  1.0/1  absent  5.0/5  balanced 1.000  vs method +0.0 (+0.0,+0.0)
+  matched                score   6.0/6  present  1.0/1  absent  5.0/5  balanced 1.000  vs method +0.0 (+0.0,+0.0)
+  matched+amp            score   6.0/6  present  1.0/1  absent  5.0/5  balanced 1.000  vs method +0.0 (+0.0,+0.0)
+
+design                               published AIRS-only shape flag haze+deck-retrained the method matched matched+amp
+planet         molecule label   bins                                                                                  
+GJ436b         H2O      absent  8            S         A          A                   A          A       A           A
+HAT-P-14b-JWST CH4      absent  86           A         A          A                   A          A       A           A
+               CO2      absent  86           A         A          A                   A          A       A           A
+HAT-P-2b       H2O      absent  8            S         A          A                   S          S       A           A
+HAT-P-32b      H2O      present 8            P         A          A                   P          P       S           P
+HAT-P-41b      H2O      present 8            P         A          A                   P          P       P           P
+HD106315c      H2O      present 8            P         A          A                   P          A       P           P
+HIP41378f      H2O      absent  8            A         A          A                   A          A       A           A
+K2-24b         H2O      absent  8            A         A          A                   A          A       A           A
+V1298Tauc-HST  H2O      present 8            P         A          A                   P          A       A           A
+V1298Tauc-JWST CH4      absent  47           A         A          A                   A          A       A           A
+               CO2      absent  47           A         A          A                   A          A       A           A
+               H2O      present 47           P         P          P                   P          P       P           P
+               NH3      absent  47           A         A          A                   A          A       A           A
+WASP-103b      H2O      absent  8            S         A          A                   S          A       A           A
+WASP-62b       H2O      present 8            P         A          A                   P          P       A           A
+WASP-79b       H2O      present 8            P         A          A                   P          A       A           A

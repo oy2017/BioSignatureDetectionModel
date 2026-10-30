@@ -1,0 +1,5 @@
+Design for Ariel on POP-I, mean over four learners and four molecules
+case      clean  haze2e6  haze3e7  cloud1e2  spots20  compound  white_x2  white_x3  mute3
+accuracy   79.8     75.1     72.1      73.5     75.0      70.3      72.2      67.7   67.8
+recall     63.8     45.0     35.3      41.8     47.4      31.5      42.7      31.5   30.8
+spec       90.0     94.2     95.4      93.5     92.5      94.9      90.9      90.7   91.2

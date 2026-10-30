@@ -1,0 +1,120 @@
+planet,unit,molecule,label,design,verdict,credit,bins,up,low
+V1298Tauc-JWST,V1298Tauc,CH4,absent,published,A,1.0,47,True,False
+V1298Tauc-JWST,V1298Tauc,CH4,absent,AIRS-only,A,1.0,47,True,False
+V1298Tauc-JWST,V1298Tauc,CH4,absent,shape flag,A,1.0,47,True,False
+V1298Tauc-JWST,V1298Tauc,CH4,absent,haze+deck-retrained,A,1.0,47,True,False
+V1298Tauc-JWST,V1298Tauc,CH4,absent,the method,A,1.0,47,True,False
+V1298Tauc-JWST,V1298Tauc,H2O,present,published,P,1.0,47,True,False
+V1298Tauc-JWST,V1298Tauc,H2O,present,AIRS-only,P,1.0,47,True,False
+V1298Tauc-JWST,V1298Tauc,H2O,present,shape flag,P,1.0,47,True,False
+V1298Tauc-JWST,V1298Tauc,H2O,present,haze+deck-retrained,P,1.0,47,True,False
+V1298Tauc-JWST,V1298Tauc,H2O,present,the method,P,1.0,47,True,False
+V1298Tauc-JWST,V1298Tauc,CO2,absent,published,A,1.0,47,True,False
+V1298Tauc-JWST,V1298Tauc,CO2,absent,AIRS-only,A,1.0,47,True,False
+V1298Tauc-JWST,V1298Tauc,CO2,absent,shape flag,A,1.0,47,True,False
+V1298Tauc-JWST,V1298Tauc,CO2,absent,haze+deck-retrained,A,1.0,47,True,False
+V1298Tauc-JWST,V1298Tauc,CO2,absent,the method,A,1.0,47,True,False
+V1298Tauc-JWST,V1298Tauc,NH3,absent,published,A,1.0,47,True,False
+V1298Tauc-JWST,V1298Tauc,NH3,absent,AIRS-only,A,1.0,47,True,False
+V1298Tauc-JWST,V1298Tauc,NH3,absent,shape flag,A,1.0,47,True,False
+V1298Tauc-JWST,V1298Tauc,NH3,absent,haze+deck-retrained,A,1.0,47,True,False
+V1298Tauc-JWST,V1298Tauc,NH3,absent,the method,A,1.0,47,True,False
+V1298Tauc-JWST,V1298Tauc,CH4,absent,matched,A,1.0,47,False,False
+V1298Tauc-JWST,V1298Tauc,H2O,present,matched,P,1.0,47,False,False
+V1298Tauc-JWST,V1298Tauc,CO2,absent,matched,A,1.0,47,False,False
+V1298Tauc-JWST,V1298Tauc,NH3,absent,matched,A,1.0,47,False,False
+V1298Tauc-JWST,V1298Tauc,CH4,absent,matched+amp,A,1.0,47,False,False
+V1298Tauc-JWST,V1298Tauc,H2O,present,matched+amp,P,1.0,47,False,False
+V1298Tauc-JWST,V1298Tauc,CO2,absent,matched+amp,A,1.0,47,False,False
+V1298Tauc-JWST,V1298Tauc,NH3,absent,matched+amp,A,1.0,47,False,False
+HAT-P-14b-JWST,HAT-P-14b,CH4,absent,published,A,1.0,86,False,False
+HAT-P-14b-JWST,HAT-P-14b,CH4,absent,AIRS-only,A,1.0,86,False,False
+HAT-P-14b-JWST,HAT-P-14b,CH4,absent,shape flag,A,1.0,86,False,False
+HAT-P-14b-JWST,HAT-P-14b,CH4,absent,haze+deck-retrained,A,1.0,86,False,False
+HAT-P-14b-JWST,HAT-P-14b,CH4,absent,the method,A,1.0,86,False,False
+HAT-P-14b-JWST,HAT-P-14b,CO2,absent,published,A,1.0,86,False,False
+HAT-P-14b-JWST,HAT-P-14b,CO2,absent,AIRS-only,A,1.0,86,False,False
+HAT-P-14b-JWST,HAT-P-14b,CO2,absent,shape flag,A,1.0,86,False,False
+HAT-P-14b-JWST,HAT-P-14b,CO2,absent,haze+deck-retrained,A,1.0,86,False,False
+HAT-P-14b-JWST,HAT-P-14b,CO2,absent,the method,A,1.0,86,False,False
+HAT-P-14b-JWST,HAT-P-14b,CH4,absent,matched,A,1.0,86,False,False
+HAT-P-14b-JWST,HAT-P-14b,CO2,absent,matched,A,1.0,86,False,False
+HAT-P-14b-JWST,HAT-P-14b,CH4,absent,matched+amp,A,1.0,86,False,False
+HAT-P-14b-JWST,HAT-P-14b,CO2,absent,matched+amp,A,1.0,86,False,False
+HAT-P-32b,HAT-P-32b,H2O,present,published,P,1.0,8,True,False
+HAT-P-32b,HAT-P-32b,H2O,present,AIRS-only,A,0.0,8,True,False
+HAT-P-32b,HAT-P-32b,H2O,present,shape flag,A,0.0,8,True,False
+HAT-P-32b,HAT-P-32b,H2O,present,haze+deck-retrained,P,1.0,8,True,False
+HAT-P-32b,HAT-P-32b,H2O,present,the method,P,1.0,8,True,False
+HAT-P-32b,HAT-P-32b,H2O,present,matched,S,0.5,8,False,False
+HAT-P-32b,HAT-P-32b,H2O,present,matched+amp,P,1.0,8,False,False
+HAT-P-41b,HAT-P-41b,H2O,present,published,P,1.0,8,True,False
+HAT-P-41b,HAT-P-41b,H2O,present,AIRS-only,A,0.0,8,True,False
+HAT-P-41b,HAT-P-41b,H2O,present,shape flag,A,0.0,8,True,False
+HAT-P-41b,HAT-P-41b,H2O,present,haze+deck-retrained,P,1.0,8,True,False
+HAT-P-41b,HAT-P-41b,H2O,present,the method,P,1.0,8,True,False
+HAT-P-41b,HAT-P-41b,H2O,present,matched,P,1.0,8,False,False
+HAT-P-41b,HAT-P-41b,H2O,present,matched+amp,P,1.0,8,False,False
+HD106315c,HD106315c,H2O,present,published,P,1.0,8,False,False
+HD106315c,HD106315c,H2O,present,AIRS-only,A,0.0,8,False,False
+HD106315c,HD106315c,H2O,present,shape flag,A,0.0,8,False,False
+HD106315c,HD106315c,H2O,present,haze+deck-retrained,P,1.0,8,False,False
+HD106315c,HD106315c,H2O,present,the method,A,0.0,8,False,False
+HD106315c,HD106315c,H2O,present,matched,P,1.0,8,False,False
+HD106315c,HD106315c,H2O,present,matched+amp,P,1.0,8,False,False
+V1298Tauc-HST,V1298Tauc,H2O,present,published,P,1.0,8,False,False
+V1298Tauc-HST,V1298Tauc,H2O,present,AIRS-only,A,0.0,8,False,False
+V1298Tauc-HST,V1298Tauc,H2O,present,shape flag,A,0.0,8,False,False
+V1298Tauc-HST,V1298Tauc,H2O,present,haze+deck-retrained,P,1.0,8,False,False
+V1298Tauc-HST,V1298Tauc,H2O,present,the method,A,0.0,8,False,False
+V1298Tauc-HST,V1298Tauc,H2O,present,matched,A,0.0,8,False,False
+V1298Tauc-HST,V1298Tauc,H2O,present,matched+amp,A,0.0,8,False,False
+WASP-62b,WASP-62b,H2O,present,published,P,1.0,8,True,False
+WASP-62b,WASP-62b,H2O,present,AIRS-only,A,0.0,8,True,False
+WASP-62b,WASP-62b,H2O,present,shape flag,A,0.0,8,True,False
+WASP-62b,WASP-62b,H2O,present,haze+deck-retrained,P,1.0,8,True,False
+WASP-62b,WASP-62b,H2O,present,the method,P,1.0,8,True,False
+WASP-62b,WASP-62b,H2O,present,matched,A,0.0,8,False,False
+WASP-62b,WASP-62b,H2O,present,matched+amp,A,0.0,8,False,False
+WASP-79b,WASP-79b,H2O,present,published,P,1.0,8,False,False
+WASP-79b,WASP-79b,H2O,present,AIRS-only,A,0.0,8,False,False
+WASP-79b,WASP-79b,H2O,present,shape flag,A,0.0,8,False,False
+WASP-79b,WASP-79b,H2O,present,haze+deck-retrained,P,1.0,8,False,False
+WASP-79b,WASP-79b,H2O,present,the method,A,0.0,8,False,False
+WASP-79b,WASP-79b,H2O,present,matched,A,0.0,8,False,False
+WASP-79b,WASP-79b,H2O,present,matched+amp,A,0.0,8,False,False
+GJ436b,GJ436b,H2O,absent,published,S,0.5,8,True,False
+GJ436b,GJ436b,H2O,absent,AIRS-only,A,1.0,8,True,False
+GJ436b,GJ436b,H2O,absent,shape flag,A,1.0,8,True,False
+GJ436b,GJ436b,H2O,absent,haze+deck-retrained,A,1.0,8,True,False
+GJ436b,GJ436b,H2O,absent,the method,A,1.0,8,True,False
+GJ436b,GJ436b,H2O,absent,matched,A,1.0,8,False,False
+GJ436b,GJ436b,H2O,absent,matched+amp,A,1.0,8,False,False
+HAT-P-2b,HAT-P-2b,H2O,absent,published,S,0.5,8,False,True
+HAT-P-2b,HAT-P-2b,H2O,absent,AIRS-only,A,1.0,8,False,True
+HAT-P-2b,HAT-P-2b,H2O,absent,shape flag,A,1.0,8,False,True
+HAT-P-2b,HAT-P-2b,H2O,absent,haze+deck-retrained,S,0.5,8,False,True
+HAT-P-2b,HAT-P-2b,H2O,absent,the method,S,0.5,8,False,True
+HAT-P-2b,HAT-P-2b,H2O,absent,matched,A,1.0,8,False,False
+HAT-P-2b,HAT-P-2b,H2O,absent,matched+amp,A,1.0,8,False,False
+HIP41378f,HIP41378f,H2O,absent,published,A,1.0,8,False,False
+HIP41378f,HIP41378f,H2O,absent,AIRS-only,A,1.0,8,False,False
+HIP41378f,HIP41378f,H2O,absent,shape flag,A,1.0,8,False,False
+HIP41378f,HIP41378f,H2O,absent,haze+deck-retrained,A,1.0,8,False,False
+HIP41378f,HIP41378f,H2O,absent,the method,A,1.0,8,False,False
+HIP41378f,HIP41378f,H2O,absent,matched,A,1.0,8,False,False
+HIP41378f,HIP41378f,H2O,absent,matched+amp,A,1.0,8,False,False
+K2-24b,K2-24b,H2O,absent,published,A,1.0,8,True,False
+K2-24b,K2-24b,H2O,absent,AIRS-only,A,1.0,8,True,False
+K2-24b,K2-24b,H2O,absent,shape flag,A,1.0,8,True,False
+K2-24b,K2-24b,H2O,absent,haze+deck-retrained,A,1.0,8,True,False
+K2-24b,K2-24b,H2O,absent,the method,A,1.0,8,True,False
+K2-24b,K2-24b,H2O,absent,matched,A,1.0,8,False,False
+K2-24b,K2-24b,H2O,absent,matched+amp,A,1.0,8,False,False
+WASP-103b,WASP-103b,H2O,absent,published,S,0.5,8,False,False
+WASP-103b,WASP-103b,H2O,absent,AIRS-only,A,1.0,8,False,False
+WASP-103b,WASP-103b,H2O,absent,shape flag,A,1.0,8,False,False
+WASP-103b,WASP-103b,H2O,absent,haze+deck-retrained,S,0.5,8,False,False
+WASP-103b,WASP-103b,H2O,absent,the method,A,1.0,8,False,False
+WASP-103b,WASP-103b,H2O,absent,matched,A,1.0,8,False,False
+WASP-103b,WASP-103b,H2O,absent,matched+amp,A,1.0,8,False,False
