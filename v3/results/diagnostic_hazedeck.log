@@ -1,0 +1,476 @@
+Numba not installed, using numpy instead
+scored clean
+scored haze3e7
+scored spots20
+scored cloud1e2
+scored compound
+scored white_x2
+scored white_x3
+retrieval posteriors on 955 of 955 planets
+decidability thresholds (dchi2): {'CH4': 0.45, 'H2O': 0.98, 'CO2': 0.9, 'NH3': 0.56} (calibrated at p_true > 0.95)
+Diagnostic candidates on POP-I (1e-4; mean over molecules and the four learners unless stated)
+
+== selective credit (threshold declines 10 % of clean planets; credit = accepted accuracy - clean selective baseline at equal coverage), points
+rule                         clean               haze3e7               spots20              cloud1e2              compound              white_x2              white_x3
+             keep% credit AUROCerr keep% credit AUROCerr keep% credit AUROCerr keep% credit AUROCerr keep% credit AUROCerr keep% credit AUROCerr keep% credit AUROCerr
+margin           93   +0.0   0.728     94   -6.5   0.715     93   -4.1   0.710     93   -5.4   0.703     93   -9.2   0.699     92   -8.7   0.692     93  -13.0   0.666
+ensemble         90   +0.0   0.717     92   -6.5   0.705     90   -4.0   0.695     90   -5.9   0.679     91   -9.2   0.692     88   -9.2   0.669     87  -13.7   0.635
+mahalanobis      90   +0.0   0.563     97   -6.2   0.599     90   -3.7   0.547     71   -6.3   0.536    100   -9.1   0.579     66   -8.8   0.554     51  -13.6   0.536
+knn              90   +0.0   0.572     97   -6.0   0.607     90   -3.6   0.540     68   -7.5   0.534    100   -9.1   0.570     56   -9.1   0.568     35  -12.4   0.548
+pca_recon        90   +0.0   0.531     93   -6.1   0.560     76   -3.3   0.563     88   -5.8   0.523     97   -8.9   0.570     84   -8.4   0.530     82  -13.3   0.521
+disagree         91   +0.0   0.608     89   -5.7   0.624     92   -3.4   0.610     96   -5.3   0.591     83   -6.3   0.657     94   -8.3   0.589     95  -12.6   0.565
+optical          90   +0.0   0.528     26  -18.4   0.424     79   -2.8   0.539    100   -5.6   0.535      1   +4.2   0.463     98   -8.6   0.548     99  -12.9   0.555
+bandmetric       91   +0.0   0.641     88   -5.7   0.625     86   -3.1   0.620     93   -4.5   0.640     80  -10.1   0.591     93   -8.5   0.629     93  -12.8   0.619
+muting           90   +0.0   0.558     89   -6.5   0.552     92   -4.0   0.537     86   -6.2   0.533     92   -9.3   0.524    100   -8.5   0.461    100  -12.7   0.461
+decidable        90   +0.0   0.553     90   -6.6   0.528     90   -3.8   0.571     90   -5.4   0.553     90   -8.9   0.541     90   -8.3   0.559     90  -12.6   0.544
+
+== per-molecule credit of the new candidates under haze3e7 and spots20 (mean over learners)
+  disagree   CH4 haze  -3.2 spots  -1.6  H2O haze  -5.0 spots  -2.6  CO2 haze  -3.5 spots  -1.6  NH3 haze -11.0 spots  -7.9
+  optical    CH4 haze  -7.0 spots  -0.8  H2O haze -22.7 spots  -2.6  CO2 haze  -8.5 spots  +0.5  NH3 haze -35.6 spots  -8.3
+  bandmetric CH4 haze  -4.2 spots  -2.5  H2O haze  -6.1 spots  -3.8  CO2 haze  -6.9 spots  -3.2
+  muting     CH4 haze  -4.0 spots  -2.4  H2O haze  -6.5 spots  -3.3  CO2 haze  -5.4 spots  -3.1  NH3 haze -10.3 spots  -7.1
+
+== remedy: accuracy over all planets when flagged planets take the fallback (points; mean over molecules and learners)
+rule                                 clean                       haze3e7                       spots20                      cloud1e2                      compound                      white_x2                      white_x3
+              flag% frozen fallbk remedied  flag% frozen fallbk remedied  flag% frozen fallbk remedied  flag% frozen fallbk remedied  flag% frozen fallbk remedied  flag% frozen fallbk remedied  flag% frozen fallbk remedied
+disagree            9   80.2   74.1   76.6       11   73.6   73.8   73.6        8   76.1   73.8   75.0        4   74.6   72.7   73.8       17   71.1   73.5   72.9        6   71.7   68.3   70.2        5   67.4   65.5   66.7
+optical            10   80.2   74.1   78.9       74   73.6   73.8   73.7       21   76.1   73.8   75.9        0   74.6   72.7   74.6       99   71.1   73.5   73.5        2   71.7   68.3   71.4        1   67.4   65.5   67.2
+either             18   80.2   74.1   76.3       76   73.6   73.8   73.7       26   76.1   73.8   74.9        5   74.6   72.7   73.9       99   71.1   73.5   73.5        8   71.7   68.3   70.1        6   67.4   65.5   66.6
+bandmetric          9   79.2   65.6   72.6       12   74.4   63.0   67.1       14   76.6   62.4   67.9        7   75.0   65.9   70.4       20   71.4   59.7   61.9        7   71.3   63.2   67.1        7   67.2   61.9   63.8
+muting             10   80.2   74.1   79.4       11   73.6   73.8   73.5        8   76.1   73.8   75.9       14   74.6   72.7   74.2        8   71.1   73.5   71.1        0   71.7   68.3   71.7        0   67.4   65.5   67.4
+  CH4 under haze3e7, per candidate: accuracy frozen -> remedied, recall frozen -> remedied
+    disagree     79.8 ->  79.5   recall  51.9 ->  56.1
+    optical      79.8 ->  79.8   recall  51.9 ->  57.9
+    either       79.8 ->  79.6   recall  51.9 ->  57.8
+    bandmetric   79.8 ->  74.2   recall  51.9 ->  51.4
+    muting       79.8 ->  79.7   recall  51.9 ->  52.4
+
+== (d) error classes on the planets the identifiability test has reached: AUROC of predicted (and oracle) decidability for irrecoverable vs recoverable errors
+  CH4 clean      wrong   156  irrecoverable   48 %  AUROC predicted 0.551  oracle 1.000  Spearman(pred, dchi2) 0.39
+  CH4 cloud1e2   wrong   188  irrecoverable   39 %  AUROC predicted 0.567  oracle 1.000  Spearman(pred, dchi2) 0.39
+  CH4 compound   wrong   239  irrecoverable   33 %  AUROC predicted 0.547  oracle 1.000  Spearman(pred, dchi2) 0.39
+  CH4 haze3e7    wrong   193  irrecoverable   40 %  AUROC predicted 0.567  oracle 1.000  Spearman(pred, dchi2) 0.39
+  CH4 spots20    wrong   180  irrecoverable   42 %  AUROC predicted 0.510  oracle 1.000  Spearman(pred, dchi2) 0.39
+  CH4 white_x2   wrong   228  irrecoverable   36 %  AUROC predicted 0.551  oracle 1.000  Spearman(pred, dchi2) 0.39
+  CH4 white_x3   wrong   276  irrecoverable   31 %  AUROC predicted 0.575  oracle 1.000  Spearman(pred, dchi2) 0.39
+  CO2 clean      wrong   185  irrecoverable   68 %  AUROC predicted 0.602  oracle 1.000  Spearman(pred, dchi2) 0.42
+  CO2 cloud1e2   wrong   221  irrecoverable   64 %  AUROC predicted 0.579  oracle 1.000  Spearman(pred, dchi2) 0.42
+  CO2 compound   wrong   262  irrecoverable   58 %  AUROC predicted 0.599  oracle 1.000  Spearman(pred, dchi2) 0.42
+  CO2 haze3e7    wrong   228  irrecoverable   63 %  AUROC predicted 0.625  oracle 1.000  Spearman(pred, dchi2) 0.42
+  CO2 spots20    wrong   209  irrecoverable   66 %  AUROC predicted 0.562  oracle 1.000  Spearman(pred, dchi2) 0.42
+  CO2 white_x2   wrong   281  irrecoverable   57 %  AUROC predicted 0.594  oracle 1.000  Spearman(pred, dchi2) 0.42
+  CO2 white_x3   wrong   320  irrecoverable   53 %  AUROC predicted 0.603  oracle 1.000  Spearman(pred, dchi2) 0.42
+  H2O clean      wrong   254  irrecoverable   62 %  AUROC predicted 0.620  oracle 1.000  Spearman(pred, dchi2) 0.34
+  H2O cloud1e2   wrong   307  irrecoverable   57 %  AUROC predicted 0.625  oracle 1.000  Spearman(pred, dchi2) 0.34
+  H2O compound   wrong   319  irrecoverable   53 %  AUROC predicted 0.645  oracle 1.000  Spearman(pred, dchi2) 0.34
+  H2O haze3e7    wrong   313  irrecoverable   52 %  AUROC predicted 0.643  oracle 1.000  Spearman(pred, dchi2) 0.34
+  H2O spots20    wrong   282  irrecoverable   60 %  AUROC predicted 0.623  oracle 1.000  Spearman(pred, dchi2) 0.34
+  H2O white_x2   wrong   314  irrecoverable   57 %  AUROC predicted 0.627  oracle 1.000  Spearman(pred, dchi2) 0.34
+  H2O white_x3   wrong   344  irrecoverable   54 %  AUROC predicted 0.623  oracle 1.000  Spearman(pred, dchi2) 0.34
+  NH3 clean      wrong   163  irrecoverable   58 %  AUROC predicted 0.516  oracle 1.000  Spearman(pred, dchi2) 0.33
+  NH3 cloud1e2   wrong   255  irrecoverable   42 %  AUROC predicted 0.534  oracle 1.000  Spearman(pred, dchi2) 0.33
+  NH3 compound   wrong   285  irrecoverable   39 %  AUROC predicted 0.549  oracle 1.000  Spearman(pred, dchi2) 0.33
+  NH3 haze3e7    wrong   275  irrecoverable   38 %  AUROC predicted 0.553  oracle 1.000  Spearman(pred, dchi2) 0.33
+  NH3 spots20    wrong   242  irrecoverable   44 %  AUROC predicted 0.522  oracle 1.000  Spearman(pred, dchi2) 0.33
+  NH3 white_x2   wrong   259  irrecoverable   43 %  AUROC predicted 0.478  oracle 1.000  Spearman(pred, dchi2) 0.33
+  NH3 white_x3   wrong   304  irrecoverable   39 %  AUROC predicted 0.505  oracle 1.000  Spearman(pred, dchi2) 0.33
+
+== (d') self-consistency of the decidable / undecidable split at the calibrated threshold (3 sigma if uncalibrated) (clean case unless stated; base = majority-class rate of the subset)
+  mol  learner undec%  acc_dec  base_dec  acc_undec  base_undec  rec_dec  rec_undec  acc_all  base_all
+  CH4  KNN    28.9     86.7      59.4       72.1        69.9     89.1       61.4     82.5      62.4
+  CH4  MLP    28.9     88.5      59.4       71.0        69.9     86.2       44.6     83.5      62.4
+  CH4  RFC    28.9     86.7      59.4       74.3        69.9     76.4       31.3     83.1      62.4
+  CH4  SVC    28.9     90.0      59.4       74.3        69.9     86.2       39.8     85.4      62.4
+  H2O  KNN    56.0     68.8      53.8       66.5        68.2     46.9       24.7     67.5      61.9
+  H2O  MLP    56.0     81.9      53.8       69.9        68.2     75.3       37.6     75.2      61.9
+  H2O  RFC    56.0     76.7      53.8       71.6        68.2     51.5       16.5     73.8      61.9
+  H2O  SVC    56.0     81.0      53.8       74.2        68.2     64.4       28.2     77.2      61.9
+  CO2  KNN    41.0     87.4      63.4       64.8        54.1     85.0       57.8     78.1      59.6
+  CO2  MLP    41.0     89.2      63.4       69.9        54.1     85.4       61.7     81.3      59.6
+  CO2  RFC    41.0     90.2      63.4       66.1        54.1     78.2       41.1     80.3      59.6
+  CO2  SVC    41.0     91.5      63.4       70.2        54.1     84.0       50.6     82.7      59.6
+  NH3  KNN    28.9     87.9      62.6       65.9        57.2     77.2       43.2     81.6      61.0
+  NH3  MLP    28.9     89.2      62.6       63.8        57.2     82.3       42.4     81.9      61.0
+  NH3  RFC    28.9     91.3      62.6       66.3        57.2     80.7       28.0     84.1      61.0
+  NH3  SVC    28.9     90.6      62.6       68.5        57.2     79.5       41.5     84.2      61.0
+  mean over learners, per case: acc on decidable / undecidable labels (base of undecidable), recall decidable / undecidable
+    CH4 clean       88.0 /  72.9 ( 69.9)   recall  84.5 /  44.3
+    CH4 cloud1e2    82.8 /  74.1 ( 69.9)   recall  65.1 /  23.8
+    CH4 compound    76.4 /  71.4 ( 69.9)   recall  44.0 /   8.7
+    CH4 haze3e7     83.0 /  71.8 ( 69.9)   recall  61.9 /  19.0
+    CH4 spots20     84.8 /  72.5 ( 69.9)   recall  72.0 /  28.6
+    CH4 white_x2    78.4 /  70.5 ( 69.9)   recall  56.9 /  23.8
+    CH4 white_x3    71.9 /  68.9 ( 69.9)   recall  40.1 /  16.3
+    CO2 clean       89.6 /  67.7 ( 54.1)   recall  83.1 /  52.8
+    CO2 cloud1e2    85.7 /  64.2 ( 54.1)   recall  69.3 /  36.9
+    CO2 compound    80.6 /  60.9 ( 54.1)   recall  49.3 /  20.4
+    CO2 haze3e7     85.2 /  63.3 ( 54.1)   recall  64.7 /  30.4
+    CO2 spots20     87.3 /  65.0 ( 54.1)   recall  75.0 /  42.1
+    CO2 white_x2    78.6 /  59.0 ( 54.1)   recall  52.2 /  23.2
+    CO2 white_x3    73.0 /  57.1 ( 54.1)   recall  36.0 /  13.8
+    H2O clean       77.1 /  70.6 ( 68.2)   recall  59.5 /  26.8
+    H2O cloud1e2    68.7 /  67.2 ( 68.2)   recall  38.4 /  10.4
+    H2O compound    64.3 /  68.4 ( 68.2)   recall  31.7 /  17.2
+    H2O haze3e7     64.4 /  69.4 ( 68.2)   recall  31.6 /  14.6
+    H2O spots20     72.9 /  68.5 ( 68.2)   recall  51.2 /  27.6
+    H2O white_x2    67.6 /  66.8 ( 68.2)   recall  37.2 /  18.2
+    H2O white_x3    62.1 /  65.4 ( 68.2)   recall  26.5 /  15.1
+    NH3 clean       89.8 /  66.1 ( 57.2)   recall  79.9 /  38.8
+    NH3 cloud1e2    78.3 /  61.0 ( 57.2)   recall  47.8 /  15.0
+    NH3 compound    74.4 /  59.9 ( 57.2)   recall  34.7 /  15.0
+    NH3 haze3e7     74.9 /  62.1 ( 57.2)   recall  36.5 /  17.2
+    NH3 spots20     80.0 /  61.4 ( 57.2)   recall  50.1 /  21.0
+    NH3 white_x2    78.1 /  60.1 ( 57.2)   recall  51.2 /  23.5
+    NH3 white_x3    72.5 /  57.4 ( 57.2)   recall  36.7 /  16.1
+
+== (d'') error classes against the nested-sampling posterior of every planet (clean spectrum, Tier-1 sigma): a learner error is
+   recoverable if p_true > 0.95, undecidable if 0.05 <= p_true <= 0.95, misled if p_true < 0.05; the posterior is of the clean spectrum in every column
+  CH4 n=955  accuracy: learners (mean)  83.6  retrieval  93.7  retrieval's own expectation  92.5   undecidable 32.5 %  retrieval confidently wrong 0.0 %
+  H2O n=955  accuracy: learners (mean)  73.4  retrieval  91.6  retrieval's own expectation  88.3   undecidable 54.2 %  retrieval confidently wrong 0.0 %
+  CO2 n=955  accuracy: learners (mean)  80.6  retrieval  93.8  retrieval's own expectation  89.2   undecidable 44.2 %  retrieval confidently wrong 0.0 %
+  NH3 n=955  accuracy: learners (mean)  82.9  retrieval  93.9  retrieval's own expectation  92.3   undecidable 31.9 %  retrieval confidently wrong 0.1 %
+  mol  learner  acc_dec  acc_undec  base_undec  wrong  recov%  undec%  misled%  both_wrong  learner right where retrieval wrong
+  CH4  KNN      92.2       62.3        56.5    167    29.9    70.1      0.0          43                                28.3 %
+  CH4  MLP      93.0       63.5        56.5    158    28.5    71.5      0.0          41                                31.7 %
+  CH4  RFC      93.5       61.6        56.5    161    26.1    73.9      0.0          48                                20.0 %
+  CH4  SVC      95.8       63.9        56.5    139    19.4    80.6      0.0          46                                23.3 %
+  H2O  KNN      77.6       59.1        59.8    310    31.6    68.4      0.0          61                                23.8 %
+  H2O  MLP      89.0       63.5        59.8    237    20.3    79.7      0.0          61                                23.8 %
+  H2O  RFC      85.8       63.7        59.8    250    24.8    75.2      0.0          70                                12.5 %
+  H2O  SVC      89.5       66.8        59.8    218    21.1    78.9      0.0          62                                22.5 %
+  CO2  KNN      90.4       62.6        53.3    209    24.4    75.6      0.0          34                                42.4 %
+  CO2  MLP      92.1       67.5        53.3    179    23.5    76.5      0.0          38                                35.6 %
+  CO2  RFC      94.6       62.3        53.3    188    15.4    84.6      0.0          43                                27.1 %
+  CO2  SVC      94.6       67.8        53.3    165    17.6    82.4      0.0          39                                33.9 %
+  NH3  KNN      90.8       62.3        55.4    176    34.1    65.3      0.6          39                                32.8 %
+  NH3  MLP      92.3       60.0        55.4    173    28.9    70.5      0.6          38                                34.5 %
+  NH3  RFC      96.1       58.7        55.4    152    16.4    82.9      0.7          43                                25.9 %
+  NH3  SVC      94.6       62.3        55.4    151    23.2    76.2      0.7          42                                27.6 %
+  mean over learners, per case: errors, share recoverable / undecidable / misled (clean-spectrum posterior)
+    CH4 clean      wrong   156    26.0 /  74.0 /   0.0
+    CH4 cloud1e2   wrong   188    42.5 /  57.5 /   0.0
+    CH4 compound   wrong   239    46.8 /  53.2 /   0.0
+    CH4 haze3e7    wrong   193    36.9 /  63.1 /   0.0
+    CH4 spots20    wrong   180    33.5 /  66.5 /   0.0
+    CH4 white_x2   wrong   228    44.9 /  55.1 /   0.0
+    CH4 white_x3   wrong   276    52.9 /  47.1 /   0.0
+    CO2 clean      wrong   185    20.2 /  79.8 /   0.0
+    CO2 cloud1e2   wrong   221    25.0 /  75.0 /   0.0
+    CO2 compound   wrong   262    27.6 /  72.4 /   0.0
+    CO2 haze3e7    wrong   228    23.2 /  76.8 /   0.0
+    CO2 spots20    wrong   209    21.6 /  78.4 /   0.0
+    CO2 white_x2   wrong   281    29.4 /  70.6 /   0.0
+    CO2 white_x3   wrong   320    35.1 /  64.9 /   0.0
+    H2O clean      wrong   254    24.4 /  75.6 /   0.0
+    H2O cloud1e2   wrong   307    31.8 /  68.2 /   0.0
+    H2O compound   wrong   319    35.9 /  64.1 /   0.0
+    H2O haze3e7    wrong   313    35.1 /  64.9 /   0.0
+    H2O spots20    wrong   282    29.1 /  70.9 /   0.0
+    H2O white_x2   wrong   314    34.4 /  65.6 /   0.0
+    H2O white_x3   wrong   344    38.2 /  61.8 /   0.0
+    NH3 clean      wrong   163    25.7 /  73.7 /   0.6
+    NH3 cloud1e2   wrong   255    41.8 /  57.8 /   0.4
+    NH3 compound   wrong   285    44.7 /  54.9 /   0.4
+    NH3 haze3e7    wrong   275    45.0 /  54.6 /   0.4
+    NH3 spots20    wrong   242    40.4 /  59.2 /   0.4
+    NH3 white_x2   wrong   259    43.0 /  56.7 /   0.3
+    NH3 white_x3   wrong   304    47.7 /  52.1 /   0.2
+
+== (d3) error classes under each departure against the identifiability test run with the departure in the model
+   (calibrated dchi2 thresholds): recoverable = the label is decidable given a correct model of the departure; 'introduced' = errors the
+   learner does not make on the clean spectrum, 'shared' = errors it makes on both; 'fixed' = clean errors the departure removes
+  mol  case        undec%    acc  acc_cln  acc_dec  acc_und  base_und  rec_dec  wrong  recov%  introd  recov%  shared  recov%  fixed
+  CH4  clean         28.9   83.6     83.6     88.0     72.9      69.9     84.5    156    52.0       0     nan     156    52.0      0
+  CH4  haze3e7       26.1   79.8     83.7     83.5     69.3      68.7     61.0    193    60.1      85    74.4     108    48.3     48
+  CH4  spots20       28.4   81.2     83.6     84.8     72.0      69.0     71.8    180    57.7      55    69.9     124    52.6     32
+  CH4  cloud1e2      30.2   80.3     83.6     82.4     75.4      74.7     64.8    188    61.6      78    74.8     110    51.8     46
+  CH4  white_x2      49.5   76.1     83.6     78.9     73.3      71.7     61.6    228    44.2     120    58.1     109    29.3     48
+  CH4  white_x3      65.3   71.1     83.6     67.7     72.8      72.3     46.6    276    38.3     175    51.0     101    16.7     55
+  H2O  clean         56.0   73.4     73.4     77.1     70.6      68.2     59.5    254    37.6       0     nan     254    37.6      0
+  H2O  haze3e7       62.1   67.2     73.4     66.3     67.7      66.6     33.3    313    38.8     108    55.0     205    30.9     49
+  H2O  spots20       53.5   70.4     73.4     73.1     68.1      68.3     51.1    282    41.8      70    45.6     212    40.7     42
+  H2O  cloud1e2      72.1   67.9     73.4     60.3     70.8      72.3     40.6    307    34.3      84    46.4     222    29.5     32
+  H2O  white_x2      78.0   67.2     73.4     67.5     67.1      67.1     46.6    314    21.7     116    33.8     197    15.6     56
+  H2O  white_x3      87.0   64.0     73.4     60.3     64.5      65.5     39.9    344    14.3     149    25.4     195     6.4     58
+  CO2  clean         41.0   80.6     80.6     89.6     67.7      54.1     83.1    185    31.6       0     nan     185    31.6      0
+  CO2  haze3e7       24.0   76.2     80.6     81.1     60.6      53.7     57.0    228    60.2      90    70.5     138    53.5     48
+  CO2  spots20       39.3   78.1     80.6     87.2     64.1      53.6     74.8    209    35.5      60    45.7     149    31.6     36
+  CO2  cloud1e2      46.8   76.8     80.6     85.7     66.7      57.9     70.6    221    32.6      68    42.0     153    28.5     32
+  CO2  white_x2      71.5   70.6     80.6     84.3     65.1      58.6     65.8    281    15.2     148    19.3     132    10.8     53
+  CO2  white_x3      85.9   66.5     80.6     82.0     63.9      59.8     67.0    320     7.6     194     9.5     126     4.8     59
+  NH3  clean         28.9   82.9     82.9     89.8     66.1      57.2     79.9    163    42.5       0     nan     163    42.5      0
+  NH3  haze3e7       28.3   71.2     82.9     75.5     60.3      54.4     36.2    275    60.8     143    76.0     132    44.2     31
+  NH3  spots20       27.4   74.6     82.9     80.1     60.2      55.3     49.7    242    56.7     107    73.7     135    43.1     28
+  NH3  cloud1e2      37.1   73.3     82.9     76.0     68.7      68.4     47.6    255    56.3     120    69.8     136    43.7     27
+  NH3  white_x2      50.8   72.9     82.9     79.6     66.4      63.3     57.7    259    37.0     138    50.5     121    21.8     42
+  NH3  white_x3      67.4   68.2     82.9     73.2     65.7      65.2     48.0    304    27.3     185    37.1     119    12.5     44
+  (means over the four learners; per-learner rows in diagnostic_departure_classes.csv)
+
+== Tier-2 selection: 60 % of the planets get a slot; lost = targets not selected, wasted = slots on non-targets; cost = w x lost + wasted
+-- CH4 under clean (359 targets)
+   strategy                                              lost  wasted   cost w=1  w=3  w=10
+   oracle                                                   0     214      214   214   214
+   retrieval of every planet (nested sampling)              0     214      214   214   214
+   + undecidable by the retrieval itself re-scored by it     3     217      220   226   247
+   + knn (flagged re-scored by the retrieval)              14     228      242   270   368
+   + muting (flagged re-scored by the retrieval)           15     229      244   274   379
+   + mahalanobis (flagged re-scored by the retrieval)      15     229      244   274   379
+   + optical (flagged re-scored by the retrieval)          17     231      248   282   401
+   + margin (flagged re-scored by the retrieval)           17     231      248   282   401
+   + pca_recon (flagged re-scored by the retrieval)        18     232      250   286   412
+   + decidable (flagged re-scored by the retrieval)        19     233      252   290   423
+   + ensemble (flagged re-scored by the retrieval)         19     233      252   290   423
+   + bandmetric (flagged re-scored by the retrieval)       21     235      256   298   445
+   + bandmetric (flagged re-scored by the fallback)        21     235      256   298   445
+   + optical (flagged re-scored by the fallback)           21     235      256   298   445
+   + disagree (flagged re-scored by the retrieval)         21     235      256   298   445
+   classifier                                              21     235      256   298   445
+   + knn (declined to the back)                            21     235      256   298   445
+   + muting (flagged re-scored by the fallback)            22     236      258   302   456
+   + disagree (flagged re-scored by the fallback)          24     238      262   310   478
+   + mahalanobis (declined to the back)                    24     238      262   310   478
+   AIRS-only classifier                                    25     239      264   314   489
+   + pca_recon (declined to the back)                      40     254      294   374   654
+   + decidable (undecidable ranked by decidability)        47     261      308   402   731
+   + margin (declined to the back)                         55     269      324   434   819
+   + ensemble (declined to the back)                       58     272      330   446   852
+   band metric                                            102     316      418   622  1336
+   random                                                 155     369      524   834  1919
+-- CH4 under haze3e7 (359 targets)
+   strategy                                              lost  wasted   cost w=1  w=3  w=10
+   oracle                                                   0     214      214   214   214
+   classifier                                              24     238      262   310   478
+   AIRS-only classifier                                    25     239      264   314   489
+   + disagree (flagged re-scored by the fallback)          25     239      264   314   489
+   + optical (flagged re-scored by the fallback)           25     239      264   314   489
+   + muting (flagged re-scored by the fallback)            25     239      264   314   489
+   + bandmetric (flagged re-scored by the fallback)        27     241      268   322   511
+   + mahalanobis (declined to the back)                    30     244      274   334   544
+   + knn (declined to the back)                            31     245      276   338   555
+   + pca_recon (declined to the back)                      44     258      302   390   698
+   + decidable (undecidable ranked by decidability)        47     261      308   402   731
+   + ensemble (declined to the back)                       63     277      340   466   907
+   band metric                                            103     317      420   626  1347
+   + margin (declined to the back)                        118     332      450   686  1512
+   random                                                 142     356      498   782  1776
+-- CH4 under spots20 (359 targets)
+   strategy                                              lost  wasted   cost w=1  w=3  w=10
+   oracle                                                   0     214      214   214   214
+   + muting (flagged re-scored by the fallback)            21     235      256   298   445
+   classifier                                              24     238      262   310   478
+   + bandmetric (flagged re-scored by the fallback)        24     238      262   310   478
+   + optical (flagged re-scored by the fallback)           25     239      264   314   489
+   + disagree (flagged re-scored by the fallback)          26     240      266   318   500
+   AIRS-only classifier                                    27     241      268   322   511
+   + knn (declined to the back)                            43     257      300   386   687
+   + mahalanobis (declined to the back)                    49     263      312   410   753
+   + decidable (undecidable ranked by decidability)        51     265      316   418   775
+   + ensemble (declined to the back)                       59     273      332   450   863
+   + pca_recon (declined to the back)                      96     310      406   598  1270
+   + margin (declined to the back)                         97     311      408   602  1281
+   band metric                                            110     324      434   654  1424
+   random                                                 139     353      492   770  1743
+-- CH4 under white_x2 (359 targets)
+   strategy                                              lost  wasted   cost w=1  w=3  w=10
+   oracle                                                   0     214      214   214   214
+   classifier                                              41     255      296   378   665
+   + optical (flagged re-scored by the fallback)           41     255      296   378   665
+   + muting (flagged re-scored by the fallback)            41     255      296   378   665
+   + bandmetric (flagged re-scored by the fallback)        42     256      298   382   676
+   + disagree (flagged re-scored by the fallback)          45     259      304   394   709
+   AIRS-only classifier                                    51     265      316   418   775
+   + decidable (undecidable ranked by decidability)        58     272      330   446   852
+   + pca_recon (declined to the back)                      62     276      338   462   896
+   + knn (declined to the back)                            87     301      388   562  1171
+   + mahalanobis (declined to the back)                    88     302      390   566  1182
+   + ensemble (declined to the back)                       96     310      406   598  1270
+   band metric                                            108     322      430   646  1402
+   + margin (declined to the back)                        117     331      448   682  1501
+   random                                                 158     372      530   846  1952
+-- H2O under clean (364 targets)
+   strategy                                              lost  wasted   cost w=1  w=3  w=10
+   oracle                                                   0     209      209   209   209
+   retrieval of every planet (nested sampling)              2     211      213   217   231
+   + undecidable by the retrieval itself re-scored by it    12     221      233   257   341
+   + optical (flagged re-scored by the retrieval)          47     256      303   397   726
+   + decidable (flagged re-scored by the retrieval)        48     257      305   401   737
+   + knn (flagged re-scored by the retrieval)              48     257      305   401   737
+   + mahalanobis (flagged re-scored by the retrieval)      48     257      305   401   737
+   + muting (flagged re-scored by the retrieval)           49     258      307   405   748
+   + margin (flagged re-scored by the retrieval)           50     259      309   409   759
+   + pca_recon (flagged re-scored by the retrieval)        50     259      309   409   759
+   + ensemble (flagged re-scored by the retrieval)         50     259      309   409   759
+   + bandmetric (flagged re-scored by the retrieval)       52     261      313   417   781
+   + disagree (flagged re-scored by the retrieval)         52     261      313   417   781
+   classifier                                              53     262      315   421   792
+   + bandmetric (flagged re-scored by the fallback)        55     264      319   429   814
+   + optical (flagged re-scored by the fallback)           58     267      325   441   847
+   + muting (flagged re-scored by the fallback)            61     270      331   453   880
+   + disagree (flagged re-scored by the fallback)          69     278      347   485   968
+   + mahalanobis (declined to the back)                    77     286      363   517  1056
+   + knn (declined to the back)                            77     286      363   517  1056
+   + decidable (undecidable ranked by decidability)        82     291      373   537  1111
+   + pca_recon (declined to the back)                      83     292      375   541  1122
+   + margin (declined to the back)                         92     301      393   577  1221
+   AIRS-only classifier                                    92     301      393   577  1221
+   + ensemble (declined to the back)                       95     304      399   589  1254
+   band metric                                            130     339      469   729  1639
+   random                                                 151     360      511   813  1870
+-- H2O under haze3e7 (364 targets)
+   strategy                                              lost  wasted   cost w=1  w=3  w=10
+   oracle                                                   0     209      209   209   209
+   + bandmetric (flagged re-scored by the fallback)        76     285      361   513  1045
+   classifier                                              79     288      367   525  1078
+   + mahalanobis (declined to the back)                    80     289      369   529  1089
+   + knn (declined to the back)                            81     290      371   533  1100
+   + disagree (flagged re-scored by the fallback)          85     294      379   549  1144
+   + pca_recon (declined to the back)                      87     296      383   557  1166
+   + muting (flagged re-scored by the fallback)            87     296      383   557  1166
+   + optical (flagged re-scored by the fallback)           91     300      391   573  1210
+   AIRS-only classifier                                    97     306      403   597  1276
+   + decidable (undecidable ranked by decidability)       100     309      409   609  1309
+   + ensemble (declined to the back)                      107     316      423   637  1386
+   + margin (declined to the back)                        109     318      427   645  1408
+   band metric                                            138     347      485   761  1727
+   random                                                 155     364      519   829  1914
+-- H2O under spots20 (364 targets)
+   strategy                                              lost  wasted   cost w=1  w=3  w=10
+   oracle                                                   0     209      209   209   209
+   + optical (flagged re-scored by the fallback)           66     275      341   473   935
+   classifier                                              67     276      343   477   946
+   + bandmetric (flagged re-scored by the fallback)        68     277      345   481   957
+   + muting (flagged re-scored by the fallback)            68     277      345   481   957
+   + disagree (flagged re-scored by the fallback)          69     278      347   485   968
+   + knn (declined to the back)                            85     294      379   549  1144
+   + mahalanobis (declined to the back)                    89     298      387   565  1188
+   + decidable (undecidable ranked by decidability)        89     298      387   565  1188
+   AIRS-only classifier                                    92     301      393   577  1221
+   + margin (declined to the back)                         93     302      395   581  1232
+   + ensemble (declined to the back)                      117     326      443   677  1496
+   + pca_recon (declined to the back)                     118     327      445   681  1507
+   band metric                                            136     345      481   753  1705
+   random                                                 151     360      511   813  1870
+-- H2O under white_x2 (364 targets)
+   strategy                                              lost  wasted   cost w=1  w=3  w=10
+   oracle                                                   0     209      209   209   209
+   classifier                                              82     291      373   537  1111
+   + bandmetric (flagged re-scored by the fallback)        82     291      373   537  1111
+   + muting (flagged re-scored by the fallback)            82     291      373   537  1111
+   + optical (flagged re-scored by the fallback)           83     292      375   541  1122
+   + disagree (flagged re-scored by the fallback)          88     297      385   561  1177
+   + decidable (undecidable ranked by decidability)        98     307      405   601  1287
+   + ensemble (declined to the back)                      100     309      409   609  1309
+   + pca_recon (declined to the back)                     103     312      415   621  1342
+   AIRS-only classifier                                   108     317      425   641  1397
+   + margin (declined to the back)                        111     320      431   653  1430
+   + mahalanobis (declined to the back)                   124     333      457   705  1573
+   + knn (declined to the back)                           131     340      471   733  1650
+   band metric                                            142     351      493   777  1771
+   random                                                 143     352      495   781  1782
+-- joint under clean (576 targets)
+   strategy                                              lost  wasted   cost w=1  w=3  w=10
+   oracle                                                   3       0        3     9    30
+   retrieval of every planet (nested sampling)             39      36       75   153   426
+   + undecidable by the retrieval itself re-scored by it    58      55      113   229   635
+   + pca_recon (flagged re-scored by the retrieval)       100      97      197   397  1097
+   + margin (flagged re-scored by the retrieval)          100      97      197   397  1097
+   + mahalanobis (flagged re-scored by the retrieval)     102      99      201   405  1119
+   + optical (flagged re-scored by the retrieval)         105     102      207   417  1152
+   + bandmetric (flagged re-scored by the retrieval)      106     103      209   421  1163
+   + disagree (flagged re-scored by the retrieval)        106     103      209   421  1163
+   + ensemble (flagged re-scored by the retrieval)        106     103      209   421  1163
+   + knn (flagged re-scored by the retrieval)             107     104      211   425  1174
+   + muting (flagged re-scored by the retrieval)          107     104      211   425  1174
+   classifier                                             111     108      219   441  1218
+   + muting (flagged re-scored by the fallback)           114     111      225   453  1251
+   + bandmetric (flagged re-scored by the fallback)       114     111      225   453  1251
+   + optical (flagged re-scored by the fallback)          115     112      227   457  1262
+   + knn (declined to the back)                           117     114      231   465  1284
+   + mahalanobis (declined to the back)                   117     114      231   465  1284
+   + disagree (flagged re-scored by the fallback)         124     121      245   493  1361
+   + pca_recon (declined to the back)                     129     126      255   513  1416
+   + ensemble (declined to the back)                      136     133      269   541  1493
+   + margin (declined to the back)                        140     137      277   557  1537
+   AIRS-only classifier                                   142     139      281   565  1559
+   random                                                 221     218      439   881  2428
+   band metric                                            243     240      483   969  2670
+-- joint under haze3e7 (576 targets)
+   strategy                                              lost  wasted   cost w=1  w=3  w=10
+   oracle                                                   3       0        3     9    30
+   classifier                                             123     120      243   489  1350
+   + bandmetric (flagged re-scored by the fallback)       126     123      249   501  1383
+   + disagree (flagged re-scored by the fallback)         127     124      251   505  1394
+   + mahalanobis (declined to the back)                   128     125      253   509  1405
+   + knn (declined to the back)                           130     127      257   517  1427
+   + muting (flagged re-scored by the fallback)           130     127      257   517  1427
+   + optical (flagged re-scored by the fallback)          134     131      265   533  1471
+   + pca_recon (declined to the back)                     139     136      275   553  1526
+   AIRS-only classifier                                   140     137      277   557  1537
+   + ensemble (declined to the back)                      147     144      291   585  1614
+   + margin (declined to the back)                        148     145      293   589  1625
+   random                                                 222     219      441   885  2439
+   band metric                                            244     241      485   973  2681
+-- joint under spots20 (576 targets)
+   strategy                                              lost  wasted   cost w=1  w=3  w=10
+   oracle                                                   3       0        3     9    30
+   classifier                                             123     120      243   489  1350
+   + bandmetric (flagged re-scored by the fallback)       123     120      243   489  1350
+   + muting (flagged re-scored by the fallback)           124     121      245   493  1361
+   + disagree (flagged re-scored by the fallback)         127     124      251   505  1394
+   + optical (flagged re-scored by the fallback)          128     125      253   509  1405
+   + knn (declined to the back)                           134     131      265   533  1471
+   + mahalanobis (declined to the back)                   136     133      269   541  1493
+   AIRS-only classifier                                   140     137      277   557  1537
+   + margin (declined to the back)                        145     142      287   577  1592
+   + ensemble (declined to the back)                      145     142      287   577  1592
+   + pca_recon (declined to the back)                     184     181      365   733  2021
+   random                                                 227     224      451   905  2494
+   band metric                                            246     243      489   981  2703
+-- joint under white_x2 (576 targets)
+   strategy                                              lost  wasted   cost w=1  w=3  w=10
+   oracle                                                   3       0        3     9    30
+   classifier                                             146     143      289   581  1603
+   + bandmetric (flagged re-scored by the fallback)       146     143      289   581  1603
+   + muting (flagged re-scored by the fallback)           146     143      289   581  1603
+   + disagree (flagged re-scored by the fallback)         148     145      293   589  1625
+   + optical (flagged re-scored by the fallback)          148     145      293   589  1625
+   AIRS-only classifier                                   160     157      317   637  1757
+   + pca_recon (declined to the back)                     164     161      325   653  1801
+   + ensemble (declined to the back)                      172     169      341   685  1889
+   + mahalanobis (declined to the back)                   179     176      355   713  1966
+   + margin (declined to the back)                        190     187      377   757  2087
+   + knn (declined to the back)                           194     191      385   773  2131
+   random                                                 221     218      439   881  2428
+   band metric                                            236     233      469   941  2593
+
+== retrieval triage (clean case): targets lost at the 60 % selection when the fraction f of planets each ordering ranks most suspect is re-scored by the retrieval
+-- CH4: lost targets at f =   0%   10%   20%   30%   50%   70%  100%
+   random                         21    19    13     8     2     0     0
+   p_true (retrieval's own)       21     9     8     4     1     0     0
+   classifier margin              21    18    12    10     6     3     0
+   margin                         21    17    10     9     6     3     0
+   ensemble                       21    19    14    11     4     0     0
+   mahalanobis                    21    15     9     7     3     1     0
+   knn                            21    14     9     6     3     1     0
+   pca_recon                      21    18    14     6     4     1     0
+   disagree                       21    21    14    10     6     2     0
+   optical                        21    17    11     7     1     1     0
+   bandmetric                     21    21    18    15     9     3     0
+   muting                         21    15     8     5     3     1     0
+   decidable                      21    19    12     8     4     1     0
+   dchi2 measured                 21    14    10     6     2     0     0
+-- H2O: lost targets at f =   0%   10%   20%   30%   50%   70%  100%
+   random                         53    49    42    36    21    10     2
+   p_true (retrieval's own)       53    38    30    24    12     9     2
+   classifier margin              53    52    45    40    34    16     2
+   margin                         53    50    46    42    33    16     2
+   ensemble                       53    50    44    39    29    12     2
+   mahalanobis                    53    48    42    37    26    14     2
+   knn                            53    48    41    37    26    14     2
+   pca_recon                      53    50    42    38    26    17     2
+   disagree                       53    52    46    38    30    14     2
+   optical                        53    47    41    35    21    11     2
+   bandmetric                     53    52    50    47    35    18     2
+   muting                         53    49    40    35    20    11     2
+   decidable                      53    48    38    33    22    15     2
+   dchi2 measured                 53    52    45    36    18     9     2

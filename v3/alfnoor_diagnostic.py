@@ -54,6 +54,9 @@ from bin_spectra import bin_native  # noqa: E402
 import alfnoor_faithful as F  # noqa: E402
 import alfnoor_trust as AT  # noqa: E402
 import alfnoor_jwst as AJ  # noqa: E402
+
+# ALFNOOR_TRAIN=haze|hazedeck|union scores the retrained learners of alfnoor_retrain.py instead; outputs get the suffix
+SUFFIX = "" if AJ.TRAIN == "faithful" else f"_{AJ.TRAIN}"
 import jwst_to_ariel as J  # noqa: E402
 
 CASES = ["clean", "haze3e7", "spots20", "cloud1e2", "compound", "white_x2", "white_x3"]
@@ -554,8 +557,8 @@ def main():
     cases, Pte, e, sig = test_cases()
     credit, remedy, classes, selection, consistency, retclasses, triage, depclasses = evaluate(cases, Pte, e, sig, sc)
     for name, df in (("credit", credit), ("remedy", remedy), ("classes", classes), ("selection", selection), ("consistency", consistency), ("retrieval_classes", retclasses), ("triage", triage), ("departure_classes", depclasses)):
-        if df is not None: df.to_csv(os.path.join(RESULTS, f"diagnostic_{name}.csv"), index=False)
-    text = write_summary(credit, remedy, classes, selection, consistency, retclasses, triage, depclasses); print(text); open(os.path.join(RESULTS, "diagnostic.txt"), "w").write(text + "\n")
+        if df is not None: df.to_csv(os.path.join(RESULTS, f"diagnostic_{name}{SUFFIX}.csv"), index=False)
+    text = write_summary(credit, remedy, classes, selection, consistency, retclasses, triage, depclasses); print(text); open(os.path.join(RESULTS, f"diagnostic{SUFFIX}.txt"), "w").write(text + "\n")
 
 
 if __name__ == "__main__":
