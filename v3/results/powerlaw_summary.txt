@@ -1,0 +1,30 @@
+Hazed spectra (3e7 m^-3, Lee-Mie, column-filling), 117 planets of the fixed random 200 completed; the retrieval's aerosol is a power-law opacity with two free parameters, a family that does not contain the truth
+
+                                                 CH4               H2O               CO2               NH3
+clean spectra, clear model
+  accuracy (p_true > 0.5) %                     96.6              92.3              95.7              95.7
+  recall of present labels %                    94.6              84.6              92.1              92.0
+  decidable (p_true > 0.95) %                   72.6              44.4              58.1              70.9
+  p_true < 0.05 %                                0.0               0.0               0.0               0.0
+  median log Z -12.1; median minutes 20; median calls 3805
+hazed, clear model
+  accuracy (p_true > 0.5) %                     65.8              53.8              65.0              56.4
+  recall of present labels %                     0.0               0.0               0.0               0.0
+  decidable (p_true > 0.95) %                   65.8              53.8              65.0              56.4
+  p_true < 0.05 %                               31.6              43.6              32.5              41.0
+  median log Z -263.5; median minutes 29; median calls 6349
+hazed, power law
+  accuracy (p_true > 0.5) %                     83.8              72.6              83.8              77.8
+  recall of present labels %                    83.8              59.6              68.4              86.0
+  decidable (p_true > 0.95) %                   59.0              20.5              60.7              40.2
+  p_true < 0.05 %                                5.1               4.3               3.4               7.7
+  median log Z -31.4; median minutes 47; median calls 7804
+hazed, haze density free
+  accuracy (p_true > 0.5) %                     98.3              82.9              95.7              93.2
+  recall of present labels %                    94.6              65.4              86.8              86.0
+  decidable (p_true > 0.95) %                   67.5              31.6              61.5              65.0
+  p_true < 0.05 %                                0.0               0.9               0.0               0.9
+  median log Z -15.8; median minutes 33; median calls 5730
+CH4 present and decidable on the clean spectrum (26): found (p_true > 0.5) clear model 0, power law 26, free haze 26; still decidable power law 18, free haze 17
+H2O present and decidable on the clean spectrum (22): found (p_true > 0.5) clear model 0, power law 20, free haze 22; still decidable power law 10, free haze 12
+power-law slope median 9.85 (prior limit 10; truth is not a power law), log sigma0 at 1 um median -26.77; share with slope above 9: 97 %

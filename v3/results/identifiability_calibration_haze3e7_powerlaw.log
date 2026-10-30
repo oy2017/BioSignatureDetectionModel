@@ -1,0 +1,23 @@
+Numba not installed, using numpy instead
+200 planets selected, 200 to retrieve, 9 jobs, 100 live points, cap 20000 calls
+  9/200  6507 s  median 44.0 min, 7510 calls per planet
+  18/200  8790 s  median 92.5 min, 15398 calls per planet
+  27/200  11194 s  median 44.0 min, 7164 calls per planet
+  36/200  14812 s  median 37.8 min, 6656 calls per planet
+  45/200  19815 s  median 57.2 min, 10184 calls per planet
+  54/200  21669 s  median 97.2 min, 17431 calls per planet
+  63/200  25875 s  median 44.1 min, 7863 calls per planet
+  72/200  30244 s  median 47.2 min, 9139 calls per planet
+  81/200  32398 s  median 41.1 min, 7335 calls per planet
+  90/200  37177 s  median 43.9 min, 7719 calls per planet
+  99/200  39864 s  median 62.2 min, 11032 calls per planet
+  108/200  44955 s  median 44.9 min, 6926 calls per planet
+  117/200  48367 s  median 49.0 min, 7270 calls per planet
+/Users/fanyang/tfenv/lib/python3.10/site-packages/joblib/externals/loky/backend/resource_tracker.py:444: UserWarning: resource_tracker: There appear to be 15 leaked semlock objects to clean up at shutdown: {'/loky-18280-h0klu1s6': 1, '/loky-18280-ostj8s3y': 1, '/loky-18280-o_19kx_f': 1, '/loky-18280-jm07oqex': 1, '/loky-18280-cxltall3': 1, '/loky-18280-8__m0j_7': 1, '/loky-18280-8qsh5ywe': 1, '/loky-18280-7b41qbnc': 1, '/loky-18280-elgu90jy': 1, '/loky-18280-kjg7ujgx': 1, '/loky-18280-qii4y_jb': 1, '/loky-18280-v545jo06': 1, '/loky-18280-hkm2yy6u': 1, '/loky-18280-enlp8e79': 1, '/loky-18280-59s9gihs': 1}
+  warnings.warn(
+/Users/fanyang/tfenv/lib/python3.10/site-packages/joblib/externals/loky/backend/resource_tracker.py:444: UserWarning: resource_tracker: There appear to be 2 leaked folder objects to clean up at shutdown: {'/var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_18280_71ed365b73314793b40f1304002a3cc5_10dddcb5f6474d7294ba36705f556a59': 1, '/var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_18280_71ed365b73314793b40f1304002a3cc5_d954299dde6147d498fb038a59087e16': 1}
+  warnings.warn(
+/Users/fanyang/tfenv/lib/python3.10/site-packages/joblib/externals/loky/backend/resource_tracker.py:468: UserWarning: resource_tracker: /var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_18280_71ed365b73314793b40f1304002a3cc5_10dddcb5f6474d7294ba36705f556a59: FileNotFoundError(2, 'No such file or directory')
+  warnings.warn('resource_tracker: %s: %r' % (name, e))
+/Users/fanyang/tfenv/lib/python3.10/site-packages/joblib/externals/loky/backend/resource_tracker.py:468: UserWarning: resource_tracker: /var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_18280_71ed365b73314793b40f1304002a3cc5_d954299dde6147d498fb038a59087e16: FileNotFoundError(2, 'No such file or directory')
+  warnings.warn('resource_tracker: %s: %r' % (name, e))
