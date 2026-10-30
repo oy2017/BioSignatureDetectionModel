@@ -1088,7 +1088,9 @@ costs unchanged within a point (haze +18.6 → +19.1, +12.7 → +11.9, +16.0 →
 by a third to a half: noise × 2 +9.3 → +5.1 (CH₄), +6.2 → +4.8, +9.7 → +5.0, +10.7 → +6.8; noise × 3 +14.5 → +10.9,
 +9.3 → +9.6, +13.2 → +10.3, +16.1 → +11.8. Reading: the amplitude carries no usable label information on clean spectra
 (the unknown temperature and deck make it a nuisance, hence the 1-2 point cost), but the z-score's division by the
-spectrum's own dispersion lets noise rescale the features, and a physical scale removes that. The expectation was half
+spectrum's own dispersion lets noise rescale the features, and a physical scale removes that. The gain under noise is the random forest's and the support-vector machine's (noise × 2: 68.8 → 75.3 and 72.1 →
+75.7 %); the k-NN learner is worse everywhere (clean 78.2 → 76.2, haze 68.2 → 62.8), because distances in scale-height
+units are dominated by the large planets. The expectation was half
 wrong: no clean gain. Not run on the real panel (needs the bulk parameters threaded through alfnoor_jwst.znorm); the
 prediction for the muted giants stands. Reportable as a design note, not as the remedy for any class the paper names.
 
