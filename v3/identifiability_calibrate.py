@@ -77,7 +77,7 @@ def select_departure(Pte, n, seed=SEED):
 
 HAZE_LOG_RANGE = (3.0, 10.0)   # log10 particle mixing ratio (m^-3) when the haze density is a free parameter; 10^3 is haze-free to < 1 ppm
 POWERLAW_LOG_SIGMA0 = (-34.0, -24.0)   # log10 cross-section (m^2 per molecule) at 1 um of the power-law haze; 10^-34 is haze-free
-POWERLAW_ALPHA = (0.0, 6.0)             # scattering slope; Rayleigh is 4
+POWERLAW_ALPHA = (0.0, 10.0)            # scattering slope; Rayleigh is 4, the Lee-Mie haze steeper over the optical points
 RADIUS_FACTOR = (0.9, 1.1)              # free planetary radius as a factor on the catalogue radius
 
 
