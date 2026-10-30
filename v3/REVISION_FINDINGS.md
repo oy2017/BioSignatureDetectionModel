@@ -1167,6 +1167,25 @@ prior failures of two kinds, a detector trained past the prior and routed by two
 table shows each pipeline paying for its real-spectrum gain in simulated accuracy. Goes into the restructure as the
 spine table; not yet in the manuscript.
 
+### F20. The undecidable prevalence under the population's own prior: five points higher, the rise on absent labels, decisions 92-95 % the same (2026-10-29; `identifiability_calibrate.py --prior population --random-sample --n 200`)
+
+The 200-planet subsample retrieved with the abundance prior 10⁻⁷-10⁻² (POP-I's) instead of 10⁻⁹-10⁻² (POP-III's, used
+everywhere else); 84 core-hours. Against the training-prior retrieval of the same planets:
+
+| molecule | undecidable, training prior | population prior | absent labels | present labels | decisions agree |
+| :-- | --: | --: | --: | --: | --: |
+| CH₄ | 29.5 % | 33.5 % | 27.8 → 35.7 % | 32.4 → 29.7 % | 94 % |
+| H₂O | 56.0 % | 62.5 % | 55.0 → 66.7 % | 57.5 → 56.2 % | 92 % |
+| CO₂ | 45.0 % | 51.0 % | 34.9 → 44.4 % | 62.2 → 62.2 % | 92 % |
+| NH₃ | 33.5 % | 36.5 % | 26.1 → 32.8 % | 44.4 → 42.0 % | 95 % |
+| all | 41.0 % | 45.9 % | | | |
+
+No label misled under either prior; mean log Z −12.5 against −12.9. Reading: the narrower prior puts more mass within two
+decades of the 10⁻⁴ boundary, so an absent label needs more evidence to reach 0.95 and the uninformative-spectrum default
+drops from 0.71 towards 0.6; present labels, which must be pulled above the boundary by the data, are unchanged. The
+E2 prevalence is a property of the named prior to within five points, in the direction the prior predicts, and the
+paper's "a third to a half" holds under both. Written into 2.4, 3.3 and the limitations; response letter A3.
+
 ### What these add up to, provisionally
 
 A simulator-trained classifier that reproduces its published in-simulator accuracies is mostly right
