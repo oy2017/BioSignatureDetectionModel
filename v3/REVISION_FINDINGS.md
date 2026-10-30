@@ -1331,30 +1331,51 @@ Both populations re-rendered with it and the design refitted: the 48 accuracies 
 
 99.6 % of the hazed planets fall below the first percentile of the clean log Z (AUROC 1.00; paired drop at least 20 for 99 %). So "the existing method loses 69" is the retrieval read by its posterior. Re-run with the haze free where the evidence fails, it loses nothing at about 520 core-hours (0.8 × 365 + 0.2 × 500 + 0.2 × 635) against 127 for the 20 % budget. Table 11's "free-haze retrieval of every planet" row was exactly this composite, because the clean planets use the clean retrieval, and is relabelled.
 
-### What these add up to (2026-10-29, after the restructure)
+### F29. The gain is smaller at the mission's own precision (2026-10-30)
 
-The manuscript was restructured on 2026-10-29 around one argument (commit after F22): 3.2 identifiability ceiling, 3.3 error
-classes under each departure (stress test merged in), 3.4 real JWST spectra as the same classes outside the simulator, 3.5 the
-departure-aware pipeline (remedies, flags, Table 8 on three tiers of evidence, the panel, selection without a retrieval),
-3.6 the retrieval as fallback against the existing methods. Methods 2.7 is the pipeline, 2.8 the retrieval fallbacks and
-selection, 2.9 expectations. Table numbers in the findings above are the light-pass numbers; the restructure maps them
-5 → 3, 3 → 4, 4 → 5, 6 → 6, 7 → 7, new pipeline table = 8, 10 → 9, 8 → 10, 9 → 11. New title: "Which Tier-1 labels the
-spectra decide: identifiability, error classes and a departure-aware pipeline for Ariel's molecular classifier, tested
-on JWST spectra".
+`panel_tier1.py` scores every design on the 66 panel labels at Tier-1 noise (500 draws, every flag recomputed from the noisy spectrum), so that the gain and the simulated cost are stated at the same noise. Calling every label absent scores 40.
 
-The argument in five sentences. (1) A retrieval of every test planet shows a third to a half of Tier-1 labels are
-undecidable under the consortium's prior, five points more under the population's own, and three quarters of the
-classifier's clean errors sit there (F6, F20). (2) Every error under a departure is recoverable or not by that measure:
-haze mostly recoverable, noise mostly not, a deck partly each (F6). (3) On 26 real JWST reductions the same classes appear
-and have a shape: methane misses through the optical inputs (F2), giants muted beyond the prior's amplitude (F7, F15, F21),
-and one planet amplified beyond it (F21). (4) A pipeline computable from the catalogue and the spectrum reads amplitude
-(scale-height flag, F22) and shape (input disagreement, F5, F13) and sends each to its remedy (retrained design, F8, F18,
-F19; AIRS-only input), withholding beyond the population: 52/62 vs 42/59, six strict gains and no loss, held on three
-held-out planets (F16, F21), at 4.6 points of clean accuracy the ceiling explains. (5) The existing retrieval shares the
-haze failure and fails more confidently; one free parameter repairs it, and a flag routed to the repaired retrieval
-matches an oracle at a 20 % budget while the same flag routed to the standard retrieval is worse than nothing (F8, F8b,
-F8c, F9).
+| design | JWST precision | gain (95 %) | Tier-1 | gain (95 %) | methane found of 8, JWST / Tier-1 |
+| :-- | --: | :-- | --: | :-- | :-- |
+| re-implemented classifier | 45.5 | | 41.7 | | 0 / 0.0 |
+| no-optical | 50.0 | +4.5 (0.5, 9.6) | 43.1 | +1.3 (0.3, 2.6) | 0 / 0.1 |
+| AIRS-only | 52.5 | +7.0 (0.5, 12.5) | 43.4 | +1.6 (-0.3, 3.6) | 6 / 1.5 |
+| shape flag | 51.5 | +6.0 (1.0, 10.5) | 43.3 | +1.5 (0.2, 2.9) | 5 / 1.1 |
+| haze-retrained | 50.5 | +5.0 (0.0, 10.4) | 43.1 | +1.3 (0.0, 2.7) | 2 / 0.2 |
+| haze+deck-retrained | 52.0 | +6.5 (1.1, 11.9) | 43.5 | +1.8 (0.1, 3.3) | 2 / 0.5 |
+| the routing method | 54.0 | +8.5 (2.8, 14.0) | 44.4 | +2.7 (1.2, 4.3) | 5 / 1.1 |
+| census, same haze design | 55.0 | +9.5 (4.3, 14.6) | 44.7 | +3.0 (1.4, 4.8) | 5 / 1.1 |
 
-Still pending from the queue: the power-law haze repair (non-circular remedy), the MCS population, free radius, the
-weaker-haze free-haze budget, convergence checks, spotted free-haze, and the clean free-haze run that removes the last
-PENDING notes. None changes the structure; each fills a row of Table 10 or 11 or a limitation.
+Paper-worthy: at Tier-1 noise the re-implemented classifier is 1.7 labels above the prior. The method's gain survives at that noise but falls by two thirds, because every design misses most present labels there (3.0 to 5.8 of 26). The amplitude flag is itself noise-limited at Tier-1: it fires in more than half the draws on only six of its twelve reductions.
+
+### F30. The coverage mask alone misleads the all-input design on eleven present labels (2026-10-30)
+
+`panel_mechanism.py`, `panel_control.py`. Reading the clear twin through the reduction's own mask with the real errors, the all-input design misses 11 of 24 present labels (no absent label fails); the AIRS-only variant misses 4. Eleven of the 26 reductions have no measured optical point, and a flat fill below 1.95 um is not what training looks like. The earlier statement that three misses were coverage artefacts understated this. Of the method's 8.5 labels, 3.5 lie on labels failing this control and 5.5 on the 50 that pass (46.0 against 40.5; 1.1 to 9.4); labels with no twin lose 0.5. On the 15 reductions with measured data below 1.1 and above 1.95 um, the gain is 7.0 of 40 (2.4 to 11.3).
+
+### F31. The methane failure is below 1.95 um, and amplitude costs labels through noise and not through scale (2026-10-30)
+
+Transplants on the real reductions (twin's block replacing the real one, all-input design, majority of learners). Of 7 methane misses with a twin: all bins below 1.95 um repair 7; AIRS bins 3; optical points 5; Ariel's NIRSpec channel 4; filled bins below 1.95 um 4; measured bins below 1.95 um 4. Of all 21 missed present labels with a twin: below 1.95 um 19; AIRS bins 3; filled bins 14; measured bins 7. So the abstract's "through the three optical points" was wrong as stated: no methane reduction has all three measured, two have none, removing them recovers none of the eight, and the optical-excess score fires on two.
+
+Scaled twins: at JWST errors a twin scaled to the real dispersion is found as often as the unscaled one (11 against 12 of 23 all-input; 19 against 19 AIRS-only), so "a failure of amplitude" was wrong as a statement about the classifier at that precision: normalisation removes scale. At Tier-1 noise scale costs labels: 4 against 8 all-input, 5 against 14 AIRS-only. Muting by M lowers Delta-chi2 by about M^2 if features scale uniformly, so the ten muted giants (M = 2.3-5.3) sit near the noise x 3 row of the error-class table.
+
+### F32. Audit of all 104 label cells against their sources (2026-10-30)
+
+`results/jwst_panel/label_sources.csv`, by an agent reading each source's table. Of 66 scored labels: 56 follow the rule, 3 depart (K2-18 b H2O in two reductions, TOI-270 d NH3 in the Felix reduction), 7 are judgement calls. Of 38 unscored: 2 should have been scored absent (HD 209458 b CO2, WASP-52 b NH3), 1 is a judgement call. WASP-39 b's CH4 limit is from equilibrium models, not a free retrieval. Labels kept frozen; scores under the corrected sets (`label_sensitivity.py`): 65 labels, method 52.0 against 44.5 (+7.5; 1.0 to 13.8), Tier-1 +2.5 (0.9 to 4.3); 59 labels, 46.0 against 38.5 (+7.5; 1.1 to 13.8), Tier-1 +2.2 (0.7 to 3.9).
+
+### F33. The prevalence near the threshold, slot capacity and noisy selection (2026-10-30)
+
+`selection_checks.py`. Labels within half a decade of 10^-4 are 19-21 % of labels, 89-92 % of them undecidable, supplying 17-20 points of each prevalence; away from the threshold the undecidable fractions are 18, 44, 33, 19 %. 83.2 % of planets have at least one undecidable label. Sent to Tier 2 rather than dismissed: CH4 decided present 224 + undecided 310 fit 573 slots; H2O 156 + 518 do not (by 101); either molecule 809 do not (by 236). On the 200-planet subsample at 60 % slots: CH4 lost, classifier 1, noisy retrieval 1, noise-free 0 of 74; H2O 12, 2, 1 of 80. So the noise-free retrieval does not flatter the comparison much.
+
+### F34. The method in the selection, and the slot sweep (2026-10-30)
+
+`pipeline_sim.py`. CH4 / H2O targets lost at 60 % slots (clean; haze): re-implemented 20/51, 38/78; AIRS-only 27/82, 27/85; haze-retrained 17/56, 21/78; haze+deck 21/53, 24/79; method 20/67, 27/84. In simulated selection the retrained designs beat the method in almost every column; the method's case rests on the real panel, where the retrained designs find methane on two of eight reductions. Slot sweep: under haze the order is the same at 40 and 80 %; at 20 % every design loses about half the targets. Counting a withheld label as half, the method's clean cost is 4.9 points, not 4.5.
+
+### F35. Numbers regenerated (2026-10-30)
+
+`misc_numbers.py`. The transplant of the simulated haze gives CH4 detection 8.8 % (hazed optical points in clean spectra) and 73.5 % (clean points in hazed spectra), against 11.6 and 72.3 %; the 1.6 % of the note could not be reproduced. MLP confidence 0.95 to 1.00. The departure per block on the full population is 17.8, 4.2 and 1.9 sigma, close to the pilot's 18, 4.6 and 1.8. Noise model calibration scatter 0.073 dex over 929 targets. AIRS noise of the consortium's three example planets 73, 421, 227 ppm.
+
+### What these add up to (2026-10-30, second revision)
+
+The manuscript's argument, with its table numbers as of commit c4101bf (Table 7 methane, 8 remedies, 9 designs on the panel, 10 simulation, 11 selection, 12 retrievals, 13 rules, 14 budget): (1) under the training prior, a third to a half of the Tier-1 labels are undecided at the 0.95 level, partly because a fifth of them sit next to the threshold, and about four fifths of the classifier's clean errors fall on them. (2) Haze leaves the labels decidable when its strength is known, noise does not, a high deck is partly each. (3) On real spectra the re-implemented classifier is right on almost every absent label and misses most present ones, for three separable reasons: coverage, the inputs below 1.95 um, and at Tier-1 noise muting. (4) A routing method, new in its combination, gains 8.5 of 66 labels at JWST precision and 2.7 at Tier-1 noise, at 4.9 points of clean simulated accuracy; it cannot be separated from AIRS-only or a retrained design there, retraining does better in simulation, and about two fifths of its gain at JWST precision is the mask. (5) The clear-model retrieval fails more confidently than the classifier under haze, and a flag's destination decides whether it helps.
+
+Everything earlier in this log is the record as it came in; numbers there that differ from the above were corrected as noted in F29-F35 and in the commit messages.
