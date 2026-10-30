@@ -28,33 +28,42 @@ OUT = os.path.join(RESULTS, "jwst_panel"); MOLS, LEARNERS = D.MOLS, D.LEARNERS; 
 DESIGNS = ["published", "no-optical", "AIRS-only", "shape flag", "haze-retrained", "haze+deck-retrained", "the method", "census, same haze design"]
 
 
-def main(n=500):
-    cases, Pte, e, sig = D.test_cases(); sc = D.Scorer(e); S0, _, _ = sc.scores(cases["clean"]); q = lambda s: np.quantile(s[np.isfinite(s)], 1 - D.DECLINE)
-    thr_opt = q(S0[("optical", None)]); thr_dis = {(m, k): q(S0[("disagree", (m, k))]) for m in MOLS for k in LEARNERS}
-    ret = {s: joblib.load(os.path.join(DATA, "alfnoor_jwst", f"learners_all_{s}.joblib")) for s in ("haze", "hazedeck")}
-    F = pd.read_csv(os.path.join(OUT, "amplitude_flag.csv")).set_index("planet"); M = pd.read_parquet("data/mcs/mcs_params.parquet").drop_duplicates("name").set_index("name")
-    edges, _ = J.tier3_layout(); rows = []
-    MR_ = pd.read_csv(os.path.join(OUT, "muting_router.csv")); census_up = set(MR_[MR_.muting_flag == True].planet)  # the muting census: beyond the prior, read against a clear twin at the published composition
+class Context:
+    """The frozen rule: learners, clean thresholds and retrained designs; nothing in it depends on the real panel."""
 
-    def score(pl, X, noise2):
-        Z = AT.norm(X); opt = np.abs(sc._optical(Z) - sc.opt_mu) / sc.opt_sd > thr_opt; P = sc.probs(X); PR = {s: {(m, k): AT.prob(L["models"][("1e-4", m, k)], AJ.znorm(X, L["cols"])) for m in MOLS for k in LEARNERS} for s, L in ret.items()}
-        cov = pd.read_csv(RR.PANEL[pl]["coverage"]); meas = ~cov.filled.to_numpy(bool); md = float(M.loc[BASE(pl), "modulation_5H"]) * 1e6
-        v = np.var(X[:, meas] * 1e6, axis=1) - noise2; ratio = np.full(len(X), np.inf); ratio[v > 0] = md / np.sqrt(v[v > 0]); up = np.isfinite(ratio) & (ratio > F.hi_clear_max[pl]); low = ratio < F.lo_own_p01[pl]
-        out = {}
-        for m in MOLS:
-            votes = {d: np.zeros(len(X)) for d in DESIGNS}
-            for k in LEARNERS:
-                pa, pn, ps = P["all"][(m, k)], P["no_optical"][(m, k)], P["airs_only"][(m, k)]; dis = np.maximum(np.abs(pa - pn), np.abs(pa - ps)) > thr_dis[(m, k)]; shape = np.where(opt | dis, ps, pa)
-                for d, p in (("published", pa), ("no-optical", pn), ("AIRS-only", ps), ("shape flag", shape), ("haze-retrained", PR["haze"][(m, k)]), ("haze+deck-retrained", PR["hazedeck"][(m, k)]), ("the method", np.where(up, PR["haze"][(m, k)], shape)), ("census, same haze design", PR["haze"][(m, k)] if pl in census_up else shape)):
-                    votes[d] += p >= 0.5
-            out[m] = (votes, low, up)
-        return out
+    def __init__(self):
+        cases, Pte, e, sig = D.test_cases(); self.sc = D.Scorer(e); S0, _, _ = self.sc.scores(cases["clean"]); q = lambda s: np.quantile(s[np.isfinite(s)], 1 - D.DECLINE)
+        self.thr_opt = q(S0[("optical", None)]); self.thr_dis = {(m, k): q(S0[("disagree", (m, k))]) for m in MOLS for k in LEARNERS}
+        self.ret = {s: joblib.load(os.path.join(DATA, "alfnoor_jwst", f"learners_all_{s}.joblib")) for s in ("haze", "hazedeck")}
+        self.M = pd.read_parquet("data/mcs/mcs_params.parquet").drop_duplicates("name").set_index("name"); self.edges, _ = J.tier3_layout()
+
+
+def score(ctx, X, meas, base_name, noise2, hi, lo, census=False, extra_design=True):
+    """Votes of every design on a batch of 104-bin spectra X, with the flags recomputed from each spectrum. hi, lo: the amplitude thresholds through this reduction's measured bins."""
+    sc = ctx.sc; Z = AT.norm(X); opt = np.abs(sc._optical(Z) - sc.opt_mu) / sc.opt_sd > ctx.thr_opt; P = sc.probs(X); PR = {s: {(m, k): AT.prob(L["models"][("1e-4", m, k)], AJ.znorm(X, L["cols"])) for m in MOLS for k in LEARNERS} for s, L in ctx.ret.items()}
+    md = float(ctx.M.loc[base_name, "modulation_5H"]) * 1e6
+    v = np.var(X[:, meas] * 1e6, axis=1) - noise2; ratio = np.full(len(X), np.inf); ratio[v > 0] = md / np.sqrt(v[v > 0]); up = np.isfinite(ratio) & (ratio > hi); low = ratio < lo
+    out = {}
+    for m in MOLS:
+        votes = {d: np.zeros(len(X)) for d in DESIGNS}
+        for k in LEARNERS:
+            pa, pn, ps = P["all"][(m, k)], P["no_optical"][(m, k)], P["airs_only"][(m, k)]; dis = np.maximum(np.abs(pa - pn), np.abs(pa - ps)) > ctx.thr_dis[(m, k)]; shape = np.where(opt | dis, ps, pa)
+            for d, p in (("published", pa), ("no-optical", pn), ("AIRS-only", ps), ("shape flag", shape), ("haze-retrained", PR["haze"][(m, k)]), ("haze+deck-retrained", PR["hazedeck"][(m, k)]), ("the method", np.where(up, PR["haze"][(m, k)], shape)), ("census, same haze design", PR["haze"][(m, k)] if census else shape)):
+                votes[d] += p >= 0.5
+        out[m] = (votes, low, up)
+    return out
+
+
+def main(n=500):
+    ctx = Context(); M = ctx.M; edges = ctx.edges; rows = []
+    F = pd.read_csv(os.path.join(OUT, "amplitude_flag.csv")).set_index("planet")
+    MR_ = pd.read_csv(os.path.join(OUT, "muting_router.csv")); census_up = set(MR_[MR_.muting_flag == True].planet)  # the muting census: beyond the prior, read against a clear twin at the published composition
 
     for pl, d in RR.PANEL.items():
         cov = pd.read_csv(d["coverage"]); x = cov.depth.to_numpy().copy(); filled = cov.filled.to_numpy(bool); x[filled] = np.nanmean(x[~filled]); err = cov.err.to_numpy()
         s = J.ariel_sigma(BASE(pl), edges); j2 = float(np.nanmean(err[~filled] ** 2)) * 1e12; t2 = float(np.mean(s[~filled] ** 2)) * 1e12
         for prec, X, noise2 in (("JWST", x[None, :], j2), ("Tier-1", J.noise_draws(x, s, n, seed=405), j2 + t2)):
-            res = score(pl, X, noise2)
+            res = score(ctx, X, ~filled, BASE(pl), noise2, F.hi_clear_max[pl], F.lo_own_p01[pl], census=pl in census_up)
             for m in MOLS:
                 votes, low, up = res[m]; lab = d["labels"].get(m)
                 for name in DESIGNS:
