@@ -53,9 +53,13 @@ LABELS = {
     "HD209458b": {"CH4": A, "H2O": None, "CO2": None, "NH3": A},      # Xue et al. 2024: equilibrium retrieval for H2O/CO2 (no free value); free 3-sigma limits CH4 < -5.6, NH3 < -4.2
     "WASP-96b": {"CH4": A, "H2O": P, "CO2": A, "NH3": A},             # Radica et al. 2026 (POSEIDON free, SOSS + G395H): H2O -2.61 +0.27/-0.30; CO2 -4.65 +0.34/-0.39; CH4 < -5.91; NH3 < -5.47
     "WASP-17b": {"CH4": A, "H2O": P, "CO2": A, "NH3": None},          # Louie et al. 2025 (POSEIDON free, full data): H2O -2.96 +0.31/-0.24; CO2 -5.80 +0.62/-1.31; CH4 -9.06 +2.04; NH3 not reported
+    # third batch, held out: labels fixed from the papers on 2026-10-29 before any verdict was computed (same rule)
+    "WASP-94Ab": {"CH4": A, "H2O": P, "CO2": None, "NH3": A},         # Ahrer et al. 2025 (HyDRA free, Eureka! R = 400): H2O -1.60 +0.43/-0.40; CO2 -4.25 +0.74/-0.54 straddles; CH4 < -6.29, NH3 < -5.10 (2 sigma)
+    "HIP67522b": {"CH4": None, "H2O": None, "CO2": A, "NH3": None},   # Thao et al. 2024 (free): H2O -3.56 +0.81/-0.96 straddles; CO2 -5.56 +0.81/-0.95; CH4, NH3 not reported
+    "HAT-P-12b": {"CH4": A, "H2O": P, "CO2": None, "NH3": A},         # Heinke et al. 2026 (NIRISS + NIRSpec free): H2O -1.82 +0.38/-0.44; CO2 -3.65 +0.50/-0.53 straddles; CH4 < -6.33, NH3 < -6.57 (95 %)
 }
 TENTATIVE = {("GJ1214b", "CH4"), ("GJ1214b", "CO2"), ("LTT3780c", "CH4")}   # labels resting on 3-sigma-level detections; reported separately
-FULL = {"TOI-270d", "K2-18b", "K2-18b-alt", "K2-18b-hu", "TOI-421b", "HAT-P-18b", "WASP-166b", "TOI-1231b", "WASP-96b"}        # optical + AIRS covered by data
+FULL = {"TOI-270d", "K2-18b", "K2-18b-alt", "K2-18b-hu", "TOI-421b", "HAT-P-18b", "WASP-166b", "TOI-1231b", "WASP-96b", "WASP-94Ab", "HAT-P-12b"}        # optical + AIRS covered by data
 
 
 def numeric_rows(path, delimiter=None, skip=0, lead=0, tolerant=False):
@@ -191,6 +195,17 @@ def segments(root, planet):
         d = r("WASP-96b", "Radica2026_zenodo17065171", "WASP-96b_Zenodo", "Transmission_Spectra")
         f = lambda name: seg(numeric_rows(f"{d}/WASP-96b_{name}_transmission_spectrum_PriorLD_Slope_R300.csv", ","), 0, 2, 3, 1e-6, halfwidth=1)
         return {"SOSS": f("NIRISS_SOSS"), "NRS1": f("NIRSpec_G395H_NRS1"), "NRS2": f("NIRSpec_G395H_NRS2")}, "Radica et al. 2026 (Zenodo 17065171): exoTEDRF NIRISS SOSS and NIRSpec G395H at R = 300"
+    if planet == "WASP-94Ab":
+        d = r("WASP-94Ab", "Zenodo22803020"); f = lambda name: seg(numeric_rows(f"{d}/WASP-94_{name}_Rreference.csv", ",", skip=1), 0, 2, 3, halfwidth=1)
+        return {"SOSS": f("NIRISS_SOSS_order1"), "NRS1": f("NIRSPEC_G395H_nrs1"), "NRS2": f("NIRSPEC_G395H_nrs2")}, "Zenodo 22803020 (limb-asymmetry reanalysis of the Ahrer et al. 2025 G395H transit and a NIRISS SOSS transit), limb-averaged reference spectra"
+    if planet == "HIP67522b":
+        return {"G395H": seg(numeric_rows(r("WASP127b", "Fu2025_zenodo13366851", "Spectra", "HIP 67522b.txt")), 0, 2, 3, width=1)}, "Thao et al. 2024 NIRSpec G395H as compiled by Fu et al. 2025 (Zenodo 13366851)"
+    if planet == "HAT-P-12b":
+        d = r("HAT-P-12b", "Heinke2026_zenodo19356398", "Retrievals", "data")
+        def f(sub):   # ARCiS input: wavelength, depth, error, resolving power (bin width = wavelength / R)
+            a = numeric_rows(f"{d}/{sub}/arcis.dat"); a = np.column_stack([a, a[:, 0] / a[:, 3]])
+            return seg(a, 0, 1, 2, width=4)
+        return {"SOSS": f("NIRISS/ExoTEDRF/Standard"), "G395M": f("NIRSpec/CASCADe"), "MIRI": f("MIRI/CASCADe")}, "Heinke et al. 2026 (Zenodo 19356398): exoTEDRF NIRISS SOSS (standard reduction), CASCADe NIRSpec G395M and MIRI LRS"
     if planet == "WASP-17b":
         import xarray as xr
         d = r("WASP-17b", "Louie2025_zenodo14193061", "Data_reduction_Ahsoka", "Ahsoka_Transmission_Spectra")

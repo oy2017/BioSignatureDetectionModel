@@ -49,6 +49,10 @@ if [ "$WHAT" = all ] || [ "$WHAT" = panel ]; then
   zget 14193061 "$P/WASP-17b/Louie2025_zenodo14193061"                                        # Louie et al. 2025 (Data_reduction_Ahsoka/ inside)
   zget 17065171 "$P/WASP-96b/Radica2026_zenodo17065171"                                       # Radica et al. 2026 (WASP-96b_Zenodo/ inside)
   zget 18734230 "$P/WASP52b/Pan2026_zenodo18734230" data_behind_figures.csv                   # Pan et al. 2026
+  # third batch (held out, 2026-10-29)
+  for f in WASP-94_NIRISS_SOSS_order1_Rreference.csv WASP-94_NIRSPEC_G395H_nrs1_Rreference.csv WASP-94_NIRSPEC_G395H_nrs2_Rreference.csv; do zget 22803020 "$P/WASP-94Ab/Zenodo22803020" "$f"; done   # limb reanalysis of Ahrer et al. 2025
+  zget 13366851 "$P/WASP127b/Fu2025_zenodo13366851"                                          # Fu et al. 2025 compilation (Spectra/ inside; HIP 67522b from Thao et al. 2024)
+  zget 19356399 "$P/HAT-P-12b/Heinke2026_zenodo19356398"                                     # Heinke et al. 2026 (712 MB zip)
   mkdir -p "$P/TOI-732c/Rigby2025_osf_wsjmu"                                                  # Rigby et al. 2025 (TOI-732 c), individual OSF files
   for kv in README.txt:s9rwg TOI-732c_niriss.txt:8t23g TOI-732c_nirspec_g395h_nrs1.txt:nk7t4 TOI-732c_nirspec_g395h_nrs2.txt:a2t9w TOI-732c_miri_JexoPipe.txt:t8b3a TOI-732c_miri_JexoRes.txt:9trv6; do
     f=${kv%%:*}; id=${kv##*:}; [ -e "$P/TOI-732c/Rigby2025_osf_wsjmu/$f" ] || curl -sL -o "$P/TOI-732c/Rigby2025_osf_wsjmu/$f" "https://osf.io/download/$id/"; done
