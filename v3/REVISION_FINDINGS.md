@@ -1122,6 +1122,51 @@ retrieval gave (F6, F8c): the recoverable class is the prior-amplitude class, th
 the paper it means the departure-aware detector needs only the two amplitude departures in its population, and that
 "covering every departure" is not a route to a better detector. Negative result, reportable in one sentence beside Table 8.
 
+### F19. Every detector pipeline in one table, and where the retrained design's gain comes from: it removes recoverable errors and leaves the undecidable floor (2026-10-29; `pipeline_table.py`, `ALFNOOR_TRAIN=hazedeck alfnoor_diagnostic.py`)
+
+`results/pipeline_table.txt` (simulated accuracy, mean over four learners and four molecules, POP-I at Tier-1 noise, the
+remedy block of `alfnoor_diagnostic.py` for both designs on the same test cases and noise draw; real panel 23 reductions):
+
+| pipeline | clean | haze 3e7 | deck 1e2 | spots 20 | noise x2 | panel | CH₄ p/s/a |
+| :-- | --: | --: | --: | --: | --: | --: | --: |
+| consortium classifier, all inputs | 81.2 | 63.5 | 71.4 | 70.4 | 71.9 | 37/53 | 0/1/7 |
+| consortium classifier, AIRS-only input | 73.8 | 73.3 | 72.1 | 74.0 | 68.3 | 47/58 | 6/1/1 |
+| either flag → AIRS-only | 76.6 | 73.3 | 71.8 | 73.9 | 70.2 | 44/54 | 5/1/2 |
+| retrained (haze + deck), all inputs | 80.2 | 73.6 | 74.6 | 76.1 | 71.7 | 45/56 | 2/2/4 |
+| retrained, either flag → its AIRS-only | 76.3 | 73.7 | 73.9 | 74.9 | 70.1 | 46/58 | 6/0/2 |
+| census-first: muting → retrained, else either → AIRS-only | (76.6) | (73.3) | (71.8) | (73.9) | (70.2) | 47/56 | 5/1/2 |
+
+(census-first simulated as the either row: the bulk-parameter census flags a tenth of clean simulated planets, F11, and
+the retrained design is within 1.4 points of the consortium one on every input.)
+
+Three readings. (i) The retrained design on all inputs is the best simulated detector in every departure column and
+loses one clean point, yet finds methane on two of the eight real reductions: the real methane failures are input
+failures (the optical points), not amplitude failures, and no training population fixes them. (ii) The AIRS-only
+classifier used everywhere already matches the census-first pipeline on the panel (47 labels, six methane planets);
+what the pipelines buy is the simulated cost, 4.6 points of clean accuracy against 7.4, and the optical points kept on
+every planet where they are not misleading. (iii) The retrained design with its own either routing is the single
+pipeline, no census, within one label of the census-first one on the panel and within 0.3 points of it in simulation,
+and better than the routed consortium classifier on every departure (deck +2.1, spots +1.0, haze +0.4).
+
+Error classes of the retrained design (block d'' of `diagnostic_hazedeck.txt`, errors summed over learners and
+molecules, classed by the clean-spectrum posterior; consortium → retrained):
+
+| case | errors | recoverable | undecidable |
+| :-- | --: | --: | --: |
+| clean | 717 → 758 | 149 → 182 | 567 → 575 |
+| haze 3e7 | 1396 → 1009 | 670 → 358 | 724 → 650 |
+| deck 1e2 | 1091 → 971 | 416 → 339 | 674 → 631 |
+| spots 20 | 1131 → 913 | 430 → 285 | 700 → 627 |
+| noise x2 | 1072 → 1082 | 395 → 404 | 676 → 677 |
+
+Under haze the retraining removes 312 of the 670 recoverable errors and 74 of the 724 undecidable ones; on clean it adds
+33 recoverable errors; under extra noise it moves nothing. The undecidable count, 570-720 in every row of both designs,
+is the floor the identifiability test predicted (F6), and the retrained design's gain is the distance to it. This is the
+sentence the restructured Results can be built on: the benchmark is capped by identifiability, the real failures are
+prior failures of two kinds, a detector trained past the prior and routed by two cheap readings recovers them, and the
+table shows each pipeline paying for its real-spectrum gain in simulated accuracy. Goes into the restructure as the
+spine table; not yet in the manuscript.
+
 ### What these add up to, provisionally
 
 A simulator-trained classifier that reproduces its published in-simulator accuracies is mostly right
