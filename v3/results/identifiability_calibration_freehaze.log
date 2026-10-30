@@ -1,0 +1,13 @@
+Numba not installed, using numpy instead
+955 planets selected, 955 to retrieve, 9 jobs, 100 live points, cap 20000 calls
+  9/955  2674 s  median 24.6 min, 4298 calls per planet
+  18/955  4484 s  median 29.3 min, 4437 calls per planet
+  27/955  6587 s  median 26.1 min, 4825 calls per planet
+/Users/fanyang/tfenv/lib/python3.10/site-packages/joblib/externals/loky/backend/resource_tracker.py:444: UserWarning: resource_tracker: There appear to be 15 leaked semlock objects to clean up at shutdown: {'/loky-79544-ipgbmh_c': 1, '/loky-79544-quoi5jwj': 1, '/loky-79544-h1mos0ol': 1, '/loky-79544-7_1sn8aq': 1, '/loky-79544-xiiosle6': 1, '/loky-79544-tm3r3wa7': 1, '/loky-79544-woqcbp_5': 1, '/loky-79544-ou6q9a8g': 1, '/loky-79544-_i8m94sf': 1, '/loky-79544-jma1yxe0': 1, '/loky-79544-zyzx3mc3': 1, '/loky-79544-ad3umilg': 1, '/loky-79544-gd0_8mn8': 1, '/loky-79544-hnb5dpn4': 1, '/loky-79544-9h1ynla7': 1}
+  warnings.warn(
+/Users/fanyang/tfenv/lib/python3.10/site-packages/joblib/externals/loky/backend/resource_tracker.py:444: UserWarning: resource_tracker: There appear to be 2 leaked folder objects to clean up at shutdown: {'/var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_79544_6e1112f2c249482f91bde6f14f2a5184_9681c8883f704bfdaf21b355c765c711': 1, '/var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_79544_6e1112f2c249482f91bde6f14f2a5184_82287edf28d04b74ab04f900267c1c92': 1}
+  warnings.warn(
+/Users/fanyang/tfenv/lib/python3.10/site-packages/joblib/externals/loky/backend/resource_tracker.py:468: UserWarning: resource_tracker: /var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_79544_6e1112f2c249482f91bde6f14f2a5184_9681c8883f704bfdaf21b355c765c711: FileNotFoundError(2, 'No such file or directory')
+  warnings.warn('resource_tracker: %s: %r' % (name, e))
+/Users/fanyang/tfenv/lib/python3.10/site-packages/joblib/externals/loky/backend/resource_tracker.py:468: UserWarning: resource_tracker: /var/folders/_t/ttk4wlbd7mjdjfvzp0jhnt5c0000gp/T/joblib_memmapping_folder_79544_6e1112f2c249482f91bde6f14f2a5184_82287edf28d04b74ab04f900267c1c92: FileNotFoundError(2, 'No such file or directory')
+  warnings.warn('resource_tracker: %s: %r' % (name, e))

@@ -19,6 +19,7 @@ THLAB = {"1e-5": "> 10$^{-5}$", "1e-4": "> 10$^{-4}$", "1e-3": "> 10$^{-3}$"}
 def main():
     d = pd.read_csv(os.path.join(RES, "alfnoor_faithful_faithful_tier3_r20_radiometric.csv"), dtype={"threshold": str})
     d = d[~d.model.str.startswith("vote")]
+    Sd = pd.read_csv(os.path.join(RES, "reproduction_seeds.csv"), dtype={"threshold": str}); SD = {(r.model, r.molecule, r.threshold): r.sd for r in Sd.itertuples()}
     fig, (a, b) = figure(0.42, ncols=2, gridspec_kw={"width_ratios": [1, 1.15]})
     a.fill_between([55, 95], [50, 90], [60, 100], color=GRID, alpha=.55, lw=0, zorder=0)
     a.plot([55, 95], [55, 95], color=INK2, lw=.8, ls="--", zorder=1)
@@ -29,18 +30,23 @@ def main():
             for c in PUB:
                 r = d[(d.model == c) & (d.molecule == mol) & (d.threshold == th)].iloc[0]
                 xs.append(PUB[c][mol][TH.index(th)]); ys.append(r.clean * 100)
-            dd = np.array(ys) - np.array(xs); diffs += list(dd)
+            dd = np.array(ys) - np.array(xs); diffs += list(dd); sd = [SD[(c, mol, th)] for c in PUB]
+            a.errorbar(xs, ys, yerr=sd, fmt="none", ecolor=SERIES[k], elinewidth=.6, alpha=.7, zorder=2)
             a.scatter(xs, ys, s=18, marker=MARK[th], color=SERIES[k], edgecolor="white", linewidth=.5, zorder=3)
             xj = k + (TH.index(th) - 1) * 0.22 + rng.uniform(-.05, .05, len(dd))
+            b.errorbar(xj, dd, yerr=sd, fmt="none", ecolor=SERIES[k], elinewidth=.6, alpha=.7, zorder=2)
             b.scatter(xj, dd, s=18, marker=MARK[th], color=SERIES[k], edgecolor="white", linewidth=.5, zorder=3)
     a.set_xlim(55, 95); a.set_ylim(55, 95); a.set_aspect("equal")
-    a.set_xlabel("Published accuracy (%)"); a.set_ylabel("Re-implementation (%)"); panel_label(a, "a")
+    a.set_xlabel("Published Accuracy (%)"); a.set_ylabel("Re-Implemented Accuracy (%)"); panel_label(a, "a")
+    from matplotlib.lines import Line2D
+    from matplotlib.patches import Patch
+    a.legend(handles=[Line2D([], [], marker="o", color=SERIES[k], lw=0, ms=3.5, label=LAB[m]) for k, m in enumerate(MOLS)] + [Line2D([], [], color=INK2, lw=.8, ls="--", label="Equality"), Patch(color=GRID, alpha=.55, label="±5 Points")], loc="lower right", fontsize=6.2, handletextpad=.4, borderaxespad=.2, framealpha=1)
     b.axhspan(-5, 5, color=GRID, alpha=.55, lw=0, zorder=0); b.axhline(0, color=INK2, lw=.8, ls="--", zorder=1)
     b.set_xticks(range(4)); b.set_xticklabels([LAB[m] for m in MOLS]); b.set_ylim(-6, 9); b.set_yticks([-4, -2, 0, 2, 4]); b.set_xlim(-.6, 3.6)
-    b.set_ylabel("Difference (points)"); panel_label(b, "b")
+    b.set_ylabel("Difference (Points)"); panel_label(b, "b")
     for th in TH:
         b.scatter([], [], marker=MARK[th], color=MUTED, s=18, label=THLAB[th])
-    b.legend(loc="upper center", ncol=3, fontsize=6.8, handletextpad=.2, columnspacing=.9, title="abundance threshold", title_fontsize=6.8)
+    b.legend(loc="upper center", ncol=3, fontsize=6.8, handletextpad=.2, columnspacing=.9, title="Abundance Threshold", title_fontsize=6.8)
     fig.tight_layout(w_pad=1.2)
     diffs = np.array(diffs); print(f"mean diff {diffs.mean():+.2f}, max |diff| {np.abs(diffs).max():.1f}")
     save(fig, "note_fig1_reproduction.png")

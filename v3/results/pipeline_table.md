@@ -1,5 +1,5 @@
 Designs on the real panel
-| Design | Right / wrong / split or withheld | Score of 66, JWST precision | Gain over published (95 % interval) | Score of 49, labels passing the mask control | Score of 66, Tier-1 noise | Gain over published (95 % interval) | Methane found of 8, JWST / Tier-1 |
+| Design | Right / wrong / split or withheld | Score of 66, JWST precision | Gain over published (95 % interval) | Score of 50, labels passing the mask control | Score of 66, Tier-1 noise | Gain over published (95 % interval) | Methane found of 8, JWST / Tier-1 |
 | :-- | :-- | --: | :-- | --: | --: | :-- | :-- |
 | Calling every label absent | 40 / 26 / 0 | 40.0 | −5.5 | 37.0 | 40.0 | −1.7 | 0 / 0 |
 | Published classifier, all inputs | 42 / 17 / 7 | 45.5 |  | 40.5 | 41.7 |  | 0 / 0.0 |
@@ -37,32 +37,32 @@ Targets lost at the 60 % selection, CH4 / H2O
 Table D1
 | Reduction | Measured bins | Ratio | Upper threshold | Lower cut | Flag | Muting (census) | Most the prior allows | Beyond the prior |
 | :-- | --: | --: | --: | --: | :-- | --: | --: | :-- |
-| TOI-270d | 87 | 3.08 | 5.74 | 0.49 | none | 0.66 | 1.97 | no |
-| K2-18b | 99 | 1.49 | 5.63 | 0.49 | none | 0.72 | 2.62 | no |
-| K2-18b-alt | 88 | 3.34 | 5.44 | 0.49 | none | 1.71 | 2.65 | no |
-| TOI-421b | 89 | 5.39 | 5.78 | 0.50 | none | 3.39 | 3.67 | no |
-| HAT-P-18b | 48 | 7.99 | 6.13 | 0.59 | upper | 3.70 | 3.27 | marginal |
-| WASP-107b | 54 | 9.31 | 7.29 | 0.52 | upper | 4.45 | 2.19 | yes |
-| HD189733b | 56 | 5.09 | 8.88 | 0.54 | none | 1.73 | 2.25 | no |
-| HAT-P-26b | 35 | 5.71 | 8.33 | 0.48 | none | 5.32 | 2.37 | yes |
-| GJ3470b | 53 | 11.70 | 8.66 | 0.53 | upper | 3.45 | 1.95 | yes |
-| WASP-166b | 90 | 6.20 | 5.80 | 0.50 | upper | 3.07 | 1.78 | yes |
-| TOI-1231b | 74 | 5.44 | 5.09 | 0.45 | upper | 1.55 | 1.88 | no |
-| K2-18b-hu | 88 | 3.92 | 5.44 | 0.49 | none | 2.00 | 2.65 | no |
-| TOI-270d-hm | 41 | 5.48 | 8.36 | 0.48 | none | 1.04 | 1.92 | no |
+| TOI-270d | 87 | 3.08 | 5.74 | 0.49 | none | 0.66 (0.62-0.73) | 1.97 | no |
+| K2-18b | 99 | 1.49 | 5.63 | 0.49 | none | 0.72 (0.66-0.83) | 2.62 | no |
+| K2-18b-alt | 88 | 3.34 | 5.44 | 0.49 | none | 1.71 (1.22-2.57) | 2.65 | no |
+| TOI-421b | 89 | 5.39 | 5.78 | 0.50 | none | 3.39 (2.33-5.40) | 3.67 | no |
+| HAT-P-18b | 48 | 7.99 | 6.13 | 0.59 | upper | 3.70 (3.22-4.57) | 3.27 | marginal |
+| WASP-107b | 54 | 9.31 | 7.29 | 0.52 | upper | 4.45 (4.35-4.55) | 2.19 | yes |
+| HD189733b | 56 | 5.09 | 8.88 | 0.54 | none | 1.73 (1.69-1.79) | 2.25 | no |
+| HAT-P-26b | 35 | 5.71 | 8.33 | 0.48 | none | 5.32 (5.13-5.55) | 2.37 | yes |
+| GJ3470b | 53 | 11.70 | 8.66 | 0.53 | upper | 3.45 (3.11-3.95) | 1.95 | yes |
+| WASP-166b | 90 | 6.20 | 5.80 | 0.50 | upper | 3.07 (2.66-3.86) | 1.78 | yes |
+| TOI-1231b | 74 | 5.44 | 5.09 | 0.45 | upper | 1.55 (1.31-2.05) | 1.88 | no |
+| K2-18b-hu | 88 | 3.92 | 5.44 | 0.49 | none | 2.00 (1.77-2.32) | 2.65 | no |
+| TOI-270d-hm | 41 | 5.48 | 8.36 | 0.48 | none | 1.04 (0.91-1.29) | 1.92 | no |
 | GJ9827d | 50 | no dispersion | 6.18 | 0.60 | none | no dispersion | 3.42 | marginal |
-| WASP-52b | 37 | 5.39 | 8.46 | 0.48 | none | 2.26 | 2.39 | no |
+| WASP-52b | 37 | 5.39 | 8.46 | 0.48 | none | 2.26 (2.17-2.36) | 2.39 | no |
 | L98-59d | 37 | 10.57 | 8.46 | 0.48 | upper | no twin |  | no twin |
 | GJ1214b | 38 | 63.44 | 8.31 | 0.48 | upper | no twin |  | no twin |
-| LTT3780c | 97 | 2.08 | 5.58 | 0.48 | none | 0.97 | 2.69 | no |
-| WASP-80b | 49 | 11.93 | 9.20 | 0.57 | upper | 2.89 | 1.66 | yes |
-| HD209458b | 58 | 8.12 | 8.91 | 0.54 | none | 2.35 | 1.33 | yes |
-| WASP-96b | 88 | 3.36 | 5.44 | 0.49 | none | 1.49 | 1.94 | no |
-| WASP-17b | 63 | 7.23 | 6.07 | 0.57 | upper | 3.99 | 1.96 | yes |
-| WASP-94Ab | 83 | 8.87 | 5.85 | 0.48 | upper | 3.30 | 1.47 | yes |
-| HIP67522b | 41 | 0.32 | 8.36 | 0.48 | lower | 0.11 | 3.29 | no |
-| HAT-P-12b | 103 | 11.37 | 5.39 | 0.48 | upper | 5.34 | 1.98 | yes |
-| WASP-39b | 103 | 6.94 | 5.23 | 0.47 | upper | 3.73 | 2.04 | yes |
+| LTT3780c | 97 | 2.08 | 5.58 | 0.48 | none | 0.97 (0.76-1.47) | 2.69 | no |
+| WASP-80b | 49 | 11.93 | 9.20 | 0.57 | upper | 2.89 (2.48-3.71) | 1.66 | yes |
+| HD209458b | 58 | 8.12 | 8.91 | 0.54 | none | 2.35 (2.28-2.44) | 1.33 | yes |
+| WASP-96b | 88 | 3.36 | 5.44 | 0.49 | none | 1.49 (1.39-1.61) | 1.94 | no |
+| WASP-17b | 63 | 7.23 | 6.07 | 0.57 | upper | 3.99 (3.84-4.18) | 1.96 | yes |
+| WASP-94Ab | 83 | 8.87 | 5.85 | 0.48 | upper | 3.30 (3.09-3.55) | 1.47 | yes |
+| HIP67522b | 41 | 0.32 | 8.36 | 0.48 | lower | 0.11 (0.11-0.12) | 3.29 | no |
+| HAT-P-12b | 103 | 11.37 | 5.39 | 0.48 | upper | 5.34 (4.94-5.83) | 1.98 | yes |
+| WASP-39b | 103 | 6.94 | 5.23 | 0.47 | upper | 3.73 (3.67-3.79) | 2.04 | yes |
 
 Table D2
 | Spectra | Optical-excess score | Input disagreement | First level of the nest | Second level of the nest | Shape flag | Amplitude flag, upper | Amplitude flag, lower |

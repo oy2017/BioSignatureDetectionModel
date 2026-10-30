@@ -1,5 +1,7 @@
 # Can a simulator-trained classifier for Ariel Tier-1 spectra be trusted?
 
+**This directory is the record of the earlier technical note (September-October 2026) and is kept as it was, apart from this notice.** The revised paper, "Which molecular labels Ariel Tier-1 spectra can decide" (`v3/jhss/manuscript.md`), supersedes it; its results are in `v3/results`, its expectations in `v3/REVISION_EXPECTATIONS.md` and its record of findings in `v3/REVISION_FINDINGS.md`. One statement below is known to be wrong: collision-induced absorption does not change spectra by at most 3 ppm. It changes the largest bin by a median of 1 ppm and by up to 500 ppm (`v3/cia_effect.py`; Section 2.2 of the revised paper).
+
 Supplementary material for the technical note *"Can a simulator-trained classifier for Ariel Tier-1 spectra be
 trusted?"* (manuscript source:
 [`v3/jhss/note_src.md`](../v3/jhss/note_src.md); built files in [`v3/jhss/`](../v3/jhss/)).

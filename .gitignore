@@ -48,3 +48,8 @@ v3/results/*.pid
 *Gmail*.pdf
 ariel_tier1_trust/*.pdf
 v3/results/wasp39/segments_*.npz
+
+# Rendered and reference PDFs are kept out of the repository; the journal Word files are built by v3/jhss/build_manuscript.py
+v3/jhss/*.pdf
+v3/jhss/technical_note_*.docx
+v3/jhss/original_article_*.docx

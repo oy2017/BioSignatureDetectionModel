@@ -1,4 +1,6 @@
-"""Generate the data tables of the JHSS manuscript from the committed result files and insert them
+"""NOTE (2026-10-30): the revised manuscript.md no longer carries the table markers; its tables are reproduced from v3/results/pipeline_table.md and the files named in the text. This script is kept for the record of the earlier note.
+
+Generate the data tables of the JHSS manuscript from the committed result files and insert them
 between <!-- table:NAME --> ... <!-- /table:NAME --> markers in manuscript.md, so the tables can never
 drift from the numbers. Run after any results change: python make_tables.py"""
 import os, re

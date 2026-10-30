@@ -81,7 +81,7 @@ def main():
     for pl, r in F.iterrows():
         up, low = np.isfinite(r.ratio) and r.ratio > r.hi_clear_max, r.ratio < r.lo_own_p01; mu = C.muting.get(pl, np.nan); mx = C.max_muting_in_prior.get(pl, np.nan); pb = B.p_beyond_prior.get(pl, np.nan)
         bey = "no twin" if not np.isfinite(mx) else ("yes" if pb > 0.95 else ("marginal" if mu > mx else "no"))
-        ra = "no dispersion" if not np.isfinite(r.ratio) else f"{r.ratio:.2f}"; mus = "no twin" if not np.isfinite(mx) else ("no dispersion" if not np.isfinite(mu) else f"{mu:.2f}"); mxs = "" if not np.isfinite(mx) else f"{mx:.2f}"
+        ra = "no dispersion" if not np.isfinite(r.ratio) else f"{r.ratio:.2f}"; mus = "no twin" if not np.isfinite(mx) else ("no dispersion" if not np.isfinite(mu) else f"{mu:.2f} ({B.lo.get(pl, np.nan):.2f}-{B.hi.get(pl, np.nan):.2f})"); mxs = "" if not np.isfinite(mx) else f"{mx:.2f}"
         d1.append(f"| {pl} | {int(r.bins)} | {ra} | {r.hi_clear_max:.2f} | {r.lo_own_p01:.2f} | {'upper' if up else ('lower' if low else 'none')} | {mus} | {mxs} | {bey} |")
     # the selection table: CH4 and H2O targets lost at the 60 % selection
     Sel = pd.read_csv(os.path.join(RESULTS, "pipeline_sim_selection.csv")); Sel = Sel[Sel.slots == 0.6]; SN = {"published, all inputs": "Published classifier, all inputs", "no-optical everywhere": "No-optical input everywhere", "AIRS-only everywhere": "AIRS-only input everywhere", "optical-excess score -> AIRS-only": "Optical-excess score → AIRS-only input", "shape flag -> AIRS-only": "Shape flag → AIRS-only input", "retrained (haze) everywhere": "Haze-retrained design everywhere", "retrained (hazedeck) everywhere": "Haze+deck-retrained design everywhere", "the routing method": "The routing method"}
