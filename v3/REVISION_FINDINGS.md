@@ -1075,3 +1075,5 @@ result into a population statement: five of five warm giants with retrieved abun
 anything the simulator population can draw at their bulk parameters, which no normalised-input rule can
 see. The remaining pieces are the free-haze retrieval of the clean population (running, due 31 October; it
 replaces the clean retrieval's posteriors on the clean side of the E3 table) and the manuscript trim.
+
+(Note, 2026-10-29: the manuscript tables were renumbered in the light editorial pass; old Table 1 is now Table A1 and old Tables 2-11 are Tables 1-10. Table numbers in the findings above are the pre-pass numbers.)
