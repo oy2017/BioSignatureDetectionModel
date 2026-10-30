@@ -122,3 +122,21 @@ G3. The optical flag fires on fewer planets than the 100 % of the column-filling
 G4. The AIRS-only design stays within 2 points of its clean accuracy under each haze.
 G5. The design retrained on the column-filling haze recovers at least half of the all-input loss under each confined haze.
 
+## H. The independent test of the frozen routing method (written 2026-10-30, before any fourth-batch label, spectrum or verdict was seen by the code or by me)
+
+The rule under test is the one of section F (commit b09b253) as implemented at the commit that adds this section: the amplitude flag of `amplitude_flag.py`, with each new
+reduction's upper threshold (largest ratio of any clear POP-I planet through its bins) and lower cut (first percentile of POP-I with its own decks through its bins); the shape flag at
+the clean thresholds of `alfnoor_diagnostic.py`; the haze-retrained and AIRS-only learners already trained; a majority of four learners; right 1, split or withheld 0.5, wrong 0. Nothing is
+retrained or re-thresholded on the fourth batch. New planets enter only through `jwst_panel.LABELS`, `jwst_panel.segments` and the catalogue. Labels come from the papers by the rule of the
+manuscript's Section 2.6 and are committed before any verdict is computed. The batch is the set of planets the survey finds qualifying, all of them, whatever they turn out to do; planets
+rejected are listed with the reason. The fourth-batch score is reported whichever way it goes.
+
+On the 66 labels the method was built on, it gained 0.13 labels per label over the published classifier at JWST precision (8.5 of 66) and 0.04 at Tier-1 noise (2.7 of 66), and was not
+separable from the AIRS-only input (+1.5, interval -1.5 to 5.7) or the haze+deck-retrained design (+2.0, -2.2 to 5.9). Expected on the fourth batch:
+
+- H1. At JWST precision the method scores above the published classifier (difference > 0).
+- H2. At JWST precision the method is within two labels, either way, of the AIRS-only input and of the haze+deck-retrained design.
+- H3. The gain over the published classifier at Tier-1 noise is smaller than at JWST precision.
+- H4. The method moves at most one label from right to wrong against the published classifier.
+- H5. The amplitude flag fires on at least half of the giants among the new planets (planets above 0.1 Jupiter masses with a published H2/He-dominated atmosphere).
+- H6. Any new methane-present label on an H2-dominated planet is called absent by the all-input design and present by the AIRS-only input.

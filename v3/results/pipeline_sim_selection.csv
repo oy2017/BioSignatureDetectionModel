@@ -1,0 +1,193 @@
+case,molecule,design,targets,lost
+clean,CH4,"published, all inputs",359,20
+clean,CH4,AIRS-only everywhere,359,27
+clean,CH4,no-optical everywhere,359,18
+clean,CH4,optical-excess score -> AIRS-only,359,19
+clean,CH4,shape flag -> AIRS-only,359,24
+clean,CH4,retrained (haze) everywhere,359,17
+clean,CH4,retrained (hazedeck) everywhere,359,21
+clean,CH4,the routing method,359,20
+clean,H2O,"published, all inputs",364,51
+clean,H2O,AIRS-only everywhere,364,82
+clean,H2O,no-optical everywhere,364,62
+clean,H2O,optical-excess score -> AIRS-only,364,56
+clean,H2O,shape flag -> AIRS-only,364,67
+clean,H2O,retrained (haze) everywhere,364,56
+clean,H2O,retrained (hazedeck) everywhere,364,53
+clean,H2O,the routing method,364,67
+haze2e6,CH4,"published, all inputs",359,19
+haze2e6,CH4,AIRS-only everywhere,359,27
+haze2e6,CH4,no-optical everywhere,359,19
+haze2e6,CH4,optical-excess score -> AIRS-only,359,19
+haze2e6,CH4,shape flag -> AIRS-only,359,20
+haze2e6,CH4,retrained (haze) everywhere,359,18
+haze2e6,CH4,retrained (hazedeck) everywhere,359,21
+haze2e6,CH4,the routing method,359,19
+haze2e6,H2O,"published, all inputs",364,86
+haze2e6,H2O,AIRS-only everywhere,364,83
+haze2e6,H2O,no-optical everywhere,364,64
+haze2e6,H2O,optical-excess score -> AIRS-only,364,81
+haze2e6,H2O,shape flag -> AIRS-only,364,81
+haze2e6,H2O,retrained (haze) everywhere,364,73
+haze2e6,H2O,retrained (hazedeck) everywhere,364,72
+haze2e6,H2O,the routing method,364,80
+haze3e7,CH4,"published, all inputs",359,38
+haze3e7,CH4,AIRS-only everywhere,359,27
+haze3e7,CH4,no-optical everywhere,359,23
+haze3e7,CH4,optical-excess score -> AIRS-only,359,26
+haze3e7,CH4,shape flag -> AIRS-only,359,26
+haze3e7,CH4,retrained (haze) everywhere,359,21
+haze3e7,CH4,retrained (hazedeck) everywhere,359,24
+haze3e7,CH4,the routing method,359,27
+haze3e7,H2O,"published, all inputs",364,78
+haze3e7,H2O,AIRS-only everywhere,364,85
+haze3e7,H2O,no-optical everywhere,364,69
+haze3e7,H2O,optical-excess score -> AIRS-only,364,85
+haze3e7,H2O,shape flag -> AIRS-only,364,85
+haze3e7,H2O,retrained (haze) everywhere,364,78
+haze3e7,H2O,retrained (hazedeck) everywhere,364,79
+haze3e7,H2O,the routing method,364,84
+cloud1e2,CH4,"published, all inputs",359,29
+cloud1e2,CH4,AIRS-only everywhere,359,34
+cloud1e2,CH4,no-optical everywhere,359,33
+cloud1e2,CH4,optical-excess score -> AIRS-only,359,30
+cloud1e2,CH4,shape flag -> AIRS-only,359,33
+cloud1e2,CH4,retrained (haze) everywhere,359,26
+cloud1e2,CH4,retrained (hazedeck) everywhere,359,28
+cloud1e2,CH4,the routing method,359,32
+cloud1e2,H2O,"published, all inputs",364,88
+cloud1e2,H2O,AIRS-only everywhere,364,99
+cloud1e2,H2O,no-optical everywhere,364,86
+cloud1e2,H2O,optical-excess score -> AIRS-only,364,87
+cloud1e2,H2O,shape flag -> AIRS-only,364,88
+cloud1e2,H2O,retrained (haze) everywhere,364,78
+cloud1e2,H2O,retrained (hazedeck) everywhere,364,84
+cloud1e2,H2O,the routing method,364,86
+spots20,CH4,"published, all inputs",359,29
+spots20,CH4,AIRS-only everywhere,359,26
+spots20,CH4,no-optical everywhere,359,24
+spots20,CH4,optical-excess score -> AIRS-only,359,28
+spots20,CH4,shape flag -> AIRS-only,359,28
+spots20,CH4,retrained (haze) everywhere,359,23
+spots20,CH4,retrained (hazedeck) everywhere,359,24
+spots20,CH4,the routing method,359,27
+spots20,H2O,"published, all inputs",364,75
+spots20,H2O,AIRS-only everywhere,364,81
+spots20,H2O,no-optical everywhere,364,58
+spots20,H2O,optical-excess score -> AIRS-only,364,73
+spots20,H2O,shape flag -> AIRS-only,364,74
+spots20,H2O,retrained (haze) everywhere,364,67
+spots20,H2O,retrained (hazedeck) everywhere,364,67
+spots20,H2O,the routing method,364,71
+compound,CH4,"published, all inputs",359,66
+compound,CH4,AIRS-only everywhere,359,27
+compound,CH4,no-optical everywhere,359,39
+compound,CH4,optical-excess score -> AIRS-only,359,27
+compound,CH4,shape flag -> AIRS-only,359,27
+compound,CH4,retrained (haze) everywhere,359,35
+compound,CH4,retrained (hazedeck) everywhere,359,37
+compound,CH4,the routing method,359,27
+compound,H2O,"published, all inputs",364,103
+compound,H2O,AIRS-only everywhere,364,84
+compound,H2O,no-optical everywhere,364,79
+compound,H2O,optical-excess score -> AIRS-only,364,83
+compound,H2O,shape flag -> AIRS-only,364,83
+compound,H2O,retrained (haze) everywhere,364,82
+compound,H2O,retrained (hazedeck) everywhere,364,82
+compound,H2O,the routing method,364,83
+white_x2,CH4,"published, all inputs",359,37
+white_x2,CH4,AIRS-only everywhere,359,57
+white_x2,CH4,no-optical everywhere,359,44
+white_x2,CH4,optical-excess score -> AIRS-only,359,37
+white_x2,CH4,shape flag -> AIRS-only,359,38
+white_x2,CH4,retrained (haze) everywhere,359,45
+white_x2,CH4,retrained (hazedeck) everywhere,359,41
+white_x2,CH4,the routing method,359,38
+white_x2,H2O,"published, all inputs",364,67
+white_x2,H2O,AIRS-only everywhere,364,104
+white_x2,H2O,no-optical everywhere,364,81
+white_x2,H2O,optical-excess score -> AIRS-only,364,69
+white_x2,H2O,shape flag -> AIRS-only,364,74
+white_x2,H2O,retrained (haze) everywhere,364,74
+white_x2,H2O,retrained (hazedeck) everywhere,364,82
+white_x2,H2O,the routing method,364,74
+white_x3,CH4,"published, all inputs",359,56
+white_x3,CH4,AIRS-only everywhere,359,67
+white_x3,CH4,no-optical everywhere,359,60
+white_x3,CH4,optical-excess score -> AIRS-only,359,57
+white_x3,CH4,shape flag -> AIRS-only,359,60
+white_x3,CH4,retrained (haze) everywhere,359,53
+white_x3,CH4,retrained (hazedeck) everywhere,359,51
+white_x3,CH4,the routing method,359,60
+white_x3,H2O,"published, all inputs",364,89
+white_x3,H2O,AIRS-only everywhere,364,121
+white_x3,H2O,no-optical everywhere,364,103
+white_x3,H2O,optical-excess score -> AIRS-only,364,92
+white_x3,H2O,shape flag -> AIRS-only,364,98
+white_x3,H2O,retrained (haze) everywhere,364,91
+white_x3,H2O,retrained (hazedeck) everywhere,364,104
+white_x3,H2O,the routing method,364,98
+hazetop1,CH4,"published, all inputs",359,20
+hazetop1,CH4,AIRS-only everywhere,359,27
+hazetop1,CH4,no-optical everywhere,359,20
+hazetop1,CH4,optical-excess score -> AIRS-only,359,26
+hazetop1,CH4,shape flag -> AIRS-only,359,26
+hazetop1,CH4,retrained (haze) everywhere,359,20
+hazetop1,CH4,retrained (hazedeck) everywhere,359,20
+hazetop1,CH4,the routing method,359,25
+hazetop1,H2O,"published, all inputs",364,83
+hazetop1,H2O,AIRS-only everywhere,364,86
+hazetop1,H2O,no-optical everywhere,364,63
+hazetop1,H2O,optical-excess score -> AIRS-only,364,87
+hazetop1,H2O,shape flag -> AIRS-only,364,90
+hazetop1,H2O,retrained (haze) everywhere,364,77
+hazetop1,H2O,retrained (hazedeck) everywhere,364,72
+hazetop1,H2O,the routing method,364,87
+plhaze29,CH4,"published, all inputs",359,18
+plhaze29,CH4,AIRS-only everywhere,359,27
+plhaze29,CH4,no-optical everywhere,359,17
+plhaze29,CH4,optical-excess score -> AIRS-only,359,28
+plhaze29,CH4,shape flag -> AIRS-only,359,27
+plhaze29,CH4,retrained (haze) everywhere,359,19
+plhaze29,CH4,retrained (hazedeck) everywhere,359,20
+plhaze29,CH4,the routing method,359,24
+plhaze29,H2O,"published, all inputs",364,84
+plhaze29,H2O,AIRS-only everywhere,364,83
+plhaze29,H2O,no-optical everywhere,364,71
+plhaze29,H2O,optical-excess score -> AIRS-only,364,97
+plhaze29,H2O,shape flag -> AIRS-only,364,95
+plhaze29,H2O,retrained (haze) everywhere,364,78
+plhaze29,H2O,retrained (hazedeck) everywhere,364,76
+plhaze29,H2O,the routing method,364,93
+plhaze28,CH4,"published, all inputs",359,32
+plhaze28,CH4,AIRS-only everywhere,359,28
+plhaze28,CH4,no-optical everywhere,359,22
+plhaze28,CH4,optical-excess score -> AIRS-only,359,29
+plhaze28,CH4,shape flag -> AIRS-only,359,29
+plhaze28,CH4,retrained (haze) everywhere,359,23
+plhaze28,CH4,retrained (hazedeck) everywhere,359,23
+plhaze28,CH4,the routing method,359,27
+plhaze28,H2O,"published, all inputs",364,99
+plhaze28,H2O,AIRS-only everywhere,364,88
+plhaze28,H2O,no-optical everywhere,364,86
+plhaze28,H2O,optical-excess score -> AIRS-only,364,91
+plhaze28,H2O,shape flag -> AIRS-only,364,92
+plhaze28,H2O,retrained (haze) everywhere,364,87
+plhaze28,H2O,retrained (hazedeck) everywhere,364,88
+plhaze28,H2O,the routing method,364,89
+cia,CH4,"published, all inputs",359,19
+cia,CH4,AIRS-only everywhere,359,27
+cia,CH4,no-optical everywhere,359,19
+cia,CH4,optical-excess score -> AIRS-only,359,19
+cia,CH4,shape flag -> AIRS-only,359,24
+cia,CH4,retrained (haze) everywhere,359,17
+cia,CH4,retrained (hazedeck) everywhere,359,22
+cia,CH4,the routing method,359,20
+cia,H2O,"published, all inputs",364,52
+cia,H2O,AIRS-only everywhere,364,84
+cia,H2O,no-optical everywhere,364,62
+cia,H2O,optical-excess score -> AIRS-only,364,55
+cia,H2O,shape flag -> AIRS-only,364,67
+cia,H2O,retrained (haze) everywhere,364,56
+cia,H2O,retrained (hazedeck) everywhere,364,55
+cia,H2O,the routing method,364,68

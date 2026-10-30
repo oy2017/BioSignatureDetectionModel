@@ -1,0 +1,33 @@
+Designs on the real panel at JWST precision and at Tier-1 noise (200 draws); credit right 1, split or withheld 0.5, wrong 0; 95 % bootstrap over planets of the difference from the published classifier
+
+== JWST: 66 labels
+design                    score             vs published             vs AIRS-only  CH4 present on the 8 (mean)  present labels  absent labels
+published                  45.5   +0.0 ( +0.0, +0.0)   -7.0 (-12.5, -0.5)                         0.00             6.5           39.0
+no-optical                 50.0   +4.5 ( +0.5, +9.6)   -2.5 ( -8.5, +4.5)                         0.00            11.5           38.5
+AIRS-only                  52.5   +7.0 ( +0.5,+12.5)   +0.0 ( +0.0, +0.0)                         6.00            14.5           38.0
+shape flag                 51.5   +6.0 ( +1.0,+10.5)   -1.0 ( -3.1, +1.5)                         5.00            13.0           38.5
+haze-retrained             50.5   +5.0 ( +0.0,+10.4)   -2.0 ( -7.1, +4.1)                         2.00            13.0           37.5
+haze+deck-retrained        52.0   +6.5 ( +1.1,+11.9)   -0.5 ( -5.1, +5.0)                         2.00            14.0           38.0
+the method                 54.0   +8.5 ( +2.8,+14.0)   +1.5 ( -1.5, +5.7)                         5.00            15.0           39.0
+
+== Tier-1: 66 labels
+design                    score             vs published             vs AIRS-only  CH4 present on the 8 (mean)  present labels  absent labels
+published                  41.6   +0.0 ( +0.0, +0.0)   -1.7 ( -3.6, +0.1)                         0.04             2.9           38.7
+no-optical                 43.1   +1.5 ( +0.4, +2.9)   -0.3 ( -2.3, +1.7)                         0.07             4.7           38.4
+AIRS-only                  43.4   +1.7 ( -0.1, +3.6)   +0.0 ( +0.0, +0.0)                         1.37             5.8           37.6
+shape flag                 43.2   +1.5 ( +0.3, +2.8)   -0.2 ( -1.0, +0.5)                         1.05             4.9           38.2
+haze-retrained             43.1   +1.5 ( +0.0, +3.0)   -0.3 ( -1.8, +1.3)                         0.25             5.2           37.9
+haze+deck-retrained        43.5   +1.8 ( +0.2, +3.5)   +0.1 ( -1.4, +1.5)                         0.49             5.6           37.9
+the method                 44.4   +2.7 ( +1.3, +4.5)   +1.0 ( -0.2, +2.6)                         0.98             5.6           38.7
+
+CH4 detection frequency at Tier-1 on the methane reductions
+design       published  no-optical  AIRS-only  shape flag  haze-retrained  haze+deck-retrained  the method
+planet                                                                                                    
+GJ1214b           0.00        0.00       0.02        0.02            0.00                 0.00        0.02
+K2-18b            0.00        0.01       0.34        0.28            0.05                 0.18        0.28
+K2-18b-alt        0.02        0.06       0.16        0.10            0.07                 0.11        0.09
+K2-18b-hu         0.00        0.00       0.08        0.06            0.02                 0.04        0.05
+LTT3780c          0.00        0.00       0.50        0.40            0.06                 0.06        0.40
+TOI-1231b         0.01        0.00       0.22        0.15            0.04                 0.08        0.11
+TOI-270d          0.00        0.00       0.02        0.00            0.00                 0.00        0.00
+TOI-270d-hm       0.00        0.00       0.04        0.03            0.01                 0.01        0.03

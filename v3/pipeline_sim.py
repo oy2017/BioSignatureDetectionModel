@@ -70,7 +70,10 @@ def main():
     P0 = sc.probs(cases["clean"]); thr_opt = np.quantile(opt(cases["clean"]), 0.9); thr_dis = {(m, k): np.quantile(dis(P0, m, k), 0.9) for m in MOLS for k in LEARNERS}
     d1 = lambda P, m, k: np.abs(P["all"][(m, k)] - P["no_optical"][(m, k)]); d2 = lambda P, m, k: np.abs(P["no_optical"][(m, k)] - P["airs_only"][(m, k)])
     thr_d1 = {(m, k): np.quantile(d1(P0, m, k), 0.9) for m in MOLS for k in LEARNERS}; thr_d2 = {(m, k): np.quantile(d2(P0, m, k), 0.9) for m in MOLS for k in LEARNERS}
-    rows, rates = [], []
+    rows, rates, sels = [], [], []
+    slots = int(round(0.60 * len(Pte)))
+    def lost(score, t):
+        top = np.argsort(-score)[:slots]; return int(t.sum() - t[top].sum())
     for c in CASES:
         X = cases[c]; P = P0 if c == "clean" else sc.probs(X); o = opt(X)
         PR = {s: {(m, k): AT.prob(L["models"][("1e-4", m, k)], AJ.znorm(X, L["cols"])) for m in MOLS for k in LEARNERS} for s, L in ret.items()}
@@ -88,8 +91,19 @@ def main():
                     for a, r in amp.items():
                         up = np.isfinite(r) & (r > T_HI); low = r < T_LO; pp = np.where(up, pr, ps)
                         rec(f"pipeline ({s}, flag {a})", pp); rec(f"pipeline ({s}, flag {a}), two-sided", pp, ~low)
+        # the selection simulation of Section 2.8: 60 % slots, ranked by the mean present-probability of the three learners that give one
+        up_ = np.isfinite(amp["observed"]) & (amp["observed"] > T_HI)
+        for m in ("CH4", "H2O"):
+            t = y[m].astype(int); L3 = ("KNN", "MLP", "RFC"); o3 = o > thr_opt
+            shape_p = {k: np.where(o3 | (dis(P, m, k) > thr_dis[(m, k)]), P["airs_only"][(m, k)], P["all"][(m, k)]) for k in L3}
+            des = {"published, all inputs": {k: P["all"][(m, k)] for k in L3}, "AIRS-only everywhere": {k: P["airs_only"][(m, k)] for k in L3}, "no-optical everywhere": {k: P["no_optical"][(m, k)] for k in L3},
+                   "optical-excess score -> AIRS-only": {k: np.where(o3, P["airs_only"][(m, k)], P["all"][(m, k)]) for k in L3}, "shape flag -> AIRS-only": shape_p,
+                   "retrained (haze) everywhere": {k: PR["haze"][(m, k)] for k in L3}, "retrained (hazedeck) everywhere": {k: PR["hazedeck"][(m, k)] for k in L3},
+                   "the routing method": {k: np.where(up_, PR["haze"][(m, k)], shape_p[k]) for k in L3}}
+            for name, pp in des.items():
+                sels.append(dict(case=c, molecule=m, design=name, targets=int(t.sum()), lost=lost(np.mean([pp[k] for k in L3], axis=0), t)))
         print("done", c, flush=True)
-    df = pd.DataFrame(rows); df.to_csv(os.path.join(RESULTS, "pipeline_sim.csv"), index=False); pd.DataFrame(rates).to_csv(os.path.join(RESULTS, "pipeline_sim_rates.csv"), index=False)
+    df = pd.DataFrame(rows); df.to_csv(os.path.join(RESULTS, "pipeline_sim.csv"), index=False); pd.DataFrame(rates).to_csv(os.path.join(RESULTS, "pipeline_sim_rates.csv"), index=False); SEL = pd.DataFrame(sels); SEL.to_csv(os.path.join(RESULTS, "pipeline_sim_selection.csv"), index=False)
     L = [f"Full pipeline in simulation (pipeline_sim.py): accuracy %, mean over four learners and four molecules, POP-I ({len(Pte)} planets), thresholds T_HI {T_HI:.2f}, T_LO {T_LO:.2f}", ""]
     piv = df.groupby(["pipeline", "case"]).accuracy.mean().unstack("case")[CASES]; order = [p for p in dict.fromkeys(df.pipeline)]
     L.append(f"{'pipeline':<48} " + " ".join(f"{c:>9}" for c in CASES))
@@ -103,6 +117,8 @@ def main():
     for col, lab in (("disagree_flagged", "input disagreement"), ("d1_flagged", "first nest level (all vs no-optical)"), ("d2_flagged", "second nest level (no-optical vs AIRS-only)")):
         g2 = df[df.pipeline == "shape flag -> AIRS-only"].groupby("case")[col].mean().loc[CASES]; L.append(f"{lab} fires, % of cells: " + ", ".join(f"{c} {g2[c]:.1f}" for c in CASES))
     L += ["", "amplitude flag and optical flag rates, % of planets"]; L.append(pd.DataFrame(rates).round(1).to_string(index=False))
+    for m in ("CH4", "H2O"):
+        L += ["", f"{m} targets lost at the 60 % selection (of {SEL[SEL.molecule == m].targets.iloc[0]}; the withheld planets keep their routed score)"]; L.append(SEL[SEL.molecule == m].pivot_table(index="design", columns="case", values="lost")[CASES].loc[list(dict.fromkeys(SEL.design))].to_string())
     txt = "\n".join(L); open(os.path.join(RESULTS, "pipeline_sim.txt"), "w").write(txt + "\n"); print(txt)
 
 
