@@ -1,0 +1,65 @@
+WASP-94Ab: Zenodo 22803020 (limb-asymmetry reanalysis of the Ahrer et al. 2025 G395H transit and a NIRISS SOSS transit), limb-averaged reference spectra
+segments: SOSS 118 pts 0.85-2.83 um, offset +0 ppm; NRS1 68 pts 2.91-3.72 um, offset +0 ppm; NRS2 130 pts 3.83-5.00 um, offset +0 ppm
+coverage by channel: AIRS-CH0 6/69 filled, AIRS-CH1 13/21 filled, FGS1 1/1 filled, FGS2 0/1 filled, NIRSpec 0/11 filled, VISPhot 1/1 filled
+== WASP-94Ab [Zenodo 22803020 (limb-asymmetry reanalysis of the Ahrer et al. 2025 G395H transit and a NIRISS SOSS transit), limb-averaged reference spectra; 21 of 104 bins flat-filled]: verdicts at the delivered precision (1 = present)
+-- threshold 1e-5
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  1.0  0.0  0.0
+           H2O       1.0  1.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  1.0  0.0  1.0
+           H2O       1.0  1.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  1.0  0.0  0.0
+           H2O       1.0  1.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+-- threshold 1e-4
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       1.0  1.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       1.0  1.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       1.0  1.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+-- threshold 1e-3
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       1.0  0.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       1.0  1.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       1.0  1.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+== WASP-94Ab [Zenodo 22803020 (limb-asymmetry reanalysis of the Ahrer et al. 2025 G395H transit and a NIRISS SOSS transit), limb-averaged reference spectra; 21 of 104 bins flat-filled]: fraction of 500 Ariel tier1 noise draws called present (threshold 1e-4)
+learner               KNN   MLP   RFC   SVC
+variant    molecule                        
+airs_only  CH4        0.0   1.0   0.0   0.0
+           CO2       28.0  11.0   2.0   2.0
+           H2O       60.0  59.0  35.0  69.0
+           NH3        5.0   7.0   0.0   1.0
+all        CH4        0.0   0.0   0.0   0.0
+           CO2       28.0  11.0   1.0   2.0
+           H2O       67.0  84.0  60.0  93.0
+           NH3        5.0   3.0   0.0   0.0
+no_optical CH4        0.0   1.0   0.0   0.0
+           CO2       26.0   9.0   0.0   2.0
+           H2O       71.0  83.0  62.0  93.0
+           NH3        4.0   3.0   0.0   0.0
+== band metric (Mugnai et al. 2021, Eq. 3): M_H2O = 1.29, M_CH4 = -0.41, M_CO2 = 0.46  (their flags: CH4 >= 0.22, CO2 >= 0.26, H2O >= 0.80)

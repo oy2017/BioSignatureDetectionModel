@@ -1,24 +1,24 @@
-Prior-extension routing on the real panel (23 reductions): a planet muted beyond the training prior's most muted twin is sent to the retrained design
-  muting flag fires on 9 reductions (point estimate), 8 with P(beyond prior) > 0.95; retrained verdicts exist for 22 of 23
+Prior-extension routing on the real panel (26 reductions): a planet muted beyond the training prior's most muted twin is sent to the retrained design
+  muting flag fires on 11 reductions (point estimate), 10 with P(beyond prior) > 0.95; retrained verdicts exist for 25 of 26
 
 router                                                      scored correct  on muting-flagged planets  on the giants   methane present/split/absent
-none                                                            37/53                16/21                17/22               0 / 1 / 7
-either -> AIRS-only                                             44/54                18/22                20/24               5 / 1 / 2
-muting -> retrained haze                                        42/56                21/24                22/25               0 / 1 / 7
-muting (strict) -> retrained haze                               42/56                21/24                22/25               0 / 1 / 7
-either, then muting -> retrained haze                           44/54                18/22                20/24               5 / 1 / 2
-muting -> retrained hazedeck                                    42/56                21/24                22/25               0 / 1 / 7
-muting (strict) -> retrained hazedeck                           42/56                21/24                22/25               0 / 1 / 7
-either, then muting -> retrained hazedeck                       44/54                18/22                20/24               5 / 1 / 2
-muting -> retrained union                                       42/56                21/24                22/25               0 / 1 / 7
-muting (strict) -> retrained union                              42/56                21/24                22/25               0 / 1 / 7
-either, then muting -> retrained union                          44/54                18/22                20/24               5 / 1 / 2
-retrained hazedeck everywhere                                   45/56                21/24                23/26               2 / 2 / 4
-muting -> retrained hazedeck, else either -> AIRS-only          47/56                21/24                23/26               5 / 1 / 2
-retrained hazedeck everywhere, either -> its AIRS-only          46/58                19/23                21/25               6 / 0 / 2
-retrained union everywhere                                      44/55                21/24                23/26               2 / 2 / 4
-muting -> retrained union, else either -> AIRS-only             47/56                21/24                23/26               5 / 1 / 2
-retrained union everywhere, either -> its AIRS-only             46/55                20/23                22/25               6 / 0 / 2
+none                                                            42/59                21/26                22/27               0 / 1 / 7
+either -> AIRS-only                                             49/61                23/28                25/30               5 / 1 / 2
+muting -> retrained haze                                        48/63                27/30                28/31               0 / 1 / 7
+muting (strict) -> retrained haze                               48/63                27/30                28/31               0 / 1 / 7
+either, then muting -> retrained haze                           49/61                23/28                25/30               5 / 1 / 2
+muting -> retrained hazedeck                                    47/62                26/29                27/30               0 / 1 / 7
+muting (strict) -> retrained hazedeck                           47/62                26/29                27/30               0 / 1 / 7
+either, then muting -> retrained hazedeck                       49/61                23/28                25/30               5 / 1 / 2
+muting -> retrained union                                       48/63                27/30                28/31               0 / 1 / 7
+muting (strict) -> retrained union                              48/63                27/30                28/31               0 / 1 / 7
+either, then muting -> retrained union                          49/61                23/28                25/30               5 / 1 / 2
+retrained hazedeck everywhere                                   50/62                26/29                28/31               2 / 2 / 4
+muting -> retrained hazedeck, else either -> AIRS-only          52/62                26/29                28/31               5 / 1 / 2
+retrained hazedeck everywhere, either -> its AIRS-only          51/65                24/29                26/31               6 / 0 / 2
+retrained union everywhere                                      50/62                27/30                29/32               2 / 2 / 4
+muting -> retrained union, else either -> AIRS-only             53/63                27/30                29/32               5 / 1 / 2
+retrained union everywhere, either -> its AIRS-only             51/62                25/29                27/31               6 / 0 / 2
 
 per planet: muting, max in prior, P(beyond prior), flag; labels that change between 'none' and 'muting -> retrained hazedeck' [label]
   TOI-270d     muting  0.66  prior max 1.97  P 0.00         -
@@ -43,4 +43,7 @@ per planet: muting, max in prior, P(beyond prior), flag; labels that change betw
   HD209458b    muting  2.35  prior max 1.33  P 1.00  FLAG*  H2O: split -> present [amb.]
   WASP-96b     muting  1.49  prior max 1.94  P 0.00         -
   WASP-17b     muting  3.99  prior max 1.96  P 1.00  FLAG*  -
+  WASP-94Ab    muting  3.30  prior max 1.47  P 1.00  FLAG*  -
+  HIP67522b    muting  0.11  prior max 3.29  P 0.00         -
+  HAT-P-12b    muting  5.34  prior max 1.98  P 1.00  FLAG*  -
   WASP-39b     muting  3.73  prior max 2.04  P 1.00  FLAG*  -

@@ -9,7 +9,7 @@ retrained ones, both from the same test cases and noise draw); 'frozen' is the d
 its AIRS-only input, 'remedied' the either-flag routing between the two. The census-first pipeline is not simulated: the
 muting census flags about a tenth of clean simulated planets (F11; the bulk-parameter form of the census) and the
 retrained design is within 1.4 points of the consortium one on every input, so its simulated row is the either row to
-within 0.2 points. Real-panel columns: results/jwst_panel/muting_router.csv and router_real.csv (23 reductions, 19
+within 0.2 points. Real-panel columns: results/jwst_panel/muting_router.csv and router_real.csv (26 reductions, 22
 planets, labels fixed before any verdict).
 
 Writes results/pipeline_table.{txt,csv}.
@@ -54,7 +54,7 @@ def main():
         r = dict(pipeline=name); r.update({lab: s.get(c, np.nan) for c, lab in CASES}); r["panel scored"] = sc; r["panel CH4 present/split/absent"] = ch4; out.append(r)
     df = pd.DataFrame(out); df.to_csv(os.path.join(RESULTS, "pipeline_table.csv"), index=False)
     L = ["Detector pipelines side by side (pipeline_table.py): simulated accuracy (%, mean over four learners and four molecules, POP-I at Tier-1 noise)",
-         "and the real JWST panel (23 reductions; scored labels correct; CH4 verdicts on the eight methane reductions). Census-first row simulated as the either row (see docstring).", "",
+         "and the real JWST panel (26 reductions; scored labels correct; CH4 verdicts on the eight methane reductions). Census-first row simulated as the either row (see docstring).", "",
          f"  {'pipeline':<60} " + " ".join(f"{lab:>12}" for _, lab in CASES) + f" {'panel':>8} {'CH4 p/s/a':>10}"]
     for _, r in df.iterrows():
         L.append(f"  {r.pipeline:<60} " + " ".join(f"{r[lab]:12.1f}" if np.isfinite(r[lab]) else f"{'-':>12}" for _, lab in CASES) + f" {r['panel scored']:>8} {r['panel CH4 present/split/absent']:>10}")

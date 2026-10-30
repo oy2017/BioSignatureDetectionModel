@@ -1186,6 +1186,37 @@ drops from 0.71 towards 0.6; present labels, which must be pulled above the boun
 E2 prevalence is a property of the named prior to within five points, in the direction the prior predicts, and the
 paper's "a third to a half" holds under both. Written into 2.4, 3.3 and the limitations; response letter A3.
 
+### F21. Third batch, held out from both routers (WASP-94A b, HIP 67522 b, HAT-P-12 b): the baseline is right on five of six, the census-first pipeline changes nothing and the input routing alone would have lost the most muted planet's water; HIP 67522 b is the amplitude failure in the other direction (2026-10-29)
+
+Three planets with public reductions and free-chemistry constraints, labels fixed from the papers (commit ed93e1d) before
+any verdict: WASP-94A b (Ahrer+2025 HyDRA: H₂O P, CH₄ A, NH₃ A, CO₂ straddles; data the limb reanalysis of Fairnington+2026,
+Zenodo 22803020, SOSS + G395H), HIP 67522 b (Thao+2024: CO₂ −5.56 → A; H₂O straddles, CH₄/NH₃ not reported; G395H from
+the Fu+2025 compilation), HAT-P-12 b (Heinke+2026 NIRISS+NIRSpec: H₂O P, CH₄ A, NH₃ A, CO₂ straddles; SOSS + G395M + MIRI,
+one filled bin). Rocky COMPASS planets (TOI-836 b, TOI-776 b/c, GJ 357 b, LTT 1445 A b, GJ 1132 b) were fetched and dropped:
+a flat spectrum with a metallicity limit fixes no abundance against 10⁻⁴, so no scored label. HAT-P-1 b (no public
+reduction) and GJ 3090 b (only 2σ limits, the tightest −4.25 from one of six retrievals) not used.
+
+Panel now 26 reductions, 22 planets. Third batch alone: all inputs 5/6, no-optical 6/7, AIRS-only 5/7. Full panel
+(`router_real.txt`, `muting_router.txt`, `pipeline_table.txt`): none 42/59, optical 44/59, disagree 48/61, either 49/61,
+AIRS-only everywhere 52/65, retrained hazedeck everywhere 50/62, census-first 52/62, retrained + its either 51/65.
+Sign tests, census-first vs none: strict 6-0 (p = 0.03), half 12-1 (p = 0.003), per planet 9-1 (p = 0.02); either vs
+none: 5-0 (0.06), 9-2 (0.07), per planet 7-2 (0.18), the new loss HAT-P-12 b.
+
+Per planet. WASP-94A b: baseline right on all three scored labels; muting 3.30 vs prior max 1.47 (flagged), retrained
+design changes nothing. HAT-P-12 b: muting 5.34 vs 1.98, the most muted planet on the panel (the known flat, cloudy
+spectrum); H₂O split with all inputs, the disagreement flag fires (2 learners) and the AIRS-only learner says absent, so
+"either" turns split → absent; census-first keeps it with the hazedeck design (split); the haze-only design calls it
+present (3 of 4). First real planet where the order of the two axes matters, and in the direction the design predicts.
+HIP 67522 b: 17 Myr, 9.8 R⊕, 13.8 M⊕ (density < 0.1); CO₂ label absent at −5.56, called present by every learner, input
+and training set (Tier-1 frequency 79-100 %); muting 0.11, i.e. the real spectrum is nine times MORE featured than its
+clear twin at the catalogue's bulk parameters (the MCS mass is Jupiter-like). The classifier reads amplitude, the label is
+an abundance, and a scale height ten times the simulator's turns a trace gas into a 10⁻⁴ feature. The census as built
+only looks for muting; a two-sided census would flag it, and the remedy is the catalogue mass.
+
+Reading. The census-first gain survives a batch it had not seen (no label lost), the input-only routing does not (one
+lost), and the held-out batch adds a third real class: amplitude above the prior from wrong bulk parameters. Written into
+the abstract, 2.5 (Table 2, refs 82-86), 3.5, 3.6, Discussion, Conclusion and both letters; Figure 4 regenerated.
+
 ### What these add up to, provisionally
 
 A simulator-trained classifier that reproduces its published in-simulator accuracies is mostly right

@@ -1,0 +1,25 @@
+Numba not installed, using numpy instead
+The routed pipeline on the real panel (26 reductions, WASP-39 b included; flag thresholds decline 10 % of clean POP-I planets; verdict = majority of four learners; scored labels only)
+
+router                  scored correct    CH4 on the six methane reductions: present / split / absent  cells routed
+none                        42/59                           0 / 1 / 7                                 0/416
+optical                     44/59                           2 / 1 / 5                                48/416
+disagree                    48/61                           4 / 1 / 3                                53/416
+either                      49/61                           5 / 1 / 2                                95/416
+AIRS-only everywhere        52/65                           6 / 1 / 1                               416/416
+
+CH4 on the methane reductions, learners routed and verdict (all-input -> routed), per router:
+  TOI-270d     optical: 0/4 routed, absent -> absent; disagree: 0/4 routed, absent -> absent; either: 0/4 routed, absent -> absent; AIRS-only everywhere: 4/4 routed, absent -> split
+  K2-18b       optical: 4/4 routed, absent -> present; disagree: 3/4 routed, absent -> present; either: 4/4 routed, absent -> present; AIRS-only everywhere: 4/4 routed, absent -> present
+  K2-18b-alt   optical: 4/4 routed, absent -> present; disagree: 0/4 routed, absent -> absent; either: 4/4 routed, absent -> present; AIRS-only everywhere: 4/4 routed, absent -> present
+  TOI-1231b    optical: 0/4 routed, split -> split; disagree: 3/4 routed, split -> present; either: 3/4 routed, split -> present; AIRS-only everywhere: 4/4 routed, split -> present
+  K2-18b-hu    optical: 0/4 routed, absent -> absent; disagree: 1/4 routed, absent -> split; either: 1/4 routed, absent -> split; AIRS-only everywhere: 4/4 routed, absent -> present
+  TOI-270d-hm  optical: 0/4 routed, absent -> absent; disagree: 4/4 routed, absent -> present; either: 4/4 routed, absent -> present; AIRS-only everywhere: 4/4 routed, absent -> present
+  GJ1214b      optical: 0/4 routed, absent -> absent; disagree: 0/4 routed, absent -> absent; either: 0/4 routed, absent -> absent; AIRS-only everywhere: 4/4 routed, absent -> absent
+  LTT3780c     optical: 0/4 routed, absent -> absent; disagree: 4/4 routed, absent -> present; either: 4/4 routed, absent -> present; AIRS-only everywhere: 4/4 routed, absent -> present
+
+labels that change under each router (planet molecule: all-input -> routed [label]):
+  optical: K2-18b CH4: absent -> present [present]; K2-18b-alt CH4: absent -> present [present]
+  disagree: K2-18b CH4: absent -> present [present]; HD189733b H2O: absent -> present [amb.]; HD189733b CO2: absent -> split [absent]; GJ3470b CO2: split -> present [present]; WASP-166b CO2: absent -> present [present]; TOI-1231b CH4: split -> present [present]; K2-18b-hu CH4: absent -> split [present]; TOI-270d-hm CH4: absent -> present [present]; WASP-52b NH3: absent -> present [amb.]; LTT3780c CH4: absent -> present [present]; HD209458b H2O: split -> present [amb.]; WASP-96b H2O: split -> present [present]; HAT-P-12b H2O: split -> absent [present]
+  either: K2-18b CH4: absent -> present [present]; K2-18b-alt CH4: absent -> present [present]; HD189733b H2O: absent -> present [amb.]; HD189733b CO2: absent -> split [absent]; GJ3470b CO2: split -> present [present]; WASP-166b CO2: absent -> present [present]; TOI-1231b CH4: split -> present [present]; K2-18b-hu CH4: absent -> split [present]; TOI-270d-hm CH4: absent -> present [present]; WASP-52b NH3: absent -> present [amb.]; LTT3780c CH4: absent -> present [present]; HD209458b H2O: split -> present [amb.]; WASP-96b H2O: split -> present [present]; HAT-P-12b H2O: split -> absent [present]
+  AIRS-only everywhere: TOI-270d CH4: absent -> split [present]; K2-18b CH4: absent -> present [present]; K2-18b-alt CH4: absent -> present [present]; HD189733b H2O: absent -> present [amb.]; HD189733b CO2: absent -> present [absent]; HAT-P-26b CO2: split -> present [present]; GJ3470b CO2: split -> present [present]; WASP-166b CO2: absent -> present [present]; TOI-1231b CH4: split -> present [present]; K2-18b-hu CH4: absent -> present [present]; TOI-270d-hm CH4: absent -> present [present]; GJ9827d CO2: absent -> split [amb.]; WASP-52b NH3: absent -> present [amb.]; GJ1214b CO2: split -> absent [present]; LTT3780c CH4: absent -> present [present]; WASP-80b H2O: split -> present [present]; HD209458b H2O: split -> present [amb.]; WASP-96b H2O: split -> present [present]; HIP67522b NH3: absent -> split [amb.]; HAT-P-12b H2O: split -> absent [present]

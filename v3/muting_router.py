@@ -60,7 +60,7 @@ def main():
                 rows.append(dict(planet=pl, molecule=m, router=router, verdict=v, label=lab, muting_flag=f_mut, muting_flag_strict=f_mut_strict,
                                  retrained_available="hazedeck" in VR, correct=None if lab is None or v == "split" else bool(v == lab)))
     df = pd.DataFrame(rows); df.to_csv(os.path.join(OUT, "muting_router.csv"), index=False)
-    giants = [p for p in flags if p in ("HAT-P-26b", "WASP-107b", "WASP-39b", "GJ3470b", "WASP-166b", "WASP-17b", "WASP-80b", "HD209458b", "WASP-96b", "WASP-52b")]
+    giants = [p for p in flags if p in ("HAT-P-26b", "WASP-107b", "WASP-39b", "GJ3470b", "WASP-166b", "WASP-17b", "WASP-80b", "HD209458b", "WASP-96b", "WASP-52b", "WASP-94Ab", "HAT-P-12b")]
     L = [f"Prior-extension routing on the real panel ({df.planet.nunique()} reductions): a planet muted beyond the training prior's most muted twin is sent to the retrained design",
          f"  muting flag fires on {sum(f[3] for f in flags.values())} reductions (point estimate), {sum(f[4] for f in flags.values())} with P(beyond prior) > 0.95; retrained verdicts exist for {int(df.groupby('planet').retrained_available.first().sum())} of {df.planet.nunique()}", ""]
     L.append(f"{'router':<58} {'scored correct':>15} {'on muting-flagged planets':>26} {'on the giants':>14} {'methane present/split/absent':>30}")

@@ -439,6 +439,66 @@ WASP-17b,NH3,optical,0,0,absent,,
 WASP-17b,NH3,disagree,0,0,absent,,
 WASP-17b,NH3,either,0,0,absent,,
 WASP-17b,NH3,AIRS-only everywhere,4,0,absent,,
+WASP-94Ab,CH4,none,0,0,absent,absent,True
+WASP-94Ab,CH4,optical,0,0,absent,absent,True
+WASP-94Ab,CH4,disagree,0,0,absent,absent,True
+WASP-94Ab,CH4,either,0,0,absent,absent,True
+WASP-94Ab,CH4,AIRS-only everywhere,4,0,absent,absent,True
+WASP-94Ab,H2O,none,0,4,present,present,True
+WASP-94Ab,H2O,optical,0,4,present,present,True
+WASP-94Ab,H2O,disagree,1,4,present,present,True
+WASP-94Ab,H2O,either,1,4,present,present,True
+WASP-94Ab,H2O,AIRS-only everywhere,4,4,present,present,True
+WASP-94Ab,CO2,none,0,0,absent,,
+WASP-94Ab,CO2,optical,0,0,absent,,
+WASP-94Ab,CO2,disagree,0,0,absent,,
+WASP-94Ab,CO2,either,0,0,absent,,
+WASP-94Ab,CO2,AIRS-only everywhere,4,0,absent,,
+WASP-94Ab,NH3,none,0,0,absent,absent,True
+WASP-94Ab,NH3,optical,0,0,absent,absent,True
+WASP-94Ab,NH3,disagree,0,0,absent,absent,True
+WASP-94Ab,NH3,either,0,0,absent,absent,True
+WASP-94Ab,NH3,AIRS-only everywhere,4,0,absent,absent,True
+HIP67522b,CH4,none,0,0,absent,,
+HIP67522b,CH4,optical,0,0,absent,,
+HIP67522b,CH4,disagree,0,0,absent,,
+HIP67522b,CH4,either,0,0,absent,,
+HIP67522b,CH4,AIRS-only everywhere,4,0,absent,,
+HIP67522b,H2O,none,0,0,absent,,
+HIP67522b,H2O,optical,0,0,absent,,
+HIP67522b,H2O,disagree,0,0,absent,,
+HIP67522b,H2O,either,0,0,absent,,
+HIP67522b,H2O,AIRS-only everywhere,4,0,absent,,
+HIP67522b,CO2,none,0,4,present,absent,False
+HIP67522b,CO2,optical,0,4,present,absent,False
+HIP67522b,CO2,disagree,2,4,present,absent,False
+HIP67522b,CO2,either,2,4,present,absent,False
+HIP67522b,CO2,AIRS-only everywhere,4,4,present,absent,False
+HIP67522b,NH3,none,0,0,absent,,
+HIP67522b,NH3,optical,0,0,absent,,
+HIP67522b,NH3,disagree,2,1,absent,,
+HIP67522b,NH3,either,2,1,absent,,
+HIP67522b,NH3,AIRS-only everywhere,4,2,split,,
+HAT-P-12b,CH4,none,0,0,absent,absent,True
+HAT-P-12b,CH4,optical,0,0,absent,absent,True
+HAT-P-12b,CH4,disagree,0,0,absent,absent,True
+HAT-P-12b,CH4,either,0,0,absent,absent,True
+HAT-P-12b,CH4,AIRS-only everywhere,4,0,absent,absent,True
+HAT-P-12b,H2O,none,0,2,split,present,
+HAT-P-12b,H2O,optical,0,2,split,present,
+HAT-P-12b,H2O,disagree,2,1,absent,present,False
+HAT-P-12b,H2O,either,2,1,absent,present,False
+HAT-P-12b,H2O,AIRS-only everywhere,4,0,absent,present,False
+HAT-P-12b,CO2,none,0,3,present,,
+HAT-P-12b,CO2,optical,0,3,present,,
+HAT-P-12b,CO2,disagree,1,3,present,,
+HAT-P-12b,CO2,either,1,3,present,,
+HAT-P-12b,CO2,AIRS-only everywhere,4,4,present,,
+HAT-P-12b,NH3,none,0,0,absent,absent,True
+HAT-P-12b,NH3,optical,0,0,absent,absent,True
+HAT-P-12b,NH3,disagree,0,0,absent,absent,True
+HAT-P-12b,NH3,either,0,0,absent,absent,True
+HAT-P-12b,NH3,AIRS-only everywhere,4,0,absent,absent,True
 WASP-39b,CH4,none,0,0,absent,absent,True
 WASP-39b,CH4,optical,0,0,absent,absent,True
 WASP-39b,CH4,disagree,0,0,absent,absent,True

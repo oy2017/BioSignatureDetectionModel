@@ -1,0 +1,65 @@
+HAT-P-12b: Heinke et al. 2026 (Zenodo 19356398): exoTEDRF NIRISS SOSS (standard reduction), CASCADe NIRSpec G395M and MIRI LRS
+segments: SOSS 195 pts 0.60-2.82 um, offset +0 ppm; G395M 117 pts 2.85-5.17 um, offset +0 ppm; MIRI 39 pts 4.70-12.30 um, offset +0 ppm
+coverage by channel: AIRS-CH0 0/69 filled, AIRS-CH1 0/21 filled, FGS1 0/1 filled, FGS2 0/1 filled, NIRSpec 0/11 filled, VISPhot 1/1 filled
+== HAT-P-12b [Heinke et al. 2026 (Zenodo 19356398): exoTEDRF NIRISS SOSS (standard reduction), CASCADe NIRSpec G395M and MIRI LRS; 1 of 104 bins flat-filled]: verdicts at the delivered precision (1 = present)
+-- threshold 1e-5
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  1.0  1.0  1.0
+           H2O       0.0  0.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  1.0  1.0  1.0
+           H2O       0.0  1.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  1.0  1.0  1.0
+           H2O       1.0  1.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+-- threshold 1e-4
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  1.0  1.0  1.0
+           H2O       0.0  1.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  1.0  1.0  1.0
+           H2O       0.0  1.0  0.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  1.0  1.0  1.0
+           H2O       0.0  1.0  0.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+-- threshold 1e-3
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  1.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  1.0
+           H2O       0.0  1.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  0.0  0.0  1.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+== HAT-P-12b [Heinke et al. 2026 (Zenodo 19356398): exoTEDRF NIRISS SOSS (standard reduction), CASCADe NIRSpec G395M and MIRI LRS; 1 of 104 bins flat-filled]: fraction of 500 Ariel tier1 noise draws called present (threshold 1e-4)
+learner               KNN   MLP  RFC   SVC
+variant    molecule                       
+airs_only  CH4        5.0   8.0  0.0   0.0
+           CO2       57.0  31.0  7.0  19.0
+           H2O       16.0  31.0  2.0   8.0
+           NH3        4.0   7.0  0.0   0.0
+all        CH4        2.0   4.0  0.0   0.0
+           CO2       49.0  25.0  5.0  13.0
+           H2O       16.0  40.0  4.0  12.0
+           NH3        4.0   2.0  0.0   0.0
+no_optical CH4        2.0   3.0  0.0   0.0
+           CO2       51.0  24.0  4.0  12.0
+           H2O       17.0  38.0  3.0  10.0
+           NH3        4.0   3.0  0.0   0.0
+== band metric (Mugnai et al. 2021, Eq. 3): M_H2O = -0.35, M_CH4 = -1.12, M_CO2 = 1.39  (their flags: CH4 >= 0.22, CO2 >= 0.26, H2O >= 0.80)
