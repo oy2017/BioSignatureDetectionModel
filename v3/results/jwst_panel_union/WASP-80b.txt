@@ -1,0 +1,65 @@
+WASP-80b: Bell et al. 2023 (Nature source data, Eureka!), NIRCam F322W2
+segments: F322W2 113 pts 2.42-4.06 um, offset +0 ppm
+coverage by channel: AIRS-CH0 21/69 filled, AIRS-CH1 20/21 filled, FGS1 1/1 filled, FGS2 1/1 filled, NIRSpec 11/11 filled, VISPhot 1/1 filled
+== WASP-80b [Bell et al. 2023 (Nature source data, Eureka!), NIRCam F322W2; 55 of 104 bins flat-filled]: verdicts at the delivered precision (1 = present)
+-- threshold 1e-5
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       0.0  1.0  1.0  0.0
+           CO2       0.0  1.0  0.0  0.0
+           H2O       1.0  1.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       0.0  1.0  0.0  0.0
+           CO2       0.0  1.0  0.0  0.0
+           H2O       1.0  1.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       0.0  1.0  0.0  0.0
+           CO2       0.0  1.0  0.0  0.0
+           H2O       1.0  1.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+-- threshold 1e-4
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       1.0  1.0  1.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       0.0  1.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       1.0  1.0  0.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       1.0  1.0  0.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+-- threshold 1e-3
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       1.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       1.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       1.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+== WASP-80b [Bell et al. 2023 (Nature source data, Eureka!), NIRCam F322W2; 55 of 104 bins flat-filled]: fraction of 500 Ariel tier1 noise draws called present (threshold 1e-4)
+learner               KNN   MLP  RFC   SVC
+variant    molecule                       
+airs_only  CH4       10.0  14.0  0.0   2.0
+           CO2       15.0   6.0  0.0   1.0
+           H2O       27.0  32.0  2.0  13.0
+           NH3       18.0  15.0  1.0   5.0
+all        CH4       10.0  12.0  0.0   1.0
+           CO2       17.0   7.0  0.0   1.0
+           H2O       29.0  33.0  0.0  12.0
+           NH3       15.0  16.0  0.0   4.0
+no_optical CH4        9.0   7.0  0.0   1.0
+           CO2       15.0   6.0  0.0   1.0
+           H2O       29.0  30.0  1.0  10.0
+           NH3       17.0  11.0  0.0   5.0
+== band metric (Mugnai et al. 2021, Eq. 3): M_H2O = 1.72, M_CH4 = -0.33, M_CO2 = 0.08  (their flags: CH4 >= 0.22, CO2 >= 0.26, H2O >= 0.80)

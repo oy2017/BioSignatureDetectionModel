@@ -10,9 +10,15 @@ either, then muting -> retrained haze                           44/54           
 muting -> retrained hazedeck                                    42/56                21/24                22/25               0 / 1 / 7
 muting (strict) -> retrained hazedeck                           42/56                21/24                22/25               0 / 1 / 7
 either, then muting -> retrained hazedeck                       44/54                18/22                20/24               5 / 1 / 2
+muting -> retrained union                                       42/56                21/24                22/25               0 / 1 / 7
+muting (strict) -> retrained union                              42/56                21/24                22/25               0 / 1 / 7
+either, then muting -> retrained union                          44/54                18/22                20/24               5 / 1 / 2
 retrained hazedeck everywhere                                   45/56                21/24                23/26               2 / 2 / 4
 muting -> retrained hazedeck, else either -> AIRS-only          47/56                21/24                23/26               5 / 1 / 2
 retrained hazedeck everywhere, either -> its AIRS-only          46/58                19/23                21/25               6 / 0 / 2
+retrained union everywhere                                      44/55                21/24                23/26               2 / 2 / 4
+muting -> retrained union, else either -> AIRS-only             47/56                21/24                23/26               5 / 1 / 2
+retrained union everywhere, either -> its AIRS-only             46/55                20/23                22/25               6 / 0 / 2
 
 per planet: muting, max in prior, P(beyond prior), flag; labels that change between 'none' and 'muting -> retrained hazedeck' [label]
   TOI-270d     muting  0.66  prior max 1.97  P 0.00         -

@@ -1,0 +1,65 @@
+HAT-P-26b: Gressier et al. 2025 (AJ figure data), G395H ExoTiC-JEDI
+segments: G395H 214 pts 2.87-5.12 um, offset +0 ppm
+coverage by channel: AIRS-CH0 42/69 filled, AIRS-CH1 13/21 filled, FGS1 1/1 filled, FGS2 1/1 filled, NIRSpec 11/11 filled, VISPhot 1/1 filled
+== HAT-P-26b [Gressier et al. 2025 (AJ figure data), G395H ExoTiC-JEDI; 69 of 104 bins flat-filled]: verdicts at the delivered precision (1 = present)
+-- threshold 1e-5
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  1.0  1.0  1.0
+           H2O       0.0  1.0  0.0  0.0
+           NH3       0.0  1.0  1.0  1.0
+all        CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  1.0  1.0  1.0
+           H2O       0.0  1.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  1.0  1.0  1.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  1.0  0.0  0.0
+-- threshold 1e-4
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  1.0  1.0  1.0
+           H2O       0.0  1.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  1.0  1.0  1.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  1.0  0.0  0.0
+no_optical CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  1.0  1.0  1.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+-- threshold 1e-3
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  1.0  0.0  0.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  1.0  0.0  0.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+== HAT-P-26b [Gressier et al. 2025 (AJ figure data), G395H ExoTiC-JEDI; 69 of 104 bins flat-filled]: fraction of 500 Ariel tier1 noise draws called present (threshold 1e-4)
+learner               KNN   MLP  RFC   SVC
+variant    molecule                       
+airs_only  CH4        3.0   9.0  0.0   0.0
+           CO2       38.0  31.0  5.0  12.0
+           H2O       11.0  17.0  0.0   1.0
+           NH3       19.0  23.0  1.0   8.0
+all        CH4        3.0   4.0  0.0   0.0
+           CO2       37.0  29.0  3.0  13.0
+           H2O       13.0  14.0  0.0   1.0
+           NH3       15.0  19.0  0.0   5.0
+no_optical CH4        3.0   5.0  0.0   0.0
+           CO2       37.0  29.0  3.0  11.0
+           H2O       12.0  16.0  1.0   1.0
+           NH3       17.0  17.0  0.0   5.0
+== band metric (Mugnai et al. 2021, Eq. 3): M_H2O = 0.88, M_CH4 = -1.04, M_CO2 = 0.94  (their flags: CH4 >= 0.22, CO2 >= 0.26, H2O >= 0.80)

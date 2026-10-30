@@ -1,0 +1,65 @@
+GJ1214b: Schlawin et al. 2024 (ApJL figure 2 data), NIRSpec G395H, tshirt reduction at R = 100
+segments: G395H 59 pts 2.77-5.13 um, offset +0 ppm
+coverage by channel: AIRS-CH0 39/69 filled, AIRS-CH1 13/21 filled, FGS1 1/1 filled, FGS2 1/1 filled, NIRSpec 11/11 filled, VISPhot 1/1 filled
+== GJ1214b [Schlawin et al. 2024 (ApJL figure 2 data), NIRSpec G395H, tshirt reduction at R = 100; 66 of 104 bins flat-filled]: verdicts at the delivered precision (1 = present)
+-- threshold 1e-5
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  1.0  1.0  1.0
+           H2O       0.0  1.0  0.0  1.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  1.0  1.0  1.0
+           H2O       0.0  1.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  1.0  1.0  1.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+-- threshold 1e-4
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  1.0  0.0  0.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  1.0  0.0  1.0
+           H2O       0.0  1.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  1.0  1.0  1.0
+           H2O       0.0  1.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+-- threshold 1e-3
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       0.0  0.0  0.0  0.0
+           CO2       1.0  1.0  0.0  0.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  1.0  0.0  0.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+== GJ1214b [Schlawin et al. 2024 (ApJL figure 2 data), NIRSpec G395H, tshirt reduction at R = 100; 66 of 104 bins flat-filled]: fraction of 500 Ariel tier1 noise draws called present (threshold 1e-4)
+learner               KNN   MLP  RFC  SVC
+variant    molecule                      
+airs_only  CH4       16.0  15.0  0.0  3.0
+           CO2        9.0   9.0  0.0  1.0
+           H2O       15.0  20.0  0.0  2.0
+           NH3       18.0  22.0  1.0  6.0
+all        CH4       13.0  13.0  0.0  2.0
+           CO2       10.0   9.0  0.0  1.0
+           H2O       16.0  19.0  0.0  3.0
+           NH3       17.0  21.0  1.0  4.0
+no_optical CH4       13.0   8.0  0.0  2.0
+           CO2        8.0   7.0  0.0  1.0
+           H2O       15.0  18.0  1.0  2.0
+           NH3       18.0  18.0  1.0  6.0
+== band metric (Mugnai et al. 2021, Eq. 3): M_H2O = 0.45, M_CH4 = -0.56, M_CO2 = 0.25  (their flags: CH4 >= 0.22, CO2 >= 0.26, H2O >= 0.80)

@@ -37,7 +37,7 @@ import alfnoor_screen as AS  # noqa: E402
 import jwst_to_ariel as J  # noqa: E402
 
 CACHE = os.path.join(DATA, "alfnoor_jwst"); os.makedirs(CACHE, exist_ok=True)
-# ALFNOOR_TRAIN=haze|hazedeck trains on the departure-aware POP-III sets of alfnoor_retrain.py instead of the faithful one
+# ALFNOOR_TRAIN=haze|hazedeck|union trains on the departure-aware POP-III sets of alfnoor_retrain.py instead of the faithful one
 TRAIN = os.environ.get("ALFNOOR_TRAIN", "faithful")
 VARIANTS = {"all": lambda cen: np.ones_like(cen, bool), "no_optical": lambda cen: cen > 1.1, "airs_only": lambda cen: cen > 1.95}
 MOLS, THRESH = AS.MOLS, AS.THRESH
@@ -61,10 +61,14 @@ def training_set():
     """Binned, noised POP-III exactly as do_fit builds it (natives 'faithful', layout tier3_r20, noise radiometric)."""
     src = AF.DIRS["faithful"]; wl = np.load(os.path.join(DATA, "native_wl.npy")); edges = AF.layout_edges("tier3_r20")
     Ptr = pd.read_parquet(os.path.join(src, "pop3_params.parquet"))
-    Xn = np.load(os.path.join(src, "pop3_native.npy" if TRAIN == "faithful" else f"pop3_native_aug_{TRAIN}.npy")).astype(np.float64)
-    ok = np.all(np.isfinite(Xn), axis=1); Ptr = Ptr[ok].reset_index(drop=True); Xn = Xn[ok]
+    aug = "hazedeck" if TRAIN == "union" else TRAIN
+    Xn = np.load(os.path.join(src, "pop3_native.npy" if TRAIN == "faithful" else f"pop3_native_aug_{aug}.npy")).astype(np.float64)
+    ok = np.all(np.isfinite(Xn), axis=1); Ptr = Ptr[ok].reset_index(drop=True); Xn = Xn[ok]; nf = 1.0
+    if TRAIN == "union":
+        import alfnoor_retrain as AR
+        Xn, nf = AR.union_natives(Xn, Ptr, wl); nf = nf[:, None]
     rng = np.random.default_rng(SEED + 405)
-    Xtr = bin_native(Xn, wl, edges); Xtr = Xtr + rng.normal(0, 1, Xtr.shape) * AF.sigma(Ptr, edges, "radiometric")
+    Xtr = bin_native(Xn, wl, edges); Xtr = Xtr + rng.normal(0, 1, Xtr.shape) * AF.sigma(Ptr, edges, "radiometric") * nf
     return Xtr, Ptr, edges
 
 

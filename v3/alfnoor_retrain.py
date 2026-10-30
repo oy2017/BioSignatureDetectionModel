@@ -37,15 +37,42 @@ import alfnoor_faithful as AF  # noqa: E402
 import alfnoor_screen as AS  # noqa: E402
 
 SRC = AF.DIRS["faithful"]; MOLS = AS.MOLS
-SETS = ["faithful", "haze", "hazedeck"]
+SETS = ["faithful", "haze", "hazedeck", "union"]
 HAZE_FRAC, DECK_FRAC = 1 / 3, 1 / 6
+# 'union' = the hazedeck natives, plus at fit time a sixth of the planets with stellar spots (10 % or 20 % covering
+# fraction, half each) and a further sixth with their noise doubled or tripled (half each); drawn independently of the
+# haze/deck groups, so some planets carry two departures, as real ones may
+SPOT_FRAC, NOISE_FRAC = 1 / 6, 1 / 6
 HAZE_LOG = (6.0, np.log10(3e8)); DECK_LOG = (np.log10(5.0), np.log10(500.0))
 VARIANTS = {"all": lambda cen: np.ones_like(cen, bool), "no_optical": lambda cen: cen > 1.1, "airs_only": lambda cen: cen > 1.95}
 CASES = ["clean", "haze3e7", "cloud1e2", "absorbers", "spots10", "spots20", "noise_x2", "noise_x3"]
 
 
 def natives(name):
-    return np.load(os.path.join(SRC, "pop3_native.npy" if name == "faithful" else f"pop3_native_aug_{name}.npy")).astype(np.float64)
+    f = "pop3_native.npy" if name == "faithful" else f"pop3_native_aug_{'hazedeck' if name == 'union' else name}.npy"
+    return np.load(os.path.join(SRC, f)).astype(np.float64)
+
+
+def union_draws(n):
+    """Fit-time departure groups of the 'union' set for n training planets (deterministic): spot fraction (0, 0.10 or 0.20)
+    and noise factor (1, 2 or 3) per planet."""
+    rng = np.random.default_rng(SEED + 12); u = rng.uniform(size=n); h = rng.uniform(size=n) < 0.5
+    spot = np.where(u < SPOT_FRAC, np.where(h, 0.10, 0.20), 0.0)
+    noise = np.where((u >= SPOT_FRAC) & (u < SPOT_FRAC + NOISE_FRAC), np.where(h, 2.0, 3.0), 1.0)
+    return spot, noise
+
+
+def union_natives(Xn, Ptr, wl):
+    """The 'union' training natives: hazedeck natives (already in Xn) with the spot contamination applied to the spotted
+    sixth, and the per-planet noise factor to multiply the training noise with. Ptr and Xn are the finite rows."""
+    import shift_tlse as T
+    spot, noise = union_draws(len(Ptr)); X = Xn.copy(); T.set_grid(wl)
+    Tst = Ptr["s temperature"].to_numpy(); logg = np.log10(T.G_SUN * Ptr["s mass"].to_numpy() / Ptr["s radius"].to_numpy() ** 2 * 100)
+    for f in (0.10, 0.20):
+        m = spot == f
+        if m.any():
+            X[m] = X[m] * T.contamination(Tst[m], logg[m], f, 0.0)
+    return X, noise
 
 
 def do_render(jobs):
@@ -109,7 +136,10 @@ def do_fit():
     znorm = lambda X, cols: (X[:, cols] - X[:, cols].mean(1, keepdims=True)) / (X[:, cols].std(1, keepdims=True) + 1e-12)
     rows = []
     for ts in SETS:
-        Xtr = bin_native(natives(ts)[ok_tr], wl, edges) + eps_tr * sig_tr
+        Xn_tr = natives(ts)[ok_tr]; nf = 1.0
+        if ts == "union":
+            Xn_tr, nf = union_natives(Xn_tr, Ptr, wl); nf = nf[:, None]
+        Xtr = bin_native(Xn_tr, wl, edges) + eps_tr * sig_tr * nf
         for v, mask in VARIANTS.items():
             cols = mask(cen); Ztr = znorm(Xtr, cols); Z = {k: znorm(x, cols) for k, x in noisy.items()}
             for mol in MOLS:
@@ -123,7 +153,8 @@ def do_fit():
             print(f"  {ts} {v} done", flush=True)
     df = pd.DataFrame(rows); df.to_csv(os.path.join(RESULTS, "alfnoor_retrain_pop1.csv"), index=False)
     L = [f"Retraining on departure-aware POP-III (alfnoor_retrain.py): accuracy / recall of present at the 1e-4 threshold on POP-I ({len(Pte)} planets), mean over the four learners",
-         "training sets: faithful = the consortium population as rebuilt; haze = a third of its planets hazed (1e6-3e8 m^-3); hazedeck = plus a sixth with 5-500 Pa decks", ""]
+         "training sets: faithful = the consortium population as rebuilt; haze = a third of its planets hazed (1e6-3e8 m^-3); hazedeck = plus a sixth with 5-500 Pa decks;",
+         "union = hazedeck plus a sixth with 10 % or 20 % stellar spots and a sixth with noise x2 or x3 (independent draws)", ""]
     for v in VARIANTS:
         L.append(f"== inputs: {v}"); L.append(f"  {'mol':<4} {'train':<9} " + " ".join(f"{c:>14}" for c in CASES))
         for mol in MOLS:

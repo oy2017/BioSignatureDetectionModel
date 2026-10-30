@@ -1094,6 +1094,34 @@ units are dominated by the large planets. The expectation was half
 wrong: no clean gain. Not run on the real panel (needs the bulk parameters threaded through alfnoor_jwst.znorm); the
 prediction for the muted giants stands. Reportable as a design note, not as the remedy for any class the paper names.
 
+### F18. A training population covering every named departure (haze, decks, spots, extra noise) is no better than haze and decks alone: the recoverable class is the amplitude class (2026-10-29; `alfnoor_retrain.py` set `union`)
+
+Setup: the hazedeck natives (a third hazed 1e6-3e8 m^-3, a sixth with 5-500 Pa decks) plus, at fit time, a sixth of
+the training planets with stellar spots (10 % or 20 % covering fraction, half each) and a further sixth with their
+training noise doubled or tripled (half each), drawn independently of the haze/deck groups (`union_draws`, `union_natives`;
+the same augmentation in `alfnoor_jwst.training_set` under `ALFNOOR_TRAIN=union`). Fit 8 min, panel 8 min.
+
+Mean accuracy over the four learners and four molecules on POP-I (`results/alfnoor_retrain_pop1.txt`), inputs all:
+
+| train | clean | haze 3e7 | cloud 1e2 | absorbers | spots 10 | spots 20 | noise x2 | noise x3 |
+| :-- | --: | --: | --: | --: | --: | --: | --: | --: |
+| faithful | 80.9 | 63.4 | 71.7 | 81.0 | 74.5 | 70.4 | 71.9 | 67.6 |
+| hazedeck | 79.5 | 73.4 | 74.2 | 79.4 | 77.3 | 75.8 | 71.5 | 67.5 |
+| union | 79.3 | 73.6 | 74.3 | 79.1 | 77.4 | 76.1 | 71.4 | 67.6 |
+
+No-optical and AIRS-only inputs: the three departure-aware sets within 0.3 points of each other in every case. Real panel
+(`results/alfnoor_retrain_panel.txt`): union 42/53 under all inputs against hazedeck 43/54 (three labels move: K2-18 b CH₄
+split → absent, TOI-421 b CO₂ absent → split, TOI-732 c CH₄ absent → split), 43/54 no-optical, 45/53 AIRS-only. Routers
+(`muting_router.txt`): every union row equals its hazedeck row, 47/56 census-first and 46/55 (hazedeck 46/58) without the census.
+
+Reading. Training on spots buys 0.3 points on spotted test spectra and training on extra noise buys nothing on noisier
+test spectra, while the haze and deck rows had bought 10 and 2.5 points on hazed and decked ones. The departures that
+retraining can absorb are the ones that move the spectrum's amplitude beyond the prior; a multiplicative spot factor is
+largely removed by the per-spectrum z-score, and noise is irreducible at fixed precision. This is the same partition the
+retrieval gave (F6, F8c): the recoverable class is the prior-amplitude class, the rest is irrecoverable at this noise. For
+the paper it means the departure-aware detector needs only the two amplitude departures in its population, and that
+"covering every departure" is not a route to a better detector. Negative result, reportable in one sentence beside Table 8.
+
 ### What these add up to, provisionally
 
 A simulator-trained classifier that reproduces its published in-simulator accuracies is mostly right

@@ -15,7 +15,7 @@ import jwst_panel as JP  # noqa: E402
 import router_real as RR  # noqa: E402
 
 OUT = os.path.join(RESULTS, "jwst_panel"); MOLS = ["CH4", "H2O", "CO2", "NH3"]; LEARNERS = ["KNN", "MLP", "RFC", "SVC"]
-RETRAINED = {"haze": os.path.join(RESULTS, "jwst_panel_haze"), "hazedeck": os.path.join(RESULTS, "jwst_panel_hazedeck")}
+RETRAINED = {"haze": os.path.join(RESULTS, "jwst_panel_haze"), "hazedeck": os.path.join(RESULTS, "jwst_panel_hazedeck"), "union": os.path.join(RESULTS, "jwst_panel_union")}
 
 
 def verdict(V, variant, m):
@@ -47,14 +47,15 @@ def main():
                 out[f"muting -> retrained {k}"] = (vr if (f_mut and vr is not None) else base)
                 out[f"muting (strict) -> retrained {k}"] = (vr if (f_mut_strict and vr is not None) else base)
                 out[f"either, then muting -> retrained {k}"] = (v_either if n_either > 0 else (vr if (f_mut and vr is not None) else base))
-            out["retrained hazedeck everywhere"] = verdict(VR["hazedeck"], "all", m) if "hazedeck" in VR else base
-            # census first: a muted planet takes the retrained verdict, every other planet the either-flag routing (needs the census)
-            out["muting -> retrained hazedeck, else either -> AIRS-only"] = (verdict(VR["hazedeck"], "all", m) if (f_mut and "hazedeck" in VR) else v_either)
-            # no census: the retrained design everywhere, with the either flag routing to its own AIRS-only input (pipeline-computable)
-            if "hazedeck" in VR:
-                out["retrained hazedeck everywhere, either -> its AIRS-only"] = verdict(VR["hazedeck"], "airs_only", m) if n_either > 0 else verdict(VR["hazedeck"], "all", m)
-            else:
-                out["retrained hazedeck everywhere, either -> its AIRS-only"] = v_either
+            for k in ("hazedeck", "union"):
+                out[f"retrained {k} everywhere"] = verdict(VR[k], "all", m) if k in VR else base
+                # census first: a muted planet takes the retrained verdict, every other planet the either-flag routing (needs the census)
+                out[f"muting -> retrained {k}, else either -> AIRS-only"] = (verdict(VR[k], "all", m) if (f_mut and k in VR) else v_either)
+                # no census: the retrained design everywhere, with the either flag routing to its own AIRS-only input (pipeline-computable)
+                if k in VR:
+                    out[f"retrained {k} everywhere, either -> its AIRS-only"] = verdict(VR[k], "airs_only", m) if n_either > 0 else verdict(VR[k], "all", m)
+                else:
+                    out[f"retrained {k} everywhere, either -> its AIRS-only"] = v_either
             for router, v in out.items():
                 rows.append(dict(planet=pl, molecule=m, router=router, verdict=v, label=lab, muting_flag=f_mut, muting_flag_strict=f_mut_strict,
                                  retrained_available="hazedeck" in VR, correct=None if lab is None or v == "split" else bool(v == lab)))

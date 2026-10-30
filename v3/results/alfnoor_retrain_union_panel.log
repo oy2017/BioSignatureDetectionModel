@@ -1,0 +1,590 @@
+Numba not installed, using numpy instead
+  haze: panel exists
+  hazedeck: panel exists
+  running jwst_panel.py with ALFNOOR_TRAIN=union
+/Users/fanyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/fanyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/fanyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/fanyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/fanyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/fanyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/fanyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/fanyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/fanyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/fanyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/fanyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/fanyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/fanyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/fanyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/fanyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/fanyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/fanyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/fanyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/fanyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/fanyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/fanyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/fanyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/fanyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/fanyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/fanyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/fanyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/fanyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/fanyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/fanyang/tfenv/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:781: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+Numba not installed, using numpy instead
+TOI-270d: Felix et al. 2025 reanalysis (Zenodo 15228454), native resolution
+segments: SOSS 2037 pts 0.85-2.83 um, offset +0 ppm; NRS1 1437 pts 2.74-3.71 um, offset -198 ppm; NRS2 2037 pts 3.82-5.17 um, offset +0 ppm
+K2-18b: Madhusudhan et al. 2023 native SOSS + G395H (OSF 36djh); MIRI from the Jaziri et al. 2025 copy of Madhusudhan et al. 2025 (Zenodo 16277833)
+segments: SOSS 1010 pts 0.85-2.83 um, offset -92 ppm; G395H 3401 pts 2.74-5.17 um, offset +0 ppm; MIRI 28 pts 5.12-11.88 um, offset +0 ppm
+K2-18b-alt: Schmidt & MacDonald 2025 reanalysis (Zenodo 14735689): exoTEDRF at R = 100
+segments: SOSS-o1 121 pts 0.85-2.82 um, offset +0 ppm; SOSS-o2 35 pts 0.60-0.85 um, offset +0 ppm; NRS1 31 pts 2.77-3.71 um, offset +0 ppm; NRS2 31 pts 3.84-5.16 um, offset +0 ppm
+TOI-421b: Davenport et al. 2025 (Zenodo 15176438): exoTEDRF SOSS, Deming G395H
+segments: SOSS 39 pts 0.89-2.74 um, offset +0 ppm; G395H 32 pts 2.75-5.08 um, offset +0 ppm
+HAT-P-18b: Fu et al. 2022 (VizieR J/ApJ/940/L35), NIRISS SOSS
+segments: SOSS 1021 pts 0.61-2.83 um, offset +0 ppm
+WASP-107b: Welbanks et al. 2024 NIRCam + MIRI (Zenodo 10780448), Sing et al. 2024 G395H (Zenodo 10891400)
+segments: F322W2 100 pts 2.46-3.94 um, offset +106 ppm; F444W 77 pts 3.90-5.04 um, offset +285 ppm; G395H 576 pts 2.74-5.16 um, offset +0 ppm; MIRI 58 pts 5.06-13.63 um, offset +0 ppm
+HD189733b: Fu et al. 2024 (Zenodo 11459715), NIRCam
+segments: NIRCam 139 pts 2.40-4.97 um, offset +0 ppm
+HAT-P-26b: Gressier et al. 2025 (AJ figure data), G395H ExoTiC-JEDI
+segments: G395H 214 pts 2.87-5.12 um, offset +0 ppm
+GJ3470b: Beatty et al. 2024 (ApJL machine-readable tables), NIRCam
+segments: F322W2 100 pts 2.46-3.94 um, offset +0 ppm; F444W 72 pts 3.90-4.96 um, offset +0 ppm
+WASP-166b: Mayo et al. 2025 (Zenodo 15122285): Eureka! NIRISS order 1 and NIRSpec G395M, 0.018 um bins
+segments: SOSS 110 pts 0.86-2.82 um, offset +0 ppm; G395M 132 pts 2.81-5.16 um, offset +0 ppm
+TOI-1231b: Sarkar et al. 2026 (OSF mryd6): JexoRes NIRISS orders 1-2 and NIRSpec G395H NRS1-2
+segments: SOSS-o1 52 pts 0.86-2.37 um, offset +0 ppm; SOSS-o2 17 pts 0.64-0.88 um, offset +0 ppm; NRS1 702 pts 2.74-3.72 um, offset +0 ppm; NRS2 994 pts 3.83-5.17 um, offset +0 ppm
+K2-18b-hu: Hu et al. 2025 (OSF hpu8g): NIRISS SOSS visit 1, NIRSpec G235H (2 visits) and G395H (3 visits) combined
+segments: SOSS-o1 364 pts 0.85-2.82 um, offset +148 ppm; SOSS-o2 41 pts 0.60-0.90 um, offset +193 ppm; G235H 330 pts 1.67-3.07 um, offset +16 ppm; G395H 545 pts 2.87-5.17 um, offset +0 ppm
+TOI-270d-hm: Holmberg & Madhusudhan 2024 (OSF 8fu36), canonical G395H at native resolution
+segments: G395H 3393 pts 2.74-5.17 um, offset +0 ppm
+GJ9827d: Piaulet-Ghorayeb et al. 2024 (ApJL machine-readable table A2), supreme-SPOON NIRISS SOSS at R = 100
+segments: SOSS-o2 35 pts 0.60-0.85 um, offset +0 ppm; SOSS-o1 121 pts 0.85-2.81 um, offset +0 ppm
+WASP-52b: Pan et al. 2026 (Zenodo 18734230), NIRSpec G395H, transitspectroscopy reduction
+segments: NRS1 71 pts 2.86-3.69 um, offset +0 ppm; NRS2 85 pts 3.83-5.16 um, offset +0 ppm
+L98-59d: Gressier et al. 2024 (ApJL machine-readable table 3), NIRSpec G395H, transitspectroscopy at R ~ 100
+segments: G395H 56 pts 2.88-5.15 um, offset +0 ppm
+GJ1214b: Schlawin et al. 2024 (ApJL figure 2 data), NIRSpec G395H, tshirt reduction at R = 100
+segments: G395H 59 pts 2.77-5.13 um, offset +0 ppm
+LTT3780c: TOI-732 c, Rigby et al. 2025 (OSF wsjmu): JexoRes NIRISS order 1, NIRSpec G395H and MIRI LRS at native resolution
+segments: SOSS 1018 pts 0.85-2.83 um, offset +0 ppm; NRS1 695 pts 2.74-3.71 um, offset -59 ppm; NRS2 980 pts 3.82-5.17 um, offset +0 ppm; MIRI 29 pts 5.78-11.79 um, offset +0 ppm
+WASP-80b: Bell et al. 2023 (Nature source data, Eureka!), NIRCam F322W2
+segments: F322W2 113 pts 2.42-4.06 um, offset +0 ppm
+HD209458b: Xue et al. 2024 (Zenodo 10557924), NIRCam F322W2 + F444W, Eureka! reduction
+segments: NIRCam 69 pts 2.38-4.98 um, offset +0 ppm
+WASP-96b: Radica et al. 2026 (Zenodo 17065171): exoTEDRF NIRISS SOSS and NIRSpec G395H at R = 300
+segments: SOSS 466 pts 0.60-2.83 um, offset +0 ppm; NRS1 86 pts 2.80-3.72 um, offset +0 ppm; NRS2 91 pts 3.83-5.17 um, offset +0 ppm
+WASP-17b: Louie et al. 2025 (Zenodo 14193061) Ahsoka NIRISS SOSS at R = 100; Grant et al. 2023 (Zenodo 8360121) ExoTiC-MIRI LRS, 0.25 um bins
+segments: SOSS-o1 119 pts 0.85-2.82 um, offset +0 ppm; SOSS-o2 32 pts 0.63-0.86 um, offset +0 ppm; MIRI 28 pts 5.12-11.88 um, offset +0 ppm
+JWST panel through the consortium classifier (threshold 1e-4; verdict = majority of the four learners; flat fill of uncovered bins; training set union)
+
+== variant all: 42/53 scored labels correct (79 %); full-coverage planets only: 20/24
+  GJ1214b    CH4: absent (present)  H2O: absent (amb.   )  CO2: present(present)  NH3: absent (amb.   )
+  GJ3470b    CH4: absent (amb.   )  H2O: absent (present)  CO2: present(present)  NH3: absent (absent )
+  GJ9827d    CH4: absent (amb.   )  H2O: split  (present)  CO2: absent (amb.   )  NH3: absent (amb.   )
+  HAT-P-18b  CH4: absent (absent )  H2O: present(amb.   )  CO2: absent (absent )  NH3: absent (absent )
+  HAT-P-26b  CH4: absent (absent )  H2O: absent (present)  CO2: present(present)  NH3: absent (absent )
+  HD189733b  CH4: absent (absent )  H2O: split  (amb.   )  CO2: present(absent )  NH3: absent (absent )
+  HD209458b  CH4: absent (absent )  H2O: present(amb.   )  CO2: absent (amb.   )  NH3: absent (absent )
+  K2-18b     CH4: absent (present)  H2O: absent (absent )  CO2: absent (amb.   )  NH3: absent (absent )
+  K2-18b-alt CH4: present(present)  H2O: absent (absent )  CO2: absent (amb.   )  NH3: absent (absent )
+  K2-18b-hu  CH4: split  (present)  H2O: absent (absent )  CO2: absent (amb.   )  NH3: absent (absent )
+  L98-59d    CH4: absent (absent )  H2O: absent (absent )  CO2: absent (amb.   )  NH3: absent (absent )
+  LTT3780c   CH4: split  (present)  H2O: absent (amb.   )  CO2: absent (amb.   )  NH3: absent (absent )
+  TOI-1231b  CH4: present(present)  H2O: absent (amb.   )  CO2: absent (present)  NH3: absent (amb.   )
+  TOI-270d   CH4: absent (present)  H2O: absent (amb.   )  CO2: absent (present)  NH3: absent (absent )
+  TOI-270d-hm CH4: absent (present)  H2O: absent (amb.   )  CO2: absent (present)  NH3: absent (absent )
+  TOI-421b   CH4: absent (absent )  H2O: absent (amb.   )  CO2: split  (absent )  NH3: absent (amb.   )
+  WASP-107b  CH4: absent (absent )  H2O: absent (present)  CO2: present(amb.   )  NH3: absent (absent )
+  WASP-166b  CH4: absent (absent )  H2O: present(present)  CO2: present(present)  NH3: absent (amb.   )
+  WASP-17b   CH4: absent (absent )  H2O: present(present)  CO2: absent (absent )  NH3: absent (amb.   )
+  WASP-52b   CH4: absent (absent )  H2O: absent (amb.   )  CO2: absent (amb.   )  NH3: split  (amb.   )
+  WASP-80b   CH4: absent (amb.   )  H2O: present(present)  CO2: absent (amb.   )  NH3: absent (amb.   )
+  WASP-96b   CH4: absent (absent )  H2O: present(present)  CO2: absent (absent )  NH3: absent (absent )
+
+== variant no_optical: 43/54 scored labels correct (80 %); full-coverage planets only: 21/24
+  GJ1214b    CH4: absent (present)  H2O: absent (amb.   )  CO2: present(present)  NH3: absent (amb.   )
+  GJ3470b    CH4: absent (amb.   )  H2O: absent (present)  CO2: present(present)  NH3: absent (absent )
+  GJ9827d    CH4: absent (amb.   )  H2O: split  (present)  CO2: absent (amb.   )  NH3: absent (amb.   )
+  HAT-P-18b  CH4: absent (absent )  H2O: present(amb.   )  CO2: absent (absent )  NH3: absent (absent )
+  HAT-P-26b  CH4: absent (absent )  H2O: absent (present)  CO2: present(present)  NH3: absent (absent )
+  HD189733b  CH4: absent (absent )  H2O: split  (amb.   )  CO2: present(absent )  NH3: absent (absent )
+  HD209458b  CH4: absent (absent )  H2O: present(amb.   )  CO2: absent (amb.   )  NH3: absent (absent )
+  K2-18b     CH4: present(present)  H2O: absent (absent )  CO2: absent (amb.   )  NH3: absent (absent )
+  K2-18b-alt CH4: present(present)  H2O: absent (absent )  CO2: absent (amb.   )  NH3: absent (absent )
+  K2-18b-hu  CH4: split  (present)  H2O: absent (absent )  CO2: absent (amb.   )  NH3: absent (absent )
+  L98-59d    CH4: absent (absent )  H2O: absent (absent )  CO2: absent (amb.   )  NH3: absent (absent )
+  LTT3780c   CH4: absent (present)  H2O: absent (amb.   )  CO2: absent (amb.   )  NH3: absent (absent )
+  TOI-1231b  CH4: present(present)  H2O: absent (amb.   )  CO2: absent (present)  NH3: absent (amb.   )
+  TOI-270d   CH4: absent (present)  H2O: absent (amb.   )  CO2: absent (present)  NH3: absent (absent )
+  TOI-270d-hm CH4: absent (present)  H2O: absent (amb.   )  CO2: absent (present)  NH3: absent (absent )
+  TOI-421b   CH4: absent (absent )  H2O: absent (amb.   )  CO2: split  (absent )  NH3: absent (amb.   )
+  WASP-107b  CH4: absent (absent )  H2O: absent (present)  CO2: present(amb.   )  NH3: absent (absent )
+  WASP-166b  CH4: absent (absent )  H2O: present(present)  CO2: present(present)  NH3: absent (amb.   )
+  WASP-17b   CH4: absent (absent )  H2O: present(present)  CO2: absent (absent )  NH3: absent (amb.   )
+  WASP-52b   CH4: absent (absent )  H2O: absent (amb.   )  CO2: absent (amb.   )  NH3: split  (amb.   )
+  WASP-80b   CH4: absent (amb.   )  H2O: present(present)  CO2: absent (amb.   )  NH3: absent (amb.   )
+  WASP-96b   CH4: absent (absent )  H2O: present(present)  CO2: absent (absent )  NH3: absent (absent )
+
+== variant airs_only: 45/53 scored labels correct (85 %); full-coverage planets only: 22/24
+  GJ1214b    CH4: absent (present)  H2O: absent (amb.   )  CO2: split  (present)  NH3: absent (amb.   )
+  GJ3470b    CH4: absent (amb.   )  H2O: absent (present)  CO2: present(present)  NH3: absent (absent )
+  GJ9827d    CH4: absent (amb.   )  H2O: absent (present)  CO2: absent (amb.   )  NH3: absent (amb.   )
+  HAT-P-18b  CH4: absent (absent )  H2O: present(amb.   )  CO2: absent (absent )  NH3: absent (absent )
+  HAT-P-26b  CH4: absent (absent )  H2O: absent (present)  CO2: present(present)  NH3: absent (absent )
+  HD189733b  CH4: absent (absent )  H2O: present(amb.   )  CO2: split  (absent )  NH3: absent (absent )
+  HD209458b  CH4: absent (absent )  H2O: present(amb.   )  CO2: absent (amb.   )  NH3: absent (absent )
+  K2-18b     CH4: present(present)  H2O: absent (absent )  CO2: absent (amb.   )  NH3: absent (absent )
+  K2-18b-alt CH4: present(present)  H2O: absent (absent )  CO2: absent (amb.   )  NH3: absent (absent )
+  K2-18b-hu  CH4: present(present)  H2O: absent (absent )  CO2: absent (amb.   )  NH3: absent (absent )
+  L98-59d    CH4: absent (absent )  H2O: absent (absent )  CO2: absent (amb.   )  NH3: absent (absent )
+  LTT3780c   CH4: present(present)  H2O: absent (amb.   )  CO2: absent (amb.   )  NH3: absent (absent )
+  TOI-1231b  CH4: present(present)  H2O: absent (amb.   )  CO2: absent (present)  NH3: absent (amb.   )
+  TOI-270d   CH4: split  (present)  H2O: absent (amb.   )  CO2: absent (present)  NH3: absent (absent )
+  TOI-270d-hm CH4: present(present)  H2O: absent (amb.   )  CO2: absent (present)  NH3: absent (absent )
+  TOI-421b   CH4: absent (absent )  H2O: split  (amb.   )  CO2: absent (absent )  NH3: absent (amb.   )
+  WASP-107b  CH4: absent (absent )  H2O: absent (present)  CO2: present(amb.   )  NH3: absent (absent )
+  WASP-166b  CH4: absent (absent )  H2O: split  (present)  CO2: present(present)  NH3: absent (amb.   )
+  WASP-17b   CH4: absent (absent )  H2O: present(present)  CO2: absent (absent )  NH3: absent (amb.   )
+  WASP-52b   CH4: absent (absent )  H2O: absent (amb.   )  CO2: absent (amb.   )  NH3: present(amb.   )
+  WASP-80b   CH4: absent (amb.   )  H2O: present(present)  CO2: absent (amb.   )  NH3: absent (amb.   )
+  WASP-96b   CH4: absent (absent )  H2O: present(present)  CO2: absent (absent )  NH3: absent (absent )
+
+== Tier-1 detection frequency (mean over learners, all inputs) and band metric
+  GJ1214b    CH4:   7%  H2O:  10%  CO2:   5%  NH3:  11%   M_H2O/CH4/CO2 = 0.45/-0.56/0.25
+  GJ3470b    CH4:   3%  H2O:  12%  CO2:  12%  NH3:   9%   M_H2O/CH4/CO2 = 1.94/-0.80/0.83
+  GJ9827d    CH4:   2%  H2O:  17%  CO2:   7%  NH3:   8%   M_H2O/CH4/CO2 = 0.15/0.35/0.24
+  HAT-P-18b  CH4:   7%  H2O:  30%  CO2:   4%  NH3:   2%   M_H2O/CH4/CO2 = -0.36/-2.70/-0.53
+  HAT-P-26b  CH4:   2%  H2O:   7%  CO2:  20%  NH3:  10%   M_H2O/CH4/CO2 = 0.88/-1.04/0.94
+  HD189733b  CH4:   0%  H2O:  52%  CO2:  55%  NH3:   2%   M_H2O/CH4/CO2 = 4.53/-0.48/1.44
+  HD209458b  CH4:   0%  H2O:  58%  CO2:  17%  NH3:   4%   M_H2O/CH4/CO2 = 9.56/0.31/1.03
+  K2-18b     CH4:  35%  H2O:  15%  CO2:   9%  NH3:   0%   M_H2O/CH4/CO2 = -1.59/-1.11/0.84
+  K2-18b-alt CH4:  34%  H2O:   9%  CO2:   2%  NH3:   1%   M_H2O/CH4/CO2 = -0.72/-0.74/-0.14
+  K2-18b-hu  CH4:  18%  H2O:  14%  CO2:   2%  NH3:   4%   M_H2O/CH4/CO2 = 0.59/1.44/-0.01
+  L98-59d    CH4:   8%  H2O:   8%  CO2:   6%  NH3:   8%   M_H2O/CH4/CO2 = -0.41/0.28/0.35
+  LTT3780c   CH4:  35%  H2O:   0%  CO2:   1%  NH3:   2%   M_H2O/CH4/CO2 = -0.10/-0.38/0.18
+  TOI-1231b  CH4:  24%  H2O:   7%  CO2:   0%  NH3:   3%   M_H2O/CH4/CO2 = 0.84/1.84/-0.65
+  TOI-270d   CH4:   9%  H2O:   7%  CO2:   7%  NH3:  12%   M_H2O/CH4/CO2 = 0.18/-0.81/0.72
+  TOI-270d-hm CH4:  14%  H2O:   8%  CO2:   5%  NH3:   7%   M_H2O/CH4/CO2 = 0.56/0.60/0.35
+  TOI-421b   CH4:   4%  H2O:  12%  CO2:  11%  NH3:  14%   M_H2O/CH4/CO2 = 0.90/-0.66/0.24
+  WASP-107b  CH4:   0%  H2O:  16%  CO2:  79%  NH3:   4%   M_H2O/CH4/CO2 = 1.74/-0.45/1.12
+  WASP-166b  CH4:   0%  H2O:  30%  CO2:  41%  NH3:   6%   M_H2O/CH4/CO2 = 2.07/-0.87/0.81
+  WASP-17b   CH4:   3%  H2O:  73%  CO2:   1%  NH3:   0%   M_H2O/CH4/CO2 = 0.61/-0.60/-0.91
+  WASP-52b   CH4:   4%  H2O:  14%  CO2:   6%  NH3:  19%   M_H2O/CH4/CO2 = 1.20/0.72/0.59
+  WASP-80b   CH4:   6%  H2O:  19%  CO2:   6%  NH3:   9%   M_H2O/CH4/CO2 = 1.72/-0.33/0.08
+  WASP-96b   CH4:   1%  H2O:  39%  CO2:  13%  NH3:   2%   M_H2O/CH4/CO2 = 1.17/-0.52/0.45
+
+== data notes
+TOI-270d: Felix et al. 2025 reanalysis (Zenodo 15228454), native resolution
+segments: SOSS 2037 pts 0.85-2.83 um, offset +0 ppm; NRS1 1437 pts 2.74-3.71 um, offset -198 ppm; NRS2 2037 pts 3.82-5.17 um, offset +0 ppm
+coverage by channel: AIRS-CH0 3/69 filled, AIRS-CH1 12/21 filled, FGS1 1/1 filled, FGS2 0/1 filled, NIRSpec 0/11 filled, VISPhot 1/1 filled
+
+K2-18b: Madhusudhan et al. 2023 native SOSS + G395H (OSF 36djh); MIRI from the Jaziri et al. 2025 copy of Madhusudhan et al. 2025 (Zenodo 16277833)
+segments: SOSS 1010 pts 0.85-2.83 um, offset -92 ppm; G395H 3401 pts 2.74-5.17 um, offset +0 ppm; MIRI 28 pts 5.12-11.88 um, offset +0 ppm
+coverage by channel: AIRS-CH0 3/69 filled, AIRS-CH1 0/21 filled, FGS1 1/1 filled, FGS2 0/1 filled, NIRSpec 0/11 filled, VISPhot 1/1 filled
+
+K2-18b-alt: Schmidt & MacDonald 2025 reanalysis (Zenodo 14735689): exoTEDRF at R = 100
+segments: SOSS-o1 121 pts 0.85-2.82 um, offset +0 ppm; SOSS-o2 35 pts 0.60-0.85 um, offset +0 ppm; NRS1 31 pts 2.77-3.71 um, offset +0 ppm; NRS2 31 pts 3.84-5.16 um, offset +0 ppm
+coverage by channel: AIRS-CH0 3/69 filled, AIRS-CH1 12/21 filled, FGS1 0/1 filled, FGS2 0/1 filled, NIRSpec 0/11 filled, VISPhot 1/1 filled
+
+TOI-421b: Davenport et al. 2025 (Zenodo 15176438): exoTEDRF SOSS, Deming G395H
+segments: SOSS 39 pts 0.89-2.74 um, offset +0 ppm; G395H 32 pts 2.75-5.08 um, offset +0 ppm
+coverage by channel: AIRS-CH0 0/69 filled, AIRS-CH1 13/21 filled, FGS1 1/1 filled, FGS2 0/1 filled, NIRSpec 0/11 filled, VISPhot 1/1 filled
+
+HAT-P-18b: Fu et al. 2022 (VizieR J/ApJ/940/L35), NIRISS SOSS
+segments: SOSS 1021 pts 0.61-2.83 um, offset +0 ppm
+coverage by channel: AIRS-CH0 34/69 filled, AIRS-CH1 21/21 filled, FGS1 0/1 filled, FGS2 0/1 filled, NIRSpec 0/11 filled, VISPhot 1/1 filled
+
+WASP-107b: Welbanks et al. 2024 NIRCam + MIRI (Zenodo 10780448), Sing et al. 2024 G395H (Zenodo 10891400)
+segments: F322W2 100 pts 2.46-3.94 um, offset +106 ppm; F444W 77 pts 3.90-5.04 um, offset +285 ppm; G395H 576 pts 2.74-5.16 um, offset +0 ppm; MIRI 58 pts 5.06-13.63 um, offset +0 ppm
+coverage by channel: AIRS-CH0 29/69 filled, AIRS-CH1 7/21 filled, FGS1 1/1 filled, FGS2 1/1 filled, NIRSpec 11/11 filled, VISPhot 1/1 filled
+
+HD189733b: Fu et al. 2024 (Zenodo 11459715), NIRCam
+segments: NIRCam 139 pts 2.40-4.97 um, offset +0 ppm
+coverage by channel: AIRS-CH0 20/69 filled, AIRS-CH1 14/21 filled, FGS1 1/1 filled, FGS2 1/1 filled, NIRSpec 11/11 filled, VISPhot 1/1 filled
+
+HAT-P-26b: Gressier et al. 2025 (AJ figure data), G395H ExoTiC-JEDI
+segments: G395H 214 pts 2.87-5.12 um, offset +0 ppm
+coverage by channel: AIRS-CH0 42/69 filled, AIRS-CH1 13/21 filled, FGS1 1/1 filled, FGS2 1/1 filled, NIRSpec 11/11 filled, VISPhot 1/1 filled
+
+GJ3470b: Beatty et al. 2024 (ApJL machine-readable tables), NIRCam
+segments: F322W2 100 pts 2.46-3.94 um, offset +0 ppm; F444W 72 pts 3.90-4.96 um, offset +0 ppm
+coverage by channel: AIRS-CH0 23/69 filled, AIRS-CH1 14/21 filled, FGS1 1/1 filled, FGS2 1/1 filled, NIRSpec 11/11 filled, VISPhot 1/1 filled
+
+WASP-166b: Mayo et al. 2025 (Zenodo 15122285): Eureka! NIRISS order 1 and NIRSpec G395M, 0.018 um bins
+segments: SOSS 110 pts 0.86-2.82 um, offset +0 ppm; G395M 132 pts 2.81-5.16 um, offset +0 ppm
+coverage by channel: AIRS-CH0 0/69 filled, AIRS-CH1 12/21 filled, FGS1 1/1 filled, FGS2 0/1 filled, NIRSpec 0/11 filled, VISPhot 1/1 filled
+
+TOI-1231b: Sarkar et al. 2026 (OSF mryd6): JexoRes NIRISS orders 1-2 and NIRSpec G395H NRS1-2
+segments: SOSS-o1 52 pts 0.86-2.37 um, offset +0 ppm; SOSS-o2 17 pts 0.64-0.88 um, offset +0 ppm; NRS1 702 pts 2.74-3.72 um, offset +0 ppm; NRS2 994 pts 3.83-5.17 um, offset +0 ppm
+coverage by channel: AIRS-CH0 17/69 filled, AIRS-CH1 12/21 filled, FGS1 0/1 filled, FGS2 0/1 filled, NIRSpec 0/11 filled, VISPhot 1/1 filled
+
+K2-18b-hu: Hu et al. 2025 (OSF hpu8g): NIRISS SOSS visit 1, NIRSpec G235H (2 visits) and G395H (3 visits) combined
+segments: SOSS-o1 364 pts 0.85-2.82 um, offset +148 ppm; SOSS-o2 41 pts 0.60-0.90 um, offset +193 ppm; G235H 330 pts 1.67-3.07 um, offset +16 ppm; G395H 545 pts 2.87-5.17 um, offset +0 ppm
+coverage by channel: AIRS-CH0 3/69 filled, AIRS-CH1 12/21 filled, FGS1 0/1 filled, FGS2 0/1 filled, NIRSpec 0/11 filled, VISPhot 1/1 filled
+
+TOI-270d-hm: Holmberg & Madhusudhan 2024 (OSF 8fu36), canonical G395H at native resolution
+segments: G395H 3393 pts 2.74-5.17 um, offset +0 ppm
+coverage by channel: AIRS-CH0 37/69 filled, AIRS-CH1 12/21 filled, FGS1 1/1 filled, FGS2 1/1 filled, NIRSpec 11/11 filled, VISPhot 1/1 filled
+
+GJ9827d: Piaulet-Ghorayeb et al. 2024 (ApJL machine-readable table A2), supreme-SPOON NIRISS SOSS at R = 100
+segments: SOSS-o2 35 pts 0.60-0.85 um, offset +0 ppm; SOSS-o1 121 pts 0.85-2.81 um, offset +0 ppm
+coverage by channel: AIRS-CH0 32/69 filled, AIRS-CH1 21/21 filled, FGS1 0/1 filled, FGS2 0/1 filled, NIRSpec 0/11 filled, VISPhot 1/1 filled
+
+WASP-52b: Pan et al. 2026 (Zenodo 18734230), NIRSpec G395H, transitspectroscopy reduction
+segments: NRS1 71 pts 2.86-3.69 um, offset +0 ppm; NRS2 85 pts 3.83-5.16 um, offset +0 ppm
+coverage by channel: AIRS-CH0 41/69 filled, AIRS-CH1 12/21 filled, FGS1 1/1 filled, FGS2 1/1 filled, NIRSpec 11/11 filled, VISPhot 1/1 filled
+
+L98-59d: Gressier et al. 2024 (ApJL machine-readable table 3), NIRSpec G395H, transitspectroscopy at R ~ 100
+segments: G395H 56 pts 2.88-5.15 um, offset +0 ppm
+coverage by channel: AIRS-CH0 41/69 filled, AIRS-CH1 12/21 filled, FGS1 1/1 filled, FGS2 1/1 filled, NIRSpec 11/11 filled, VISPhot 1/1 filled
+
+GJ1214b: Schlawin et al. 2024 (ApJL figure 2 data), NIRSpec G395H, tshirt reduction at R = 100
+segments: G395H 59 pts 2.77-5.13 um, offset +0 ppm
+coverage by channel: AIRS-CH0 39/69 filled, AIRS-CH1 13/21 filled, FGS1 1/1 filled, FGS2 1/1 filled, NIRSpec 11/11 filled, VISPhot 1/1 filled
+
+LTT3780c: TOI-732 c, Rigby et al. 2025 (OSF wsjmu): JexoRes NIRISS order 1, NIRSpec G395H and MIRI LRS at native resolution
+segments: SOSS 1018 pts 0.85-2.83 um, offset +0 ppm; NRS1 695 pts 2.74-3.71 um, offset -59 ppm; NRS2 980 pts 3.82-5.17 um, offset +0 ppm; MIRI 29 pts 5.78-11.79 um, offset +0 ppm
+coverage by channel: AIRS-CH0 3/69 filled, AIRS-CH1 2/21 filled, FGS1 1/1 filled, FGS2 0/1 filled, NIRSpec 0/11 filled, VISPhot 1/1 filled
+
+WASP-80b: Bell et al. 2023 (Nature source data, Eureka!), NIRCam F322W2
+segments: F322W2 113 pts 2.42-4.06 um, offset +0 ppm
+coverage by channel: AIRS-CH0 21/69 filled, AIRS-CH1 20/21 filled, FGS1 1/1 filled, FGS2 1/1 filled, NIRSpec 11/11 filled, VISPhot 1/1 filled
+
+HD209458b: Xue et al. 2024 (Zenodo 10557924), NIRCam F322W2 + F444W, Eureka! reduction
+segments: NIRCam 69 pts 2.38-4.98 um, offset +0 ppm
+coverage by channel: AIRS-CH0 19/69 filled, AIRS-CH1 13/21 filled, FGS1 1/1 filled, FGS2 1/1 filled, NIRSpec 11/11 filled, VISPhot 1/1 filled
+
+WASP-96b: Radica et al. 2026 (Zenodo 17065171): exoTEDRF NIRISS SOSS and NIRSpec G395H at R = 300
+segments: SOSS 466 pts 0.60-2.83 um, offset +0 ppm; NRS1 86 pts 2.80-3.72 um, offset +0 ppm; NRS2 91 pts 3.83-5.17 um, offset +0 ppm
+coverage by channel: AIRS-CH0 3/69 filled, AIRS-CH1 12/21 filled, FGS1 0/1 filled, FGS2 0/1 filled, NIRSpec 0/11 filled, VISPhot 1/1 filled
+
+WASP-17b: Louie et al. 2025 (Zenodo 14193061) Ahsoka NIRISS SOSS at R = 100; Grant et al. 2023 (Zenodo 8360121) ExoTiC-MIRI LRS, 0.25 um bins
+segments: SOSS-o1 119 pts 0.85-2.82 um, offset +0 ppm; SOSS-o2 32 pts 0.63-0.86 um, offset +0 ppm; MIRI 28 pts 5.12-11.88 um, offset +0 ppm
+coverage by channel: AIRS-CH0 32/69 filled, AIRS-CH1 8/21 filled, FGS1 0/1 filled, FGS2 0/1 filled, NIRSpec 0/11 filled, VISPhot 1/1 filled
+
+Real JWST panel under the three training sets (alfnoor_retrain.py --panel): verdict = majority of the four learners at 1e-4
+
+== inputs: all
+  faithful  35/51 scored labels correct
+  haze      41/54 scored labels correct
+  hazedeck  43/54 scored labels correct
+  union     42/53 scored labels correct
+  planet       mol  label          faithful           haze       hazedeck          union   (learners present of 4, Tier-1 frequency %)
+  TOI-270d     CH4  present  absent  1   7% absent  1   9% absent  1   8% absent  0   9%
+  TOI-270d     H2O  nan      absent  0   5% absent  0   7% absent  0   8% absent  0   7%
+  TOI-270d     CO2  present  absent  0   3% absent  1   7% absent  1   6% absent  1   7%
+  TOI-270d     NH3  absent   absent  0   8% absent  1  16% absent  0  12% absent  0  12%
+  K2-18b       CH4  present  absent  0  10% absent  0  22% split   2  30% absent  1  35%
+  K2-18b       H2O  absent   absent  0   5% absent  1  10% absent  1  15% absent  1  15%
+  K2-18b       CO2  nan      absent  0   2% absent  0   5% absent  0   7% absent  0   9%
+  K2-18b       NH3  absent   absent  0   0% absent  0   0% absent  0   0% absent  0   0%
+  K2-18b-alt   CH4  present  absent  1  17% split   2  28% present 4  29% present 3  34%
+  K2-18b-alt   H2O  absent   absent  0   3% absent  0   9% absent  0  10% absent  0   9%
+  K2-18b-alt   CO2  nan      absent  0   1% absent  0   2% absent  0   2% absent  0   2%
+  K2-18b-alt   NH3  absent   absent  0   0% absent  0   0% absent  0   0% absent  0   1%
+  TOI-421b     CH4  absent   absent  0   1% absent  0   3% absent  0   3% absent  0   4%
+  TOI-421b     H2O  nan      absent  1   7% absent  0   9% absent  0  12% absent  0  12%
+  TOI-421b     CO2  absent   absent  1   6% absent  1  10% absent  1   9% split   2  11%
+  TOI-421b     NH3  nan      absent  0   5% absent  0  10% absent  0  11% absent  0  14%
+  HAT-P-18b    CH4  absent   absent  0   3% absent  0   5% absent  0   6% absent  0   7%
+  HAT-P-18b    H2O  nan      present 3  19% present 4  32% present 3  34% present 4  30%
+  HAT-P-18b    CO2  absent   absent  0   3% absent  0   4% absent  0   4% absent  0   4%
+  HAT-P-18b    NH3  absent   absent  0   1% absent  0   1% absent  0   1% absent  0   2%
+  WASP-107b    CH4  absent   absent  0   0% absent  0   0% absent  0   0% absent  0   0%
+  WASP-107b    H2O  present  absent  0   6% absent  0  14% absent  0  15% absent  1  16%
+  WASP-107b    CO2  nan      present 3  48% present 4  75% present 4  79% present 4  79%
+  WASP-107b    NH3  absent   absent  0   0% absent  0   1% absent  0   3% absent  0   4%
+  HD189733b    CH4  absent   absent  0   0% absent  0   0% absent  0   0% absent  0   0%
+  HD189733b    H2O  nan      absent  1  27% split   2  48% split   2  52% split   2  52%
+  HD189733b    CO2  absent   absent  1  29% present 4  49% present 4  53% present 4  55%
+  HD189733b    NH3  absent   absent  0   0% absent  0   1% absent  0   1% absent  0   2%
+  HAT-P-26b    CH4  absent   absent  0   1% absent  0   2% absent  0   2% absent  0   2%
+  HAT-P-26b    H2O  present  absent  0   5% absent  0   6% absent  0   7% absent  0   7%
+  HAT-P-26b    CO2  present  split   2  12% present 3  16% present 3  19% present 4  20%
+  HAT-P-26b    NH3  absent   absent  0   3% absent  0   8% absent  1   8% absent  1  10%
+  GJ3470b      CH4  nan      absent  0   2% absent  0   2% absent  0   3% absent  0   3%
+  GJ3470b      H2O  present  absent  0   9% absent  0  12% absent  0  12% absent  0  12%
+  GJ3470b      CO2  present  split   2   8% present 4  11% present 4  12% present 4  12%
+  GJ3470b      NH3  absent   absent  0   4% absent  0   7% absent  0   7% absent  0   9%
+  WASP-166b    CH4  absent   absent  0   0% absent  0   0% absent  0   0% absent  0   0%
+  WASP-166b    H2O  present  absent  0  14% present 3  30% present 4  33% present 4  30%
+  WASP-166b    CO2  present  absent  1  21% present 3  34% present 3  38% present 3  41%
+  WASP-166b    NH3  nan      absent  0   1% absent  0   3% absent  0   4% absent  0   6%
+  TOI-1231b    CH4  present  split   2  16% present 3  19% present 4  23% present 4  24%
+  TOI-1231b    H2O  nan      absent  0   4% absent  0   6% absent  0   6% absent  0   7%
+  TOI-1231b    CO2  present  absent  0   0% absent  0   0% absent  0   0% absent  0   0%
+  TOI-1231b    NH3  nan      absent  0   2% absent  0   4% absent  0   3% absent  0   3%
+  K2-18b-hu    CH4  present  absent  1   9% present 3  15% split   2  16% split   2  18%
+  K2-18b-hu    H2O  absent   absent  0   9% split   2  15% absent  0  15% absent  0  14%
+  K2-18b-hu    CO2  nan      absent  0   0% absent  0   1% absent  0   1% absent  0   2%
+  K2-18b-hu    NH3  absent   absent  0   2% absent  0   3% absent  0   3% absent  0   4%
+  TOI-270d-hm  CH4  present  absent  0   8% absent  1  11% absent  1  12% absent  1  14%
+  TOI-270d-hm  H2O  nan      absent  0   6% absent  0   8% absent  0   9% absent  0   8%
+  TOI-270d-hm  CO2  present  absent  0   3% absent  0   4% absent  0   4% absent  0   5%
+  TOI-270d-hm  NH3  absent   absent  0   2% absent  0   5% absent  0   5% absent  0   7%
+  GJ9827d      CH4  nan      absent  0   1% absent  0   1% absent  0   2% absent  0   2%
+  GJ9827d      H2O  present  absent  1  12% split   2  18% split   2  19% split   2  17%
+  GJ9827d      CO2  nan      absent  1   6% absent  1   6% absent  1   6% absent  1   7%
+  GJ9827d      NH3  nan      absent  0   3% absent  0   6% absent  0   6% absent  0   8%
+  WASP-52b     CH4  absent   absent  0   1% absent  0   3% absent  0   3% absent  0   4%
+  WASP-52b     H2O  nan      absent  0   9% split   2  14% absent  0  14% absent  1  14%
+  WASP-52b     CO2  nan      absent  0   4% absent  0   5% absent  0   5% absent  0   6%
+  WASP-52b     NH3  nan      absent  1   8% absent  1  16% split   2  18% split   2  19%
+  L98-59d      CH4  absent   absent  1   5% absent  1   7% absent  1   8% absent  0   8%
+  L98-59d      H2O  absent   absent  0   6% absent  0   8% absent  0   9% absent  0   8%
+  L98-59d      CO2  nan      absent  0   4% absent  0   5% absent  0   5% absent  0   6%
+  L98-59d      NH3  absent   absent  0   5% absent  1   8% absent  0   8% absent  0   8%
+  GJ1214b      CH4  present  absent  0   4% absent  0   6% absent  0   6% absent  0   7%
+  GJ1214b      H2O  nan      absent  1   7% absent  1   9% absent  1  10% absent  1  10%
+  GJ1214b      CO2  present  split   2   4% absent  1   4% present 3   5% present 3   5%
+  GJ1214b      NH3  nan      absent  0   7% absent  0  11% absent  0  10% absent  0  11%
+  LTT3780c     CH4  present  absent  0  22% absent  1  26% absent  1  28% split   2  35%
+  LTT3780c     H2O  nan      absent  0   0% absent  0   0% absent  0   0% absent  0   0%
+  LTT3780c     CO2  nan      absent  0   1% absent  0   1% absent  0   1% absent  0   1%
+  LTT3780c     NH3  absent   absent  0   1% absent  0   1% absent  0   1% absent  0   2%
+  WASP-80b     CH4  nan      absent  0   2% absent  0   4% absent  0   5% absent  1   6%
+  WASP-80b     H2O  present  split   2  13% present 3  19% present 3  19% present 3  19%
+  WASP-80b     CO2  nan      absent  0   4% absent  0   5% absent  0   5% absent  0   6%
+  WASP-80b     NH3  nan      absent  0   4% absent  0   7% absent  0   8% absent  0   9%
+  HD209458b    CH4  absent   absent  0   0% absent  0   0% absent  0   0% absent  0   0%
+  HD209458b    H2O  nan      split   2  27% present 3  54% present 3  59% present 3  58%
+  HD209458b    CO2  nan      absent  0  11% absent  1  18% absent  1  19% absent  0  17%
+  HD209458b    NH3  absent   absent  0   0% absent  0   2% absent  0   3% absent  0   4%
+  WASP-96b     CH4  absent   absent  0   0% absent  0   1% absent  0   1% absent  0   1%
+  WASP-96b     H2O  present  split   2  27% present 3  42% present 4  45% present 4  39%
+  WASP-96b     CO2  absent   absent  0   7% absent  0  10% absent  0  11% absent  0  13%
+  WASP-96b     NH3  absent   absent  0   1% absent  0   1% absent  0   1% absent  0   2%
+  WASP-17b     CH4  absent   absent  0   2% absent  0   2% absent  0   2% absent  0   3%
+  WASP-17b     H2O  present  present 4  69% present 4  82% present 4  79% present 4  73%
+  WASP-17b     CO2  absent   absent  0   0% absent  0   0% absent  0   1% absent  0   1%
+  WASP-17b     NH3  nan      absent  0   0% absent  0   0% absent  0   0% absent  0   0%
+
+== inputs: no_optical
+  faithful  40/53 scored labels correct
+  haze      42/56 scored labels correct
+  hazedeck  40/52 scored labels correct
+  union     43/54 scored labels correct
+  planet       mol  label          faithful           haze       hazedeck          union   (learners present of 4, Tier-1 frequency %)
+  TOI-270d     CH4  present  absent  1   7% absent  0   8% absent  0   8% absent  0   9%
+  TOI-270d     H2O  nan      absent  0   7% absent  0   6% absent  0   7% absent  0   7%
+  TOI-270d     CO2  present  absent  0   6% absent  1   6% absent  1   5% absent  1   6%
+  TOI-270d     NH3  absent   absent  0  10% absent  0  13% absent  0  10% absent  0   9%
+  K2-18b       CH4  present  absent  0  19% absent  0  25% split   2  33% present 3  40%
+  K2-18b       H2O  absent   absent  1  14% absent  1  13% absent  1  19% absent  1  17%
+  K2-18b       CO2  nan      absent  0   4% absent  0   5% absent  0   7% absent  0   6%
+  K2-18b       NH3  absent   absent  0   0% absent  0   0% absent  0   0% absent  0   0%
+  K2-18b-alt   CH4  present  split   2  25% present 3  27% present 3  31% present 3  37%
+  K2-18b-alt   H2O  absent   absent  0   9% absent  0   8% absent  0   9% absent  0   9%
+  K2-18b-alt   CO2  nan      absent  0   1% absent  0   1% absent  0   1% absent  0   1%
+  K2-18b-alt   NH3  absent   absent  0   1% absent  0   1% absent  0   1% absent  0   1%
+  TOI-421b     CH4  absent   absent  0   2% absent  0   3% absent  0   3% absent  0   4%
+  TOI-421b     H2O  nan      absent  1  12% absent  0  13% absent  0  13% absent  0  12%
+  TOI-421b     CO2  absent   absent  1   8% absent  1  10% absent  1   9% split   2  11%
+  TOI-421b     NH3  nan      absent  0   9% absent  0  12% absent  0  13% absent  0  15%
+  HAT-P-18b    CH4  absent   absent  0   4% absent  0   5% absent  0   5% absent  1   6%
+  HAT-P-18b    H2O  nan      present 4  32% present 3  34% present 4  35% present 3  33%
+  HAT-P-18b    CO2  absent   absent  0   3% absent  0   4% absent  0   4% absent  0   4%
+  HAT-P-18b    NH3  absent   absent  0   1% absent  0   2% absent  0   3% absent  0   3%
+  WASP-107b    CH4  absent   absent  0   0% absent  0   0% absent  0   0% absent  0   0%
+  WASP-107b    H2O  present  absent  0  12% absent  1  16% absent  1  18% absent  1  17%
+  WASP-107b    CO2  nan      present 4  55% present 4  72% present 4  75% present 4  76%
+  WASP-107b    NH3  absent   absent  0   1% absent  0   2% absent  0   2% absent  0   3%
+  HD189733b    CH4  absent   absent  0   0% absent  0   0% absent  0   0% absent  0   0%
+  HD189733b    H2O  nan      present 4  43% present 3  52% present 3  57% split   2  53%
+  HD189733b    CO2  absent   split   2  30% present 3  43% present 3  46% present 4  46%
+  HD189733b    NH3  absent   absent  0   0% absent  0   1% absent  0   1% absent  0   1%
+  HAT-P-26b    CH4  absent   absent  0   1% absent  0   1% absent  0   1% absent  0   2%
+  HAT-P-26b    H2O  present  absent  0   7% absent  0   7% absent  0   7% absent  0   7%
+  HAT-P-26b    CO2  present  present 3  14% present 3  16% present 3  17% present 4  20%
+  HAT-P-26b    NH3  absent   absent  0   6% absent  0  10% absent  0   9% absent  0  10%
+  GJ3470b      CH4  nan      absent  0   1% absent  0   2% absent  0   2% absent  0   3%
+  GJ3470b      H2O  present  absent  0  11% absent  0  12% absent  0  12% absent  0  12%
+  GJ3470b      CO2  present  present 3   9% present 4  11% present 4  11% present 4  12%
+  GJ3470b      NH3  absent   absent  0   6% absent  0   8% absent  0   8% absent  0   8%
+  WASP-166b    CH4  absent   absent  0   0% absent  0   0% absent  0   0% absent  0   0%
+  WASP-166b    H2O  present  present 4  35% present 4  33% present 4  33% present 3  30%
+  WASP-166b    CO2  present  present 3  28% present 3  33% present 3  35% present 3  38%
+  WASP-166b    NH3  nan      absent  0   4% absent  0   5% absent  0   5% absent  0   6%
+  TOI-1231b    CH4  present  absent  1  16% present 3  19% split   2  20% present 4  22%
+  TOI-1231b    H2O  nan      absent  0   7% absent  0   7% absent  0   7% absent  0   7%
+  TOI-1231b    CO2  present  absent  0   0% absent  0   0% absent  0   0% absent  0   0%
+  TOI-1231b    NH3  nan      absent  0   4% absent  0   4% absent  0   4% absent  0   4%
+  K2-18b-hu    CH4  present  absent  1  11% absent  1  15% absent  1  15% split   2  16%
+  K2-18b-hu    H2O  absent   absent  0  15% absent  1  15% absent  0  15% absent  0  13%
+  K2-18b-hu    CO2  nan      absent  0   1% absent  0   1% absent  0   1% absent  0   1%
+  K2-18b-hu    NH3  absent   absent  0   3% absent  0   4% absent  0   4% absent  0   5%
+  TOI-270d-hm  CH4  present  absent  1   9% absent  1  11% absent  1  12% absent  1  13%
+  TOI-270d-hm  H2O  nan      absent  0   7% absent  0   8% absent  0   8% absent  0   8%
+  TOI-270d-hm  CO2  present  absent  0   3% absent  0   3% absent  0   4% absent  0   4%
+  TOI-270d-hm  NH3  absent   absent  0   5% absent  0   6% absent  0   5% absent  0   6%
+  GJ9827d      CH4  nan      absent  0   1% absent  0   1% absent  0   2% absent  0   3%
+  GJ9827d      H2O  present  split   2  17% split   2  18% split   2  20% split   2  18%
+  GJ9827d      CO2  nan      absent  1   6% absent  1   6% absent  1   6% absent  1   6%
+  GJ9827d      NH3  nan      absent  0   5% absent  0   7% absent  0   7% absent  0   7%
+  WASP-52b     CH4  absent   absent  0   2% absent  0   3% absent  0   3% absent  0   4%
+  WASP-52b     H2O  nan      absent  1  13% absent  1  15% absent  1  15% absent  0  14%
+  WASP-52b     CO2  nan      absent  0   4% absent  0   4% absent  0   4% absent  0   5%
+  WASP-52b     NH3  nan      absent  1  16% split   2  20% split   2  20% split   2  20%
+  L98-59d      CH4  absent   absent  1   6% absent  1   7% absent  0   7% absent  0   8%
+  L98-59d      H2O  absent   absent  0   8% absent  0   8% absent  0   9% absent  0   8%
+  L98-59d      CO2  nan      absent  0   4% absent  0   5% absent  1   4% absent  0   4%
+  L98-59d      NH3  absent   absent  0   7% absent  0   9% absent  0   8% absent  0   9%
+  GJ1214b      CH4  present  absent  0   4% absent  0   5% absent  0   5% absent  0   6%
+  GJ1214b      H2O  nan      absent  0   9% absent  0   9% absent  0   9% absent  1   9%
+  GJ1214b      CO2  present  split   2   4% absent  1   4% split   2   3% present 4   4%
+  GJ1214b      NH3  nan      absent  0   8% absent  0  12% absent  0  10% absent  0  11%
+  LTT3780c     CH4  present  absent  1  19% absent  1  22% absent  1  24% absent  1  26%
+  LTT3780c     H2O  nan      absent  0   0% absent  0   0% absent  0   0% absent  0   0%
+  LTT3780c     CO2  nan      absent  0   1% absent  0   1% absent  0   1% absent  0   1%
+  LTT3780c     NH3  absent   absent  0   0% absent  0   0% absent  0   1% absent  0   1%
+  WASP-80b     CH4  nan      absent  0   2% absent  0   3% absent  0   4% absent  0   4%
+  WASP-80b     H2O  present  present 3  17% present 3  18% split   2  17% present 3  18%
+  WASP-80b     CO2  nan      absent  0   4% absent  0   5% absent  0   5% absent  0   5%
+  WASP-80b     NH3  nan      absent  0   6% absent  0   8% absent  0   9% absent  0   8%
+  HD209458b    CH4  absent   absent  0   0% absent  0   0% absent  0   0% absent  0   0%
+  HD209458b    H2O  nan      present 4  49% present 3  61% present 4  66% present 3  62%
+  HD209458b    CO2  nan      absent  0  11% absent  0  16% absent  0  17% absent  0  10%
+  HD209458b    NH3  absent   absent  0   1% absent  0   2% absent  0   3% absent  0   4%
+  WASP-96b     CH4  absent   absent  0   1% absent  0   1% absent  0   1% absent  0   2%
+  WASP-96b     H2O  present  present 4  44% present 4  45% present 4  45% present 4  41%
+  WASP-96b     CO2  absent   absent  0   8% absent  0   9% absent  0  10% absent  0  12%
+  WASP-96b     NH3  absent   absent  0   1% absent  0   2% absent  0   2% absent  0   2%
+  WASP-17b     CH4  absent   absent  0   2% absent  0   2% absent  0   2% absent  0   3%
+  WASP-17b     H2O  present  present 4  82% present 4  78% present 4  75% present 4  71%
+  WASP-17b     CO2  absent   absent  0   0% absent  0   0% absent  0   1% absent  0   1%
+  WASP-17b     NH3  nan      absent  0   0% absent  0   0% absent  0   0% absent  0   0%
+
+== inputs: airs_only
+  faithful  45/56 scored labels correct
+  haze      45/55 scored labels correct
+  hazedeck  44/56 scored labels correct
+  union     45/53 scored labels correct
+  planet       mol  label          faithful           haze       hazedeck          union   (learners present of 4, Tier-1 frequency %)
+  TOI-270d     CH4  present  split   2  15% absent  1  16% absent  1  16% split   2  17%
+  TOI-270d     H2O  nan      absent  0   2% absent  0   2% absent  0   2% absent  1   3%
+  TOI-270d     CO2  present  absent  0   8% absent  0   8% absent  0   7% absent  1   8%
+  TOI-270d     NH3  absent   absent  0  20% absent  0  17% absent  0  14% absent  1  13%
+  K2-18b       CH4  present  present 4  47% present 4  54% present 4  53% present 4  59%
+  K2-18b       H2O  absent   absent  0   3% absent  0   4% absent  0   4% absent  0   4%
+  K2-18b       CO2  nan      absent  0   6% absent  0   8% absent  0   8% absent  0   7%
+  K2-18b       NH3  absent   absent  0   0% absent  0   0% absent  0   0% absent  0   0%
+  K2-18b-alt   CH4  present  present 3  33% present 3  37% present 3  37% present 3  40%
+  K2-18b-alt   H2O  absent   absent  0   3% absent  0   3% absent  0   4% absent  0   4%
+  K2-18b-alt   CO2  nan      absent  0   1% absent  0   1% absent  0   1% absent  0   2%
+  K2-18b-alt   NH3  absent   absent  0   2% absent  0   2% absent  0   2% absent  0   2%
+  TOI-421b     CH4  absent   absent  0   2% absent  0   3% absent  0   2% absent  0   3%
+  TOI-421b     H2O  nan      absent  1  10% absent  1  11% split   2  12% split   2  13%
+  TOI-421b     CO2  absent   absent  0  10% absent  1  10% absent  0  10% absent  0  10%
+  TOI-421b     NH3  nan      absent  1  17% absent  0  14% absent  0  14% absent  1  15%
+  HAT-P-18b    CH4  absent   absent  0   4% absent  0   4% absent  0   4% absent  0   4%
+  HAT-P-18b    H2O  nan      present 4  37% present 4  40% present 4  39% present 4  35%
+  HAT-P-18b    CO2  absent   absent  0   3% absent  0   4% absent  0   4% absent  0   4%
+  HAT-P-18b    NH3  absent   absent  0   3% absent  0   4% absent  0   4% absent  0   5%
+  WASP-107b    CH4  absent   absent  0   0% absent  0   0% absent  0   0% absent  0   0%
+  WASP-107b    H2O  present  absent  0  14% absent  1  20% absent  1  22% absent  1  23%
+  WASP-107b    CO2  nan      present 4  79% present 4  78% present 4  78% present 4  78%
+  WASP-107b    NH3  absent   absent  0   4% absent  0   4% absent  0   4% absent  0   5%
+  HD189733b    CH4  absent   absent  0   0% absent  0   0% absent  0   0% absent  0   0%
+  HD189733b    H2O  nan      present 4  62% present 4  76% present 4  78% present 4  77%
+  HD189733b    CO2  absent   present 3  40% split   2  34% present 3  34% split   2  37%
+  HD189733b    NH3  absent   absent  0   2% absent  0   1% absent  0   2% absent  0   2%
+  HAT-P-26b    CH4  absent   absent  0   3% absent  0   3% absent  0   3% absent  0   3%
+  HAT-P-26b    H2O  present  absent  1   8% absent  1   8% absent  1   8% absent  1   7%
+  HAT-P-26b    CO2  present  present 3  19% present 3  20% present 4  20% present 4  22%
+  HAT-P-26b    NH3  absent   absent  1  14% absent  0  14% absent  0  13% absent  0  13%
+  GJ3470b      CH4  nan      absent  0   4% absent  0   4% absent  0   4% absent  0   4%
+  GJ3470b      H2O  present  absent  0  12% absent  0  14% absent  0  14% absent  0  13%
+  GJ3470b      CO2  present  present 4  13% present 4  12% present 4  12% present 4  12%
+  GJ3470b      NH3  absent   absent  0  11% absent  0  11% absent  0  10% absent  0  10%
+  WASP-166b    CH4  absent   absent  0   0% absent  0   0% absent  0   0% absent  0   0%
+  WASP-166b    H2O  present  absent  0  17% split   2  18% absent  1  20% split   2  20%
+  WASP-166b    CO2  present  present 4  38% present 4  36% present 4  38% present 4  39%
+  WASP-166b    NH3  nan      absent  0  13% absent  0  11% absent  0  11% absent  0  12%
+  TOI-1231b    CH4  present  present 4  41% present 4  41% present 4  42% present 4  43%
+  TOI-1231b    H2O  nan      absent  0   6% absent  0   6% absent  0   6% absent  0   6%
+  TOI-1231b    CO2  present  absent  0   1% absent  0   1% absent  0   1% absent  0   1%
+  TOI-1231b    NH3  nan      absent  0   9% absent  0   6% absent  0   6% absent  0   6%
+  K2-18b-hu    CH4  present  present 3  25% present 3  25% present 3  24% present 3  27%
+  K2-18b-hu    H2O  absent   absent  0   7% absent  0   7% absent  0   8% absent  0   8%
+  K2-18b-hu    CO2  nan      absent  0   1% absent  0   2% absent  0   2% absent  0   2%
+  K2-18b-hu    NH3  absent   absent  0  12% absent  0   8% absent  0   8% absent  0   8%
+  TOI-270d-hm  CH4  present  present 3  17% present 3  18% present 3  19% present 4  19%
+  TOI-270d-hm  H2O  nan      absent  0   8% absent  0   9% absent  0   9% absent  0   9%
+  TOI-270d-hm  CO2  present  absent  1   4% absent  0   4% absent  0   4% absent  0   4%
+  TOI-270d-hm  NH3  absent   absent  0   7% absent  0   6% absent  0   5% absent  0   6%
+  GJ9827d      CH4  nan      absent  0   4% absent  0   3% absent  0   3% absent  0   4%
+  GJ9827d      H2O  present  absent  0  14% absent  0  14% absent  0  15% absent  1  14%
+  GJ9827d      CO2  nan      split   2   7% split   2   6% absent  1   6% absent  1   6%
+  GJ9827d      NH3  nan      absent  0  12% absent  0  11% absent  0  10% absent  0  10%
+  WASP-52b     CH4  absent   absent  0   5% absent  0   4% absent  0   5% absent  0   5%
+  WASP-52b     H2O  nan      absent  1  15% absent  1  16% absent  1  16% absent  1  15%
+  WASP-52b     CO2  nan      absent  0   5% absent  0   6% absent  0   5% absent  0   6%
+  WASP-52b     NH3  nan      present 3  34% split   2  30% present 3  28% present 3  27%
+  L98-59d      CH4  absent   absent  1  10% absent  1  11% absent  1  10% absent  0  10%
+  L98-59d      H2O  absent   absent  0   8% absent  0   9% absent  0  10% absent  0   9%
+  L98-59d      CO2  nan      absent  0   5% absent  0   5% absent  0   5% absent  0   5%
+  L98-59d      NH3  absent   absent  0  12% absent  0  11% absent  0  10% absent  0  10%
+  GJ1214b      CH4  present  absent  0   8% absent  0   8% absent  0   8% absent  0   9%
+  GJ1214b      H2O  nan      absent  0   9% absent  0  10% absent  1  10% absent  0   9%
+  GJ1214b      CO2  present  absent  1   5% absent  1   5% absent  1   4% split   2   5%
+  GJ1214b      NH3  nan      absent  0  14% absent  0  13% absent  0  12% absent  0  12%
+  LTT3780c     CH4  present  present 4  61% present 4  69% present 4  67% present 4  67%
+  LTT3780c     H2O  nan      absent  0   0% absent  0   0% absent  0   0% absent  0   0%
+  LTT3780c     CO2  nan      absent  0   2% absent  0   2% absent  0   2% absent  0   2%
+  LTT3780c     NH3  absent   absent  0   4% absent  0   6% absent  0   6% absent  0   9%
+  WASP-80b     CH4  nan      absent  0   6% absent  0   6% absent  0   6% absent  0   6%
+  WASP-80b     H2O  present  present 3  19% present 3  21% split   2  20% present 4  19%
+  WASP-80b     CO2  nan      absent  0   6% absent  0   5% absent  0   5% absent  0   6%
+  WASP-80b     NH3  nan      absent  0  13% absent  0  11% absent  0  10% absent  0  10%
+  HD209458b    CH4  absent   absent  0   0% absent  0   0% absent  0   0% absent  0   0%
+  HD209458b    H2O  nan      present 4  69% present 4  80% present 4  81% present 4  83%
+  HD209458b    CO2  nan      absent  0  12% absent  0   8% absent  0   8% absent  0   5%
+  HD209458b    NH3  absent   absent  0   7% absent  0   3% absent  0   4% absent  0   4%
+  WASP-96b     CH4  absent   absent  0   1% absent  0   1% absent  0   1% absent  0   1%
+  WASP-96b     H2O  present  present 4  46% present 4  48% present 4  47% present 4  44%
+  WASP-96b     CO2  absent   absent  0  10% absent  0  10% absent  0  10% absent  0  12%
+  WASP-96b     NH3  absent   absent  0   2% absent  0   3% absent  0   3% absent  0   3%
+  WASP-17b     CH4  absent   absent  0   5% absent  0   5% absent  0   5% absent  0   6%
+  WASP-17b     H2O  present  present 3  51% present 4  54% present 4  52% present 4  49%
+  WASP-17b     CO2  absent   absent  0   1% absent  0   1% absent  0   1% absent  0   1%
+  WASP-17b     NH3  nan      absent  0   0% absent  0   0% absent  0   0% absent  0   0%
+
+CH4-present planets, verdict under all inputs / AIRS-only, by training set:
+  TOI-270d     faithful: absent / split   haze: absent / absent   hazedeck: absent / absent   union: absent / split
+  K2-18b       faithful: absent / present   haze: absent / present   hazedeck: split / present   union: absent / present
+  K2-18b-alt   faithful: absent / present   haze: split / present   hazedeck: present / present   union: present / present
+  TOI-1231b    faithful: split / present   haze: present / present   hazedeck: present / present   union: present / present
+  K2-18b-hu    faithful: absent / present   haze: present / present   hazedeck: split / present   union: split / present
+  TOI-270d-hm  faithful: absent / present   haze: absent / present   hazedeck: absent / present   union: absent / present
+  GJ1214b      faithful: absent / absent   haze: absent / absent   hazedeck: absent / absent   union: absent / absent
+  LTT3780c     faithful: absent / present   haze: absent / present   hazedeck: absent / present   union: split / present

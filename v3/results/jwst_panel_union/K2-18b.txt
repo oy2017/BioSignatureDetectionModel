@@ -1,0 +1,65 @@
+K2-18b: Madhusudhan et al. 2023 native SOSS + G395H (OSF 36djh); MIRI from the Jaziri et al. 2025 copy of Madhusudhan et al. 2025 (Zenodo 16277833)
+segments: SOSS 1010 pts 0.85-2.83 um, offset -92 ppm; G395H 3401 pts 2.74-5.17 um, offset +0 ppm; MIRI 28 pts 5.12-11.88 um, offset +0 ppm
+coverage by channel: AIRS-CH0 3/69 filled, AIRS-CH1 0/21 filled, FGS1 1/1 filled, FGS2 0/1 filled, NIRSpec 0/11 filled, VISPhot 1/1 filled
+== K2-18b [Madhusudhan et al. 2023 native SOSS + G395H (OSF 36djh); MIRI from the Jaziri et al. 2025 copy of Madhusudhan et al. 2025 (Zenodo 16277833); 5 of 104 bins flat-filled]: verdicts at the delivered precision (1 = present)
+-- threshold 1e-5
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       1.0  1.0  1.0  1.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       1.0  1.0  1.0  1.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  1.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       1.0  1.0  1.0  1.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  1.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+-- threshold 1e-4
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       1.0  1.0  1.0  1.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       0.0  0.0  0.0  1.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  1.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       1.0  1.0  0.0  1.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  1.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+-- threshold 1e-3
+learner              KNN  MLP  RFC  SVC
+variant    molecule                    
+airs_only  CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+all        CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+no_optical CH4       0.0  0.0  0.0  0.0
+           CO2       0.0  0.0  0.0  0.0
+           H2O       0.0  0.0  0.0  0.0
+           NH3       0.0  0.0  0.0  0.0
+== K2-18b [Madhusudhan et al. 2023 native SOSS + G395H (OSF 36djh); MIRI from the Jaziri et al. 2025 copy of Madhusudhan et al. 2025 (Zenodo 16277833); 5 of 104 bins flat-filled]: fraction of 500 Ariel tier1 noise draws called present (threshold 1e-4)
+learner               KNN   MLP   RFC   SVC
+variant    molecule                        
+airs_only  CH4       65.0  63.0  43.0  65.0
+           CO2       22.0   6.0   0.0   1.0
+           H2O        8.0   7.0   0.0   0.0
+           NH3        0.0   0.0   0.0   0.0
+all        CH4       54.0  43.0   3.0  39.0
+           CO2       16.0  19.0   0.0   0.0
+           H2O        5.0  53.0   0.0   0.0
+           NH3        0.0   0.0   0.0   0.0
+no_optical CH4       65.0  48.0   5.0  41.0
+           CO2       21.0   4.0   0.0   0.0
+           H2O        9.0  57.0   0.0   0.0
+           NH3        0.0   0.0   0.0   0.0
+== band metric (Mugnai et al. 2021, Eq. 3): M_H2O = -1.59, M_CH4 = -1.11, M_CO2 = 0.84  (their flags: CH4 >= 0.22, CO2 >= 0.26, H2O >= 0.80)
