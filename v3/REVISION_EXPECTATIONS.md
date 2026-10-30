@@ -172,3 +172,9 @@ Design under test: matched+amp of section I, unchanged, against the frozen metho
 - K1. matched+amp scores above the frozen method on the 17 labels.
 - K2. matched+amp's balanced credit is above 0.5 on the HST labels.
 - K3. It finds at least 4 of the 7 present labels with at most 3 of the 10 absent labels wrong.
+
+## L. Second round: a broader training population (written 2026-10-30, before its first run)
+
+Sections I to K measured matched+amp. On the rainout grid it beat the frozen method at both noise levels, while on the 17 unseen real labels it did not clearly beat it, and absolute recall stayed low (0.40). The training population has CO switched off, no gas above 1e-2 and a single mean molecular weight near hydrogen, all of which real spectra and the grid violate. This round changes the population.
+
+Development data: the rainout grid only, by the balanced credit of section J. The real spectra are not consulted for any choice in this round, though they have been seen; choices cannot be blind to what the earlier scores suggested. Candidates, in order: B, 8,000 new spectra of POP-III planets with CH4, H2O, CO2, NH3 and CO each log-uniform in -9 to -1, a third clear, a third with a Lee-Mie haze, a third with a grey deck at 5 to 500 Pa; B+bal, the same with classes balanced in training; B+bal+ens, adding a vote from the haze+deck-retrained design. The candidate with the highest balanced credit at Tier-1 on rainout is frozen and committed, then scored once on data no design has seen: the local-condensation grid, and the photochemical Crossfield et al. (2025) grid. The 107 real labels are then reported as they fall, as descriptive results.
