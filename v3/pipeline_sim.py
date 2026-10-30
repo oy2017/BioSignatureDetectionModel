@@ -29,6 +29,8 @@ import muting_router as MR  # noqa: E402
 
 MOLS, LEARNERS = D.MOLS, D.LEARNERS
 CASES = ["clean", "haze2e6", "haze3e7", "cloud1e2", "spots20", "compound", "white_x2", "white_x3"]
+CONFINED = ["hazetop1", "plhaze29", "plhaze28"]   # haze_confined.py; used when rendered
+CASES += [c for c in CONFINED if os.path.exists(os.path.join(F.DIRS["faithful"], f"pop1_native_{c}.npy"))]
 
 
 def noise_free_cases(wl, e):
@@ -52,7 +54,7 @@ def noise_free_cases(wl, e):
 
 def main():
     _, PQ = MR.scale_height_proxy(); T_HI, T_LO = PQ["clear_max"], PQ["pop_p01"]
-    cases, Pte, e, sig = D.test_cases(extra=("haze2e6",)); wl = np.load(os.path.join(DATA, "native_wl.npy")); nf = noise_free_cases(wl, e)
+    cases, Pte, e, sig = D.test_cases(extra=tuple(c for c in CASES if c not in D.CASES)); wl = np.load(os.path.join(DATA, "native_wl.npy")); nf = noise_free_cases(wl, e)
     sc = D.Scorer(e); mod = Pte["modulation_5H"].to_numpy(float) * 1e6
     y = {m: (Pte[f"atm {m}"] > -4).to_numpy() for m in MOLS}
     ret = {s: joblib.load(os.path.join(DATA, "alfnoor_jwst", f"learners_all_{s}.joblib")) for s in ("haze", "hazedeck")}
@@ -71,14 +73,14 @@ def main():
         X = cases[c]; P = P0 if c == "clean" else sc.probs(X); o = opt(X)
         PR = {s: {(m, k): AT.prob(L["models"][("1e-4", m, k)], AJ.znorm(X, L["cols"])) for m in MOLS for k in LEARNERS} for s, L in ret.items()}
         amp = {"observed": ratio_observed(X), "noise-free": ratio_nf(c)}
-        rates.append(dict(case=c, **{f"{a} up %": 100 * np.mean(np.isfinite(r) & (r > T_HI)) for a, r in amp.items()}, **{f"{a} low %": 100 * np.mean(r < T_LO) for a, r in amp.items()}, undefined_pct=100 * np.mean(~np.isfinite(amp["observed"]))))
+        rates.append(dict(case=c, **{f"{a} up %": 100 * np.mean(np.isfinite(r) & (r > T_HI)) for a, r in amp.items()}, **{f"{a} low %": 100 * np.mean(r < T_LO) for a, r in amp.items()}, undefined_pct=100 * np.mean(~np.isfinite(amp["observed"])), optical_flag_pct=100 * np.mean(o > thr_opt)))
         for m in MOLS:
             for k in LEARNERS:
                 p, pa = P["all"][(m, k)], P["airs_only"][(m, k)]; shape = (o > thr_opt) | (dis(P, m, k) > thr_dis[(m, k)]); ps = np.where(shape, pa, p); t = y[m]
                 def rec(name, pp, keep=None):
                     keep = np.ones(len(pp), bool) if keep is None else keep; right = (pp >= 0.5) == t
                     rows.append(dict(case=c, molecule=m, learner=k, pipeline=name, accuracy=100 * right[keep].mean(), coverage=100 * keep.mean(), half_credit=100 * (right[keep].sum() + 0.5 * (~keep).sum()) / len(t), recall=100 * (pp >= 0.5)[keep & t].mean(), shape_flagged=100 * shape.mean()))
-                rec("published, all inputs", p); rec("AIRS-only everywhere", pa); rec("shape flag -> AIRS-only", ps)
+                rec("published, all inputs", p); rec("no-optical everywhere", P["no_optical"][(m, k)]); rec("AIRS-only everywhere", pa); rec("shape flag -> AIRS-only", ps)
                 for s in ret:
                     pr = PR[s][(m, k)]; rec(f"retrained ({s}) everywhere", pr)
                     for a, r in amp.items():
@@ -95,7 +97,8 @@ def main():
     L += ["", "two-sided rows, coverage % and half-credit accuracy % (a withheld label counts one half)"]
     for p_ in [q for q in order if "two-sided" in q]:
         g = df[df.pipeline == p_].groupby("case")[["coverage", "half_credit"]].mean().loc[CASES]; L.append(f"{p_:<48} " + " ".join(f"{g.coverage[c]:4.0f}/{g.half_credit[c]:4.1f}" for c in CASES))
-    L += ["", "amplitude flag rates, % of planets"]; L.append(pd.DataFrame(rates).round(1).to_string(index=False))
+    g = df[df.pipeline == "shape flag -> AIRS-only"].groupby("case").shape_flagged.mean().loc[CASES]; L += ["", "shape flag fires, % of cells: " + ", ".join(f"{c} {g[c]:.1f}" for c in CASES)]
+    L += ["", "amplitude flag and optical flag rates, % of planets"]; L.append(pd.DataFrame(rates).round(1).to_string(index=False))
     txt = "\n".join(L); open(os.path.join(RESULTS, "pipeline_sim.txt"), "w").write(txt + "\n"); print(txt)
 
 

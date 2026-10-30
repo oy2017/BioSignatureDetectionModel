@@ -159,8 +159,10 @@ def build_model(row, gases, fill_gas, cloud_pressure=None, haze=None):
                   'p_mass' (Earth units), 's temperature', 's radius', 's mass' (K, solar units), 'sma' (AU)
     fill_gas      'H2' or ['H2', 'He'] (TauREx's default He/H2 ratio when both are given)
     cloud_pressure grey, opaque deck at this pressure (Pa), or None
-    haze          None or dict(radius=<um>, q=<Q0>, mix_ratio=<particle mixing ratio>) for a
-                  Lee et al. (2013) Mie haze filling the column
+    haze          None; or dict(radius=<um>, q=<Q0>, mix_ratio=<particles per m3>, optional topP, bottomP in Pa) for a
+                  Lee et al. (2013) Mie haze, one number density in every layer between the two pressures (the whole
+                  column by default); or dict(log_sigma0=<log10 m2 per molecule at 1 um>, alpha=<slope>) for a power-law
+                  haze at constant mixing ratio
     """
     if _configured["key"] is None or _configured["key"][0] != os.getpid():
         configure_opacities()                     # default tables, unless the caller already chose a directory
@@ -186,7 +188,9 @@ def build_model(row, gases, fill_gas, cloud_pressure=None, haze=None):
                            atm_max_pressure=base, atm_min_pressure=top)
     tm.add_contribution(AbsorptionContribution())
     tm.add_contribution(RayleighContribution())
-    if haze is not None:
+    if haze is not None and "log_sigma0" in haze:     # constant mixing ratio: cross-section per molecule, scales with the gas density
+        tm.add_contribution(PowerLawHazeContribution(haze_log_sigma0=haze["log_sigma0"], haze_alpha=haze["alpha"]))
+    elif haze is not None:
         tm.add_contribution(LeeMieContribution(lee_mie_radius=haze.get("radius", 0.01), lee_mie_q=haze.get("q", 40),
                                                lee_mie_mix_ratio=haze.get("mix_ratio", 1e-10),
                                                lee_mie_bottomP=haze.get("bottomP", -1), lee_mie_topP=haze.get("topP", -1)))

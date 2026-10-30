@@ -98,3 +98,27 @@ C5. The diagnostic fires on WASP-39 b for at least one learner if and only if A3
     fires on HAT-P-18 b (spots) and K2-18 b (haze); it does not fire on WASP-166 b.
 C6. Across the lost-target weights 1, 3 and 10, the ranking of strategies in the selection
     simulation is unchanged.
+
+## F. The amplitude flag through each planet's coverage, and physically confined hazes
+
+Added 2026-10-30 after the four-reviewer pass, before either run (`amplitude_flag.py`, `haze_confined.py`). Earlier versions of the
+flag were chosen after its panel values were seen; this rule is fixed here so that no further choice is made from the panel.
+
+Rule. A reduction's ratio is the catalogue's five-scale-height modulation over the noise-corrected dispersion of its measured bins.
+Its upper threshold is the largest ratio of any clear POP-I planet through that reduction's measured bins, and its lower cut is the first
+percentile of POP-I with its own decks through the same bins. Every reduction with a measured dispersion gets a ratio, including the two without a
+clear twin. Flagged planets go to the design retrained with haze; the rest take the shape flag. The 99th-percentile and AIRS-range forms are
+reported as sensitivities and are not candidates to replace the rule.
+
+F1. At least seven of the ten giants the census places beyond the prior stay flagged. At least one of the four planets within 0.25 of the old threshold drops out.
+F2. The fixed-denominator panel score stays within 2 labels of the 53.5 of 66 scored with the full-bin threshold.
+F3. The 95 % planet-bootstrap interval against AIRS-only everywhere still includes zero; the interval against the published classifier still excludes it.
+
+Hazes: Lee-Mie 3 × 10⁷ m⁻³ below 1 Pa; power law at constant mixing ratio with slope 4 and log₁₀ σ₀(1 µm) of -29 and -28 (about 10³ and 10⁴ times H₂ Rayleigh).
+
+G1. The optical-point mechanism survives: under each haze the all-input design loses more accuracy than the no-optical design, which loses more than the AIRS-only one.
+G2. The all-input loss is smaller than the 17.7 points of the column-filling haze, between 5 and 15 points at the weakest of the three.
+G3. The optical flag fires on fewer planets than the 100 % of the column-filling haze at the same clean threshold, between 40 and 95 % at the weakest.
+G4. The AIRS-only design stays within 2 points of its clean accuracy under each haze.
+G5. The design retrained on the column-filling haze recovers at least half of the all-input loss under each confined haze.
+
