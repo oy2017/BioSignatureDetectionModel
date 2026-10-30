@@ -1,0 +1,673 @@
+planet,molecule,label,variant,learners_present,measured_optical,measured_nirspec,measured_airs
+TOI-270d,CH4,present,real,1,1,11,75
+TOI-270d,H2O,,real,0,1,11,75
+TOI-270d,CO2,present,real,0,1,11,75
+TOI-270d,NH3,absent,real,0,1,11,75
+TOI-270d,CH4,present,optical points,2,1,11,75
+TOI-270d,H2O,,optical points,1,1,11,75
+TOI-270d,CO2,present,optical points,2,1,11,75
+TOI-270d,NH3,absent,optical points,4,1,11,75
+TOI-270d,CH4,present,NIRSpec channel,3,1,11,75
+TOI-270d,H2O,,NIRSpec channel,1,1,11,75
+TOI-270d,CO2,present,NIRSpec channel,1,1,11,75
+TOI-270d,NH3,absent,NIRSpec channel,0,1,11,75
+TOI-270d,CH4,present,"both, all below 1.95 um",4,1,11,75
+TOI-270d,H2O,,"both, all below 1.95 um",2,1,11,75
+TOI-270d,CO2,present,"both, all below 1.95 um",3,1,11,75
+TOI-270d,NH3,absent,"both, all below 1.95 um",1,1,11,75
+TOI-270d,CH4,present,AIRS bins,1,1,11,75
+TOI-270d,H2O,,AIRS bins,1,1,11,75
+TOI-270d,CO2,present,AIRS bins,0,1,11,75
+TOI-270d,NH3,absent,AIRS bins,0,1,11,75
+TOI-270d,CH4,present,filled bins below 1.95 um,2,1,11,75
+TOI-270d,H2O,,filled bins below 1.95 um,2,1,11,75
+TOI-270d,CO2,present,filled bins below 1.95 um,1,1,11,75
+TOI-270d,NH3,absent,filled bins below 1.95 um,3,1,11,75
+TOI-270d,CH4,present,measured bins below 1.95 um,3,1,11,75
+TOI-270d,H2O,,measured bins below 1.95 um,1,1,11,75
+TOI-270d,CO2,present,measured bins below 1.95 um,1,1,11,75
+TOI-270d,NH3,absent,measured bins below 1.95 um,0,1,11,75
+K2-18b,CH4,present,real,0,1,11,87
+K2-18b,H2O,absent,real,0,1,11,87
+K2-18b,CO2,,real,0,1,11,87
+K2-18b,NH3,absent,real,0,1,11,87
+K2-18b,CH4,present,optical points,1,1,11,87
+K2-18b,H2O,absent,optical points,1,1,11,87
+K2-18b,CO2,,optical points,0,1,11,87
+K2-18b,NH3,absent,optical points,0,1,11,87
+K2-18b,CH4,present,NIRSpec channel,2,1,11,87
+K2-18b,H2O,absent,NIRSpec channel,1,1,11,87
+K2-18b,CO2,,NIRSpec channel,0,1,11,87
+K2-18b,NH3,absent,NIRSpec channel,0,1,11,87
+K2-18b,CH4,present,"both, all below 1.95 um",4,1,11,87
+K2-18b,H2O,absent,"both, all below 1.95 um",1,1,11,87
+K2-18b,CO2,,"both, all below 1.95 um",0,1,11,87
+K2-18b,NH3,absent,"both, all below 1.95 um",0,1,11,87
+K2-18b,CH4,present,AIRS bins,3,1,11,87
+K2-18b,H2O,absent,AIRS bins,0,1,11,87
+K2-18b,CO2,,AIRS bins,0,1,11,87
+K2-18b,NH3,absent,AIRS bins,0,1,11,87
+K2-18b,CH4,present,filled bins below 1.95 um,1,1,11,87
+K2-18b,H2O,absent,filled bins below 1.95 um,1,1,11,87
+K2-18b,CO2,,filled bins below 1.95 um,0,1,11,87
+K2-18b,NH3,absent,filled bins below 1.95 um,0,1,11,87
+K2-18b,CH4,present,measured bins below 1.95 um,2,1,11,87
+K2-18b,H2O,absent,measured bins below 1.95 um,1,1,11,87
+K2-18b,CO2,,measured bins below 1.95 um,0,1,11,87
+K2-18b,NH3,absent,measured bins below 1.95 um,0,1,11,87
+K2-18b-alt,CH4,present,real,1,2,11,75
+K2-18b-alt,H2O,absent,real,0,2,11,75
+K2-18b-alt,CO2,,real,0,2,11,75
+K2-18b-alt,NH3,absent,real,0,2,11,75
+K2-18b-alt,CH4,present,optical points,3,2,11,75
+K2-18b-alt,H2O,absent,optical points,3,2,11,75
+K2-18b-alt,CO2,,optical points,0,2,11,75
+K2-18b-alt,NH3,absent,optical points,0,2,11,75
+K2-18b-alt,CH4,present,NIRSpec channel,3,2,11,75
+K2-18b-alt,H2O,absent,NIRSpec channel,0,2,11,75
+K2-18b-alt,CO2,,NIRSpec channel,1,2,11,75
+K2-18b-alt,NH3,absent,NIRSpec channel,0,2,11,75
+K2-18b-alt,CH4,present,"both, all below 1.95 um",4,2,11,75
+K2-18b-alt,H2O,absent,"both, all below 1.95 um",2,2,11,75
+K2-18b-alt,CO2,,"both, all below 1.95 um",2,2,11,75
+K2-18b-alt,NH3,absent,"both, all below 1.95 um",0,2,11,75
+K2-18b-alt,CH4,present,AIRS bins,3,2,11,75
+K2-18b-alt,H2O,absent,AIRS bins,0,2,11,75
+K2-18b-alt,CO2,,AIRS bins,0,2,11,75
+K2-18b-alt,NH3,absent,AIRS bins,0,2,11,75
+K2-18b-alt,CH4,present,filled bins below 1.95 um,3,2,11,75
+K2-18b-alt,H2O,absent,filled bins below 1.95 um,0,2,11,75
+K2-18b-alt,CO2,,filled bins below 1.95 um,0,2,11,75
+K2-18b-alt,NH3,absent,filled bins below 1.95 um,0,2,11,75
+K2-18b-alt,CH4,present,measured bins below 1.95 um,4,2,11,75
+K2-18b-alt,H2O,absent,measured bins below 1.95 um,1,2,11,75
+K2-18b-alt,CO2,,measured bins below 1.95 um,2,2,11,75
+K2-18b-alt,NH3,absent,measured bins below 1.95 um,0,2,11,75
+TOI-421b,CH4,absent,real,0,1,11,77
+TOI-421b,H2O,,real,1,1,11,77
+TOI-421b,CO2,absent,real,1,1,11,77
+TOI-421b,NH3,,real,0,1,11,77
+TOI-421b,CH4,absent,optical points,0,1,11,77
+TOI-421b,H2O,,optical points,3,1,11,77
+TOI-421b,CO2,absent,optical points,1,1,11,77
+TOI-421b,NH3,,optical points,4,1,11,77
+TOI-421b,CH4,absent,NIRSpec channel,0,1,11,77
+TOI-421b,H2O,,NIRSpec channel,4,1,11,77
+TOI-421b,CO2,absent,NIRSpec channel,0,1,11,77
+TOI-421b,NH3,,NIRSpec channel,0,1,11,77
+TOI-421b,CH4,absent,"both, all below 1.95 um",0,1,11,77
+TOI-421b,H2O,,"both, all below 1.95 um",4,1,11,77
+TOI-421b,CO2,absent,"both, all below 1.95 um",1,1,11,77
+TOI-421b,NH3,,"both, all below 1.95 um",3,1,11,77
+TOI-421b,CH4,absent,AIRS bins,0,1,11,77
+TOI-421b,H2O,,AIRS bins,2,1,11,77
+TOI-421b,CO2,absent,AIRS bins,0,1,11,77
+TOI-421b,NH3,,AIRS bins,0,1,11,77
+TOI-421b,CH4,absent,filled bins below 1.95 um,0,1,11,77
+TOI-421b,H2O,,filled bins below 1.95 um,4,1,11,77
+TOI-421b,CO2,absent,filled bins below 1.95 um,1,1,11,77
+TOI-421b,NH3,,filled bins below 1.95 um,4,1,11,77
+TOI-421b,CH4,absent,measured bins below 1.95 um,0,1,11,77
+TOI-421b,H2O,,measured bins below 1.95 um,3,1,11,77
+TOI-421b,CO2,absent,measured bins below 1.95 um,0,1,11,77
+TOI-421b,NH3,,measured bins below 1.95 um,0,1,11,77
+HAT-P-18b,CH4,absent,real,0,2,11,35
+HAT-P-18b,H2O,,real,3,2,11,35
+HAT-P-18b,CO2,absent,real,0,2,11,35
+HAT-P-18b,NH3,absent,real,0,2,11,35
+HAT-P-18b,CH4,absent,optical points,2,2,11,35
+HAT-P-18b,H2O,,optical points,4,2,11,35
+HAT-P-18b,CO2,absent,optical points,2,2,11,35
+HAT-P-18b,NH3,absent,optical points,3,2,11,35
+HAT-P-18b,CH4,absent,NIRSpec channel,0,2,11,35
+HAT-P-18b,H2O,,NIRSpec channel,3,2,11,35
+HAT-P-18b,CO2,absent,NIRSpec channel,0,2,11,35
+HAT-P-18b,NH3,absent,NIRSpec channel,0,2,11,35
+HAT-P-18b,CH4,absent,"both, all below 1.95 um",1,2,11,35
+HAT-P-18b,H2O,,"both, all below 1.95 um",4,2,11,35
+HAT-P-18b,CO2,absent,"both, all below 1.95 um",0,2,11,35
+HAT-P-18b,NH3,absent,"both, all below 1.95 um",0,2,11,35
+HAT-P-18b,CH4,absent,AIRS bins,0,2,11,35
+HAT-P-18b,H2O,,AIRS bins,2,2,11,35
+HAT-P-18b,CO2,absent,AIRS bins,0,2,11,35
+HAT-P-18b,NH3,absent,AIRS bins,0,2,11,35
+HAT-P-18b,CH4,absent,filled bins below 1.95 um,2,2,11,35
+HAT-P-18b,H2O,,filled bins below 1.95 um,4,2,11,35
+HAT-P-18b,CO2,absent,filled bins below 1.95 um,0,2,11,35
+HAT-P-18b,NH3,absent,filled bins below 1.95 um,0,2,11,35
+HAT-P-18b,CH4,absent,measured bins below 1.95 um,0,2,11,35
+HAT-P-18b,H2O,,measured bins below 1.95 um,4,2,11,35
+HAT-P-18b,CO2,absent,measured bins below 1.95 um,0,2,11,35
+HAT-P-18b,NH3,absent,measured bins below 1.95 um,0,2,11,35
+WASP-107b,CH4,absent,real,0,0,0,54
+WASP-107b,H2O,present,real,0,0,0,54
+WASP-107b,CO2,,real,3,0,0,54
+WASP-107b,NH3,absent,real,0,0,0,54
+WASP-107b,CH4,absent,optical points,2,0,0,54
+WASP-107b,H2O,present,optical points,3,0,0,54
+WASP-107b,CO2,,optical points,2,0,0,54
+WASP-107b,NH3,absent,optical points,4,0,0,54
+WASP-107b,CH4,absent,NIRSpec channel,0,0,0,54
+WASP-107b,H2O,present,NIRSpec channel,3,0,0,54
+WASP-107b,CO2,,NIRSpec channel,2,0,0,54
+WASP-107b,NH3,absent,NIRSpec channel,0,0,0,54
+WASP-107b,CH4,absent,"both, all below 1.95 um",2,0,0,54
+WASP-107b,H2O,present,"both, all below 1.95 um",3,0,0,54
+WASP-107b,CO2,,"both, all below 1.95 um",3,0,0,54
+WASP-107b,NH3,absent,"both, all below 1.95 um",3,0,0,54
+WASP-107b,CH4,absent,AIRS bins,0,0,0,54
+WASP-107b,H2O,present,AIRS bins,2,0,0,54
+WASP-107b,CO2,,AIRS bins,0,0,0,54
+WASP-107b,NH3,absent,AIRS bins,0,0,0,54
+WASP-107b,CH4,absent,filled bins below 1.95 um,2,0,0,54
+WASP-107b,H2O,present,filled bins below 1.95 um,3,0,0,54
+WASP-107b,CO2,,filled bins below 1.95 um,3,0,0,54
+WASP-107b,NH3,absent,filled bins below 1.95 um,3,0,0,54
+WASP-107b,CH4,absent,measured bins below 1.95 um,0,0,0,54
+WASP-107b,H2O,present,measured bins below 1.95 um,0,0,0,54
+WASP-107b,CO2,,measured bins below 1.95 um,3,0,0,54
+WASP-107b,NH3,absent,measured bins below 1.95 um,0,0,0,54
+HD189733b,CH4,absent,real,0,0,0,56
+HD189733b,H2O,,real,1,0,0,56
+HD189733b,CO2,absent,real,1,0,0,56
+HD189733b,NH3,absent,real,0,0,0,56
+HD189733b,CH4,absent,optical points,0,0,0,56
+HD189733b,H2O,,optical points,4,0,0,56
+HD189733b,CO2,absent,optical points,2,0,0,56
+HD189733b,NH3,absent,optical points,4,0,0,56
+HD189733b,CH4,absent,NIRSpec channel,0,0,0,56
+HD189733b,H2O,,NIRSpec channel,3,0,0,56
+HD189733b,CO2,absent,NIRSpec channel,0,0,0,56
+HD189733b,NH3,absent,NIRSpec channel,0,0,0,56
+HD189733b,CH4,absent,"both, all below 1.95 um",0,0,0,56
+HD189733b,H2O,,"both, all below 1.95 um",4,0,0,56
+HD189733b,CO2,absent,"both, all below 1.95 um",1,0,0,56
+HD189733b,NH3,absent,"both, all below 1.95 um",3,0,0,56
+HD189733b,CH4,absent,AIRS bins,0,0,0,56
+HD189733b,H2O,,AIRS bins,2,0,0,56
+HD189733b,CO2,absent,AIRS bins,0,0,0,56
+HD189733b,NH3,absent,AIRS bins,0,0,0,56
+HD189733b,CH4,absent,filled bins below 1.95 um,0,0,0,56
+HD189733b,H2O,,filled bins below 1.95 um,4,0,0,56
+HD189733b,CO2,absent,filled bins below 1.95 um,1,0,0,56
+HD189733b,NH3,absent,filled bins below 1.95 um,3,0,0,56
+HD189733b,CH4,absent,measured bins below 1.95 um,0,0,0,56
+HD189733b,H2O,,measured bins below 1.95 um,1,0,0,56
+HD189733b,CO2,absent,measured bins below 1.95 um,1,0,0,56
+HD189733b,NH3,absent,measured bins below 1.95 um,0,0,0,56
+HAT-P-26b,CH4,absent,real,0,0,0,35
+HAT-P-26b,H2O,present,real,0,0,0,35
+HAT-P-26b,CO2,present,real,2,0,0,35
+HAT-P-26b,NH3,absent,real,0,0,0,35
+HAT-P-26b,CH4,absent,optical points,2,0,0,35
+HAT-P-26b,H2O,present,optical points,3,0,0,35
+HAT-P-26b,CO2,present,optical points,2,0,0,35
+HAT-P-26b,NH3,absent,optical points,4,0,0,35
+HAT-P-26b,CH4,absent,NIRSpec channel,0,0,0,35
+HAT-P-26b,H2O,present,NIRSpec channel,0,0,0,35
+HAT-P-26b,CO2,present,NIRSpec channel,0,0,0,35
+HAT-P-26b,NH3,absent,NIRSpec channel,0,0,0,35
+HAT-P-26b,CH4,absent,"both, all below 1.95 um",3,0,0,35
+HAT-P-26b,H2O,present,"both, all below 1.95 um",3,0,0,35
+HAT-P-26b,CO2,present,"both, all below 1.95 um",2,0,0,35
+HAT-P-26b,NH3,absent,"both, all below 1.95 um",3,0,0,35
+HAT-P-26b,CH4,absent,AIRS bins,0,0,0,35
+HAT-P-26b,H2O,present,AIRS bins,2,0,0,35
+HAT-P-26b,CO2,present,AIRS bins,2,0,0,35
+HAT-P-26b,NH3,absent,AIRS bins,0,0,0,35
+HAT-P-26b,CH4,absent,filled bins below 1.95 um,3,0,0,35
+HAT-P-26b,H2O,present,filled bins below 1.95 um,3,0,0,35
+HAT-P-26b,CO2,present,filled bins below 1.95 um,2,0,0,35
+HAT-P-26b,NH3,absent,filled bins below 1.95 um,3,0,0,35
+HAT-P-26b,CH4,absent,measured bins below 1.95 um,0,0,0,35
+HAT-P-26b,H2O,present,measured bins below 1.95 um,0,0,0,35
+HAT-P-26b,CO2,present,measured bins below 1.95 um,2,0,0,35
+HAT-P-26b,NH3,absent,measured bins below 1.95 um,0,0,0,35
+GJ3470b,CH4,,real,0,0,0,53
+GJ3470b,H2O,present,real,0,0,0,53
+GJ3470b,CO2,present,real,2,0,0,53
+GJ3470b,NH3,absent,real,0,0,0,53
+GJ3470b,CH4,,optical points,2,0,0,53
+GJ3470b,H2O,present,optical points,3,0,0,53
+GJ3470b,CO2,present,optical points,2,0,0,53
+GJ3470b,NH3,absent,optical points,4,0,0,53
+GJ3470b,CH4,,NIRSpec channel,0,0,0,53
+GJ3470b,H2O,present,NIRSpec channel,1,0,0,53
+GJ3470b,CO2,present,NIRSpec channel,1,0,0,53
+GJ3470b,NH3,absent,NIRSpec channel,0,0,0,53
+GJ3470b,CH4,,"both, all below 1.95 um",3,0,0,53
+GJ3470b,H2O,present,"both, all below 1.95 um",3,0,0,53
+GJ3470b,CO2,present,"both, all below 1.95 um",3,0,0,53
+GJ3470b,NH3,absent,"both, all below 1.95 um",3,0,0,53
+GJ3470b,CH4,,AIRS bins,0,0,0,53
+GJ3470b,H2O,present,AIRS bins,2,0,0,53
+GJ3470b,CO2,present,AIRS bins,0,0,0,53
+GJ3470b,NH3,absent,AIRS bins,0,0,0,53
+GJ3470b,CH4,,filled bins below 1.95 um,3,0,0,53
+GJ3470b,H2O,present,filled bins below 1.95 um,3,0,0,53
+GJ3470b,CO2,present,filled bins below 1.95 um,3,0,0,53
+GJ3470b,NH3,absent,filled bins below 1.95 um,3,0,0,53
+GJ3470b,CH4,,measured bins below 1.95 um,0,0,0,53
+GJ3470b,H2O,present,measured bins below 1.95 um,0,0,0,53
+GJ3470b,CO2,present,measured bins below 1.95 um,2,0,0,53
+GJ3470b,NH3,absent,measured bins below 1.95 um,0,0,0,53
+WASP-166b,CH4,absent,real,0,1,11,78
+WASP-166b,H2O,present,real,0,1,11,78
+WASP-166b,CO2,present,real,1,1,11,78
+WASP-166b,NH3,,real,0,1,11,78
+WASP-166b,CH4,absent,optical points,1,1,11,78
+WASP-166b,H2O,present,optical points,4,1,11,78
+WASP-166b,CO2,present,optical points,2,1,11,78
+WASP-166b,NH3,,optical points,4,1,11,78
+WASP-166b,CH4,absent,NIRSpec channel,0,1,11,78
+WASP-166b,H2O,present,NIRSpec channel,0,1,11,78
+WASP-166b,CO2,present,NIRSpec channel,1,1,11,78
+WASP-166b,NH3,,NIRSpec channel,0,1,11,78
+WASP-166b,CH4,absent,"both, all below 1.95 um",0,1,11,78
+WASP-166b,H2O,present,"both, all below 1.95 um",3,1,11,78
+WASP-166b,CO2,present,"both, all below 1.95 um",3,1,11,78
+WASP-166b,NH3,,"both, all below 1.95 um",3,1,11,78
+WASP-166b,CH4,absent,AIRS bins,0,1,11,78
+WASP-166b,H2O,present,AIRS bins,2,1,11,78
+WASP-166b,CO2,present,AIRS bins,2,1,11,78
+WASP-166b,NH3,,AIRS bins,0,1,11,78
+WASP-166b,CH4,absent,filled bins below 1.95 um,1,1,11,78
+WASP-166b,H2O,present,filled bins below 1.95 um,4,1,11,78
+WASP-166b,CO2,present,filled bins below 1.95 um,3,1,11,78
+WASP-166b,NH3,,filled bins below 1.95 um,4,1,11,78
+WASP-166b,CH4,absent,measured bins below 1.95 um,0,1,11,78
+WASP-166b,H2O,present,measured bins below 1.95 um,0,1,11,78
+WASP-166b,CO2,present,measured bins below 1.95 um,2,1,11,78
+WASP-166b,NH3,,measured bins below 1.95 um,0,1,11,78
+WASP-39b,CH4,absent,real,0,3,11,89
+WASP-39b,H2O,present,real,3,3,11,89
+WASP-39b,CO2,,real,0,3,11,89
+WASP-39b,NH3,,real,0,3,11,89
+WASP-39b,CH4,absent,optical points,2,3,11,89
+WASP-39b,H2O,present,optical points,4,3,11,89
+WASP-39b,CO2,,optical points,2,3,11,89
+WASP-39b,NH3,,optical points,3,3,11,89
+WASP-39b,CH4,absent,NIRSpec channel,0,3,11,89
+WASP-39b,H2O,present,NIRSpec channel,2,3,11,89
+WASP-39b,CO2,,NIRSpec channel,0,3,11,89
+WASP-39b,NH3,,NIRSpec channel,0,3,11,89
+WASP-39b,CH4,absent,"both, all below 1.95 um",1,3,11,89
+WASP-39b,H2O,present,"both, all below 1.95 um",4,3,11,89
+WASP-39b,CO2,,"both, all below 1.95 um",1,3,11,89
+WASP-39b,NH3,,"both, all below 1.95 um",3,3,11,89
+WASP-39b,CH4,absent,AIRS bins,0,3,11,89
+WASP-39b,H2O,present,AIRS bins,2,3,11,89
+WASP-39b,CO2,,AIRS bins,0,3,11,89
+WASP-39b,NH3,,AIRS bins,0,3,11,89
+WASP-39b,CH4,absent,filled bins below 1.95 um,0,3,11,89
+WASP-39b,H2O,present,filled bins below 1.95 um,3,3,11,89
+WASP-39b,CO2,,filled bins below 1.95 um,0,3,11,89
+WASP-39b,NH3,,filled bins below 1.95 um,0,3,11,89
+WASP-39b,CH4,absent,measured bins below 1.95 um,1,3,11,89
+WASP-39b,H2O,present,measured bins below 1.95 um,4,3,11,89
+WASP-39b,CO2,,measured bins below 1.95 um,1,3,11,89
+WASP-39b,NH3,,measured bins below 1.95 um,3,3,11,89
+TOI-1231b,CH4,present,real,2,2,11,61
+TOI-1231b,H2O,,real,0,2,11,61
+TOI-1231b,CO2,present,real,0,2,11,61
+TOI-1231b,NH3,,real,0,2,11,61
+TOI-1231b,CH4,present,optical points,3,2,11,61
+TOI-1231b,H2O,,optical points,2,2,11,61
+TOI-1231b,CO2,present,optical points,0,2,11,61
+TOI-1231b,NH3,,optical points,3,2,11,61
+TOI-1231b,CH4,present,NIRSpec channel,4,2,11,61
+TOI-1231b,H2O,,NIRSpec channel,0,2,11,61
+TOI-1231b,CO2,present,NIRSpec channel,0,2,11,61
+TOI-1231b,NH3,,NIRSpec channel,0,2,11,61
+TOI-1231b,CH4,present,"both, all below 1.95 um",4,2,11,61
+TOI-1231b,H2O,,"both, all below 1.95 um",2,2,11,61
+TOI-1231b,CO2,present,"both, all below 1.95 um",0,2,11,61
+TOI-1231b,NH3,,"both, all below 1.95 um",0,2,11,61
+TOI-1231b,CH4,present,AIRS bins,1,2,11,61
+TOI-1231b,H2O,,AIRS bins,0,2,11,61
+TOI-1231b,CO2,present,AIRS bins,0,2,11,61
+TOI-1231b,NH3,,AIRS bins,0,2,11,61
+TOI-1231b,CH4,present,filled bins below 1.95 um,3,2,11,61
+TOI-1231b,H2O,,filled bins below 1.95 um,0,2,11,61
+TOI-1231b,CO2,present,filled bins below 1.95 um,0,2,11,61
+TOI-1231b,NH3,,filled bins below 1.95 um,1,2,11,61
+TOI-1231b,CH4,present,measured bins below 1.95 um,4,2,11,61
+TOI-1231b,H2O,,measured bins below 1.95 um,0,2,11,61
+TOI-1231b,CO2,present,measured bins below 1.95 um,0,2,11,61
+TOI-1231b,NH3,,measured bins below 1.95 um,0,2,11,61
+K2-18b-hu,CH4,present,real,1,2,11,75
+K2-18b-hu,H2O,absent,real,0,2,11,75
+K2-18b-hu,CO2,,real,0,2,11,75
+K2-18b-hu,NH3,absent,real,0,2,11,75
+K2-18b-hu,CH4,present,optical points,3,2,11,75
+K2-18b-hu,H2O,absent,optical points,3,2,11,75
+K2-18b-hu,CO2,,optical points,1,2,11,75
+K2-18b-hu,NH3,absent,optical points,3,2,11,75
+K2-18b-hu,CH4,present,NIRSpec channel,3,2,11,75
+K2-18b-hu,H2O,absent,NIRSpec channel,0,2,11,75
+K2-18b-hu,CO2,,NIRSpec channel,0,2,11,75
+K2-18b-hu,NH3,absent,NIRSpec channel,0,2,11,75
+K2-18b-hu,CH4,present,"both, all below 1.95 um",4,2,11,75
+K2-18b-hu,H2O,absent,"both, all below 1.95 um",2,2,11,75
+K2-18b-hu,CO2,,"both, all below 1.95 um",2,2,11,75
+K2-18b-hu,NH3,absent,"both, all below 1.95 um",0,2,11,75
+K2-18b-hu,CH4,present,AIRS bins,2,2,11,75
+K2-18b-hu,H2O,absent,AIRS bins,0,2,11,75
+K2-18b-hu,CO2,,AIRS bins,0,2,11,75
+K2-18b-hu,NH3,absent,AIRS bins,0,2,11,75
+K2-18b-hu,CH4,present,filled bins below 1.95 um,1,2,11,75
+K2-18b-hu,H2O,absent,filled bins below 1.95 um,3,2,11,75
+K2-18b-hu,CO2,,filled bins below 1.95 um,0,2,11,75
+K2-18b-hu,NH3,absent,filled bins below 1.95 um,0,2,11,75
+K2-18b-hu,CH4,present,measured bins below 1.95 um,4,2,11,75
+K2-18b-hu,H2O,absent,measured bins below 1.95 um,2,2,11,75
+K2-18b-hu,CO2,,measured bins below 1.95 um,1,2,11,75
+K2-18b-hu,NH3,absent,measured bins below 1.95 um,0,2,11,75
+TOI-270d-hm,CH4,present,real,0,0,0,41
+TOI-270d-hm,H2O,,real,0,0,0,41
+TOI-270d-hm,CO2,present,real,0,0,0,41
+TOI-270d-hm,NH3,absent,real,0,0,0,41
+TOI-270d-hm,CH4,present,optical points,3,0,0,41
+TOI-270d-hm,H2O,,optical points,3,0,0,41
+TOI-270d-hm,CO2,present,optical points,3,0,0,41
+TOI-270d-hm,NH3,absent,optical points,3,0,0,41
+TOI-270d-hm,CH4,present,NIRSpec channel,2,0,0,41
+TOI-270d-hm,H2O,,NIRSpec channel,0,0,0,41
+TOI-270d-hm,CO2,present,NIRSpec channel,1,0,0,41
+TOI-270d-hm,NH3,absent,NIRSpec channel,0,0,0,41
+TOI-270d-hm,CH4,present,"both, all below 1.95 um",4,0,0,41
+TOI-270d-hm,H2O,,"both, all below 1.95 um",4,0,0,41
+TOI-270d-hm,CO2,present,"both, all below 1.95 um",3,0,0,41
+TOI-270d-hm,NH3,absent,"both, all below 1.95 um",0,0,0,41
+TOI-270d-hm,CH4,present,AIRS bins,1,0,0,41
+TOI-270d-hm,H2O,,AIRS bins,0,0,0,41
+TOI-270d-hm,CO2,present,AIRS bins,0,0,0,41
+TOI-270d-hm,NH3,absent,AIRS bins,0,0,0,41
+TOI-270d-hm,CH4,present,filled bins below 1.95 um,4,0,0,41
+TOI-270d-hm,H2O,,filled bins below 1.95 um,4,0,0,41
+TOI-270d-hm,CO2,present,filled bins below 1.95 um,3,0,0,41
+TOI-270d-hm,NH3,absent,filled bins below 1.95 um,0,0,0,41
+TOI-270d-hm,CH4,present,measured bins below 1.95 um,0,0,0,41
+TOI-270d-hm,H2O,,measured bins below 1.95 um,0,0,0,41
+TOI-270d-hm,CO2,present,measured bins below 1.95 um,0,0,0,41
+TOI-270d-hm,NH3,absent,measured bins below 1.95 um,0,0,0,41
+LTT3780c,CH4,present,real,0,1,11,85
+LTT3780c,H2O,,real,0,1,11,85
+LTT3780c,CO2,,real,0,1,11,85
+LTT3780c,NH3,absent,real,0,1,11,85
+LTT3780c,CH4,present,optical points,4,1,11,85
+LTT3780c,H2O,,optical points,0,1,11,85
+LTT3780c,CO2,,optical points,0,1,11,85
+LTT3780c,NH3,absent,optical points,1,1,11,85
+LTT3780c,CH4,present,NIRSpec channel,2,1,11,85
+LTT3780c,H2O,,NIRSpec channel,0,1,11,85
+LTT3780c,CO2,,NIRSpec channel,0,1,11,85
+LTT3780c,NH3,absent,NIRSpec channel,0,1,11,85
+LTT3780c,CH4,present,"both, all below 1.95 um",4,1,11,85
+LTT3780c,H2O,,"both, all below 1.95 um",1,1,11,85
+LTT3780c,CO2,,"both, all below 1.95 um",0,1,11,85
+LTT3780c,NH3,absent,"both, all below 1.95 um",0,1,11,85
+LTT3780c,CH4,present,AIRS bins,4,1,11,85
+LTT3780c,H2O,,AIRS bins,0,1,11,85
+LTT3780c,CO2,,AIRS bins,0,1,11,85
+LTT3780c,NH3,absent,AIRS bins,0,1,11,85
+LTT3780c,CH4,present,filled bins below 1.95 um,3,1,11,85
+LTT3780c,H2O,,filled bins below 1.95 um,0,1,11,85
+LTT3780c,CO2,,filled bins below 1.95 um,0,1,11,85
+LTT3780c,NH3,absent,filled bins below 1.95 um,1,1,11,85
+LTT3780c,CH4,present,measured bins below 1.95 um,2,1,11,85
+LTT3780c,H2O,,measured bins below 1.95 um,0,1,11,85
+LTT3780c,CO2,,measured bins below 1.95 um,0,1,11,85
+LTT3780c,NH3,absent,measured bins below 1.95 um,0,1,11,85
+WASP-96b,CH4,absent,real,0,2,11,75
+WASP-96b,H2O,present,real,2,2,11,75
+WASP-96b,CO2,absent,real,0,2,11,75
+WASP-96b,NH3,absent,real,0,2,11,75
+WASP-96b,CH4,absent,optical points,0,2,11,75
+WASP-96b,H2O,present,optical points,4,2,11,75
+WASP-96b,CO2,absent,optical points,1,2,11,75
+WASP-96b,NH3,absent,optical points,2,2,11,75
+WASP-96b,CH4,absent,NIRSpec channel,0,2,11,75
+WASP-96b,H2O,present,NIRSpec channel,2,2,11,75
+WASP-96b,CO2,absent,NIRSpec channel,0,2,11,75
+WASP-96b,NH3,absent,NIRSpec channel,0,2,11,75
+WASP-96b,CH4,absent,"both, all below 1.95 um",0,2,11,75
+WASP-96b,H2O,present,"both, all below 1.95 um",4,2,11,75
+WASP-96b,CO2,absent,"both, all below 1.95 um",1,2,11,75
+WASP-96b,NH3,absent,"both, all below 1.95 um",0,2,11,75
+WASP-96b,CH4,absent,AIRS bins,0,2,11,75
+WASP-96b,H2O,present,AIRS bins,2,2,11,75
+WASP-96b,CO2,absent,AIRS bins,0,2,11,75
+WASP-96b,NH3,absent,AIRS bins,0,2,11,75
+WASP-96b,CH4,absent,filled bins below 1.95 um,0,2,11,75
+WASP-96b,H2O,present,filled bins below 1.95 um,4,2,11,75
+WASP-96b,CO2,absent,filled bins below 1.95 um,0,2,11,75
+WASP-96b,NH3,absent,filled bins below 1.95 um,0,2,11,75
+WASP-96b,CH4,absent,measured bins below 1.95 um,0,2,11,75
+WASP-96b,H2O,present,measured bins below 1.95 um,4,2,11,75
+WASP-96b,CO2,absent,measured bins below 1.95 um,0,2,11,75
+WASP-96b,NH3,absent,measured bins below 1.95 um,0,2,11,75
+WASP-17b,CH4,absent,real,0,2,11,50
+WASP-17b,H2O,present,real,4,2,11,50
+WASP-17b,CO2,absent,real,0,2,11,50
+WASP-17b,NH3,,real,0,2,11,50
+WASP-17b,CH4,absent,optical points,2,2,11,50
+WASP-17b,H2O,present,optical points,3,2,11,50
+WASP-17b,CO2,absent,optical points,2,2,11,50
+WASP-17b,NH3,,optical points,3,2,11,50
+WASP-17b,CH4,absent,NIRSpec channel,1,2,11,50
+WASP-17b,H2O,present,NIRSpec channel,1,2,11,50
+WASP-17b,CO2,absent,NIRSpec channel,0,2,11,50
+WASP-17b,NH3,,NIRSpec channel,0,2,11,50
+WASP-17b,CH4,absent,"both, all below 1.95 um",2,2,11,50
+WASP-17b,H2O,present,"both, all below 1.95 um",3,2,11,50
+WASP-17b,CO2,absent,"both, all below 1.95 um",0,2,11,50
+WASP-17b,NH3,,"both, all below 1.95 um",3,2,11,50
+WASP-17b,CH4,absent,AIRS bins,0,2,11,50
+WASP-17b,H2O,present,AIRS bins,2,2,11,50
+WASP-17b,CO2,absent,AIRS bins,0,2,11,50
+WASP-17b,NH3,,AIRS bins,0,2,11,50
+WASP-17b,CH4,absent,filled bins below 1.95 um,2,2,11,50
+WASP-17b,H2O,present,filled bins below 1.95 um,4,2,11,50
+WASP-17b,CO2,absent,filled bins below 1.95 um,0,2,11,50
+WASP-17b,NH3,,filled bins below 1.95 um,3,2,11,50
+WASP-17b,CH4,absent,measured bins below 1.95 um,0,2,11,50
+WASP-17b,H2O,present,measured bins below 1.95 um,4,2,11,50
+WASP-17b,CO2,absent,measured bins below 1.95 um,0,2,11,50
+WASP-17b,NH3,,measured bins below 1.95 um,1,2,11,50
+WASP-80b,CH4,,real,0,0,0,49
+WASP-80b,H2O,present,real,2,0,0,49
+WASP-80b,CO2,,real,0,0,0,49
+WASP-80b,NH3,,real,0,0,0,49
+WASP-80b,CH4,,optical points,2,0,0,49
+WASP-80b,H2O,present,optical points,3,0,0,49
+WASP-80b,CO2,,optical points,2,0,0,49
+WASP-80b,NH3,,optical points,4,0,0,49
+WASP-80b,CH4,,NIRSpec channel,0,0,0,49
+WASP-80b,H2O,present,NIRSpec channel,0,0,0,49
+WASP-80b,CO2,,NIRSpec channel,1,0,0,49
+WASP-80b,NH3,,NIRSpec channel,0,0,0,49
+WASP-80b,CH4,,"both, all below 1.95 um",3,0,0,49
+WASP-80b,H2O,present,"both, all below 1.95 um",3,0,0,49
+WASP-80b,CO2,,"both, all below 1.95 um",1,0,0,49
+WASP-80b,NH3,,"both, all below 1.95 um",3,0,0,49
+WASP-80b,CH4,,AIRS bins,0,0,0,49
+WASP-80b,H2O,present,AIRS bins,1,0,0,49
+WASP-80b,CO2,,AIRS bins,0,0,0,49
+WASP-80b,NH3,,AIRS bins,0,0,0,49
+WASP-80b,CH4,,filled bins below 1.95 um,3,0,0,49
+WASP-80b,H2O,present,filled bins below 1.95 um,3,0,0,49
+WASP-80b,CO2,,filled bins below 1.95 um,1,0,0,49
+WASP-80b,NH3,,filled bins below 1.95 um,3,0,0,49
+WASP-80b,CH4,,measured bins below 1.95 um,0,0,0,49
+WASP-80b,H2O,present,measured bins below 1.95 um,2,0,0,49
+WASP-80b,CO2,,measured bins below 1.95 um,0,0,0,49
+WASP-80b,NH3,,measured bins below 1.95 um,0,0,0,49
+HD209458b,CH4,absent,real,0,0,0,58
+HD209458b,H2O,,real,2,0,0,58
+HD209458b,CO2,,real,0,0,0,58
+HD209458b,NH3,absent,real,0,0,0,58
+HD209458b,CH4,absent,optical points,2,0,0,58
+HD209458b,H2O,,optical points,3,0,0,58
+HD209458b,CO2,,optical points,2,0,0,58
+HD209458b,NH3,absent,optical points,4,0,0,58
+HD209458b,CH4,absent,NIRSpec channel,0,0,0,58
+HD209458b,H2O,,NIRSpec channel,2,0,0,58
+HD209458b,CO2,,NIRSpec channel,0,0,0,58
+HD209458b,NH3,absent,NIRSpec channel,0,0,0,58
+HD209458b,CH4,absent,"both, all below 1.95 um",2,0,0,58
+HD209458b,H2O,,"both, all below 1.95 um",3,0,0,58
+HD209458b,CO2,,"both, all below 1.95 um",1,0,0,58
+HD209458b,NH3,absent,"both, all below 1.95 um",4,0,0,58
+HD209458b,CH4,absent,AIRS bins,0,0,0,58
+HD209458b,H2O,,AIRS bins,2,0,0,58
+HD209458b,CO2,,AIRS bins,0,0,0,58
+HD209458b,NH3,absent,AIRS bins,0,0,0,58
+HD209458b,CH4,absent,filled bins below 1.95 um,2,0,0,58
+HD209458b,H2O,,filled bins below 1.95 um,3,0,0,58
+HD209458b,CO2,,filled bins below 1.95 um,1,0,0,58
+HD209458b,NH3,absent,filled bins below 1.95 um,4,0,0,58
+HD209458b,CH4,absent,measured bins below 1.95 um,0,0,0,58
+HD209458b,H2O,,measured bins below 1.95 um,2,0,0,58
+HD209458b,CO2,,measured bins below 1.95 um,0,0,0,58
+HD209458b,NH3,absent,measured bins below 1.95 um,0,0,0,58
+WASP-52b,CH4,absent,real,0,0,0,37
+WASP-52b,H2O,,real,0,0,0,37
+WASP-52b,CO2,,real,0,0,0,37
+WASP-52b,NH3,,real,1,0,0,37
+WASP-52b,CH4,absent,optical points,2,0,0,37
+WASP-52b,H2O,,optical points,3,0,0,37
+WASP-52b,CO2,,optical points,2,0,0,37
+WASP-52b,NH3,,optical points,4,0,0,37
+WASP-52b,CH4,absent,NIRSpec channel,0,0,0,37
+WASP-52b,H2O,,NIRSpec channel,0,0,0,37
+WASP-52b,CO2,,NIRSpec channel,0,0,0,37
+WASP-52b,NH3,,NIRSpec channel,0,0,0,37
+WASP-52b,CH4,absent,"both, all below 1.95 um",2,0,0,37
+WASP-52b,H2O,,"both, all below 1.95 um",3,0,0,37
+WASP-52b,CO2,,"both, all below 1.95 um",0,0,0,37
+WASP-52b,NH3,,"both, all below 1.95 um",3,0,0,37
+WASP-52b,CH4,absent,AIRS bins,0,0,0,37
+WASP-52b,H2O,,AIRS bins,2,0,0,37
+WASP-52b,CO2,,AIRS bins,0,0,0,37
+WASP-52b,NH3,,AIRS bins,0,0,0,37
+WASP-52b,CH4,absent,filled bins below 1.95 um,2,0,0,37
+WASP-52b,H2O,,filled bins below 1.95 um,3,0,0,37
+WASP-52b,CO2,,filled bins below 1.95 um,0,0,0,37
+WASP-52b,NH3,,filled bins below 1.95 um,3,0,0,37
+WASP-52b,CH4,absent,measured bins below 1.95 um,0,0,0,37
+WASP-52b,H2O,,measured bins below 1.95 um,0,0,0,37
+WASP-52b,CO2,,measured bins below 1.95 um,0,0,0,37
+WASP-52b,NH3,,measured bins below 1.95 um,1,0,0,37
+GJ9827d,CH4,,real,0,2,11,37
+GJ9827d,H2O,present,real,1,2,11,37
+GJ9827d,CO2,,real,1,2,11,37
+GJ9827d,NH3,,real,0,2,11,37
+GJ9827d,CH4,,optical points,1,2,11,37
+GJ9827d,H2O,present,optical points,4,2,11,37
+GJ9827d,CO2,,optical points,2,2,11,37
+GJ9827d,NH3,,optical points,3,2,11,37
+GJ9827d,CH4,,NIRSpec channel,0,2,11,37
+GJ9827d,H2O,present,NIRSpec channel,3,2,11,37
+GJ9827d,CO2,,NIRSpec channel,1,2,11,37
+GJ9827d,NH3,,NIRSpec channel,0,2,11,37
+GJ9827d,CH4,,"both, all below 1.95 um",2,2,11,37
+GJ9827d,H2O,present,"both, all below 1.95 um",4,2,11,37
+GJ9827d,CO2,,"both, all below 1.95 um",0,2,11,37
+GJ9827d,NH3,,"both, all below 1.95 um",0,2,11,37
+GJ9827d,CH4,,AIRS bins,0,2,11,37
+GJ9827d,H2O,present,AIRS bins,2,2,11,37
+GJ9827d,CO2,,AIRS bins,0,2,11,37
+GJ9827d,NH3,,AIRS bins,0,2,11,37
+GJ9827d,CH4,,filled bins below 1.95 um,1,2,11,37
+GJ9827d,H2O,present,filled bins below 1.95 um,2,2,11,37
+GJ9827d,CO2,,filled bins below 1.95 um,2,2,11,37
+GJ9827d,NH3,,filled bins below 1.95 um,1,2,11,37
+GJ9827d,CH4,,measured bins below 1.95 um,0,2,11,37
+GJ9827d,H2O,present,measured bins below 1.95 um,4,2,11,37
+GJ9827d,CO2,,measured bins below 1.95 um,0,2,11,37
+GJ9827d,NH3,,measured bins below 1.95 um,0,2,11,37
+WASP-94Ab,CH4,absent,real,0,1,11,71
+WASP-94Ab,H2O,present,real,4,1,11,71
+WASP-94Ab,CO2,,real,0,1,11,71
+WASP-94Ab,NH3,absent,real,0,1,11,71
+WASP-94Ab,CH4,absent,optical points,2,1,11,71
+WASP-94Ab,H2O,present,optical points,4,1,11,71
+WASP-94Ab,CO2,,optical points,2,1,11,71
+WASP-94Ab,NH3,absent,optical points,4,1,11,71
+WASP-94Ab,CH4,absent,NIRSpec channel,0,1,11,71
+WASP-94Ab,H2O,present,NIRSpec channel,1,1,11,71
+WASP-94Ab,CO2,,NIRSpec channel,0,1,11,71
+WASP-94Ab,NH3,absent,NIRSpec channel,0,1,11,71
+WASP-94Ab,CH4,absent,"both, all below 1.95 um",2,1,11,71
+WASP-94Ab,H2O,present,"both, all below 1.95 um",4,1,11,71
+WASP-94Ab,CO2,,"both, all below 1.95 um",1,1,11,71
+WASP-94Ab,NH3,absent,"both, all below 1.95 um",4,1,11,71
+WASP-94Ab,CH4,absent,AIRS bins,0,1,11,71
+WASP-94Ab,H2O,present,AIRS bins,2,1,11,71
+WASP-94Ab,CO2,,AIRS bins,0,1,11,71
+WASP-94Ab,NH3,absent,AIRS bins,0,1,11,71
+WASP-94Ab,CH4,absent,filled bins below 1.95 um,2,1,11,71
+WASP-94Ab,H2O,present,filled bins below 1.95 um,4,1,11,71
+WASP-94Ab,CO2,,filled bins below 1.95 um,2,1,11,71
+WASP-94Ab,NH3,absent,filled bins below 1.95 um,3,1,11,71
+WASP-94Ab,CH4,absent,measured bins below 1.95 um,0,1,11,71
+WASP-94Ab,H2O,present,measured bins below 1.95 um,2,1,11,71
+WASP-94Ab,CO2,,measured bins below 1.95 um,0,1,11,71
+WASP-94Ab,NH3,absent,measured bins below 1.95 um,0,1,11,71
+HIP67522b,CH4,,real,0,0,0,41
+HIP67522b,H2O,,real,0,0,0,41
+HIP67522b,CO2,absent,real,4,0,0,41
+HIP67522b,NH3,,real,0,0,0,41
+HIP67522b,CH4,,optical points,0,0,0,41
+HIP67522b,H2O,,optical points,0,0,0,41
+HIP67522b,CO2,absent,optical points,4,0,0,41
+HIP67522b,NH3,,optical points,0,0,0,41
+HIP67522b,CH4,,NIRSpec channel,0,0,0,41
+HIP67522b,H2O,,NIRSpec channel,0,0,0,41
+HIP67522b,CO2,absent,NIRSpec channel,3,0,0,41
+HIP67522b,NH3,,NIRSpec channel,0,0,0,41
+HIP67522b,CH4,,"both, all below 1.95 um",0,0,0,41
+HIP67522b,H2O,,"both, all below 1.95 um",0,0,0,41
+HIP67522b,CO2,absent,"both, all below 1.95 um",4,0,0,41
+HIP67522b,NH3,,"both, all below 1.95 um",0,0,0,41
+HIP67522b,CH4,,AIRS bins,0,0,0,41
+HIP67522b,H2O,,AIRS bins,2,0,0,41
+HIP67522b,CO2,absent,AIRS bins,0,0,0,41
+HIP67522b,NH3,,AIRS bins,0,0,0,41
+HIP67522b,CH4,,filled bins below 1.95 um,0,0,0,41
+HIP67522b,H2O,,filled bins below 1.95 um,0,0,0,41
+HIP67522b,CO2,absent,filled bins below 1.95 um,4,0,0,41
+HIP67522b,NH3,,filled bins below 1.95 um,0,0,0,41
+HIP67522b,CH4,,measured bins below 1.95 um,0,0,0,41
+HIP67522b,H2O,,measured bins below 1.95 um,0,0,0,41
+HIP67522b,CO2,absent,measured bins below 1.95 um,4,0,0,41
+HIP67522b,NH3,,measured bins below 1.95 um,0,0,0,41
+HAT-P-12b,CH4,absent,real,0,2,11,90
+HAT-P-12b,H2O,present,real,2,2,11,90
+HAT-P-12b,CO2,,real,3,2,11,90
+HAT-P-12b,NH3,absent,real,0,2,11,90
+HAT-P-12b,CH4,absent,optical points,2,2,11,90
+HAT-P-12b,H2O,present,optical points,3,2,11,90
+HAT-P-12b,CO2,,optical points,3,2,11,90
+HAT-P-12b,NH3,absent,optical points,4,2,11,90
+HAT-P-12b,CH4,absent,NIRSpec channel,0,2,11,90
+HAT-P-12b,H2O,present,NIRSpec channel,2,2,11,90
+HAT-P-12b,CO2,,NIRSpec channel,2,2,11,90
+HAT-P-12b,NH3,absent,NIRSpec channel,0,2,11,90
+HAT-P-12b,CH4,absent,"both, all below 1.95 um",3,2,11,90
+HAT-P-12b,H2O,present,"both, all below 1.95 um",4,2,11,90
+HAT-P-12b,CO2,,"both, all below 1.95 um",3,2,11,90
+HAT-P-12b,NH3,absent,"both, all below 1.95 um",3,2,11,90
+HAT-P-12b,CH4,absent,AIRS bins,0,2,11,90
+HAT-P-12b,H2O,present,AIRS bins,2,2,11,90
+HAT-P-12b,CO2,,AIRS bins,0,2,11,90
+HAT-P-12b,NH3,absent,AIRS bins,0,2,11,90
+HAT-P-12b,CH4,absent,filled bins below 1.95 um,2,2,11,90
+HAT-P-12b,H2O,present,filled bins below 1.95 um,3,2,11,90
+HAT-P-12b,CO2,,filled bins below 1.95 um,3,2,11,90
+HAT-P-12b,NH3,absent,filled bins below 1.95 um,2,2,11,90
+HAT-P-12b,CH4,absent,measured bins below 1.95 um,2,2,11,90
+HAT-P-12b,H2O,present,measured bins below 1.95 um,4,2,11,90
+HAT-P-12b,CO2,,measured bins below 1.95 um,4,2,11,90
+HAT-P-12b,NH3,absent,measured bins below 1.95 um,0,2,11,90

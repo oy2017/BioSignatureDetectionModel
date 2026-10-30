@@ -1,0 +1,67 @@
+planet,molecule,label,control,airs_control
+TOI-270d,CH4,present,passes,passes
+TOI-270d,CO2,present,fails,fails
+TOI-270d,NH3,absent,passes,passes
+K2-18b,CH4,present,passes,passes
+K2-18b,H2O,absent,passes,passes
+K2-18b,NH3,absent,passes,passes
+K2-18b-alt,CH4,present,passes,passes
+K2-18b-alt,H2O,absent,passes,passes
+K2-18b-alt,NH3,absent,passes,passes
+TOI-421b,CH4,absent,passes,passes
+TOI-421b,CO2,absent,passes,passes
+HAT-P-18b,CH4,absent,passes,passes
+HAT-P-18b,CO2,absent,passes,passes
+HAT-P-18b,NH3,absent,passes,passes
+WASP-107b,CH4,absent,passes,passes
+WASP-107b,H2O,present,fails,fails
+WASP-107b,NH3,absent,passes,passes
+HD189733b,CH4,absent,passes,passes
+HD189733b,CO2,absent,passes,fails
+HD189733b,NH3,absent,passes,passes
+HAT-P-26b,CH4,absent,passes,passes
+HAT-P-26b,H2O,present,fails,fails
+HAT-P-26b,CO2,present,passes,passes
+HAT-P-26b,NH3,absent,passes,passes
+GJ3470b,H2O,present,fails,passes
+GJ3470b,CO2,present,passes,passes
+GJ3470b,NH3,absent,passes,passes
+WASP-166b,CH4,absent,passes,passes
+WASP-166b,H2O,present,fails,passes
+WASP-166b,CO2,present,fails,passes
+TOI-1231b,CH4,present,passes,passes
+TOI-1231b,CO2,present,fails,fails
+K2-18b-hu,CH4,present,passes,passes
+K2-18b-hu,H2O,absent,passes,passes
+K2-18b-hu,NH3,absent,passes,passes
+TOI-270d-hm,CH4,present,fails,passes
+TOI-270d-hm,CO2,present,fails,passes
+TOI-270d-hm,NH3,absent,passes,passes
+GJ9827d,H2O,present,passes,passes
+WASP-52b,CH4,absent,passes,passes
+L98-59d,CH4,absent,no twin,no twin
+L98-59d,H2O,absent,no twin,no twin
+L98-59d,NH3,absent,no twin,no twin
+GJ1214b,CH4,present,no twin,no twin
+GJ1214b,CO2,present,no twin,no twin
+LTT3780c,CH4,present,passes,passes
+LTT3780c,NH3,absent,passes,passes
+WASP-80b,H2O,present,fails,passes
+HD209458b,CH4,absent,passes,passes
+HD209458b,NH3,absent,passes,passes
+WASP-96b,CH4,absent,passes,passes
+WASP-96b,H2O,present,passes,passes
+WASP-96b,CO2,absent,passes,passes
+WASP-96b,NH3,absent,passes,passes
+WASP-17b,CH4,absent,passes,passes
+WASP-17b,H2O,present,passes,passes
+WASP-17b,CO2,absent,passes,passes
+WASP-94Ab,CH4,absent,passes,passes
+WASP-94Ab,H2O,present,fails,passes
+WASP-94Ab,NH3,absent,passes,passes
+HIP67522b,CO2,absent,passes,passes
+HAT-P-12b,CH4,absent,passes,passes
+HAT-P-12b,H2O,present,passes,passes
+HAT-P-12b,NH3,absent,passes,passes
+WASP-39b,CH4,absent,passes,passes
+WASP-39b,H2O,present,passes,passes

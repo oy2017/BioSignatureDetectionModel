@@ -1,0 +1,21 @@
+1. Labels within half a decade of 10^-4 (955 planets, p_true < 0.95 undecidable)
+         share of labels    undecidable among them  all labels  excluding them  absent, excl.  present, excl.
+CH4                 20.1                      91.1        32.5            17.7           15.5            21.5
+H2O                 21.4                      91.7        54.2            44.1           42.5            46.9
+CO2                 19.1                      92.3        44.2            32.9           24.9            46.6
+NH3                 19.0                      89.0        32.0            18.7           14.0            27.6
+planets with at least one undecidable label of the four: 83.2 %; with at least one of CH4 and H2O: 67.1 %
+
+2. Do the undecided fit in 573 slots (955 planets)?
+target    decided present  undecided  decided absent  present + undecided  fits  targets lost, ranked by posterior
+CH4                   224        310             421                  534   yes                                  0
+H2O                   156        518             281                  674    no                                  2
+CO2                   161        422             372                  583    no                                  0
+NH3                   202        305             448                  507   yes                                  0
+either                353        456             146                  809    no                                 39
+
+3. Selection at 60 % on the 200-planet subsample (120 slots), classifier on its noisy realisation; targets lost
+CH4: targets 74; classifier 1; retrieval of the noisy realisation 1; retrieval of the noise-free spectrum 0
+H2O: targets 80; classifier 12; retrieval of the noisy realisation 2; retrieval of the noise-free spectrum 1
+
+4. Mixed population by hazed fraction, 20 % budget, targets lost; columns of e3_budget_freehaze.csv: q, draw, target, strategy, f, targets, lost, wasted, acc, recall_hazed, recall_clean

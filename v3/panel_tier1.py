@@ -25,15 +25,16 @@ import jwst_to_ariel as J  # noqa: E402
 import router_real as RR  # noqa: E402
 
 OUT = os.path.join(RESULTS, "jwst_panel"); MOLS, LEARNERS = D.MOLS, D.LEARNERS; BASE = lambda s: s.replace("-alt", "").replace("-hu", "").replace("-hm", "")
-DESIGNS = ["published", "no-optical", "AIRS-only", "shape flag", "haze-retrained", "haze+deck-retrained", "the method"]
+DESIGNS = ["published", "no-optical", "AIRS-only", "shape flag", "haze-retrained", "haze+deck-retrained", "the method", "census, same haze design"]
 
 
-def main(n=200):
+def main(n=500):
     cases, Pte, e, sig = D.test_cases(); sc = D.Scorer(e); S0, _, _ = sc.scores(cases["clean"]); q = lambda s: np.quantile(s[np.isfinite(s)], 1 - D.DECLINE)
     thr_opt = q(S0[("optical", None)]); thr_dis = {(m, k): q(S0[("disagree", (m, k))]) for m in MOLS for k in LEARNERS}
     ret = {s: joblib.load(os.path.join(DATA, "alfnoor_jwst", f"learners_all_{s}.joblib")) for s in ("haze", "hazedeck")}
     F = pd.read_csv(os.path.join(OUT, "amplitude_flag.csv")).set_index("planet"); M = pd.read_parquet("data/mcs/mcs_params.parquet").drop_duplicates("name").set_index("name")
     edges, _ = J.tier3_layout(); rows = []
+    MR_ = pd.read_csv(os.path.join(OUT, "muting_router.csv")); census_up = set(MR_[MR_.muting_flag == True].planet)  # the muting census: beyond the prior, read against a clear twin at the published composition
 
     def score(pl, X, noise2):
         Z = AT.norm(X); opt = np.abs(sc._optical(Z) - sc.opt_mu) / sc.opt_sd > thr_opt; P = sc.probs(X); PR = {s: {(m, k): AT.prob(L["models"][("1e-4", m, k)], AJ.znorm(X, L["cols"])) for m in MOLS for k in LEARNERS} for s, L in ret.items()}
@@ -44,7 +45,7 @@ def main(n=200):
             votes = {d: np.zeros(len(X)) for d in DESIGNS}
             for k in LEARNERS:
                 pa, pn, ps = P["all"][(m, k)], P["no_optical"][(m, k)], P["airs_only"][(m, k)]; dis = np.maximum(np.abs(pa - pn), np.abs(pa - ps)) > thr_dis[(m, k)]; shape = np.where(opt | dis, ps, pa)
-                for d, p in (("published", pa), ("no-optical", pn), ("AIRS-only", ps), ("shape flag", shape), ("haze-retrained", PR["haze"][(m, k)]), ("haze+deck-retrained", PR["hazedeck"][(m, k)]), ("the method", np.where(up, PR["haze"][(m, k)], shape))):
+                for d, p in (("published", pa), ("no-optical", pn), ("AIRS-only", ps), ("shape flag", shape), ("haze-retrained", PR["haze"][(m, k)]), ("haze+deck-retrained", PR["hazedeck"][(m, k)]), ("the method", np.where(up, PR["haze"][(m, k)], shape)), ("census, same haze design", PR["haze"][(m, k)] if pl in census_up else shape)):
                     votes[d] += p >= 0.5
             out[m] = (votes, low, up)
         return out
@@ -59,6 +60,7 @@ def main(n=200):
                 for name in DESIGNS:
                     pr = votes[name] >= 3; ab = votes[name] <= 1; sp = ~(pr | ab)
                     if name == "the method": sp = sp | low; pr = pr & ~low; ab = ab & ~low
+                    if name.startswith("census") and pl == "HIP67522b": sp = np.ones_like(sp); pr = np.zeros_like(pr); ab = np.zeros_like(ab)   # the census's own reading: nine times more featured than its twin, withheld as the lower cut does
                     cr = np.nan if lab is None else float(np.mean((pr if lab == "present" else ab) + 0.5 * sp))
                     rows.append(dict(precision=prec, planet=pl, molecule=m, design=name, label=lab, credit=cr, present=float(pr.mean()), split=float(sp.mean()), absent=float(ab.mean()), up=float(up.mean()), low=float(low.mean())))
         print(pl, "done", flush=True)

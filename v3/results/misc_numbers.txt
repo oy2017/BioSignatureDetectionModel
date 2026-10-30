@@ -1,0 +1,30 @@
+1. Haze 3e7 minus clean, noise-free, sigma-weighted offset removed, rms per bin in units of the Tier-1 sigma, 955 planets: median (5th to 95th percentile)
+   three optical points       17.83 (7.68 to 91.22)
+   Ariel NIRSpec channel       4.22 (0.92 to 22.51)
+   AIRS bins                   1.93 (0.54 to 11.86)
+   all 104 bins                3.77 (1.43 to 20.24)
+
+2. Transplants, detection rate of CH4 on planets carrying it, all-input design (%)
+   clean                                    mean  72.3; KNN 80.2, MLP 73.8, RFC 62.7, SVC 72.4
+                                            per molecule, mean of learners: CH4 72.3, H2O 47.1, CO2 66.6, NH3 68.7
+   hazed                                    mean  11.6; KNN 32.6, MLP 0.0, RFC 13.9, SVC 0.0
+                                            per molecule, mean of learners: CH4 11.6, H2O 1.1, CO2 11.2, NH3 1.5
+   hazed optical points in clean spectra    mean   8.8; KNN 28.1, MLP 0.0, RFC 7.2, SVC 0.0
+                                            per molecule, mean of learners: CH4 8.8, H2O 1.2, CO2 12.6, NH3 1.5
+   clean optical points in hazed spectra    mean  73.5; KNN 76.9, MLP 91.9, RFC 46.5, SVC 78.8
+                                            per molecule, mean of learners: CH4 73.5, H2O 64.5, CO2 69.8, NH3 77.1
+
+3. Mean confidence max(p, 1-p) over molecules
+   KNN: clean 0.838, hazed 0.895
+   KNN, CH4 only: clean 0.883, hazed 0.890
+   MLP: clean 0.953, hazed 1.000
+   MLP, CH4 only: clean 0.966, hazed 1.000
+   RFC: clean 0.774, hazed 0.828
+   RFC, CH4 only: clean 0.802, hazed 0.816
+
+4. Payload noise model: targets with at least five Tier-3 transits 929; residual of log10 transit count about the calibration: 1.4826 x MAD 0.041 dex, standard deviation 0.073 dex, 16th-84th half-width 0.048 dex
+
+5. Payload noise at the Tier-1 transit count, the three planets of Figure 1 of the consortium study, per-bin sigma in ppm: median over the AIRS bins and over Ariel's NIRSpec channel, and each optical point
+   HD209458b  AIRS      73   NIRSpec channel      21   optical 13, 9, 9
+   GJ1214b    AIRS     421   NIRSpec channel     164   optical 373, 165, 102
+   WASP-79b   AIRS     227   NIRSpec channel      63   optical 35, 26, 25

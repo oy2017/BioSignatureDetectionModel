@@ -1,14 +1,38 @@
-Table 8
-| Design | Clean | Haze 3 × 10⁷ | Confined haze | Deck 10² Pa | Spots 20 % | Noise × 2 | Panel, of 66 | Right / wrong / split or withheld | Gain over published (95 % interval) | Methane present / split / absent |
-| :-- | --: | --: | --: | --: | --: | --: | --: | :-- | :-- | :-- |
-| Published classifier, all inputs | 81.2 | 63.5 | 67.1 | 71.4 | 70.4 | 71.9 | 45.5 | 42 / 17 / 7 |  | 0 / 1 / 7 |
-| No-optical input everywhere | 77.4 | 71.8 | 74.9 | 72.3 | 74.2 | 69.6 | 50.0 | 48 / 14 / 4 | +4.5 (0.5 to 9.6) | 0 / 1 / 7 |
-| AIRS-only input everywhere | 73.8 | 73.3 | 73.6 | 72.1 | 74.0 | 68.3 | 52.5 | 52 / 13 / 1 | +7.0 (0.5 to 12.5) | 6 / 1 / 1 |
-| Shape flag → AIRS-only input | 76.6 | 73.3 | 72.7 | 71.8 | 73.9 | 70.2 | 51.5 | 49 / 12 / 5 | +6.0 (1.0 to 10.5) | 5 / 1 / 2 |
-| Haze-retrained design everywhere | 80.1 | 73.2 | 73.9 | 73.3 | 75.7 | 71.7 | 50.5 | 49 / 14 / 3 | +5.0 (0.0 to 10.4) | 2 / 1 / 5 |
-| Haze+deck-retrained design everywhere | 80.2 | 73.6 | 75.4 | 74.6 | 76.1 | 71.7 | 52.0 | 50 / 12 / 4 | +6.5 (1.1 to 11.9) | 2 / 2 / 4 |
-| The routing method | 76.7 | 73.1 | 73.1 | 71.8 | 74.2 | 70.0 | 54.0 | 52 / 10 / 4 | +8.5 (2.8 to 14.0) | 5 / 1 / 2 |
-| Muting census in place of the amplitude flag | not run | not run | not run | not run | not run | not run | 54.0 | 52 / 10 / 4 | +8.5 (3.1 to 13.6) | 5 / 1 / 2 |
+Designs on the real panel
+| Design | Right / wrong / split or withheld | Score of 66, JWST precision | Gain over published (95 % interval) | Score of 49, labels passing the mask control | Score of 66, Tier-1 noise | Gain over published (95 % interval) | Methane found of 8, JWST / Tier-1 |
+| :-- | :-- | --: | :-- | --: | --: | :-- | :-- |
+| Calling every label absent | 40 / 26 / 0 | 40.0 | −5.5 | 37.0 | 40.0 | −1.7 | 0 / 0 |
+| Published classifier, all inputs | 42 / 17 / 7 | 45.5 |  | 40.5 | 41.7 |  | 0 / 0.0 |
+| No-optical input everywhere | 48 / 14 / 4 | 50.0 | +4.5 (0.5 to 9.6) | 42.5 | 43.1 | +1.3 (0.3 to 2.6) | 0 / 0.1 |
+| AIRS-only input everywhere | 52 / 13 / 1 | 52.5 | +7.0 (0.5 to 12.5) | 45.5 | 43.4 | +1.6 (−0.3 to 3.6) | 6 / 1.5 |
+| Shape flag → AIRS-only input | 49 / 12 / 5 | 51.5 | +6.0 (1.0 to 10.5) | 44.5 | 43.3 | +1.5 (0.2 to 2.9) | 5 / 1.1 |
+| Haze-retrained design everywhere | 49 / 14 / 3 | 50.5 | +5.0 (0.0 to 10.4) | 43.5 | 43.1 | +1.3 (−0.0 to 2.7) | 2 / 0.2 |
+| Haze+deck-retrained design everywhere | 50 / 12 / 4 | 52.0 | +6.5 (1.1 to 11.9) | 44.0 | 43.5 | +1.8 (0.1 to 3.3) | 2 / 0.5 |
+| The routing method | 52 / 10 / 4 | 54.0 | +8.5 (2.8 to 14.0) | 46.0 | 44.4 | +2.7 (1.2 to 4.3) | 5 / 1.1 |
+| Muting census in place of the amplitude flag | 53 / 9 / 4 | 55.0 | +9.5 (4.3 to 14.6) | 46.5 | 44.7 | +3.0 (1.4 to 4.8) | 5 / 1.1 |
+
+Designs in simulation
+| Design | Clean | Haze 3 × 10⁷ | Confined haze | Deck 10² Pa | Spots 20 % | Noise × 2 |
+| :-- | --: | --: | --: | --: | --: | --: |
+| Published classifier, all inputs | 81.2 | 63.5 | 67.1 | 71.4 | 70.4 | 71.9 |
+| No-optical input everywhere | 77.4 | 71.8 | 74.9 | 72.3 | 74.2 | 69.6 |
+| AIRS-only input everywhere | 73.8 | 73.3 | 73.6 | 72.1 | 74.0 | 68.3 |
+| Shape flag → AIRS-only input | 76.6 | 73.3 | 72.7 | 71.8 | 73.9 | 70.2 |
+| Haze-retrained design everywhere | 80.1 | 73.2 | 73.9 | 73.3 | 75.7 | 71.7 |
+| Haze+deck-retrained design everywhere | 80.2 | 73.6 | 75.4 | 74.6 | 76.1 | 71.7 |
+| The routing method | 76.4 | 72.2 | 72.9 | 71.6 | 73.2 | 69.8 |
+
+Targets lost at the 60 % selection, CH4 / H2O
+| Design | Clean | Haze 3 × 10⁷ | Confined haze | Deck 10² Pa | Spots 20 % | Noise × 2 |
+| :-- | --: | --: | --: | --: | --: | --: |
+| Published classifier, all inputs | 20 / 51 | 38 / 78 | 18 / 84 | 29 / 88 | 29 / 75 | 37 / 67 |
+| No-optical input everywhere | 18 / 62 | 23 / 69 | 17 / 71 | 33 / 86 | 24 / 58 | 44 / 81 |
+| AIRS-only input everywhere | 27 / 82 | 27 / 85 | 27 / 83 | 34 / 99 | 26 / 81 | 57 / 104 |
+| Optical-excess score → AIRS-only input | 19 / 56 | 26 / 85 | 28 / 97 | 30 / 87 | 28 / 73 | 37 / 69 |
+| Shape flag → AIRS-only input | 24 / 67 | 26 / 85 | 27 / 95 | 33 / 88 | 28 / 74 | 38 / 74 |
+| Haze-retrained design everywhere | 17 / 56 | 21 / 78 | 19 / 78 | 26 / 78 | 23 / 67 | 45 / 74 |
+| Haze+deck-retrained design everywhere | 21 / 53 | 24 / 79 | 20 / 76 | 28 / 84 | 24 / 67 | 41 / 82 |
+| The routing method | 20 / 67 | 27 / 84 | 24 / 93 | 32 / 86 | 27 / 71 | 38 / 74 |
 
 Table D1
 | Reduction | Measured bins | Ratio | Upper threshold | Lower cut | Flag | Muting (census) | Most the prior allows | Beyond the prior |
@@ -81,5 +105,5 @@ Batches
             Haze-retrained design everywhere   29.0       40    15.5        19    6.0        7
        Haze+deck-retrained design everywhere   30.0       40    16.5        19    5.5        7
                           The routing method   31.5       40    16.0        19    6.5        7
-Muting census in place of the amplitude flag   32.0       40    16.5        19    5.5        7
+Muting census in place of the amplitude flag   32.0       40    16.5        19    6.5        7
 

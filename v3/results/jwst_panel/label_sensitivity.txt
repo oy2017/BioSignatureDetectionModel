@@ -1,0 +1,14 @@
+Scores under the label audit; right 1, split or withheld 0.5, wrong 0; difference from the re-implemented classifier with a 95 % bootstrap over planets
+
+== frozen: 66 labels (40 absent, 26 present; calling everything absent scores 40)
+  JWST: published 45.5; no-optical 50.0 (+4.5; +0.5,+9.6); AIRS-only 52.5 (+7.0; +0.5,+12.5); shape flag 51.5 (+6.0; +1.0,+10.5); haze-retrained 50.5 (+5.0; +0.0,+10.4); haze+deck-retrained 52.0 (+6.5; +1.1,+11.9); the method 54.0 (+8.5; +2.8,+14.0); census, same haze design 55.0 (+9.5; +4.3,+14.6)
+  Tier-1: published 41.7; no-optical 43.1 (+1.3; +0.3,+2.6); AIRS-only 43.4 (+1.6; -0.2,+3.5); shape flag 43.3 (+1.5; +0.2,+2.9); haze-retrained 43.1 (+1.3; -0.0,+2.8); haze+deck-retrained 43.5 (+1.8; +0.1,+3.3); the method 44.4 (+2.7; +1.2,+4.4); census, same haze design 44.7 (+3.0; +1.4,+4.9)
+
+== corrected: 65 labels (39 absent, 26 present; calling everything absent scores 39)
+  JWST: published 44.5; no-optical 49.0 (+4.5; +0.5,+9.6); AIRS-only 50.5 (+6.0; -1.1,+12.6); shape flag 49.5 (+5.0; -1.0,+10.5); haze-retrained 49.5 (+5.0; +0.0,+10.4); haze+deck-retrained 50.5 (+6.0; +0.5,+11.8); the method 52.0 (+7.5; +1.0,+13.8); census, same haze design 53.0 (+8.5; +2.2,+14.5)
+  Tier-1: published 40.8; no-optical 42.1 (+1.3; +0.3,+2.6); AIRS-only 42.2 (+1.4; -0.7,+3.5); shape flag 42.2 (+1.4; -0.0,+2.9); haze-retrained 42.1 (+1.3; -0.1,+2.7); haze+deck-retrained 42.4 (+1.6; -0.1,+3.2); the method 43.3 (+2.5; +0.9,+4.3); census, same haze design 43.6 (+2.8; +1.1,+4.7)
+
+== strict: 59 labels (35 absent, 24 present; calling everything absent scores 35)
+  JWST: published 38.5; no-optical 43.0 (+4.5; +0.5,+9.5); AIRS-only 44.5 (+6.0; -1.2,+12.6); shape flag 43.5 (+5.0; -1.0,+10.5); haze-retrained 43.5 (+5.0; +0.0,+10.2); haze+deck-retrained 44.5 (+6.0; +0.5,+11.6); the method 46.0 (+7.5; +1.1,+13.8); census, same haze design 47.0 (+8.5; +2.3,+14.5)
+  Tier-1: published 35.4; no-optical 36.4 (+0.9; -0.0,+2.0); AIRS-only 37.0 (+1.6; -0.4,+3.5); shape flag 36.8 (+1.4; -0.0,+2.8); haze-retrained 36.4 (+0.9; -0.5,+2.2); haze+deck-retrained 36.7 (+1.3; -0.5,+2.8); the method 37.6 (+2.2; +0.7,+3.9); census, same haze design 37.9 (+2.5; +0.8,+4.3)
+

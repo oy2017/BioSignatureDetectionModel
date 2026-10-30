@@ -2,7 +2,7 @@
 
 For each reduction with a catalogue entry, the same nested sampling as identifiability_calibrate.py on the converted 104-bin spectrum, with the filled bins given no weight, at two
 precisions (the JWST per-bin errors, and Ariel's Tier-1 sigma) and with two forward models (clear, and haze density free). The posterior probability of each label's true class then says
-whether the spectrum decides it under this model. Writes results/jwst_panel/panel_retrieval_<precision>_<model>.csv and, with --summarize, panel_retrieval.txt.
+whether the spectrum decides it under this model. The radius is fixed at the catalogue's and the depth offset is free over a wider range than in the simulated study (REAL_OFFSET). Writes results/jwst_panel/panel_retrieval_<precision>_<model>.csv and, with --summarize, panel_retrieval.txt.
 
 Usage: OMP_NUM_THREADS=1 python panel_retrieval.py --jobs 9 ; python panel_retrieval.py --summarize
 """
@@ -24,6 +24,12 @@ import router_real as RR  # noqa: E402
 
 OUT = os.path.join(RESULTS, "jwst_panel"); BASE = lambda s: s.replace("-alt", "").replace("-hu", "").replace("-hm", ""); MOLS = ["CH4", "H2O", "CO2", "NH3"]
 HAZE = {"radius": 0.1, "q": 40, "mix_ratio": 1e3}
+REAL_OFFSET = 0.02   # +- fractional depth: the real spectra sit up to 1.1 % of depth from the catalogue radius's model (WASP-17 b), beyond the simulated study's 0.5 %; the input of the classifier is normalised, so this freedom is what it already has
+
+
+def _retrieve(*a, **k):
+    IC.OFFSET = REAL_OFFSET
+    return IC.retrieve_one(*a, **k)
 
 
 def run(prec, model, jobs):
@@ -38,7 +44,7 @@ def run(prec, model, jobs):
             lab = d["labels"].get(m); r[f"atm {m}"] = -3.0 if lab == "present" else -6.0
         jobs_.append((k, r, x, sig))
     print(prec, model, len(jobs_), "to retrieve", flush=True)
-    for res in Parallel(n_jobs=jobs, return_as="generator_unordered")(delayed(IC.retrieve_one)(k, r, x, s, wl, edges, 100, 20000, SEED + k, HAZE if model == "freehaze" else None, 10800, model == "freehaze") for k, r, x, s in jobs_):
+    for res in Parallel(n_jobs=jobs, return_as="generator_unordered")(delayed(_retrieve)(k, r, x, s, wl, edges, 100, 20000, SEED + k, HAZE if model == "freehaze" else None, 10800, model == "freehaze") for k, r, x, s in jobs_):
         res["planet"] = res["name"]
         old = pd.read_csv(out) if os.path.exists(out) else pd.DataFrame(); pd.concat([old, pd.DataFrame([res])], ignore_index=True).to_csv(out, index=False); print(res["planet"], round(res.get("minutes", 0), 1), res.get("logz"), flush=True)
 

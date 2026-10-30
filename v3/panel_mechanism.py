@@ -46,9 +46,10 @@ def main(n=200):
             for m in MOLS:
                 rows.append(dict(planet=pl, molecule=m, label=d["labels"].get(m), variant=name, learners_present=int(sum(P["all"][(m, k)][i] >= 0.5 for k in LEARNERS)), measured_optical=int((meas & (cen < 1.1)).sum()), measured_nirspec=int((meas & (cen > 1.1) & (cen < 1.95)).sum()), measured_airs=int(airs.sum())))
         s_real = np.std(x[meas]); noise = np.sqrt(np.nanmean(err[meas] ** 2)); s_corr = np.sqrt(max(s_real ** 2 - noise ** 2, 0.0)); s_twin = np.std(t[meas])
-        if s_corr > 0:
+        if True:
             sT = J.ariel_sigma(pl.replace("-alt", "").replace("-hu", "").replace("-hm", ""), edges)
             for tag, f in (("twin", 1.0), ("scaled twin", s_corr / s_twin)):
+                if tag == "scaled twin" and s_corr <= 0: continue   # no dispersion above the errors (GJ 9827 d): the twin control stands, the scaling does not exist
                 base = t.copy(); mu = np.mean(base[meas]); base = mu + (base - mu) * f; base[filled] = np.mean(base[meas])
                 e = np.where(meas, np.nan_to_num(err), 0.0)
                 for prec, noise_ in (("JWST", e), ("Tier-1", np.sqrt(e ** 2 + sT ** 2))):
@@ -72,7 +73,7 @@ def main(n=200):
         L.append(f"Scaled twins at {prec} noise: detection frequency of each present label, clear twin through the mask against the twin scaled to the real dispersion (all-input and AIRS-only)")
         w = B[(B.label == "present") & (B.precision == prec)].pivot_table(index=["planet", "molecule"], columns=["variant", "test"], values="present_freq"); L.append(w.round(2).to_string()); L.append("")
         for var in ("all", "airs_only"):
-            a = w[(var, "twin")]; b = w[(var, "scaled twin")]; L.append(f"{prec}, {var}: mean detection frequency twin {a.mean():.2f}, scaled twin {b.mean():.2f}; labels found (>= 0.5): twin {int((a >= .5).sum())}, scaled {int((b >= .5).sum())} of {len(a)}")
+            ok = w[(var, "scaled twin")].notna(); a = w[(var, "twin")][ok]; b = w[(var, "scaled twin")][ok]; L.append(f"{prec}, {var}: on the {len(a)} labels with both, mean detection frequency twin {a.mean():.2f}, scaled twin {b.mean():.2f}; labels found (>= 0.5): twin {int((a >= .5).sum())}, scaled {int((b >= .5).sum())}; all {len(w)} labels with a twin: twin found {int((w[(var, 'twin')] >= .5).sum())}")
         L.append("")
     txt = "\n".join(L); open(os.path.join(OUT, "panel_mechanism.txt"), "w").write(txt + "\n"); print(txt)
 

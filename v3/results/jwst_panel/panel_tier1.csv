@@ -6,6 +6,7 @@ JWST,TOI-270d,CH4,shape flag,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d,CH4,haze-retrained,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d,CH4,haze+deck-retrained,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d,CH4,the method,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d,CH4,"census, same haze design",present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d,H2O,published,,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d,H2O,no-optical,,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d,H2O,AIRS-only,,,0.0,0.0,1.0,0.0,0.0
@@ -13,6 +14,7 @@ JWST,TOI-270d,H2O,shape flag,,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d,H2O,haze-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d,H2O,haze+deck-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d,H2O,the method,,,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d,H2O,"census, same haze design",,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d,CO2,published,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d,CO2,no-optical,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d,CO2,AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
@@ -20,6 +22,7 @@ JWST,TOI-270d,CO2,shape flag,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d,CO2,haze-retrained,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d,CO2,haze+deck-retrained,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d,CO2,the method,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d,CO2,"census, same haze design",present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d,NH3,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d,NH3,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d,NH3,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -27,34 +30,39 @@ JWST,TOI-270d,NH3,shape flag,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d,NH3,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
-Tier-1,TOI-270d,CH4,published,present,0.02,0.0,0.04,0.96,0.09,0.0
-Tier-1,TOI-270d,CH4,no-optical,present,0.01,0.0,0.02,0.98,0.09,0.0
-Tier-1,TOI-270d,CH4,AIRS-only,present,0.0625,0.025,0.075,0.9,0.09,0.0
-Tier-1,TOI-270d,CH4,shape flag,present,0.05,0.005,0.09,0.905,0.09,0.0
-Tier-1,TOI-270d,CH4,haze-retrained,present,0.03,0.0,0.06,0.94,0.09,0.0
-Tier-1,TOI-270d,CH4,haze+deck-retrained,present,0.025,0.0,0.05,0.95,0.09,0.0
-Tier-1,TOI-270d,CH4,the method,present,0.05,0.005,0.09,0.905,0.09,0.0
-Tier-1,TOI-270d,H2O,published,,,0.005,0.015,0.98,0.09,0.0
-Tier-1,TOI-270d,H2O,no-optical,,,0.005,0.02,0.975,0.09,0.0
-Tier-1,TOI-270d,H2O,AIRS-only,,,0.0,0.005,0.995,0.09,0.0
-Tier-1,TOI-270d,H2O,shape flag,,,0.0,0.01,0.99,0.09,0.0
-Tier-1,TOI-270d,H2O,haze-retrained,,,0.005,0.01,0.985,0.09,0.0
-Tier-1,TOI-270d,H2O,haze+deck-retrained,,,0.005,0.03,0.965,0.09,0.0
-Tier-1,TOI-270d,H2O,the method,,,0.0,0.015,0.985,0.09,0.0
-Tier-1,TOI-270d,CO2,published,present,0.0025,0.0,0.005,0.995,0.09,0.0
-Tier-1,TOI-270d,CO2,no-optical,present,0.015,0.0,0.03,0.97,0.09,0.0
-Tier-1,TOI-270d,CO2,AIRS-only,present,0.03,0.015,0.03,0.955,0.09,0.0
-Tier-1,TOI-270d,CO2,shape flag,present,0.02,0.01,0.02,0.97,0.09,0.0
-Tier-1,TOI-270d,CO2,haze-retrained,present,0.02,0.005,0.03,0.965,0.09,0.0
-Tier-1,TOI-270d,CO2,haze+deck-retrained,present,0.015,0.0,0.03,0.97,0.09,0.0
-Tier-1,TOI-270d,CO2,the method,present,0.02,0.01,0.02,0.97,0.09,0.0
-Tier-1,TOI-270d,NH3,published,absent,0.9425,0.025,0.065,0.91,0.09,0.0
-Tier-1,TOI-270d,NH3,no-optical,absent,0.935,0.025,0.08,0.895,0.09,0.0
-Tier-1,TOI-270d,NH3,AIRS-only,absent,0.82,0.095,0.17,0.735,0.09,0.0
-Tier-1,TOI-270d,NH3,shape flag,absent,0.925,0.035,0.08,0.885,0.09,0.0
-Tier-1,TOI-270d,NH3,haze-retrained,absent,0.8575,0.05,0.185,0.765,0.09,0.0
-Tier-1,TOI-270d,NH3,haze+deck-retrained,absent,0.9225,0.025,0.105,0.87,0.09,0.0
-Tier-1,TOI-270d,NH3,the method,absent,0.92,0.035,0.09,0.875,0.09,0.0
+JWST,TOI-270d,NH3,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
+Tier-1,TOI-270d,CH4,published,present,0.024,0.002,0.044,0.954,0.086,0.0
+Tier-1,TOI-270d,CH4,no-optical,present,0.017,0.0,0.034,0.966,0.086,0.0
+Tier-1,TOI-270d,CH4,AIRS-only,present,0.082,0.024,0.116,0.86,0.086,0.0
+Tier-1,TOI-270d,CH4,shape flag,present,0.057,0.004,0.106,0.89,0.086,0.0
+Tier-1,TOI-270d,CH4,haze-retrained,present,0.04,0.004,0.072,0.924,0.086,0.0
+Tier-1,TOI-270d,CH4,haze+deck-retrained,present,0.037,0.004,0.066,0.93,0.086,0.0
+Tier-1,TOI-270d,CH4,the method,present,0.055,0.004,0.102,0.894,0.086,0.0
+Tier-1,TOI-270d,CH4,"census, same haze design",present,0.057,0.004,0.106,0.89,0.086,0.0
+Tier-1,TOI-270d,H2O,published,,,0.004,0.02,0.976,0.086,0.0
+Tier-1,TOI-270d,H2O,no-optical,,,0.004,0.034,0.962,0.086,0.0
+Tier-1,TOI-270d,H2O,AIRS-only,,,0.0,0.004,0.996,0.086,0.0
+Tier-1,TOI-270d,H2O,shape flag,,,0.002,0.008,0.99,0.086,0.0
+Tier-1,TOI-270d,H2O,haze-retrained,,,0.004,0.028,0.968,0.086,0.0
+Tier-1,TOI-270d,H2O,haze+deck-retrained,,,0.004,0.038,0.958,0.086,0.0
+Tier-1,TOI-270d,H2O,the method,,,0.002,0.01,0.988,0.086,0.0
+Tier-1,TOI-270d,H2O,"census, same haze design",,,0.002,0.008,0.99,0.086,0.0
+Tier-1,TOI-270d,CO2,published,present,0.001,0.0,0.002,0.998,0.086,0.0
+Tier-1,TOI-270d,CO2,no-optical,present,0.016,0.0,0.032,0.968,0.086,0.0
+Tier-1,TOI-270d,CO2,AIRS-only,present,0.03,0.016,0.028,0.956,0.086,0.0
+Tier-1,TOI-270d,CO2,shape flag,present,0.019,0.008,0.022,0.97,0.086,0.0
+Tier-1,TOI-270d,CO2,haze-retrained,present,0.02,0.004,0.032,0.964,0.086,0.0
+Tier-1,TOI-270d,CO2,haze+deck-retrained,present,0.011,0.002,0.018,0.98,0.086,0.0
+Tier-1,TOI-270d,CO2,the method,present,0.02,0.008,0.024,0.968,0.086,0.0
+Tier-1,TOI-270d,CO2,"census, same haze design",present,0.019,0.008,0.022,0.97,0.086,0.0
+Tier-1,TOI-270d,NH3,published,absent,0.952,0.022,0.052,0.926,0.086,0.0
+Tier-1,TOI-270d,NH3,no-optical,absent,0.947,0.022,0.062,0.916,0.086,0.0
+Tier-1,TOI-270d,NH3,AIRS-only,absent,0.818,0.112,0.14,0.748,0.086,0.0
+Tier-1,TOI-270d,NH3,shape flag,absent,0.938,0.032,0.06,0.908,0.086,0.0
+Tier-1,TOI-270d,NH3,haze-retrained,absent,0.876,0.05,0.148,0.802,0.086,0.0
+Tier-1,TOI-270d,NH3,haze+deck-retrained,absent,0.931,0.026,0.086,0.888,0.086,0.0
+Tier-1,TOI-270d,NH3,the method,absent,0.934,0.032,0.068,0.9,0.086,0.0
+Tier-1,TOI-270d,NH3,"census, same haze design",absent,0.938,0.032,0.06,0.908,0.086,0.0
 JWST,K2-18b,CH4,published,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b,CH4,no-optical,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b,CH4,AIRS-only,present,1.0,1.0,0.0,0.0,0.0,0.0
@@ -62,6 +70,7 @@ JWST,K2-18b,CH4,shape flag,present,1.0,1.0,0.0,0.0,0.0,0.0
 JWST,K2-18b,CH4,haze-retrained,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b,CH4,haze+deck-retrained,present,0.5,0.0,1.0,0.0,0.0,0.0
 JWST,K2-18b,CH4,the method,present,1.0,1.0,0.0,0.0,0.0,0.0
+JWST,K2-18b,CH4,"census, same haze design",present,1.0,1.0,0.0,0.0,0.0,0.0
 JWST,K2-18b,H2O,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b,H2O,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b,H2O,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -69,6 +78,7 @@ JWST,K2-18b,H2O,shape flag,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b,H2O,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b,H2O,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b,H2O,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b,H2O,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b,CO2,published,,,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b,CO2,no-optical,,,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b,CO2,AIRS-only,,,0.0,0.0,1.0,0.0,0.0
@@ -76,6 +86,7 @@ JWST,K2-18b,CO2,shape flag,,,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b,CO2,haze-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b,CO2,haze+deck-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b,CO2,the method,,,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b,CO2,"census, same haze design",,,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b,NH3,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b,NH3,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b,NH3,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -83,27 +94,31 @@ JWST,K2-18b,NH3,shape flag,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b,NH3,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
-Tier-1,K2-18b,CH4,published,present,0.0175,0.005,0.025,0.97,0.0,0.0
-Tier-1,K2-18b,CH4,no-optical,present,0.065,0.01,0.11,0.88,0.0,0.0
-Tier-1,K2-18b,CH4,AIRS-only,present,0.47,0.335,0.27,0.395,0.0,0.0
-Tier-1,K2-18b,CH4,shape flag,present,0.395,0.28,0.23,0.49,0.0,0.0
-Tier-1,K2-18b,CH4,haze-retrained,present,0.1425,0.05,0.185,0.765,0.0,0.0
-Tier-1,K2-18b,CH4,haze+deck-retrained,present,0.2825,0.185,0.195,0.62,0.0,0.0
-Tier-1,K2-18b,CH4,the method,present,0.395,0.28,0.23,0.49,0.0,0.0
-Tier-1,K2-18b,H2O,published,absent,0.9975,0.0,0.005,0.995,0.0,0.0
-Tier-1,K2-18b,H2O,no-optical,absent,0.9825,0.0,0.035,0.965,0.0,0.0
-Tier-1,K2-18b,H2O,AIRS-only,absent,0.995,0.0,0.01,0.99,0.0,0.0
-Tier-1,K2-18b,H2O,shape flag,absent,0.9925,0.0,0.015,0.985,0.0,0.0
-Tier-1,K2-18b,H2O,haze-retrained,absent,0.98,0.0,0.04,0.96,0.0,0.0
-Tier-1,K2-18b,H2O,haze+deck-retrained,absent,0.975,0.0,0.05,0.95,0.0,0.0
-Tier-1,K2-18b,H2O,the method,absent,0.9925,0.0,0.015,0.985,0.0,0.0
-Tier-1,K2-18b,CO2,published,,,0.0,0.0,1.0,0.0,0.0
-Tier-1,K2-18b,CO2,no-optical,,,0.0,0.005,0.995,0.0,0.0
-Tier-1,K2-18b,CO2,AIRS-only,,,0.0,0.01,0.99,0.0,0.0
+JWST,K2-18b,NH3,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
+Tier-1,K2-18b,CH4,published,present,0.016,0.002,0.028,0.97,0.0,0.0
+Tier-1,K2-18b,CH4,no-optical,present,0.078,0.014,0.128,0.858,0.0,0.0
+Tier-1,K2-18b,CH4,AIRS-only,present,0.475,0.348,0.254,0.398,0.0,0.0
+Tier-1,K2-18b,CH4,shape flag,present,0.387,0.27,0.234,0.496,0.0,0.0
+Tier-1,K2-18b,CH4,haze-retrained,present,0.152,0.052,0.2,0.748,0.0,0.0
+Tier-1,K2-18b,CH4,haze+deck-retrained,present,0.286,0.18,0.212,0.608,0.0,0.0
+Tier-1,K2-18b,CH4,the method,present,0.387,0.27,0.234,0.496,0.0,0.0
+Tier-1,K2-18b,CH4,"census, same haze design",present,0.387,0.27,0.234,0.496,0.0,0.0
+Tier-1,K2-18b,H2O,published,absent,0.995,0.0,0.01,0.99,0.0,0.0
+Tier-1,K2-18b,H2O,no-optical,absent,0.976,0.004,0.04,0.956,0.0,0.0
+Tier-1,K2-18b,H2O,AIRS-only,absent,0.998,0.0,0.004,0.996,0.0,0.0
+Tier-1,K2-18b,H2O,shape flag,absent,0.994,0.0,0.012,0.988,0.0,0.0
+Tier-1,K2-18b,H2O,haze-retrained,absent,0.975,0.006,0.038,0.956,0.0,0.0
+Tier-1,K2-18b,H2O,haze+deck-retrained,absent,0.964,0.002,0.068,0.93,0.0,0.0
+Tier-1,K2-18b,H2O,the method,absent,0.994,0.0,0.012,0.988,0.0,0.0
+Tier-1,K2-18b,H2O,"census, same haze design",absent,0.994,0.0,0.012,0.988,0.0,0.0
+Tier-1,K2-18b,CO2,published,,,0.0,0.002,0.998,0.0,0.0
+Tier-1,K2-18b,CO2,no-optical,,,0.0,0.004,0.996,0.0,0.0
+Tier-1,K2-18b,CO2,AIRS-only,,,0.002,0.01,0.988,0.0,0.0
 Tier-1,K2-18b,CO2,shape flag,,,0.0,0.01,0.99,0.0,0.0
-Tier-1,K2-18b,CO2,haze-retrained,,,0.0,0.015,0.985,0.0,0.0
-Tier-1,K2-18b,CO2,haze+deck-retrained,,,0.0,0.015,0.985,0.0,0.0
+Tier-1,K2-18b,CO2,haze-retrained,,,0.0,0.022,0.978,0.0,0.0
+Tier-1,K2-18b,CO2,haze+deck-retrained,,,0.0,0.022,0.978,0.0,0.0
 Tier-1,K2-18b,CO2,the method,,,0.0,0.01,0.99,0.0,0.0
+Tier-1,K2-18b,CO2,"census, same haze design",,,0.0,0.01,0.99,0.0,0.0
 Tier-1,K2-18b,NH3,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 Tier-1,K2-18b,NH3,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 Tier-1,K2-18b,NH3,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -111,6 +126,7 @@ Tier-1,K2-18b,NH3,shape flag,absent,1.0,0.0,0.0,1.0,0.0,0.0
 Tier-1,K2-18b,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 Tier-1,K2-18b,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 Tier-1,K2-18b,NH3,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
+Tier-1,K2-18b,NH3,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-alt,CH4,published,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-alt,CH4,no-optical,present,0.5,0.0,1.0,0.0,0.0,0.0
 JWST,K2-18b-alt,CH4,AIRS-only,present,1.0,1.0,0.0,0.0,0.0,0.0
@@ -118,6 +134,7 @@ JWST,K2-18b-alt,CH4,shape flag,present,1.0,1.0,0.0,0.0,0.0,0.0
 JWST,K2-18b-alt,CH4,haze-retrained,present,0.5,0.0,1.0,0.0,0.0,0.0
 JWST,K2-18b-alt,CH4,haze+deck-retrained,present,1.0,1.0,0.0,0.0,0.0,0.0
 JWST,K2-18b-alt,CH4,the method,present,1.0,1.0,0.0,0.0,0.0,0.0
+JWST,K2-18b-alt,CH4,"census, same haze design",present,1.0,1.0,0.0,0.0,0.0,0.0
 JWST,K2-18b-alt,H2O,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-alt,H2O,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-alt,H2O,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -125,6 +142,7 @@ JWST,K2-18b-alt,H2O,shape flag,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-alt,H2O,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-alt,H2O,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-alt,H2O,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-alt,H2O,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-alt,CO2,published,,,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-alt,CO2,no-optical,,,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-alt,CO2,AIRS-only,,,0.0,0.0,1.0,0.0,0.0
@@ -132,6 +150,7 @@ JWST,K2-18b-alt,CO2,shape flag,,,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-alt,CO2,haze-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-alt,CO2,haze+deck-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-alt,CO2,the method,,,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-alt,CO2,"census, same haze design",,,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-alt,NH3,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-alt,NH3,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-alt,NH3,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -139,34 +158,39 @@ JWST,K2-18b-alt,NH3,shape flag,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-alt,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-alt,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-alt,NH3,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
-Tier-1,K2-18b-alt,CH4,published,present,0.0725,0.015,0.115,0.87,0.135,0.0
-Tier-1,K2-18b-alt,CH4,no-optical,present,0.1325,0.055,0.155,0.79,0.135,0.0
-Tier-1,K2-18b-alt,CH4,AIRS-only,present,0.2275,0.155,0.145,0.7,0.135,0.0
-Tier-1,K2-18b-alt,CH4,shape flag,present,0.18,0.1,0.16,0.74,0.135,0.0
-Tier-1,K2-18b-alt,CH4,haze-retrained,present,0.205,0.07,0.27,0.66,0.135,0.0
-Tier-1,K2-18b-alt,CH4,haze+deck-retrained,present,0.225,0.11,0.23,0.66,0.135,0.0
-Tier-1,K2-18b-alt,CH4,the method,present,0.175,0.09,0.17,0.74,0.135,0.0
-Tier-1,K2-18b-alt,H2O,published,absent,0.9925,0.0,0.015,0.985,0.135,0.0
-Tier-1,K2-18b-alt,H2O,no-optical,absent,0.9775,0.01,0.025,0.965,0.135,0.0
-Tier-1,K2-18b-alt,H2O,AIRS-only,absent,0.9975,0.0,0.005,0.995,0.135,0.0
-Tier-1,K2-18b-alt,H2O,shape flag,absent,0.9925,0.0,0.015,0.985,0.135,0.0
-Tier-1,K2-18b-alt,H2O,haze-retrained,absent,0.985,0.0,0.03,0.97,0.135,0.0
-Tier-1,K2-18b-alt,H2O,haze+deck-retrained,absent,0.98,0.0,0.04,0.96,0.135,0.0
-Tier-1,K2-18b-alt,H2O,the method,absent,0.9925,0.0,0.015,0.985,0.135,0.0
-Tier-1,K2-18b-alt,CO2,published,,,0.0,0.005,0.995,0.135,0.0
-Tier-1,K2-18b-alt,CO2,no-optical,,,0.0,0.005,0.995,0.135,0.0
-Tier-1,K2-18b-alt,CO2,AIRS-only,,,0.0,0.01,0.99,0.135,0.0
-Tier-1,K2-18b-alt,CO2,shape flag,,,0.0,0.01,0.99,0.135,0.0
-Tier-1,K2-18b-alt,CO2,haze-retrained,,,0.0,0.01,0.99,0.135,0.0
-Tier-1,K2-18b-alt,CO2,haze+deck-retrained,,,0.0,0.015,0.985,0.135,0.0
-Tier-1,K2-18b-alt,CO2,the method,,,0.0,0.005,0.995,0.135,0.0
-Tier-1,K2-18b-alt,NH3,published,absent,0.9975,0.0,0.005,0.995,0.135,0.0
-Tier-1,K2-18b-alt,NH3,no-optical,absent,1.0,0.0,0.0,1.0,0.135,0.0
-Tier-1,K2-18b-alt,NH3,AIRS-only,absent,0.9975,0.0,0.005,0.995,0.135,0.0
-Tier-1,K2-18b-alt,NH3,shape flag,absent,0.9975,0.0,0.005,0.995,0.135,0.0
-Tier-1,K2-18b-alt,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,0.135,0.0
-Tier-1,K2-18b-alt,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.135,0.0
-Tier-1,K2-18b-alt,NH3,the method,absent,0.9975,0.0,0.005,0.995,0.135,0.0
+JWST,K2-18b-alt,NH3,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
+Tier-1,K2-18b-alt,CH4,published,present,0.065,0.012,0.106,0.882,0.122,0.0
+Tier-1,K2-18b-alt,CH4,no-optical,present,0.147,0.046,0.202,0.752,0.122,0.0
+Tier-1,K2-18b-alt,CH4,AIRS-only,present,0.261,0.174,0.174,0.652,0.122,0.0
+Tier-1,K2-18b-alt,CH4,shape flag,present,0.208,0.116,0.184,0.7,0.122,0.0
+Tier-1,K2-18b-alt,CH4,haze-retrained,present,0.207,0.068,0.278,0.654,0.122,0.0
+Tier-1,K2-18b-alt,CH4,haze+deck-retrained,present,0.236,0.128,0.216,0.656,0.122,0.0
+Tier-1,K2-18b-alt,CH4,the method,present,0.207,0.114,0.186,0.7,0.122,0.0
+Tier-1,K2-18b-alt,CH4,"census, same haze design",present,0.208,0.116,0.184,0.7,0.122,0.0
+Tier-1,K2-18b-alt,H2O,published,absent,0.985,0.006,0.018,0.976,0.122,0.0
+Tier-1,K2-18b-alt,H2O,no-optical,absent,0.966,0.014,0.04,0.946,0.122,0.0
+Tier-1,K2-18b-alt,H2O,AIRS-only,absent,0.992,0.002,0.012,0.986,0.122,0.0
+Tier-1,K2-18b-alt,H2O,shape flag,absent,0.986,0.004,0.02,0.976,0.122,0.0
+Tier-1,K2-18b-alt,H2O,haze-retrained,absent,0.969,0.016,0.03,0.954,0.122,0.0
+Tier-1,K2-18b-alt,H2O,haze+deck-retrained,absent,0.964,0.012,0.048,0.94,0.122,0.0
+Tier-1,K2-18b-alt,H2O,the method,absent,0.984,0.004,0.024,0.972,0.122,0.0
+Tier-1,K2-18b-alt,H2O,"census, same haze design",absent,0.986,0.004,0.02,0.976,0.122,0.0
+Tier-1,K2-18b-alt,CO2,published,,,0.0,0.002,0.998,0.122,0.0
+Tier-1,K2-18b-alt,CO2,no-optical,,,0.0,0.002,0.998,0.122,0.0
+Tier-1,K2-18b-alt,CO2,AIRS-only,,,0.0,0.004,0.996,0.122,0.0
+Tier-1,K2-18b-alt,CO2,shape flag,,,0.0,0.004,0.996,0.122,0.0
+Tier-1,K2-18b-alt,CO2,haze-retrained,,,0.0,0.008,0.992,0.122,0.0
+Tier-1,K2-18b-alt,CO2,haze+deck-retrained,,,0.0,0.012,0.988,0.122,0.0
+Tier-1,K2-18b-alt,CO2,the method,,,0.0,0.004,0.996,0.122,0.0
+Tier-1,K2-18b-alt,CO2,"census, same haze design",,,0.0,0.004,0.996,0.122,0.0
+Tier-1,K2-18b-alt,NH3,published,absent,0.999,0.0,0.002,0.998,0.122,0.0
+Tier-1,K2-18b-alt,NH3,no-optical,absent,1.0,0.0,0.0,1.0,0.122,0.0
+Tier-1,K2-18b-alt,NH3,AIRS-only,absent,0.999,0.0,0.002,0.998,0.122,0.0
+Tier-1,K2-18b-alt,NH3,shape flag,absent,0.999,0.0,0.002,0.998,0.122,0.0
+Tier-1,K2-18b-alt,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,0.122,0.0
+Tier-1,K2-18b-alt,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.122,0.0
+Tier-1,K2-18b-alt,NH3,the method,absent,0.999,0.0,0.002,0.998,0.122,0.0
+Tier-1,K2-18b-alt,NH3,"census, same haze design",absent,0.999,0.0,0.002,0.998,0.122,0.0
 JWST,TOI-421b,CH4,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -174,6 +198,7 @@ JWST,TOI-421b,CH4,shape flag,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,CH4,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-421b,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,H2O,published,,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,H2O,no-optical,,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,H2O,AIRS-only,,,0.0,0.0,1.0,0.0,0.0
@@ -181,6 +206,7 @@ JWST,TOI-421b,H2O,shape flag,,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,H2O,haze-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,H2O,haze+deck-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,H2O,the method,,,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-421b,H2O,"census, same haze design",,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,CO2,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,CO2,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,CO2,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -188,6 +214,7 @@ JWST,TOI-421b,CO2,shape flag,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,CO2,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,CO2,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,CO2,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-421b,CO2,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,NH3,published,,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,NH3,no-optical,,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,NH3,AIRS-only,,,0.0,0.0,1.0,0.0,0.0
@@ -195,34 +222,39 @@ JWST,TOI-421b,NH3,shape flag,,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,NH3,haze-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,NH3,haze+deck-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,NH3,the method,,,0.0,0.0,1.0,0.0,0.0
-Tier-1,TOI-421b,CH4,published,absent,1.0,0.0,0.0,1.0,0.12,0.0
-Tier-1,TOI-421b,CH4,no-optical,absent,0.9975,0.0,0.005,0.995,0.12,0.0
-Tier-1,TOI-421b,CH4,AIRS-only,absent,0.9975,0.0,0.005,0.995,0.12,0.0
-Tier-1,TOI-421b,CH4,shape flag,absent,0.9975,0.0,0.005,0.995,0.12,0.0
-Tier-1,TOI-421b,CH4,haze-retrained,absent,0.9975,0.0,0.005,0.995,0.12,0.0
-Tier-1,TOI-421b,CH4,haze+deck-retrained,absent,0.995,0.0,0.01,0.99,0.12,0.0
-Tier-1,TOI-421b,CH4,the method,absent,0.9975,0.0,0.005,0.995,0.12,0.0
-Tier-1,TOI-421b,H2O,published,,,0.0,0.025,0.975,0.12,0.0
-Tier-1,TOI-421b,H2O,no-optical,,,0.045,0.05,0.905,0.12,0.0
-Tier-1,TOI-421b,H2O,AIRS-only,,,0.035,0.065,0.9,0.12,0.0
-Tier-1,TOI-421b,H2O,shape flag,,,0.01,0.06,0.93,0.12,0.0
-Tier-1,TOI-421b,H2O,haze-retrained,,,0.015,0.055,0.93,0.12,0.0
-Tier-1,TOI-421b,H2O,haze+deck-retrained,,,0.02,0.09,0.89,0.12,0.0
-Tier-1,TOI-421b,H2O,the method,,,0.005,0.065,0.93,0.12,0.0
-Tier-1,TOI-421b,CO2,published,absent,0.995,0.0,0.01,0.99,0.12,0.0
-Tier-1,TOI-421b,CO2,no-optical,absent,0.9725,0.015,0.025,0.96,0.12,0.0
-Tier-1,TOI-421b,CO2,AIRS-only,absent,0.94,0.02,0.08,0.9,0.12,0.0
-Tier-1,TOI-421b,CO2,shape flag,absent,0.965,0.0,0.07,0.93,0.12,0.0
-Tier-1,TOI-421b,CO2,haze-retrained,absent,0.95,0.02,0.06,0.92,0.12,0.0
-Tier-1,TOI-421b,CO2,haze+deck-retrained,absent,0.9425,0.02,0.075,0.905,0.12,0.0
-Tier-1,TOI-421b,CO2,the method,absent,0.9675,0.0,0.065,0.935,0.12,0.0
-Tier-1,TOI-421b,NH3,published,,,0.0,0.0,1.0,0.12,0.0
-Tier-1,TOI-421b,NH3,no-optical,,,0.005,0.055,0.94,0.12,0.0
-Tier-1,TOI-421b,NH3,AIRS-only,,,0.08,0.11,0.81,0.12,0.0
-Tier-1,TOI-421b,NH3,shape flag,,,0.025,0.08,0.895,0.12,0.0
-Tier-1,TOI-421b,NH3,haze-retrained,,,0.015,0.09,0.895,0.12,0.0
-Tier-1,TOI-421b,NH3,haze+deck-retrained,,,0.02,0.09,0.89,0.12,0.0
-Tier-1,TOI-421b,NH3,the method,,,0.03,0.085,0.885,0.12,0.0
+JWST,TOI-421b,NH3,"census, same haze design",,,0.0,0.0,1.0,0.0,0.0
+Tier-1,TOI-421b,CH4,published,absent,1.0,0.0,0.0,1.0,0.134,0.0
+Tier-1,TOI-421b,CH4,no-optical,absent,0.998,0.0,0.004,0.996,0.134,0.0
+Tier-1,TOI-421b,CH4,AIRS-only,absent,0.996,0.0,0.008,0.992,0.134,0.0
+Tier-1,TOI-421b,CH4,shape flag,absent,0.998,0.0,0.004,0.996,0.134,0.0
+Tier-1,TOI-421b,CH4,haze-retrained,absent,0.998,0.0,0.004,0.996,0.134,0.0
+Tier-1,TOI-421b,CH4,haze+deck-retrained,absent,0.997,0.0,0.006,0.994,0.134,0.0
+Tier-1,TOI-421b,CH4,the method,absent,0.998,0.0,0.004,0.996,0.134,0.0
+Tier-1,TOI-421b,CH4,"census, same haze design",absent,0.998,0.0,0.004,0.996,0.134,0.0
+Tier-1,TOI-421b,H2O,published,,,0.006,0.02,0.974,0.134,0.0
+Tier-1,TOI-421b,H2O,no-optical,,,0.034,0.052,0.914,0.134,0.0
+Tier-1,TOI-421b,H2O,AIRS-only,,,0.03,0.068,0.902,0.134,0.0
+Tier-1,TOI-421b,H2O,shape flag,,,0.012,0.052,0.936,0.134,0.0
+Tier-1,TOI-421b,H2O,haze-retrained,,,0.02,0.038,0.942,0.134,0.0
+Tier-1,TOI-421b,H2O,haze+deck-retrained,,,0.024,0.066,0.91,0.134,0.0
+Tier-1,TOI-421b,H2O,the method,,,0.008,0.056,0.936,0.134,0.0
+Tier-1,TOI-421b,H2O,"census, same haze design",,,0.012,0.052,0.936,0.134,0.0
+Tier-1,TOI-421b,CO2,published,absent,0.995,0.0,0.01,0.99,0.134,0.0
+Tier-1,TOI-421b,CO2,no-optical,absent,0.976,0.008,0.032,0.96,0.134,0.0
+Tier-1,TOI-421b,CO2,AIRS-only,absent,0.954,0.014,0.064,0.922,0.134,0.0
+Tier-1,TOI-421b,CO2,shape flag,absent,0.973,0.002,0.05,0.948,0.134,0.0
+Tier-1,TOI-421b,CO2,haze-retrained,absent,0.963,0.016,0.042,0.942,0.134,0.0
+Tier-1,TOI-421b,CO2,haze+deck-retrained,absent,0.955,0.014,0.062,0.924,0.134,0.0
+Tier-1,TOI-421b,CO2,the method,absent,0.975,0.004,0.042,0.954,0.134,0.0
+Tier-1,TOI-421b,CO2,"census, same haze design",absent,0.973,0.002,0.05,0.948,0.134,0.0
+Tier-1,TOI-421b,NH3,published,,,0.0,0.0,1.0,0.134,0.0
+Tier-1,TOI-421b,NH3,no-optical,,,0.01,0.046,0.944,0.134,0.0
+Tier-1,TOI-421b,NH3,AIRS-only,,,0.098,0.118,0.784,0.134,0.0
+Tier-1,TOI-421b,NH3,shape flag,,,0.036,0.082,0.882,0.134,0.0
+Tier-1,TOI-421b,NH3,haze-retrained,,,0.012,0.076,0.912,0.134,0.0
+Tier-1,TOI-421b,NH3,haze+deck-retrained,,,0.024,0.07,0.906,0.134,0.0
+Tier-1,TOI-421b,NH3,the method,,,0.034,0.078,0.888,0.134,0.0
+Tier-1,TOI-421b,NH3,"census, same haze design",,,0.036,0.082,0.882,0.134,0.0
 JWST,HAT-P-18b,CH4,published,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-18b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-18b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
@@ -230,6 +262,7 @@ JWST,HAT-P-18b,CH4,shape flag,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-18b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-18b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-18b,CH4,the method,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,HAT-P-18b,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-18b,H2O,published,,,1.0,0.0,0.0,1.0,0.0
 JWST,HAT-P-18b,H2O,no-optical,,,1.0,0.0,0.0,1.0,0.0
 JWST,HAT-P-18b,H2O,AIRS-only,,,1.0,0.0,0.0,1.0,0.0
@@ -237,6 +270,7 @@ JWST,HAT-P-18b,H2O,shape flag,,,1.0,0.0,0.0,1.0,0.0
 JWST,HAT-P-18b,H2O,haze-retrained,,,1.0,0.0,0.0,1.0,0.0
 JWST,HAT-P-18b,H2O,haze+deck-retrained,,,1.0,0.0,0.0,1.0,0.0
 JWST,HAT-P-18b,H2O,the method,,,1.0,0.0,0.0,1.0,0.0
+JWST,HAT-P-18b,H2O,"census, same haze design",,,1.0,0.0,0.0,1.0,0.0
 JWST,HAT-P-18b,CO2,published,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-18b,CO2,no-optical,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-18b,CO2,AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
@@ -244,6 +278,7 @@ JWST,HAT-P-18b,CO2,shape flag,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-18b,CO2,haze-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-18b,CO2,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-18b,CO2,the method,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,HAT-P-18b,CO2,"census, same haze design",absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-18b,NH3,published,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-18b,NH3,no-optical,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-18b,NH3,AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
@@ -251,34 +286,39 @@ JWST,HAT-P-18b,NH3,shape flag,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-18b,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-18b,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-18b,NH3,the method,absent,1.0,0.0,0.0,1.0,1.0,0.0
-Tier-1,HAT-P-18b,CH4,published,absent,1.0,0.0,0.0,1.0,0.555,0.0
-Tier-1,HAT-P-18b,CH4,no-optical,absent,0.9975,0.0,0.005,0.995,0.555,0.0
-Tier-1,HAT-P-18b,CH4,AIRS-only,absent,0.995,0.005,0.0,0.995,0.555,0.0
-Tier-1,HAT-P-18b,CH4,shape flag,absent,0.995,0.005,0.0,0.995,0.555,0.0
-Tier-1,HAT-P-18b,CH4,haze-retrained,absent,0.99,0.0,0.02,0.98,0.555,0.0
-Tier-1,HAT-P-18b,CH4,haze+deck-retrained,absent,0.9875,0.005,0.015,0.98,0.555,0.0
-Tier-1,HAT-P-18b,CH4,the method,absent,0.995,0.0,0.01,0.99,0.555,0.0
-Tier-1,HAT-P-18b,H2O,published,,,0.075,0.095,0.83,0.555,0.0
-Tier-1,HAT-P-18b,H2O,no-optical,,,0.21,0.21,0.58,0.555,0.0
-Tier-1,HAT-P-18b,H2O,AIRS-only,,,0.305,0.155,0.54,0.555,0.0
-Tier-1,HAT-P-18b,H2O,shape flag,,,0.225,0.135,0.64,0.555,0.0
-Tier-1,HAT-P-18b,H2O,haze-retrained,,,0.255,0.19,0.555,0.555,0.0
-Tier-1,HAT-P-18b,H2O,haze+deck-retrained,,,0.27,0.185,0.545,0.555,0.0
-Tier-1,HAT-P-18b,H2O,the method,,,0.205,0.2,0.595,0.555,0.0
-Tier-1,HAT-P-18b,CO2,published,absent,0.9975,0.0,0.005,0.995,0.555,0.0
-Tier-1,HAT-P-18b,CO2,no-optical,absent,1.0,0.0,0.0,1.0,0.555,0.0
-Tier-1,HAT-P-18b,CO2,AIRS-only,absent,0.995,0.0,0.01,0.99,0.555,0.0
-Tier-1,HAT-P-18b,CO2,shape flag,absent,0.9925,0.0,0.015,0.985,0.555,0.0
-Tier-1,HAT-P-18b,CO2,haze-retrained,absent,0.99,0.0,0.02,0.98,0.555,0.0
-Tier-1,HAT-P-18b,CO2,haze+deck-retrained,absent,0.985,0.0,0.03,0.97,0.555,0.0
-Tier-1,HAT-P-18b,CO2,the method,absent,0.995,0.0,0.01,0.99,0.555,0.0
-Tier-1,HAT-P-18b,NH3,published,absent,1.0,0.0,0.0,1.0,0.555,0.0
-Tier-1,HAT-P-18b,NH3,no-optical,absent,1.0,0.0,0.0,1.0,0.555,0.0
-Tier-1,HAT-P-18b,NH3,AIRS-only,absent,0.99,0.005,0.01,0.985,0.555,0.0
-Tier-1,HAT-P-18b,NH3,shape flag,absent,0.9875,0.005,0.015,0.98,0.555,0.0
-Tier-1,HAT-P-18b,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,0.555,0.0
-Tier-1,HAT-P-18b,NH3,haze+deck-retrained,absent,0.9975,0.0,0.005,0.995,0.555,0.0
-Tier-1,HAT-P-18b,NH3,the method,absent,0.9875,0.005,0.015,0.98,0.555,0.0
+JWST,HAT-P-18b,NH3,"census, same haze design",absent,1.0,0.0,0.0,1.0,1.0,0.0
+Tier-1,HAT-P-18b,CH4,published,absent,0.997,0.0,0.006,0.994,0.534,0.0
+Tier-1,HAT-P-18b,CH4,no-optical,absent,0.995,0.0,0.01,0.99,0.534,0.0
+Tier-1,HAT-P-18b,CH4,AIRS-only,absent,0.992,0.004,0.008,0.988,0.534,0.0
+Tier-1,HAT-P-18b,CH4,shape flag,absent,0.992,0.004,0.008,0.988,0.534,0.0
+Tier-1,HAT-P-18b,CH4,haze-retrained,absent,0.987,0.002,0.022,0.976,0.534,0.0
+Tier-1,HAT-P-18b,CH4,haze+deck-retrained,absent,0.987,0.002,0.022,0.976,0.534,0.0
+Tier-1,HAT-P-18b,CH4,the method,absent,0.99,0.002,0.016,0.982,0.534,0.0
+Tier-1,HAT-P-18b,CH4,"census, same haze design",absent,0.987,0.002,0.022,0.976,0.534,0.0
+Tier-1,HAT-P-18b,H2O,published,,,0.076,0.118,0.806,0.534,0.0
+Tier-1,HAT-P-18b,H2O,no-optical,,,0.206,0.198,0.596,0.534,0.0
+Tier-1,HAT-P-18b,H2O,AIRS-only,,,0.302,0.164,0.534,0.534,0.0
+Tier-1,HAT-P-18b,H2O,shape flag,,,0.218,0.168,0.614,0.534,0.0
+Tier-1,HAT-P-18b,H2O,haze-retrained,,,0.232,0.19,0.578,0.534,0.0
+Tier-1,HAT-P-18b,H2O,haze+deck-retrained,,,0.226,0.206,0.568,0.534,0.0
+Tier-1,HAT-P-18b,H2O,the method,,,0.214,0.198,0.588,0.534,0.0
+Tier-1,HAT-P-18b,H2O,"census, same haze design",,,0.232,0.19,0.578,0.534,0.0
+Tier-1,HAT-P-18b,CO2,published,absent,0.998,0.0,0.004,0.996,0.534,0.0
+Tier-1,HAT-P-18b,CO2,no-optical,absent,0.995,0.0,0.01,0.99,0.534,0.0
+Tier-1,HAT-P-18b,CO2,AIRS-only,absent,0.994,0.002,0.008,0.99,0.534,0.0
+Tier-1,HAT-P-18b,CO2,shape flag,absent,0.994,0.002,0.008,0.99,0.534,0.0
+Tier-1,HAT-P-18b,CO2,haze-retrained,absent,0.988,0.002,0.02,0.978,0.534,0.0
+Tier-1,HAT-P-18b,CO2,haze+deck-retrained,absent,0.986,0.002,0.024,0.974,0.534,0.0
+Tier-1,HAT-P-18b,CO2,the method,absent,0.989,0.002,0.018,0.98,0.534,0.0
+Tier-1,HAT-P-18b,CO2,"census, same haze design",absent,0.988,0.002,0.02,0.978,0.534,0.0
+Tier-1,HAT-P-18b,NH3,published,absent,1.0,0.0,0.0,1.0,0.534,0.0
+Tier-1,HAT-P-18b,NH3,no-optical,absent,0.999,0.0,0.002,0.998,0.534,0.0
+Tier-1,HAT-P-18b,NH3,AIRS-only,absent,0.985,0.008,0.014,0.978,0.534,0.0
+Tier-1,HAT-P-18b,NH3,shape flag,absent,0.988,0.006,0.012,0.982,0.534,0.0
+Tier-1,HAT-P-18b,NH3,haze-retrained,absent,0.998,0.0,0.004,0.996,0.534,0.0
+Tier-1,HAT-P-18b,NH3,haze+deck-retrained,absent,0.996,0.0,0.008,0.992,0.534,0.0
+Tier-1,HAT-P-18b,NH3,the method,absent,0.991,0.002,0.014,0.984,0.534,0.0
+Tier-1,HAT-P-18b,NH3,"census, same haze design",absent,0.998,0.0,0.004,0.996,0.534,0.0
 JWST,WASP-107b,CH4,published,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-107b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-107b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
@@ -286,6 +326,7 @@ JWST,WASP-107b,CH4,shape flag,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-107b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-107b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-107b,CH4,the method,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-107b,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-107b,H2O,published,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-107b,H2O,no-optical,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-107b,H2O,AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
@@ -293,6 +334,7 @@ JWST,WASP-107b,H2O,shape flag,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-107b,H2O,haze-retrained,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-107b,H2O,haze+deck-retrained,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-107b,H2O,the method,present,0.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-107b,H2O,"census, same haze design",present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-107b,CO2,published,,,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-107b,CO2,no-optical,,,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-107b,CO2,AIRS-only,,,1.0,0.0,0.0,1.0,0.0
@@ -300,6 +342,7 @@ JWST,WASP-107b,CO2,shape flag,,,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-107b,CO2,haze-retrained,,,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-107b,CO2,haze+deck-retrained,,,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-107b,CO2,the method,,,1.0,0.0,0.0,1.0,0.0
+JWST,WASP-107b,CO2,"census, same haze design",,,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-107b,NH3,published,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-107b,NH3,no-optical,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-107b,NH3,AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
@@ -307,34 +350,39 @@ JWST,WASP-107b,NH3,shape flag,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-107b,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-107b,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-107b,NH3,the method,absent,1.0,0.0,0.0,1.0,1.0,0.0
-Tier-1,WASP-107b,CH4,published,absent,1.0,0.0,0.0,1.0,0.96,0.0
-Tier-1,WASP-107b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.96,0.0
-Tier-1,WASP-107b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,0.96,0.0
-Tier-1,WASP-107b,CH4,shape flag,absent,1.0,0.0,0.0,1.0,0.96,0.0
-Tier-1,WASP-107b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,0.96,0.0
-Tier-1,WASP-107b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.96,0.0
-Tier-1,WASP-107b,CH4,the method,absent,1.0,0.0,0.0,1.0,0.96,0.0
-Tier-1,WASP-107b,H2O,published,present,0.02,0.015,0.01,0.975,0.96,0.0
-Tier-1,WASP-107b,H2O,no-optical,present,0.0525,0.03,0.045,0.925,0.96,0.0
-Tier-1,WASP-107b,H2O,AIRS-only,present,0.11,0.065,0.09,0.845,0.96,0.0
-Tier-1,WASP-107b,H2O,shape flag,present,0.06,0.04,0.04,0.92,0.96,0.0
-Tier-1,WASP-107b,H2O,haze-retrained,present,0.0775,0.035,0.085,0.88,0.96,0.0
-Tier-1,WASP-107b,H2O,haze+deck-retrained,present,0.075,0.035,0.08,0.885,0.96,0.0
-Tier-1,WASP-107b,H2O,the method,present,0.0775,0.035,0.085,0.88,0.96,0.0
-Tier-1,WASP-107b,CO2,published,,,0.305,0.295,0.4,0.96,0.0
-Tier-1,WASP-107b,CO2,no-optical,,,0.465,0.27,0.265,0.96,0.0
-Tier-1,WASP-107b,CO2,AIRS-only,,,0.815,0.1,0.085,0.96,0.0
-Tier-1,WASP-107b,CO2,shape flag,,,0.655,0.24,0.105,0.96,0.0
-Tier-1,WASP-107b,CO2,haze-retrained,,,0.755,0.145,0.1,0.96,0.0
-Tier-1,WASP-107b,CO2,haze+deck-retrained,,,0.835,0.115,0.05,0.96,0.0
-Tier-1,WASP-107b,CO2,the method,,,0.755,0.145,0.1,0.96,0.0
-Tier-1,WASP-107b,NH3,published,absent,1.0,0.0,0.0,1.0,0.96,0.0
-Tier-1,WASP-107b,NH3,no-optical,absent,0.9975,0.0,0.005,0.995,0.96,0.0
-Tier-1,WASP-107b,NH3,AIRS-only,absent,0.97,0.01,0.04,0.95,0.96,0.0
-Tier-1,WASP-107b,NH3,shape flag,absent,0.99,0.0,0.02,0.98,0.96,0.0
-Tier-1,WASP-107b,NH3,haze-retrained,absent,0.9925,0.005,0.005,0.99,0.96,0.0
-Tier-1,WASP-107b,NH3,haze+deck-retrained,absent,0.9825,0.005,0.025,0.97,0.96,0.0
-Tier-1,WASP-107b,NH3,the method,absent,0.9925,0.005,0.005,0.99,0.96,0.0
+JWST,WASP-107b,NH3,"census, same haze design",absent,1.0,0.0,0.0,1.0,1.0,0.0
+Tier-1,WASP-107b,CH4,published,absent,1.0,0.0,0.0,1.0,0.966,0.0
+Tier-1,WASP-107b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.966,0.0
+Tier-1,WASP-107b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,0.966,0.0
+Tier-1,WASP-107b,CH4,shape flag,absent,1.0,0.0,0.0,1.0,0.966,0.0
+Tier-1,WASP-107b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,0.966,0.0
+Tier-1,WASP-107b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.966,0.0
+Tier-1,WASP-107b,CH4,the method,absent,1.0,0.0,0.0,1.0,0.966,0.0
+Tier-1,WASP-107b,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.966,0.0
+Tier-1,WASP-107b,H2O,published,present,0.024,0.014,0.02,0.966,0.966,0.0
+Tier-1,WASP-107b,H2O,no-optical,present,0.063,0.034,0.058,0.908,0.966,0.0
+Tier-1,WASP-107b,H2O,AIRS-only,present,0.106,0.062,0.088,0.85,0.966,0.0
+Tier-1,WASP-107b,H2O,shape flag,present,0.057,0.032,0.05,0.918,0.966,0.0
+Tier-1,WASP-107b,H2O,haze-retrained,present,0.087,0.04,0.094,0.866,0.966,0.0
+Tier-1,WASP-107b,H2O,haze+deck-retrained,present,0.1,0.044,0.112,0.844,0.966,0.0
+Tier-1,WASP-107b,H2O,the method,present,0.086,0.04,0.092,0.868,0.966,0.0
+Tier-1,WASP-107b,H2O,"census, same haze design",present,0.087,0.04,0.094,0.866,0.966,0.0
+Tier-1,WASP-107b,CO2,published,,,0.336,0.27,0.394,0.966,0.0
+Tier-1,WASP-107b,CO2,no-optical,,,0.448,0.262,0.29,0.966,0.0
+Tier-1,WASP-107b,CO2,AIRS-only,,,0.814,0.106,0.08,0.966,0.0
+Tier-1,WASP-107b,CO2,shape flag,,,0.644,0.232,0.124,0.966,0.0
+Tier-1,WASP-107b,CO2,haze-retrained,,,0.776,0.126,0.098,0.966,0.0
+Tier-1,WASP-107b,CO2,haze+deck-retrained,,,0.84,0.108,0.052,0.966,0.0
+Tier-1,WASP-107b,CO2,the method,,,0.766,0.13,0.104,0.966,0.0
+Tier-1,WASP-107b,CO2,"census, same haze design",,,0.776,0.126,0.098,0.966,0.0
+Tier-1,WASP-107b,NH3,published,absent,1.0,0.0,0.0,1.0,0.966,0.0
+Tier-1,WASP-107b,NH3,no-optical,absent,0.998,0.0,0.004,0.996,0.966,0.0
+Tier-1,WASP-107b,NH3,AIRS-only,absent,0.972,0.01,0.036,0.954,0.966,0.0
+Tier-1,WASP-107b,NH3,shape flag,absent,0.993,0.002,0.01,0.988,0.966,0.0
+Tier-1,WASP-107b,NH3,haze-retrained,absent,0.995,0.002,0.006,0.992,0.966,0.0
+Tier-1,WASP-107b,NH3,haze+deck-retrained,absent,0.987,0.004,0.018,0.978,0.966,0.0
+Tier-1,WASP-107b,NH3,the method,absent,0.995,0.002,0.006,0.992,0.966,0.0
+Tier-1,WASP-107b,NH3,"census, same haze design",absent,0.995,0.002,0.006,0.992,0.966,0.0
 JWST,HD189733b,CH4,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD189733b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD189733b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -342,6 +390,7 @@ JWST,HD189733b,CH4,shape flag,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD189733b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD189733b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD189733b,CH4,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HD189733b,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD189733b,H2O,published,,,0.0,0.0,1.0,0.0,0.0
 JWST,HD189733b,H2O,no-optical,,,1.0,0.0,0.0,0.0,0.0
 JWST,HD189733b,H2O,AIRS-only,,,1.0,0.0,0.0,0.0,0.0
@@ -349,6 +398,7 @@ JWST,HD189733b,H2O,shape flag,,,1.0,0.0,0.0,0.0,0.0
 JWST,HD189733b,H2O,haze-retrained,,,0.0,1.0,0.0,0.0,0.0
 JWST,HD189733b,H2O,haze+deck-retrained,,,0.0,1.0,0.0,0.0,0.0
 JWST,HD189733b,H2O,the method,,,1.0,0.0,0.0,0.0,0.0
+JWST,HD189733b,H2O,"census, same haze design",,,1.0,0.0,0.0,0.0,0.0
 JWST,HD189733b,CO2,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD189733b,CO2,no-optical,absent,0.5,0.0,1.0,0.0,0.0,0.0
 JWST,HD189733b,CO2,AIRS-only,absent,0.0,1.0,0.0,0.0,0.0,0.0
@@ -356,6 +406,7 @@ JWST,HD189733b,CO2,shape flag,absent,0.5,0.0,1.0,0.0,0.0,0.0
 JWST,HD189733b,CO2,haze-retrained,absent,0.0,1.0,0.0,0.0,0.0,0.0
 JWST,HD189733b,CO2,haze+deck-retrained,absent,0.0,1.0,0.0,0.0,0.0,0.0
 JWST,HD189733b,CO2,the method,absent,0.5,0.0,1.0,0.0,0.0,0.0
+JWST,HD189733b,CO2,"census, same haze design",absent,0.5,0.0,1.0,0.0,0.0,0.0
 JWST,HD189733b,NH3,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD189733b,NH3,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD189733b,NH3,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -363,6 +414,7 @@ JWST,HD189733b,NH3,shape flag,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD189733b,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD189733b,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD189733b,NH3,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HD189733b,NH3,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
 Tier-1,HD189733b,CH4,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 Tier-1,HD189733b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 Tier-1,HD189733b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -370,27 +422,31 @@ Tier-1,HD189733b,CH4,shape flag,absent,1.0,0.0,0.0,1.0,0.0,0.0
 Tier-1,HD189733b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 Tier-1,HD189733b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 Tier-1,HD189733b,CH4,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
-Tier-1,HD189733b,H2O,published,,,0.13,0.18,0.69,0.0,0.0
-Tier-1,HD189733b,H2O,no-optical,,,0.375,0.24,0.385,0.0,0.0
-Tier-1,HD189733b,H2O,AIRS-only,,,0.585,0.2,0.215,0.0,0.0
-Tier-1,HD189733b,H2O,shape flag,,,0.395,0.195,0.41,0.0,0.0
-Tier-1,HD189733b,H2O,haze-retrained,,,0.295,0.42,0.285,0.0,0.0
-Tier-1,HD189733b,H2O,haze+deck-retrained,,,0.415,0.365,0.22,0.0,0.0
-Tier-1,HD189733b,H2O,the method,,,0.395,0.195,0.41,0.0,0.0
-Tier-1,HD189733b,CO2,published,absent,0.875,0.045,0.16,0.795,0.0,0.0
-Tier-1,HD189733b,CO2,no-optical,absent,0.7925,0.115,0.185,0.7,0.0,0.0
-Tier-1,HD189733b,CO2,AIRS-only,absent,0.6125,0.285,0.205,0.51,0.0,0.0
-Tier-1,HD189733b,CO2,shape flag,absent,0.7475,0.15,0.205,0.645,0.0,0.0
-Tier-1,HD189733b,CO2,haze-retrained,absent,0.52,0.37,0.22,0.41,0.0,0.0
-Tier-1,HD189733b,CO2,haze+deck-retrained,absent,0.45,0.445,0.21,0.345,0.0,0.0
-Tier-1,HD189733b,CO2,the method,absent,0.7475,0.15,0.205,0.645,0.0,0.0
+Tier-1,HD189733b,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
+Tier-1,HD189733b,H2O,published,,,0.126,0.21,0.664,0.0,0.0
+Tier-1,HD189733b,H2O,no-optical,,,0.332,0.29,0.378,0.0,0.0
+Tier-1,HD189733b,H2O,AIRS-only,,,0.558,0.228,0.214,0.0,0.0
+Tier-1,HD189733b,H2O,shape flag,,,0.366,0.228,0.406,0.0,0.0
+Tier-1,HD189733b,H2O,haze-retrained,,,0.322,0.396,0.282,0.0,0.0
+Tier-1,HD189733b,H2O,haze+deck-retrained,,,0.386,0.39,0.224,0.0,0.0
+Tier-1,HD189733b,H2O,the method,,,0.366,0.228,0.406,0.0,0.0
+Tier-1,HD189733b,H2O,"census, same haze design",,,0.366,0.228,0.406,0.0,0.0
+Tier-1,HD189733b,CO2,published,absent,0.863,0.056,0.162,0.782,0.0,0.0
+Tier-1,HD189733b,CO2,no-optical,absent,0.805,0.102,0.186,0.712,0.0,0.0
+Tier-1,HD189733b,CO2,AIRS-only,absent,0.618,0.274,0.216,0.51,0.0,0.0
+Tier-1,HD189733b,CO2,shape flag,absent,0.741,0.154,0.21,0.636,0.0,0.0
+Tier-1,HD189733b,CO2,haze-retrained,absent,0.516,0.378,0.212,0.41,0.0,0.0
+Tier-1,HD189733b,CO2,haze+deck-retrained,absent,0.44,0.448,0.224,0.328,0.0,0.0
+Tier-1,HD189733b,CO2,the method,absent,0.741,0.154,0.21,0.636,0.0,0.0
+Tier-1,HD189733b,CO2,"census, same haze design",absent,0.741,0.154,0.21,0.636,0.0,0.0
 Tier-1,HD189733b,NH3,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 Tier-1,HD189733b,NH3,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
-Tier-1,HD189733b,NH3,AIRS-only,absent,0.99,0.005,0.01,0.985,0.0,0.0
-Tier-1,HD189733b,NH3,shape flag,absent,0.9975,0.0,0.005,0.995,0.0,0.0
-Tier-1,HD189733b,NH3,haze-retrained,absent,0.9975,0.0,0.005,0.995,0.0,0.0
-Tier-1,HD189733b,NH3,haze+deck-retrained,absent,0.9975,0.0,0.005,0.995,0.0,0.0
-Tier-1,HD189733b,NH3,the method,absent,0.9975,0.0,0.005,0.995,0.0,0.0
+Tier-1,HD189733b,NH3,AIRS-only,absent,0.987,0.008,0.01,0.982,0.0,0.0
+Tier-1,HD189733b,NH3,shape flag,absent,0.995,0.0,0.01,0.99,0.0,0.0
+Tier-1,HD189733b,NH3,haze-retrained,absent,0.998,0.0,0.004,0.996,0.0,0.0
+Tier-1,HD189733b,NH3,haze+deck-retrained,absent,0.998,0.0,0.004,0.996,0.0,0.0
+Tier-1,HD189733b,NH3,the method,absent,0.995,0.0,0.01,0.99,0.0,0.0
+Tier-1,HD189733b,NH3,"census, same haze design",absent,0.995,0.0,0.01,0.99,0.0,0.0
 JWST,HAT-P-26b,CH4,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HAT-P-26b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HAT-P-26b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -398,6 +454,7 @@ JWST,HAT-P-26b,CH4,shape flag,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HAT-P-26b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HAT-P-26b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HAT-P-26b,CH4,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HAT-P-26b,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HAT-P-26b,H2O,published,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,HAT-P-26b,H2O,no-optical,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,HAT-P-26b,H2O,AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
@@ -405,6 +462,7 @@ JWST,HAT-P-26b,H2O,shape flag,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,HAT-P-26b,H2O,haze-retrained,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,HAT-P-26b,H2O,haze+deck-retrained,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,HAT-P-26b,H2O,the method,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,HAT-P-26b,H2O,"census, same haze design",present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,HAT-P-26b,CO2,published,present,0.5,0.0,1.0,0.0,0.0,0.0
 JWST,HAT-P-26b,CO2,no-optical,present,1.0,1.0,0.0,0.0,0.0,0.0
 JWST,HAT-P-26b,CO2,AIRS-only,present,1.0,1.0,0.0,0.0,0.0,0.0
@@ -412,6 +470,7 @@ JWST,HAT-P-26b,CO2,shape flag,present,0.5,0.0,1.0,0.0,0.0,0.0
 JWST,HAT-P-26b,CO2,haze-retrained,present,1.0,1.0,0.0,0.0,0.0,0.0
 JWST,HAT-P-26b,CO2,haze+deck-retrained,present,1.0,1.0,0.0,0.0,0.0,0.0
 JWST,HAT-P-26b,CO2,the method,present,0.5,0.0,1.0,0.0,0.0,0.0
+JWST,HAT-P-26b,CO2,"census, same haze design",present,1.0,1.0,0.0,0.0,0.0,0.0
 JWST,HAT-P-26b,NH3,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HAT-P-26b,NH3,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HAT-P-26b,NH3,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -419,34 +478,39 @@ JWST,HAT-P-26b,NH3,shape flag,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HAT-P-26b,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HAT-P-26b,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HAT-P-26b,NH3,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
-Tier-1,HAT-P-26b,CH4,published,absent,1.0,0.0,0.0,1.0,0.075,0.0
-Tier-1,HAT-P-26b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.075,0.0
-Tier-1,HAT-P-26b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,0.075,0.0
-Tier-1,HAT-P-26b,CH4,shape flag,absent,1.0,0.0,0.0,1.0,0.075,0.0
-Tier-1,HAT-P-26b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,0.075,0.0
-Tier-1,HAT-P-26b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.075,0.0
-Tier-1,HAT-P-26b,CH4,the method,absent,1.0,0.0,0.0,1.0,0.075,0.0
-Tier-1,HAT-P-26b,H2O,published,present,0.0125,0.0,0.025,0.975,0.075,0.0
-Tier-1,HAT-P-26b,H2O,no-optical,present,0.0225,0.0,0.045,0.955,0.075,0.0
-Tier-1,HAT-P-26b,H2O,AIRS-only,present,0.0375,0.005,0.065,0.93,0.075,0.0
-Tier-1,HAT-P-26b,H2O,shape flag,present,0.0275,0.0,0.055,0.945,0.075,0.0
-Tier-1,HAT-P-26b,H2O,haze-retrained,present,0.0125,0.0,0.025,0.975,0.075,0.0
-Tier-1,HAT-P-26b,H2O,haze+deck-retrained,present,0.025,0.005,0.04,0.955,0.075,0.0
-Tier-1,HAT-P-26b,H2O,the method,present,0.0275,0.0,0.055,0.945,0.075,0.0
-Tier-1,HAT-P-26b,CO2,published,present,0.05,0.01,0.08,0.91,0.075,0.0
-Tier-1,HAT-P-26b,CO2,no-optical,present,0.07,0.015,0.11,0.875,0.075,0.0
-Tier-1,HAT-P-26b,CO2,AIRS-only,present,0.13,0.06,0.14,0.8,0.075,0.0
-Tier-1,HAT-P-26b,CO2,shape flag,present,0.095,0.035,0.12,0.845,0.075,0.0
-Tier-1,HAT-P-26b,CO2,haze-retrained,present,0.1075,0.05,0.115,0.835,0.075,0.0
-Tier-1,HAT-P-26b,CO2,haze+deck-retrained,present,0.135,0.065,0.14,0.795,0.075,0.0
-Tier-1,HAT-P-26b,CO2,the method,present,0.095,0.035,0.12,0.845,0.075,0.0
-Tier-1,HAT-P-26b,NH3,published,absent,0.985,0.005,0.02,0.975,0.075,0.0
-Tier-1,HAT-P-26b,NH3,no-optical,absent,0.9825,0.005,0.025,0.97,0.075,0.0
-Tier-1,HAT-P-26b,NH3,AIRS-only,absent,0.8925,0.055,0.105,0.84,0.075,0.0
-Tier-1,HAT-P-26b,NH3,shape flag,absent,0.9525,0.0,0.095,0.905,0.075,0.0
-Tier-1,HAT-P-26b,NH3,haze-retrained,absent,0.9525,0.01,0.075,0.915,0.075,0.0
-Tier-1,HAT-P-26b,NH3,haze+deck-retrained,absent,0.955,0.01,0.07,0.92,0.075,0.0
-Tier-1,HAT-P-26b,NH3,the method,absent,0.955,0.0,0.09,0.91,0.075,0.0
+JWST,HAT-P-26b,NH3,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
+Tier-1,HAT-P-26b,CH4,published,absent,0.999,0.0,0.002,0.998,0.094,0.0
+Tier-1,HAT-P-26b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.094,0.0
+Tier-1,HAT-P-26b,CH4,AIRS-only,absent,0.995,0.0,0.01,0.99,0.094,0.0
+Tier-1,HAT-P-26b,CH4,shape flag,absent,0.996,0.0,0.008,0.992,0.094,0.0
+Tier-1,HAT-P-26b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,0.094,0.0
+Tier-1,HAT-P-26b,CH4,haze+deck-retrained,absent,0.999,0.0,0.002,0.998,0.094,0.0
+Tier-1,HAT-P-26b,CH4,the method,absent,0.997,0.0,0.006,0.994,0.094,0.0
+Tier-1,HAT-P-26b,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.094,0.0
+Tier-1,HAT-P-26b,H2O,published,present,0.017,0.006,0.022,0.972,0.094,0.0
+Tier-1,HAT-P-26b,H2O,no-optical,present,0.026,0.01,0.032,0.958,0.094,0.0
+Tier-1,HAT-P-26b,H2O,AIRS-only,present,0.034,0.008,0.052,0.94,0.094,0.0
+Tier-1,HAT-P-26b,H2O,shape flag,present,0.034,0.008,0.052,0.94,0.094,0.0
+Tier-1,HAT-P-26b,H2O,haze-retrained,present,0.021,0.01,0.022,0.968,0.094,0.0
+Tier-1,HAT-P-26b,H2O,haze+deck-retrained,present,0.031,0.012,0.038,0.95,0.094,0.0
+Tier-1,HAT-P-26b,H2O,the method,present,0.032,0.01,0.044,0.946,0.094,0.0
+Tier-1,HAT-P-26b,H2O,"census, same haze design",present,0.021,0.01,0.022,0.968,0.094,0.0
+Tier-1,HAT-P-26b,CO2,published,present,0.046,0.01,0.072,0.918,0.094,0.0
+Tier-1,HAT-P-26b,CO2,no-optical,present,0.063,0.014,0.098,0.888,0.094,0.0
+Tier-1,HAT-P-26b,CO2,AIRS-only,present,0.115,0.048,0.134,0.818,0.094,0.0
+Tier-1,HAT-P-26b,CO2,shape flag,present,0.083,0.028,0.11,0.862,0.094,0.0
+Tier-1,HAT-P-26b,CO2,haze-retrained,present,0.089,0.038,0.102,0.86,0.094,0.0
+Tier-1,HAT-P-26b,CO2,haze+deck-retrained,present,0.12,0.048,0.144,0.808,0.094,0.0
+Tier-1,HAT-P-26b,CO2,the method,present,0.084,0.028,0.112,0.86,0.094,0.0
+Tier-1,HAT-P-26b,CO2,"census, same haze design",present,0.089,0.038,0.102,0.86,0.094,0.0
+Tier-1,HAT-P-26b,NH3,published,absent,0.988,0.002,0.02,0.978,0.094,0.0
+Tier-1,HAT-P-26b,NH3,no-optical,absent,0.977,0.008,0.03,0.962,0.094,0.0
+Tier-1,HAT-P-26b,NH3,AIRS-only,absent,0.882,0.07,0.096,0.834,0.094,0.0
+Tier-1,HAT-P-26b,NH3,shape flag,absent,0.952,0.006,0.084,0.91,0.094,0.0
+Tier-1,HAT-P-26b,NH3,haze-retrained,absent,0.954,0.012,0.068,0.92,0.094,0.0
+Tier-1,HAT-P-26b,NH3,haze+deck-retrained,absent,0.963,0.01,0.054,0.936,0.094,0.0
+Tier-1,HAT-P-26b,NH3,the method,absent,0.954,0.004,0.084,0.912,0.094,0.0
+Tier-1,HAT-P-26b,NH3,"census, same haze design",absent,0.954,0.012,0.068,0.92,0.094,0.0
 JWST,GJ3470b,CH4,published,,,0.0,0.0,1.0,1.0,0.0
 JWST,GJ3470b,CH4,no-optical,,,0.0,0.0,1.0,1.0,0.0
 JWST,GJ3470b,CH4,AIRS-only,,,0.0,0.0,1.0,1.0,0.0
@@ -454,6 +518,7 @@ JWST,GJ3470b,CH4,shape flag,,,0.0,0.0,1.0,1.0,0.0
 JWST,GJ3470b,CH4,haze-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,GJ3470b,CH4,haze+deck-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,GJ3470b,CH4,the method,,,0.0,0.0,1.0,1.0,0.0
+JWST,GJ3470b,CH4,"census, same haze design",,,0.0,0.0,1.0,1.0,0.0
 JWST,GJ3470b,H2O,published,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,GJ3470b,H2O,no-optical,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,GJ3470b,H2O,AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
@@ -461,6 +526,7 @@ JWST,GJ3470b,H2O,shape flag,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,GJ3470b,H2O,haze-retrained,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,GJ3470b,H2O,haze+deck-retrained,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,GJ3470b,H2O,the method,present,0.0,0.0,0.0,1.0,1.0,0.0
+JWST,GJ3470b,H2O,"census, same haze design",present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,GJ3470b,CO2,published,present,0.5,0.0,1.0,0.0,1.0,0.0
 JWST,GJ3470b,CO2,no-optical,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,GJ3470b,CO2,AIRS-only,present,1.0,1.0,0.0,0.0,1.0,0.0
@@ -468,6 +534,7 @@ JWST,GJ3470b,CO2,shape flag,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,GJ3470b,CO2,haze-retrained,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,GJ3470b,CO2,haze+deck-retrained,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,GJ3470b,CO2,the method,present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,GJ3470b,CO2,"census, same haze design",present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,GJ3470b,NH3,published,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,GJ3470b,NH3,no-optical,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,GJ3470b,NH3,AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
@@ -475,34 +542,39 @@ JWST,GJ3470b,NH3,shape flag,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,GJ3470b,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,GJ3470b,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,GJ3470b,NH3,the method,absent,1.0,0.0,0.0,1.0,1.0,0.0
-Tier-1,GJ3470b,CH4,published,,,0.0,0.0,1.0,0.205,0.0
-Tier-1,GJ3470b,CH4,no-optical,,,0.0,0.0,1.0,0.205,0.0
-Tier-1,GJ3470b,CH4,AIRS-only,,,0.0,0.005,0.995,0.205,0.0
-Tier-1,GJ3470b,CH4,shape flag,,,0.0,0.0,1.0,0.205,0.0
-Tier-1,GJ3470b,CH4,haze-retrained,,,0.0,0.0,1.0,0.205,0.0
-Tier-1,GJ3470b,CH4,haze+deck-retrained,,,0.0,0.0,1.0,0.205,0.0
-Tier-1,GJ3470b,CH4,the method,,,0.0,0.0,1.0,0.205,0.0
-Tier-1,GJ3470b,H2O,published,present,0.03,0.01,0.04,0.95,0.205,0.0
-Tier-1,GJ3470b,H2O,no-optical,present,0.0525,0.02,0.065,0.915,0.205,0.0
-Tier-1,GJ3470b,H2O,AIRS-only,present,0.085,0.04,0.09,0.87,0.205,0.0
-Tier-1,GJ3470b,H2O,shape flag,present,0.06,0.02,0.08,0.9,0.205,0.0
-Tier-1,GJ3470b,H2O,haze-retrained,present,0.0575,0.01,0.095,0.895,0.205,0.0
-Tier-1,GJ3470b,H2O,haze+deck-retrained,present,0.06,0.015,0.09,0.895,0.205,0.0
-Tier-1,GJ3470b,H2O,the method,present,0.065,0.02,0.09,0.89,0.205,0.0
-Tier-1,GJ3470b,CO2,published,present,0.0175,0.0,0.035,0.965,0.205,0.0
-Tier-1,GJ3470b,CO2,no-optical,present,0.0375,0.0,0.075,0.925,0.205,0.0
-Tier-1,GJ3470b,CO2,AIRS-only,present,0.0825,0.03,0.105,0.865,0.205,0.0
-Tier-1,GJ3470b,CO2,shape flag,present,0.05,0.015,0.07,0.915,0.205,0.0
-Tier-1,GJ3470b,CO2,haze-retrained,present,0.06,0.02,0.08,0.9,0.205,0.0
-Tier-1,GJ3470b,CO2,haze+deck-retrained,present,0.07,0.025,0.09,0.885,0.205,0.0
-Tier-1,GJ3470b,CO2,the method,present,0.05,0.01,0.08,0.91,0.205,0.0
-Tier-1,GJ3470b,NH3,published,absent,0.9875,0.005,0.015,0.98,0.205,0.0
-Tier-1,GJ3470b,NH3,no-optical,absent,0.985,0.005,0.02,0.975,0.205,0.0
-Tier-1,GJ3470b,NH3,AIRS-only,absent,0.9325,0.02,0.095,0.885,0.205,0.0
-Tier-1,GJ3470b,NH3,shape flag,absent,0.97,0.005,0.05,0.945,0.205,0.0
-Tier-1,GJ3470b,NH3,haze-retrained,absent,0.96,0.015,0.05,0.935,0.205,0.0
-Tier-1,GJ3470b,NH3,haze+deck-retrained,absent,0.9675,0.005,0.055,0.94,0.205,0.0
-Tier-1,GJ3470b,NH3,the method,absent,0.965,0.005,0.06,0.935,0.205,0.0
+JWST,GJ3470b,NH3,"census, same haze design",absent,1.0,0.0,0.0,1.0,1.0,0.0
+Tier-1,GJ3470b,CH4,published,,,0.0,0.002,0.998,0.17,0.0
+Tier-1,GJ3470b,CH4,no-optical,,,0.0,0.002,0.998,0.17,0.0
+Tier-1,GJ3470b,CH4,AIRS-only,,,0.002,0.01,0.988,0.17,0.0
+Tier-1,GJ3470b,CH4,shape flag,,,0.002,0.004,0.994,0.17,0.0
+Tier-1,GJ3470b,CH4,haze-retrained,,,0.0,0.0,1.0,0.17,0.0
+Tier-1,GJ3470b,CH4,haze+deck-retrained,,,0.0,0.004,0.996,0.17,0.0
+Tier-1,GJ3470b,CH4,the method,,,0.002,0.004,0.994,0.17,0.0
+Tier-1,GJ3470b,CH4,"census, same haze design",,,0.0,0.0,1.0,0.17,0.0
+Tier-1,GJ3470b,H2O,published,present,0.032,0.018,0.028,0.954,0.17,0.0
+Tier-1,GJ3470b,H2O,no-optical,present,0.049,0.024,0.05,0.926,0.17,0.0
+Tier-1,GJ3470b,H2O,AIRS-only,present,0.082,0.04,0.084,0.876,0.17,0.0
+Tier-1,GJ3470b,H2O,shape flag,present,0.058,0.028,0.06,0.912,0.17,0.0
+Tier-1,GJ3470b,H2O,haze-retrained,present,0.055,0.02,0.07,0.91,0.17,0.0
+Tier-1,GJ3470b,H2O,haze+deck-retrained,present,0.059,0.022,0.074,0.904,0.17,0.0
+Tier-1,GJ3470b,H2O,the method,present,0.059,0.026,0.066,0.908,0.17,0.0
+Tier-1,GJ3470b,H2O,"census, same haze design",present,0.055,0.02,0.07,0.91,0.17,0.0
+Tier-1,GJ3470b,CO2,published,present,0.02,0.0,0.04,0.96,0.17,0.0
+Tier-1,GJ3470b,CO2,no-optical,present,0.032,0.004,0.056,0.94,0.17,0.0
+Tier-1,GJ3470b,CO2,AIRS-only,present,0.066,0.024,0.084,0.892,0.17,0.0
+Tier-1,GJ3470b,CO2,shape flag,present,0.042,0.008,0.068,0.924,0.17,0.0
+Tier-1,GJ3470b,CO2,haze-retrained,present,0.057,0.02,0.074,0.906,0.17,0.0
+Tier-1,GJ3470b,CO2,haze+deck-retrained,present,0.061,0.022,0.078,0.9,0.17,0.0
+Tier-1,GJ3470b,CO2,the method,present,0.044,0.006,0.076,0.918,0.17,0.0
+Tier-1,GJ3470b,CO2,"census, same haze design",present,0.057,0.02,0.074,0.906,0.17,0.0
+Tier-1,GJ3470b,NH3,published,absent,0.987,0.006,0.014,0.98,0.17,0.0
+Tier-1,GJ3470b,NH3,no-optical,absent,0.982,0.008,0.02,0.972,0.17,0.0
+Tier-1,GJ3470b,NH3,AIRS-only,absent,0.919,0.044,0.074,0.882,0.17,0.0
+Tier-1,GJ3470b,NH3,shape flag,absent,0.961,0.02,0.038,0.942,0.17,0.0
+Tier-1,GJ3470b,NH3,haze-retrained,absent,0.964,0.016,0.04,0.944,0.17,0.0
+Tier-1,GJ3470b,NH3,haze+deck-retrained,absent,0.971,0.008,0.042,0.95,0.17,0.0
+Tier-1,GJ3470b,NH3,the method,absent,0.958,0.02,0.044,0.936,0.17,0.0
+Tier-1,GJ3470b,NH3,"census, same haze design",absent,0.964,0.016,0.04,0.944,0.17,0.0
 JWST,WASP-166b,CH4,published,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-166b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-166b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
@@ -510,6 +582,7 @@ JWST,WASP-166b,CH4,shape flag,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-166b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-166b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-166b,CH4,the method,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-166b,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-166b,H2O,published,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-166b,H2O,no-optical,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-166b,H2O,AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
@@ -517,6 +590,7 @@ JWST,WASP-166b,H2O,shape flag,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-166b,H2O,haze-retrained,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-166b,H2O,haze+deck-retrained,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-166b,H2O,the method,present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,WASP-166b,H2O,"census, same haze design",present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-166b,CO2,published,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-166b,CO2,no-optical,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-166b,CO2,AIRS-only,present,1.0,1.0,0.0,0.0,1.0,0.0
@@ -524,6 +598,7 @@ JWST,WASP-166b,CO2,shape flag,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-166b,CO2,haze-retrained,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-166b,CO2,haze+deck-retrained,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-166b,CO2,the method,present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,WASP-166b,CO2,"census, same haze design",present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-166b,NH3,published,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-166b,NH3,no-optical,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-166b,NH3,AIRS-only,,,0.0,0.0,1.0,1.0,0.0
@@ -531,34 +606,39 @@ JWST,WASP-166b,NH3,shape flag,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-166b,NH3,haze-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-166b,NH3,haze+deck-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-166b,NH3,the method,,,0.0,0.0,1.0,1.0,0.0
-Tier-1,WASP-166b,CH4,published,absent,1.0,0.0,0.0,1.0,0.45,0.0
-Tier-1,WASP-166b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.45,0.0
-Tier-1,WASP-166b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,0.45,0.0
-Tier-1,WASP-166b,CH4,shape flag,absent,1.0,0.0,0.0,1.0,0.45,0.0
-Tier-1,WASP-166b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,0.45,0.0
-Tier-1,WASP-166b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.45,0.0
-Tier-1,WASP-166b,CH4,the method,absent,1.0,0.0,0.0,1.0,0.45,0.0
-Tier-1,WASP-166b,H2O,published,present,0.06,0.03,0.06,0.91,0.45,0.0
-Tier-1,WASP-166b,H2O,no-optical,present,0.3975,0.295,0.205,0.5,0.45,0.0
-Tier-1,WASP-166b,H2O,AIRS-only,present,0.1675,0.095,0.145,0.76,0.45,0.0
-Tier-1,WASP-166b,H2O,shape flag,present,0.0925,0.04,0.105,0.855,0.45,0.0
-Tier-1,WASP-166b,H2O,haze-retrained,present,0.3125,0.195,0.235,0.57,0.45,0.0
-Tier-1,WASP-166b,H2O,haze+deck-retrained,present,0.3375,0.235,0.205,0.56,0.45,0.0
-Tier-1,WASP-166b,H2O,the method,present,0.1925,0.11,0.165,0.725,0.45,0.0
-Tier-1,WASP-166b,CO2,published,present,0.0775,0.04,0.075,0.885,0.45,0.0
-Tier-1,WASP-166b,CO2,no-optical,present,0.1975,0.1,0.195,0.705,0.45,0.0
-Tier-1,WASP-166b,CO2,AIRS-only,present,0.335,0.24,0.19,0.57,0.45,0.0
-Tier-1,WASP-166b,CO2,shape flag,present,0.2225,0.12,0.205,0.675,0.45,0.0
-Tier-1,WASP-166b,CO2,haze-retrained,present,0.305,0.2,0.21,0.59,0.45,0.0
-Tier-1,WASP-166b,CO2,haze+deck-retrained,present,0.355,0.25,0.21,0.54,0.45,0.0
-Tier-1,WASP-166b,CO2,the method,present,0.2525,0.15,0.205,0.645,0.45,0.0
-Tier-1,WASP-166b,NH3,published,,,0.0,0.0,1.0,0.45,0.0
-Tier-1,WASP-166b,NH3,no-optical,,,0.005,0.0,0.995,0.45,0.0
-Tier-1,WASP-166b,NH3,AIRS-only,,,0.055,0.095,0.85,0.45,0.0
-Tier-1,WASP-166b,NH3,shape flag,,,0.025,0.08,0.895,0.45,0.0
-Tier-1,WASP-166b,NH3,haze-retrained,,,0.01,0.01,0.98,0.45,0.0
-Tier-1,WASP-166b,NH3,haze+deck-retrained,,,0.005,0.03,0.965,0.45,0.0
-Tier-1,WASP-166b,NH3,the method,,,0.015,0.055,0.93,0.45,0.0
+JWST,WASP-166b,NH3,"census, same haze design",,,0.0,0.0,1.0,1.0,0.0
+Tier-1,WASP-166b,CH4,published,absent,1.0,0.0,0.0,1.0,0.46,0.0
+Tier-1,WASP-166b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.46,0.0
+Tier-1,WASP-166b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,0.46,0.0
+Tier-1,WASP-166b,CH4,shape flag,absent,1.0,0.0,0.0,1.0,0.46,0.0
+Tier-1,WASP-166b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,0.46,0.0
+Tier-1,WASP-166b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.46,0.0
+Tier-1,WASP-166b,CH4,the method,absent,1.0,0.0,0.0,1.0,0.46,0.0
+Tier-1,WASP-166b,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.46,0.0
+Tier-1,WASP-166b,H2O,published,present,0.073,0.034,0.078,0.888,0.46,0.0
+Tier-1,WASP-166b,H2O,no-optical,present,0.354,0.26,0.188,0.552,0.46,0.0
+Tier-1,WASP-166b,H2O,AIRS-only,present,0.15,0.09,0.12,0.79,0.46,0.0
+Tier-1,WASP-166b,H2O,shape flag,present,0.099,0.044,0.11,0.846,0.46,0.0
+Tier-1,WASP-166b,H2O,haze-retrained,present,0.283,0.178,0.21,0.612,0.46,0.0
+Tier-1,WASP-166b,H2O,haze+deck-retrained,present,0.328,0.222,0.212,0.566,0.46,0.0
+Tier-1,WASP-166b,H2O,the method,present,0.182,0.1,0.164,0.736,0.46,0.0
+Tier-1,WASP-166b,H2O,"census, same haze design",present,0.283,0.178,0.21,0.612,0.46,0.0
+Tier-1,WASP-166b,CO2,published,present,0.079,0.036,0.086,0.878,0.46,0.0
+Tier-1,WASP-166b,CO2,no-optical,present,0.204,0.122,0.164,0.714,0.46,0.0
+Tier-1,WASP-166b,CO2,AIRS-only,present,0.337,0.228,0.218,0.554,0.46,0.0
+Tier-1,WASP-166b,CO2,shape flag,present,0.224,0.128,0.192,0.68,0.46,0.0
+Tier-1,WASP-166b,CO2,haze-retrained,present,0.303,0.198,0.21,0.592,0.46,0.0
+Tier-1,WASP-166b,CO2,haze+deck-retrained,present,0.34,0.234,0.212,0.554,0.46,0.0
+Tier-1,WASP-166b,CO2,the method,present,0.253,0.154,0.198,0.648,0.46,0.0
+Tier-1,WASP-166b,CO2,"census, same haze design",present,0.303,0.198,0.21,0.592,0.46,0.0
+Tier-1,WASP-166b,NH3,published,,,0.0,0.0,1.0,0.46,0.0
+Tier-1,WASP-166b,NH3,no-optical,,,0.004,0.002,0.994,0.46,0.0
+Tier-1,WASP-166b,NH3,AIRS-only,,,0.054,0.09,0.856,0.46,0.0
+Tier-1,WASP-166b,NH3,shape flag,,,0.024,0.062,0.914,0.46,0.0
+Tier-1,WASP-166b,NH3,haze-retrained,,,0.008,0.01,0.982,0.46,0.0
+Tier-1,WASP-166b,NH3,haze+deck-retrained,,,0.006,0.018,0.976,0.46,0.0
+Tier-1,WASP-166b,NH3,the method,,,0.014,0.044,0.942,0.46,0.0
+Tier-1,WASP-166b,NH3,"census, same haze design",,,0.008,0.01,0.982,0.46,0.0
 JWST,TOI-1231b,CH4,published,present,0.5,0.0,1.0,0.0,1.0,0.0
 JWST,TOI-1231b,CH4,no-optical,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,TOI-1231b,CH4,AIRS-only,present,1.0,1.0,0.0,0.0,1.0,0.0
@@ -566,6 +646,7 @@ JWST,TOI-1231b,CH4,shape flag,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,TOI-1231b,CH4,haze-retrained,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,TOI-1231b,CH4,haze+deck-retrained,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,TOI-1231b,CH4,the method,present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,TOI-1231b,CH4,"census, same haze design",present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,TOI-1231b,H2O,published,,,0.0,0.0,1.0,1.0,0.0
 JWST,TOI-1231b,H2O,no-optical,,,0.0,0.0,1.0,1.0,0.0
 JWST,TOI-1231b,H2O,AIRS-only,,,0.0,0.0,1.0,1.0,0.0
@@ -573,6 +654,7 @@ JWST,TOI-1231b,H2O,shape flag,,,0.0,0.0,1.0,1.0,0.0
 JWST,TOI-1231b,H2O,haze-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,TOI-1231b,H2O,haze+deck-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,TOI-1231b,H2O,the method,,,0.0,0.0,1.0,1.0,0.0
+JWST,TOI-1231b,H2O,"census, same haze design",,,0.0,0.0,1.0,1.0,0.0
 JWST,TOI-1231b,CO2,published,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,TOI-1231b,CO2,no-optical,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,TOI-1231b,CO2,AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
@@ -580,6 +662,7 @@ JWST,TOI-1231b,CO2,shape flag,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,TOI-1231b,CO2,haze-retrained,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,TOI-1231b,CO2,haze+deck-retrained,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,TOI-1231b,CO2,the method,present,0.0,0.0,0.0,1.0,1.0,0.0
+JWST,TOI-1231b,CO2,"census, same haze design",present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,TOI-1231b,NH3,published,,,0.0,0.0,1.0,1.0,0.0
 JWST,TOI-1231b,NH3,no-optical,,,0.0,0.0,1.0,1.0,0.0
 JWST,TOI-1231b,NH3,AIRS-only,,,0.0,0.0,1.0,1.0,0.0
@@ -587,34 +670,39 @@ JWST,TOI-1231b,NH3,shape flag,,,0.0,0.0,1.0,1.0,0.0
 JWST,TOI-1231b,NH3,haze-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,TOI-1231b,NH3,haze+deck-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,TOI-1231b,NH3,the method,,,0.0,0.0,1.0,1.0,0.0
-Tier-1,TOI-1231b,CH4,published,present,0.055,0.01,0.09,0.9,0.315,0.0
-Tier-1,TOI-1231b,CH4,no-optical,present,0.0275,0.005,0.045,0.95,0.315,0.0
-Tier-1,TOI-1231b,CH4,AIRS-only,present,0.315,0.22,0.19,0.59,0.315,0.0
-Tier-1,TOI-1231b,CH4,shape flag,present,0.2475,0.15,0.195,0.655,0.315,0.0
-Tier-1,TOI-1231b,CH4,haze-retrained,present,0.095,0.04,0.11,0.85,0.315,0.0
-Tier-1,TOI-1231b,CH4,haze+deck-retrained,present,0.1625,0.075,0.175,0.75,0.315,0.0
-Tier-1,TOI-1231b,CH4,the method,present,0.205,0.11,0.19,0.7,0.315,0.0
-Tier-1,TOI-1231b,H2O,published,,,0.0,0.03,0.97,0.315,0.0
-Tier-1,TOI-1231b,H2O,no-optical,,,0.0,0.045,0.955,0.315,0.0
-Tier-1,TOI-1231b,H2O,AIRS-only,,,0.005,0.045,0.95,0.315,0.0
-Tier-1,TOI-1231b,H2O,shape flag,,,0.005,0.04,0.955,0.315,0.0
-Tier-1,TOI-1231b,H2O,haze-retrained,,,0.005,0.03,0.965,0.315,0.0
-Tier-1,TOI-1231b,H2O,haze+deck-retrained,,,0.005,0.03,0.965,0.315,0.0
-Tier-1,TOI-1231b,H2O,the method,,,0.01,0.035,0.955,0.315,0.0
-Tier-1,TOI-1231b,CO2,published,present,0.0,0.0,0.0,1.0,0.315,0.0
-Tier-1,TOI-1231b,CO2,no-optical,present,0.0,0.0,0.0,1.0,0.315,0.0
-Tier-1,TOI-1231b,CO2,AIRS-only,present,0.0,0.0,0.0,1.0,0.315,0.0
-Tier-1,TOI-1231b,CO2,shape flag,present,0.0,0.0,0.0,1.0,0.315,0.0
-Tier-1,TOI-1231b,CO2,haze-retrained,present,0.0,0.0,0.0,1.0,0.315,0.0
-Tier-1,TOI-1231b,CO2,haze+deck-retrained,present,0.0,0.0,0.0,1.0,0.315,0.0
-Tier-1,TOI-1231b,CO2,the method,present,0.0,0.0,0.0,1.0,0.315,0.0
-Tier-1,TOI-1231b,NH3,published,,,0.0,0.01,0.99,0.315,0.0
-Tier-1,TOI-1231b,NH3,no-optical,,,0.0,0.02,0.98,0.315,0.0
-Tier-1,TOI-1231b,NH3,AIRS-only,,,0.04,0.04,0.92,0.315,0.0
-Tier-1,TOI-1231b,NH3,shape flag,,,0.01,0.05,0.94,0.315,0.0
-Tier-1,TOI-1231b,NH3,haze-retrained,,,0.0,0.025,0.975,0.315,0.0
-Tier-1,TOI-1231b,NH3,haze+deck-retrained,,,0.005,0.01,0.985,0.315,0.0
-Tier-1,TOI-1231b,NH3,the method,,,0.005,0.04,0.955,0.315,0.0
+JWST,TOI-1231b,NH3,"census, same haze design",,,0.0,0.0,1.0,1.0,0.0
+Tier-1,TOI-1231b,CH4,published,present,0.058,0.006,0.104,0.89,0.31,0.0
+Tier-1,TOI-1231b,CH4,no-optical,present,0.029,0.002,0.054,0.944,0.31,0.0
+Tier-1,TOI-1231b,CH4,AIRS-only,present,0.352,0.258,0.188,0.554,0.31,0.0
+Tier-1,TOI-1231b,CH4,shape flag,present,0.283,0.184,0.198,0.618,0.31,0.0
+Tier-1,TOI-1231b,CH4,haze-retrained,present,0.1,0.036,0.128,0.836,0.31,0.0
+Tier-1,TOI-1231b,CH4,haze+deck-retrained,present,0.164,0.07,0.188,0.742,0.31,0.0
+Tier-1,TOI-1231b,CH4,the method,present,0.223,0.136,0.174,0.69,0.31,0.0
+Tier-1,TOI-1231b,CH4,"census, same haze design",present,0.283,0.184,0.198,0.618,0.31,0.0
+Tier-1,TOI-1231b,H2O,published,,,0.008,0.02,0.972,0.31,0.0
+Tier-1,TOI-1231b,H2O,no-optical,,,0.01,0.036,0.954,0.31,0.0
+Tier-1,TOI-1231b,H2O,AIRS-only,,,0.008,0.032,0.96,0.31,0.0
+Tier-1,TOI-1231b,H2O,shape flag,,,0.012,0.03,0.958,0.31,0.0
+Tier-1,TOI-1231b,H2O,haze-retrained,,,0.012,0.034,0.954,0.31,0.0
+Tier-1,TOI-1231b,H2O,haze+deck-retrained,,,0.01,0.028,0.962,0.31,0.0
+Tier-1,TOI-1231b,H2O,the method,,,0.014,0.03,0.956,0.31,0.0
+Tier-1,TOI-1231b,H2O,"census, same haze design",,,0.012,0.03,0.958,0.31,0.0
+Tier-1,TOI-1231b,CO2,published,present,0.0,0.0,0.0,1.0,0.31,0.0
+Tier-1,TOI-1231b,CO2,no-optical,present,0.0,0.0,0.0,1.0,0.31,0.0
+Tier-1,TOI-1231b,CO2,AIRS-only,present,0.001,0.0,0.002,0.998,0.31,0.0
+Tier-1,TOI-1231b,CO2,shape flag,present,0.001,0.0,0.002,0.998,0.31,0.0
+Tier-1,TOI-1231b,CO2,haze-retrained,present,0.0,0.0,0.0,1.0,0.31,0.0
+Tier-1,TOI-1231b,CO2,haze+deck-retrained,present,0.0,0.0,0.0,1.0,0.31,0.0
+Tier-1,TOI-1231b,CO2,the method,present,0.0,0.0,0.0,1.0,0.31,0.0
+Tier-1,TOI-1231b,CO2,"census, same haze design",present,0.001,0.0,0.002,0.998,0.31,0.0
+Tier-1,TOI-1231b,NH3,published,,,0.0,0.004,0.996,0.31,0.0
+Tier-1,TOI-1231b,NH3,no-optical,,,0.002,0.016,0.982,0.31,0.0
+Tier-1,TOI-1231b,NH3,AIRS-only,,,0.03,0.052,0.918,0.31,0.0
+Tier-1,TOI-1231b,NH3,shape flag,,,0.008,0.034,0.958,0.31,0.0
+Tier-1,TOI-1231b,NH3,haze-retrained,,,0.002,0.016,0.982,0.31,0.0
+Tier-1,TOI-1231b,NH3,haze+deck-retrained,,,0.004,0.008,0.988,0.31,0.0
+Tier-1,TOI-1231b,NH3,the method,,,0.004,0.028,0.968,0.31,0.0
+Tier-1,TOI-1231b,NH3,"census, same haze design",,,0.008,0.034,0.958,0.31,0.0
 JWST,K2-18b-hu,CH4,published,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-hu,CH4,no-optical,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-hu,CH4,AIRS-only,present,1.0,1.0,0.0,0.0,0.0,0.0
@@ -622,6 +710,7 @@ JWST,K2-18b-hu,CH4,shape flag,present,0.5,0.0,1.0,0.0,0.0,0.0
 JWST,K2-18b-hu,CH4,haze-retrained,present,1.0,1.0,0.0,0.0,0.0,0.0
 JWST,K2-18b-hu,CH4,haze+deck-retrained,present,0.5,0.0,1.0,0.0,0.0,0.0
 JWST,K2-18b-hu,CH4,the method,present,0.5,0.0,1.0,0.0,0.0,0.0
+JWST,K2-18b-hu,CH4,"census, same haze design",present,0.5,0.0,1.0,0.0,0.0,0.0
 JWST,K2-18b-hu,H2O,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-hu,H2O,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-hu,H2O,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -629,6 +718,7 @@ JWST,K2-18b-hu,H2O,shape flag,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-hu,H2O,haze-retrained,absent,0.5,0.0,1.0,0.0,0.0,0.0
 JWST,K2-18b-hu,H2O,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-hu,H2O,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-hu,H2O,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-hu,CO2,published,,,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-hu,CO2,no-optical,,,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-hu,CO2,AIRS-only,,,0.0,0.0,1.0,0.0,0.0
@@ -636,6 +726,7 @@ JWST,K2-18b-hu,CO2,shape flag,,,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-hu,CO2,haze-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-hu,CO2,haze+deck-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-hu,CO2,the method,,,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-hu,CO2,"census, same haze design",,,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-hu,NH3,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-hu,NH3,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-hu,NH3,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -643,34 +734,39 @@ JWST,K2-18b-hu,NH3,shape flag,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-hu,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-hu,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-hu,NH3,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
-Tier-1,K2-18b-hu,CH4,published,present,0.01,0.0,0.02,0.98,0.16,0.0
-Tier-1,K2-18b-hu,CH4,no-optical,present,0.0275,0.005,0.045,0.95,0.16,0.0
-Tier-1,K2-18b-hu,CH4,AIRS-only,present,0.1275,0.075,0.105,0.82,0.16,0.0
-Tier-1,K2-18b-hu,CH4,shape flag,present,0.0975,0.065,0.065,0.87,0.16,0.0
-Tier-1,K2-18b-hu,CH4,haze-retrained,present,0.0675,0.025,0.085,0.89,0.16,0.0
-Tier-1,K2-18b-hu,CH4,haze+deck-retrained,present,0.09,0.045,0.09,0.865,0.16,0.0
-Tier-1,K2-18b-hu,CH4,the method,present,0.09,0.05,0.08,0.87,0.16,0.0
-Tier-1,K2-18b-hu,H2O,published,absent,0.9625,0.01,0.055,0.935,0.16,0.0
-Tier-1,K2-18b-hu,H2O,no-optical,absent,0.9075,0.04,0.105,0.855,0.16,0.0
-Tier-1,K2-18b-hu,H2O,AIRS-only,absent,0.9575,0.015,0.055,0.93,0.16,0.0
-Tier-1,K2-18b-hu,H2O,shape flag,absent,0.97,0.01,0.04,0.95,0.16,0.0
-Tier-1,K2-18b-hu,H2O,haze-retrained,absent,0.915,0.035,0.1,0.865,0.16,0.0
-Tier-1,K2-18b-hu,H2O,haze+deck-retrained,absent,0.9175,0.03,0.105,0.865,0.16,0.0
-Tier-1,K2-18b-hu,H2O,the method,absent,0.96,0.02,0.04,0.94,0.16,0.0
-Tier-1,K2-18b-hu,CO2,published,,,0.0,0.005,0.995,0.16,0.0
-Tier-1,K2-18b-hu,CO2,no-optical,,,0.0,0.0,1.0,0.16,0.0
-Tier-1,K2-18b-hu,CO2,AIRS-only,,,0.0,0.01,0.99,0.16,0.0
-Tier-1,K2-18b-hu,CO2,shape flag,,,0.0,0.005,0.995,0.16,0.0
-Tier-1,K2-18b-hu,CO2,haze-retrained,,,0.0,0.005,0.995,0.16,0.0
-Tier-1,K2-18b-hu,CO2,haze+deck-retrained,,,0.0,0.005,0.995,0.16,0.0
-Tier-1,K2-18b-hu,CO2,the method,,,0.0,0.005,0.995,0.16,0.0
-Tier-1,K2-18b-hu,NH3,published,absent,0.9975,0.0,0.005,0.995,0.16,0.0
-Tier-1,K2-18b-hu,NH3,no-optical,absent,0.9925,0.0,0.015,0.985,0.16,0.0
-Tier-1,K2-18b-hu,NH3,AIRS-only,absent,0.9125,0.04,0.095,0.865,0.16,0.0
-Tier-1,K2-18b-hu,NH3,shape flag,absent,0.955,0.02,0.05,0.93,0.16,0.0
-Tier-1,K2-18b-hu,NH3,haze-retrained,absent,0.9925,0.0,0.015,0.985,0.16,0.0
-Tier-1,K2-18b-hu,NH3,haze+deck-retrained,absent,0.99,0.0,0.02,0.98,0.16,0.0
-Tier-1,K2-18b-hu,NH3,the method,absent,0.9625,0.02,0.035,0.945,0.16,0.0
+JWST,K2-18b-hu,NH3,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
+Tier-1,K2-18b-hu,CH4,published,present,0.013,0.002,0.022,0.976,0.16,0.0
+Tier-1,K2-18b-hu,CH4,no-optical,present,0.023,0.002,0.042,0.956,0.16,0.0
+Tier-1,K2-18b-hu,CH4,AIRS-only,present,0.168,0.106,0.124,0.77,0.16,0.0
+Tier-1,K2-18b-hu,CH4,shape flag,present,0.13,0.072,0.116,0.812,0.16,0.0
+Tier-1,K2-18b-hu,CH4,haze-retrained,present,0.069,0.022,0.094,0.884,0.16,0.0
+Tier-1,K2-18b-hu,CH4,haze+deck-retrained,present,0.092,0.034,0.116,0.85,0.16,0.0
+Tier-1,K2-18b-hu,CH4,the method,present,0.121,0.062,0.118,0.82,0.16,0.0
+Tier-1,K2-18b-hu,CH4,"census, same haze design",present,0.13,0.072,0.116,0.812,0.16,0.0
+Tier-1,K2-18b-hu,H2O,published,absent,0.958,0.018,0.048,0.934,0.16,0.0
+Tier-1,K2-18b-hu,H2O,no-optical,absent,0.916,0.036,0.096,0.868,0.16,0.0
+Tier-1,K2-18b-hu,H2O,AIRS-only,absent,0.958,0.018,0.048,0.934,0.16,0.0
+Tier-1,K2-18b-hu,H2O,shape flag,absent,0.961,0.016,0.046,0.938,0.16,0.0
+Tier-1,K2-18b-hu,H2O,haze-retrained,absent,0.906,0.038,0.112,0.85,0.16,0.0
+Tier-1,K2-18b-hu,H2O,haze+deck-retrained,absent,0.91,0.038,0.104,0.858,0.16,0.0
+Tier-1,K2-18b-hu,H2O,the method,absent,0.95,0.026,0.048,0.926,0.16,0.0
+Tier-1,K2-18b-hu,H2O,"census, same haze design",absent,0.961,0.016,0.046,0.938,0.16,0.0
+Tier-1,K2-18b-hu,CO2,published,,,0.0,0.002,0.998,0.16,0.0
+Tier-1,K2-18b-hu,CO2,no-optical,,,0.0,0.002,0.998,0.16,0.0
+Tier-1,K2-18b-hu,CO2,AIRS-only,,,0.0,0.008,0.992,0.16,0.0
+Tier-1,K2-18b-hu,CO2,shape flag,,,0.0,0.006,0.994,0.16,0.0
+Tier-1,K2-18b-hu,CO2,haze-retrained,,,0.0,0.004,0.996,0.16,0.0
+Tier-1,K2-18b-hu,CO2,haze+deck-retrained,,,0.0,0.004,0.996,0.16,0.0
+Tier-1,K2-18b-hu,CO2,the method,,,0.0,0.006,0.994,0.16,0.0
+Tier-1,K2-18b-hu,CO2,"census, same haze design",,,0.0,0.006,0.994,0.16,0.0
+Tier-1,K2-18b-hu,NH3,published,absent,0.998,0.0,0.004,0.996,0.16,0.0
+Tier-1,K2-18b-hu,NH3,no-optical,absent,0.991,0.0,0.018,0.982,0.16,0.0
+Tier-1,K2-18b-hu,NH3,AIRS-only,absent,0.915,0.05,0.07,0.88,0.16,0.0
+Tier-1,K2-18b-hu,NH3,shape flag,absent,0.959,0.02,0.042,0.938,0.16,0.0
+Tier-1,K2-18b-hu,NH3,haze-retrained,absent,0.993,0.0,0.014,0.986,0.16,0.0
+Tier-1,K2-18b-hu,NH3,haze+deck-retrained,absent,0.991,0.0,0.018,0.982,0.16,0.0
+Tier-1,K2-18b-hu,NH3,the method,absent,0.965,0.02,0.03,0.95,0.16,0.0
+Tier-1,K2-18b-hu,NH3,"census, same haze design",absent,0.959,0.02,0.042,0.938,0.16,0.0
 JWST,TOI-270d-hm,CH4,published,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,CH4,no-optical,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,CH4,AIRS-only,present,1.0,1.0,0.0,0.0,0.0,0.0
@@ -678,6 +774,7 @@ JWST,TOI-270d-hm,CH4,shape flag,present,1.0,1.0,0.0,0.0,0.0,0.0
 JWST,TOI-270d-hm,CH4,haze-retrained,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,CH4,haze+deck-retrained,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,CH4,the method,present,1.0,1.0,0.0,0.0,0.0,0.0
+JWST,TOI-270d-hm,CH4,"census, same haze design",present,1.0,1.0,0.0,0.0,0.0,0.0
 JWST,TOI-270d-hm,H2O,published,,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,H2O,no-optical,,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,H2O,AIRS-only,,,0.0,0.0,1.0,0.0,0.0
@@ -685,6 +782,7 @@ JWST,TOI-270d-hm,H2O,shape flag,,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,H2O,haze-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,H2O,haze+deck-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,H2O,the method,,,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d-hm,H2O,"census, same haze design",,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,CO2,published,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,CO2,no-optical,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,CO2,AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
@@ -692,6 +790,7 @@ JWST,TOI-270d-hm,CO2,shape flag,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,CO2,haze-retrained,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,CO2,haze+deck-retrained,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,CO2,the method,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d-hm,CO2,"census, same haze design",present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,NH3,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,NH3,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,NH3,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -699,34 +798,39 @@ JWST,TOI-270d-hm,NH3,shape flag,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,NH3,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
-Tier-1,TOI-270d-hm,CH4,published,present,0.02,0.0,0.04,0.96,0.055,0.0
-Tier-1,TOI-270d-hm,CH4,no-optical,present,0.02,0.0,0.04,0.96,0.055,0.0
-Tier-1,TOI-270d-hm,CH4,AIRS-only,present,0.0725,0.04,0.065,0.895,0.055,0.0
-Tier-1,TOI-270d-hm,CH4,shape flag,present,0.0575,0.03,0.055,0.915,0.055,0.0
-Tier-1,TOI-270d-hm,CH4,haze-retrained,present,0.0475,0.01,0.075,0.915,0.055,0.0
-Tier-1,TOI-270d-hm,CH4,haze+deck-retrained,present,0.05,0.01,0.08,0.91,0.055,0.0
-Tier-1,TOI-270d-hm,CH4,the method,present,0.0575,0.03,0.055,0.915,0.055,0.0
-Tier-1,TOI-270d-hm,H2O,published,,,0.0,0.045,0.955,0.055,0.0
-Tier-1,TOI-270d-hm,H2O,no-optical,,,0.0,0.07,0.93,0.055,0.0
-Tier-1,TOI-270d-hm,H2O,AIRS-only,,,0.01,0.065,0.925,0.055,0.0
-Tier-1,TOI-270d-hm,H2O,shape flag,,,0.01,0.065,0.925,0.055,0.0
-Tier-1,TOI-270d-hm,H2O,haze-retrained,,,0.01,0.055,0.935,0.055,0.0
-Tier-1,TOI-270d-hm,H2O,haze+deck-retrained,,,0.01,0.05,0.94,0.055,0.0
-Tier-1,TOI-270d-hm,H2O,the method,,,0.01,0.07,0.92,0.055,0.0
-Tier-1,TOI-270d-hm,CO2,published,present,0.0075,0.0,0.015,0.985,0.055,0.0
-Tier-1,TOI-270d-hm,CO2,no-optical,present,0.005,0.0,0.01,0.99,0.055,0.0
-Tier-1,TOI-270d-hm,CO2,AIRS-only,present,0.0175,0.005,0.025,0.97,0.055,0.0
-Tier-1,TOI-270d-hm,CO2,shape flag,present,0.01,0.0,0.02,0.98,0.055,0.0
-Tier-1,TOI-270d-hm,CO2,haze-retrained,present,0.0125,0.0,0.025,0.975,0.055,0.0
-Tier-1,TOI-270d-hm,CO2,haze+deck-retrained,present,0.0125,0.0,0.025,0.975,0.055,0.0
-Tier-1,TOI-270d-hm,CO2,the method,present,0.0075,0.0,0.015,0.985,0.055,0.0
-Tier-1,TOI-270d-hm,NH3,published,absent,0.9875,0.0,0.025,0.975,0.055,0.0
-Tier-1,TOI-270d-hm,NH3,no-optical,absent,0.995,0.0,0.01,0.99,0.055,0.0
-Tier-1,TOI-270d-hm,NH3,AIRS-only,absent,0.9425,0.035,0.045,0.92,0.055,0.0
-Tier-1,TOI-270d-hm,NH3,shape flag,absent,0.975,0.005,0.04,0.955,0.055,0.0
-Tier-1,TOI-270d-hm,NH3,haze-retrained,absent,0.9825,0.0,0.035,0.965,0.055,0.0
-Tier-1,TOI-270d-hm,NH3,haze+deck-retrained,absent,0.985,0.0,0.03,0.97,0.055,0.0
-Tier-1,TOI-270d-hm,NH3,the method,absent,0.9775,0.0,0.045,0.955,0.055,0.0
+JWST,TOI-270d-hm,NH3,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
+Tier-1,TOI-270d-hm,CH4,published,present,0.017,0.002,0.03,0.968,0.064,0.0
+Tier-1,TOI-270d-hm,CH4,no-optical,present,0.018,0.0,0.036,0.964,0.064,0.0
+Tier-1,TOI-270d-hm,CH4,AIRS-only,present,0.091,0.044,0.094,0.862,0.064,0.0
+Tier-1,TOI-270d-hm,CH4,shape flag,present,0.066,0.03,0.072,0.898,0.064,0.0
+Tier-1,TOI-270d-hm,CH4,haze-retrained,present,0.045,0.006,0.078,0.916,0.064,0.0
+Tier-1,TOI-270d-hm,CH4,haze+deck-retrained,present,0.061,0.012,0.098,0.89,0.064,0.0
+Tier-1,TOI-270d-hm,CH4,the method,present,0.065,0.028,0.074,0.898,0.064,0.0
+Tier-1,TOI-270d-hm,CH4,"census, same haze design",present,0.066,0.03,0.072,0.898,0.064,0.0
+Tier-1,TOI-270d-hm,H2O,published,,,0.008,0.034,0.958,0.064,0.0
+Tier-1,TOI-270d-hm,H2O,no-optical,,,0.012,0.042,0.946,0.064,0.0
+Tier-1,TOI-270d-hm,H2O,AIRS-only,,,0.024,0.044,0.932,0.064,0.0
+Tier-1,TOI-270d-hm,H2O,shape flag,,,0.018,0.042,0.94,0.064,0.0
+Tier-1,TOI-270d-hm,H2O,haze-retrained,,,0.02,0.044,0.936,0.064,0.0
+Tier-1,TOI-270d-hm,H2O,haze+deck-retrained,,,0.02,0.046,0.934,0.064,0.0
+Tier-1,TOI-270d-hm,H2O,the method,,,0.018,0.044,0.938,0.064,0.0
+Tier-1,TOI-270d-hm,H2O,"census, same haze design",,,0.018,0.042,0.94,0.064,0.0
+Tier-1,TOI-270d-hm,CO2,published,present,0.004,0.0,0.008,0.992,0.064,0.0
+Tier-1,TOI-270d-hm,CO2,no-optical,present,0.008,0.0,0.016,0.984,0.064,0.0
+Tier-1,TOI-270d-hm,CO2,AIRS-only,present,0.013,0.004,0.018,0.978,0.064,0.0
+Tier-1,TOI-270d-hm,CO2,shape flag,present,0.007,0.0,0.014,0.986,0.064,0.0
+Tier-1,TOI-270d-hm,CO2,haze-retrained,present,0.01,0.002,0.016,0.982,0.064,0.0
+Tier-1,TOI-270d-hm,CO2,haze+deck-retrained,present,0.012,0.0,0.024,0.976,0.064,0.0
+Tier-1,TOI-270d-hm,CO2,the method,present,0.006,0.0,0.012,0.988,0.064,0.0
+Tier-1,TOI-270d-hm,CO2,"census, same haze design",present,0.007,0.0,0.014,0.986,0.064,0.0
+Tier-1,TOI-270d-hm,NH3,published,absent,0.991,0.002,0.014,0.984,0.064,0.0
+Tier-1,TOI-270d-hm,NH3,no-optical,absent,0.988,0.004,0.016,0.98,0.064,0.0
+Tier-1,TOI-270d-hm,NH3,AIRS-only,absent,0.954,0.024,0.044,0.932,0.064,0.0
+Tier-1,TOI-270d-hm,NH3,shape flag,absent,0.975,0.008,0.034,0.958,0.064,0.0
+Tier-1,TOI-270d-hm,NH3,haze-retrained,absent,0.985,0.004,0.022,0.974,0.064,0.0
+Tier-1,TOI-270d-hm,NH3,haze+deck-retrained,absent,0.983,0.004,0.026,0.97,0.064,0.0
+Tier-1,TOI-270d-hm,NH3,the method,absent,0.977,0.006,0.034,0.96,0.064,0.0
+Tier-1,TOI-270d-hm,NH3,"census, same haze design",absent,0.975,0.008,0.034,0.958,0.064,0.0
 JWST,GJ9827d,CH4,published,,,0.0,0.0,1.0,0.0,0.0
 JWST,GJ9827d,CH4,no-optical,,,0.0,0.0,1.0,0.0,0.0
 JWST,GJ9827d,CH4,AIRS-only,,,0.0,0.0,1.0,0.0,0.0
@@ -734,6 +838,7 @@ JWST,GJ9827d,CH4,shape flag,,,0.0,0.0,1.0,0.0,0.0
 JWST,GJ9827d,CH4,haze-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,GJ9827d,CH4,haze+deck-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,GJ9827d,CH4,the method,,,0.0,0.0,1.0,0.0,0.0
+JWST,GJ9827d,CH4,"census, same haze design",,,0.0,0.0,1.0,0.0,0.0
 JWST,GJ9827d,H2O,published,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,GJ9827d,H2O,no-optical,present,0.5,0.0,1.0,0.0,0.0,0.0
 JWST,GJ9827d,H2O,AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
@@ -741,6 +846,7 @@ JWST,GJ9827d,H2O,shape flag,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,GJ9827d,H2O,haze-retrained,present,0.5,0.0,1.0,0.0,0.0,0.0
 JWST,GJ9827d,H2O,haze+deck-retrained,present,0.5,0.0,1.0,0.0,0.0,0.0
 JWST,GJ9827d,H2O,the method,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,GJ9827d,H2O,"census, same haze design",present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,GJ9827d,CO2,published,,,0.0,0.0,1.0,0.0,0.0
 JWST,GJ9827d,CO2,no-optical,,,0.0,0.0,1.0,0.0,0.0
 JWST,GJ9827d,CO2,AIRS-only,,,0.0,1.0,0.0,0.0,0.0
@@ -748,6 +854,7 @@ JWST,GJ9827d,CO2,shape flag,,,0.0,0.0,1.0,0.0,0.0
 JWST,GJ9827d,CO2,haze-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,GJ9827d,CO2,haze+deck-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,GJ9827d,CO2,the method,,,0.0,0.0,1.0,0.0,0.0
+JWST,GJ9827d,CO2,"census, same haze design",,,0.0,0.0,1.0,0.0,0.0
 JWST,GJ9827d,NH3,published,,,0.0,0.0,1.0,0.0,0.0
 JWST,GJ9827d,NH3,no-optical,,,0.0,0.0,1.0,0.0,0.0
 JWST,GJ9827d,NH3,AIRS-only,,,0.0,0.0,1.0,0.0,0.0
@@ -755,34 +862,39 @@ JWST,GJ9827d,NH3,shape flag,,,0.0,0.0,1.0,0.0,0.0
 JWST,GJ9827d,NH3,haze-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,GJ9827d,NH3,haze+deck-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,GJ9827d,NH3,the method,,,0.0,0.0,1.0,0.0,0.0
-Tier-1,GJ9827d,CH4,published,,,0.0,0.0,1.0,0.15,0.0
-Tier-1,GJ9827d,CH4,no-optical,,,0.0,0.0,1.0,0.15,0.0
-Tier-1,GJ9827d,CH4,AIRS-only,,,0.0,0.0,1.0,0.15,0.0
-Tier-1,GJ9827d,CH4,shape flag,,,0.0,0.0,1.0,0.15,0.0
-Tier-1,GJ9827d,CH4,haze-retrained,,,0.0,0.0,1.0,0.15,0.0
-Tier-1,GJ9827d,CH4,haze+deck-retrained,,,0.0,0.0,1.0,0.15,0.0
-Tier-1,GJ9827d,CH4,the method,,,0.0,0.0,1.0,0.15,0.0
-Tier-1,GJ9827d,H2O,published,present,0.045,0.005,0.08,0.915,0.15,0.0
-Tier-1,GJ9827d,H2O,no-optical,present,0.12,0.07,0.1,0.83,0.15,0.0
-Tier-1,GJ9827d,H2O,AIRS-only,present,0.11,0.06,0.1,0.84,0.15,0.0
-Tier-1,GJ9827d,H2O,shape flag,present,0.0775,0.015,0.125,0.86,0.15,0.0
-Tier-1,GJ9827d,H2O,haze-retrained,present,0.1125,0.045,0.135,0.82,0.15,0.0
-Tier-1,GJ9827d,H2O,haze+deck-retrained,present,0.1125,0.055,0.115,0.83,0.15,0.0
-Tier-1,GJ9827d,H2O,the method,present,0.0875,0.03,0.115,0.855,0.15,0.0
-Tier-1,GJ9827d,CO2,published,,,0.0,0.035,0.965,0.15,0.0
-Tier-1,GJ9827d,CO2,no-optical,,,0.0,0.025,0.975,0.15,0.0
-Tier-1,GJ9827d,CO2,AIRS-only,,,0.01,0.05,0.94,0.15,0.0
-Tier-1,GJ9827d,CO2,shape flag,,,0.005,0.03,0.965,0.15,0.0
-Tier-1,GJ9827d,CO2,haze-retrained,,,0.005,0.015,0.98,0.15,0.0
-Tier-1,GJ9827d,CO2,haze+deck-retrained,,,0.005,0.04,0.955,0.15,0.0
-Tier-1,GJ9827d,CO2,the method,,,0.005,0.02,0.975,0.15,0.0
-Tier-1,GJ9827d,NH3,published,,,0.0,0.005,0.995,0.15,0.0
-Tier-1,GJ9827d,NH3,no-optical,,,0.005,0.01,0.985,0.15,0.0
-Tier-1,GJ9827d,NH3,AIRS-only,,,0.055,0.08,0.865,0.15,0.0
-Tier-1,GJ9827d,NH3,shape flag,,,0.005,0.07,0.925,0.15,0.0
-Tier-1,GJ9827d,NH3,haze-retrained,,,0.005,0.035,0.96,0.15,0.0
-Tier-1,GJ9827d,NH3,haze+deck-retrained,,,0.0,0.04,0.96,0.15,0.0
-Tier-1,GJ9827d,NH3,the method,,,0.005,0.07,0.925,0.15,0.0
+JWST,GJ9827d,NH3,"census, same haze design",,,0.0,0.0,1.0,0.0,0.0
+Tier-1,GJ9827d,CH4,published,,,0.0,0.0,1.0,0.102,0.0
+Tier-1,GJ9827d,CH4,no-optical,,,0.0,0.0,1.0,0.102,0.0
+Tier-1,GJ9827d,CH4,AIRS-only,,,0.0,0.004,0.996,0.102,0.0
+Tier-1,GJ9827d,CH4,shape flag,,,0.0,0.002,0.998,0.102,0.0
+Tier-1,GJ9827d,CH4,haze-retrained,,,0.0,0.0,1.0,0.102,0.0
+Tier-1,GJ9827d,CH4,haze+deck-retrained,,,0.0,0.002,0.998,0.102,0.0
+Tier-1,GJ9827d,CH4,the method,,,0.0,0.002,0.998,0.102,0.0
+Tier-1,GJ9827d,CH4,"census, same haze design",,,0.0,0.002,0.998,0.102,0.0
+Tier-1,GJ9827d,H2O,published,present,0.057,0.02,0.074,0.906,0.102,0.0
+Tier-1,GJ9827d,H2O,no-optical,present,0.114,0.062,0.104,0.834,0.102,0.0
+Tier-1,GJ9827d,H2O,AIRS-only,present,0.098,0.05,0.096,0.854,0.102,0.0
+Tier-1,GJ9827d,H2O,shape flag,present,0.08,0.028,0.104,0.868,0.102,0.0
+Tier-1,GJ9827d,H2O,haze-retrained,present,0.113,0.05,0.126,0.824,0.102,0.0
+Tier-1,GJ9827d,H2O,haze+deck-retrained,present,0.121,0.066,0.11,0.824,0.102,0.0
+Tier-1,GJ9827d,H2O,the method,present,0.087,0.034,0.106,0.86,0.102,0.0
+Tier-1,GJ9827d,H2O,"census, same haze design",present,0.08,0.028,0.104,0.868,0.102,0.0
+Tier-1,GJ9827d,CO2,published,,,0.0,0.024,0.976,0.102,0.0
+Tier-1,GJ9827d,CO2,no-optical,,,0.0,0.03,0.97,0.102,0.0
+Tier-1,GJ9827d,CO2,AIRS-only,,,0.006,0.036,0.958,0.102,0.0
+Tier-1,GJ9827d,CO2,shape flag,,,0.004,0.024,0.972,0.102,0.0
+Tier-1,GJ9827d,CO2,haze-retrained,,,0.004,0.02,0.976,0.102,0.0
+Tier-1,GJ9827d,CO2,haze+deck-retrained,,,0.004,0.03,0.966,0.102,0.0
+Tier-1,GJ9827d,CO2,the method,,,0.004,0.02,0.976,0.102,0.0
+Tier-1,GJ9827d,CO2,"census, same haze design",,,0.004,0.024,0.972,0.102,0.0
+Tier-1,GJ9827d,NH3,published,,,0.0,0.01,0.99,0.102,0.0
+Tier-1,GJ9827d,NH3,no-optical,,,0.008,0.018,0.974,0.102,0.0
+Tier-1,GJ9827d,NH3,AIRS-only,,,0.056,0.08,0.864,0.102,0.0
+Tier-1,GJ9827d,NH3,shape flag,,,0.012,0.054,0.934,0.102,0.0
+Tier-1,GJ9827d,NH3,haze-retrained,,,0.01,0.028,0.962,0.102,0.0
+Tier-1,GJ9827d,NH3,haze+deck-retrained,,,0.004,0.028,0.968,0.102,0.0
+Tier-1,GJ9827d,NH3,the method,,,0.012,0.054,0.934,0.102,0.0
+Tier-1,GJ9827d,NH3,"census, same haze design",,,0.012,0.054,0.934,0.102,0.0
 JWST,WASP-52b,CH4,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-52b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-52b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -790,6 +902,7 @@ JWST,WASP-52b,CH4,shape flag,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-52b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-52b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-52b,CH4,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-52b,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-52b,H2O,published,,,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-52b,H2O,no-optical,,,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-52b,H2O,AIRS-only,,,0.0,0.0,1.0,0.0,0.0
@@ -797,6 +910,7 @@ JWST,WASP-52b,H2O,shape flag,,,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-52b,H2O,haze-retrained,,,0.0,1.0,0.0,0.0,0.0
 JWST,WASP-52b,H2O,haze+deck-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-52b,H2O,the method,,,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-52b,H2O,"census, same haze design",,,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-52b,CO2,published,,,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-52b,CO2,no-optical,,,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-52b,CO2,AIRS-only,,,0.0,0.0,1.0,0.0,0.0
@@ -804,6 +918,7 @@ JWST,WASP-52b,CO2,shape flag,,,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-52b,CO2,haze-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-52b,CO2,haze+deck-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-52b,CO2,the method,,,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-52b,CO2,"census, same haze design",,,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-52b,NH3,published,,,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-52b,NH3,no-optical,,,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-52b,NH3,AIRS-only,,,1.0,0.0,0.0,0.0,0.0
@@ -811,34 +926,39 @@ JWST,WASP-52b,NH3,shape flag,,,1.0,0.0,0.0,0.0,0.0
 JWST,WASP-52b,NH3,haze-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-52b,NH3,haze+deck-retrained,,,0.0,1.0,0.0,0.0,0.0
 JWST,WASP-52b,NH3,the method,,,1.0,0.0,0.0,0.0,0.0
-Tier-1,WASP-52b,CH4,published,absent,0.9975,0.0,0.005,0.995,0.15,0.0
-Tier-1,WASP-52b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.15,0.0
-Tier-1,WASP-52b,CH4,AIRS-only,absent,0.9875,0.005,0.015,0.98,0.15,0.0
-Tier-1,WASP-52b,CH4,shape flag,absent,0.9925,0.005,0.005,0.99,0.15,0.0
-Tier-1,WASP-52b,CH4,haze-retrained,absent,0.9975,0.0,0.005,0.995,0.15,0.0
-Tier-1,WASP-52b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.15,0.0
-Tier-1,WASP-52b,CH4,the method,absent,0.995,0.0,0.01,0.99,0.15,0.0
-Tier-1,WASP-52b,H2O,published,,,0.0,0.04,0.96,0.15,0.0
-Tier-1,WASP-52b,H2O,no-optical,,,0.025,0.065,0.91,0.15,0.0
-Tier-1,WASP-52b,H2O,AIRS-only,,,0.05,0.145,0.805,0.15,0.0
-Tier-1,WASP-52b,H2O,shape flag,,,0.0,0.11,0.89,0.15,0.0
-Tier-1,WASP-52b,H2O,haze-retrained,,,0.025,0.085,0.89,0.15,0.0
-Tier-1,WASP-52b,H2O,haze+deck-retrained,,,0.025,0.105,0.87,0.15,0.0
-Tier-1,WASP-52b,H2O,the method,,,0.0,0.12,0.88,0.15,0.0
-Tier-1,WASP-52b,CO2,published,,,0.0,0.01,0.99,0.15,0.0
-Tier-1,WASP-52b,CO2,no-optical,,,0.0,0.02,0.98,0.15,0.0
-Tier-1,WASP-52b,CO2,AIRS-only,,,0.0,0.04,0.96,0.15,0.0
-Tier-1,WASP-52b,CO2,shape flag,,,0.0,0.025,0.975,0.15,0.0
-Tier-1,WASP-52b,CO2,haze-retrained,,,0.005,0.025,0.97,0.15,0.0
-Tier-1,WASP-52b,CO2,haze+deck-retrained,,,0.005,0.035,0.96,0.15,0.0
-Tier-1,WASP-52b,CO2,the method,,,0.0,0.03,0.97,0.15,0.0
-Tier-1,WASP-52b,NH3,published,,,0.005,0.02,0.975,0.15,0.0
-Tier-1,WASP-52b,NH3,no-optical,,,0.05,0.075,0.875,0.15,0.0
-Tier-1,WASP-52b,NH3,AIRS-only,,,0.3,0.125,0.575,0.15,0.0
-Tier-1,WASP-52b,NH3,shape flag,,,0.14,0.11,0.75,0.15,0.0
-Tier-1,WASP-52b,NH3,haze-retrained,,,0.065,0.13,0.805,0.15,0.0
-Tier-1,WASP-52b,NH3,haze+deck-retrained,,,0.09,0.12,0.79,0.15,0.0
-Tier-1,WASP-52b,NH3,the method,,,0.125,0.125,0.75,0.15,0.0
+JWST,WASP-52b,NH3,"census, same haze design",,,1.0,0.0,0.0,0.0,0.0
+Tier-1,WASP-52b,CH4,published,absent,0.999,0.0,0.002,0.998,0.146,0.0
+Tier-1,WASP-52b,CH4,no-optical,absent,0.999,0.0,0.002,0.998,0.146,0.0
+Tier-1,WASP-52b,CH4,AIRS-only,absent,0.986,0.004,0.02,0.976,0.146,0.0
+Tier-1,WASP-52b,CH4,shape flag,absent,0.995,0.002,0.006,0.992,0.146,0.0
+Tier-1,WASP-52b,CH4,haze-retrained,absent,0.999,0.0,0.002,0.998,0.146,0.0
+Tier-1,WASP-52b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.146,0.0
+Tier-1,WASP-52b,CH4,the method,absent,0.997,0.0,0.006,0.994,0.146,0.0
+Tier-1,WASP-52b,CH4,"census, same haze design",absent,0.995,0.002,0.006,0.992,0.146,0.0
+Tier-1,WASP-52b,H2O,published,,,0.012,0.038,0.95,0.146,0.0
+Tier-1,WASP-52b,H2O,no-optical,,,0.03,0.068,0.902,0.146,0.0
+Tier-1,WASP-52b,H2O,AIRS-only,,,0.046,0.128,0.826,0.146,0.0
+Tier-1,WASP-52b,H2O,shape flag,,,0.024,0.078,0.898,0.146,0.0
+Tier-1,WASP-52b,H2O,haze-retrained,,,0.034,0.094,0.872,0.146,0.0
+Tier-1,WASP-52b,H2O,haze+deck-retrained,,,0.038,0.108,0.854,0.146,0.0
+Tier-1,WASP-52b,H2O,the method,,,0.026,0.086,0.888,0.146,0.0
+Tier-1,WASP-52b,H2O,"census, same haze design",,,0.024,0.078,0.898,0.146,0.0
+Tier-1,WASP-52b,CO2,published,,,0.0,0.006,0.994,0.146,0.0
+Tier-1,WASP-52b,CO2,no-optical,,,0.002,0.012,0.986,0.146,0.0
+Tier-1,WASP-52b,CO2,AIRS-only,,,0.002,0.028,0.97,0.146,0.0
+Tier-1,WASP-52b,CO2,shape flag,,,0.002,0.012,0.986,0.146,0.0
+Tier-1,WASP-52b,CO2,haze-retrained,,,0.004,0.02,0.976,0.146,0.0
+Tier-1,WASP-52b,CO2,haze+deck-retrained,,,0.004,0.024,0.972,0.146,0.0
+Tier-1,WASP-52b,CO2,the method,,,0.002,0.016,0.982,0.146,0.0
+Tier-1,WASP-52b,CO2,"census, same haze design",,,0.002,0.012,0.986,0.146,0.0
+Tier-1,WASP-52b,NH3,published,,,0.002,0.038,0.96,0.146,0.0
+Tier-1,WASP-52b,NH3,no-optical,,,0.044,0.078,0.878,0.146,0.0
+Tier-1,WASP-52b,NH3,AIRS-only,,,0.262,0.134,0.604,0.146,0.0
+Tier-1,WASP-52b,NH3,shape flag,,,0.114,0.116,0.77,0.146,0.0
+Tier-1,WASP-52b,NH3,haze-retrained,,,0.078,0.11,0.812,0.146,0.0
+Tier-1,WASP-52b,NH3,haze+deck-retrained,,,0.09,0.12,0.79,0.146,0.0
+Tier-1,WASP-52b,NH3,the method,,,0.11,0.116,0.774,0.146,0.0
+Tier-1,WASP-52b,NH3,"census, same haze design",,,0.114,0.116,0.77,0.146,0.0
 JWST,L98-59d,CH4,published,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,CH4,no-optical,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
@@ -846,6 +966,7 @@ JWST,L98-59d,CH4,shape flag,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,CH4,the method,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,L98-59d,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,H2O,published,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,H2O,no-optical,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,H2O,AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
@@ -853,6 +974,7 @@ JWST,L98-59d,H2O,shape flag,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,H2O,haze-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,H2O,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,H2O,the method,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,L98-59d,H2O,"census, same haze design",absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,CO2,published,,,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,CO2,no-optical,,,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,CO2,AIRS-only,,,0.0,0.0,1.0,1.0,0.0
@@ -860,6 +982,7 @@ JWST,L98-59d,CO2,shape flag,,,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,CO2,haze-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,CO2,haze+deck-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,CO2,the method,,,0.0,0.0,1.0,1.0,0.0
+JWST,L98-59d,CO2,"census, same haze design",,,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,NH3,published,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,NH3,no-optical,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,NH3,AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
@@ -867,34 +990,39 @@ JWST,L98-59d,NH3,shape flag,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,NH3,the method,absent,1.0,0.0,0.0,1.0,1.0,0.0
-Tier-1,L98-59d,CH4,published,absent,0.99,0.005,0.01,0.985,0.09,0.0
-Tier-1,L98-59d,CH4,no-optical,absent,0.9875,0.0,0.025,0.975,0.09,0.0
-Tier-1,L98-59d,CH4,AIRS-only,absent,0.95,0.03,0.04,0.93,0.09,0.0
-Tier-1,L98-59d,CH4,shape flag,absent,0.9575,0.03,0.025,0.945,0.09,0.0
-Tier-1,L98-59d,CH4,haze-retrained,absent,0.9825,0.005,0.025,0.97,0.09,0.0
-Tier-1,L98-59d,CH4,haze+deck-retrained,absent,0.98,0.0,0.04,0.96,0.09,0.0
-Tier-1,L98-59d,CH4,the method,absent,0.96,0.025,0.03,0.945,0.09,0.0
-Tier-1,L98-59d,H2O,published,absent,0.9875,0.0,0.025,0.975,0.09,0.0
-Tier-1,L98-59d,H2O,no-optical,absent,0.98,0.0,0.04,0.96,0.09,0.0
-Tier-1,L98-59d,H2O,AIRS-only,absent,0.9525,0.02,0.055,0.925,0.09,0.0
-Tier-1,L98-59d,H2O,shape flag,absent,0.9675,0.01,0.045,0.945,0.09,0.0
-Tier-1,L98-59d,H2O,haze-retrained,absent,0.975,0.0,0.05,0.95,0.09,0.0
-Tier-1,L98-59d,H2O,haze+deck-retrained,absent,0.97,0.01,0.04,0.95,0.09,0.0
-Tier-1,L98-59d,H2O,the method,absent,0.965,0.01,0.05,0.94,0.09,0.0
-Tier-1,L98-59d,CO2,published,,,0.0,0.025,0.975,0.09,0.0
-Tier-1,L98-59d,CO2,no-optical,,,0.0,0.025,0.975,0.09,0.0
-Tier-1,L98-59d,CO2,AIRS-only,,,0.005,0.035,0.96,0.09,0.0
-Tier-1,L98-59d,CO2,shape flag,,,0.0,0.03,0.97,0.09,0.0
-Tier-1,L98-59d,CO2,haze-retrained,,,0.0,0.035,0.965,0.09,0.0
-Tier-1,L98-59d,CO2,haze+deck-retrained,,,0.0,0.04,0.96,0.09,0.0
-Tier-1,L98-59d,CO2,the method,,,0.0,0.03,0.97,0.09,0.0
-Tier-1,L98-59d,NH3,published,absent,0.9825,0.005,0.025,0.97,0.09,0.0
-Tier-1,L98-59d,NH3,no-optical,absent,0.9775,0.01,0.025,0.965,0.09,0.0
-Tier-1,L98-59d,NH3,AIRS-only,absent,0.9075,0.055,0.075,0.87,0.09,0.0
-Tier-1,L98-59d,NH3,shape flag,absent,0.96,0.01,0.06,0.93,0.09,0.0
-Tier-1,L98-59d,NH3,haze-retrained,absent,0.95,0.02,0.06,0.92,0.09,0.0
-Tier-1,L98-59d,NH3,haze+deck-retrained,absent,0.9675,0.01,0.045,0.945,0.09,0.0
-Tier-1,L98-59d,NH3,the method,absent,0.9625,0.01,0.055,0.935,0.09,0.0
+JWST,L98-59d,NH3,"census, same haze design",absent,1.0,0.0,0.0,1.0,1.0,0.0
+Tier-1,L98-59d,CH4,published,absent,0.99,0.004,0.012,0.984,0.078,0.0
+Tier-1,L98-59d,CH4,no-optical,absent,0.993,0.0,0.014,0.986,0.078,0.0
+Tier-1,L98-59d,CH4,AIRS-only,absent,0.955,0.018,0.054,0.928,0.078,0.0
+Tier-1,L98-59d,CH4,shape flag,absent,0.967,0.016,0.034,0.95,0.078,0.0
+Tier-1,L98-59d,CH4,haze-retrained,absent,0.983,0.002,0.03,0.968,0.078,0.0
+Tier-1,L98-59d,CH4,haze+deck-retrained,absent,0.983,0.002,0.03,0.968,0.078,0.0
+Tier-1,L98-59d,CH4,the method,absent,0.967,0.014,0.038,0.948,0.078,0.0
+Tier-1,L98-59d,CH4,"census, same haze design",absent,0.967,0.016,0.034,0.95,0.078,0.0
+Tier-1,L98-59d,H2O,published,absent,0.979,0.01,0.022,0.968,0.078,0.0
+Tier-1,L98-59d,H2O,no-optical,absent,0.972,0.014,0.028,0.958,0.078,0.0
+Tier-1,L98-59d,H2O,AIRS-only,absent,0.959,0.016,0.05,0.934,0.078,0.0
+Tier-1,L98-59d,H2O,shape flag,absent,0.968,0.014,0.036,0.95,0.078,0.0
+Tier-1,L98-59d,H2O,haze-retrained,absent,0.965,0.014,0.042,0.944,0.078,0.0
+Tier-1,L98-59d,H2O,haze+deck-retrained,absent,0.958,0.018,0.048,0.934,0.078,0.0
+Tier-1,L98-59d,H2O,the method,absent,0.967,0.014,0.038,0.948,0.078,0.0
+Tier-1,L98-59d,H2O,"census, same haze design",absent,0.968,0.014,0.036,0.95,0.078,0.0
+Tier-1,L98-59d,CO2,published,,,0.0,0.018,0.982,0.078,0.0
+Tier-1,L98-59d,CO2,no-optical,,,0.0,0.022,0.978,0.078,0.0
+Tier-1,L98-59d,CO2,AIRS-only,,,0.004,0.024,0.972,0.078,0.0
+Tier-1,L98-59d,CO2,shape flag,,,0.0,0.026,0.974,0.078,0.0
+Tier-1,L98-59d,CO2,haze-retrained,,,0.002,0.03,0.968,0.078,0.0
+Tier-1,L98-59d,CO2,haze+deck-retrained,,,0.002,0.032,0.966,0.078,0.0
+Tier-1,L98-59d,CO2,the method,,,0.002,0.024,0.974,0.078,0.0
+Tier-1,L98-59d,CO2,"census, same haze design",,,0.0,0.026,0.974,0.078,0.0
+Tier-1,L98-59d,NH3,published,absent,0.981,0.008,0.022,0.97,0.078,0.0
+Tier-1,L98-59d,NH3,no-optical,absent,0.972,0.014,0.028,0.958,0.078,0.0
+Tier-1,L98-59d,NH3,AIRS-only,absent,0.913,0.048,0.078,0.874,0.078,0.0
+Tier-1,L98-59d,NH3,shape flag,absent,0.96,0.016,0.048,0.936,0.078,0.0
+Tier-1,L98-59d,NH3,haze-retrained,absent,0.96,0.022,0.036,0.942,0.078,0.0
+Tier-1,L98-59d,NH3,haze+deck-retrained,absent,0.969,0.012,0.038,0.95,0.078,0.0
+Tier-1,L98-59d,NH3,the method,absent,0.962,0.016,0.044,0.94,0.078,0.0
+Tier-1,L98-59d,NH3,"census, same haze design",absent,0.96,0.016,0.048,0.936,0.078,0.0
 JWST,GJ1214b,CH4,published,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,GJ1214b,CH4,no-optical,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,GJ1214b,CH4,AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
@@ -902,6 +1030,7 @@ JWST,GJ1214b,CH4,shape flag,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,GJ1214b,CH4,haze-retrained,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,GJ1214b,CH4,haze+deck-retrained,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,GJ1214b,CH4,the method,present,0.0,0.0,0.0,1.0,1.0,0.0
+JWST,GJ1214b,CH4,"census, same haze design",present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,GJ1214b,H2O,published,,,0.0,0.0,1.0,1.0,0.0
 JWST,GJ1214b,H2O,no-optical,,,0.0,0.0,1.0,1.0,0.0
 JWST,GJ1214b,H2O,AIRS-only,,,0.0,0.0,1.0,1.0,0.0
@@ -909,6 +1038,7 @@ JWST,GJ1214b,H2O,shape flag,,,0.0,0.0,1.0,1.0,0.0
 JWST,GJ1214b,H2O,haze-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,GJ1214b,H2O,haze+deck-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,GJ1214b,H2O,the method,,,0.0,0.0,1.0,1.0,0.0
+JWST,GJ1214b,H2O,"census, same haze design",,,0.0,0.0,1.0,1.0,0.0
 JWST,GJ1214b,CO2,published,present,0.5,0.0,1.0,0.0,1.0,0.0
 JWST,GJ1214b,CO2,no-optical,present,0.5,0.0,1.0,0.0,1.0,0.0
 JWST,GJ1214b,CO2,AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
@@ -916,6 +1046,7 @@ JWST,GJ1214b,CO2,shape flag,present,0.5,0.0,1.0,0.0,1.0,0.0
 JWST,GJ1214b,CO2,haze-retrained,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,GJ1214b,CO2,haze+deck-retrained,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,GJ1214b,CO2,the method,present,0.0,0.0,0.0,1.0,1.0,0.0
+JWST,GJ1214b,CO2,"census, same haze design",present,0.5,0.0,1.0,0.0,1.0,0.0
 JWST,GJ1214b,NH3,published,,,0.0,0.0,1.0,1.0,0.0
 JWST,GJ1214b,NH3,no-optical,,,0.0,0.0,1.0,1.0,0.0
 JWST,GJ1214b,NH3,AIRS-only,,,0.0,0.0,1.0,1.0,0.0
@@ -923,34 +1054,39 @@ JWST,GJ1214b,NH3,shape flag,,,0.0,0.0,1.0,1.0,0.0
 JWST,GJ1214b,NH3,haze-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,GJ1214b,NH3,haze+deck-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,GJ1214b,NH3,the method,,,0.0,0.0,1.0,1.0,0.0
-Tier-1,GJ1214b,CH4,published,present,0.005,0.0,0.01,0.99,0.23,0.0
-Tier-1,GJ1214b,CH4,no-optical,present,0.0025,0.0,0.005,0.995,0.23,0.0
-Tier-1,GJ1214b,CH4,AIRS-only,present,0.0275,0.02,0.015,0.965,0.23,0.0
-Tier-1,GJ1214b,CH4,shape flag,present,0.0225,0.015,0.015,0.97,0.23,0.0
-Tier-1,GJ1214b,CH4,haze-retrained,present,0.005,0.0,0.01,0.99,0.23,0.0
-Tier-1,GJ1214b,CH4,haze+deck-retrained,present,0.01,0.0,0.02,0.98,0.23,0.0
-Tier-1,GJ1214b,CH4,the method,present,0.025,0.015,0.02,0.965,0.23,0.0
-Tier-1,GJ1214b,H2O,published,,,0.01,0.03,0.96,0.23,0.0
-Tier-1,GJ1214b,H2O,no-optical,,,0.005,0.065,0.93,0.23,0.0
-Tier-1,GJ1214b,H2O,AIRS-only,,,0.025,0.06,0.915,0.23,0.0
-Tier-1,GJ1214b,H2O,shape flag,,,0.015,0.05,0.935,0.23,0.0
-Tier-1,GJ1214b,H2O,haze-retrained,,,0.02,0.055,0.925,0.23,0.0
-Tier-1,GJ1214b,H2O,haze+deck-retrained,,,0.01,0.05,0.94,0.23,0.0
-Tier-1,GJ1214b,H2O,the method,,,0.01,0.06,0.93,0.23,0.0
-Tier-1,GJ1214b,CO2,published,present,0.0125,0.0,0.025,0.975,0.23,0.0
-Tier-1,GJ1214b,CO2,no-optical,present,0.01,0.0,0.02,0.98,0.23,0.0
-Tier-1,GJ1214b,CO2,AIRS-only,present,0.0175,0.005,0.025,0.97,0.23,0.0
-Tier-1,GJ1214b,CO2,shape flag,present,0.0175,0.005,0.025,0.97,0.23,0.0
-Tier-1,GJ1214b,CO2,haze-retrained,present,0.02,0.005,0.03,0.965,0.23,0.0
-Tier-1,GJ1214b,CO2,haze+deck-retrained,present,0.0225,0.0,0.045,0.955,0.23,0.0
-Tier-1,GJ1214b,CO2,the method,present,0.0225,0.005,0.035,0.96,0.23,0.0
-Tier-1,GJ1214b,NH3,published,,,0.015,0.055,0.93,0.23,0.0
-Tier-1,GJ1214b,NH3,no-optical,,,0.015,0.03,0.955,0.23,0.0
-Tier-1,GJ1214b,NH3,AIRS-only,,,0.08,0.09,0.83,0.23,0.0
-Tier-1,GJ1214b,NH3,shape flag,,,0.035,0.095,0.87,0.23,0.0
-Tier-1,GJ1214b,NH3,haze-retrained,,,0.02,0.085,0.895,0.23,0.0
-Tier-1,GJ1214b,NH3,haze+deck-retrained,,,0.025,0.05,0.925,0.23,0.0
-Tier-1,GJ1214b,NH3,the method,,,0.025,0.1,0.875,0.23,0.0
+JWST,GJ1214b,NH3,"census, same haze design",,,0.0,0.0,1.0,1.0,0.0
+Tier-1,GJ1214b,CH4,published,present,0.009,0.002,0.014,0.984,0.188,0.0
+Tier-1,GJ1214b,CH4,no-optical,present,0.004,0.0,0.008,0.992,0.188,0.0
+Tier-1,GJ1214b,CH4,AIRS-only,present,0.034,0.012,0.044,0.944,0.188,0.0
+Tier-1,GJ1214b,CH4,shape flag,present,0.021,0.01,0.022,0.968,0.188,0.0
+Tier-1,GJ1214b,CH4,haze-retrained,present,0.011,0.0,0.022,0.978,0.188,0.0
+Tier-1,GJ1214b,CH4,haze+deck-retrained,present,0.01,0.002,0.016,0.982,0.188,0.0
+Tier-1,GJ1214b,CH4,the method,present,0.022,0.01,0.024,0.966,0.188,0.0
+Tier-1,GJ1214b,CH4,"census, same haze design",present,0.021,0.01,0.022,0.968,0.188,0.0
+Tier-1,GJ1214b,H2O,published,,,0.016,0.032,0.952,0.188,0.0
+Tier-1,GJ1214b,H2O,no-optical,,,0.016,0.05,0.934,0.188,0.0
+Tier-1,GJ1214b,H2O,AIRS-only,,,0.028,0.06,0.912,0.188,0.0
+Tier-1,GJ1214b,H2O,shape flag,,,0.02,0.046,0.934,0.188,0.0
+Tier-1,GJ1214b,H2O,haze-retrained,,,0.02,0.052,0.928,0.188,0.0
+Tier-1,GJ1214b,H2O,haze+deck-retrained,,,0.016,0.054,0.93,0.188,0.0
+Tier-1,GJ1214b,H2O,the method,,,0.018,0.052,0.93,0.188,0.0
+Tier-1,GJ1214b,H2O,"census, same haze design",,,0.02,0.046,0.934,0.188,0.0
+Tier-1,GJ1214b,CO2,published,present,0.01,0.0,0.02,0.98,0.188,0.0
+Tier-1,GJ1214b,CO2,no-optical,present,0.012,0.002,0.02,0.978,0.188,0.0
+Tier-1,GJ1214b,CO2,AIRS-only,present,0.014,0.004,0.02,0.976,0.188,0.0
+Tier-1,GJ1214b,CO2,shape flag,present,0.014,0.004,0.02,0.976,0.188,0.0
+Tier-1,GJ1214b,CO2,haze-retrained,present,0.018,0.004,0.028,0.968,0.188,0.0
+Tier-1,GJ1214b,CO2,haze+deck-retrained,present,0.016,0.002,0.028,0.97,0.188,0.0
+Tier-1,GJ1214b,CO2,the method,present,0.016,0.004,0.024,0.972,0.188,0.0
+Tier-1,GJ1214b,CO2,"census, same haze design",present,0.014,0.004,0.02,0.976,0.188,0.0
+Tier-1,GJ1214b,NH3,published,,,0.014,0.05,0.936,0.188,0.0
+Tier-1,GJ1214b,NH3,no-optical,,,0.022,0.032,0.946,0.188,0.0
+Tier-1,GJ1214b,NH3,AIRS-only,,,0.068,0.09,0.842,0.188,0.0
+Tier-1,GJ1214b,NH3,shape flag,,,0.034,0.086,0.88,0.188,0.0
+Tier-1,GJ1214b,NH3,haze-retrained,,,0.022,0.072,0.906,0.188,0.0
+Tier-1,GJ1214b,NH3,haze+deck-retrained,,,0.022,0.05,0.928,0.188,0.0
+Tier-1,GJ1214b,NH3,the method,,,0.03,0.082,0.888,0.188,0.0
+Tier-1,GJ1214b,NH3,"census, same haze design",,,0.034,0.086,0.88,0.188,0.0
 JWST,LTT3780c,CH4,published,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,CH4,no-optical,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,CH4,AIRS-only,present,1.0,1.0,0.0,0.0,0.0,0.0
@@ -958,6 +1094,7 @@ JWST,LTT3780c,CH4,shape flag,present,1.0,1.0,0.0,0.0,0.0,0.0
 JWST,LTT3780c,CH4,haze-retrained,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,CH4,haze+deck-retrained,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,CH4,the method,present,1.0,1.0,0.0,0.0,0.0,0.0
+JWST,LTT3780c,CH4,"census, same haze design",present,1.0,1.0,0.0,0.0,0.0,0.0
 JWST,LTT3780c,H2O,published,,,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,H2O,no-optical,,,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,H2O,AIRS-only,,,0.0,0.0,1.0,0.0,0.0
@@ -965,6 +1102,7 @@ JWST,LTT3780c,H2O,shape flag,,,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,H2O,haze-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,H2O,haze+deck-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,H2O,the method,,,0.0,0.0,1.0,0.0,0.0
+JWST,LTT3780c,H2O,"census, same haze design",,,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,CO2,published,,,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,CO2,no-optical,,,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,CO2,AIRS-only,,,0.0,0.0,1.0,0.0,0.0
@@ -972,6 +1110,7 @@ JWST,LTT3780c,CO2,shape flag,,,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,CO2,haze-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,CO2,haze+deck-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,CO2,the method,,,0.0,0.0,1.0,0.0,0.0
+JWST,LTT3780c,CO2,"census, same haze design",,,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,NH3,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,NH3,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,NH3,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -979,34 +1118,39 @@ JWST,LTT3780c,NH3,shape flag,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,NH3,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
-Tier-1,LTT3780c,CH4,published,present,0.0925,0.005,0.175,0.82,0.02,0.0
-Tier-1,LTT3780c,CH4,no-optical,present,0.0175,0.0,0.035,0.965,0.02,0.0
-Tier-1,LTT3780c,CH4,AIRS-only,present,0.6175,0.495,0.245,0.26,0.02,0.0
-Tier-1,LTT3780c,CH4,shape flag,present,0.5425,0.405,0.275,0.32,0.02,0.0
-Tier-1,LTT3780c,CH4,haze-retrained,present,0.1375,0.055,0.165,0.78,0.02,0.0
-Tier-1,LTT3780c,CH4,haze+deck-retrained,present,0.165,0.065,0.2,0.735,0.02,0.0
-Tier-1,LTT3780c,CH4,the method,present,0.53,0.395,0.27,0.335,0.02,0.0
-Tier-1,LTT3780c,H2O,published,,,0.0,0.0,1.0,0.02,0.0
-Tier-1,LTT3780c,H2O,no-optical,,,0.0,0.0,1.0,0.02,0.0
-Tier-1,LTT3780c,H2O,AIRS-only,,,0.0,0.0,1.0,0.02,0.0
-Tier-1,LTT3780c,H2O,shape flag,,,0.0,0.0,1.0,0.02,0.0
-Tier-1,LTT3780c,H2O,haze-retrained,,,0.0,0.0,1.0,0.02,0.0
-Tier-1,LTT3780c,H2O,haze+deck-retrained,,,0.0,0.0,1.0,0.02,0.0
-Tier-1,LTT3780c,H2O,the method,,,0.0,0.0,1.0,0.02,0.0
-Tier-1,LTT3780c,CO2,published,,,0.0,0.0,1.0,0.02,0.0
-Tier-1,LTT3780c,CO2,no-optical,,,0.0,0.0,1.0,0.02,0.0
-Tier-1,LTT3780c,CO2,AIRS-only,,,0.0,0.015,0.985,0.02,0.0
-Tier-1,LTT3780c,CO2,shape flag,,,0.0,0.005,0.995,0.02,0.0
-Tier-1,LTT3780c,CO2,haze-retrained,,,0.0,0.0,1.0,0.02,0.0
-Tier-1,LTT3780c,CO2,haze+deck-retrained,,,0.0,0.0,1.0,0.02,0.0
-Tier-1,LTT3780c,CO2,the method,,,0.0,0.005,0.995,0.02,0.0
-Tier-1,LTT3780c,NH3,published,absent,0.9975,0.0,0.005,0.995,0.02,0.0
-Tier-1,LTT3780c,NH3,no-optical,absent,1.0,0.0,0.0,1.0,0.02,0.0
-Tier-1,LTT3780c,NH3,AIRS-only,absent,0.9725,0.01,0.035,0.955,0.02,0.0
-Tier-1,LTT3780c,NH3,shape flag,absent,0.9775,0.005,0.035,0.96,0.02,0.0
-Tier-1,LTT3780c,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,0.02,0.0
-Tier-1,LTT3780c,NH3,haze+deck-retrained,absent,0.995,0.0,0.01,0.99,0.02,0.0
-Tier-1,LTT3780c,NH3,the method,absent,0.98,0.005,0.03,0.965,0.02,0.0
+JWST,LTT3780c,NH3,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
+Tier-1,LTT3780c,CH4,published,present,0.112,0.006,0.212,0.782,0.028,0.0
+Tier-1,LTT3780c,CH4,no-optical,present,0.027,0.002,0.05,0.948,0.028,0.0
+Tier-1,LTT3780c,CH4,AIRS-only,present,0.636,0.522,0.228,0.25,0.028,0.0
+Tier-1,LTT3780c,CH4,shape flag,present,0.575,0.448,0.254,0.298,0.028,0.0
+Tier-1,LTT3780c,CH4,haze-retrained,present,0.151,0.056,0.19,0.754,0.028,0.0
+Tier-1,LTT3780c,CH4,haze+deck-retrained,present,0.19,0.094,0.192,0.714,0.028,0.0
+Tier-1,LTT3780c,CH4,the method,present,0.56,0.434,0.252,0.314,0.028,0.0
+Tier-1,LTT3780c,CH4,"census, same haze design",present,0.575,0.448,0.254,0.298,0.028,0.0
+Tier-1,LTT3780c,H2O,published,,,0.0,0.0,1.0,0.028,0.0
+Tier-1,LTT3780c,H2O,no-optical,,,0.0,0.0,1.0,0.028,0.0
+Tier-1,LTT3780c,H2O,AIRS-only,,,0.0,0.002,0.998,0.028,0.0
+Tier-1,LTT3780c,H2O,shape flag,,,0.0,0.0,1.0,0.028,0.0
+Tier-1,LTT3780c,H2O,haze-retrained,,,0.0,0.0,1.0,0.028,0.0
+Tier-1,LTT3780c,H2O,haze+deck-retrained,,,0.0,0.002,0.998,0.028,0.0
+Tier-1,LTT3780c,H2O,the method,,,0.0,0.0,1.0,0.028,0.0
+Tier-1,LTT3780c,H2O,"census, same haze design",,,0.0,0.0,1.0,0.028,0.0
+Tier-1,LTT3780c,CO2,published,,,0.0,0.0,1.0,0.028,0.0
+Tier-1,LTT3780c,CO2,no-optical,,,0.0,0.0,1.0,0.028,0.0
+Tier-1,LTT3780c,CO2,AIRS-only,,,0.0,0.01,0.99,0.028,0.0
+Tier-1,LTT3780c,CO2,shape flag,,,0.0,0.002,0.998,0.028,0.0
+Tier-1,LTT3780c,CO2,haze-retrained,,,0.0,0.0,1.0,0.028,0.0
+Tier-1,LTT3780c,CO2,haze+deck-retrained,,,0.0,0.0,1.0,0.028,0.0
+Tier-1,LTT3780c,CO2,the method,,,0.0,0.002,0.998,0.028,0.0
+Tier-1,LTT3780c,CO2,"census, same haze design",,,0.0,0.002,0.998,0.028,0.0
+Tier-1,LTT3780c,NH3,published,absent,0.999,0.0,0.002,0.998,0.028,0.0
+Tier-1,LTT3780c,NH3,no-optical,absent,1.0,0.0,0.0,1.0,0.028,0.0
+Tier-1,LTT3780c,NH3,AIRS-only,absent,0.977,0.008,0.03,0.962,0.028,0.0
+Tier-1,LTT3780c,NH3,shape flag,absent,0.984,0.004,0.024,0.972,0.028,0.0
+Tier-1,LTT3780c,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,0.028,0.0
+Tier-1,LTT3780c,NH3,haze+deck-retrained,absent,0.998,0.0,0.004,0.996,0.028,0.0
+Tier-1,LTT3780c,NH3,the method,absent,0.985,0.004,0.022,0.974,0.028,0.0
+Tier-1,LTT3780c,NH3,"census, same haze design",absent,0.984,0.004,0.024,0.972,0.028,0.0
 JWST,WASP-80b,CH4,published,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-80b,CH4,no-optical,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-80b,CH4,AIRS-only,,,0.0,0.0,1.0,1.0,0.0
@@ -1014,6 +1158,7 @@ JWST,WASP-80b,CH4,shape flag,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-80b,CH4,haze-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-80b,CH4,haze+deck-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-80b,CH4,the method,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-80b,CH4,"census, same haze design",,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-80b,H2O,published,present,0.5,0.0,1.0,0.0,1.0,0.0
 JWST,WASP-80b,H2O,no-optical,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-80b,H2O,AIRS-only,present,1.0,1.0,0.0,0.0,1.0,0.0
@@ -1021,6 +1166,7 @@ JWST,WASP-80b,H2O,shape flag,present,0.5,0.0,1.0,0.0,1.0,0.0
 JWST,WASP-80b,H2O,haze-retrained,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-80b,H2O,haze+deck-retrained,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-80b,H2O,the method,present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,WASP-80b,H2O,"census, same haze design",present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-80b,CO2,published,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-80b,CO2,no-optical,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-80b,CO2,AIRS-only,,,0.0,0.0,1.0,1.0,0.0
@@ -1028,6 +1174,7 @@ JWST,WASP-80b,CO2,shape flag,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-80b,CO2,haze-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-80b,CO2,haze+deck-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-80b,CO2,the method,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-80b,CO2,"census, same haze design",,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-80b,NH3,published,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-80b,NH3,no-optical,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-80b,NH3,AIRS-only,,,0.0,0.0,1.0,1.0,0.0
@@ -1035,34 +1182,39 @@ JWST,WASP-80b,NH3,shape flag,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-80b,NH3,haze-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-80b,NH3,haze+deck-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-80b,NH3,the method,,,0.0,0.0,1.0,1.0,0.0
-Tier-1,WASP-80b,CH4,published,,,0.0,0.0,1.0,0.23,0.0
-Tier-1,WASP-80b,CH4,no-optical,,,0.0,0.0,1.0,0.23,0.0
-Tier-1,WASP-80b,CH4,AIRS-only,,,0.0,0.025,0.975,0.23,0.0
-Tier-1,WASP-80b,CH4,shape flag,,,0.0,0.015,0.985,0.23,0.0
-Tier-1,WASP-80b,CH4,haze-retrained,,,0.0,0.01,0.99,0.23,0.0
-Tier-1,WASP-80b,CH4,haze+deck-retrained,,,0.0,0.015,0.985,0.23,0.0
-Tier-1,WASP-80b,CH4,the method,,,0.0,0.015,0.985,0.23,0.0
-Tier-1,WASP-80b,H2O,published,present,0.0525,0.02,0.065,0.915,0.23,0.0
-Tier-1,WASP-80b,H2O,no-optical,present,0.1075,0.065,0.085,0.85,0.23,0.0
-Tier-1,WASP-80b,H2O,AIRS-only,present,0.165,0.075,0.18,0.745,0.23,0.0
-Tier-1,WASP-80b,H2O,shape flag,present,0.115,0.045,0.14,0.815,0.23,0.0
-Tier-1,WASP-80b,H2O,haze-retrained,present,0.13,0.08,0.1,0.82,0.23,0.0
-Tier-1,WASP-80b,H2O,haze+deck-retrained,present,0.12,0.055,0.13,0.815,0.23,0.0
-Tier-1,WASP-80b,H2O,the method,present,0.12,0.055,0.13,0.815,0.23,0.0
-Tier-1,WASP-80b,CO2,published,,,0.0,0.02,0.98,0.23,0.0
-Tier-1,WASP-80b,CO2,no-optical,,,0.0,0.015,0.985,0.23,0.0
-Tier-1,WASP-80b,CO2,AIRS-only,,,0.01,0.04,0.95,0.23,0.0
-Tier-1,WASP-80b,CO2,shape flag,,,0.005,0.02,0.975,0.23,0.0
-Tier-1,WASP-80b,CO2,haze-retrained,,,0.005,0.02,0.975,0.23,0.0
-Tier-1,WASP-80b,CO2,haze+deck-retrained,,,0.005,0.035,0.96,0.23,0.0
-Tier-1,WASP-80b,CO2,the method,,,0.01,0.025,0.965,0.23,0.0
-Tier-1,WASP-80b,NH3,published,,,0.0,0.01,0.99,0.23,0.0
-Tier-1,WASP-80b,NH3,no-optical,,,0.01,0.015,0.975,0.23,0.0
-Tier-1,WASP-80b,NH3,AIRS-only,,,0.045,0.09,0.865,0.23,0.0
-Tier-1,WASP-80b,NH3,shape flag,,,0.015,0.055,0.93,0.23,0.0
-Tier-1,WASP-80b,NH3,haze-retrained,,,0.02,0.035,0.945,0.23,0.0
-Tier-1,WASP-80b,NH3,haze+deck-retrained,,,0.005,0.04,0.955,0.23,0.0
-Tier-1,WASP-80b,NH3,the method,,,0.015,0.065,0.92,0.23,0.0
+JWST,WASP-80b,NH3,"census, same haze design",,,0.0,0.0,1.0,1.0,0.0
+Tier-1,WASP-80b,CH4,published,,,0.0,0.002,0.998,0.258,0.0
+Tier-1,WASP-80b,CH4,no-optical,,,0.0,0.002,0.998,0.258,0.0
+Tier-1,WASP-80b,CH4,AIRS-only,,,0.0,0.028,0.972,0.258,0.0
+Tier-1,WASP-80b,CH4,shape flag,,,0.0,0.02,0.98,0.258,0.0
+Tier-1,WASP-80b,CH4,haze-retrained,,,0.0,0.012,0.988,0.258,0.0
+Tier-1,WASP-80b,CH4,haze+deck-retrained,,,0.0,0.018,0.982,0.258,0.0
+Tier-1,WASP-80b,CH4,the method,,,0.0,0.022,0.978,0.258,0.0
+Tier-1,WASP-80b,CH4,"census, same haze design",,,0.0,0.012,0.988,0.258,0.0
+Tier-1,WASP-80b,H2O,published,present,0.06,0.028,0.064,0.908,0.258,0.0
+Tier-1,WASP-80b,H2O,no-optical,present,0.112,0.062,0.1,0.838,0.258,0.0
+Tier-1,WASP-80b,H2O,AIRS-only,present,0.163,0.084,0.158,0.758,0.258,0.0
+Tier-1,WASP-80b,H2O,shape flag,present,0.113,0.056,0.114,0.83,0.258,0.0
+Tier-1,WASP-80b,H2O,haze-retrained,present,0.137,0.076,0.122,0.802,0.258,0.0
+Tier-1,WASP-80b,H2O,haze+deck-retrained,present,0.139,0.07,0.138,0.792,0.258,0.0
+Tier-1,WASP-80b,H2O,the method,present,0.116,0.064,0.104,0.832,0.258,0.0
+Tier-1,WASP-80b,H2O,"census, same haze design",present,0.137,0.076,0.122,0.802,0.258,0.0
+Tier-1,WASP-80b,CO2,published,,,0.0,0.014,0.986,0.258,0.0
+Tier-1,WASP-80b,CO2,no-optical,,,0.0,0.014,0.986,0.258,0.0
+Tier-1,WASP-80b,CO2,AIRS-only,,,0.006,0.026,0.968,0.258,0.0
+Tier-1,WASP-80b,CO2,shape flag,,,0.004,0.018,0.978,0.258,0.0
+Tier-1,WASP-80b,CO2,haze-retrained,,,0.004,0.022,0.974,0.258,0.0
+Tier-1,WASP-80b,CO2,haze+deck-retrained,,,0.004,0.034,0.962,0.258,0.0
+Tier-1,WASP-80b,CO2,the method,,,0.006,0.024,0.97,0.258,0.0
+Tier-1,WASP-80b,CO2,"census, same haze design",,,0.004,0.022,0.974,0.258,0.0
+Tier-1,WASP-80b,NH3,published,,,0.0,0.006,0.994,0.258,0.0
+Tier-1,WASP-80b,NH3,no-optical,,,0.006,0.02,0.974,0.258,0.0
+Tier-1,WASP-80b,NH3,AIRS-only,,,0.054,0.078,0.868,0.258,0.0
+Tier-1,WASP-80b,NH3,shape flag,,,0.018,0.042,0.94,0.258,0.0
+Tier-1,WASP-80b,NH3,haze-retrained,,,0.012,0.034,0.954,0.258,0.0
+Tier-1,WASP-80b,NH3,haze+deck-retrained,,,0.01,0.038,0.952,0.258,0.0
+Tier-1,WASP-80b,NH3,the method,,,0.016,0.036,0.948,0.258,0.0
+Tier-1,WASP-80b,NH3,"census, same haze design",,,0.012,0.034,0.954,0.258,0.0
 JWST,HD209458b,CH4,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD209458b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD209458b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -1070,6 +1222,7 @@ JWST,HD209458b,CH4,shape flag,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD209458b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD209458b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD209458b,CH4,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HD209458b,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD209458b,H2O,published,,,0.0,1.0,0.0,0.0,0.0
 JWST,HD209458b,H2O,no-optical,,,1.0,0.0,0.0,0.0,0.0
 JWST,HD209458b,H2O,AIRS-only,,,1.0,0.0,0.0,0.0,0.0
@@ -1077,6 +1230,7 @@ JWST,HD209458b,H2O,shape flag,,,1.0,0.0,0.0,0.0,0.0
 JWST,HD209458b,H2O,haze-retrained,,,1.0,0.0,0.0,0.0,0.0
 JWST,HD209458b,H2O,haze+deck-retrained,,,1.0,0.0,0.0,0.0,0.0
 JWST,HD209458b,H2O,the method,,,1.0,0.0,0.0,0.0,0.0
+JWST,HD209458b,H2O,"census, same haze design",,,1.0,0.0,0.0,0.0,0.0
 JWST,HD209458b,CO2,published,,,0.0,0.0,1.0,0.0,0.0
 JWST,HD209458b,CO2,no-optical,,,0.0,0.0,1.0,0.0,0.0
 JWST,HD209458b,CO2,AIRS-only,,,0.0,0.0,1.0,0.0,0.0
@@ -1084,6 +1238,7 @@ JWST,HD209458b,CO2,shape flag,,,0.0,0.0,1.0,0.0,0.0
 JWST,HD209458b,CO2,haze-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,HD209458b,CO2,haze+deck-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,HD209458b,CO2,the method,,,0.0,0.0,1.0,0.0,0.0
+JWST,HD209458b,CO2,"census, same haze design",,,0.0,0.0,1.0,0.0,0.0
 JWST,HD209458b,NH3,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD209458b,NH3,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD209458b,NH3,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -1091,34 +1246,39 @@ JWST,HD209458b,NH3,shape flag,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD209458b,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD209458b,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD209458b,NH3,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
-Tier-1,HD209458b,CH4,published,absent,1.0,0.0,0.0,1.0,0.31,0.0
-Tier-1,HD209458b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.31,0.0
-Tier-1,HD209458b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,0.31,0.0
-Tier-1,HD209458b,CH4,shape flag,absent,1.0,0.0,0.0,1.0,0.31,0.0
-Tier-1,HD209458b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,0.31,0.0
-Tier-1,HD209458b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.31,0.0
-Tier-1,HD209458b,CH4,the method,absent,1.0,0.0,0.0,1.0,0.31,0.0
-Tier-1,HD209458b,H2O,published,,,0.13,0.175,0.695,0.31,0.0
-Tier-1,HD209458b,H2O,no-optical,,,0.42,0.29,0.29,0.31,0.0
-Tier-1,HD209458b,H2O,AIRS-only,,,0.65,0.19,0.16,0.31,0.0
-Tier-1,HD209458b,H2O,shape flag,,,0.48,0.23,0.29,0.31,0.0
-Tier-1,HD209458b,H2O,haze-retrained,,,0.45,0.33,0.22,0.31,0.0
-Tier-1,HD209458b,H2O,haze+deck-retrained,,,0.53,0.29,0.18,0.31,0.0
-Tier-1,HD209458b,H2O,the method,,,0.48,0.235,0.285,0.31,0.0
-Tier-1,HD209458b,CO2,published,,,0.005,0.01,0.985,0.31,0.0
-Tier-1,HD209458b,CO2,no-optical,,,0.005,0.02,0.975,0.31,0.0
-Tier-1,HD209458b,CO2,AIRS-only,,,0.04,0.055,0.905,0.31,0.0
-Tier-1,HD209458b,CO2,shape flag,,,0.015,0.065,0.92,0.31,0.0
-Tier-1,HD209458b,CO2,haze-retrained,,,0.045,0.055,0.9,0.31,0.0
-Tier-1,HD209458b,CO2,haze+deck-retrained,,,0.06,0.05,0.89,0.31,0.0
-Tier-1,HD209458b,CO2,the method,,,0.025,0.06,0.915,0.31,0.0
-Tier-1,HD209458b,NH3,published,absent,1.0,0.0,0.0,1.0,0.31,0.0
-Tier-1,HD209458b,NH3,no-optical,absent,1.0,0.0,0.0,1.0,0.31,0.0
-Tier-1,HD209458b,NH3,AIRS-only,absent,0.96,0.02,0.04,0.94,0.31,0.0
-Tier-1,HD209458b,NH3,shape flag,absent,0.99,0.0,0.02,0.98,0.31,0.0
-Tier-1,HD209458b,NH3,haze-retrained,absent,0.9925,0.005,0.005,0.99,0.31,0.0
-Tier-1,HD209458b,NH3,haze+deck-retrained,absent,0.9875,0.005,0.015,0.98,0.31,0.0
-Tier-1,HD209458b,NH3,the method,absent,0.99,0.005,0.01,0.985,0.31,0.0
+JWST,HD209458b,NH3,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
+Tier-1,HD209458b,CH4,published,absent,1.0,0.0,0.0,1.0,0.306,0.0
+Tier-1,HD209458b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.306,0.0
+Tier-1,HD209458b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,0.306,0.0
+Tier-1,HD209458b,CH4,shape flag,absent,1.0,0.0,0.0,1.0,0.306,0.0
+Tier-1,HD209458b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,0.306,0.0
+Tier-1,HD209458b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.306,0.0
+Tier-1,HD209458b,CH4,the method,absent,1.0,0.0,0.0,1.0,0.306,0.0
+Tier-1,HD209458b,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.306,0.0
+Tier-1,HD209458b,H2O,published,,,0.12,0.198,0.682,0.306,0.0
+Tier-1,HD209458b,H2O,no-optical,,,0.388,0.322,0.29,0.306,0.0
+Tier-1,HD209458b,H2O,AIRS-only,,,0.622,0.23,0.148,0.306,0.0
+Tier-1,HD209458b,H2O,shape flag,,,0.448,0.23,0.322,0.306,0.0
+Tier-1,HD209458b,H2O,haze-retrained,,,0.432,0.362,0.206,0.306,0.0
+Tier-1,HD209458b,H2O,haze+deck-retrained,,,0.514,0.314,0.172,0.306,0.0
+Tier-1,HD209458b,H2O,the method,,,0.438,0.268,0.294,0.306,0.0
+Tier-1,HD209458b,H2O,"census, same haze design",,,0.432,0.362,0.206,0.306,0.0
+Tier-1,HD209458b,CO2,published,,,0.002,0.014,0.984,0.306,0.0
+Tier-1,HD209458b,CO2,no-optical,,,0.004,0.016,0.98,0.306,0.0
+Tier-1,HD209458b,CO2,AIRS-only,,,0.026,0.05,0.924,0.306,0.0
+Tier-1,HD209458b,CO2,shape flag,,,0.012,0.046,0.942,0.306,0.0
+Tier-1,HD209458b,CO2,haze-retrained,,,0.028,0.08,0.892,0.306,0.0
+Tier-1,HD209458b,CO2,haze+deck-retrained,,,0.042,0.078,0.88,0.306,0.0
+Tier-1,HD209458b,CO2,the method,,,0.014,0.062,0.924,0.306,0.0
+Tier-1,HD209458b,CO2,"census, same haze design",,,0.028,0.08,0.892,0.306,0.0
+Tier-1,HD209458b,NH3,published,absent,1.0,0.0,0.0,1.0,0.306,0.0
+Tier-1,HD209458b,NH3,no-optical,absent,0.999,0.0,0.002,0.998,0.306,0.0
+Tier-1,HD209458b,NH3,AIRS-only,absent,0.951,0.028,0.042,0.93,0.306,0.0
+Tier-1,HD209458b,NH3,shape flag,absent,0.986,0.002,0.024,0.974,0.306,0.0
+Tier-1,HD209458b,NH3,haze-retrained,absent,0.994,0.002,0.008,0.99,0.306,0.0
+Tier-1,HD209458b,NH3,haze+deck-retrained,absent,0.989,0.002,0.018,0.98,0.306,0.0
+Tier-1,HD209458b,NH3,the method,absent,0.987,0.004,0.018,0.978,0.306,0.0
+Tier-1,HD209458b,NH3,"census, same haze design",absent,0.994,0.002,0.008,0.99,0.306,0.0
 JWST,WASP-96b,CH4,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-96b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-96b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -1126,6 +1286,7 @@ JWST,WASP-96b,CH4,shape flag,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-96b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-96b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-96b,CH4,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-96b,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-96b,H2O,published,present,0.5,0.0,1.0,0.0,0.0,0.0
 JWST,WASP-96b,H2O,no-optical,present,1.0,1.0,0.0,0.0,0.0,0.0
 JWST,WASP-96b,H2O,AIRS-only,present,1.0,1.0,0.0,0.0,0.0,0.0
@@ -1133,6 +1294,7 @@ JWST,WASP-96b,H2O,shape flag,present,1.0,1.0,0.0,0.0,0.0,0.0
 JWST,WASP-96b,H2O,haze-retrained,present,1.0,1.0,0.0,0.0,0.0,0.0
 JWST,WASP-96b,H2O,haze+deck-retrained,present,1.0,1.0,0.0,0.0,0.0,0.0
 JWST,WASP-96b,H2O,the method,present,1.0,1.0,0.0,0.0,0.0,0.0
+JWST,WASP-96b,H2O,"census, same haze design",present,1.0,1.0,0.0,0.0,0.0,0.0
 JWST,WASP-96b,CO2,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-96b,CO2,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-96b,CO2,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -1140,6 +1302,7 @@ JWST,WASP-96b,CO2,shape flag,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-96b,CO2,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-96b,CO2,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-96b,CO2,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-96b,CO2,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-96b,NH3,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-96b,NH3,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-96b,NH3,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -1147,34 +1310,39 @@ JWST,WASP-96b,NH3,shape flag,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-96b,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-96b,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-96b,NH3,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
-Tier-1,WASP-96b,CH4,published,absent,1.0,0.0,0.0,1.0,0.12,0.0
-Tier-1,WASP-96b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.12,0.0
-Tier-1,WASP-96b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,0.12,0.0
-Tier-1,WASP-96b,CH4,shape flag,absent,1.0,0.0,0.0,1.0,0.12,0.0
-Tier-1,WASP-96b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,0.12,0.0
-Tier-1,WASP-96b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.12,0.0
-Tier-1,WASP-96b,CH4,the method,absent,1.0,0.0,0.0,1.0,0.12,0.0
-Tier-1,WASP-96b,H2O,published,present,0.2125,0.12,0.185,0.695,0.12,0.0
-Tier-1,WASP-96b,H2O,no-optical,present,0.465,0.37,0.19,0.44,0.12,0.0
-Tier-1,WASP-96b,H2O,AIRS-only,present,0.4975,0.42,0.155,0.425,0.12,0.0
-Tier-1,WASP-96b,H2O,shape flag,present,0.355,0.245,0.22,0.535,0.12,0.0
-Tier-1,WASP-96b,H2O,haze-retrained,present,0.445,0.315,0.26,0.425,0.12,0.0
-Tier-1,WASP-96b,H2O,haze+deck-retrained,present,0.4775,0.35,0.255,0.395,0.12,0.0
-Tier-1,WASP-96b,H2O,the method,present,0.3725,0.255,0.235,0.51,0.12,0.0
-Tier-1,WASP-96b,CO2,published,absent,0.985,0.0,0.03,0.97,0.12,0.0
-Tier-1,WASP-96b,CO2,no-optical,absent,0.975,0.005,0.04,0.955,0.12,0.0
-Tier-1,WASP-96b,CO2,AIRS-only,absent,0.9475,0.03,0.045,0.925,0.12,0.0
-Tier-1,WASP-96b,CO2,shape flag,absent,0.97,0.005,0.05,0.945,0.12,0.0
-Tier-1,WASP-96b,CO2,haze-retrained,absent,0.96,0.02,0.04,0.94,0.12,0.0
-Tier-1,WASP-96b,CO2,haze+deck-retrained,absent,0.9475,0.03,0.045,0.925,0.12,0.0
-Tier-1,WASP-96b,CO2,the method,absent,0.97,0.005,0.05,0.945,0.12,0.0
-Tier-1,WASP-96b,NH3,published,absent,1.0,0.0,0.0,1.0,0.12,0.0
-Tier-1,WASP-96b,NH3,no-optical,absent,0.9975,0.0,0.005,0.995,0.12,0.0
-Tier-1,WASP-96b,NH3,AIRS-only,absent,0.99,0.0,0.02,0.98,0.12,0.0
-Tier-1,WASP-96b,NH3,shape flag,absent,1.0,0.0,0.0,1.0,0.12,0.0
-Tier-1,WASP-96b,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,0.12,0.0
-Tier-1,WASP-96b,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.12,0.0
-Tier-1,WASP-96b,NH3,the method,absent,1.0,0.0,0.0,1.0,0.12,0.0
+JWST,WASP-96b,NH3,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
+Tier-1,WASP-96b,CH4,published,absent,1.0,0.0,0.0,1.0,0.136,0.0
+Tier-1,WASP-96b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.136,0.0
+Tier-1,WASP-96b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,0.136,0.0
+Tier-1,WASP-96b,CH4,shape flag,absent,1.0,0.0,0.0,1.0,0.136,0.0
+Tier-1,WASP-96b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,0.136,0.0
+Tier-1,WASP-96b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.136,0.0
+Tier-1,WASP-96b,CH4,the method,absent,1.0,0.0,0.0,1.0,0.136,0.0
+Tier-1,WASP-96b,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.136,0.0
+Tier-1,WASP-96b,H2O,published,present,0.229,0.14,0.178,0.682,0.136,0.0
+Tier-1,WASP-96b,H2O,no-optical,present,0.448,0.352,0.192,0.456,0.136,0.0
+Tier-1,WASP-96b,H2O,AIRS-only,present,0.482,0.386,0.192,0.422,0.136,0.0
+Tier-1,WASP-96b,H2O,shape flag,present,0.357,0.244,0.226,0.53,0.136,0.0
+Tier-1,WASP-96b,H2O,haze-retrained,present,0.433,0.304,0.258,0.438,0.136,0.0
+Tier-1,WASP-96b,H2O,haze+deck-retrained,present,0.477,0.352,0.25,0.398,0.136,0.0
+Tier-1,WASP-96b,H2O,the method,present,0.37,0.25,0.24,0.51,0.136,0.0
+Tier-1,WASP-96b,H2O,"census, same haze design",present,0.357,0.244,0.226,0.53,0.136,0.0
+Tier-1,WASP-96b,CO2,published,absent,0.987,0.0,0.026,0.974,0.136,0.0
+Tier-1,WASP-96b,CO2,no-optical,absent,0.979,0.004,0.034,0.962,0.136,0.0
+Tier-1,WASP-96b,CO2,AIRS-only,absent,0.953,0.022,0.05,0.928,0.136,0.0
+Tier-1,WASP-96b,CO2,shape flag,absent,0.974,0.006,0.04,0.954,0.136,0.0
+Tier-1,WASP-96b,CO2,haze-retrained,absent,0.961,0.018,0.042,0.94,0.136,0.0
+Tier-1,WASP-96b,CO2,haze+deck-retrained,absent,0.951,0.024,0.05,0.926,0.136,0.0
+Tier-1,WASP-96b,CO2,the method,absent,0.969,0.01,0.042,0.948,0.136,0.0
+Tier-1,WASP-96b,CO2,"census, same haze design",absent,0.974,0.006,0.04,0.954,0.136,0.0
+Tier-1,WASP-96b,NH3,published,absent,1.0,0.0,0.0,1.0,0.136,0.0
+Tier-1,WASP-96b,NH3,no-optical,absent,0.998,0.0,0.004,0.996,0.136,0.0
+Tier-1,WASP-96b,NH3,AIRS-only,absent,0.987,0.004,0.018,0.978,0.136,0.0
+Tier-1,WASP-96b,NH3,shape flag,absent,0.995,0.004,0.002,0.994,0.136,0.0
+Tier-1,WASP-96b,NH3,haze-retrained,absent,0.999,0.0,0.002,0.998,0.136,0.0
+Tier-1,WASP-96b,NH3,haze+deck-retrained,absent,0.999,0.0,0.002,0.998,0.136,0.0
+Tier-1,WASP-96b,NH3,the method,absent,0.997,0.002,0.002,0.996,0.136,0.0
+Tier-1,WASP-96b,NH3,"census, same haze design",absent,0.995,0.004,0.002,0.994,0.136,0.0
 JWST,WASP-17b,CH4,published,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-17b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-17b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
@@ -1182,6 +1350,7 @@ JWST,WASP-17b,CH4,shape flag,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-17b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-17b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-17b,CH4,the method,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-17b,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-17b,H2O,published,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-17b,H2O,no-optical,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-17b,H2O,AIRS-only,present,1.0,1.0,0.0,0.0,1.0,0.0
@@ -1189,6 +1358,7 @@ JWST,WASP-17b,H2O,shape flag,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-17b,H2O,haze-retrained,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-17b,H2O,haze+deck-retrained,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-17b,H2O,the method,present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,WASP-17b,H2O,"census, same haze design",present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-17b,CO2,published,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-17b,CO2,no-optical,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-17b,CO2,AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
@@ -1196,6 +1366,7 @@ JWST,WASP-17b,CO2,shape flag,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-17b,CO2,haze-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-17b,CO2,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-17b,CO2,the method,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-17b,CO2,"census, same haze design",absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-17b,NH3,published,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-17b,NH3,no-optical,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-17b,NH3,AIRS-only,,,0.0,0.0,1.0,1.0,0.0
@@ -1203,34 +1374,39 @@ JWST,WASP-17b,NH3,shape flag,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-17b,NH3,haze-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-17b,NH3,haze+deck-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-17b,NH3,the method,,,0.0,0.0,1.0,1.0,0.0
-Tier-1,WASP-17b,CH4,published,absent,1.0,0.0,0.0,1.0,0.945,0.0
-Tier-1,WASP-17b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.945,0.0
-Tier-1,WASP-17b,CH4,AIRS-only,absent,0.995,0.0,0.01,0.99,0.945,0.0
-Tier-1,WASP-17b,CH4,shape flag,absent,1.0,0.0,0.0,1.0,0.945,0.0
-Tier-1,WASP-17b,CH4,haze-retrained,absent,0.9975,0.0,0.005,0.995,0.945,0.0
-Tier-1,WASP-17b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.945,0.0
-Tier-1,WASP-17b,CH4,the method,absent,0.9975,0.0,0.005,0.995,0.945,0.0
-Tier-1,WASP-17b,H2O,published,present,0.74,0.63,0.22,0.15,0.945,0.0
-Tier-1,WASP-17b,H2O,no-optical,present,0.885,0.845,0.08,0.075,0.945,0.0
-Tier-1,WASP-17b,H2O,AIRS-only,present,0.5725,0.475,0.195,0.33,0.945,0.0
-Tier-1,WASP-17b,H2O,shape flag,present,0.7225,0.625,0.195,0.18,0.945,0.0
-Tier-1,WASP-17b,H2O,haze-retrained,present,0.895,0.835,0.12,0.045,0.945,0.0
-Tier-1,WASP-17b,H2O,haze+deck-retrained,present,0.88,0.81,0.14,0.05,0.945,0.0
-Tier-1,WASP-17b,H2O,the method,present,0.8825,0.815,0.135,0.05,0.945,0.0
-Tier-1,WASP-17b,CO2,published,absent,1.0,0.0,0.0,1.0,0.945,0.0
-Tier-1,WASP-17b,CO2,no-optical,absent,1.0,0.0,0.0,1.0,0.945,0.0
-Tier-1,WASP-17b,CO2,AIRS-only,absent,1.0,0.0,0.0,1.0,0.945,0.0
-Tier-1,WASP-17b,CO2,shape flag,absent,1.0,0.0,0.0,1.0,0.945,0.0
-Tier-1,WASP-17b,CO2,haze-retrained,absent,1.0,0.0,0.0,1.0,0.945,0.0
-Tier-1,WASP-17b,CO2,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.945,0.0
-Tier-1,WASP-17b,CO2,the method,absent,1.0,0.0,0.0,1.0,0.945,0.0
-Tier-1,WASP-17b,NH3,published,,,0.0,0.0,1.0,0.945,0.0
-Tier-1,WASP-17b,NH3,no-optical,,,0.0,0.0,1.0,0.945,0.0
-Tier-1,WASP-17b,NH3,AIRS-only,,,0.0,0.0,1.0,0.945,0.0
-Tier-1,WASP-17b,NH3,shape flag,,,0.0,0.0,1.0,0.945,0.0
-Tier-1,WASP-17b,NH3,haze-retrained,,,0.0,0.0,1.0,0.945,0.0
-Tier-1,WASP-17b,NH3,haze+deck-retrained,,,0.0,0.0,1.0,0.945,0.0
-Tier-1,WASP-17b,NH3,the method,,,0.0,0.0,1.0,0.945,0.0
+JWST,WASP-17b,NH3,"census, same haze design",,,0.0,0.0,1.0,1.0,0.0
+Tier-1,WASP-17b,CH4,published,absent,0.999,0.0,0.002,0.998,0.922,0.0
+Tier-1,WASP-17b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.922,0.0
+Tier-1,WASP-17b,CH4,AIRS-only,absent,0.991,0.0,0.018,0.982,0.922,0.0
+Tier-1,WASP-17b,CH4,shape flag,absent,0.996,0.0,0.008,0.992,0.922,0.0
+Tier-1,WASP-17b,CH4,haze-retrained,absent,0.998,0.0,0.004,0.996,0.922,0.0
+Tier-1,WASP-17b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.922,0.0
+Tier-1,WASP-17b,CH4,the method,absent,0.998,0.0,0.004,0.996,0.922,0.0
+Tier-1,WASP-17b,CH4,"census, same haze design",absent,0.998,0.0,0.004,0.996,0.922,0.0
+Tier-1,WASP-17b,H2O,published,present,0.766,0.676,0.18,0.144,0.922,0.0
+Tier-1,WASP-17b,H2O,no-optical,present,0.881,0.832,0.098,0.07,0.922,0.0
+Tier-1,WASP-17b,H2O,AIRS-only,present,0.56,0.454,0.212,0.334,0.922,0.0
+Tier-1,WASP-17b,H2O,shape flag,present,0.741,0.648,0.186,0.166,0.922,0.0
+Tier-1,WASP-17b,H2O,haze-retrained,present,0.888,0.822,0.132,0.046,0.922,0.0
+Tier-1,WASP-17b,H2O,haze+deck-retrained,present,0.868,0.794,0.148,0.058,0.922,0.0
+Tier-1,WASP-17b,H2O,the method,present,0.88,0.812,0.136,0.052,0.922,0.0
+Tier-1,WASP-17b,H2O,"census, same haze design",present,0.888,0.822,0.132,0.046,0.922,0.0
+Tier-1,WASP-17b,CO2,published,absent,1.0,0.0,0.0,1.0,0.922,0.0
+Tier-1,WASP-17b,CO2,no-optical,absent,1.0,0.0,0.0,1.0,0.922,0.0
+Tier-1,WASP-17b,CO2,AIRS-only,absent,1.0,0.0,0.0,1.0,0.922,0.0
+Tier-1,WASP-17b,CO2,shape flag,absent,1.0,0.0,0.0,1.0,0.922,0.0
+Tier-1,WASP-17b,CO2,haze-retrained,absent,1.0,0.0,0.0,1.0,0.922,0.0
+Tier-1,WASP-17b,CO2,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.922,0.0
+Tier-1,WASP-17b,CO2,the method,absent,1.0,0.0,0.0,1.0,0.922,0.0
+Tier-1,WASP-17b,CO2,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.922,0.0
+Tier-1,WASP-17b,NH3,published,,,0.0,0.0,1.0,0.922,0.0
+Tier-1,WASP-17b,NH3,no-optical,,,0.0,0.0,1.0,0.922,0.0
+Tier-1,WASP-17b,NH3,AIRS-only,,,0.0,0.0,1.0,0.922,0.0
+Tier-1,WASP-17b,NH3,shape flag,,,0.0,0.0,1.0,0.922,0.0
+Tier-1,WASP-17b,NH3,haze-retrained,,,0.0,0.0,1.0,0.922,0.0
+Tier-1,WASP-17b,NH3,haze+deck-retrained,,,0.0,0.0,1.0,0.922,0.0
+Tier-1,WASP-17b,NH3,the method,,,0.0,0.0,1.0,0.922,0.0
+Tier-1,WASP-17b,NH3,"census, same haze design",,,0.0,0.0,1.0,0.922,0.0
 JWST,WASP-94Ab,CH4,published,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-94Ab,CH4,no-optical,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-94Ab,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
@@ -1238,6 +1414,7 @@ JWST,WASP-94Ab,CH4,shape flag,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-94Ab,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-94Ab,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-94Ab,CH4,the method,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-94Ab,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-94Ab,H2O,published,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-94Ab,H2O,no-optical,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-94Ab,H2O,AIRS-only,present,1.0,1.0,0.0,0.0,1.0,0.0
@@ -1245,6 +1422,7 @@ JWST,WASP-94Ab,H2O,shape flag,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-94Ab,H2O,haze-retrained,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-94Ab,H2O,haze+deck-retrained,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-94Ab,H2O,the method,present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,WASP-94Ab,H2O,"census, same haze design",present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-94Ab,CO2,published,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-94Ab,CO2,no-optical,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-94Ab,CO2,AIRS-only,,,0.0,0.0,1.0,1.0,0.0
@@ -1252,6 +1430,7 @@ JWST,WASP-94Ab,CO2,shape flag,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-94Ab,CO2,haze-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-94Ab,CO2,haze+deck-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-94Ab,CO2,the method,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-94Ab,CO2,"census, same haze design",,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-94Ab,NH3,published,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-94Ab,NH3,no-optical,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-94Ab,NH3,AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
@@ -1259,34 +1438,39 @@ JWST,WASP-94Ab,NH3,shape flag,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-94Ab,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-94Ab,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-94Ab,NH3,the method,absent,1.0,0.0,0.0,1.0,1.0,0.0
-Tier-1,WASP-94Ab,CH4,published,absent,1.0,0.0,0.0,1.0,0.945,0.0
-Tier-1,WASP-94Ab,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.945,0.0
-Tier-1,WASP-94Ab,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,0.945,0.0
-Tier-1,WASP-94Ab,CH4,shape flag,absent,1.0,0.0,0.0,1.0,0.945,0.0
-Tier-1,WASP-94Ab,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,0.945,0.0
-Tier-1,WASP-94Ab,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.945,0.0
-Tier-1,WASP-94Ab,CH4,the method,absent,1.0,0.0,0.0,1.0,0.945,0.0
-Tier-1,WASP-94Ab,H2O,published,present,0.5725,0.425,0.295,0.28,0.945,0.0
-Tier-1,WASP-94Ab,H2O,no-optical,present,0.8625,0.805,0.115,0.08,0.945,0.0
-Tier-1,WASP-94Ab,H2O,AIRS-only,present,0.5775,0.48,0.195,0.325,0.945,0.0
-Tier-1,WASP-94Ab,H2O,shape flag,present,0.5975,0.465,0.265,0.27,0.945,0.0
-Tier-1,WASP-94Ab,H2O,haze-retrained,present,0.825,0.725,0.2,0.075,0.945,0.0
-Tier-1,WASP-94Ab,H2O,haze+deck-retrained,present,0.815,0.725,0.18,0.095,0.945,0.0
-Tier-1,WASP-94Ab,H2O,the method,present,0.8125,0.71,0.205,0.085,0.945,0.0
-Tier-1,WASP-94Ab,CO2,published,,,0.005,0.01,0.985,0.945,0.0
-Tier-1,WASP-94Ab,CO2,no-optical,,,0.005,0.04,0.955,0.945,0.0
-Tier-1,WASP-94Ab,CO2,AIRS-only,,,0.05,0.075,0.875,0.945,0.0
-Tier-1,WASP-94Ab,CO2,shape flag,,,0.035,0.045,0.92,0.945,0.0
-Tier-1,WASP-94Ab,CO2,haze-retrained,,,0.035,0.055,0.91,0.945,0.0
-Tier-1,WASP-94Ab,CO2,haze+deck-retrained,,,0.04,0.055,0.905,0.945,0.0
-Tier-1,WASP-94Ab,CO2,the method,,,0.04,0.05,0.91,0.945,0.0
-Tier-1,WASP-94Ab,NH3,published,absent,1.0,0.0,0.0,1.0,0.945,0.0
-Tier-1,WASP-94Ab,NH3,no-optical,absent,1.0,0.0,0.0,1.0,0.945,0.0
-Tier-1,WASP-94Ab,NH3,AIRS-only,absent,0.99,0.005,0.01,0.985,0.945,0.0
-Tier-1,WASP-94Ab,NH3,shape flag,absent,0.9975,0.0,0.005,0.995,0.945,0.0
-Tier-1,WASP-94Ab,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,0.945,0.0
-Tier-1,WASP-94Ab,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.945,0.0
-Tier-1,WASP-94Ab,NH3,the method,absent,1.0,0.0,0.0,1.0,0.945,0.0
+JWST,WASP-94Ab,NH3,"census, same haze design",absent,1.0,0.0,0.0,1.0,1.0,0.0
+Tier-1,WASP-94Ab,CH4,published,absent,1.0,0.0,0.0,1.0,0.936,0.0
+Tier-1,WASP-94Ab,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.936,0.0
+Tier-1,WASP-94Ab,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,0.936,0.0
+Tier-1,WASP-94Ab,CH4,shape flag,absent,1.0,0.0,0.0,1.0,0.936,0.0
+Tier-1,WASP-94Ab,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,0.936,0.0
+Tier-1,WASP-94Ab,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.936,0.0
+Tier-1,WASP-94Ab,CH4,the method,absent,1.0,0.0,0.0,1.0,0.936,0.0
+Tier-1,WASP-94Ab,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.936,0.0
+Tier-1,WASP-94Ab,H2O,published,present,0.596,0.446,0.3,0.254,0.936,0.0
+Tier-1,WASP-94Ab,H2O,no-optical,present,0.866,0.798,0.136,0.066,0.936,0.0
+Tier-1,WASP-94Ab,H2O,AIRS-only,present,0.564,0.454,0.22,0.326,0.936,0.0
+Tier-1,WASP-94Ab,H2O,shape flag,present,0.604,0.462,0.284,0.254,0.936,0.0
+Tier-1,WASP-94Ab,H2O,haze-retrained,present,0.829,0.736,0.186,0.078,0.936,0.0
+Tier-1,WASP-94Ab,H2O,haze+deck-retrained,present,0.809,0.71,0.198,0.092,0.936,0.0
+Tier-1,WASP-94Ab,H2O,the method,present,0.814,0.718,0.192,0.09,0.936,0.0
+Tier-1,WASP-94Ab,H2O,"census, same haze design",present,0.829,0.736,0.186,0.078,0.936,0.0
+Tier-1,WASP-94Ab,CO2,published,,,0.004,0.01,0.986,0.936,0.0
+Tier-1,WASP-94Ab,CO2,no-optical,,,0.008,0.028,0.964,0.936,0.0
+Tier-1,WASP-94Ab,CO2,AIRS-only,,,0.034,0.066,0.9,0.936,0.0
+Tier-1,WASP-94Ab,CO2,shape flag,,,0.02,0.046,0.934,0.936,0.0
+Tier-1,WASP-94Ab,CO2,haze-retrained,,,0.028,0.042,0.93,0.936,0.0
+Tier-1,WASP-94Ab,CO2,haze+deck-retrained,,,0.036,0.044,0.92,0.936,0.0
+Tier-1,WASP-94Ab,CO2,the method,,,0.03,0.042,0.928,0.936,0.0
+Tier-1,WASP-94Ab,CO2,"census, same haze design",,,0.028,0.042,0.93,0.936,0.0
+Tier-1,WASP-94Ab,NH3,published,absent,1.0,0.0,0.0,1.0,0.936,0.0
+Tier-1,WASP-94Ab,NH3,no-optical,absent,1.0,0.0,0.0,1.0,0.936,0.0
+Tier-1,WASP-94Ab,NH3,AIRS-only,absent,0.985,0.01,0.01,0.98,0.936,0.0
+Tier-1,WASP-94Ab,NH3,shape flag,absent,0.993,0.004,0.006,0.99,0.936,0.0
+Tier-1,WASP-94Ab,NH3,haze-retrained,absent,0.999,0.0,0.002,0.998,0.936,0.0
+Tier-1,WASP-94Ab,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.936,0.0
+Tier-1,WASP-94Ab,NH3,the method,absent,0.999,0.0,0.002,0.998,0.936,0.0
+Tier-1,WASP-94Ab,NH3,"census, same haze design",absent,0.999,0.0,0.002,0.998,0.936,0.0
 JWST,HIP67522b,CH4,published,,,0.0,0.0,1.0,0.0,1.0
 JWST,HIP67522b,CH4,no-optical,,,0.0,0.0,1.0,0.0,1.0
 JWST,HIP67522b,CH4,AIRS-only,,,0.0,0.0,1.0,0.0,1.0
@@ -1294,6 +1478,7 @@ JWST,HIP67522b,CH4,shape flag,,,0.0,0.0,1.0,0.0,1.0
 JWST,HIP67522b,CH4,haze-retrained,,,0.0,0.0,1.0,0.0,1.0
 JWST,HIP67522b,CH4,haze+deck-retrained,,,0.0,0.0,1.0,0.0,1.0
 JWST,HIP67522b,CH4,the method,,,0.0,1.0,0.0,0.0,1.0
+JWST,HIP67522b,CH4,"census, same haze design",,,0.0,1.0,0.0,0.0,1.0
 JWST,HIP67522b,H2O,published,,,0.0,0.0,1.0,0.0,1.0
 JWST,HIP67522b,H2O,no-optical,,,0.0,0.0,1.0,0.0,1.0
 JWST,HIP67522b,H2O,AIRS-only,,,0.0,0.0,1.0,0.0,1.0
@@ -1301,6 +1486,7 @@ JWST,HIP67522b,H2O,shape flag,,,0.0,0.0,1.0,0.0,1.0
 JWST,HIP67522b,H2O,haze-retrained,,,0.0,0.0,1.0,0.0,1.0
 JWST,HIP67522b,H2O,haze+deck-retrained,,,0.0,0.0,1.0,0.0,1.0
 JWST,HIP67522b,H2O,the method,,,0.0,1.0,0.0,0.0,1.0
+JWST,HIP67522b,H2O,"census, same haze design",,,0.0,1.0,0.0,0.0,1.0
 JWST,HIP67522b,CO2,published,absent,0.0,1.0,0.0,0.0,0.0,1.0
 JWST,HIP67522b,CO2,no-optical,absent,0.0,1.0,0.0,0.0,0.0,1.0
 JWST,HIP67522b,CO2,AIRS-only,absent,0.0,1.0,0.0,0.0,0.0,1.0
@@ -1308,6 +1494,7 @@ JWST,HIP67522b,CO2,shape flag,absent,0.0,1.0,0.0,0.0,0.0,1.0
 JWST,HIP67522b,CO2,haze-retrained,absent,0.0,1.0,0.0,0.0,0.0,1.0
 JWST,HIP67522b,CO2,haze+deck-retrained,absent,0.0,1.0,0.0,0.0,0.0,1.0
 JWST,HIP67522b,CO2,the method,absent,0.5,0.0,1.0,0.0,0.0,1.0
+JWST,HIP67522b,CO2,"census, same haze design",absent,0.5,0.0,1.0,0.0,0.0,1.0
 JWST,HIP67522b,NH3,published,,,0.0,0.0,1.0,0.0,1.0
 JWST,HIP67522b,NH3,no-optical,,,0.0,0.0,1.0,0.0,1.0
 JWST,HIP67522b,NH3,AIRS-only,,,0.0,1.0,0.0,0.0,1.0
@@ -1315,6 +1502,7 @@ JWST,HIP67522b,NH3,shape flag,,,0.0,0.0,1.0,0.0,1.0
 JWST,HIP67522b,NH3,haze-retrained,,,0.0,0.0,1.0,0.0,1.0
 JWST,HIP67522b,NH3,haze+deck-retrained,,,0.0,0.0,1.0,0.0,1.0
 JWST,HIP67522b,NH3,the method,,,0.0,1.0,0.0,0.0,1.0
+JWST,HIP67522b,NH3,"census, same haze design",,,0.0,1.0,0.0,0.0,1.0
 Tier-1,HIP67522b,CH4,published,,,0.0,0.0,1.0,0.0,1.0
 Tier-1,HIP67522b,CH4,no-optical,,,0.0,0.0,1.0,0.0,1.0
 Tier-1,HIP67522b,CH4,AIRS-only,,,0.0,0.0,1.0,0.0,1.0
@@ -1322,6 +1510,7 @@ Tier-1,HIP67522b,CH4,shape flag,,,0.0,0.0,1.0,0.0,1.0
 Tier-1,HIP67522b,CH4,haze-retrained,,,0.0,0.0,1.0,0.0,1.0
 Tier-1,HIP67522b,CH4,haze+deck-retrained,,,0.0,0.0,1.0,0.0,1.0
 Tier-1,HIP67522b,CH4,the method,,,0.0,1.0,0.0,0.0,1.0
+Tier-1,HIP67522b,CH4,"census, same haze design",,,0.0,1.0,0.0,0.0,1.0
 Tier-1,HIP67522b,H2O,published,,,0.0,0.0,1.0,0.0,1.0
 Tier-1,HIP67522b,H2O,no-optical,,,0.0,0.0,1.0,0.0,1.0
 Tier-1,HIP67522b,H2O,AIRS-only,,,0.0,0.0,1.0,0.0,1.0
@@ -1329,20 +1518,23 @@ Tier-1,HIP67522b,H2O,shape flag,,,0.0,0.0,1.0,0.0,1.0
 Tier-1,HIP67522b,H2O,haze-retrained,,,0.0,0.0,1.0,0.0,1.0
 Tier-1,HIP67522b,H2O,haze+deck-retrained,,,0.0,0.0,1.0,0.0,1.0
 Tier-1,HIP67522b,H2O,the method,,,0.0,1.0,0.0,0.0,1.0
-Tier-1,HIP67522b,CO2,published,absent,0.065,0.87,0.13,0.0,0.0,1.0
-Tier-1,HIP67522b,CO2,no-optical,absent,0.0175,0.965,0.035,0.0,0.0,1.0
+Tier-1,HIP67522b,H2O,"census, same haze design",,,0.0,1.0,0.0,0.0,1.0
+Tier-1,HIP67522b,CO2,published,absent,0.073,0.854,0.146,0.0,0.0,1.0
+Tier-1,HIP67522b,CO2,no-optical,absent,0.015,0.97,0.03,0.0,0.0,1.0
 Tier-1,HIP67522b,CO2,AIRS-only,absent,0.0,1.0,0.0,0.0,0.0,1.0
-Tier-1,HIP67522b,CO2,shape flag,absent,0.0,1.0,0.0,0.0,0.0,1.0
+Tier-1,HIP67522b,CO2,shape flag,absent,0.004,0.992,0.008,0.0,0.0,1.0
 Tier-1,HIP67522b,CO2,haze-retrained,absent,0.0,1.0,0.0,0.0,0.0,1.0
 Tier-1,HIP67522b,CO2,haze+deck-retrained,absent,0.0,1.0,0.0,0.0,0.0,1.0
 Tier-1,HIP67522b,CO2,the method,absent,0.5,0.0,1.0,0.0,0.0,1.0
+Tier-1,HIP67522b,CO2,"census, same haze design",absent,0.5,0.0,1.0,0.0,0.0,1.0
 Tier-1,HIP67522b,NH3,published,,,0.0,0.0,1.0,0.0,1.0
 Tier-1,HIP67522b,NH3,no-optical,,,0.0,0.0,1.0,0.0,1.0
-Tier-1,HIP67522b,NH3,AIRS-only,,,0.09,0.23,0.68,0.0,1.0
-Tier-1,HIP67522b,NH3,shape flag,,,0.01,0.1,0.89,0.0,1.0
+Tier-1,HIP67522b,NH3,AIRS-only,,,0.11,0.188,0.702,0.0,1.0
+Tier-1,HIP67522b,NH3,shape flag,,,0.01,0.118,0.872,0.0,1.0
 Tier-1,HIP67522b,NH3,haze-retrained,,,0.0,0.0,1.0,0.0,1.0
 Tier-1,HIP67522b,NH3,haze+deck-retrained,,,0.0,0.0,1.0,0.0,1.0
 Tier-1,HIP67522b,NH3,the method,,,0.0,1.0,0.0,0.0,1.0
+Tier-1,HIP67522b,NH3,"census, same haze design",,,0.0,1.0,0.0,0.0,1.0
 JWST,HAT-P-12b,CH4,published,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-12b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-12b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
@@ -1350,6 +1542,7 @@ JWST,HAT-P-12b,CH4,shape flag,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-12b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-12b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-12b,CH4,the method,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,HAT-P-12b,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-12b,H2O,published,present,0.5,0.0,1.0,0.0,1.0,0.0
 JWST,HAT-P-12b,H2O,no-optical,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,HAT-P-12b,H2O,AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
@@ -1357,6 +1550,7 @@ JWST,HAT-P-12b,H2O,shape flag,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-12b,H2O,haze-retrained,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,HAT-P-12b,H2O,haze+deck-retrained,present,0.5,0.0,1.0,0.0,1.0,0.0
 JWST,HAT-P-12b,H2O,the method,present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,HAT-P-12b,H2O,"census, same haze design",present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,HAT-P-12b,CO2,published,,,1.0,0.0,0.0,1.0,0.0
 JWST,HAT-P-12b,CO2,no-optical,,,1.0,0.0,0.0,1.0,0.0
 JWST,HAT-P-12b,CO2,AIRS-only,,,1.0,0.0,0.0,1.0,0.0
@@ -1364,6 +1558,7 @@ JWST,HAT-P-12b,CO2,shape flag,,,1.0,0.0,0.0,1.0,0.0
 JWST,HAT-P-12b,CO2,haze-retrained,,,1.0,0.0,0.0,1.0,0.0
 JWST,HAT-P-12b,CO2,haze+deck-retrained,,,1.0,0.0,0.0,1.0,0.0
 JWST,HAT-P-12b,CO2,the method,,,1.0,0.0,0.0,1.0,0.0
+JWST,HAT-P-12b,CO2,"census, same haze design",,,1.0,0.0,0.0,1.0,0.0
 JWST,HAT-P-12b,NH3,published,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-12b,NH3,no-optical,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-12b,NH3,AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
@@ -1371,34 +1566,39 @@ JWST,HAT-P-12b,NH3,shape flag,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-12b,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-12b,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-12b,NH3,the method,absent,1.0,0.0,0.0,1.0,1.0,0.0
-Tier-1,HAT-P-12b,CH4,published,absent,1.0,0.0,0.0,1.0,0.68,0.0
-Tier-1,HAT-P-12b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.68,0.0
-Tier-1,HAT-P-12b,CH4,AIRS-only,absent,0.9975,0.0,0.005,0.995,0.68,0.0
-Tier-1,HAT-P-12b,CH4,shape flag,absent,0.9975,0.0,0.005,0.995,0.68,0.0
-Tier-1,HAT-P-12b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,0.68,0.0
-Tier-1,HAT-P-12b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.68,0.0
-Tier-1,HAT-P-12b,CH4,the method,absent,1.0,0.0,0.0,1.0,0.68,0.0
-Tier-1,HAT-P-12b,H2O,published,present,0.0625,0.025,0.075,0.9,0.68,0.0
-Tier-1,HAT-P-12b,H2O,no-optical,present,0.14,0.09,0.1,0.81,0.68,0.0
-Tier-1,HAT-P-12b,H2O,AIRS-only,present,0.105,0.055,0.1,0.845,0.68,0.0
-Tier-1,HAT-P-12b,H2O,shape flag,present,0.0775,0.045,0.065,0.89,0.68,0.0
-Tier-1,HAT-P-12b,H2O,haze-retrained,present,0.125,0.07,0.11,0.82,0.68,0.0
-Tier-1,HAT-P-12b,H2O,haze+deck-retrained,present,0.12,0.07,0.1,0.83,0.68,0.0
-Tier-1,HAT-P-12b,H2O,the method,present,0.105,0.055,0.1,0.845,0.68,0.0
-Tier-1,HAT-P-12b,CO2,published,,,0.015,0.065,0.92,0.68,0.0
-Tier-1,HAT-P-12b,CO2,no-optical,,,0.025,0.115,0.86,0.68,0.0
-Tier-1,HAT-P-12b,CO2,AIRS-only,,,0.16,0.17,0.67,0.68,0.0
-Tier-1,HAT-P-12b,CO2,shape flag,,,0.1,0.125,0.775,0.68,0.0
-Tier-1,HAT-P-12b,CO2,haze-retrained,,,0.095,0.095,0.81,0.68,0.0
-Tier-1,HAT-P-12b,CO2,haze+deck-retrained,,,0.09,0.15,0.76,0.68,0.0
-Tier-1,HAT-P-12b,CO2,the method,,,0.095,0.1,0.805,0.68,0.0
-Tier-1,HAT-P-12b,NH3,published,absent,1.0,0.0,0.0,1.0,0.68,0.0
-Tier-1,HAT-P-12b,NH3,no-optical,absent,0.9975,0.0,0.005,0.995,0.68,0.0
-Tier-1,HAT-P-12b,NH3,AIRS-only,absent,0.9925,0.0,0.015,0.985,0.68,0.0
-Tier-1,HAT-P-12b,NH3,shape flag,absent,0.9975,0.0,0.005,0.995,0.68,0.0
-Tier-1,HAT-P-12b,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,0.68,0.0
-Tier-1,HAT-P-12b,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.68,0.0
-Tier-1,HAT-P-12b,NH3,the method,absent,1.0,0.0,0.0,1.0,0.68,0.0
+JWST,HAT-P-12b,NH3,"census, same haze design",absent,1.0,0.0,0.0,1.0,1.0,0.0
+Tier-1,HAT-P-12b,CH4,published,absent,1.0,0.0,0.0,1.0,0.646,0.0
+Tier-1,HAT-P-12b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.646,0.0
+Tier-1,HAT-P-12b,CH4,AIRS-only,absent,0.997,0.0,0.006,0.994,0.646,0.0
+Tier-1,HAT-P-12b,CH4,shape flag,absent,0.998,0.0,0.004,0.996,0.646,0.0
+Tier-1,HAT-P-12b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,0.646,0.0
+Tier-1,HAT-P-12b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.646,0.0
+Tier-1,HAT-P-12b,CH4,the method,absent,1.0,0.0,0.0,1.0,0.646,0.0
+Tier-1,HAT-P-12b,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.646,0.0
+Tier-1,HAT-P-12b,H2O,published,present,0.061,0.024,0.074,0.902,0.646,0.0
+Tier-1,HAT-P-12b,H2O,no-optical,present,0.123,0.072,0.102,0.826,0.646,0.0
+Tier-1,HAT-P-12b,H2O,AIRS-only,present,0.091,0.056,0.07,0.874,0.646,0.0
+Tier-1,HAT-P-12b,H2O,shape flag,present,0.069,0.036,0.066,0.898,0.646,0.0
+Tier-1,HAT-P-12b,H2O,haze-retrained,present,0.125,0.07,0.11,0.82,0.646,0.0
+Tier-1,HAT-P-12b,H2O,haze+deck-retrained,present,0.13,0.072,0.116,0.812,0.646,0.0
+Tier-1,HAT-P-12b,H2O,the method,present,0.103,0.054,0.098,0.848,0.646,0.0
+Tier-1,HAT-P-12b,H2O,"census, same haze design",present,0.125,0.07,0.11,0.82,0.646,0.0
+Tier-1,HAT-P-12b,CO2,published,,,0.014,0.064,0.922,0.646,0.0
+Tier-1,HAT-P-12b,CO2,no-optical,,,0.022,0.086,0.892,0.646,0.0
+Tier-1,HAT-P-12b,CO2,AIRS-only,,,0.142,0.174,0.684,0.646,0.0
+Tier-1,HAT-P-12b,CO2,shape flag,,,0.096,0.138,0.766,0.646,0.0
+Tier-1,HAT-P-12b,CO2,haze-retrained,,,0.076,0.112,0.812,0.646,0.0
+Tier-1,HAT-P-12b,CO2,haze+deck-retrained,,,0.082,0.138,0.78,0.646,0.0
+Tier-1,HAT-P-12b,CO2,the method,,,0.08,0.13,0.79,0.646,0.0
+Tier-1,HAT-P-12b,CO2,"census, same haze design",,,0.076,0.112,0.812,0.646,0.0
+Tier-1,HAT-P-12b,NH3,published,absent,1.0,0.0,0.0,1.0,0.646,0.0
+Tier-1,HAT-P-12b,NH3,no-optical,absent,0.998,0.0,0.004,0.996,0.646,0.0
+Tier-1,HAT-P-12b,NH3,AIRS-only,absent,0.986,0.006,0.016,0.978,0.646,0.0
+Tier-1,HAT-P-12b,NH3,shape flag,absent,0.995,0.0,0.01,0.99,0.646,0.0
+Tier-1,HAT-P-12b,NH3,haze-retrained,absent,0.996,0.0,0.008,0.992,0.646,0.0
+Tier-1,HAT-P-12b,NH3,haze+deck-retrained,absent,0.998,0.0,0.004,0.996,0.646,0.0
+Tier-1,HAT-P-12b,NH3,the method,absent,0.996,0.0,0.008,0.992,0.646,0.0
+Tier-1,HAT-P-12b,NH3,"census, same haze design",absent,0.996,0.0,0.008,0.992,0.646,0.0
 JWST,WASP-39b,CH4,published,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-39b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-39b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
@@ -1406,6 +1606,7 @@ JWST,WASP-39b,CH4,shape flag,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-39b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-39b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-39b,CH4,the method,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-39b,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-39b,H2O,published,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-39b,H2O,no-optical,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-39b,H2O,AIRS-only,present,1.0,1.0,0.0,0.0,1.0,0.0
@@ -1413,6 +1614,7 @@ JWST,WASP-39b,H2O,shape flag,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-39b,H2O,haze-retrained,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-39b,H2O,haze+deck-retrained,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-39b,H2O,the method,present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,WASP-39b,H2O,"census, same haze design",present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-39b,CO2,published,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-39b,CO2,no-optical,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-39b,CO2,AIRS-only,,,0.0,0.0,1.0,1.0,0.0
@@ -1420,6 +1622,7 @@ JWST,WASP-39b,CO2,shape flag,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-39b,CO2,haze-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-39b,CO2,haze+deck-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-39b,CO2,the method,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-39b,CO2,"census, same haze design",,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-39b,NH3,published,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-39b,NH3,no-optical,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-39b,NH3,AIRS-only,,,0.0,0.0,1.0,1.0,0.0
@@ -1427,31 +1630,36 @@ JWST,WASP-39b,NH3,shape flag,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-39b,NH3,haze-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-39b,NH3,haze+deck-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-39b,NH3,the method,,,0.0,0.0,1.0,1.0,0.0
-Tier-1,WASP-39b,CH4,published,absent,1.0,0.0,0.0,1.0,0.985,0.0
-Tier-1,WASP-39b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.985,0.0
-Tier-1,WASP-39b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,0.985,0.0
-Tier-1,WASP-39b,CH4,shape flag,absent,1.0,0.0,0.0,1.0,0.985,0.0
-Tier-1,WASP-39b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,0.985,0.0
-Tier-1,WASP-39b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.985,0.0
-Tier-1,WASP-39b,CH4,the method,absent,1.0,0.0,0.0,1.0,0.985,0.0
-Tier-1,WASP-39b,H2O,published,present,0.64,0.44,0.4,0.16,0.985,0.0
-Tier-1,WASP-39b,H2O,no-optical,present,0.9175,0.865,0.105,0.03,0.985,0.0
-Tier-1,WASP-39b,H2O,AIRS-only,present,0.835,0.775,0.12,0.105,0.985,0.0
-Tier-1,WASP-39b,H2O,shape flag,present,0.75,0.62,0.26,0.12,0.985,0.0
-Tier-1,WASP-39b,H2O,haze-retrained,present,0.9275,0.88,0.095,0.025,0.985,0.0
-Tier-1,WASP-39b,H2O,haze+deck-retrained,present,0.955,0.93,0.05,0.02,0.985,0.0
-Tier-1,WASP-39b,H2O,the method,present,0.925,0.875,0.1,0.025,0.985,0.0
-Tier-1,WASP-39b,CO2,published,,,0.0,0.03,0.97,0.985,0.0
-Tier-1,WASP-39b,CO2,no-optical,,,0.02,0.05,0.93,0.985,0.0
-Tier-1,WASP-39b,CO2,AIRS-only,,,0.06,0.06,0.88,0.985,0.0
-Tier-1,WASP-39b,CO2,shape flag,,,0.03,0.08,0.89,0.985,0.0
-Tier-1,WASP-39b,CO2,haze-retrained,,,0.055,0.08,0.865,0.985,0.0
-Tier-1,WASP-39b,CO2,haze+deck-retrained,,,0.07,0.08,0.85,0.985,0.0
-Tier-1,WASP-39b,CO2,the method,,,0.055,0.075,0.87,0.985,0.0
-Tier-1,WASP-39b,NH3,published,,,0.0,0.0,1.0,0.985,0.0
-Tier-1,WASP-39b,NH3,no-optical,,,0.0,0.0,1.0,0.985,0.0
-Tier-1,WASP-39b,NH3,AIRS-only,,,0.0,0.0,1.0,0.985,0.0
-Tier-1,WASP-39b,NH3,shape flag,,,0.0,0.0,1.0,0.985,0.0
-Tier-1,WASP-39b,NH3,haze-retrained,,,0.0,0.0,1.0,0.985,0.0
-Tier-1,WASP-39b,NH3,haze+deck-retrained,,,0.0,0.0,1.0,0.985,0.0
-Tier-1,WASP-39b,NH3,the method,,,0.0,0.0,1.0,0.985,0.0
+JWST,WASP-39b,NH3,"census, same haze design",,,0.0,0.0,1.0,1.0,0.0
+Tier-1,WASP-39b,CH4,published,absent,1.0,0.0,0.0,1.0,0.972,0.0
+Tier-1,WASP-39b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.972,0.0
+Tier-1,WASP-39b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,0.972,0.0
+Tier-1,WASP-39b,CH4,shape flag,absent,1.0,0.0,0.0,1.0,0.972,0.0
+Tier-1,WASP-39b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,0.972,0.0
+Tier-1,WASP-39b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.972,0.0
+Tier-1,WASP-39b,CH4,the method,absent,1.0,0.0,0.0,1.0,0.972,0.0
+Tier-1,WASP-39b,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.972,0.0
+Tier-1,WASP-39b,H2O,published,present,0.644,0.476,0.336,0.188,0.972,0.0
+Tier-1,WASP-39b,H2O,no-optical,present,0.931,0.88,0.102,0.018,0.972,0.0
+Tier-1,WASP-39b,H2O,AIRS-only,present,0.819,0.744,0.15,0.106,0.972,0.0
+Tier-1,WASP-39b,H2O,shape flag,present,0.745,0.622,0.246,0.132,0.972,0.0
+Tier-1,WASP-39b,H2O,haze-retrained,present,0.931,0.888,0.086,0.026,0.972,0.0
+Tier-1,WASP-39b,H2O,haze+deck-retrained,present,0.942,0.908,0.068,0.024,0.972,0.0
+Tier-1,WASP-39b,H2O,the method,present,0.926,0.878,0.096,0.026,0.972,0.0
+Tier-1,WASP-39b,H2O,"census, same haze design",present,0.931,0.888,0.086,0.026,0.972,0.0
+Tier-1,WASP-39b,CO2,published,,,0.008,0.026,0.966,0.972,0.0
+Tier-1,WASP-39b,CO2,no-optical,,,0.026,0.05,0.924,0.972,0.0
+Tier-1,WASP-39b,CO2,AIRS-only,,,0.056,0.08,0.864,0.972,0.0
+Tier-1,WASP-39b,CO2,shape flag,,,0.03,0.074,0.896,0.972,0.0
+Tier-1,WASP-39b,CO2,haze-retrained,,,0.054,0.078,0.868,0.972,0.0
+Tier-1,WASP-39b,CO2,haze+deck-retrained,,,0.076,0.078,0.846,0.972,0.0
+Tier-1,WASP-39b,CO2,the method,,,0.054,0.076,0.87,0.972,0.0
+Tier-1,WASP-39b,CO2,"census, same haze design",,,0.054,0.078,0.868,0.972,0.0
+Tier-1,WASP-39b,NH3,published,,,0.0,0.0,1.0,0.972,0.0
+Tier-1,WASP-39b,NH3,no-optical,,,0.0,0.0,1.0,0.972,0.0
+Tier-1,WASP-39b,NH3,AIRS-only,,,0.0,0.0,1.0,0.972,0.0
+Tier-1,WASP-39b,NH3,shape flag,,,0.0,0.0,1.0,0.972,0.0
+Tier-1,WASP-39b,NH3,haze-retrained,,,0.0,0.0,1.0,0.972,0.0
+Tier-1,WASP-39b,NH3,haze+deck-retrained,,,0.0,0.0,1.0,0.972,0.0
+Tier-1,WASP-39b,NH3,the method,,,0.0,0.0,1.0,0.972,0.0
+Tier-1,WASP-39b,NH3,"census, same haze design",,,0.0,0.0,1.0,0.972,0.0

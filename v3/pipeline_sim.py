@@ -71,9 +71,10 @@ def main():
     d1 = lambda P, m, k: np.abs(P["all"][(m, k)] - P["no_optical"][(m, k)]); d2 = lambda P, m, k: np.abs(P["no_optical"][(m, k)] - P["airs_only"][(m, k)])
     thr_d1 = {(m, k): np.quantile(d1(P0, m, k), 0.9) for m in MOLS for k in LEARNERS}; thr_d2 = {(m, k): np.quantile(d2(P0, m, k), 0.9) for m in MOLS for k in LEARNERS}
     rows, rates, sels = [], [], []
-    slots = int(round(0.60 * len(Pte)))
-    def lost(score, t):
-        top = np.argsort(-score)[:slots]; return int(t.sum() - t[top].sum())
+    FRACS = (0.2, 0.4, 0.6, 0.8)
+    def lost(score, t, frac=0.6):
+        top = np.argsort(-score)[:int(round(frac * len(score)))]; return int(t.sum() - t[top].sum())
+    Rc = pd.read_csv(os.path.join(RESULTS, "identifiability_calibration.csv")).drop_duplicates("name").set_index("name").reindex(Pte.name.to_numpy())
     for c in CASES:
         X = cases[c]; P = P0 if c == "clean" else sc.probs(X); o = opt(X)
         PR = {s: {(m, k): AT.prob(L["models"][("1e-4", m, k)], AJ.znorm(X, L["cols"])) for m in MOLS for k in LEARNERS} for s, L in ret.items()}
@@ -101,7 +102,12 @@ def main():
                    "retrained (haze) everywhere": {k: PR["haze"][(m, k)] for k in L3}, "retrained (hazedeck) everywhere": {k: PR["hazedeck"][(m, k)] for k in L3},
                    "the routing method": {k: np.where(up_, PR["haze"][(m, k)], shape_p[k]) for k in L3}}
             for name, pp in des.items():
-                sels.append(dict(case=c, molecule=m, design=name, targets=int(t.sum()), lost=lost(np.mean([pp[k] for k in L3], axis=0), t)))
+                sc_ = np.mean([pp[k] for k in L3], axis=0)
+                for fr in FRACS:
+                    sels.append(dict(case=c, molecule=m, design=name, slots=fr, targets=int(t.sum()), lost=lost(sc_, t, fr)))
+            if c == "clean" and np.isfinite(Rc[f"{m}_p_present"]).all():
+                for fr in FRACS:
+                    sels.append(dict(case=c, molecule=m, design="retrieval of every planet, noise-free", slots=fr, targets=int(t.sum()), lost=lost(Rc[f"{m}_p_present"].to_numpy(), t, fr)))
         print("done", c, flush=True)
     df = pd.DataFrame(rows); df.to_csv(os.path.join(RESULTS, "pipeline_sim.csv"), index=False); pd.DataFrame(rates).to_csv(os.path.join(RESULTS, "pipeline_sim_rates.csv"), index=False); SEL = pd.DataFrame(sels); SEL.to_csv(os.path.join(RESULTS, "pipeline_sim_selection.csv"), index=False)
     L = [f"Full pipeline in simulation (pipeline_sim.py): accuracy %, mean over four learners and four molecules, POP-I ({len(Pte)} planets), thresholds T_HI {T_HI:.2f}, T_LO {T_LO:.2f}", ""]
@@ -118,7 +124,11 @@ def main():
         g2 = df[df.pipeline == "shape flag -> AIRS-only"].groupby("case")[col].mean().loc[CASES]; L.append(f"{lab} fires, % of cells: " + ", ".join(f"{c} {g2[c]:.1f}" for c in CASES))
     L += ["", "amplitude flag and optical flag rates, % of planets"]; L.append(pd.DataFrame(rates).round(1).to_string(index=False))
     for m in ("CH4", "H2O"):
-        L += ["", f"{m} targets lost at the 60 % selection (of {SEL[SEL.molecule == m].targets.iloc[0]}; the withheld planets keep their routed score)"]; L.append(SEL[SEL.molecule == m].pivot_table(index="design", columns="case", values="lost")[CASES].loc[list(dict.fromkeys(SEL.design))].to_string())
+        Q = SEL[(SEL.molecule == m) & (SEL.slots == 0.6)]
+        L += ["", f"{m} targets lost at the 60 % selection (of {Q.targets.iloc[0]}; the withheld planets keep their routed score)"]; L.append(Q.pivot_table(index="design", columns="case", values="lost")[CASES].loc[list(dict.fromkeys(Q.design))].to_string())
+        for c_ in ("clean", "haze3e7", "spots20"):
+            Q2 = SEL[(SEL.molecule == m) & (SEL.case == c_)]
+            L += ["", f"{m}, {c_}: targets lost against the slot fraction"]; L.append(Q2.pivot_table(index="design", columns="slots", values="lost").loc[list(dict.fromkeys(Q2.design))].to_string())
     txt = "\n".join(L); open(os.path.join(RESULTS, "pipeline_sim.txt"), "w").write(txt + "\n"); print(txt)
 
 
