@@ -1244,35 +1244,30 @@ methane recovery. This is what makes the pipeline a method rather than a diagnos
 catalogue-and-data flags, two remedies, a withheld verdict for the amplified class. Goes into the restructure as the method;
 the composition-based census stays as the analysis that explains the flag.
 
-### What these add up to, provisionally
+### What these add up to (2026-10-29, after the restructure)
 
-A simulator-trained classifier that reproduces its published in-simulator accuracies is mostly right
-on the one real hot Saturn in its training domain (three learners of four, and the non-ML band metric,
-on H₂O; all four on CH₄, CO₂ and NH₃), with one learner wrong on H₂O for a reason the twins locate in
-the real spectrum's muting rather than in the data, the conversion or the noise; it is wrong on both
-real planets that carry the molecule it was built to find, because those planets lie outside the
-domain; and a cheap distance rule, useless for ranking errors inside the simulator (the note's Section
-3.4), identifies exactly those two planets on real data and not the hot Saturn. Under Ariel noise the
-optical photometric points decide the hot Saturn's Tier-1 outcome (58 % against 86 % without them),
-which is the note's haze mechanism showing on a real planet. A one-number diagnostic on the known weak point, the optical
-excess, routed to the learner without that weak point, is never worse than the classifier and recovers
-a third of the CH₄ targets haze would lose from Ariel's Tier-2 queue; the old rules lose more targets
-than ranking by the band metric alone. With a nested-sampling retrieval of every planet
-(365 core-hours), a third to a half of the consortium labels are undecidable at Tier-1 noise, the
-classifier sits 9–16 points below the retrieval's accuracy, three quarters of its clean errors are
-irrecoverable, the errors haze and spots add are 57–87 % recoverable, a deep deck's 51–82 % and
-threefold noise's 10–56 %, the retrieval of every
-planet is the Tier-2 selection oracle on clean spectra, and on clean spectra no diagnostic routes a
-partial retrieval budget better than chance, the confidence rules worse. On a mixed population with a
-fifth of the planets hazed, the optical score routed to a retrieval with the haze density free turns a
-20 % budget into the oracle's selection (CH₄ hazed-target recall 3 → 80 %, targets lost 29 → 13 against
-the oracle's 12), the distance rules come within 16–26 points, the confidence rules find none of the hazed
-planets, and the same budget sent to the existing clear-model retrieval is worse than no retrieval; the
-free-haze retrieval on the hazed population recovers the density on every planet and 222 of the 224 CH₄
-labels decidable on the clean spectrum, so E3 and E4 are both met. The muting census (F7) turns the one-planet WASP-39 b
-result into a population statement: five of five warm giants with retrieved abundances are muted beyond
-anything the simulator population can draw at their bulk parameters, which no normalised-input rule can
-see. The remaining pieces are the free-haze retrieval of the clean population (running, due 31 October; it
-replaces the clean retrieval's posteriors on the clean side of the E3 table) and the manuscript trim.
+The manuscript was restructured on 2026-10-29 around one argument (commit after F22): 3.2 identifiability ceiling, 3.3 error
+classes under each departure (stress test merged in), 3.4 real JWST spectra as the same classes outside the simulator, 3.5 the
+departure-aware pipeline (remedies, flags, Table 8 on three tiers of evidence, the panel, selection without a retrieval),
+3.6 the retrieval as fallback against the existing methods. Methods 2.7 is the pipeline, 2.8 the retrieval fallbacks and
+selection, 2.9 expectations. Table numbers in the findings above are the light-pass numbers; the restructure maps them
+5 → 3, 3 → 4, 4 → 5, 6 → 6, 7 → 7, new pipeline table = 8, 10 → 9, 8 → 10, 9 → 11. New title: "Which Tier-1 labels the
+spectra decide: identifiability, error classes and a departure-aware pipeline for Ariel's molecular classifier, tested
+on JWST spectra".
 
-(Note, 2026-10-29: the manuscript tables were renumbered in the light editorial pass; old Table 1 is now Table A1 and old Tables 2-11 are Tables 1-10. Table numbers in the findings above are the pre-pass numbers.)
+The argument in five sentences. (1) A retrieval of every test planet shows a third to a half of Tier-1 labels are
+undecidable under the consortium's prior, five points more under the population's own, and three quarters of the
+classifier's clean errors sit there (F6, F20). (2) Every error under a departure is recoverable or not by that measure:
+haze mostly recoverable, noise mostly not, a deck partly each (F6). (3) On 26 real JWST reductions the same classes appear
+and have a shape: methane misses through the optical inputs (F2), giants muted beyond the prior's amplitude (F7, F15, F21),
+and one planet amplified beyond it (F21). (4) A pipeline computable from the catalogue and the spectrum reads amplitude
+(scale-height flag, F22) and shape (input disagreement, F5, F13) and sends each to its remedy (retrained design, F8, F18,
+F19; AIRS-only input), withholding beyond the population: 52/62 vs 42/59, six strict gains and no loss, held on three
+held-out planets (F16, F21), at 4.6 points of clean accuracy the ceiling explains. (5) The existing retrieval shares the
+haze failure and fails more confidently; one free parameter repairs it, and a flag routed to the repaired retrieval
+matches an oracle at a 20 % budget while the same flag routed to the standard retrieval is worse than nothing (F8, F8b,
+F8c, F9).
+
+Still pending from the queue: the power-law haze repair (non-circular remedy), the MCS population, free radius, the
+weaker-haze free-haze budget, convergence checks, spotted free-haze, and the clean free-haze run that removes the last
+PENDING notes. None changes the structure; each fills a row of Table 10 or 11 or a limitation.
