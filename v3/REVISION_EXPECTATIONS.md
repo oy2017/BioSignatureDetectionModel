@@ -154,3 +154,14 @@ Expected:
 
 Added before its first run, the same design for Ariel, where coverage is complete and one set of learners serves every planet (`matched_ariel.py`): the pooled natives at the Tier-1 noise of each training planet, the muting factor on half the rows, and the dispersion-over-noise input; scored as `pipeline_sim.py` on POP-I.
 - I4. Clean accuracy within 3 points of the published design (81.2), and above it under haze3e7 by at least 5 points and under mute3.
+
+## J. Confirmation of the per-reduction design on a forward model it never saw (written 2026-10-30, before any verdict on this grid)
+
+Design under test: matched+amp of section I, unchanged. Comparators: published, AIRS-only, shape flag, haze+deck-retrained and the frozen method. Data: the Goyal et al. (2019) generic ATMO grid, rainout condensation (36,864 models from a different code, opacities and aerosol scheme; local condensation as a later sensitivity test). For each of the 35 reductions, 200 models drawn at random with grid temperature within 200 K of the planet's and the grid gravity nearest the planet's, rescaled to the planet by the grid's published scaling, binned to the 104 bins, passed through the reduction's mask with its real errors added (and the Tier-1 sigma at Tier-1). Truth: log10 of the mole fraction averaged over 0.1 to 100 mbar, above -4. Learners and thresholds as trained on the real run; nothing is refitted to this grid.
+
+Primary measure: balanced credit, the mean of the credit on present and on absent labels, with right 1, split or withheld 0.5, wrong 0, over all molecules; 95 % bootstrap over planets. Expected:
+- J1. matched+amp above the frozen method at JWST precision, interval excluding zero.
+- J2. matched+amp above the frozen method at Tier-1, interval excluding zero.
+- J3. matched+amp above AIRS-only and above haze+deck-retrained at JWST precision.
+- J4. matched+amp's false-present rate no higher than the frozen method's at JWST precision.
+Sensitivities fixed now: labels within 0.5 dex of the threshold removed; each molecule alone. These grid abundances are equilibrium values tied to temperature, so this tests a different forward model, not real atmospheres.
