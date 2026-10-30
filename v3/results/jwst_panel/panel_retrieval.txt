@@ -1,0 +1,52 @@
+The real panel retrieved (panel_retrieval.py): for the labels the literature decides, the share the retrieval decides right (p_true > 0.95), leaves undecided, and decides wrong (p_true < 0.05); score counts p_true > 0.5 as right, on the labels with a posterior, and calling every such label absent is the baseline
+
+tier1  clear     66 labels, 26 reductions (26 completed, 0 at the call cap, median 18 min): decided right 37, undecided 11, decided wrong 18; present labels right/undecided/wrong 0/9/17 of 26; absent 37/2/1 of 40; median log Z -26.0
+       score (p_true > 0.5) 39 of 66, every label absent 40; on these labels re-implemented classifier 41.7, AIRS-only 43.4, method 44.4; retrieval minus re-implemented -2.7 [-5.3 -0.8], retrieval minus method -5.4 [-8.9 -2.5]
+       of the re-implemented classifier's 17 wrong labels: recoverable 0, undecidable 7, misled 10; of those passing the mask control (7): recoverable 0, undecidable 4, misled 3
+tier1  freehaze  59 labels, 23 reductions (23 completed, 0 at the call cap, median 26 min): decided right 31, undecided 15, decided wrong 13; present labels right/undecided/wrong 0/12/12 of 24; absent 31/3/1 of 35; median log Z -24.1
+       score (p_true > 0.5) 35 of 59, every label absent 35; on these labels re-implemented classifier 35.5, AIRS-only 37.1, method 37.7; retrieval minus re-implemented -0.5 [-3.2  1.8], retrieval minus method -2.7 [-6.  -0.3]
+       of the re-implemented classifier's 17 wrong labels: recoverable 0, undecidable 9, misled 8; of those passing the mask control (7): recoverable 0, undecidable 5, misled 2
+
+methane labels, p_true per reduction
+precision   tier1         
+model       clear freehaze
+planet                    
+GJ1214b      0.00     0.00
+K2-18b       0.12     0.15
+K2-18b-alt   0.20     0.36
+K2-18b-hu    0.03     0.65
+LTT3780c     0.25     0.27
+TOI-1231b    0.01     0.18
+TOI-270d     0.12     0.14
+TOI-270d-hm  0.31     0.31
+
+all present labels, p_true
+precision            tier1         
+model                clear freehaze
+planet      molecule               
+GJ1214b     CH4       0.00     0.00
+            CO2       0.00     0.00
+GJ3470b     CO2       0.00     0.00
+            H2O       0.03     0.05
+GJ9827d     H2O       0.03     0.04
+HAT-P-12b   H2O       0.00     0.00
+HAT-P-26b   CO2       0.00     0.00
+            H2O       0.11     0.12
+K2-18b      CH4       0.12     0.15
+K2-18b-alt  CH4       0.20     0.36
+K2-18b-hu   CH4       0.03     0.65
+LTT3780c    CH4       0.25     0.27
+TOI-1231b   CH4       0.01     0.18
+            CO2       0.00     0.00
+TOI-270d    CH4       0.12     0.14
+            CO2       0.04     0.02
+TOI-270d-hm CH4       0.31     0.31
+            CO2       0.05     0.08
+WASP-107b   H2O       0.01     0.01
+WASP-166b   CO2       0.00     0.00
+            H2O       0.20     0.16
+WASP-17b    H2O       0.00     0.00
+WASP-39b    H2O       0.00      NaN
+WASP-80b    H2O       0.09     0.11
+WASP-94Ab   H2O       0.00      NaN
+WASP-96b    H2O       0.12     0.20
