@@ -10,6 +10,12 @@ haze-retrained             50.5   +5.0 ( +0.0,+10.4)   -2.0 ( -7.1, +4.1)       
 haze+deck-retrained        52.0   +6.5 ( +1.1,+11.9)   -0.5 ( -5.1, +5.0)                         2.00            14.0           38.0
 the method                 54.0   +8.5 ( +2.8,+14.0)   +1.5 ( -1.5, +5.7)                         5.00            15.0           39.0
 census, same haze design   55.0   +9.5 ( +4.3,+14.6)   +2.5 ( -0.5, +6.7)                         5.00            16.0           39.0
+knn -> AIRS-only           48.5   +3.0 ( -0.6, +6.8)   -4.0 ( -7.6, +0.5)                         3.00             9.5           39.0
+mahalanobis -> AIRS-only   49.5   +4.0 ( +0.6, +7.6)   -3.0 ( -6.7, +1.6)                         4.00            10.5           39.0
+pca_recon -> AIRS-only     49.0   +3.5 ( +0.0, +7.4)   -3.5 ( -6.9, +0.7)                         4.00            10.0           39.0
+margin -> AIRS-only        48.5   +3.0 ( +0.0, +6.3)   -4.0 ( -8.9, +1.2)                         1.00            10.0           38.5
+ensemble -> AIRS-only      48.5   +3.0 ( +0.4, +6.3)   -4.0 ( -9.8, +2.3)                         1.00             9.5           39.0
+amplitude flag, AIRS-only elsewhere   55.0   +9.5 ( +2.8,+15.4)   +2.5 ( +0.0, +5.9)                         6.00            16.5           38.5
 
 == Tier-1: 66 labels
 design                    score             vs published             vs AIRS-only  CH4 present on the 8 (mean)  present labels  absent labels
@@ -21,15 +27,21 @@ haze-retrained             43.1   +1.3 ( -0.0, +2.8)   -0.3 ( -2.0, +1.4)       
 haze+deck-retrained        43.5   +1.8 ( +0.1, +3.3)   +0.1 ( -1.4, +1.6)                         0.52             5.6           37.9
 the method                 44.4   +2.7 ( +1.2, +4.4)   +1.0 ( -0.2, +2.7)                         1.06             5.7           38.7
 census, same haze design   44.7   +3.0 ( +1.4, +4.9)   +1.4 ( +0.1, +3.1)                         1.13             6.0           38.7
+knn -> AIRS-only           42.9   +1.1 ( -0.3, +2.7)   -0.5 ( -1.5, +0.4)                         1.27             4.9           38.0
+mahalanobis -> AIRS-only   43.0   +1.3 ( -0.2, +2.9)   -0.4 ( -1.2, +0.5)                         1.33             4.9           38.1
+pca_recon -> AIRS-only     42.6   +0.9 ( +0.1, +1.8)   -0.8 ( -2.0, +0.5)                         0.85             4.3           38.3
+margin -> AIRS-only        41.9   +0.1 ( -0.3, +0.5)   -1.5 ( -3.2, +0.0)                         0.14             3.3           38.5
+ensemble -> AIRS-only      42.4   +0.7 ( -0.1, +1.4)   -1.0 ( -2.1, +0.2)                         0.70             4.0           38.4
+amplitude flag, AIRS-only elsewhere   44.6   +2.8 ( +1.0, +4.8)   +1.2 ( +0.1, +2.8)                         1.37             6.4           38.2
 
 CH4 detection frequency at Tier-1 on the methane reductions
-design       published  no-optical  AIRS-only  shape flag  haze-retrained  haze+deck-retrained  the method  census, same haze design
-planet                                                                                                                              
-GJ1214b           0.00        0.00       0.01        0.01            0.00                 0.00        0.01                      0.01
-K2-18b            0.00        0.01       0.35        0.27            0.05                 0.18        0.27                      0.27
-K2-18b-alt        0.01        0.05       0.17        0.12            0.07                 0.13        0.11                      0.12
-K2-18b-hu         0.00        0.00       0.11        0.07            0.02                 0.03        0.06                      0.07
-LTT3780c          0.01        0.00       0.52        0.45            0.06                 0.09        0.43                      0.45
-TOI-1231b         0.01        0.00       0.26        0.18            0.04                 0.07        0.14                      0.18
-TOI-270d          0.00        0.00       0.02        0.00            0.00                 0.00        0.00                      0.00
-TOI-270d-hm       0.00        0.00       0.04        0.03            0.01                 0.01        0.03                      0.03
+design       published  no-optical  AIRS-only  shape flag  haze-retrained  haze+deck-retrained  the method  census, same haze design  knn -> AIRS-only  mahalanobis -> AIRS-only  pca_recon -> AIRS-only  margin -> AIRS-only  ensemble -> AIRS-only  amplitude flag, AIRS-only elsewhere
+planet                                                                                                                                                                                                                                                                                   
+GJ1214b           0.00        0.00       0.01        0.01            0.00                 0.00        0.01                      0.01              0.01                      0.01                    0.01                 0.00                   0.00                                 0.01
+K2-18b            0.00        0.01       0.35        0.27            0.05                 0.18        0.27                      0.27              0.25                      0.22                    0.06                 0.02                   0.10                                 0.35
+K2-18b-alt        0.01        0.05       0.17        0.12            0.07                 0.13        0.11                      0.12              0.16                      0.17                    0.12                 0.04                   0.11                                 0.16
+K2-18b-hu         0.00        0.00       0.11        0.07            0.02                 0.03        0.06                      0.07              0.11                      0.10                    0.09                 0.01                   0.04                                 0.09
+LTT3780c          0.01        0.00       0.52        0.45            0.06                 0.09        0.43                      0.45              0.43                      0.52                    0.32                 0.04                   0.28                                 0.51
+TOI-1231b         0.01        0.00       0.26        0.18            0.04                 0.07        0.14                      0.18              0.25                      0.25                    0.21                 0.02                   0.13                                 0.19
+TOI-270d          0.00        0.00       0.02        0.00            0.00                 0.00        0.00                      0.00              0.02                      0.02                    0.02                 0.00                   0.01                                 0.02
+TOI-270d-hm       0.00        0.00       0.04        0.03            0.01                 0.01        0.03                      0.03              0.04                      0.04                    0.02                 0.01                   0.02                                 0.04

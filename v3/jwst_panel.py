@@ -216,6 +216,69 @@ def segments(root, planet):
     raise KeyError(planet)
 
 
+# Fourth batch: the independent test of the frozen rule (REVISION_EXPECTATIONS.md, section H; survey in jwst_fourth_batch_survey.md). Labels committed before any verdict on these planets.
+# Strict rule: any printed free-chemistry variant on the planet's JWST data that crosses -4 leaves the label unscored. Values are log10 VMR as printed in the source named.
+FOURTH = {
+    "TrES-4b": {"CH4": A, "H2O": P, "CO2": A, "NH3": None},       # Meech et al. 2025 (POSEIDON free, Tiberius R=100): CH4 < -7.07 (2 sigma); H2O -2.98 +0.68/-0.73; CO2 -6.86 +0.62/-0.65
+    "HATS-6b": {"CH4": A, "H2O": A, "CO2": A, "NH3": A},          # Guzman Caloca et al. 2026 (POSEIDON free, M2.5, co-added): CH4 -5.38 +0.18/-0.19; H2O -4.88 +0.25/-0.24; CO2 -7.59 +0.41/-0.44; NH3 -6.03 +0.18/-0.19
+    "TOI-5205b": {"CH4": None, "H2O": A, "CO2": A, "NH3": A},     # Canas et al. 2026 (POSEIDON free, M3.1): H2O -10.0 +1.4/-1.3; CO2 -8.6 +0.7/-1.6; NH3 -7.06 +0.44/-1.98; CH4 unscored, one variant reaches -3.74
+    "TOI-6894b": {"CH4": P, "H2O": P, "CO2": None, "NH3": P},     # Zhang et al. 2026 (fully free, Appendix B): CH4 -1.67 +0.16/-0.16; H2O -1.40 +0.12/-0.15; NH3 -3.19 +0.24/-0.26; CO2 -4.18 +0.41/-0.48 straddles
+    "TOI-199b": {"CH4": P, "H2O": None, "CO2": None, "NH3": None},  # Bello-Arufe et al. 2026 (ExoTR free): CH4 -2.46 +0.85/-1.15; others limits above -4
+    "LP791-18c": {"CH4": P, "H2O": None, "CO2": None, "NH3": None},  # Roy et al. 2026 (SCARLET free, published Extended Data Table 3): CH4 -0.86 +0.53/-1.70; others limits above -4
+    "NGTS-2b": {"CH4": A, "H2O": None, "CO2": None, "NH3": A},    # Fairman et al. 2026 (POSEIDON free, Model I): CH4 -9.83 +1.58/-1.50; NH3 -9.23 +1.92/-1.86; H2O straddles; CO2 variants cross
+    "HAT-P-30b": {"CH4": A, "H2O": None, "CO2": None, "NH3": A},  # Claringbold et al. 2026 (pRT free): CH4 < -6.1 (2 sigma); H2O -3.3 +/-0.8 straddles; CO2 one variant crosses; NH3 -9.35 +1.72/-1.72 and -9.42 +1.78/-1.68 (BeAR, Fig. A4 titles; second reader)
+    "HAT-P-1b": {"CH4": A, "H2O": P, "CO2": None, "NH3": None},   # Ashtari et al. 2026 (POSEIDON free): CH4 -9.55 +1.65/-1.59; H2O -1.70 +0.43/-0.71; CO2 -3.99 +0.53/-0.66 straddles; NH3 not in the model
+    "TOI-1130b": {"CH4": None, "H2O": P, "CO2": None, "NH3": None},  # Barat et al. 2026 (pRT free, mass fractions): H2O -0.7 +0.3/-1.1 in mass fraction, VMR lower bound -2.58 at mean molecular weight 3
+    "Kepler-51d": {"CH4": A, "H2O": None, "CO2": None, "NH3": None},  # Libby-Roberts et al. 2026 (ExoTR free): CH4 66 +72/-45 ppb
+    "WASP-121b": {"CH4": None, "H2O": None, "CO2": A, "NH3": None},  # Gapp et al. 2025 (NEMESIS free): CO2 -8.64 +1.82/-1.99 (day), -8.80 +1.64/-1.89 (night); H2O variants disagree
+}
+FOURTH_TWINS = {"TrES-4b": {"CH4": -8.07, "H2O": -2.98, "CO2": -6.86, "NH3": -7.0}, "HATS-6b": {"CH4": -5.38, "H2O": -4.88, "CO2": -7.59, "NH3": -6.03}, "TOI-5205b": {"CH4": -5.89, "H2O": -10.0, "CO2": -8.6, "NH3": -7.06},
+                "TOI-6894b": {"CH4": -1.67, "H2O": -1.40, "CO2": -4.18, "NH3": -3.19}, "TOI-199b": {"CH4": -2.46, "H2O": -3.05, "CO2": -4.47, "NH3": -2.78}, "LP791-18c": {"CH4": -0.86, "H2O": -1.71, "CO2": -2.97, "NH3": -2.09},
+                "NGTS-2b": {"CH4": -9.83, "H2O": -3.51, "CO2": -7.38, "NH3": -9.23}, "HAT-P-30b": {"CH4": -7.1, "H2O": -3.3, "CO2": -8.1, "NH3": -7.0}, "HAT-P-1b": {"CH4": -9.55, "H2O": -1.70, "CO2": -3.99, "NH3": -7.0},
+                "TOI-1130b": {"CH4": -4.73, "H2O": -1.48, "CO2": -2.37, "NH3": -3.75}, "Kepler-51d": {"CH4": -7.18, "H2O": -7.0, "CO2": -7.0, "NH3": -7.0}, "WASP-121b": {"CH4": -7.0, "H2O": -5.74, "CO2": -8.64, "NH3": -7.0}}
+# V1298 Tau b left out on the second reader's finding: Adams 2026 prints CH4 -4.24 against Barat 2025's -6.22, so the literature disagrees near the threshold and no label is fixed.
+
+
+def fourth_segments(root, planet):
+    """The fourth batch (REVISION_EXPECTATIONS.md, section H; parsing recipes from the survey of 2026-10-30). Where a paper states the range its retrieval used, the spectrum is trimmed to it."""
+    r = lambda *p: os.path.join(root, *p)
+    trim = lambda a, lo, hi: a[(a[:, 0] >= lo) & (a[:, 0] <= hi)]
+    if planet == "TrES-4b":
+        d = r("TrES-4b", "Meech2025_zenodo15097695", "transmission_spectra", "tiberius")
+        return {k: seg(numeric_rows(f"{d}/tiberius_R100_transmission_spectrum_depths_{k}_23Oct24.txt"), 0, 2, 3, width=1) for k in ("NRS1", "NRS2")}, "Meech et al. 2025, principal Tiberius reduction, R = 100 (Zenodo 15097695)"
+    if planet == "HATS-6b":
+        return {"PRISM": seg(numeric_rows(r("HATS-6b", "GuzmanCaloca2026_zenodo21500595", "data", "BINNED_coadd.txt")), 0, 2, 3, halfwidth=1)}, "Guzman Caloca et al. 2026, Eureka co-added PRISM (Zenodo 21500595)"
+    if planet == "TOI-5205b":
+        return {"PRISM": seg(trim(numeric_rows(r("TOI-5205b", "Canas2026_aj_ae4976_fig2data", "toi5205_coadd_exotic_pixel.txt")), 0.6, 5.3), 0, 2, 3, halfwidth=1)}, "Canas et al. 2026, ExoTiC-JEDI co-added PRISM, 0.6-5.3 um as retrieved (AJ figure data)"
+    if planet == "TOI-6894b":
+        return {"PRISM": seg(trim(numeric_rows(r("TOI-6894b", "Zhang2026_apjl_aea4ae_fig2data", "dbf2.txt")), 0.8, 5.2), 0, 1, 2)}, "Zhang et al. 2026, PRISM, 0.8-5.2 um as retrieved (ApJL figure data; the table's unit says percent, but its values, near 0.15, are the fraction: the planet's transit depth is 15 %)"
+    if planet == "TOI-199b":
+        return {"G395M": seg(numeric_rows(r("TOI-199b", "BelloArufe2026_zenodo17653116", "transmission_spectrum_toi199_eureka_nativespectral.txt")), 0, 2, 3, halfwidth=1)}, "Bello-Arufe et al. 2026, Eureka native G395M NRS1 (Zenodo 17653116)"
+    if planet == "LP791-18c":
+        return {"PRISM": seg(ecsv_rows(r("LP791-18c", "Roy2026_zenodo17316562", "LP79118c", "LP79118c_fullRes_spectrum.spec")), 0, 3, 4, 1e-6, bounds=(1, 2))}, "Roy et al. 2026, Eureka and ExoTEP full-resolution PRISM (Zenodo 17316562)"
+    if planet == "NGTS-2b":
+        import netCDF4
+        with netCDF4.Dataset(r("NGTS-2b", "Fairman2026_zenodo18864528", "ExoTiC-JEDI_data_products", "ExoTiC-JEDI_R400_transit_spectrum.nc")) as ds:
+            a = np.column_stack([np.asarray(ds[k][:], float).ravel() for k in ("central_wavelength", "bin_half_width", "transit_depth", "transit_depth_error")])
+        return {"G395H": seg(a, 0, 2, 3, halfwidth=1)}, "Fairman et al. 2026, ExoTiC-JEDI R = 400 G395H (Zenodo 18864528)"
+    if planet == "HAT-P-30b":
+        return {"G395H": seg(numeric_rows(r("HAT-P-30b", "Claringbold2026_zenodo18682265", "transmission_spectra", "Eureka_R400.dat")), 0, 2, 3, halfwidth=1, err2=4)}, "Claringbold et al. 2026, Eureka R = 400 G395H (Zenodo 18682265)"
+    if planet == "HAT-P-1b":
+        return {"G395H": seg(numeric_rows(r("HAT-P-1b", "Ashtari2026_aj_aea90a_fig2data", "dbf2.txt")), 0, 2, 3, 1e-6, halfwidth=1, err2=4)}, "Ashtari et al. 2026, primary Eureka G395H (AJ figure data)"
+    if planet == "TOI-1130b":
+        d = r("TOI-1130b", "Barat2026_apjl_ae5f8b_fig2data"); out = {}
+        for k, f in (("SOSS-o1", "toi1130b_niriss_order1_fixed_ld_common_mode_spectrum_final_modelling.mrt"), ("SOSS-o2", "toi1130b_niriss_order2_fixed_ld_common_mode_spectrum_final_modelling.mrt"), ("NRS1", "toi1130b_nrs1_fixed_ld_common_mode_50pixel_spectrum.mrt"), ("NRS2", "toi1130b_nrs2_fixed_ld_common_mode_50pixel_spectrum.mrt")):
+            a = numeric_rows(f"{d}/{f}"); a = np.column_stack([a, a[:, 1] + a[:, 2]]); out[k] = seg(a, 0, 3, 4, 1e-6, width=a.shape[1] - 1)
+        return out, "Barat et al. 2026, exoTEDRF NIRISS and Eureka NIRSpec (ApJL figure data)"
+    if planet == "V1298Taub":
+        return {"G395H": seg(numeric_rows(r("V1298Taub", "Barat2025_zenodo16782958", "final spectrum", "v1298b_final_combined_spectrum")), 0, 1, 2, 1e-6)}, "Barat et al. 2025, Eureka G395H (Zenodo 16782958)"
+    if planet == "Kepler-51d":
+        return {"PRISM": seg(trim(numeric_rows(r("Kepler-51d", "LibbyRoberts2026_aj_ae33c0_mrt", "ajae33c0t2_mrt.txt")), 0.6, 4.5), 0, 1, 2, 1e-2, err2=3)}, "Libby-Roberts et al. 2026, Eureka native PRISM, 0.6-4.5 um as retrieved (AJ Table 2)"
+    if planet == "WASP-121b":
+        return {"G395H": seg(numeric_rows(r("WASP-121b", "Gapp2025_aj_ad9c6e_fig6data", "dbf6a.txt")), 0, 4, 5, 1e-2, err2=6)}, "Gapp et al. 2025, phase-curve G395H at R of about 600 (AJ figure data)"
+    raise ValueError(planet)
+
+
 def run_planet(root, planet, draws, variants):
     import alfnoor_jwst as AJ
     S, source = segments(root, planet); edges, labels = J.tier3_layout()

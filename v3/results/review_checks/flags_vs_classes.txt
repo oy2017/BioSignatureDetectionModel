@@ -1,0 +1,30 @@
+Numba not installed, using numpy instead
+== AUROC of each flag for recoverable (p_true>0.95) vs irrecoverable errors, clean; mean over learners and molecules
+   case        rule  auroc_recoverable_vs_irrecoverable
+  clean     optical                               0.514
+  clean    disagree                               0.579
+  clean      margin                               0.637
+  clean    ensemble                               0.617
+  clean         knn                               0.413
+  clean mahalanobis                               0.407
+haze3e7     optical                               0.576
+haze3e7    disagree                               0.699
+haze3e7      margin                               0.614
+haze3e7    ensemble                               0.715
+haze3e7         knn                               0.454
+haze3e7 mahalanobis                               0.446
+== share flagged among correct labels vs errors, haze3e7 (optical)
+optical fires on 99.8 % of hazed planets
+T 5.252590216963812 0.47174031107860787
+== simulation scored as the panel is: majority of four, split or withheld one half (%), mean over molecules
+    case  published  AIRS  haze  method
+   clean      82.91 74.84 81.87   77.74
+ haze3e7      61.99 74.42 73.69   73.27
+white_x2      72.62 69.29 72.81   70.45
+white_x3      68.00 66.51 68.26   63.15
+clean Spearman vs JWST panel -0.71, vs Tier-1 panel -0.56
+haze Spearman vs JWST panel 0.58, vs Tier-1 panel 0.60
+confined Spearman vs JWST panel 0.14, vs Tier-1 panel 0.27
+deck Spearman vs JWST panel 0.07, vs Tier-1 panel 0.16
+spots Spearman vs JWST panel 0.07, vs Tier-1 panel 0.16
+noise2 Spearman vs JWST panel -0.50, vs Tier-1 panel -0.41

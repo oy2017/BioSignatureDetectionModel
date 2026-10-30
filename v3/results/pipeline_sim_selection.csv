@@ -31,6 +31,18 @@ clean,CH4,the routing method,0.2,359,189
 clean,CH4,the routing method,0.4,359,65
 clean,CH4,the routing method,0.6,359,20
 clean,CH4,the routing method,0.8,359,3
+clean,CH4,"amplitude flag, AIRS-only elsewhere",0.2,359,192
+clean,CH4,"amplitude flag, AIRS-only elsewhere",0.4,359,74
+clean,CH4,"amplitude flag, AIRS-only elsewhere",0.6,359,22
+clean,CH4,"amplitude flag, AIRS-only elsewhere",0.8,359,6
+clean,CH4,mahalanobis -> AIRS-only,0.2,359,178
+clean,CH4,mahalanobis -> AIRS-only,0.4,359,58
+clean,CH4,mahalanobis -> AIRS-only,0.6,359,20
+clean,CH4,mahalanobis -> AIRS-only,0.8,359,2
+clean,CH4,knn -> AIRS-only,0.2,359,178
+clean,CH4,knn -> AIRS-only,0.4,359,58
+clean,CH4,knn -> AIRS-only,0.6,359,19
+clean,CH4,knn -> AIRS-only,0.8,359,2
 clean,CH4,"retrieval of every planet, noise-free",0.2,359,168
 clean,CH4,"retrieval of every planet, noise-free",0.4,359,18
 clean,CH4,"retrieval of every planet, noise-free",0.6,359,0
@@ -67,6 +79,18 @@ clean,H2O,the routing method,0.2,364,223
 clean,H2O,the routing method,0.4,364,121
 clean,H2O,the routing method,0.6,364,67
 clean,H2O,the routing method,0.8,364,23
+clean,H2O,"amplitude flag, AIRS-only elsewhere",0.2,364,238
+clean,H2O,"amplitude flag, AIRS-only elsewhere",0.4,364,147
+clean,H2O,"amplitude flag, AIRS-only elsewhere",0.6,364,80
+clean,H2O,"amplitude flag, AIRS-only elsewhere",0.8,364,36
+clean,H2O,mahalanobis -> AIRS-only,0.2,364,198
+clean,H2O,mahalanobis -> AIRS-only,0.4,364,101
+clean,H2O,mahalanobis -> AIRS-only,0.6,364,54
+clean,H2O,mahalanobis -> AIRS-only,0.8,364,24
+clean,H2O,knn -> AIRS-only,0.2,364,196
+clean,H2O,knn -> AIRS-only,0.4,364,100
+clean,H2O,knn -> AIRS-only,0.6,364,54
+clean,H2O,knn -> AIRS-only,0.8,364,23
 clean,H2O,"retrieval of every planet, noise-free",0.2,364,173
 clean,H2O,"retrieval of every planet, noise-free",0.4,364,22
 clean,H2O,"retrieval of every planet, noise-free",0.6,364,2
@@ -103,6 +127,18 @@ haze2e6,CH4,the routing method,0.2,359,195
 haze2e6,CH4,the routing method,0.4,359,75
 haze2e6,CH4,the routing method,0.6,359,19
 haze2e6,CH4,the routing method,0.8,359,5
+haze2e6,CH4,"amplitude flag, AIRS-only elsewhere",0.2,359,193
+haze2e6,CH4,"amplitude flag, AIRS-only elsewhere",0.4,359,73
+haze2e6,CH4,"amplitude flag, AIRS-only elsewhere",0.6,359,23
+haze2e6,CH4,"amplitude flag, AIRS-only elsewhere",0.8,359,6
+haze2e6,CH4,mahalanobis -> AIRS-only,0.2,359,203
+haze2e6,CH4,mahalanobis -> AIRS-only,0.4,359,75
+haze2e6,CH4,mahalanobis -> AIRS-only,0.6,359,23
+haze2e6,CH4,mahalanobis -> AIRS-only,0.8,359,5
+haze2e6,CH4,knn -> AIRS-only,0.2,359,190
+haze2e6,CH4,knn -> AIRS-only,0.4,359,71
+haze2e6,CH4,knn -> AIRS-only,0.6,359,22
+haze2e6,CH4,knn -> AIRS-only,0.8,359,5
 haze2e6,H2O,"published, all inputs",0.2,364,223
 haze2e6,H2O,"published, all inputs",0.4,364,142
 haze2e6,H2O,"published, all inputs",0.6,364,86
@@ -135,6 +171,18 @@ haze2e6,H2O,the routing method,0.2,364,241
 haze2e6,H2O,the routing method,0.4,364,144
 haze2e6,H2O,the routing method,0.6,364,80
 haze2e6,H2O,the routing method,0.8,364,36
+haze2e6,H2O,"amplitude flag, AIRS-only elsewhere",0.2,364,241
+haze2e6,H2O,"amplitude flag, AIRS-only elsewhere",0.4,364,147
+haze2e6,H2O,"amplitude flag, AIRS-only elsewhere",0.6,364,81
+haze2e6,H2O,"amplitude flag, AIRS-only elsewhere",0.8,364,35
+haze2e6,H2O,mahalanobis -> AIRS-only,0.2,364,236
+haze2e6,H2O,mahalanobis -> AIRS-only,0.4,364,144
+haze2e6,H2O,mahalanobis -> AIRS-only,0.6,364,81
+haze2e6,H2O,mahalanobis -> AIRS-only,0.8,364,32
+haze2e6,H2O,knn -> AIRS-only,0.2,364,237
+haze2e6,H2O,knn -> AIRS-only,0.4,364,143
+haze2e6,H2O,knn -> AIRS-only,0.6,364,82
+haze2e6,H2O,knn -> AIRS-only,0.8,364,30
 haze3e7,CH4,"published, all inputs",0.2,359,184
 haze3e7,CH4,"published, all inputs",0.4,359,94
 haze3e7,CH4,"published, all inputs",0.6,359,38
@@ -167,6 +215,18 @@ haze3e7,CH4,the routing method,0.2,359,194
 haze3e7,CH4,the routing method,0.4,359,74
 haze3e7,CH4,the routing method,0.6,359,27
 haze3e7,CH4,the routing method,0.8,359,7
+haze3e7,CH4,"amplitude flag, AIRS-only elsewhere",0.2,359,194
+haze3e7,CH4,"amplitude flag, AIRS-only elsewhere",0.4,359,74
+haze3e7,CH4,"amplitude flag, AIRS-only elsewhere",0.6,359,28
+haze3e7,CH4,"amplitude flag, AIRS-only elsewhere",0.8,359,8
+haze3e7,CH4,mahalanobis -> AIRS-only,0.2,359,205
+haze3e7,CH4,mahalanobis -> AIRS-only,0.4,359,81
+haze3e7,CH4,mahalanobis -> AIRS-only,0.6,359,34
+haze3e7,CH4,mahalanobis -> AIRS-only,0.8,359,13
+haze3e7,CH4,knn -> AIRS-only,0.2,359,210
+haze3e7,CH4,knn -> AIRS-only,0.4,359,82
+haze3e7,CH4,knn -> AIRS-only,0.6,359,33
+haze3e7,CH4,knn -> AIRS-only,0.8,359,12
 haze3e7,H2O,"published, all inputs",0.2,364,245
 haze3e7,H2O,"published, all inputs",0.4,364,165
 haze3e7,H2O,"published, all inputs",0.6,364,78
@@ -199,6 +259,18 @@ haze3e7,H2O,the routing method,0.2,364,241
 haze3e7,H2O,the routing method,0.4,364,161
 haze3e7,H2O,the routing method,0.6,364,84
 haze3e7,H2O,the routing method,0.8,364,37
+haze3e7,H2O,"amplitude flag, AIRS-only elsewhere",0.2,364,241
+haze3e7,H2O,"amplitude flag, AIRS-only elsewhere",0.4,364,162
+haze3e7,H2O,"amplitude flag, AIRS-only elsewhere",0.6,364,84
+haze3e7,H2O,"amplitude flag, AIRS-only elsewhere",0.8,364,37
+haze3e7,H2O,mahalanobis -> AIRS-only,0.2,364,251
+haze3e7,H2O,mahalanobis -> AIRS-only,0.4,364,168
+haze3e7,H2O,mahalanobis -> AIRS-only,0.6,364,98
+haze3e7,H2O,mahalanobis -> AIRS-only,0.8,364,42
+haze3e7,H2O,knn -> AIRS-only,0.2,364,246
+haze3e7,H2O,knn -> AIRS-only,0.4,364,169
+haze3e7,H2O,knn -> AIRS-only,0.6,364,98
+haze3e7,H2O,knn -> AIRS-only,0.8,364,42
 cloud1e2,CH4,"published, all inputs",0.2,359,181
 cloud1e2,CH4,"published, all inputs",0.4,359,70
 cloud1e2,CH4,"published, all inputs",0.6,359,29
@@ -231,6 +303,18 @@ cloud1e2,CH4,the routing method,0.2,359,189
 cloud1e2,CH4,the routing method,0.4,359,77
 cloud1e2,CH4,the routing method,0.6,359,32
 cloud1e2,CH4,the routing method,0.8,359,10
+cloud1e2,CH4,"amplitude flag, AIRS-only elsewhere",0.2,359,190
+cloud1e2,CH4,"amplitude flag, AIRS-only elsewhere",0.4,359,80
+cloud1e2,CH4,"amplitude flag, AIRS-only elsewhere",0.6,359,30
+cloud1e2,CH4,"amplitude flag, AIRS-only elsewhere",0.8,359,9
+cloud1e2,CH4,mahalanobis -> AIRS-only,0.2,359,195
+cloud1e2,CH4,mahalanobis -> AIRS-only,0.4,359,82
+cloud1e2,CH4,mahalanobis -> AIRS-only,0.6,359,36
+cloud1e2,CH4,mahalanobis -> AIRS-only,0.8,359,8
+cloud1e2,CH4,knn -> AIRS-only,0.2,359,200
+cloud1e2,CH4,knn -> AIRS-only,0.4,359,87
+cloud1e2,CH4,knn -> AIRS-only,0.6,359,32
+cloud1e2,CH4,knn -> AIRS-only,0.8,359,8
 cloud1e2,H2O,"published, all inputs",0.2,364,230
 cloud1e2,H2O,"published, all inputs",0.4,364,149
 cloud1e2,H2O,"published, all inputs",0.6,364,88
@@ -263,6 +347,18 @@ cloud1e2,H2O,the routing method,0.2,364,237
 cloud1e2,H2O,the routing method,0.4,364,150
 cloud1e2,H2O,the routing method,0.6,364,86
 cloud1e2,H2O,the routing method,0.8,364,38
+cloud1e2,H2O,"amplitude flag, AIRS-only elsewhere",0.2,364,254
+cloud1e2,H2O,"amplitude flag, AIRS-only elsewhere",0.4,364,156
+cloud1e2,H2O,"amplitude flag, AIRS-only elsewhere",0.6,364,96
+cloud1e2,H2O,"amplitude flag, AIRS-only elsewhere",0.8,364,40
+cloud1e2,H2O,mahalanobis -> AIRS-only,0.2,364,237
+cloud1e2,H2O,mahalanobis -> AIRS-only,0.4,364,151
+cloud1e2,H2O,mahalanobis -> AIRS-only,0.6,364,88
+cloud1e2,H2O,mahalanobis -> AIRS-only,0.8,364,40
+cloud1e2,H2O,knn -> AIRS-only,0.2,364,235
+cloud1e2,H2O,knn -> AIRS-only,0.4,364,147
+cloud1e2,H2O,knn -> AIRS-only,0.6,364,88
+cloud1e2,H2O,knn -> AIRS-only,0.8,364,40
 spots20,CH4,"published, all inputs",0.2,359,191
 spots20,CH4,"published, all inputs",0.4,359,70
 spots20,CH4,"published, all inputs",0.6,359,29
@@ -295,6 +391,18 @@ spots20,CH4,the routing method,0.2,359,190
 spots20,CH4,the routing method,0.4,359,72
 spots20,CH4,the routing method,0.6,359,27
 spots20,CH4,the routing method,0.8,359,1
+spots20,CH4,"amplitude flag, AIRS-only elsewhere",0.2,359,192
+spots20,CH4,"amplitude flag, AIRS-only elsewhere",0.4,359,70
+spots20,CH4,"amplitude flag, AIRS-only elsewhere",0.6,359,26
+spots20,CH4,"amplitude flag, AIRS-only elsewhere",0.8,359,3
+spots20,CH4,mahalanobis -> AIRS-only,0.2,359,186
+spots20,CH4,mahalanobis -> AIRS-only,0.4,359,73
+spots20,CH4,mahalanobis -> AIRS-only,0.6,359,25
+spots20,CH4,mahalanobis -> AIRS-only,0.8,359,2
+spots20,CH4,knn -> AIRS-only,0.2,359,186
+spots20,CH4,knn -> AIRS-only,0.4,359,75
+spots20,CH4,knn -> AIRS-only,0.6,359,26
+spots20,CH4,knn -> AIRS-only,0.8,359,2
 spots20,H2O,"published, all inputs",0.2,364,219
 spots20,H2O,"published, all inputs",0.4,364,136
 spots20,H2O,"published, all inputs",0.6,364,75
@@ -327,6 +435,18 @@ spots20,H2O,the routing method,0.2,364,228
 spots20,H2O,the routing method,0.4,364,148
 spots20,H2O,the routing method,0.6,364,71
 spots20,H2O,the routing method,0.8,364,27
+spots20,H2O,"amplitude flag, AIRS-only elsewhere",0.2,364,232
+spots20,H2O,"amplitude flag, AIRS-only elsewhere",0.4,364,150
+spots20,H2O,"amplitude flag, AIRS-only elsewhere",0.6,364,77
+spots20,H2O,"amplitude flag, AIRS-only elsewhere",0.8,364,34
+spots20,H2O,mahalanobis -> AIRS-only,0.2,364,227
+spots20,H2O,mahalanobis -> AIRS-only,0.4,364,146
+spots20,H2O,mahalanobis -> AIRS-only,0.6,364,73
+spots20,H2O,mahalanobis -> AIRS-only,0.8,364,30
+spots20,H2O,knn -> AIRS-only,0.2,364,225
+spots20,H2O,knn -> AIRS-only,0.4,364,143
+spots20,H2O,knn -> AIRS-only,0.6,364,70
+spots20,H2O,knn -> AIRS-only,0.8,364,28
 compound,CH4,"published, all inputs",0.2,359,211
 compound,CH4,"published, all inputs",0.4,359,141
 compound,CH4,"published, all inputs",0.6,359,66
@@ -359,6 +479,18 @@ compound,CH4,the routing method,0.2,359,192
 compound,CH4,the routing method,0.4,359,71
 compound,CH4,the routing method,0.6,359,27
 compound,CH4,the routing method,0.8,359,3
+compound,CH4,"amplitude flag, AIRS-only elsewhere",0.2,359,192
+compound,CH4,"amplitude flag, AIRS-only elsewhere",0.4,359,71
+compound,CH4,"amplitude flag, AIRS-only elsewhere",0.6,359,27
+compound,CH4,"amplitude flag, AIRS-only elsewhere",0.8,359,3
+compound,CH4,mahalanobis -> AIRS-only,0.2,359,194
+compound,CH4,mahalanobis -> AIRS-only,0.4,359,74
+compound,CH4,mahalanobis -> AIRS-only,0.6,359,31
+compound,CH4,mahalanobis -> AIRS-only,0.8,359,6
+compound,CH4,knn -> AIRS-only,0.2,359,195
+compound,CH4,knn -> AIRS-only,0.4,359,72
+compound,CH4,knn -> AIRS-only,0.6,359,28
+compound,CH4,knn -> AIRS-only,0.8,359,5
 compound,H2O,"published, all inputs",0.2,364,259
 compound,H2O,"published, all inputs",0.4,364,194
 compound,H2O,"published, all inputs",0.6,364,103
@@ -391,6 +523,18 @@ compound,H2O,the routing method,0.2,364,236
 compound,H2O,the routing method,0.4,364,160
 compound,H2O,the routing method,0.6,364,83
 compound,H2O,the routing method,0.8,364,33
+compound,H2O,"amplitude flag, AIRS-only elsewhere",0.2,364,236
+compound,H2O,"amplitude flag, AIRS-only elsewhere",0.4,364,160
+compound,H2O,"amplitude flag, AIRS-only elsewhere",0.6,364,84
+compound,H2O,"amplitude flag, AIRS-only elsewhere",0.8,364,33
+compound,H2O,mahalanobis -> AIRS-only,0.2,364,241
+compound,H2O,mahalanobis -> AIRS-only,0.4,364,166
+compound,H2O,mahalanobis -> AIRS-only,0.6,364,90
+compound,H2O,mahalanobis -> AIRS-only,0.8,364,38
+compound,H2O,knn -> AIRS-only,0.2,364,237
+compound,H2O,knn -> AIRS-only,0.4,364,162
+compound,H2O,knn -> AIRS-only,0.6,364,85
+compound,H2O,knn -> AIRS-only,0.8,364,36
 white_x2,CH4,"published, all inputs",0.2,359,188
 white_x2,CH4,"published, all inputs",0.4,359,86
 white_x2,CH4,"published, all inputs",0.6,359,37
@@ -423,6 +567,18 @@ white_x2,CH4,the routing method,0.2,359,198
 white_x2,CH4,the routing method,0.4,359,95
 white_x2,CH4,the routing method,0.6,359,38
 white_x2,CH4,the routing method,0.8,359,9
+white_x2,CH4,"amplitude flag, AIRS-only elsewhere",0.2,359,206
+white_x2,CH4,"amplitude flag, AIRS-only elsewhere",0.4,359,112
+white_x2,CH4,"amplitude flag, AIRS-only elsewhere",0.6,359,57
+white_x2,CH4,"amplitude flag, AIRS-only elsewhere",0.8,359,11
+white_x2,CH4,mahalanobis -> AIRS-only,0.2,359,195
+white_x2,CH4,mahalanobis -> AIRS-only,0.4,359,92
+white_x2,CH4,mahalanobis -> AIRS-only,0.6,359,39
+white_x2,CH4,mahalanobis -> AIRS-only,0.8,359,13
+white_x2,CH4,knn -> AIRS-only,0.2,359,197
+white_x2,CH4,knn -> AIRS-only,0.4,359,100
+white_x2,CH4,knn -> AIRS-only,0.6,359,44
+white_x2,CH4,knn -> AIRS-only,0.8,359,8
 white_x2,H2O,"published, all inputs",0.2,364,220
 white_x2,H2O,"published, all inputs",0.4,364,133
 white_x2,H2O,"published, all inputs",0.6,364,67
@@ -455,6 +611,18 @@ white_x2,H2O,the routing method,0.2,364,230
 white_x2,H2O,the routing method,0.4,364,142
 white_x2,H2O,the routing method,0.6,364,74
 white_x2,H2O,the routing method,0.8,364,34
+white_x2,H2O,"amplitude flag, AIRS-only elsewhere",0.2,364,248
+white_x2,H2O,"amplitude flag, AIRS-only elsewhere",0.4,364,173
+white_x2,H2O,"amplitude flag, AIRS-only elsewhere",0.6,364,104
+white_x2,H2O,"amplitude flag, AIRS-only elsewhere",0.8,364,54
+white_x2,H2O,mahalanobis -> AIRS-only,0.2,364,227
+white_x2,H2O,mahalanobis -> AIRS-only,0.4,364,143
+white_x2,H2O,mahalanobis -> AIRS-only,0.6,364,79
+white_x2,H2O,mahalanobis -> AIRS-only,0.8,364,36
+white_x2,H2O,knn -> AIRS-only,0.2,364,228
+white_x2,H2O,knn -> AIRS-only,0.4,364,148
+white_x2,H2O,knn -> AIRS-only,0.6,364,82
+white_x2,H2O,knn -> AIRS-only,0.8,364,38
 white_x3,CH4,"published, all inputs",0.2,359,202
 white_x3,CH4,"published, all inputs",0.4,359,121
 white_x3,CH4,"published, all inputs",0.6,359,56
@@ -487,6 +655,18 @@ white_x3,CH4,the routing method,0.2,359,213
 white_x3,CH4,the routing method,0.4,359,125
 white_x3,CH4,the routing method,0.6,359,60
 white_x3,CH4,the routing method,0.8,359,17
+white_x3,CH4,"amplitude flag, AIRS-only elsewhere",0.2,359,222
+white_x3,CH4,"amplitude flag, AIRS-only elsewhere",0.4,359,132
+white_x3,CH4,"amplitude flag, AIRS-only elsewhere",0.6,359,67
+white_x3,CH4,"amplitude flag, AIRS-only elsewhere",0.8,359,22
+white_x3,CH4,mahalanobis -> AIRS-only,0.2,359,213
+white_x3,CH4,mahalanobis -> AIRS-only,0.4,359,128
+white_x3,CH4,mahalanobis -> AIRS-only,0.6,359,65
+white_x3,CH4,mahalanobis -> AIRS-only,0.8,359,20
+white_x3,CH4,knn -> AIRS-only,0.2,359,221
+white_x3,CH4,knn -> AIRS-only,0.4,359,132
+white_x3,CH4,knn -> AIRS-only,0.6,359,66
+white_x3,CH4,knn -> AIRS-only,0.8,359,22
 white_x3,H2O,"published, all inputs",0.2,364,241
 white_x3,H2O,"published, all inputs",0.4,364,158
 white_x3,H2O,"published, all inputs",0.6,364,89
@@ -519,6 +699,18 @@ white_x3,H2O,the routing method,0.2,364,247
 white_x3,H2O,the routing method,0.4,364,169
 white_x3,H2O,the routing method,0.6,364,98
 white_x3,H2O,the routing method,0.8,364,52
+white_x3,H2O,"amplitude flag, AIRS-only elsewhere",0.2,364,258
+white_x3,H2O,"amplitude flag, AIRS-only elsewhere",0.4,364,185
+white_x3,H2O,"amplitude flag, AIRS-only elsewhere",0.6,364,121
+white_x3,H2O,"amplitude flag, AIRS-only elsewhere",0.8,364,67
+white_x3,H2O,mahalanobis -> AIRS-only,0.2,364,248
+white_x3,H2O,mahalanobis -> AIRS-only,0.4,364,173
+white_x3,H2O,mahalanobis -> AIRS-only,0.6,364,106
+white_x3,H2O,mahalanobis -> AIRS-only,0.8,364,55
+white_x3,H2O,knn -> AIRS-only,0.2,364,249
+white_x3,H2O,knn -> AIRS-only,0.4,364,175
+white_x3,H2O,knn -> AIRS-only,0.6,364,109
+white_x3,H2O,knn -> AIRS-only,0.8,364,57
 hazetop1,CH4,"published, all inputs",0.2,359,179
 hazetop1,CH4,"published, all inputs",0.4,359,59
 hazetop1,CH4,"published, all inputs",0.6,359,20
@@ -551,6 +743,18 @@ hazetop1,CH4,the routing method,0.2,359,192
 hazetop1,CH4,the routing method,0.4,359,75
 hazetop1,CH4,the routing method,0.6,359,25
 hazetop1,CH4,the routing method,0.8,359,5
+hazetop1,CH4,"amplitude flag, AIRS-only elsewhere",0.2,359,192
+hazetop1,CH4,"amplitude flag, AIRS-only elsewhere",0.4,359,73
+hazetop1,CH4,"amplitude flag, AIRS-only elsewhere",0.6,359,26
+hazetop1,CH4,"amplitude flag, AIRS-only elsewhere",0.8,359,5
+hazetop1,CH4,mahalanobis -> AIRS-only,0.2,359,202
+hazetop1,CH4,mahalanobis -> AIRS-only,0.4,359,74
+hazetop1,CH4,mahalanobis -> AIRS-only,0.6,359,27
+hazetop1,CH4,mahalanobis -> AIRS-only,0.8,359,7
+hazetop1,CH4,knn -> AIRS-only,0.2,359,202
+hazetop1,CH4,knn -> AIRS-only,0.4,359,71
+hazetop1,CH4,knn -> AIRS-only,0.6,359,27
+hazetop1,CH4,knn -> AIRS-only,0.8,359,6
 hazetop1,H2O,"published, all inputs",0.2,364,230
 hazetop1,H2O,"published, all inputs",0.4,364,132
 hazetop1,H2O,"published, all inputs",0.6,364,83
@@ -583,6 +787,18 @@ hazetop1,H2O,the routing method,0.2,364,240
 hazetop1,H2O,the routing method,0.4,364,156
 hazetop1,H2O,the routing method,0.6,364,87
 hazetop1,H2O,the routing method,0.8,364,39
+hazetop1,H2O,"amplitude flag, AIRS-only elsewhere",0.2,364,239
+hazetop1,H2O,"amplitude flag, AIRS-only elsewhere",0.4,364,149
+hazetop1,H2O,"amplitude flag, AIRS-only elsewhere",0.6,364,84
+hazetop1,H2O,"amplitude flag, AIRS-only elsewhere",0.8,364,35
+hazetop1,H2O,mahalanobis -> AIRS-only,0.2,364,247
+hazetop1,H2O,mahalanobis -> AIRS-only,0.4,364,153
+hazetop1,H2O,mahalanobis -> AIRS-only,0.6,364,89
+hazetop1,H2O,mahalanobis -> AIRS-only,0.8,364,34
+hazetop1,H2O,knn -> AIRS-only,0.2,364,246
+hazetop1,H2O,knn -> AIRS-only,0.4,364,150
+hazetop1,H2O,knn -> AIRS-only,0.6,364,81
+hazetop1,H2O,knn -> AIRS-only,0.8,364,31
 plhaze29,CH4,"published, all inputs",0.2,359,174
 plhaze29,CH4,"published, all inputs",0.4,359,60
 plhaze29,CH4,"published, all inputs",0.6,359,18
@@ -615,6 +831,18 @@ plhaze29,CH4,the routing method,0.2,359,186
 plhaze29,CH4,the routing method,0.4,359,69
 plhaze29,CH4,the routing method,0.6,359,24
 plhaze29,CH4,the routing method,0.8,359,4
+plhaze29,CH4,"amplitude flag, AIRS-only elsewhere",0.2,359,185
+plhaze29,CH4,"amplitude flag, AIRS-only elsewhere",0.4,359,69
+plhaze29,CH4,"amplitude flag, AIRS-only elsewhere",0.6,359,24
+plhaze29,CH4,"amplitude flag, AIRS-only elsewhere",0.8,359,6
+plhaze29,CH4,mahalanobis -> AIRS-only,0.2,359,192
+plhaze29,CH4,mahalanobis -> AIRS-only,0.4,359,69
+plhaze29,CH4,mahalanobis -> AIRS-only,0.6,359,26
+plhaze29,CH4,mahalanobis -> AIRS-only,0.8,359,6
+plhaze29,CH4,knn -> AIRS-only,0.2,359,207
+plhaze29,CH4,knn -> AIRS-only,0.4,359,69
+plhaze29,CH4,knn -> AIRS-only,0.6,359,28
+plhaze29,CH4,knn -> AIRS-only,0.8,359,7
 plhaze29,H2O,"published, all inputs",0.2,364,229
 plhaze29,H2O,"published, all inputs",0.4,364,140
 plhaze29,H2O,"published, all inputs",0.6,364,84
@@ -647,6 +875,18 @@ plhaze29,H2O,the routing method,0.2,364,244
 plhaze29,H2O,the routing method,0.4,364,151
 plhaze29,H2O,the routing method,0.6,364,93
 plhaze29,H2O,the routing method,0.8,364,42
+plhaze29,H2O,"amplitude flag, AIRS-only elsewhere",0.2,364,241
+plhaze29,H2O,"amplitude flag, AIRS-only elsewhere",0.4,364,141
+plhaze29,H2O,"amplitude flag, AIRS-only elsewhere",0.6,364,82
+plhaze29,H2O,"amplitude flag, AIRS-only elsewhere",0.8,364,39
+plhaze29,H2O,mahalanobis -> AIRS-only,0.2,364,246
+plhaze29,H2O,mahalanobis -> AIRS-only,0.4,364,146
+plhaze29,H2O,mahalanobis -> AIRS-only,0.6,364,83
+plhaze29,H2O,mahalanobis -> AIRS-only,0.8,364,37
+plhaze29,H2O,knn -> AIRS-only,0.2,364,245
+plhaze29,H2O,knn -> AIRS-only,0.4,364,151
+plhaze29,H2O,knn -> AIRS-only,0.6,364,83
+plhaze29,H2O,knn -> AIRS-only,0.8,364,37
 plhaze28,CH4,"published, all inputs",0.2,359,175
 plhaze28,CH4,"published, all inputs",0.4,359,68
 plhaze28,CH4,"published, all inputs",0.6,359,32
@@ -679,6 +919,18 @@ plhaze28,CH4,the routing method,0.2,359,185
 plhaze28,CH4,the routing method,0.4,359,72
 plhaze28,CH4,the routing method,0.6,359,27
 plhaze28,CH4,the routing method,0.8,359,4
+plhaze28,CH4,"amplitude flag, AIRS-only elsewhere",0.2,359,185
+plhaze28,CH4,"amplitude flag, AIRS-only elsewhere",0.4,359,72
+plhaze28,CH4,"amplitude flag, AIRS-only elsewhere",0.6,359,26
+plhaze28,CH4,"amplitude flag, AIRS-only elsewhere",0.8,359,4
+plhaze28,CH4,mahalanobis -> AIRS-only,0.2,359,200
+plhaze28,CH4,mahalanobis -> AIRS-only,0.4,359,85
+plhaze28,CH4,mahalanobis -> AIRS-only,0.6,359,36
+plhaze28,CH4,mahalanobis -> AIRS-only,0.8,359,13
+plhaze28,CH4,knn -> AIRS-only,0.2,359,210
+plhaze28,CH4,knn -> AIRS-only,0.4,359,85
+plhaze28,CH4,knn -> AIRS-only,0.6,359,36
+plhaze28,CH4,knn -> AIRS-only,0.8,359,12
 plhaze28,H2O,"published, all inputs",0.2,364,244
 plhaze28,H2O,"published, all inputs",0.4,364,165
 plhaze28,H2O,"published, all inputs",0.6,364,99
@@ -711,6 +963,18 @@ plhaze28,H2O,the routing method,0.2,364,245
 plhaze28,H2O,the routing method,0.4,364,162
 plhaze28,H2O,the routing method,0.6,364,89
 plhaze28,H2O,the routing method,0.8,364,39
+plhaze28,H2O,"amplitude flag, AIRS-only elsewhere",0.2,364,244
+plhaze28,H2O,"amplitude flag, AIRS-only elsewhere",0.4,364,157
+plhaze28,H2O,"amplitude flag, AIRS-only elsewhere",0.6,364,84
+plhaze28,H2O,"amplitude flag, AIRS-only elsewhere",0.8,364,38
+plhaze28,H2O,mahalanobis -> AIRS-only,0.2,364,250
+plhaze28,H2O,mahalanobis -> AIRS-only,0.4,364,169
+plhaze28,H2O,mahalanobis -> AIRS-only,0.6,364,101
+plhaze28,H2O,mahalanobis -> AIRS-only,0.8,364,51
+plhaze28,H2O,knn -> AIRS-only,0.2,364,249
+plhaze28,H2O,knn -> AIRS-only,0.4,364,170
+plhaze28,H2O,knn -> AIRS-only,0.6,364,101
+plhaze28,H2O,knn -> AIRS-only,0.8,364,47
 cia,CH4,"published, all inputs",0.2,359,177
 cia,CH4,"published, all inputs",0.4,359,56
 cia,CH4,"published, all inputs",0.6,359,19
@@ -743,6 +1007,18 @@ cia,CH4,the routing method,0.2,359,189
 cia,CH4,the routing method,0.4,359,65
 cia,CH4,the routing method,0.6,359,20
 cia,CH4,the routing method,0.8,359,3
+cia,CH4,"amplitude flag, AIRS-only elsewhere",0.2,359,192
+cia,CH4,"amplitude flag, AIRS-only elsewhere",0.4,359,75
+cia,CH4,"amplitude flag, AIRS-only elsewhere",0.6,359,22
+cia,CH4,"amplitude flag, AIRS-only elsewhere",0.8,359,7
+cia,CH4,mahalanobis -> AIRS-only,0.2,359,177
+cia,CH4,mahalanobis -> AIRS-only,0.4,359,58
+cia,CH4,mahalanobis -> AIRS-only,0.6,359,20
+cia,CH4,mahalanobis -> AIRS-only,0.8,359,2
+cia,CH4,knn -> AIRS-only,0.2,359,177
+cia,CH4,knn -> AIRS-only,0.4,359,58
+cia,CH4,knn -> AIRS-only,0.6,359,19
+cia,CH4,knn -> AIRS-only,0.8,359,2
 cia,H2O,"published, all inputs",0.2,364,196
 cia,H2O,"published, all inputs",0.4,364,98
 cia,H2O,"published, all inputs",0.6,364,52
@@ -775,3 +1051,103 @@ cia,H2O,the routing method,0.2,364,221
 cia,H2O,the routing method,0.4,364,120
 cia,H2O,the routing method,0.6,364,68
 cia,H2O,the routing method,0.8,364,24
+cia,H2O,"amplitude flag, AIRS-only elsewhere",0.2,364,237
+cia,H2O,"amplitude flag, AIRS-only elsewhere",0.4,364,144
+cia,H2O,"amplitude flag, AIRS-only elsewhere",0.6,364,83
+cia,H2O,"amplitude flag, AIRS-only elsewhere",0.8,364,36
+cia,H2O,mahalanobis -> AIRS-only,0.2,364,198
+cia,H2O,mahalanobis -> AIRS-only,0.4,364,102
+cia,H2O,mahalanobis -> AIRS-only,0.6,364,53
+cia,H2O,mahalanobis -> AIRS-only,0.8,364,24
+cia,H2O,knn -> AIRS-only,0.2,364,196
+cia,H2O,knn -> AIRS-only,0.4,364,103
+cia,H2O,knn -> AIRS-only,0.6,364,52
+cia,H2O,knn -> AIRS-only,0.8,364,23
+mute3,CH4,"published, all inputs",0.2,359,210
+mute3,CH4,"published, all inputs",0.4,359,113
+mute3,CH4,"published, all inputs",0.6,359,56
+mute3,CH4,"published, all inputs",0.8,359,16
+mute3,CH4,AIRS-only everywhere,0.2,359,227
+mute3,CH4,AIRS-only everywhere,0.4,359,125
+mute3,CH4,AIRS-only everywhere,0.6,359,61
+mute3,CH4,AIRS-only everywhere,0.8,359,20
+mute3,CH4,no-optical everywhere,0.2,359,216
+mute3,CH4,no-optical everywhere,0.4,359,116
+mute3,CH4,no-optical everywhere,0.6,359,54
+mute3,CH4,no-optical everywhere,0.8,359,16
+mute3,CH4,optical-excess score -> AIRS-only,0.2,359,210
+mute3,CH4,optical-excess score -> AIRS-only,0.4,359,113
+mute3,CH4,optical-excess score -> AIRS-only,0.6,359,56
+mute3,CH4,optical-excess score -> AIRS-only,0.8,359,17
+mute3,CH4,shape flag -> AIRS-only,0.2,359,218
+mute3,CH4,shape flag -> AIRS-only,0.4,359,121
+mute3,CH4,shape flag -> AIRS-only,0.6,359,60
+mute3,CH4,shape flag -> AIRS-only,0.8,359,16
+mute3,CH4,retrained (haze) everywhere,0.2,359,217
+mute3,CH4,retrained (haze) everywhere,0.4,359,115
+mute3,CH4,retrained (haze) everywhere,0.6,359,56
+mute3,CH4,retrained (haze) everywhere,0.8,359,17
+mute3,CH4,retrained (hazedeck) everywhere,0.2,359,210
+mute3,CH4,retrained (hazedeck) everywhere,0.4,359,113
+mute3,CH4,retrained (hazedeck) everywhere,0.6,359,58
+mute3,CH4,retrained (hazedeck) everywhere,0.8,359,14
+mute3,CH4,the routing method,0.2,359,215
+mute3,CH4,the routing method,0.4,359,124
+mute3,CH4,the routing method,0.6,359,57
+mute3,CH4,the routing method,0.8,359,15
+mute3,CH4,"amplitude flag, AIRS-only elsewhere",0.2,359,222
+mute3,CH4,"amplitude flag, AIRS-only elsewhere",0.4,359,127
+mute3,CH4,"amplitude flag, AIRS-only elsewhere",0.6,359,61
+mute3,CH4,"amplitude flag, AIRS-only elsewhere",0.8,359,18
+mute3,CH4,mahalanobis -> AIRS-only,0.2,359,224
+mute3,CH4,mahalanobis -> AIRS-only,0.4,359,120
+mute3,CH4,mahalanobis -> AIRS-only,0.6,359,65
+mute3,CH4,mahalanobis -> AIRS-only,0.8,359,19
+mute3,CH4,knn -> AIRS-only,0.2,359,224
+mute3,CH4,knn -> AIRS-only,0.4,359,123
+mute3,CH4,knn -> AIRS-only,0.6,359,63
+mute3,CH4,knn -> AIRS-only,0.8,359,18
+mute3,H2O,"published, all inputs",0.2,364,239
+mute3,H2O,"published, all inputs",0.4,364,165
+mute3,H2O,"published, all inputs",0.6,364,97
+mute3,H2O,"published, all inputs",0.8,364,43
+mute3,H2O,AIRS-only everywhere,0.2,364,270
+mute3,H2O,AIRS-only everywhere,0.4,364,184
+mute3,H2O,AIRS-only everywhere,0.6,364,114
+mute3,H2O,AIRS-only everywhere,0.8,364,52
+mute3,H2O,no-optical everywhere,0.2,364,248
+mute3,H2O,no-optical everywhere,0.4,364,170
+mute3,H2O,no-optical everywhere,0.6,364,111
+mute3,H2O,no-optical everywhere,0.8,364,48
+mute3,H2O,optical-excess score -> AIRS-only,0.2,364,241
+mute3,H2O,optical-excess score -> AIRS-only,0.4,364,163
+mute3,H2O,optical-excess score -> AIRS-only,0.6,364,95
+mute3,H2O,optical-excess score -> AIRS-only,0.8,364,43
+mute3,H2O,shape flag -> AIRS-only,0.2,364,251
+mute3,H2O,shape flag -> AIRS-only,0.4,364,165
+mute3,H2O,shape flag -> AIRS-only,0.6,364,93
+mute3,H2O,shape flag -> AIRS-only,0.8,364,42
+mute3,H2O,retrained (haze) everywhere,0.2,364,244
+mute3,H2O,retrained (haze) everywhere,0.4,364,161
+mute3,H2O,retrained (haze) everywhere,0.6,364,101
+mute3,H2O,retrained (haze) everywhere,0.8,364,41
+mute3,H2O,retrained (hazedeck) everywhere,0.2,364,245
+mute3,H2O,retrained (hazedeck) everywhere,0.4,364,163
+mute3,H2O,retrained (hazedeck) everywhere,0.6,364,99
+mute3,H2O,retrained (hazedeck) everywhere,0.8,364,44
+mute3,H2O,the routing method,0.2,364,251
+mute3,H2O,the routing method,0.4,364,165
+mute3,H2O,the routing method,0.6,364,96
+mute3,H2O,the routing method,0.8,364,40
+mute3,H2O,"amplitude flag, AIRS-only elsewhere",0.2,364,265
+mute3,H2O,"amplitude flag, AIRS-only elsewhere",0.4,364,178
+mute3,H2O,"amplitude flag, AIRS-only elsewhere",0.6,364,107
+mute3,H2O,"amplitude flag, AIRS-only elsewhere",0.8,364,46
+mute3,H2O,mahalanobis -> AIRS-only,0.2,364,258
+mute3,H2O,mahalanobis -> AIRS-only,0.4,364,176
+mute3,H2O,mahalanobis -> AIRS-only,0.6,364,102
+mute3,H2O,mahalanobis -> AIRS-only,0.8,364,44
+mute3,H2O,knn -> AIRS-only,0.2,364,260
+mute3,H2O,knn -> AIRS-only,0.4,364,176
+mute3,H2O,knn -> AIRS-only,0.6,364,108
+mute3,H2O,knn -> AIRS-only,0.8,364,47

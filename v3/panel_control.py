@@ -10,7 +10,7 @@ import numpy as np
 import pandas as pd
 
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "results", "jwst_panel")
-DES = ["published", "no-optical", "AIRS-only", "shape flag", "haze-retrained", "haze+deck-retrained", "the method", "census, same haze design"]
+DES = ["published", "no-optical", "AIRS-only", "shape flag", "haze-retrained", "haze+deck-retrained", "the method", "census, same haze design", "amplitude flag, AIRS-only elsewhere"]
 BASE = lambda s: s.replace("-alt", "").replace("-hu", "").replace("-hm", "")
 T = pd.read_csv(os.path.join(OUT, "panel_tier1.csv")); S = pd.read_csv(os.path.join(OUT, "panel_mechanism_scaled.csv")); Tr = pd.read_csv(os.path.join(OUT, "panel_mechanism_transplants.csv"))
 tw = S[(S.test == "twin") & (S.variant == "all") & (S.precision == "JWST")].set_index(["planet", "molecule"]); tws = S[(S.test == "twin") & (S.variant == "airs_only") & (S.precision == "JWST")].set_index(["planet", "molecule"])

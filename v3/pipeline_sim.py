@@ -75,8 +75,11 @@ def main():
     def lost(score, t, frac=0.6):
         top = np.argsort(-score)[:int(round(frac * len(score)))]; return int(t.sum() - t[top].sum())
     Rc = pd.read_csv(os.path.join(RESULTS, "identifiability_calibration.csv")).drop_duplicates("name").set_index("name").reindex(Pte.name.to_numpy())
+    # a population muted uniformly by three, about the median of the muted giants: every feature scaled about the spectrum's mean, the noise unscaled. For a fixed design this is exactly noise x 3, because the input is normalised; the method's flags see the difference.
+    eps_ = cases["clean"] - nf["clean"]; mu_ = nf["clean"].mean(1, keepdims=True); nf["mute3"] = mu_ + (nf["clean"] - mu_) / 3; cases["mute3"] = nf["mute3"] + eps_; CASES.append("mute3")
+    S0_, _, _ = sc.scores(cases["clean"]); q_ = lambda v: np.quantile(v[np.isfinite(v)], 0.9); RG, RC = ("knn", "mahalanobis", "pca_recon"), ("margin", "ensemble"); thg = {r: q_(S0_[(r, None)]) for r in RG}; thc = {(r, m, k): q_(S0_[(r, (m, k))]) for r in RC for m in MOLS for k in LEARNERS}
     for c in CASES:
-        X = cases[c]; P = P0 if c == "clean" else sc.probs(X); o = opt(X)
+        X = cases[c]; P = P0 if c == "clean" else sc.probs(X); o = opt(X); Sc_, _, _ = sc.scores(X)
         PR = {s: {(m, k): AT.prob(L["models"][("1e-4", m, k)], AJ.znorm(X, L["cols"])) for m in MOLS for k in LEARNERS} for s, L in ret.items()}
         amp = {"observed": ratio_observed(X), "noise-free": ratio_nf(c)}
         rates.append(dict(case=c, **{f"{a} up %": 100 * np.mean(np.isfinite(r) & (r > T_HI)) for a, r in amp.items()}, **{f"{a} low %": 100 * np.mean(r < T_LO) for a, r in amp.items()}, undefined_pct=100 * np.mean(~np.isfinite(amp["observed"])), optical_flag_pct=100 * np.mean(o > thr_opt)))
@@ -87,6 +90,9 @@ def main():
                     keep = np.ones(len(pp), bool) if keep is None else keep; right = (pp >= 0.5) == t
                     rows.append(dict(case=c, molecule=m, learner=k, pipeline=name, accuracy=100 * right[keep].mean(), coverage=100 * keep.mean(), half_credit=100 * (right[keep].sum() + 0.5 * (~keep).sum()) / len(t), recall=100 * (pp >= 0.5)[keep & t].mean(), shape_flagged=100 * shape.mean(), d1_flagged=100 * (d1(P, m, k) > thr_d1[(m, k)]).mean(), d2_flagged=100 * (d2(P, m, k) > thr_d2[(m, k)]).mean(), disagree_flagged=100 * (dis(P, m, k) > thr_dis[(m, k)]).mean()))
                 rec("published, all inputs", p); rec("no-optical everywhere", P["no_optical"][(m, k)]); rec("AIRS-only everywhere", pa); rec("shape flag -> AIRS-only", ps)
+                for r_ in RG: rec(f"{r_} -> AIRS-only", np.where(Sc_[(r_, None)] > thg[r_], pa, p))
+                for r_ in RC: rec(f"{r_} -> AIRS-only", np.where(Sc_[(r_, (m, k))] > thc[(r_, m, k)], pa, p))
+                r_o = amp["observed"]; rec("amplitude flag, AIRS-only elsewhere", np.where(np.isfinite(r_o) & (r_o > T_HI), PR["haze"][(m, k)], pa), ~(r_o < T_LO))
                 for s in ret:
                     pr = PR[s][(m, k)]; rec(f"retrained ({s}) everywhere", pr)
                     for a, r in amp.items():
@@ -100,7 +106,8 @@ def main():
             des = {"published, all inputs": {k: P["all"][(m, k)] for k in L3}, "AIRS-only everywhere": {k: P["airs_only"][(m, k)] for k in L3}, "no-optical everywhere": {k: P["no_optical"][(m, k)] for k in L3},
                    "optical-excess score -> AIRS-only": {k: np.where(o3, P["airs_only"][(m, k)], P["all"][(m, k)]) for k in L3}, "shape flag -> AIRS-only": shape_p,
                    "retrained (haze) everywhere": {k: PR["haze"][(m, k)] for k in L3}, "retrained (hazedeck) everywhere": {k: PR["hazedeck"][(m, k)] for k in L3},
-                   "the routing method": {k: np.where(up_, PR["haze"][(m, k)], shape_p[k]) for k in L3}}
+                   "the routing method": {k: np.where(up_, PR["haze"][(m, k)], shape_p[k]) for k in L3}, "amplitude flag, AIRS-only elsewhere": {k: np.where(up_, PR["haze"][(m, k)], P["airs_only"][(m, k)]) for k in L3},
+                   "mahalanobis -> AIRS-only": {k: np.where(Sc_[("mahalanobis", None)] > thg["mahalanobis"], P["airs_only"][(m, k)], P["all"][(m, k)]) for k in L3}, "knn -> AIRS-only": {k: np.where(Sc_[("knn", None)] > thg["knn"], P["airs_only"][(m, k)], P["all"][(m, k)]) for k in L3}}
             for name, pp in des.items():
                 sc_ = np.mean([pp[k] for k in L3], axis=0)
                 for fr in FRACS:

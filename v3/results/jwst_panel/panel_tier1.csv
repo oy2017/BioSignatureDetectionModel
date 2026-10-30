@@ -7,6 +7,12 @@ JWST,TOI-270d,CH4,haze-retrained,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d,CH4,haze+deck-retrained,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d,CH4,the method,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d,CH4,"census, same haze design",present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d,CH4,knn -> AIRS-only,present,0.5,0.0,1.0,0.0,0.0,0.0
+JWST,TOI-270d,CH4,mahalanobis -> AIRS-only,present,0.5,0.0,1.0,0.0,0.0,0.0
+JWST,TOI-270d,CH4,pca_recon -> AIRS-only,present,0.5,0.0,1.0,0.0,0.0,0.0
+JWST,TOI-270d,CH4,margin -> AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d,CH4,ensemble -> AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d,CH4,"amplitude flag, AIRS-only elsewhere",present,0.5,0.0,1.0,0.0,0.0,0.0
 JWST,TOI-270d,H2O,published,,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d,H2O,no-optical,,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d,H2O,AIRS-only,,,0.0,0.0,1.0,0.0,0.0
@@ -15,6 +21,12 @@ JWST,TOI-270d,H2O,haze-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d,H2O,haze+deck-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d,H2O,the method,,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d,H2O,"census, same haze design",,,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d,H2O,knn -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d,H2O,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d,H2O,pca_recon -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d,H2O,margin -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d,H2O,ensemble -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d,H2O,"amplitude flag, AIRS-only elsewhere",,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d,CO2,published,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d,CO2,no-optical,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d,CO2,AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
@@ -23,6 +35,12 @@ JWST,TOI-270d,CO2,haze-retrained,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d,CO2,haze+deck-retrained,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d,CO2,the method,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d,CO2,"census, same haze design",present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d,CO2,knn -> AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d,CO2,mahalanobis -> AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d,CO2,pca_recon -> AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d,CO2,margin -> AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d,CO2,ensemble -> AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d,CO2,"amplitude flag, AIRS-only elsewhere",present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d,NH3,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d,NH3,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d,NH3,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -31,6 +49,12 @@ JWST,TOI-270d,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d,NH3,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d,NH3,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d,NH3,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d,NH3,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d,NH3,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d,NH3,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d,NH3,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d,NH3,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,0.0,0.0
 Tier-1,TOI-270d,CH4,published,present,0.024,0.002,0.044,0.954,0.086,0.0
 Tier-1,TOI-270d,CH4,no-optical,present,0.017,0.0,0.034,0.966,0.086,0.0
 Tier-1,TOI-270d,CH4,AIRS-only,present,0.082,0.024,0.116,0.86,0.086,0.0
@@ -39,6 +63,12 @@ Tier-1,TOI-270d,CH4,haze-retrained,present,0.04,0.004,0.072,0.924,0.086,0.0
 Tier-1,TOI-270d,CH4,haze+deck-retrained,present,0.037,0.004,0.066,0.93,0.086,0.0
 Tier-1,TOI-270d,CH4,the method,present,0.055,0.004,0.102,0.894,0.086,0.0
 Tier-1,TOI-270d,CH4,"census, same haze design",present,0.057,0.004,0.106,0.89,0.086,0.0
+Tier-1,TOI-270d,CH4,knn -> AIRS-only,present,0.082,0.024,0.116,0.86,0.086,0.0
+Tier-1,TOI-270d,CH4,mahalanobis -> AIRS-only,present,0.082,0.024,0.116,0.86,0.086,0.0
+Tier-1,TOI-270d,CH4,pca_recon -> AIRS-only,present,0.073,0.02,0.106,0.874,0.086,0.0
+Tier-1,TOI-270d,CH4,margin -> AIRS-only,present,0.028,0.004,0.048,0.948,0.086,0.0
+Tier-1,TOI-270d,CH4,ensemble -> AIRS-only,present,0.039,0.012,0.054,0.934,0.086,0.0
+Tier-1,TOI-270d,CH4,"amplitude flag, AIRS-only elsewhere",present,0.076,0.018,0.116,0.866,0.086,0.0
 Tier-1,TOI-270d,H2O,published,,,0.004,0.02,0.976,0.086,0.0
 Tier-1,TOI-270d,H2O,no-optical,,,0.004,0.034,0.962,0.086,0.0
 Tier-1,TOI-270d,H2O,AIRS-only,,,0.0,0.004,0.996,0.086,0.0
@@ -47,6 +77,12 @@ Tier-1,TOI-270d,H2O,haze-retrained,,,0.004,0.028,0.968,0.086,0.0
 Tier-1,TOI-270d,H2O,haze+deck-retrained,,,0.004,0.038,0.958,0.086,0.0
 Tier-1,TOI-270d,H2O,the method,,,0.002,0.01,0.988,0.086,0.0
 Tier-1,TOI-270d,H2O,"census, same haze design",,,0.002,0.008,0.99,0.086,0.0
+Tier-1,TOI-270d,H2O,knn -> AIRS-only,,,0.0,0.004,0.996,0.086,0.0
+Tier-1,TOI-270d,H2O,mahalanobis -> AIRS-only,,,0.0,0.004,0.996,0.086,0.0
+Tier-1,TOI-270d,H2O,pca_recon -> AIRS-only,,,0.0,0.004,0.996,0.086,0.0
+Tier-1,TOI-270d,H2O,margin -> AIRS-only,,,0.002,0.018,0.98,0.086,0.0
+Tier-1,TOI-270d,H2O,ensemble -> AIRS-only,,,0.004,0.002,0.994,0.086,0.0
+Tier-1,TOI-270d,H2O,"amplitude flag, AIRS-only elsewhere",,,0.0,0.008,0.992,0.086,0.0
 Tier-1,TOI-270d,CO2,published,present,0.001,0.0,0.002,0.998,0.086,0.0
 Tier-1,TOI-270d,CO2,no-optical,present,0.016,0.0,0.032,0.968,0.086,0.0
 Tier-1,TOI-270d,CO2,AIRS-only,present,0.03,0.016,0.028,0.956,0.086,0.0
@@ -55,6 +91,12 @@ Tier-1,TOI-270d,CO2,haze-retrained,present,0.02,0.004,0.032,0.964,0.086,0.0
 Tier-1,TOI-270d,CO2,haze+deck-retrained,present,0.011,0.002,0.018,0.98,0.086,0.0
 Tier-1,TOI-270d,CO2,the method,present,0.02,0.008,0.024,0.968,0.086,0.0
 Tier-1,TOI-270d,CO2,"census, same haze design",present,0.019,0.008,0.022,0.97,0.086,0.0
+Tier-1,TOI-270d,CO2,knn -> AIRS-only,present,0.03,0.016,0.028,0.956,0.086,0.0
+Tier-1,TOI-270d,CO2,mahalanobis -> AIRS-only,present,0.03,0.016,0.028,0.956,0.086,0.0
+Tier-1,TOI-270d,CO2,pca_recon -> AIRS-only,present,0.026,0.016,0.02,0.964,0.086,0.0
+Tier-1,TOI-270d,CO2,margin -> AIRS-only,present,0.006,0.0,0.012,0.988,0.086,0.0
+Tier-1,TOI-270d,CO2,ensemble -> AIRS-only,present,0.004,0.002,0.004,0.994,0.086,0.0
+Tier-1,TOI-270d,CO2,"amplitude flag, AIRS-only elsewhere",present,0.029,0.014,0.03,0.956,0.086,0.0
 Tier-1,TOI-270d,NH3,published,absent,0.952,0.022,0.052,0.926,0.086,0.0
 Tier-1,TOI-270d,NH3,no-optical,absent,0.947,0.022,0.062,0.916,0.086,0.0
 Tier-1,TOI-270d,NH3,AIRS-only,absent,0.818,0.112,0.14,0.748,0.086,0.0
@@ -63,6 +105,12 @@ Tier-1,TOI-270d,NH3,haze-retrained,absent,0.876,0.05,0.148,0.802,0.086,0.0
 Tier-1,TOI-270d,NH3,haze+deck-retrained,absent,0.931,0.026,0.086,0.888,0.086,0.0
 Tier-1,TOI-270d,NH3,the method,absent,0.934,0.032,0.068,0.9,0.086,0.0
 Tier-1,TOI-270d,NH3,"census, same haze design",absent,0.938,0.032,0.06,0.908,0.086,0.0
+Tier-1,TOI-270d,NH3,knn -> AIRS-only,absent,0.818,0.112,0.14,0.748,0.086,0.0
+Tier-1,TOI-270d,NH3,mahalanobis -> AIRS-only,absent,0.818,0.112,0.14,0.748,0.086,0.0
+Tier-1,TOI-270d,NH3,pca_recon -> AIRS-only,absent,0.832,0.102,0.132,0.766,0.086,0.0
+Tier-1,TOI-270d,NH3,margin -> AIRS-only,absent,0.929,0.028,0.086,0.886,0.086,0.0
+Tier-1,TOI-270d,NH3,ensemble -> AIRS-only,absent,0.91,0.066,0.048,0.886,0.086,0.0
+Tier-1,TOI-270d,NH3,"amplitude flag, AIRS-only elsewhere",absent,0.82,0.108,0.144,0.748,0.086,0.0
 JWST,K2-18b,CH4,published,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b,CH4,no-optical,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b,CH4,AIRS-only,present,1.0,1.0,0.0,0.0,0.0,0.0
@@ -71,6 +119,12 @@ JWST,K2-18b,CH4,haze-retrained,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b,CH4,haze+deck-retrained,present,0.5,0.0,1.0,0.0,0.0,0.0
 JWST,K2-18b,CH4,the method,present,1.0,1.0,0.0,0.0,0.0,0.0
 JWST,K2-18b,CH4,"census, same haze design",present,1.0,1.0,0.0,0.0,0.0,0.0
+JWST,K2-18b,CH4,knn -> AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b,CH4,mahalanobis -> AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b,CH4,pca_recon -> AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b,CH4,margin -> AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b,CH4,ensemble -> AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b,CH4,"amplitude flag, AIRS-only elsewhere",present,1.0,1.0,0.0,0.0,0.0,0.0
 JWST,K2-18b,H2O,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b,H2O,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b,H2O,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -79,6 +133,12 @@ JWST,K2-18b,H2O,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b,H2O,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b,H2O,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b,H2O,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b,H2O,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b,H2O,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b,H2O,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b,H2O,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b,H2O,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b,H2O,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b,CO2,published,,,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b,CO2,no-optical,,,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b,CO2,AIRS-only,,,0.0,0.0,1.0,0.0,0.0
@@ -87,6 +147,12 @@ JWST,K2-18b,CO2,haze-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b,CO2,haze+deck-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b,CO2,the method,,,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b,CO2,"census, same haze design",,,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b,CO2,knn -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b,CO2,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b,CO2,pca_recon -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b,CO2,margin -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b,CO2,ensemble -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b,CO2,"amplitude flag, AIRS-only elsewhere",,,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b,NH3,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b,NH3,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b,NH3,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -95,6 +161,12 @@ JWST,K2-18b,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b,NH3,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b,NH3,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b,NH3,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b,NH3,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b,NH3,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b,NH3,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b,NH3,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b,NH3,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,0.0,0.0
 Tier-1,K2-18b,CH4,published,present,0.016,0.002,0.028,0.97,0.0,0.0
 Tier-1,K2-18b,CH4,no-optical,present,0.078,0.014,0.128,0.858,0.0,0.0
 Tier-1,K2-18b,CH4,AIRS-only,present,0.475,0.348,0.254,0.398,0.0,0.0
@@ -103,6 +175,12 @@ Tier-1,K2-18b,CH4,haze-retrained,present,0.152,0.052,0.2,0.748,0.0,0.0
 Tier-1,K2-18b,CH4,haze+deck-retrained,present,0.286,0.18,0.212,0.608,0.0,0.0
 Tier-1,K2-18b,CH4,the method,present,0.387,0.27,0.234,0.496,0.0,0.0
 Tier-1,K2-18b,CH4,"census, same haze design",present,0.387,0.27,0.234,0.496,0.0,0.0
+Tier-1,K2-18b,CH4,knn -> AIRS-only,present,0.356,0.25,0.212,0.538,0.0,0.0
+Tier-1,K2-18b,CH4,mahalanobis -> AIRS-only,present,0.315,0.222,0.186,0.592,0.0,0.0
+Tier-1,K2-18b,CH4,pca_recon -> AIRS-only,present,0.091,0.058,0.066,0.876,0.0,0.0
+Tier-1,K2-18b,CH4,margin -> AIRS-only,present,0.051,0.018,0.066,0.916,0.0,0.0
+Tier-1,K2-18b,CH4,ensemble -> AIRS-only,present,0.125,0.104,0.042,0.854,0.0,0.0
+Tier-1,K2-18b,CH4,"amplitude flag, AIRS-only elsewhere",present,0.475,0.348,0.254,0.398,0.0,0.0
 Tier-1,K2-18b,H2O,published,absent,0.995,0.0,0.01,0.99,0.0,0.0
 Tier-1,K2-18b,H2O,no-optical,absent,0.976,0.004,0.04,0.956,0.0,0.0
 Tier-1,K2-18b,H2O,AIRS-only,absent,0.998,0.0,0.004,0.996,0.0,0.0
@@ -111,6 +189,12 @@ Tier-1,K2-18b,H2O,haze-retrained,absent,0.975,0.006,0.038,0.956,0.0,0.0
 Tier-1,K2-18b,H2O,haze+deck-retrained,absent,0.964,0.002,0.068,0.93,0.0,0.0
 Tier-1,K2-18b,H2O,the method,absent,0.994,0.0,0.012,0.988,0.0,0.0
 Tier-1,K2-18b,H2O,"census, same haze design",absent,0.994,0.0,0.012,0.988,0.0,0.0
+Tier-1,K2-18b,H2O,knn -> AIRS-only,absent,0.998,0.0,0.004,0.996,0.0,0.0
+Tier-1,K2-18b,H2O,mahalanobis -> AIRS-only,absent,0.998,0.0,0.004,0.996,0.0,0.0
+Tier-1,K2-18b,H2O,pca_recon -> AIRS-only,absent,0.996,0.0,0.008,0.992,0.0,0.0
+Tier-1,K2-18b,H2O,margin -> AIRS-only,absent,0.996,0.0,0.008,0.992,0.0,0.0
+Tier-1,K2-18b,H2O,ensemble -> AIRS-only,absent,0.997,0.0,0.006,0.994,0.0,0.0
+Tier-1,K2-18b,H2O,"amplitude flag, AIRS-only elsewhere",absent,0.998,0.0,0.004,0.996,0.0,0.0
 Tier-1,K2-18b,CO2,published,,,0.0,0.002,0.998,0.0,0.0
 Tier-1,K2-18b,CO2,no-optical,,,0.0,0.004,0.996,0.0,0.0
 Tier-1,K2-18b,CO2,AIRS-only,,,0.002,0.01,0.988,0.0,0.0
@@ -119,6 +203,12 @@ Tier-1,K2-18b,CO2,haze-retrained,,,0.0,0.022,0.978,0.0,0.0
 Tier-1,K2-18b,CO2,haze+deck-retrained,,,0.0,0.022,0.978,0.0,0.0
 Tier-1,K2-18b,CO2,the method,,,0.0,0.01,0.99,0.0,0.0
 Tier-1,K2-18b,CO2,"census, same haze design",,,0.0,0.01,0.99,0.0,0.0
+Tier-1,K2-18b,CO2,knn -> AIRS-only,,,0.002,0.01,0.988,0.0,0.0
+Tier-1,K2-18b,CO2,mahalanobis -> AIRS-only,,,0.0,0.006,0.994,0.0,0.0
+Tier-1,K2-18b,CO2,pca_recon -> AIRS-only,,,0.0,0.002,0.998,0.0,0.0
+Tier-1,K2-18b,CO2,margin -> AIRS-only,,,0.0,0.002,0.998,0.0,0.0
+Tier-1,K2-18b,CO2,ensemble -> AIRS-only,,,0.0,0.002,0.998,0.0,0.0
+Tier-1,K2-18b,CO2,"amplitude flag, AIRS-only elsewhere",,,0.002,0.01,0.988,0.0,0.0
 Tier-1,K2-18b,NH3,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 Tier-1,K2-18b,NH3,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 Tier-1,K2-18b,NH3,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -127,6 +217,12 @@ Tier-1,K2-18b,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 Tier-1,K2-18b,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 Tier-1,K2-18b,NH3,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
 Tier-1,K2-18b,NH3,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
+Tier-1,K2-18b,NH3,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+Tier-1,K2-18b,NH3,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+Tier-1,K2-18b,NH3,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+Tier-1,K2-18b,NH3,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+Tier-1,K2-18b,NH3,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+Tier-1,K2-18b,NH3,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-alt,CH4,published,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-alt,CH4,no-optical,present,0.5,0.0,1.0,0.0,0.0,0.0
 JWST,K2-18b-alt,CH4,AIRS-only,present,1.0,1.0,0.0,0.0,0.0,0.0
@@ -135,6 +231,12 @@ JWST,K2-18b-alt,CH4,haze-retrained,present,0.5,0.0,1.0,0.0,0.0,0.0
 JWST,K2-18b-alt,CH4,haze+deck-retrained,present,1.0,1.0,0.0,0.0,0.0,0.0
 JWST,K2-18b-alt,CH4,the method,present,1.0,1.0,0.0,0.0,0.0,0.0
 JWST,K2-18b-alt,CH4,"census, same haze design",present,1.0,1.0,0.0,0.0,0.0,0.0
+JWST,K2-18b-alt,CH4,knn -> AIRS-only,present,1.0,1.0,0.0,0.0,0.0,0.0
+JWST,K2-18b-alt,CH4,mahalanobis -> AIRS-only,present,1.0,1.0,0.0,0.0,0.0,0.0
+JWST,K2-18b-alt,CH4,pca_recon -> AIRS-only,present,1.0,1.0,0.0,0.0,0.0,0.0
+JWST,K2-18b-alt,CH4,margin -> AIRS-only,present,0.5,0.0,1.0,0.0,0.0,0.0
+JWST,K2-18b-alt,CH4,ensemble -> AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-alt,CH4,"amplitude flag, AIRS-only elsewhere",present,1.0,1.0,0.0,0.0,0.0,0.0
 JWST,K2-18b-alt,H2O,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-alt,H2O,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-alt,H2O,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -143,6 +245,12 @@ JWST,K2-18b-alt,H2O,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-alt,H2O,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-alt,H2O,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-alt,H2O,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-alt,H2O,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-alt,H2O,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-alt,H2O,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-alt,H2O,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-alt,H2O,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-alt,H2O,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-alt,CO2,published,,,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-alt,CO2,no-optical,,,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-alt,CO2,AIRS-only,,,0.0,0.0,1.0,0.0,0.0
@@ -151,6 +259,12 @@ JWST,K2-18b-alt,CO2,haze-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-alt,CO2,haze+deck-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-alt,CO2,the method,,,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-alt,CO2,"census, same haze design",,,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-alt,CO2,knn -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-alt,CO2,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-alt,CO2,pca_recon -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-alt,CO2,margin -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-alt,CO2,ensemble -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-alt,CO2,"amplitude flag, AIRS-only elsewhere",,,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-alt,NH3,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-alt,NH3,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-alt,NH3,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -159,6 +273,12 @@ JWST,K2-18b-alt,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-alt,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-alt,NH3,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-alt,NH3,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-alt,NH3,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-alt,NH3,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-alt,NH3,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-alt,NH3,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-alt,NH3,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-alt,NH3,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,0.0,0.0
 Tier-1,K2-18b-alt,CH4,published,present,0.065,0.012,0.106,0.882,0.122,0.0
 Tier-1,K2-18b-alt,CH4,no-optical,present,0.147,0.046,0.202,0.752,0.122,0.0
 Tier-1,K2-18b-alt,CH4,AIRS-only,present,0.261,0.174,0.174,0.652,0.122,0.0
@@ -167,6 +287,12 @@ Tier-1,K2-18b-alt,CH4,haze-retrained,present,0.207,0.068,0.278,0.654,0.122,0.0
 Tier-1,K2-18b-alt,CH4,haze+deck-retrained,present,0.236,0.128,0.216,0.656,0.122,0.0
 Tier-1,K2-18b-alt,CH4,the method,present,0.207,0.114,0.186,0.7,0.122,0.0
 Tier-1,K2-18b-alt,CH4,"census, same haze design",present,0.208,0.116,0.184,0.7,0.122,0.0
+Tier-1,K2-18b-alt,CH4,knn -> AIRS-only,present,0.245,0.158,0.174,0.668,0.122,0.0
+Tier-1,K2-18b-alt,CH4,mahalanobis -> AIRS-only,present,0.253,0.166,0.174,0.66,0.122,0.0
+Tier-1,K2-18b-alt,CH4,pca_recon -> AIRS-only,present,0.189,0.12,0.138,0.742,0.122,0.0
+Tier-1,K2-18b-alt,CH4,margin -> AIRS-only,present,0.093,0.038,0.11,0.852,0.122,0.0
+Tier-1,K2-18b-alt,CH4,ensemble -> AIRS-only,present,0.166,0.112,0.108,0.78,0.122,0.0
+Tier-1,K2-18b-alt,CH4,"amplitude flag, AIRS-only elsewhere",present,0.254,0.162,0.184,0.654,0.122,0.0
 Tier-1,K2-18b-alt,H2O,published,absent,0.985,0.006,0.018,0.976,0.122,0.0
 Tier-1,K2-18b-alt,H2O,no-optical,absent,0.966,0.014,0.04,0.946,0.122,0.0
 Tier-1,K2-18b-alt,H2O,AIRS-only,absent,0.992,0.002,0.012,0.986,0.122,0.0
@@ -175,6 +301,12 @@ Tier-1,K2-18b-alt,H2O,haze-retrained,absent,0.969,0.016,0.03,0.954,0.122,0.0
 Tier-1,K2-18b-alt,H2O,haze+deck-retrained,absent,0.964,0.012,0.048,0.94,0.122,0.0
 Tier-1,K2-18b-alt,H2O,the method,absent,0.984,0.004,0.024,0.972,0.122,0.0
 Tier-1,K2-18b-alt,H2O,"census, same haze design",absent,0.986,0.004,0.02,0.976,0.122,0.0
+Tier-1,K2-18b-alt,H2O,knn -> AIRS-only,absent,0.992,0.002,0.012,0.986,0.122,0.0
+Tier-1,K2-18b-alt,H2O,mahalanobis -> AIRS-only,absent,0.992,0.002,0.012,0.986,0.122,0.0
+Tier-1,K2-18b-alt,H2O,pca_recon -> AIRS-only,absent,0.991,0.002,0.014,0.984,0.122,0.0
+Tier-1,K2-18b-alt,H2O,margin -> AIRS-only,absent,0.99,0.004,0.012,0.984,0.122,0.0
+Tier-1,K2-18b-alt,H2O,ensemble -> AIRS-only,absent,0.989,0.006,0.01,0.984,0.122,0.0
+Tier-1,K2-18b-alt,H2O,"amplitude flag, AIRS-only elsewhere",absent,0.989,0.004,0.014,0.982,0.122,0.0
 Tier-1,K2-18b-alt,CO2,published,,,0.0,0.002,0.998,0.122,0.0
 Tier-1,K2-18b-alt,CO2,no-optical,,,0.0,0.002,0.998,0.122,0.0
 Tier-1,K2-18b-alt,CO2,AIRS-only,,,0.0,0.004,0.996,0.122,0.0
@@ -183,6 +315,12 @@ Tier-1,K2-18b-alt,CO2,haze-retrained,,,0.0,0.008,0.992,0.122,0.0
 Tier-1,K2-18b-alt,CO2,haze+deck-retrained,,,0.0,0.012,0.988,0.122,0.0
 Tier-1,K2-18b-alt,CO2,the method,,,0.0,0.004,0.996,0.122,0.0
 Tier-1,K2-18b-alt,CO2,"census, same haze design",,,0.0,0.004,0.996,0.122,0.0
+Tier-1,K2-18b-alt,CO2,knn -> AIRS-only,,,0.0,0.004,0.996,0.122,0.0
+Tier-1,K2-18b-alt,CO2,mahalanobis -> AIRS-only,,,0.0,0.004,0.996,0.122,0.0
+Tier-1,K2-18b-alt,CO2,pca_recon -> AIRS-only,,,0.0,0.0,1.0,0.122,0.0
+Tier-1,K2-18b-alt,CO2,margin -> AIRS-only,,,0.0,0.004,0.996,0.122,0.0
+Tier-1,K2-18b-alt,CO2,ensemble -> AIRS-only,,,0.0,0.0,1.0,0.122,0.0
+Tier-1,K2-18b-alt,CO2,"amplitude flag, AIRS-only elsewhere",,,0.0,0.004,0.996,0.122,0.0
 Tier-1,K2-18b-alt,NH3,published,absent,0.999,0.0,0.002,0.998,0.122,0.0
 Tier-1,K2-18b-alt,NH3,no-optical,absent,1.0,0.0,0.0,1.0,0.122,0.0
 Tier-1,K2-18b-alt,NH3,AIRS-only,absent,0.999,0.0,0.002,0.998,0.122,0.0
@@ -191,6 +329,12 @@ Tier-1,K2-18b-alt,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,0.122,0.0
 Tier-1,K2-18b-alt,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.122,0.0
 Tier-1,K2-18b-alt,NH3,the method,absent,0.999,0.0,0.002,0.998,0.122,0.0
 Tier-1,K2-18b-alt,NH3,"census, same haze design",absent,0.999,0.0,0.002,0.998,0.122,0.0
+Tier-1,K2-18b-alt,NH3,knn -> AIRS-only,absent,0.999,0.0,0.002,0.998,0.122,0.0
+Tier-1,K2-18b-alt,NH3,mahalanobis -> AIRS-only,absent,0.999,0.0,0.002,0.998,0.122,0.0
+Tier-1,K2-18b-alt,NH3,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.122,0.0
+Tier-1,K2-18b-alt,NH3,margin -> AIRS-only,absent,0.999,0.0,0.002,0.998,0.122,0.0
+Tier-1,K2-18b-alt,NH3,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.122,0.0
+Tier-1,K2-18b-alt,NH3,"amplitude flag, AIRS-only elsewhere",absent,0.999,0.0,0.002,0.998,0.122,0.0
 JWST,TOI-421b,CH4,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -199,6 +343,12 @@ JWST,TOI-421b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,CH4,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-421b,CH4,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-421b,CH4,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-421b,CH4,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-421b,CH4,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-421b,CH4,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-421b,CH4,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,H2O,published,,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,H2O,no-optical,,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,H2O,AIRS-only,,,0.0,0.0,1.0,0.0,0.0
@@ -207,6 +357,12 @@ JWST,TOI-421b,H2O,haze-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,H2O,haze+deck-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,H2O,the method,,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,H2O,"census, same haze design",,,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-421b,H2O,knn -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-421b,H2O,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-421b,H2O,pca_recon -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-421b,H2O,margin -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-421b,H2O,ensemble -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-421b,H2O,"amplitude flag, AIRS-only elsewhere",,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,CO2,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,CO2,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,CO2,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -215,6 +371,12 @@ JWST,TOI-421b,CO2,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,CO2,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,CO2,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,CO2,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-421b,CO2,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-421b,CO2,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-421b,CO2,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-421b,CO2,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-421b,CO2,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-421b,CO2,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,NH3,published,,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,NH3,no-optical,,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,NH3,AIRS-only,,,0.0,0.0,1.0,0.0,0.0
@@ -223,6 +385,12 @@ JWST,TOI-421b,NH3,haze-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,NH3,haze+deck-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,NH3,the method,,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-421b,NH3,"census, same haze design",,,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-421b,NH3,knn -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-421b,NH3,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-421b,NH3,pca_recon -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-421b,NH3,margin -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-421b,NH3,ensemble -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-421b,NH3,"amplitude flag, AIRS-only elsewhere",,,0.0,0.0,1.0,0.0,0.0
 Tier-1,TOI-421b,CH4,published,absent,1.0,0.0,0.0,1.0,0.134,0.0
 Tier-1,TOI-421b,CH4,no-optical,absent,0.998,0.0,0.004,0.996,0.134,0.0
 Tier-1,TOI-421b,CH4,AIRS-only,absent,0.996,0.0,0.008,0.992,0.134,0.0
@@ -231,6 +399,12 @@ Tier-1,TOI-421b,CH4,haze-retrained,absent,0.998,0.0,0.004,0.996,0.134,0.0
 Tier-1,TOI-421b,CH4,haze+deck-retrained,absent,0.997,0.0,0.006,0.994,0.134,0.0
 Tier-1,TOI-421b,CH4,the method,absent,0.998,0.0,0.004,0.996,0.134,0.0
 Tier-1,TOI-421b,CH4,"census, same haze design",absent,0.998,0.0,0.004,0.996,0.134,0.0
+Tier-1,TOI-421b,CH4,knn -> AIRS-only,absent,0.996,0.0,0.008,0.992,0.134,0.0
+Tier-1,TOI-421b,CH4,mahalanobis -> AIRS-only,absent,0.997,0.0,0.006,0.994,0.134,0.0
+Tier-1,TOI-421b,CH4,pca_recon -> AIRS-only,absent,0.998,0.0,0.004,0.996,0.134,0.0
+Tier-1,TOI-421b,CH4,margin -> AIRS-only,absent,0.999,0.0,0.002,0.998,0.134,0.0
+Tier-1,TOI-421b,CH4,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.134,0.0
+Tier-1,TOI-421b,CH4,"amplitude flag, AIRS-only elsewhere",absent,0.996,0.0,0.008,0.992,0.134,0.0
 Tier-1,TOI-421b,H2O,published,,,0.006,0.02,0.974,0.134,0.0
 Tier-1,TOI-421b,H2O,no-optical,,,0.034,0.052,0.914,0.134,0.0
 Tier-1,TOI-421b,H2O,AIRS-only,,,0.03,0.068,0.902,0.134,0.0
@@ -239,6 +413,12 @@ Tier-1,TOI-421b,H2O,haze-retrained,,,0.02,0.038,0.942,0.134,0.0
 Tier-1,TOI-421b,H2O,haze+deck-retrained,,,0.024,0.066,0.91,0.134,0.0
 Tier-1,TOI-421b,H2O,the method,,,0.008,0.056,0.936,0.134,0.0
 Tier-1,TOI-421b,H2O,"census, same haze design",,,0.012,0.052,0.936,0.134,0.0
+Tier-1,TOI-421b,H2O,knn -> AIRS-only,,,0.028,0.066,0.906,0.134,0.0
+Tier-1,TOI-421b,H2O,mahalanobis -> AIRS-only,,,0.026,0.066,0.908,0.134,0.0
+Tier-1,TOI-421b,H2O,pca_recon -> AIRS-only,,,0.012,0.034,0.954,0.134,0.0
+Tier-1,TOI-421b,H2O,margin -> AIRS-only,,,0.006,0.026,0.968,0.134,0.0
+Tier-1,TOI-421b,H2O,ensemble -> AIRS-only,,,0.012,0.028,0.96,0.134,0.0
+Tier-1,TOI-421b,H2O,"amplitude flag, AIRS-only elsewhere",,,0.026,0.074,0.9,0.134,0.0
 Tier-1,TOI-421b,CO2,published,absent,0.995,0.0,0.01,0.99,0.134,0.0
 Tier-1,TOI-421b,CO2,no-optical,absent,0.976,0.008,0.032,0.96,0.134,0.0
 Tier-1,TOI-421b,CO2,AIRS-only,absent,0.954,0.014,0.064,0.922,0.134,0.0
@@ -247,6 +427,12 @@ Tier-1,TOI-421b,CO2,haze-retrained,absent,0.963,0.016,0.042,0.942,0.134,0.0
 Tier-1,TOI-421b,CO2,haze+deck-retrained,absent,0.955,0.014,0.062,0.924,0.134,0.0
 Tier-1,TOI-421b,CO2,the method,absent,0.975,0.004,0.042,0.954,0.134,0.0
 Tier-1,TOI-421b,CO2,"census, same haze design",absent,0.973,0.002,0.05,0.948,0.134,0.0
+Tier-1,TOI-421b,CO2,knn -> AIRS-only,absent,0.959,0.012,0.058,0.93,0.134,0.0
+Tier-1,TOI-421b,CO2,mahalanobis -> AIRS-only,absent,0.964,0.012,0.048,0.94,0.134,0.0
+Tier-1,TOI-421b,CO2,pca_recon -> AIRS-only,absent,0.987,0.006,0.014,0.98,0.134,0.0
+Tier-1,TOI-421b,CO2,margin -> AIRS-only,absent,0.989,0.002,0.018,0.98,0.134,0.0
+Tier-1,TOI-421b,CO2,ensemble -> AIRS-only,absent,0.978,0.008,0.028,0.964,0.134,0.0
+Tier-1,TOI-421b,CO2,"amplitude flag, AIRS-only elsewhere",absent,0.961,0.012,0.054,0.934,0.134,0.0
 Tier-1,TOI-421b,NH3,published,,,0.0,0.0,1.0,0.134,0.0
 Tier-1,TOI-421b,NH3,no-optical,,,0.01,0.046,0.944,0.134,0.0
 Tier-1,TOI-421b,NH3,AIRS-only,,,0.098,0.118,0.784,0.134,0.0
@@ -255,6 +441,12 @@ Tier-1,TOI-421b,NH3,haze-retrained,,,0.012,0.076,0.912,0.134,0.0
 Tier-1,TOI-421b,NH3,haze+deck-retrained,,,0.024,0.07,0.906,0.134,0.0
 Tier-1,TOI-421b,NH3,the method,,,0.034,0.078,0.888,0.134,0.0
 Tier-1,TOI-421b,NH3,"census, same haze design",,,0.036,0.082,0.882,0.134,0.0
+Tier-1,TOI-421b,NH3,knn -> AIRS-only,,,0.092,0.116,0.792,0.134,0.0
+Tier-1,TOI-421b,NH3,mahalanobis -> AIRS-only,,,0.08,0.098,0.822,0.134,0.0
+Tier-1,TOI-421b,NH3,pca_recon -> AIRS-only,,,0.02,0.024,0.956,0.134,0.0
+Tier-1,TOI-421b,NH3,margin -> AIRS-only,,,0.0,0.006,0.994,0.134,0.0
+Tier-1,TOI-421b,NH3,ensemble -> AIRS-only,,,0.046,0.034,0.92,0.134,0.0
+Tier-1,TOI-421b,NH3,"amplitude flag, AIRS-only elsewhere",,,0.086,0.114,0.8,0.134,0.0
 JWST,HAT-P-18b,CH4,published,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-18b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-18b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
@@ -263,6 +455,12 @@ JWST,HAT-P-18b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-18b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-18b,CH4,the method,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-18b,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,HAT-P-18b,CH4,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,HAT-P-18b,CH4,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,HAT-P-18b,CH4,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,HAT-P-18b,CH4,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,HAT-P-18b,CH4,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,HAT-P-18b,CH4,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-18b,H2O,published,,,1.0,0.0,0.0,1.0,0.0
 JWST,HAT-P-18b,H2O,no-optical,,,1.0,0.0,0.0,1.0,0.0
 JWST,HAT-P-18b,H2O,AIRS-only,,,1.0,0.0,0.0,1.0,0.0
@@ -271,6 +469,12 @@ JWST,HAT-P-18b,H2O,haze-retrained,,,1.0,0.0,0.0,1.0,0.0
 JWST,HAT-P-18b,H2O,haze+deck-retrained,,,1.0,0.0,0.0,1.0,0.0
 JWST,HAT-P-18b,H2O,the method,,,1.0,0.0,0.0,1.0,0.0
 JWST,HAT-P-18b,H2O,"census, same haze design",,,1.0,0.0,0.0,1.0,0.0
+JWST,HAT-P-18b,H2O,knn -> AIRS-only,,,1.0,0.0,0.0,1.0,0.0
+JWST,HAT-P-18b,H2O,mahalanobis -> AIRS-only,,,1.0,0.0,0.0,1.0,0.0
+JWST,HAT-P-18b,H2O,pca_recon -> AIRS-only,,,1.0,0.0,0.0,1.0,0.0
+JWST,HAT-P-18b,H2O,margin -> AIRS-only,,,1.0,0.0,0.0,1.0,0.0
+JWST,HAT-P-18b,H2O,ensemble -> AIRS-only,,,1.0,0.0,0.0,1.0,0.0
+JWST,HAT-P-18b,H2O,"amplitude flag, AIRS-only elsewhere",,,1.0,0.0,0.0,1.0,0.0
 JWST,HAT-P-18b,CO2,published,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-18b,CO2,no-optical,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-18b,CO2,AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
@@ -279,6 +483,12 @@ JWST,HAT-P-18b,CO2,haze-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-18b,CO2,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-18b,CO2,the method,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-18b,CO2,"census, same haze design",absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,HAT-P-18b,CO2,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,HAT-P-18b,CO2,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,HAT-P-18b,CO2,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,HAT-P-18b,CO2,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,HAT-P-18b,CO2,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,HAT-P-18b,CO2,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-18b,NH3,published,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-18b,NH3,no-optical,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-18b,NH3,AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
@@ -287,6 +497,12 @@ JWST,HAT-P-18b,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-18b,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-18b,NH3,the method,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-18b,NH3,"census, same haze design",absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,HAT-P-18b,NH3,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,HAT-P-18b,NH3,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,HAT-P-18b,NH3,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,HAT-P-18b,NH3,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,HAT-P-18b,NH3,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,HAT-P-18b,NH3,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,1.0,0.0
 Tier-1,HAT-P-18b,CH4,published,absent,0.997,0.0,0.006,0.994,0.534,0.0
 Tier-1,HAT-P-18b,CH4,no-optical,absent,0.995,0.0,0.01,0.99,0.534,0.0
 Tier-1,HAT-P-18b,CH4,AIRS-only,absent,0.992,0.004,0.008,0.988,0.534,0.0
@@ -295,6 +511,12 @@ Tier-1,HAT-P-18b,CH4,haze-retrained,absent,0.987,0.002,0.022,0.976,0.534,0.0
 Tier-1,HAT-P-18b,CH4,haze+deck-retrained,absent,0.987,0.002,0.022,0.976,0.534,0.0
 Tier-1,HAT-P-18b,CH4,the method,absent,0.99,0.002,0.016,0.982,0.534,0.0
 Tier-1,HAT-P-18b,CH4,"census, same haze design",absent,0.987,0.002,0.022,0.976,0.534,0.0
+Tier-1,HAT-P-18b,CH4,knn -> AIRS-only,absent,0.992,0.004,0.008,0.988,0.534,0.0
+Tier-1,HAT-P-18b,CH4,mahalanobis -> AIRS-only,absent,0.993,0.002,0.01,0.988,0.534,0.0
+Tier-1,HAT-P-18b,CH4,pca_recon -> AIRS-only,absent,0.994,0.002,0.008,0.99,0.534,0.0
+Tier-1,HAT-P-18b,CH4,margin -> AIRS-only,absent,0.998,0.0,0.004,0.996,0.534,0.0
+Tier-1,HAT-P-18b,CH4,ensemble -> AIRS-only,absent,0.997,0.002,0.002,0.996,0.534,0.0
+Tier-1,HAT-P-18b,CH4,"amplitude flag, AIRS-only elsewhere",absent,0.99,0.002,0.016,0.982,0.534,0.0
 Tier-1,HAT-P-18b,H2O,published,,,0.076,0.118,0.806,0.534,0.0
 Tier-1,HAT-P-18b,H2O,no-optical,,,0.206,0.198,0.596,0.534,0.0
 Tier-1,HAT-P-18b,H2O,AIRS-only,,,0.302,0.164,0.534,0.534,0.0
@@ -303,6 +525,12 @@ Tier-1,HAT-P-18b,H2O,haze-retrained,,,0.232,0.19,0.578,0.534,0.0
 Tier-1,HAT-P-18b,H2O,haze+deck-retrained,,,0.226,0.206,0.568,0.534,0.0
 Tier-1,HAT-P-18b,H2O,the method,,,0.214,0.198,0.588,0.534,0.0
 Tier-1,HAT-P-18b,H2O,"census, same haze design",,,0.232,0.19,0.578,0.534,0.0
+Tier-1,HAT-P-18b,H2O,knn -> AIRS-only,,,0.288,0.162,0.55,0.534,0.0
+Tier-1,HAT-P-18b,H2O,mahalanobis -> AIRS-only,,,0.256,0.156,0.588,0.534,0.0
+Tier-1,HAT-P-18b,H2O,pca_recon -> AIRS-only,,,0.212,0.132,0.656,0.534,0.0
+Tier-1,HAT-P-18b,H2O,margin -> AIRS-only,,,0.12,0.124,0.756,0.534,0.0
+Tier-1,HAT-P-18b,H2O,ensemble -> AIRS-only,,,0.152,0.108,0.74,0.534,0.0
+Tier-1,HAT-P-18b,H2O,"amplitude flag, AIRS-only elsewhere",,,0.26,0.186,0.554,0.534,0.0
 Tier-1,HAT-P-18b,CO2,published,absent,0.998,0.0,0.004,0.996,0.534,0.0
 Tier-1,HAT-P-18b,CO2,no-optical,absent,0.995,0.0,0.01,0.99,0.534,0.0
 Tier-1,HAT-P-18b,CO2,AIRS-only,absent,0.994,0.002,0.008,0.99,0.534,0.0
@@ -311,6 +539,12 @@ Tier-1,HAT-P-18b,CO2,haze-retrained,absent,0.988,0.002,0.02,0.978,0.534,0.0
 Tier-1,HAT-P-18b,CO2,haze+deck-retrained,absent,0.986,0.002,0.024,0.974,0.534,0.0
 Tier-1,HAT-P-18b,CO2,the method,absent,0.989,0.002,0.018,0.98,0.534,0.0
 Tier-1,HAT-P-18b,CO2,"census, same haze design",absent,0.988,0.002,0.02,0.978,0.534,0.0
+Tier-1,HAT-P-18b,CO2,knn -> AIRS-only,absent,0.994,0.002,0.008,0.99,0.534,0.0
+Tier-1,HAT-P-18b,CO2,mahalanobis -> AIRS-only,absent,0.996,0.0,0.008,0.992,0.534,0.0
+Tier-1,HAT-P-18b,CO2,pca_recon -> AIRS-only,absent,0.998,0.0,0.004,0.996,0.534,0.0
+Tier-1,HAT-P-18b,CO2,margin -> AIRS-only,absent,0.998,0.0,0.004,0.996,0.534,0.0
+Tier-1,HAT-P-18b,CO2,ensemble -> AIRS-only,absent,0.997,0.0,0.006,0.994,0.534,0.0
+Tier-1,HAT-P-18b,CO2,"amplitude flag, AIRS-only elsewhere",absent,0.99,0.002,0.016,0.982,0.534,0.0
 Tier-1,HAT-P-18b,NH3,published,absent,1.0,0.0,0.0,1.0,0.534,0.0
 Tier-1,HAT-P-18b,NH3,no-optical,absent,0.999,0.0,0.002,0.998,0.534,0.0
 Tier-1,HAT-P-18b,NH3,AIRS-only,absent,0.985,0.008,0.014,0.978,0.534,0.0
@@ -319,6 +553,12 @@ Tier-1,HAT-P-18b,NH3,haze-retrained,absent,0.998,0.0,0.004,0.996,0.534,0.0
 Tier-1,HAT-P-18b,NH3,haze+deck-retrained,absent,0.996,0.0,0.008,0.992,0.534,0.0
 Tier-1,HAT-P-18b,NH3,the method,absent,0.991,0.002,0.014,0.984,0.534,0.0
 Tier-1,HAT-P-18b,NH3,"census, same haze design",absent,0.998,0.0,0.004,0.996,0.534,0.0
+Tier-1,HAT-P-18b,NH3,knn -> AIRS-only,absent,0.985,0.008,0.014,0.978,0.534,0.0
+Tier-1,HAT-P-18b,NH3,mahalanobis -> AIRS-only,absent,0.988,0.006,0.012,0.982,0.534,0.0
+Tier-1,HAT-P-18b,NH3,pca_recon -> AIRS-only,absent,0.997,0.002,0.002,0.996,0.534,0.0
+Tier-1,HAT-P-18b,NH3,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.534,0.0
+Tier-1,HAT-P-18b,NH3,ensemble -> AIRS-only,absent,0.997,0.002,0.002,0.996,0.534,0.0
+Tier-1,HAT-P-18b,NH3,"amplitude flag, AIRS-only elsewhere",absent,0.99,0.004,0.012,0.984,0.534,0.0
 JWST,WASP-107b,CH4,published,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-107b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-107b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
@@ -327,6 +567,12 @@ JWST,WASP-107b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-107b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-107b,CH4,the method,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-107b,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-107b,CH4,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-107b,CH4,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-107b,CH4,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-107b,CH4,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-107b,CH4,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-107b,CH4,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-107b,H2O,published,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-107b,H2O,no-optical,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-107b,H2O,AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
@@ -335,6 +581,12 @@ JWST,WASP-107b,H2O,haze-retrained,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-107b,H2O,haze+deck-retrained,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-107b,H2O,the method,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-107b,H2O,"census, same haze design",present,0.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-107b,H2O,knn -> AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-107b,H2O,mahalanobis -> AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-107b,H2O,pca_recon -> AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-107b,H2O,margin -> AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-107b,H2O,ensemble -> AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-107b,H2O,"amplitude flag, AIRS-only elsewhere",present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-107b,CO2,published,,,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-107b,CO2,no-optical,,,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-107b,CO2,AIRS-only,,,1.0,0.0,0.0,1.0,0.0
@@ -343,6 +595,12 @@ JWST,WASP-107b,CO2,haze-retrained,,,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-107b,CO2,haze+deck-retrained,,,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-107b,CO2,the method,,,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-107b,CO2,"census, same haze design",,,1.0,0.0,0.0,1.0,0.0
+JWST,WASP-107b,CO2,knn -> AIRS-only,,,1.0,0.0,0.0,1.0,0.0
+JWST,WASP-107b,CO2,mahalanobis -> AIRS-only,,,1.0,0.0,0.0,1.0,0.0
+JWST,WASP-107b,CO2,pca_recon -> AIRS-only,,,1.0,0.0,0.0,1.0,0.0
+JWST,WASP-107b,CO2,margin -> AIRS-only,,,1.0,0.0,0.0,1.0,0.0
+JWST,WASP-107b,CO2,ensemble -> AIRS-only,,,1.0,0.0,0.0,1.0,0.0
+JWST,WASP-107b,CO2,"amplitude flag, AIRS-only elsewhere",,,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-107b,NH3,published,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-107b,NH3,no-optical,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-107b,NH3,AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
@@ -351,6 +609,12 @@ JWST,WASP-107b,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-107b,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-107b,NH3,the method,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-107b,NH3,"census, same haze design",absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-107b,NH3,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-107b,NH3,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-107b,NH3,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-107b,NH3,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-107b,NH3,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-107b,NH3,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,1.0,0.0
 Tier-1,WASP-107b,CH4,published,absent,1.0,0.0,0.0,1.0,0.966,0.0
 Tier-1,WASP-107b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.966,0.0
 Tier-1,WASP-107b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,0.966,0.0
@@ -359,6 +623,12 @@ Tier-1,WASP-107b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,0.966,0.0
 Tier-1,WASP-107b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.966,0.0
 Tier-1,WASP-107b,CH4,the method,absent,1.0,0.0,0.0,1.0,0.966,0.0
 Tier-1,WASP-107b,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.966,0.0
+Tier-1,WASP-107b,CH4,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.966,0.0
+Tier-1,WASP-107b,CH4,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.966,0.0
+Tier-1,WASP-107b,CH4,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.966,0.0
+Tier-1,WASP-107b,CH4,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.966,0.0
+Tier-1,WASP-107b,CH4,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.966,0.0
+Tier-1,WASP-107b,CH4,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,0.966,0.0
 Tier-1,WASP-107b,H2O,published,present,0.024,0.014,0.02,0.966,0.966,0.0
 Tier-1,WASP-107b,H2O,no-optical,present,0.063,0.034,0.058,0.908,0.966,0.0
 Tier-1,WASP-107b,H2O,AIRS-only,present,0.106,0.062,0.088,0.85,0.966,0.0
@@ -367,6 +637,12 @@ Tier-1,WASP-107b,H2O,haze-retrained,present,0.087,0.04,0.094,0.866,0.966,0.0
 Tier-1,WASP-107b,H2O,haze+deck-retrained,present,0.1,0.044,0.112,0.844,0.966,0.0
 Tier-1,WASP-107b,H2O,the method,present,0.086,0.04,0.092,0.868,0.966,0.0
 Tier-1,WASP-107b,H2O,"census, same haze design",present,0.087,0.04,0.094,0.866,0.966,0.0
+Tier-1,WASP-107b,H2O,knn -> AIRS-only,present,0.024,0.014,0.02,0.966,0.966,0.0
+Tier-1,WASP-107b,H2O,mahalanobis -> AIRS-only,present,0.025,0.014,0.022,0.964,0.966,0.0
+Tier-1,WASP-107b,H2O,pca_recon -> AIRS-only,present,0.047,0.032,0.03,0.938,0.966,0.0
+Tier-1,WASP-107b,H2O,margin -> AIRS-only,present,0.03,0.016,0.028,0.956,0.966,0.0
+Tier-1,WASP-107b,H2O,ensemble -> AIRS-only,present,0.039,0.026,0.026,0.948,0.966,0.0
+Tier-1,WASP-107b,H2O,"amplitude flag, AIRS-only elsewhere",present,0.087,0.04,0.094,0.866,0.966,0.0
 Tier-1,WASP-107b,CO2,published,,,0.336,0.27,0.394,0.966,0.0
 Tier-1,WASP-107b,CO2,no-optical,,,0.448,0.262,0.29,0.966,0.0
 Tier-1,WASP-107b,CO2,AIRS-only,,,0.814,0.106,0.08,0.966,0.0
@@ -375,6 +651,12 @@ Tier-1,WASP-107b,CO2,haze-retrained,,,0.776,0.126,0.098,0.966,0.0
 Tier-1,WASP-107b,CO2,haze+deck-retrained,,,0.84,0.108,0.052,0.966,0.0
 Tier-1,WASP-107b,CO2,the method,,,0.766,0.13,0.104,0.966,0.0
 Tier-1,WASP-107b,CO2,"census, same haze design",,,0.776,0.126,0.098,0.966,0.0
+Tier-1,WASP-107b,CO2,knn -> AIRS-only,,,0.338,0.268,0.394,0.966,0.0
+Tier-1,WASP-107b,CO2,mahalanobis -> AIRS-only,,,0.342,0.27,0.388,0.966,0.0
+Tier-1,WASP-107b,CO2,pca_recon -> AIRS-only,,,0.364,0.258,0.378,0.966,0.0
+Tier-1,WASP-107b,CO2,margin -> AIRS-only,,,0.502,0.236,0.262,0.966,0.0
+Tier-1,WASP-107b,CO2,ensemble -> AIRS-only,,,0.578,0.182,0.24,0.966,0.0
+Tier-1,WASP-107b,CO2,"amplitude flag, AIRS-only elsewhere",,,0.774,0.128,0.098,0.966,0.0
 Tier-1,WASP-107b,NH3,published,absent,1.0,0.0,0.0,1.0,0.966,0.0
 Tier-1,WASP-107b,NH3,no-optical,absent,0.998,0.0,0.004,0.996,0.966,0.0
 Tier-1,WASP-107b,NH3,AIRS-only,absent,0.972,0.01,0.036,0.954,0.966,0.0
@@ -383,6 +665,12 @@ Tier-1,WASP-107b,NH3,haze-retrained,absent,0.995,0.002,0.006,0.992,0.966,0.0
 Tier-1,WASP-107b,NH3,haze+deck-retrained,absent,0.987,0.004,0.018,0.978,0.966,0.0
 Tier-1,WASP-107b,NH3,the method,absent,0.995,0.002,0.006,0.992,0.966,0.0
 Tier-1,WASP-107b,NH3,"census, same haze design",absent,0.995,0.002,0.006,0.992,0.966,0.0
+Tier-1,WASP-107b,NH3,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.966,0.0
+Tier-1,WASP-107b,NH3,mahalanobis -> AIRS-only,absent,0.999,0.0,0.002,0.998,0.966,0.0
+Tier-1,WASP-107b,NH3,pca_recon -> AIRS-only,absent,0.999,0.0,0.002,0.998,0.966,0.0
+Tier-1,WASP-107b,NH3,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.966,0.0
+Tier-1,WASP-107b,NH3,ensemble -> AIRS-only,absent,0.998,0.0,0.004,0.996,0.966,0.0
+Tier-1,WASP-107b,NH3,"amplitude flag, AIRS-only elsewhere",absent,0.995,0.002,0.006,0.992,0.966,0.0
 JWST,HD189733b,CH4,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD189733b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD189733b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -391,6 +679,12 @@ JWST,HD189733b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD189733b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD189733b,CH4,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD189733b,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HD189733b,CH4,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HD189733b,CH4,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HD189733b,CH4,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HD189733b,CH4,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HD189733b,CH4,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HD189733b,CH4,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD189733b,H2O,published,,,0.0,0.0,1.0,0.0,0.0
 JWST,HD189733b,H2O,no-optical,,,1.0,0.0,0.0,0.0,0.0
 JWST,HD189733b,H2O,AIRS-only,,,1.0,0.0,0.0,0.0,0.0
@@ -399,6 +693,12 @@ JWST,HD189733b,H2O,haze-retrained,,,0.0,1.0,0.0,0.0,0.0
 JWST,HD189733b,H2O,haze+deck-retrained,,,0.0,1.0,0.0,0.0,0.0
 JWST,HD189733b,H2O,the method,,,1.0,0.0,0.0,0.0,0.0
 JWST,HD189733b,H2O,"census, same haze design",,,1.0,0.0,0.0,0.0,0.0
+JWST,HD189733b,H2O,knn -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,HD189733b,H2O,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,HD189733b,H2O,pca_recon -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,HD189733b,H2O,margin -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,HD189733b,H2O,ensemble -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,HD189733b,H2O,"amplitude flag, AIRS-only elsewhere",,,1.0,0.0,0.0,0.0,0.0
 JWST,HD189733b,CO2,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD189733b,CO2,no-optical,absent,0.5,0.0,1.0,0.0,0.0,0.0
 JWST,HD189733b,CO2,AIRS-only,absent,0.0,1.0,0.0,0.0,0.0,0.0
@@ -407,6 +707,12 @@ JWST,HD189733b,CO2,haze-retrained,absent,0.0,1.0,0.0,0.0,0.0,0.0
 JWST,HD189733b,CO2,haze+deck-retrained,absent,0.0,1.0,0.0,0.0,0.0,0.0
 JWST,HD189733b,CO2,the method,absent,0.5,0.0,1.0,0.0,0.0,0.0
 JWST,HD189733b,CO2,"census, same haze design",absent,0.5,0.0,1.0,0.0,0.0,0.0
+JWST,HD189733b,CO2,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HD189733b,CO2,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HD189733b,CO2,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HD189733b,CO2,margin -> AIRS-only,absent,0.5,0.0,1.0,0.0,0.0,0.0
+JWST,HD189733b,CO2,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HD189733b,CO2,"amplitude flag, AIRS-only elsewhere",absent,0.0,1.0,0.0,0.0,0.0,0.0
 JWST,HD189733b,NH3,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD189733b,NH3,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD189733b,NH3,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -415,6 +721,12 @@ JWST,HD189733b,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD189733b,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD189733b,NH3,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD189733b,NH3,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HD189733b,NH3,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HD189733b,NH3,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HD189733b,NH3,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HD189733b,NH3,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HD189733b,NH3,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HD189733b,NH3,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,0.0,0.0
 Tier-1,HD189733b,CH4,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 Tier-1,HD189733b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 Tier-1,HD189733b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -423,6 +735,12 @@ Tier-1,HD189733b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 Tier-1,HD189733b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 Tier-1,HD189733b,CH4,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
 Tier-1,HD189733b,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
+Tier-1,HD189733b,CH4,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+Tier-1,HD189733b,CH4,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+Tier-1,HD189733b,CH4,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+Tier-1,HD189733b,CH4,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+Tier-1,HD189733b,CH4,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+Tier-1,HD189733b,CH4,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,0.0,0.0
 Tier-1,HD189733b,H2O,published,,,0.126,0.21,0.664,0.0,0.0
 Tier-1,HD189733b,H2O,no-optical,,,0.332,0.29,0.378,0.0,0.0
 Tier-1,HD189733b,H2O,AIRS-only,,,0.558,0.228,0.214,0.0,0.0
@@ -431,6 +749,12 @@ Tier-1,HD189733b,H2O,haze-retrained,,,0.322,0.396,0.282,0.0,0.0
 Tier-1,HD189733b,H2O,haze+deck-retrained,,,0.386,0.39,0.224,0.0,0.0
 Tier-1,HD189733b,H2O,the method,,,0.366,0.228,0.406,0.0,0.0
 Tier-1,HD189733b,H2O,"census, same haze design",,,0.366,0.228,0.406,0.0,0.0
+Tier-1,HD189733b,H2O,knn -> AIRS-only,,,0.126,0.21,0.664,0.0,0.0
+Tier-1,HD189733b,H2O,mahalanobis -> AIRS-only,,,0.126,0.21,0.664,0.0,0.0
+Tier-1,HD189733b,H2O,pca_recon -> AIRS-only,,,0.232,0.202,0.566,0.0,0.0
+Tier-1,HD189733b,H2O,margin -> AIRS-only,,,0.192,0.336,0.472,0.0,0.0
+Tier-1,HD189733b,H2O,ensemble -> AIRS-only,,,0.274,0.158,0.568,0.0,0.0
+Tier-1,HD189733b,H2O,"amplitude flag, AIRS-only elsewhere",,,0.558,0.228,0.214,0.0,0.0
 Tier-1,HD189733b,CO2,published,absent,0.863,0.056,0.162,0.782,0.0,0.0
 Tier-1,HD189733b,CO2,no-optical,absent,0.805,0.102,0.186,0.712,0.0,0.0
 Tier-1,HD189733b,CO2,AIRS-only,absent,0.618,0.274,0.216,0.51,0.0,0.0
@@ -439,6 +763,12 @@ Tier-1,HD189733b,CO2,haze-retrained,absent,0.516,0.378,0.212,0.41,0.0,0.0
 Tier-1,HD189733b,CO2,haze+deck-retrained,absent,0.44,0.448,0.224,0.328,0.0,0.0
 Tier-1,HD189733b,CO2,the method,absent,0.741,0.154,0.21,0.636,0.0,0.0
 Tier-1,HD189733b,CO2,"census, same haze design",absent,0.741,0.154,0.21,0.636,0.0,0.0
+Tier-1,HD189733b,CO2,knn -> AIRS-only,absent,0.863,0.056,0.162,0.782,0.0,0.0
+Tier-1,HD189733b,CO2,mahalanobis -> AIRS-only,absent,0.863,0.056,0.162,0.782,0.0,0.0
+Tier-1,HD189733b,CO2,pca_recon -> AIRS-only,absent,0.833,0.076,0.182,0.742,0.0,0.0
+Tier-1,HD189733b,CO2,margin -> AIRS-only,absent,0.773,0.144,0.166,0.69,0.0,0.0
+Tier-1,HD189733b,CO2,ensemble -> AIRS-only,absent,0.729,0.172,0.198,0.63,0.0,0.0
+Tier-1,HD189733b,CO2,"amplitude flag, AIRS-only elsewhere",absent,0.618,0.274,0.216,0.51,0.0,0.0
 Tier-1,HD189733b,NH3,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 Tier-1,HD189733b,NH3,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 Tier-1,HD189733b,NH3,AIRS-only,absent,0.987,0.008,0.01,0.982,0.0,0.0
@@ -447,6 +777,12 @@ Tier-1,HD189733b,NH3,haze-retrained,absent,0.998,0.0,0.004,0.996,0.0,0.0
 Tier-1,HD189733b,NH3,haze+deck-retrained,absent,0.998,0.0,0.004,0.996,0.0,0.0
 Tier-1,HD189733b,NH3,the method,absent,0.995,0.0,0.01,0.99,0.0,0.0
 Tier-1,HD189733b,NH3,"census, same haze design",absent,0.995,0.0,0.01,0.99,0.0,0.0
+Tier-1,HD189733b,NH3,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+Tier-1,HD189733b,NH3,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+Tier-1,HD189733b,NH3,pca_recon -> AIRS-only,absent,0.998,0.002,0.0,0.998,0.0,0.0
+Tier-1,HD189733b,NH3,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+Tier-1,HD189733b,NH3,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+Tier-1,HD189733b,NH3,"amplitude flag, AIRS-only elsewhere",absent,0.987,0.008,0.01,0.982,0.0,0.0
 JWST,HAT-P-26b,CH4,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HAT-P-26b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HAT-P-26b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -455,6 +791,12 @@ JWST,HAT-P-26b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HAT-P-26b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HAT-P-26b,CH4,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HAT-P-26b,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HAT-P-26b,CH4,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HAT-P-26b,CH4,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HAT-P-26b,CH4,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HAT-P-26b,CH4,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HAT-P-26b,CH4,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HAT-P-26b,CH4,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HAT-P-26b,H2O,published,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,HAT-P-26b,H2O,no-optical,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,HAT-P-26b,H2O,AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
@@ -463,6 +805,12 @@ JWST,HAT-P-26b,H2O,haze-retrained,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,HAT-P-26b,H2O,haze+deck-retrained,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,HAT-P-26b,H2O,the method,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,HAT-P-26b,H2O,"census, same haze design",present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,HAT-P-26b,H2O,knn -> AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,HAT-P-26b,H2O,mahalanobis -> AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,HAT-P-26b,H2O,pca_recon -> AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,HAT-P-26b,H2O,margin -> AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,HAT-P-26b,H2O,ensemble -> AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,HAT-P-26b,H2O,"amplitude flag, AIRS-only elsewhere",present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,HAT-P-26b,CO2,published,present,0.5,0.0,1.0,0.0,0.0,0.0
 JWST,HAT-P-26b,CO2,no-optical,present,1.0,1.0,0.0,0.0,0.0,0.0
 JWST,HAT-P-26b,CO2,AIRS-only,present,1.0,1.0,0.0,0.0,0.0,0.0
@@ -471,6 +819,12 @@ JWST,HAT-P-26b,CO2,haze-retrained,present,1.0,1.0,0.0,0.0,0.0,0.0
 JWST,HAT-P-26b,CO2,haze+deck-retrained,present,1.0,1.0,0.0,0.0,0.0,0.0
 JWST,HAT-P-26b,CO2,the method,present,0.5,0.0,1.0,0.0,0.0,0.0
 JWST,HAT-P-26b,CO2,"census, same haze design",present,1.0,1.0,0.0,0.0,0.0,0.0
+JWST,HAT-P-26b,CO2,knn -> AIRS-only,present,0.5,0.0,1.0,0.0,0.0,0.0
+JWST,HAT-P-26b,CO2,mahalanobis -> AIRS-only,present,0.5,0.0,1.0,0.0,0.0,0.0
+JWST,HAT-P-26b,CO2,pca_recon -> AIRS-only,present,0.5,0.0,1.0,0.0,0.0,0.0
+JWST,HAT-P-26b,CO2,margin -> AIRS-only,present,1.0,1.0,0.0,0.0,0.0,0.0
+JWST,HAT-P-26b,CO2,ensemble -> AIRS-only,present,1.0,1.0,0.0,0.0,0.0,0.0
+JWST,HAT-P-26b,CO2,"amplitude flag, AIRS-only elsewhere",present,1.0,1.0,0.0,0.0,0.0,0.0
 JWST,HAT-P-26b,NH3,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HAT-P-26b,NH3,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HAT-P-26b,NH3,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -479,6 +833,12 @@ JWST,HAT-P-26b,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HAT-P-26b,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HAT-P-26b,NH3,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HAT-P-26b,NH3,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HAT-P-26b,NH3,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HAT-P-26b,NH3,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HAT-P-26b,NH3,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HAT-P-26b,NH3,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HAT-P-26b,NH3,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HAT-P-26b,NH3,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,0.0,0.0
 Tier-1,HAT-P-26b,CH4,published,absent,0.999,0.0,0.002,0.998,0.094,0.0
 Tier-1,HAT-P-26b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.094,0.0
 Tier-1,HAT-P-26b,CH4,AIRS-only,absent,0.995,0.0,0.01,0.99,0.094,0.0
@@ -487,6 +847,12 @@ Tier-1,HAT-P-26b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,0.094,0.0
 Tier-1,HAT-P-26b,CH4,haze+deck-retrained,absent,0.999,0.0,0.002,0.998,0.094,0.0
 Tier-1,HAT-P-26b,CH4,the method,absent,0.997,0.0,0.006,0.994,0.094,0.0
 Tier-1,HAT-P-26b,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.094,0.0
+Tier-1,HAT-P-26b,CH4,knn -> AIRS-only,absent,0.996,0.0,0.008,0.992,0.094,0.0
+Tier-1,HAT-P-26b,CH4,mahalanobis -> AIRS-only,absent,0.997,0.0,0.006,0.994,0.094,0.0
+Tier-1,HAT-P-26b,CH4,pca_recon -> AIRS-only,absent,0.998,0.0,0.004,0.996,0.094,0.0
+Tier-1,HAT-P-26b,CH4,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.094,0.0
+Tier-1,HAT-P-26b,CH4,ensemble -> AIRS-only,absent,0.999,0.0,0.002,0.998,0.094,0.0
+Tier-1,HAT-P-26b,CH4,"amplitude flag, AIRS-only elsewhere",absent,0.996,0.0,0.008,0.992,0.094,0.0
 Tier-1,HAT-P-26b,H2O,published,present,0.017,0.006,0.022,0.972,0.094,0.0
 Tier-1,HAT-P-26b,H2O,no-optical,present,0.026,0.01,0.032,0.958,0.094,0.0
 Tier-1,HAT-P-26b,H2O,AIRS-only,present,0.034,0.008,0.052,0.94,0.094,0.0
@@ -495,6 +861,12 @@ Tier-1,HAT-P-26b,H2O,haze-retrained,present,0.021,0.01,0.022,0.968,0.094,0.0
 Tier-1,HAT-P-26b,H2O,haze+deck-retrained,present,0.031,0.012,0.038,0.95,0.094,0.0
 Tier-1,HAT-P-26b,H2O,the method,present,0.032,0.01,0.044,0.946,0.094,0.0
 Tier-1,HAT-P-26b,H2O,"census, same haze design",present,0.021,0.01,0.022,0.968,0.094,0.0
+Tier-1,HAT-P-26b,H2O,knn -> AIRS-only,present,0.033,0.008,0.05,0.942,0.094,0.0
+Tier-1,HAT-P-26b,H2O,mahalanobis -> AIRS-only,present,0.031,0.01,0.042,0.948,0.094,0.0
+Tier-1,HAT-P-26b,H2O,pca_recon -> AIRS-only,present,0.022,0.01,0.024,0.966,0.094,0.0
+Tier-1,HAT-P-26b,H2O,margin -> AIRS-only,present,0.015,0.004,0.022,0.974,0.094,0.0
+Tier-1,HAT-P-26b,H2O,ensemble -> AIRS-only,present,0.017,0.006,0.022,0.972,0.094,0.0
+Tier-1,HAT-P-26b,H2O,"amplitude flag, AIRS-only elsewhere",present,0.033,0.01,0.046,0.944,0.094,0.0
 Tier-1,HAT-P-26b,CO2,published,present,0.046,0.01,0.072,0.918,0.094,0.0
 Tier-1,HAT-P-26b,CO2,no-optical,present,0.063,0.014,0.098,0.888,0.094,0.0
 Tier-1,HAT-P-26b,CO2,AIRS-only,present,0.115,0.048,0.134,0.818,0.094,0.0
@@ -503,6 +875,12 @@ Tier-1,HAT-P-26b,CO2,haze-retrained,present,0.089,0.038,0.102,0.86,0.094,0.0
 Tier-1,HAT-P-26b,CO2,haze+deck-retrained,present,0.12,0.048,0.144,0.808,0.094,0.0
 Tier-1,HAT-P-26b,CO2,the method,present,0.084,0.028,0.112,0.86,0.094,0.0
 Tier-1,HAT-P-26b,CO2,"census, same haze design",present,0.089,0.038,0.102,0.86,0.094,0.0
+Tier-1,HAT-P-26b,CO2,knn -> AIRS-only,present,0.104,0.038,0.132,0.83,0.094,0.0
+Tier-1,HAT-P-26b,CO2,mahalanobis -> AIRS-only,present,0.086,0.028,0.116,0.856,0.094,0.0
+Tier-1,HAT-P-26b,CO2,pca_recon -> AIRS-only,present,0.059,0.016,0.086,0.898,0.094,0.0
+Tier-1,HAT-P-26b,CO2,margin -> AIRS-only,present,0.057,0.024,0.066,0.91,0.094,0.0
+Tier-1,HAT-P-26b,CO2,ensemble -> AIRS-only,present,0.073,0.028,0.09,0.882,0.094,0.0
+Tier-1,HAT-P-26b,CO2,"amplitude flag, AIRS-only elsewhere",present,0.116,0.048,0.136,0.816,0.094,0.0
 Tier-1,HAT-P-26b,NH3,published,absent,0.988,0.002,0.02,0.978,0.094,0.0
 Tier-1,HAT-P-26b,NH3,no-optical,absent,0.977,0.008,0.03,0.962,0.094,0.0
 Tier-1,HAT-P-26b,NH3,AIRS-only,absent,0.882,0.07,0.096,0.834,0.094,0.0
@@ -511,6 +889,12 @@ Tier-1,HAT-P-26b,NH3,haze-retrained,absent,0.954,0.012,0.068,0.92,0.094,0.0
 Tier-1,HAT-P-26b,NH3,haze+deck-retrained,absent,0.963,0.01,0.054,0.936,0.094,0.0
 Tier-1,HAT-P-26b,NH3,the method,absent,0.954,0.004,0.084,0.912,0.094,0.0
 Tier-1,HAT-P-26b,NH3,"census, same haze design",absent,0.954,0.012,0.068,0.92,0.094,0.0
+Tier-1,HAT-P-26b,NH3,knn -> AIRS-only,absent,0.893,0.06,0.094,0.846,0.094,0.0
+Tier-1,HAT-P-26b,NH3,mahalanobis -> AIRS-only,absent,0.923,0.046,0.062,0.892,0.094,0.0
+Tier-1,HAT-P-26b,NH3,pca_recon -> AIRS-only,absent,0.973,0.014,0.026,0.96,0.094,0.0
+Tier-1,HAT-P-26b,NH3,margin -> AIRS-only,absent,0.987,0.008,0.01,0.982,0.094,0.0
+Tier-1,HAT-P-26b,NH3,ensemble -> AIRS-only,absent,0.961,0.024,0.03,0.946,0.094,0.0
+Tier-1,HAT-P-26b,NH3,"amplitude flag, AIRS-only elsewhere",absent,0.892,0.064,0.088,0.848,0.094,0.0
 JWST,GJ3470b,CH4,published,,,0.0,0.0,1.0,1.0,0.0
 JWST,GJ3470b,CH4,no-optical,,,0.0,0.0,1.0,1.0,0.0
 JWST,GJ3470b,CH4,AIRS-only,,,0.0,0.0,1.0,1.0,0.0
@@ -519,6 +903,12 @@ JWST,GJ3470b,CH4,haze-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,GJ3470b,CH4,haze+deck-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,GJ3470b,CH4,the method,,,0.0,0.0,1.0,1.0,0.0
 JWST,GJ3470b,CH4,"census, same haze design",,,0.0,0.0,1.0,1.0,0.0
+JWST,GJ3470b,CH4,knn -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,GJ3470b,CH4,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,GJ3470b,CH4,pca_recon -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,GJ3470b,CH4,margin -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,GJ3470b,CH4,ensemble -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,GJ3470b,CH4,"amplitude flag, AIRS-only elsewhere",,,0.0,0.0,1.0,1.0,0.0
 JWST,GJ3470b,H2O,published,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,GJ3470b,H2O,no-optical,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,GJ3470b,H2O,AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
@@ -527,6 +917,12 @@ JWST,GJ3470b,H2O,haze-retrained,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,GJ3470b,H2O,haze+deck-retrained,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,GJ3470b,H2O,the method,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,GJ3470b,H2O,"census, same haze design",present,0.0,0.0,0.0,1.0,1.0,0.0
+JWST,GJ3470b,H2O,knn -> AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
+JWST,GJ3470b,H2O,mahalanobis -> AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
+JWST,GJ3470b,H2O,pca_recon -> AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
+JWST,GJ3470b,H2O,margin -> AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
+JWST,GJ3470b,H2O,ensemble -> AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
+JWST,GJ3470b,H2O,"amplitude flag, AIRS-only elsewhere",present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,GJ3470b,CO2,published,present,0.5,0.0,1.0,0.0,1.0,0.0
 JWST,GJ3470b,CO2,no-optical,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,GJ3470b,CO2,AIRS-only,present,1.0,1.0,0.0,0.0,1.0,0.0
@@ -535,6 +931,12 @@ JWST,GJ3470b,CO2,haze-retrained,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,GJ3470b,CO2,haze+deck-retrained,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,GJ3470b,CO2,the method,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,GJ3470b,CO2,"census, same haze design",present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,GJ3470b,CO2,knn -> AIRS-only,present,0.5,0.0,1.0,0.0,1.0,0.0
+JWST,GJ3470b,CO2,mahalanobis -> AIRS-only,present,0.5,0.0,1.0,0.0,1.0,0.0
+JWST,GJ3470b,CO2,pca_recon -> AIRS-only,present,0.5,0.0,1.0,0.0,1.0,0.0
+JWST,GJ3470b,CO2,margin -> AIRS-only,present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,GJ3470b,CO2,ensemble -> AIRS-only,present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,GJ3470b,CO2,"amplitude flag, AIRS-only elsewhere",present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,GJ3470b,NH3,published,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,GJ3470b,NH3,no-optical,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,GJ3470b,NH3,AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
@@ -543,6 +945,12 @@ JWST,GJ3470b,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,GJ3470b,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,GJ3470b,NH3,the method,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,GJ3470b,NH3,"census, same haze design",absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,GJ3470b,NH3,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,GJ3470b,NH3,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,GJ3470b,NH3,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,GJ3470b,NH3,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,GJ3470b,NH3,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,GJ3470b,NH3,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,1.0,0.0
 Tier-1,GJ3470b,CH4,published,,,0.0,0.002,0.998,0.17,0.0
 Tier-1,GJ3470b,CH4,no-optical,,,0.0,0.002,0.998,0.17,0.0
 Tier-1,GJ3470b,CH4,AIRS-only,,,0.002,0.01,0.988,0.17,0.0
@@ -551,6 +959,12 @@ Tier-1,GJ3470b,CH4,haze-retrained,,,0.0,0.0,1.0,0.17,0.0
 Tier-1,GJ3470b,CH4,haze+deck-retrained,,,0.0,0.004,0.996,0.17,0.0
 Tier-1,GJ3470b,CH4,the method,,,0.002,0.004,0.994,0.17,0.0
 Tier-1,GJ3470b,CH4,"census, same haze design",,,0.0,0.0,1.0,0.17,0.0
+Tier-1,GJ3470b,CH4,knn -> AIRS-only,,,0.002,0.01,0.988,0.17,0.0
+Tier-1,GJ3470b,CH4,mahalanobis -> AIRS-only,,,0.002,0.006,0.992,0.17,0.0
+Tier-1,GJ3470b,CH4,pca_recon -> AIRS-only,,,0.0,0.008,0.992,0.17,0.0
+Tier-1,GJ3470b,CH4,margin -> AIRS-only,,,0.0,0.002,0.998,0.17,0.0
+Tier-1,GJ3470b,CH4,ensemble -> AIRS-only,,,0.0,0.0,1.0,0.17,0.0
+Tier-1,GJ3470b,CH4,"amplitude flag, AIRS-only elsewhere",,,0.002,0.008,0.99,0.17,0.0
 Tier-1,GJ3470b,H2O,published,present,0.032,0.018,0.028,0.954,0.17,0.0
 Tier-1,GJ3470b,H2O,no-optical,present,0.049,0.024,0.05,0.926,0.17,0.0
 Tier-1,GJ3470b,H2O,AIRS-only,present,0.082,0.04,0.084,0.876,0.17,0.0
@@ -559,6 +973,12 @@ Tier-1,GJ3470b,H2O,haze-retrained,present,0.055,0.02,0.07,0.91,0.17,0.0
 Tier-1,GJ3470b,H2O,haze+deck-retrained,present,0.059,0.022,0.074,0.904,0.17,0.0
 Tier-1,GJ3470b,H2O,the method,present,0.059,0.026,0.066,0.908,0.17,0.0
 Tier-1,GJ3470b,H2O,"census, same haze design",present,0.055,0.02,0.07,0.91,0.17,0.0
+Tier-1,GJ3470b,H2O,knn -> AIRS-only,present,0.075,0.034,0.082,0.884,0.17,0.0
+Tier-1,GJ3470b,H2O,mahalanobis -> AIRS-only,present,0.076,0.034,0.084,0.882,0.17,0.0
+Tier-1,GJ3470b,H2O,pca_recon -> AIRS-only,present,0.049,0.028,0.042,0.93,0.17,0.0
+Tier-1,GJ3470b,H2O,margin -> AIRS-only,present,0.036,0.018,0.036,0.946,0.17,0.0
+Tier-1,GJ3470b,H2O,ensemble -> AIRS-only,present,0.048,0.036,0.024,0.94,0.17,0.0
+Tier-1,GJ3470b,H2O,"amplitude flag, AIRS-only elsewhere",present,0.083,0.042,0.082,0.876,0.17,0.0
 Tier-1,GJ3470b,CO2,published,present,0.02,0.0,0.04,0.96,0.17,0.0
 Tier-1,GJ3470b,CO2,no-optical,present,0.032,0.004,0.056,0.94,0.17,0.0
 Tier-1,GJ3470b,CO2,AIRS-only,present,0.066,0.024,0.084,0.892,0.17,0.0
@@ -567,6 +987,12 @@ Tier-1,GJ3470b,CO2,haze-retrained,present,0.057,0.02,0.074,0.906,0.17,0.0
 Tier-1,GJ3470b,CO2,haze+deck-retrained,present,0.061,0.022,0.078,0.9,0.17,0.0
 Tier-1,GJ3470b,CO2,the method,present,0.044,0.006,0.076,0.918,0.17,0.0
 Tier-1,GJ3470b,CO2,"census, same haze design",present,0.057,0.02,0.074,0.906,0.17,0.0
+Tier-1,GJ3470b,CO2,knn -> AIRS-only,present,0.061,0.02,0.082,0.898,0.17,0.0
+Tier-1,GJ3470b,CO2,mahalanobis -> AIRS-only,present,0.054,0.016,0.076,0.908,0.17,0.0
+Tier-1,GJ3470b,CO2,pca_recon -> AIRS-only,present,0.04,0.012,0.056,0.932,0.17,0.0
+Tier-1,GJ3470b,CO2,margin -> AIRS-only,present,0.031,0.012,0.038,0.95,0.17,0.0
+Tier-1,GJ3470b,CO2,ensemble -> AIRS-only,present,0.032,0.008,0.048,0.944,0.17,0.0
+Tier-1,GJ3470b,CO2,"amplitude flag, AIRS-only elsewhere",present,0.061,0.02,0.082,0.898,0.17,0.0
 Tier-1,GJ3470b,NH3,published,absent,0.987,0.006,0.014,0.98,0.17,0.0
 Tier-1,GJ3470b,NH3,no-optical,absent,0.982,0.008,0.02,0.972,0.17,0.0
 Tier-1,GJ3470b,NH3,AIRS-only,absent,0.919,0.044,0.074,0.882,0.17,0.0
@@ -575,6 +1001,12 @@ Tier-1,GJ3470b,NH3,haze-retrained,absent,0.964,0.016,0.04,0.944,0.17,0.0
 Tier-1,GJ3470b,NH3,haze+deck-retrained,absent,0.971,0.008,0.042,0.95,0.17,0.0
 Tier-1,GJ3470b,NH3,the method,absent,0.958,0.02,0.044,0.936,0.17,0.0
 Tier-1,GJ3470b,NH3,"census, same haze design",absent,0.964,0.016,0.04,0.944,0.17,0.0
+Tier-1,GJ3470b,NH3,knn -> AIRS-only,absent,0.919,0.044,0.074,0.882,0.17,0.0
+Tier-1,GJ3470b,NH3,mahalanobis -> AIRS-only,absent,0.939,0.034,0.054,0.912,0.17,0.0
+Tier-1,GJ3470b,NH3,pca_recon -> AIRS-only,absent,0.959,0.026,0.03,0.944,0.17,0.0
+Tier-1,GJ3470b,NH3,margin -> AIRS-only,absent,0.988,0.006,0.012,0.982,0.17,0.0
+Tier-1,GJ3470b,NH3,ensemble -> AIRS-only,absent,0.971,0.012,0.034,0.954,0.17,0.0
+Tier-1,GJ3470b,NH3,"amplitude flag, AIRS-only elsewhere",absent,0.924,0.044,0.064,0.892,0.17,0.0
 JWST,WASP-166b,CH4,published,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-166b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-166b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
@@ -583,6 +1015,12 @@ JWST,WASP-166b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-166b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-166b,CH4,the method,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-166b,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-166b,CH4,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-166b,CH4,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-166b,CH4,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-166b,CH4,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-166b,CH4,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-166b,CH4,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-166b,H2O,published,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-166b,H2O,no-optical,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-166b,H2O,AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
@@ -591,6 +1029,12 @@ JWST,WASP-166b,H2O,haze-retrained,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-166b,H2O,haze+deck-retrained,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-166b,H2O,the method,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-166b,H2O,"census, same haze design",present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,WASP-166b,H2O,knn -> AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-166b,H2O,mahalanobis -> AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-166b,H2O,pca_recon -> AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-166b,H2O,margin -> AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-166b,H2O,ensemble -> AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-166b,H2O,"amplitude flag, AIRS-only elsewhere",present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-166b,CO2,published,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-166b,CO2,no-optical,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-166b,CO2,AIRS-only,present,1.0,1.0,0.0,0.0,1.0,0.0
@@ -599,6 +1043,12 @@ JWST,WASP-166b,CO2,haze-retrained,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-166b,CO2,haze+deck-retrained,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-166b,CO2,the method,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-166b,CO2,"census, same haze design",present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,WASP-166b,CO2,knn -> AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-166b,CO2,mahalanobis -> AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-166b,CO2,pca_recon -> AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-166b,CO2,margin -> AIRS-only,present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,WASP-166b,CO2,ensemble -> AIRS-only,present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,WASP-166b,CO2,"amplitude flag, AIRS-only elsewhere",present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-166b,NH3,published,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-166b,NH3,no-optical,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-166b,NH3,AIRS-only,,,0.0,0.0,1.0,1.0,0.0
@@ -607,6 +1057,12 @@ JWST,WASP-166b,NH3,haze-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-166b,NH3,haze+deck-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-166b,NH3,the method,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-166b,NH3,"census, same haze design",,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-166b,NH3,knn -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-166b,NH3,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-166b,NH3,pca_recon -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-166b,NH3,margin -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-166b,NH3,ensemble -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-166b,NH3,"amplitude flag, AIRS-only elsewhere",,,0.0,0.0,1.0,1.0,0.0
 Tier-1,WASP-166b,CH4,published,absent,1.0,0.0,0.0,1.0,0.46,0.0
 Tier-1,WASP-166b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.46,0.0
 Tier-1,WASP-166b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,0.46,0.0
@@ -615,6 +1071,12 @@ Tier-1,WASP-166b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,0.46,0.0
 Tier-1,WASP-166b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.46,0.0
 Tier-1,WASP-166b,CH4,the method,absent,1.0,0.0,0.0,1.0,0.46,0.0
 Tier-1,WASP-166b,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.46,0.0
+Tier-1,WASP-166b,CH4,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.46,0.0
+Tier-1,WASP-166b,CH4,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.46,0.0
+Tier-1,WASP-166b,CH4,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.46,0.0
+Tier-1,WASP-166b,CH4,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.46,0.0
+Tier-1,WASP-166b,CH4,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.46,0.0
+Tier-1,WASP-166b,CH4,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,0.46,0.0
 Tier-1,WASP-166b,H2O,published,present,0.073,0.034,0.078,0.888,0.46,0.0
 Tier-1,WASP-166b,H2O,no-optical,present,0.354,0.26,0.188,0.552,0.46,0.0
 Tier-1,WASP-166b,H2O,AIRS-only,present,0.15,0.09,0.12,0.79,0.46,0.0
@@ -623,6 +1085,12 @@ Tier-1,WASP-166b,H2O,haze-retrained,present,0.283,0.178,0.21,0.612,0.46,0.0
 Tier-1,WASP-166b,H2O,haze+deck-retrained,present,0.328,0.222,0.212,0.566,0.46,0.0
 Tier-1,WASP-166b,H2O,the method,present,0.182,0.1,0.164,0.736,0.46,0.0
 Tier-1,WASP-166b,H2O,"census, same haze design",present,0.283,0.178,0.21,0.612,0.46,0.0
+Tier-1,WASP-166b,H2O,knn -> AIRS-only,present,0.076,0.034,0.084,0.882,0.46,0.0
+Tier-1,WASP-166b,H2O,mahalanobis -> AIRS-only,present,0.084,0.042,0.084,0.874,0.46,0.0
+Tier-1,WASP-166b,H2O,pca_recon -> AIRS-only,present,0.081,0.04,0.082,0.878,0.46,0.0
+Tier-1,WASP-166b,H2O,margin -> AIRS-only,present,0.093,0.052,0.082,0.866,0.46,0.0
+Tier-1,WASP-166b,H2O,ensemble -> AIRS-only,present,0.091,0.05,0.082,0.868,0.46,0.0
+Tier-1,WASP-166b,H2O,"amplitude flag, AIRS-only elsewhere",present,0.21,0.134,0.152,0.714,0.46,0.0
 Tier-1,WASP-166b,CO2,published,present,0.079,0.036,0.086,0.878,0.46,0.0
 Tier-1,WASP-166b,CO2,no-optical,present,0.204,0.122,0.164,0.714,0.46,0.0
 Tier-1,WASP-166b,CO2,AIRS-only,present,0.337,0.228,0.218,0.554,0.46,0.0
@@ -631,6 +1099,12 @@ Tier-1,WASP-166b,CO2,haze-retrained,present,0.303,0.198,0.21,0.592,0.46,0.0
 Tier-1,WASP-166b,CO2,haze+deck-retrained,present,0.34,0.234,0.212,0.554,0.46,0.0
 Tier-1,WASP-166b,CO2,the method,present,0.253,0.154,0.198,0.648,0.46,0.0
 Tier-1,WASP-166b,CO2,"census, same haze design",present,0.303,0.198,0.21,0.592,0.46,0.0
+Tier-1,WASP-166b,CO2,knn -> AIRS-only,present,0.099,0.046,0.106,0.848,0.46,0.0
+Tier-1,WASP-166b,CO2,mahalanobis -> AIRS-only,present,0.137,0.08,0.114,0.806,0.46,0.0
+Tier-1,WASP-166b,CO2,pca_recon -> AIRS-only,present,0.116,0.064,0.104,0.832,0.46,0.0
+Tier-1,WASP-166b,CO2,margin -> AIRS-only,present,0.14,0.09,0.1,0.81,0.46,0.0
+Tier-1,WASP-166b,CO2,ensemble -> AIRS-only,present,0.206,0.132,0.148,0.72,0.46,0.0
+Tier-1,WASP-166b,CO2,"amplitude flag, AIRS-only elsewhere",present,0.32,0.212,0.216,0.572,0.46,0.0
 Tier-1,WASP-166b,NH3,published,,,0.0,0.0,1.0,0.46,0.0
 Tier-1,WASP-166b,NH3,no-optical,,,0.004,0.002,0.994,0.46,0.0
 Tier-1,WASP-166b,NH3,AIRS-only,,,0.054,0.09,0.856,0.46,0.0
@@ -639,6 +1113,12 @@ Tier-1,WASP-166b,NH3,haze-retrained,,,0.008,0.01,0.982,0.46,0.0
 Tier-1,WASP-166b,NH3,haze+deck-retrained,,,0.006,0.018,0.976,0.46,0.0
 Tier-1,WASP-166b,NH3,the method,,,0.014,0.044,0.942,0.46,0.0
 Tier-1,WASP-166b,NH3,"census, same haze design",,,0.008,0.01,0.982,0.46,0.0
+Tier-1,WASP-166b,NH3,knn -> AIRS-only,,,0.01,0.024,0.966,0.46,0.0
+Tier-1,WASP-166b,NH3,mahalanobis -> AIRS-only,,,0.018,0.026,0.956,0.46,0.0
+Tier-1,WASP-166b,NH3,pca_recon -> AIRS-only,,,0.006,0.012,0.982,0.46,0.0
+Tier-1,WASP-166b,NH3,margin -> AIRS-only,,,0.0,0.0,1.0,0.46,0.0
+Tier-1,WASP-166b,NH3,ensemble -> AIRS-only,,,0.012,0.012,0.976,0.46,0.0
+Tier-1,WASP-166b,NH3,"amplitude flag, AIRS-only elsewhere",,,0.028,0.062,0.91,0.46,0.0
 JWST,TOI-1231b,CH4,published,present,0.5,0.0,1.0,0.0,1.0,0.0
 JWST,TOI-1231b,CH4,no-optical,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,TOI-1231b,CH4,AIRS-only,present,1.0,1.0,0.0,0.0,1.0,0.0
@@ -647,6 +1127,12 @@ JWST,TOI-1231b,CH4,haze-retrained,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,TOI-1231b,CH4,haze+deck-retrained,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,TOI-1231b,CH4,the method,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,TOI-1231b,CH4,"census, same haze design",present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,TOI-1231b,CH4,knn -> AIRS-only,present,0.5,0.0,1.0,0.0,1.0,0.0
+JWST,TOI-1231b,CH4,mahalanobis -> AIRS-only,present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,TOI-1231b,CH4,pca_recon -> AIRS-only,present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,TOI-1231b,CH4,margin -> AIRS-only,present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,TOI-1231b,CH4,ensemble -> AIRS-only,present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,TOI-1231b,CH4,"amplitude flag, AIRS-only elsewhere",present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,TOI-1231b,H2O,published,,,0.0,0.0,1.0,1.0,0.0
 JWST,TOI-1231b,H2O,no-optical,,,0.0,0.0,1.0,1.0,0.0
 JWST,TOI-1231b,H2O,AIRS-only,,,0.0,0.0,1.0,1.0,0.0
@@ -655,6 +1141,12 @@ JWST,TOI-1231b,H2O,haze-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,TOI-1231b,H2O,haze+deck-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,TOI-1231b,H2O,the method,,,0.0,0.0,1.0,1.0,0.0
 JWST,TOI-1231b,H2O,"census, same haze design",,,0.0,0.0,1.0,1.0,0.0
+JWST,TOI-1231b,H2O,knn -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,TOI-1231b,H2O,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,TOI-1231b,H2O,pca_recon -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,TOI-1231b,H2O,margin -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,TOI-1231b,H2O,ensemble -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,TOI-1231b,H2O,"amplitude flag, AIRS-only elsewhere",,,0.0,0.0,1.0,1.0,0.0
 JWST,TOI-1231b,CO2,published,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,TOI-1231b,CO2,no-optical,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,TOI-1231b,CO2,AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
@@ -663,6 +1155,12 @@ JWST,TOI-1231b,CO2,haze-retrained,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,TOI-1231b,CO2,haze+deck-retrained,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,TOI-1231b,CO2,the method,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,TOI-1231b,CO2,"census, same haze design",present,0.0,0.0,0.0,1.0,1.0,0.0
+JWST,TOI-1231b,CO2,knn -> AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
+JWST,TOI-1231b,CO2,mahalanobis -> AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
+JWST,TOI-1231b,CO2,pca_recon -> AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
+JWST,TOI-1231b,CO2,margin -> AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
+JWST,TOI-1231b,CO2,ensemble -> AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
+JWST,TOI-1231b,CO2,"amplitude flag, AIRS-only elsewhere",present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,TOI-1231b,NH3,published,,,0.0,0.0,1.0,1.0,0.0
 JWST,TOI-1231b,NH3,no-optical,,,0.0,0.0,1.0,1.0,0.0
 JWST,TOI-1231b,NH3,AIRS-only,,,0.0,0.0,1.0,1.0,0.0
@@ -671,6 +1169,12 @@ JWST,TOI-1231b,NH3,haze-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,TOI-1231b,NH3,haze+deck-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,TOI-1231b,NH3,the method,,,0.0,0.0,1.0,1.0,0.0
 JWST,TOI-1231b,NH3,"census, same haze design",,,0.0,0.0,1.0,1.0,0.0
+JWST,TOI-1231b,NH3,knn -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,TOI-1231b,NH3,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,TOI-1231b,NH3,pca_recon -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,TOI-1231b,NH3,margin -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,TOI-1231b,NH3,ensemble -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,TOI-1231b,NH3,"amplitude flag, AIRS-only elsewhere",,,0.0,0.0,1.0,1.0,0.0
 Tier-1,TOI-1231b,CH4,published,present,0.058,0.006,0.104,0.89,0.31,0.0
 Tier-1,TOI-1231b,CH4,no-optical,present,0.029,0.002,0.054,0.944,0.31,0.0
 Tier-1,TOI-1231b,CH4,AIRS-only,present,0.352,0.258,0.188,0.554,0.31,0.0
@@ -679,6 +1183,12 @@ Tier-1,TOI-1231b,CH4,haze-retrained,present,0.1,0.036,0.128,0.836,0.31,0.0
 Tier-1,TOI-1231b,CH4,haze+deck-retrained,present,0.164,0.07,0.188,0.742,0.31,0.0
 Tier-1,TOI-1231b,CH4,the method,present,0.223,0.136,0.174,0.69,0.31,0.0
 Tier-1,TOI-1231b,CH4,"census, same haze design",present,0.283,0.184,0.198,0.618,0.31,0.0
+Tier-1,TOI-1231b,CH4,knn -> AIRS-only,present,0.341,0.248,0.186,0.566,0.31,0.0
+Tier-1,TOI-1231b,CH4,mahalanobis -> AIRS-only,present,0.344,0.25,0.188,0.562,0.31,0.0
+Tier-1,TOI-1231b,CH4,pca_recon -> AIRS-only,present,0.297,0.212,0.17,0.618,0.31,0.0
+Tier-1,TOI-1231b,CH4,margin -> AIRS-only,present,0.083,0.024,0.118,0.858,0.31,0.0
+Tier-1,TOI-1231b,CH4,ensemble -> AIRS-only,present,0.167,0.128,0.078,0.794,0.31,0.0
+Tier-1,TOI-1231b,CH4,"amplitude flag, AIRS-only elsewhere",present,0.27,0.188,0.164,0.648,0.31,0.0
 Tier-1,TOI-1231b,H2O,published,,,0.008,0.02,0.972,0.31,0.0
 Tier-1,TOI-1231b,H2O,no-optical,,,0.01,0.036,0.954,0.31,0.0
 Tier-1,TOI-1231b,H2O,AIRS-only,,,0.008,0.032,0.96,0.31,0.0
@@ -687,6 +1197,12 @@ Tier-1,TOI-1231b,H2O,haze-retrained,,,0.012,0.034,0.954,0.31,0.0
 Tier-1,TOI-1231b,H2O,haze+deck-retrained,,,0.01,0.028,0.962,0.31,0.0
 Tier-1,TOI-1231b,H2O,the method,,,0.014,0.03,0.956,0.31,0.0
 Tier-1,TOI-1231b,H2O,"census, same haze design",,,0.012,0.03,0.958,0.31,0.0
+Tier-1,TOI-1231b,H2O,knn -> AIRS-only,,,0.008,0.032,0.96,0.31,0.0
+Tier-1,TOI-1231b,H2O,mahalanobis -> AIRS-only,,,0.008,0.032,0.96,0.31,0.0
+Tier-1,TOI-1231b,H2O,pca_recon -> AIRS-only,,,0.008,0.03,0.962,0.31,0.0
+Tier-1,TOI-1231b,H2O,margin -> AIRS-only,,,0.006,0.02,0.974,0.31,0.0
+Tier-1,TOI-1231b,H2O,ensemble -> AIRS-only,,,0.008,0.012,0.98,0.31,0.0
+Tier-1,TOI-1231b,H2O,"amplitude flag, AIRS-only elsewhere",,,0.012,0.038,0.95,0.31,0.0
 Tier-1,TOI-1231b,CO2,published,present,0.0,0.0,0.0,1.0,0.31,0.0
 Tier-1,TOI-1231b,CO2,no-optical,present,0.0,0.0,0.0,1.0,0.31,0.0
 Tier-1,TOI-1231b,CO2,AIRS-only,present,0.001,0.0,0.002,0.998,0.31,0.0
@@ -695,6 +1211,12 @@ Tier-1,TOI-1231b,CO2,haze-retrained,present,0.0,0.0,0.0,1.0,0.31,0.0
 Tier-1,TOI-1231b,CO2,haze+deck-retrained,present,0.0,0.0,0.0,1.0,0.31,0.0
 Tier-1,TOI-1231b,CO2,the method,present,0.0,0.0,0.0,1.0,0.31,0.0
 Tier-1,TOI-1231b,CO2,"census, same haze design",present,0.001,0.0,0.002,0.998,0.31,0.0
+Tier-1,TOI-1231b,CO2,knn -> AIRS-only,present,0.001,0.0,0.002,0.998,0.31,0.0
+Tier-1,TOI-1231b,CO2,mahalanobis -> AIRS-only,present,0.001,0.0,0.002,0.998,0.31,0.0
+Tier-1,TOI-1231b,CO2,pca_recon -> AIRS-only,present,0.001,0.0,0.002,0.998,0.31,0.0
+Tier-1,TOI-1231b,CO2,margin -> AIRS-only,present,0.0,0.0,0.0,1.0,0.31,0.0
+Tier-1,TOI-1231b,CO2,ensemble -> AIRS-only,present,0.0,0.0,0.0,1.0,0.31,0.0
+Tier-1,TOI-1231b,CO2,"amplitude flag, AIRS-only elsewhere",present,0.0,0.0,0.0,1.0,0.31,0.0
 Tier-1,TOI-1231b,NH3,published,,,0.0,0.004,0.996,0.31,0.0
 Tier-1,TOI-1231b,NH3,no-optical,,,0.002,0.016,0.982,0.31,0.0
 Tier-1,TOI-1231b,NH3,AIRS-only,,,0.03,0.052,0.918,0.31,0.0
@@ -703,6 +1225,12 @@ Tier-1,TOI-1231b,NH3,haze-retrained,,,0.002,0.016,0.982,0.31,0.0
 Tier-1,TOI-1231b,NH3,haze+deck-retrained,,,0.004,0.008,0.988,0.31,0.0
 Tier-1,TOI-1231b,NH3,the method,,,0.004,0.028,0.968,0.31,0.0
 Tier-1,TOI-1231b,NH3,"census, same haze design",,,0.008,0.034,0.958,0.31,0.0
+Tier-1,TOI-1231b,NH3,knn -> AIRS-only,,,0.03,0.052,0.918,0.31,0.0
+Tier-1,TOI-1231b,NH3,mahalanobis -> AIRS-only,,,0.03,0.052,0.918,0.31,0.0
+Tier-1,TOI-1231b,NH3,pca_recon -> AIRS-only,,,0.028,0.05,0.922,0.31,0.0
+Tier-1,TOI-1231b,NH3,margin -> AIRS-only,,,0.0,0.002,0.998,0.31,0.0
+Tier-1,TOI-1231b,NH3,ensemble -> AIRS-only,,,0.004,0.008,0.988,0.31,0.0
+Tier-1,TOI-1231b,NH3,"amplitude flag, AIRS-only elsewhere",,,0.02,0.042,0.938,0.31,0.0
 JWST,K2-18b-hu,CH4,published,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-hu,CH4,no-optical,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-hu,CH4,AIRS-only,present,1.0,1.0,0.0,0.0,0.0,0.0
@@ -711,6 +1239,12 @@ JWST,K2-18b-hu,CH4,haze-retrained,present,1.0,1.0,0.0,0.0,0.0,0.0
 JWST,K2-18b-hu,CH4,haze+deck-retrained,present,0.5,0.0,1.0,0.0,0.0,0.0
 JWST,K2-18b-hu,CH4,the method,present,0.5,0.0,1.0,0.0,0.0,0.0
 JWST,K2-18b-hu,CH4,"census, same haze design",present,0.5,0.0,1.0,0.0,0.0,0.0
+JWST,K2-18b-hu,CH4,knn -> AIRS-only,present,1.0,1.0,0.0,0.0,0.0,0.0
+JWST,K2-18b-hu,CH4,mahalanobis -> AIRS-only,present,1.0,1.0,0.0,0.0,0.0,0.0
+JWST,K2-18b-hu,CH4,pca_recon -> AIRS-only,present,1.0,1.0,0.0,0.0,0.0,0.0
+JWST,K2-18b-hu,CH4,margin -> AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-hu,CH4,ensemble -> AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-hu,CH4,"amplitude flag, AIRS-only elsewhere",present,1.0,1.0,0.0,0.0,0.0,0.0
 JWST,K2-18b-hu,H2O,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-hu,H2O,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-hu,H2O,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -719,6 +1253,12 @@ JWST,K2-18b-hu,H2O,haze-retrained,absent,0.5,0.0,1.0,0.0,0.0,0.0
 JWST,K2-18b-hu,H2O,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-hu,H2O,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-hu,H2O,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-hu,H2O,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-hu,H2O,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-hu,H2O,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-hu,H2O,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-hu,H2O,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-hu,H2O,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-hu,CO2,published,,,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-hu,CO2,no-optical,,,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-hu,CO2,AIRS-only,,,0.0,0.0,1.0,0.0,0.0
@@ -727,6 +1267,12 @@ JWST,K2-18b-hu,CO2,haze-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-hu,CO2,haze+deck-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-hu,CO2,the method,,,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-hu,CO2,"census, same haze design",,,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-hu,CO2,knn -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-hu,CO2,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-hu,CO2,pca_recon -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-hu,CO2,margin -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-hu,CO2,ensemble -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-hu,CO2,"amplitude flag, AIRS-only elsewhere",,,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-hu,NH3,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-hu,NH3,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-hu,NH3,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -735,6 +1281,12 @@ JWST,K2-18b-hu,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-hu,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-hu,NH3,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,K2-18b-hu,NH3,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-hu,NH3,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-hu,NH3,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-hu,NH3,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-hu,NH3,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-hu,NH3,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,K2-18b-hu,NH3,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,0.0,0.0
 Tier-1,K2-18b-hu,CH4,published,present,0.013,0.002,0.022,0.976,0.16,0.0
 Tier-1,K2-18b-hu,CH4,no-optical,present,0.023,0.002,0.042,0.956,0.16,0.0
 Tier-1,K2-18b-hu,CH4,AIRS-only,present,0.168,0.106,0.124,0.77,0.16,0.0
@@ -743,6 +1295,12 @@ Tier-1,K2-18b-hu,CH4,haze-retrained,present,0.069,0.022,0.094,0.884,0.16,0.0
 Tier-1,K2-18b-hu,CH4,haze+deck-retrained,present,0.092,0.034,0.116,0.85,0.16,0.0
 Tier-1,K2-18b-hu,CH4,the method,present,0.121,0.062,0.118,0.82,0.16,0.0
 Tier-1,K2-18b-hu,CH4,"census, same haze design",present,0.13,0.072,0.116,0.812,0.16,0.0
+Tier-1,K2-18b-hu,CH4,knn -> AIRS-only,present,0.168,0.106,0.124,0.77,0.16,0.0
+Tier-1,K2-18b-hu,CH4,mahalanobis -> AIRS-only,present,0.165,0.104,0.122,0.774,0.16,0.0
+Tier-1,K2-18b-hu,CH4,pca_recon -> AIRS-only,present,0.149,0.09,0.118,0.792,0.16,0.0
+Tier-1,K2-18b-hu,CH4,margin -> AIRS-only,present,0.022,0.008,0.028,0.964,0.16,0.0
+Tier-1,K2-18b-hu,CH4,ensemble -> AIRS-only,present,0.06,0.042,0.036,0.922,0.16,0.0
+Tier-1,K2-18b-hu,CH4,"amplitude flag, AIRS-only elsewhere",present,0.154,0.092,0.124,0.784,0.16,0.0
 Tier-1,K2-18b-hu,H2O,published,absent,0.958,0.018,0.048,0.934,0.16,0.0
 Tier-1,K2-18b-hu,H2O,no-optical,absent,0.916,0.036,0.096,0.868,0.16,0.0
 Tier-1,K2-18b-hu,H2O,AIRS-only,absent,0.958,0.018,0.048,0.934,0.16,0.0
@@ -751,6 +1309,12 @@ Tier-1,K2-18b-hu,H2O,haze-retrained,absent,0.906,0.038,0.112,0.85,0.16,0.0
 Tier-1,K2-18b-hu,H2O,haze+deck-retrained,absent,0.91,0.038,0.104,0.858,0.16,0.0
 Tier-1,K2-18b-hu,H2O,the method,absent,0.95,0.026,0.048,0.926,0.16,0.0
 Tier-1,K2-18b-hu,H2O,"census, same haze design",absent,0.961,0.016,0.046,0.938,0.16,0.0
+Tier-1,K2-18b-hu,H2O,knn -> AIRS-only,absent,0.958,0.018,0.048,0.934,0.16,0.0
+Tier-1,K2-18b-hu,H2O,mahalanobis -> AIRS-only,absent,0.958,0.018,0.048,0.934,0.16,0.0
+Tier-1,K2-18b-hu,H2O,pca_recon -> AIRS-only,absent,0.958,0.018,0.048,0.934,0.16,0.0
+Tier-1,K2-18b-hu,H2O,margin -> AIRS-only,absent,0.963,0.014,0.046,0.94,0.16,0.0
+Tier-1,K2-18b-hu,H2O,ensemble -> AIRS-only,absent,0.96,0.018,0.044,0.938,0.16,0.0
+Tier-1,K2-18b-hu,H2O,"amplitude flag, AIRS-only elsewhere",absent,0.949,0.024,0.054,0.922,0.16,0.0
 Tier-1,K2-18b-hu,CO2,published,,,0.0,0.002,0.998,0.16,0.0
 Tier-1,K2-18b-hu,CO2,no-optical,,,0.0,0.002,0.998,0.16,0.0
 Tier-1,K2-18b-hu,CO2,AIRS-only,,,0.0,0.008,0.992,0.16,0.0
@@ -759,6 +1323,12 @@ Tier-1,K2-18b-hu,CO2,haze-retrained,,,0.0,0.004,0.996,0.16,0.0
 Tier-1,K2-18b-hu,CO2,haze+deck-retrained,,,0.0,0.004,0.996,0.16,0.0
 Tier-1,K2-18b-hu,CO2,the method,,,0.0,0.006,0.994,0.16,0.0
 Tier-1,K2-18b-hu,CO2,"census, same haze design",,,0.0,0.006,0.994,0.16,0.0
+Tier-1,K2-18b-hu,CO2,knn -> AIRS-only,,,0.0,0.008,0.992,0.16,0.0
+Tier-1,K2-18b-hu,CO2,mahalanobis -> AIRS-only,,,0.0,0.008,0.992,0.16,0.0
+Tier-1,K2-18b-hu,CO2,pca_recon -> AIRS-only,,,0.0,0.008,0.992,0.16,0.0
+Tier-1,K2-18b-hu,CO2,margin -> AIRS-only,,,0.0,0.0,1.0,0.16,0.0
+Tier-1,K2-18b-hu,CO2,ensemble -> AIRS-only,,,0.0,0.002,0.998,0.16,0.0
+Tier-1,K2-18b-hu,CO2,"amplitude flag, AIRS-only elsewhere",,,0.0,0.01,0.99,0.16,0.0
 Tier-1,K2-18b-hu,NH3,published,absent,0.998,0.0,0.004,0.996,0.16,0.0
 Tier-1,K2-18b-hu,NH3,no-optical,absent,0.991,0.0,0.018,0.982,0.16,0.0
 Tier-1,K2-18b-hu,NH3,AIRS-only,absent,0.915,0.05,0.07,0.88,0.16,0.0
@@ -767,6 +1337,12 @@ Tier-1,K2-18b-hu,NH3,haze-retrained,absent,0.993,0.0,0.014,0.986,0.16,0.0
 Tier-1,K2-18b-hu,NH3,haze+deck-retrained,absent,0.991,0.0,0.018,0.982,0.16,0.0
 Tier-1,K2-18b-hu,NH3,the method,absent,0.965,0.02,0.03,0.95,0.16,0.0
 Tier-1,K2-18b-hu,NH3,"census, same haze design",absent,0.959,0.02,0.042,0.938,0.16,0.0
+Tier-1,K2-18b-hu,NH3,knn -> AIRS-only,absent,0.915,0.05,0.07,0.88,0.16,0.0
+Tier-1,K2-18b-hu,NH3,mahalanobis -> AIRS-only,absent,0.917,0.048,0.07,0.882,0.16,0.0
+Tier-1,K2-18b-hu,NH3,pca_recon -> AIRS-only,absent,0.922,0.046,0.064,0.89,0.16,0.0
+Tier-1,K2-18b-hu,NH3,margin -> AIRS-only,absent,0.998,0.0,0.004,0.996,0.16,0.0
+Tier-1,K2-18b-hu,NH3,ensemble -> AIRS-only,absent,0.985,0.014,0.002,0.984,0.16,0.0
+Tier-1,K2-18b-hu,NH3,"amplitude flag, AIRS-only elsewhere",absent,0.927,0.042,0.062,0.896,0.16,0.0
 JWST,TOI-270d-hm,CH4,published,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,CH4,no-optical,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,CH4,AIRS-only,present,1.0,1.0,0.0,0.0,0.0,0.0
@@ -775,6 +1351,12 @@ JWST,TOI-270d-hm,CH4,haze-retrained,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,CH4,haze+deck-retrained,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,CH4,the method,present,1.0,1.0,0.0,0.0,0.0,0.0
 JWST,TOI-270d-hm,CH4,"census, same haze design",present,1.0,1.0,0.0,0.0,0.0,0.0
+JWST,TOI-270d-hm,CH4,knn -> AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d-hm,CH4,mahalanobis -> AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d-hm,CH4,pca_recon -> AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d-hm,CH4,margin -> AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d-hm,CH4,ensemble -> AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d-hm,CH4,"amplitude flag, AIRS-only elsewhere",present,1.0,1.0,0.0,0.0,0.0,0.0
 JWST,TOI-270d-hm,H2O,published,,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,H2O,no-optical,,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,H2O,AIRS-only,,,0.0,0.0,1.0,0.0,0.0
@@ -783,6 +1365,12 @@ JWST,TOI-270d-hm,H2O,haze-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,H2O,haze+deck-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,H2O,the method,,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,H2O,"census, same haze design",,,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d-hm,H2O,knn -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d-hm,H2O,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d-hm,H2O,pca_recon -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d-hm,H2O,margin -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d-hm,H2O,ensemble -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d-hm,H2O,"amplitude flag, AIRS-only elsewhere",,,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,CO2,published,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,CO2,no-optical,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,CO2,AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
@@ -791,6 +1379,12 @@ JWST,TOI-270d-hm,CO2,haze-retrained,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,CO2,haze+deck-retrained,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,CO2,the method,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,CO2,"census, same haze design",present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d-hm,CO2,knn -> AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d-hm,CO2,mahalanobis -> AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d-hm,CO2,pca_recon -> AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d-hm,CO2,margin -> AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d-hm,CO2,ensemble -> AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d-hm,CO2,"amplitude flag, AIRS-only elsewhere",present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,NH3,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,NH3,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,NH3,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -799,6 +1393,12 @@ JWST,TOI-270d-hm,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,NH3,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,TOI-270d-hm,NH3,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d-hm,NH3,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d-hm,NH3,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d-hm,NH3,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d-hm,NH3,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d-hm,NH3,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,TOI-270d-hm,NH3,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,0.0,0.0
 Tier-1,TOI-270d-hm,CH4,published,present,0.017,0.002,0.03,0.968,0.064,0.0
 Tier-1,TOI-270d-hm,CH4,no-optical,present,0.018,0.0,0.036,0.964,0.064,0.0
 Tier-1,TOI-270d-hm,CH4,AIRS-only,present,0.091,0.044,0.094,0.862,0.064,0.0
@@ -807,6 +1407,12 @@ Tier-1,TOI-270d-hm,CH4,haze-retrained,present,0.045,0.006,0.078,0.916,0.064,0.0
 Tier-1,TOI-270d-hm,CH4,haze+deck-retrained,present,0.061,0.012,0.098,0.89,0.064,0.0
 Tier-1,TOI-270d-hm,CH4,the method,present,0.065,0.028,0.074,0.898,0.064,0.0
 Tier-1,TOI-270d-hm,CH4,"census, same haze design",present,0.066,0.03,0.072,0.898,0.064,0.0
+Tier-1,TOI-270d-hm,CH4,knn -> AIRS-only,present,0.087,0.042,0.09,0.868,0.064,0.0
+Tier-1,TOI-270d-hm,CH4,mahalanobis -> AIRS-only,present,0.081,0.038,0.086,0.876,0.064,0.0
+Tier-1,TOI-270d-hm,CH4,pca_recon -> AIRS-only,present,0.056,0.024,0.064,0.912,0.064,0.0
+Tier-1,TOI-270d-hm,CH4,margin -> AIRS-only,present,0.029,0.006,0.046,0.948,0.064,0.0
+Tier-1,TOI-270d-hm,CH4,ensemble -> AIRS-only,present,0.032,0.022,0.02,0.958,0.064,0.0
+Tier-1,TOI-270d-hm,CH4,"amplitude flag, AIRS-only elsewhere",present,0.085,0.038,0.094,0.868,0.064,0.0
 Tier-1,TOI-270d-hm,H2O,published,,,0.008,0.034,0.958,0.064,0.0
 Tier-1,TOI-270d-hm,H2O,no-optical,,,0.012,0.042,0.946,0.064,0.0
 Tier-1,TOI-270d-hm,H2O,AIRS-only,,,0.024,0.044,0.932,0.064,0.0
@@ -815,6 +1421,12 @@ Tier-1,TOI-270d-hm,H2O,haze-retrained,,,0.02,0.044,0.936,0.064,0.0
 Tier-1,TOI-270d-hm,H2O,haze+deck-retrained,,,0.02,0.046,0.934,0.064,0.0
 Tier-1,TOI-270d-hm,H2O,the method,,,0.018,0.044,0.938,0.064,0.0
 Tier-1,TOI-270d-hm,H2O,"census, same haze design",,,0.018,0.042,0.94,0.064,0.0
+Tier-1,TOI-270d-hm,H2O,knn -> AIRS-only,,,0.024,0.044,0.932,0.064,0.0
+Tier-1,TOI-270d-hm,H2O,mahalanobis -> AIRS-only,,,0.024,0.042,0.934,0.064,0.0
+Tier-1,TOI-270d-hm,H2O,pca_recon -> AIRS-only,,,0.018,0.04,0.942,0.064,0.0
+Tier-1,TOI-270d-hm,H2O,margin -> AIRS-only,,,0.012,0.028,0.96,0.064,0.0
+Tier-1,TOI-270d-hm,H2O,ensemble -> AIRS-only,,,0.016,0.022,0.962,0.064,0.0
+Tier-1,TOI-270d-hm,H2O,"amplitude flag, AIRS-only elsewhere",,,0.024,0.046,0.93,0.064,0.0
 Tier-1,TOI-270d-hm,CO2,published,present,0.004,0.0,0.008,0.992,0.064,0.0
 Tier-1,TOI-270d-hm,CO2,no-optical,present,0.008,0.0,0.016,0.984,0.064,0.0
 Tier-1,TOI-270d-hm,CO2,AIRS-only,present,0.013,0.004,0.018,0.978,0.064,0.0
@@ -823,6 +1435,12 @@ Tier-1,TOI-270d-hm,CO2,haze-retrained,present,0.01,0.002,0.016,0.982,0.064,0.0
 Tier-1,TOI-270d-hm,CO2,haze+deck-retrained,present,0.012,0.0,0.024,0.976,0.064,0.0
 Tier-1,TOI-270d-hm,CO2,the method,present,0.006,0.0,0.012,0.988,0.064,0.0
 Tier-1,TOI-270d-hm,CO2,"census, same haze design",present,0.007,0.0,0.014,0.986,0.064,0.0
+Tier-1,TOI-270d-hm,CO2,knn -> AIRS-only,present,0.012,0.004,0.016,0.98,0.064,0.0
+Tier-1,TOI-270d-hm,CO2,mahalanobis -> AIRS-only,present,0.011,0.004,0.014,0.982,0.064,0.0
+Tier-1,TOI-270d-hm,CO2,pca_recon -> AIRS-only,present,0.007,0.002,0.01,0.988,0.064,0.0
+Tier-1,TOI-270d-hm,CO2,margin -> AIRS-only,present,0.005,0.0,0.01,0.99,0.064,0.0
+Tier-1,TOI-270d-hm,CO2,ensemble -> AIRS-only,present,0.002,0.0,0.004,0.996,0.064,0.0
+Tier-1,TOI-270d-hm,CO2,"amplitude flag, AIRS-only elsewhere",present,0.012,0.004,0.016,0.98,0.064,0.0
 Tier-1,TOI-270d-hm,NH3,published,absent,0.991,0.002,0.014,0.984,0.064,0.0
 Tier-1,TOI-270d-hm,NH3,no-optical,absent,0.988,0.004,0.016,0.98,0.064,0.0
 Tier-1,TOI-270d-hm,NH3,AIRS-only,absent,0.954,0.024,0.044,0.932,0.064,0.0
@@ -831,6 +1449,12 @@ Tier-1,TOI-270d-hm,NH3,haze-retrained,absent,0.985,0.004,0.022,0.974,0.064,0.0
 Tier-1,TOI-270d-hm,NH3,haze+deck-retrained,absent,0.983,0.004,0.026,0.97,0.064,0.0
 Tier-1,TOI-270d-hm,NH3,the method,absent,0.977,0.006,0.034,0.96,0.064,0.0
 Tier-1,TOI-270d-hm,NH3,"census, same haze design",absent,0.975,0.008,0.034,0.958,0.064,0.0
+Tier-1,TOI-270d-hm,NH3,knn -> AIRS-only,absent,0.954,0.024,0.044,0.932,0.064,0.0
+Tier-1,TOI-270d-hm,NH3,mahalanobis -> AIRS-only,absent,0.954,0.024,0.044,0.932,0.064,0.0
+Tier-1,TOI-270d-hm,NH3,pca_recon -> AIRS-only,absent,0.972,0.016,0.024,0.96,0.064,0.0
+Tier-1,TOI-270d-hm,NH3,margin -> AIRS-only,absent,0.992,0.002,0.012,0.986,0.064,0.0
+Tier-1,TOI-270d-hm,NH3,ensemble -> AIRS-only,absent,0.985,0.006,0.018,0.976,0.064,0.0
+Tier-1,TOI-270d-hm,NH3,"amplitude flag, AIRS-only elsewhere",absent,0.957,0.022,0.042,0.936,0.064,0.0
 JWST,GJ9827d,CH4,published,,,0.0,0.0,1.0,0.0,0.0
 JWST,GJ9827d,CH4,no-optical,,,0.0,0.0,1.0,0.0,0.0
 JWST,GJ9827d,CH4,AIRS-only,,,0.0,0.0,1.0,0.0,0.0
@@ -839,6 +1463,12 @@ JWST,GJ9827d,CH4,haze-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,GJ9827d,CH4,haze+deck-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,GJ9827d,CH4,the method,,,0.0,0.0,1.0,0.0,0.0
 JWST,GJ9827d,CH4,"census, same haze design",,,0.0,0.0,1.0,0.0,0.0
+JWST,GJ9827d,CH4,knn -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,GJ9827d,CH4,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,GJ9827d,CH4,pca_recon -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,GJ9827d,CH4,margin -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,GJ9827d,CH4,ensemble -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,GJ9827d,CH4,"amplitude flag, AIRS-only elsewhere",,,0.0,0.0,1.0,0.0,0.0
 JWST,GJ9827d,H2O,published,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,GJ9827d,H2O,no-optical,present,0.5,0.0,1.0,0.0,0.0,0.0
 JWST,GJ9827d,H2O,AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
@@ -847,6 +1477,12 @@ JWST,GJ9827d,H2O,haze-retrained,present,0.5,0.0,1.0,0.0,0.0,0.0
 JWST,GJ9827d,H2O,haze+deck-retrained,present,0.5,0.0,1.0,0.0,0.0,0.0
 JWST,GJ9827d,H2O,the method,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,GJ9827d,H2O,"census, same haze design",present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,GJ9827d,H2O,knn -> AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,GJ9827d,H2O,mahalanobis -> AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,GJ9827d,H2O,pca_recon -> AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,GJ9827d,H2O,margin -> AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,GJ9827d,H2O,ensemble -> AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,GJ9827d,H2O,"amplitude flag, AIRS-only elsewhere",present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,GJ9827d,CO2,published,,,0.0,0.0,1.0,0.0,0.0
 JWST,GJ9827d,CO2,no-optical,,,0.0,0.0,1.0,0.0,0.0
 JWST,GJ9827d,CO2,AIRS-only,,,0.0,1.0,0.0,0.0,0.0
@@ -855,6 +1491,12 @@ JWST,GJ9827d,CO2,haze-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,GJ9827d,CO2,haze+deck-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,GJ9827d,CO2,the method,,,0.0,0.0,1.0,0.0,0.0
 JWST,GJ9827d,CO2,"census, same haze design",,,0.0,0.0,1.0,0.0,0.0
+JWST,GJ9827d,CO2,knn -> AIRS-only,,,0.0,1.0,0.0,0.0,0.0
+JWST,GJ9827d,CO2,mahalanobis -> AIRS-only,,,0.0,1.0,0.0,0.0,0.0
+JWST,GJ9827d,CO2,pca_recon -> AIRS-only,,,0.0,1.0,0.0,0.0,0.0
+JWST,GJ9827d,CO2,margin -> AIRS-only,,,0.0,1.0,0.0,0.0,0.0
+JWST,GJ9827d,CO2,ensemble -> AIRS-only,,,0.0,1.0,0.0,0.0,0.0
+JWST,GJ9827d,CO2,"amplitude flag, AIRS-only elsewhere",,,0.0,1.0,0.0,0.0,0.0
 JWST,GJ9827d,NH3,published,,,0.0,0.0,1.0,0.0,0.0
 JWST,GJ9827d,NH3,no-optical,,,0.0,0.0,1.0,0.0,0.0
 JWST,GJ9827d,NH3,AIRS-only,,,0.0,0.0,1.0,0.0,0.0
@@ -863,6 +1505,12 @@ JWST,GJ9827d,NH3,haze-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,GJ9827d,NH3,haze+deck-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,GJ9827d,NH3,the method,,,0.0,0.0,1.0,0.0,0.0
 JWST,GJ9827d,NH3,"census, same haze design",,,0.0,0.0,1.0,0.0,0.0
+JWST,GJ9827d,NH3,knn -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,GJ9827d,NH3,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,GJ9827d,NH3,pca_recon -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,GJ9827d,NH3,margin -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,GJ9827d,NH3,ensemble -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,GJ9827d,NH3,"amplitude flag, AIRS-only elsewhere",,,0.0,0.0,1.0,0.0,0.0
 Tier-1,GJ9827d,CH4,published,,,0.0,0.0,1.0,0.102,0.0
 Tier-1,GJ9827d,CH4,no-optical,,,0.0,0.0,1.0,0.102,0.0
 Tier-1,GJ9827d,CH4,AIRS-only,,,0.0,0.004,0.996,0.102,0.0
@@ -871,6 +1519,12 @@ Tier-1,GJ9827d,CH4,haze-retrained,,,0.0,0.0,1.0,0.102,0.0
 Tier-1,GJ9827d,CH4,haze+deck-retrained,,,0.0,0.002,0.998,0.102,0.0
 Tier-1,GJ9827d,CH4,the method,,,0.0,0.002,0.998,0.102,0.0
 Tier-1,GJ9827d,CH4,"census, same haze design",,,0.0,0.002,0.998,0.102,0.0
+Tier-1,GJ9827d,CH4,knn -> AIRS-only,,,0.0,0.004,0.996,0.102,0.0
+Tier-1,GJ9827d,CH4,mahalanobis -> AIRS-only,,,0.0,0.004,0.996,0.102,0.0
+Tier-1,GJ9827d,CH4,pca_recon -> AIRS-only,,,0.0,0.002,0.998,0.102,0.0
+Tier-1,GJ9827d,CH4,margin -> AIRS-only,,,0.0,0.0,1.0,0.102,0.0
+Tier-1,GJ9827d,CH4,ensemble -> AIRS-only,,,0.0,0.0,1.0,0.102,0.0
+Tier-1,GJ9827d,CH4,"amplitude flag, AIRS-only elsewhere",,,0.0,0.004,0.996,0.102,0.0
 Tier-1,GJ9827d,H2O,published,present,0.057,0.02,0.074,0.906,0.102,0.0
 Tier-1,GJ9827d,H2O,no-optical,present,0.114,0.062,0.104,0.834,0.102,0.0
 Tier-1,GJ9827d,H2O,AIRS-only,present,0.098,0.05,0.096,0.854,0.102,0.0
@@ -879,6 +1533,12 @@ Tier-1,GJ9827d,H2O,haze-retrained,present,0.113,0.05,0.126,0.824,0.102,0.0
 Tier-1,GJ9827d,H2O,haze+deck-retrained,present,0.121,0.066,0.11,0.824,0.102,0.0
 Tier-1,GJ9827d,H2O,the method,present,0.087,0.034,0.106,0.86,0.102,0.0
 Tier-1,GJ9827d,H2O,"census, same haze design",present,0.08,0.028,0.104,0.868,0.102,0.0
+Tier-1,GJ9827d,H2O,knn -> AIRS-only,present,0.098,0.05,0.096,0.854,0.102,0.0
+Tier-1,GJ9827d,H2O,mahalanobis -> AIRS-only,present,0.095,0.044,0.102,0.854,0.102,0.0
+Tier-1,GJ9827d,H2O,pca_recon -> AIRS-only,present,0.076,0.034,0.084,0.882,0.102,0.0
+Tier-1,GJ9827d,H2O,margin -> AIRS-only,present,0.065,0.028,0.074,0.898,0.102,0.0
+Tier-1,GJ9827d,H2O,ensemble -> AIRS-only,present,0.066,0.036,0.06,0.904,0.102,0.0
+Tier-1,GJ9827d,H2O,"amplitude flag, AIRS-only elsewhere",present,0.098,0.048,0.1,0.852,0.102,0.0
 Tier-1,GJ9827d,CO2,published,,,0.0,0.024,0.976,0.102,0.0
 Tier-1,GJ9827d,CO2,no-optical,,,0.0,0.03,0.97,0.102,0.0
 Tier-1,GJ9827d,CO2,AIRS-only,,,0.006,0.036,0.958,0.102,0.0
@@ -887,6 +1547,12 @@ Tier-1,GJ9827d,CO2,haze-retrained,,,0.004,0.02,0.976,0.102,0.0
 Tier-1,GJ9827d,CO2,haze+deck-retrained,,,0.004,0.03,0.966,0.102,0.0
 Tier-1,GJ9827d,CO2,the method,,,0.004,0.02,0.976,0.102,0.0
 Tier-1,GJ9827d,CO2,"census, same haze design",,,0.004,0.024,0.972,0.102,0.0
+Tier-1,GJ9827d,CO2,knn -> AIRS-only,,,0.006,0.034,0.96,0.102,0.0
+Tier-1,GJ9827d,CO2,mahalanobis -> AIRS-only,,,0.006,0.036,0.958,0.102,0.0
+Tier-1,GJ9827d,CO2,pca_recon -> AIRS-only,,,0.002,0.032,0.966,0.102,0.0
+Tier-1,GJ9827d,CO2,margin -> AIRS-only,,,0.0,0.03,0.97,0.102,0.0
+Tier-1,GJ9827d,CO2,ensemble -> AIRS-only,,,0.006,0.018,0.976,0.102,0.0
+Tier-1,GJ9827d,CO2,"amplitude flag, AIRS-only elsewhere",,,0.006,0.032,0.962,0.102,0.0
 Tier-1,GJ9827d,NH3,published,,,0.0,0.01,0.99,0.102,0.0
 Tier-1,GJ9827d,NH3,no-optical,,,0.008,0.018,0.974,0.102,0.0
 Tier-1,GJ9827d,NH3,AIRS-only,,,0.056,0.08,0.864,0.102,0.0
@@ -895,6 +1561,12 @@ Tier-1,GJ9827d,NH3,haze-retrained,,,0.01,0.028,0.962,0.102,0.0
 Tier-1,GJ9827d,NH3,haze+deck-retrained,,,0.004,0.028,0.968,0.102,0.0
 Tier-1,GJ9827d,NH3,the method,,,0.012,0.054,0.934,0.102,0.0
 Tier-1,GJ9827d,NH3,"census, same haze design",,,0.012,0.054,0.934,0.102,0.0
+Tier-1,GJ9827d,NH3,knn -> AIRS-only,,,0.056,0.08,0.864,0.102,0.0
+Tier-1,GJ9827d,NH3,mahalanobis -> AIRS-only,,,0.052,0.08,0.868,0.102,0.0
+Tier-1,GJ9827d,NH3,pca_recon -> AIRS-only,,,0.018,0.042,0.94,0.102,0.0
+Tier-1,GJ9827d,NH3,margin -> AIRS-only,,,0.002,0.008,0.99,0.102,0.0
+Tier-1,GJ9827d,NH3,ensemble -> AIRS-only,,,0.008,0.026,0.966,0.102,0.0
+Tier-1,GJ9827d,NH3,"amplitude flag, AIRS-only elsewhere",,,0.056,0.076,0.868,0.102,0.0
 JWST,WASP-52b,CH4,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-52b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-52b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -903,6 +1575,12 @@ JWST,WASP-52b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-52b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-52b,CH4,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-52b,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-52b,CH4,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-52b,CH4,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-52b,CH4,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-52b,CH4,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-52b,CH4,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-52b,CH4,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-52b,H2O,published,,,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-52b,H2O,no-optical,,,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-52b,H2O,AIRS-only,,,0.0,0.0,1.0,0.0,0.0
@@ -911,6 +1589,12 @@ JWST,WASP-52b,H2O,haze-retrained,,,0.0,1.0,0.0,0.0,0.0
 JWST,WASP-52b,H2O,haze+deck-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-52b,H2O,the method,,,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-52b,H2O,"census, same haze design",,,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-52b,H2O,knn -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-52b,H2O,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-52b,H2O,pca_recon -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-52b,H2O,margin -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-52b,H2O,ensemble -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-52b,H2O,"amplitude flag, AIRS-only elsewhere",,,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-52b,CO2,published,,,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-52b,CO2,no-optical,,,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-52b,CO2,AIRS-only,,,0.0,0.0,1.0,0.0,0.0
@@ -919,6 +1603,12 @@ JWST,WASP-52b,CO2,haze-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-52b,CO2,haze+deck-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-52b,CO2,the method,,,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-52b,CO2,"census, same haze design",,,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-52b,CO2,knn -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-52b,CO2,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-52b,CO2,pca_recon -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-52b,CO2,margin -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-52b,CO2,ensemble -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-52b,CO2,"amplitude flag, AIRS-only elsewhere",,,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-52b,NH3,published,,,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-52b,NH3,no-optical,,,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-52b,NH3,AIRS-only,,,1.0,0.0,0.0,0.0,0.0
@@ -927,6 +1617,12 @@ JWST,WASP-52b,NH3,haze-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-52b,NH3,haze+deck-retrained,,,0.0,1.0,0.0,0.0,0.0
 JWST,WASP-52b,NH3,the method,,,1.0,0.0,0.0,0.0,0.0
 JWST,WASP-52b,NH3,"census, same haze design",,,1.0,0.0,0.0,0.0,0.0
+JWST,WASP-52b,NH3,knn -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-52b,NH3,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-52b,NH3,pca_recon -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-52b,NH3,margin -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-52b,NH3,ensemble -> AIRS-only,,,1.0,0.0,0.0,0.0,0.0
+JWST,WASP-52b,NH3,"amplitude flag, AIRS-only elsewhere",,,1.0,0.0,0.0,0.0,0.0
 Tier-1,WASP-52b,CH4,published,absent,0.999,0.0,0.002,0.998,0.146,0.0
 Tier-1,WASP-52b,CH4,no-optical,absent,0.999,0.0,0.002,0.998,0.146,0.0
 Tier-1,WASP-52b,CH4,AIRS-only,absent,0.986,0.004,0.02,0.976,0.146,0.0
@@ -935,6 +1631,12 @@ Tier-1,WASP-52b,CH4,haze-retrained,absent,0.999,0.0,0.002,0.998,0.146,0.0
 Tier-1,WASP-52b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.146,0.0
 Tier-1,WASP-52b,CH4,the method,absent,0.997,0.0,0.006,0.994,0.146,0.0
 Tier-1,WASP-52b,CH4,"census, same haze design",absent,0.995,0.002,0.006,0.992,0.146,0.0
+Tier-1,WASP-52b,CH4,knn -> AIRS-only,absent,0.99,0.002,0.016,0.982,0.146,0.0
+Tier-1,WASP-52b,CH4,mahalanobis -> AIRS-only,absent,0.991,0.002,0.014,0.984,0.146,0.0
+Tier-1,WASP-52b,CH4,pca_recon -> AIRS-only,absent,0.999,0.0,0.002,0.998,0.146,0.0
+Tier-1,WASP-52b,CH4,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.146,0.0
+Tier-1,WASP-52b,CH4,ensemble -> AIRS-only,absent,0.999,0.0,0.002,0.998,0.146,0.0
+Tier-1,WASP-52b,CH4,"amplitude flag, AIRS-only elsewhere",absent,0.989,0.002,0.018,0.98,0.146,0.0
 Tier-1,WASP-52b,H2O,published,,,0.012,0.038,0.95,0.146,0.0
 Tier-1,WASP-52b,H2O,no-optical,,,0.03,0.068,0.902,0.146,0.0
 Tier-1,WASP-52b,H2O,AIRS-only,,,0.046,0.128,0.826,0.146,0.0
@@ -943,6 +1645,12 @@ Tier-1,WASP-52b,H2O,haze-retrained,,,0.034,0.094,0.872,0.146,0.0
 Tier-1,WASP-52b,H2O,haze+deck-retrained,,,0.038,0.108,0.854,0.146,0.0
 Tier-1,WASP-52b,H2O,the method,,,0.026,0.086,0.888,0.146,0.0
 Tier-1,WASP-52b,H2O,"census, same haze design",,,0.024,0.078,0.898,0.146,0.0
+Tier-1,WASP-52b,H2O,knn -> AIRS-only,,,0.044,0.114,0.842,0.146,0.0
+Tier-1,WASP-52b,H2O,mahalanobis -> AIRS-only,,,0.04,0.1,0.86,0.146,0.0
+Tier-1,WASP-52b,H2O,pca_recon -> AIRS-only,,,0.03,0.054,0.916,0.146,0.0
+Tier-1,WASP-52b,H2O,margin -> AIRS-only,,,0.014,0.054,0.932,0.146,0.0
+Tier-1,WASP-52b,H2O,ensemble -> AIRS-only,,,0.018,0.046,0.936,0.146,0.0
+Tier-1,WASP-52b,H2O,"amplitude flag, AIRS-only elsewhere",,,0.046,0.124,0.83,0.146,0.0
 Tier-1,WASP-52b,CO2,published,,,0.0,0.006,0.994,0.146,0.0
 Tier-1,WASP-52b,CO2,no-optical,,,0.002,0.012,0.986,0.146,0.0
 Tier-1,WASP-52b,CO2,AIRS-only,,,0.002,0.028,0.97,0.146,0.0
@@ -951,6 +1659,12 @@ Tier-1,WASP-52b,CO2,haze-retrained,,,0.004,0.02,0.976,0.146,0.0
 Tier-1,WASP-52b,CO2,haze+deck-retrained,,,0.004,0.024,0.972,0.146,0.0
 Tier-1,WASP-52b,CO2,the method,,,0.002,0.016,0.982,0.146,0.0
 Tier-1,WASP-52b,CO2,"census, same haze design",,,0.002,0.012,0.986,0.146,0.0
+Tier-1,WASP-52b,CO2,knn -> AIRS-only,,,0.002,0.024,0.974,0.146,0.0
+Tier-1,WASP-52b,CO2,mahalanobis -> AIRS-only,,,0.002,0.018,0.98,0.146,0.0
+Tier-1,WASP-52b,CO2,pca_recon -> AIRS-only,,,0.0,0.014,0.986,0.146,0.0
+Tier-1,WASP-52b,CO2,margin -> AIRS-only,,,0.0,0.01,0.99,0.146,0.0
+Tier-1,WASP-52b,CO2,ensemble -> AIRS-only,,,0.0,0.008,0.992,0.146,0.0
+Tier-1,WASP-52b,CO2,"amplitude flag, AIRS-only elsewhere",,,0.002,0.032,0.966,0.146,0.0
 Tier-1,WASP-52b,NH3,published,,,0.002,0.038,0.96,0.146,0.0
 Tier-1,WASP-52b,NH3,no-optical,,,0.044,0.078,0.878,0.146,0.0
 Tier-1,WASP-52b,NH3,AIRS-only,,,0.262,0.134,0.604,0.146,0.0
@@ -959,6 +1673,12 @@ Tier-1,WASP-52b,NH3,haze-retrained,,,0.078,0.11,0.812,0.146,0.0
 Tier-1,WASP-52b,NH3,haze+deck-retrained,,,0.09,0.12,0.79,0.146,0.0
 Tier-1,WASP-52b,NH3,the method,,,0.11,0.116,0.774,0.146,0.0
 Tier-1,WASP-52b,NH3,"census, same haze design",,,0.114,0.116,0.77,0.146,0.0
+Tier-1,WASP-52b,NH3,knn -> AIRS-only,,,0.242,0.13,0.628,0.146,0.0
+Tier-1,WASP-52b,NH3,mahalanobis -> AIRS-only,,,0.174,0.106,0.72,0.146,0.0
+Tier-1,WASP-52b,NH3,pca_recon -> AIRS-only,,,0.042,0.054,0.904,0.146,0.0
+Tier-1,WASP-52b,NH3,margin -> AIRS-only,,,0.012,0.052,0.936,0.146,0.0
+Tier-1,WASP-52b,NH3,ensemble -> AIRS-only,,,0.13,0.058,0.812,0.146,0.0
+Tier-1,WASP-52b,NH3,"amplitude flag, AIRS-only elsewhere",,,0.228,0.134,0.638,0.146,0.0
 JWST,L98-59d,CH4,published,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,CH4,no-optical,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
@@ -967,6 +1687,12 @@ JWST,L98-59d,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,CH4,the method,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,L98-59d,CH4,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,L98-59d,CH4,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,L98-59d,CH4,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,L98-59d,CH4,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,L98-59d,CH4,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,L98-59d,CH4,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,H2O,published,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,H2O,no-optical,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,H2O,AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
@@ -975,6 +1701,12 @@ JWST,L98-59d,H2O,haze-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,H2O,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,H2O,the method,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,H2O,"census, same haze design",absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,L98-59d,H2O,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,L98-59d,H2O,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,L98-59d,H2O,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,L98-59d,H2O,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,L98-59d,H2O,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,L98-59d,H2O,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,CO2,published,,,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,CO2,no-optical,,,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,CO2,AIRS-only,,,0.0,0.0,1.0,1.0,0.0
@@ -983,6 +1715,12 @@ JWST,L98-59d,CO2,haze-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,CO2,haze+deck-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,CO2,the method,,,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,CO2,"census, same haze design",,,0.0,0.0,1.0,1.0,0.0
+JWST,L98-59d,CO2,knn -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,L98-59d,CO2,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,L98-59d,CO2,pca_recon -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,L98-59d,CO2,margin -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,L98-59d,CO2,ensemble -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,L98-59d,CO2,"amplitude flag, AIRS-only elsewhere",,,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,NH3,published,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,NH3,no-optical,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,NH3,AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
@@ -991,6 +1729,12 @@ JWST,L98-59d,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,NH3,the method,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,L98-59d,NH3,"census, same haze design",absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,L98-59d,NH3,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,L98-59d,NH3,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,L98-59d,NH3,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,L98-59d,NH3,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,L98-59d,NH3,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,L98-59d,NH3,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,1.0,0.0
 Tier-1,L98-59d,CH4,published,absent,0.99,0.004,0.012,0.984,0.078,0.0
 Tier-1,L98-59d,CH4,no-optical,absent,0.993,0.0,0.014,0.986,0.078,0.0
 Tier-1,L98-59d,CH4,AIRS-only,absent,0.955,0.018,0.054,0.928,0.078,0.0
@@ -999,6 +1743,12 @@ Tier-1,L98-59d,CH4,haze-retrained,absent,0.983,0.002,0.03,0.968,0.078,0.0
 Tier-1,L98-59d,CH4,haze+deck-retrained,absent,0.983,0.002,0.03,0.968,0.078,0.0
 Tier-1,L98-59d,CH4,the method,absent,0.967,0.014,0.038,0.948,0.078,0.0
 Tier-1,L98-59d,CH4,"census, same haze design",absent,0.967,0.016,0.034,0.95,0.078,0.0
+Tier-1,L98-59d,CH4,knn -> AIRS-only,absent,0.955,0.018,0.054,0.928,0.078,0.0
+Tier-1,L98-59d,CH4,mahalanobis -> AIRS-only,absent,0.96,0.014,0.052,0.934,0.078,0.0
+Tier-1,L98-59d,CH4,pca_recon -> AIRS-only,absent,0.971,0.012,0.034,0.954,0.078,0.0
+Tier-1,L98-59d,CH4,margin -> AIRS-only,absent,0.987,0.002,0.022,0.976,0.078,0.0
+Tier-1,L98-59d,CH4,ensemble -> AIRS-only,absent,0.986,0.004,0.02,0.976,0.078,0.0
+Tier-1,L98-59d,CH4,"amplitude flag, AIRS-only elsewhere",absent,0.957,0.016,0.054,0.93,0.078,0.0
 Tier-1,L98-59d,H2O,published,absent,0.979,0.01,0.022,0.968,0.078,0.0
 Tier-1,L98-59d,H2O,no-optical,absent,0.972,0.014,0.028,0.958,0.078,0.0
 Tier-1,L98-59d,H2O,AIRS-only,absent,0.959,0.016,0.05,0.934,0.078,0.0
@@ -1007,6 +1757,12 @@ Tier-1,L98-59d,H2O,haze-retrained,absent,0.965,0.014,0.042,0.944,0.078,0.0
 Tier-1,L98-59d,H2O,haze+deck-retrained,absent,0.958,0.018,0.048,0.934,0.078,0.0
 Tier-1,L98-59d,H2O,the method,absent,0.967,0.014,0.038,0.948,0.078,0.0
 Tier-1,L98-59d,H2O,"census, same haze design",absent,0.968,0.014,0.036,0.95,0.078,0.0
+Tier-1,L98-59d,H2O,knn -> AIRS-only,absent,0.959,0.016,0.05,0.934,0.078,0.0
+Tier-1,L98-59d,H2O,mahalanobis -> AIRS-only,absent,0.959,0.016,0.05,0.934,0.078,0.0
+Tier-1,L98-59d,H2O,pca_recon -> AIRS-only,absent,0.965,0.018,0.034,0.948,0.078,0.0
+Tier-1,L98-59d,H2O,margin -> AIRS-only,absent,0.98,0.008,0.024,0.968,0.078,0.0
+Tier-1,L98-59d,H2O,ensemble -> AIRS-only,absent,0.977,0.016,0.014,0.97,0.078,0.0
+Tier-1,L98-59d,H2O,"amplitude flag, AIRS-only elsewhere",absent,0.961,0.014,0.05,0.936,0.078,0.0
 Tier-1,L98-59d,CO2,published,,,0.0,0.018,0.982,0.078,0.0
 Tier-1,L98-59d,CO2,no-optical,,,0.0,0.022,0.978,0.078,0.0
 Tier-1,L98-59d,CO2,AIRS-only,,,0.004,0.024,0.972,0.078,0.0
@@ -1015,6 +1771,12 @@ Tier-1,L98-59d,CO2,haze-retrained,,,0.002,0.03,0.968,0.078,0.0
 Tier-1,L98-59d,CO2,haze+deck-retrained,,,0.002,0.032,0.966,0.078,0.0
 Tier-1,L98-59d,CO2,the method,,,0.002,0.024,0.974,0.078,0.0
 Tier-1,L98-59d,CO2,"census, same haze design",,,0.0,0.026,0.974,0.078,0.0
+Tier-1,L98-59d,CO2,knn -> AIRS-only,,,0.004,0.024,0.972,0.078,0.0
+Tier-1,L98-59d,CO2,mahalanobis -> AIRS-only,,,0.004,0.022,0.974,0.078,0.0
+Tier-1,L98-59d,CO2,pca_recon -> AIRS-only,,,0.002,0.018,0.98,0.078,0.0
+Tier-1,L98-59d,CO2,margin -> AIRS-only,,,0.002,0.018,0.98,0.078,0.0
+Tier-1,L98-59d,CO2,ensemble -> AIRS-only,,,0.0,0.016,0.984,0.078,0.0
+Tier-1,L98-59d,CO2,"amplitude flag, AIRS-only elsewhere",,,0.004,0.022,0.974,0.078,0.0
 Tier-1,L98-59d,NH3,published,absent,0.981,0.008,0.022,0.97,0.078,0.0
 Tier-1,L98-59d,NH3,no-optical,absent,0.972,0.014,0.028,0.958,0.078,0.0
 Tier-1,L98-59d,NH3,AIRS-only,absent,0.913,0.048,0.078,0.874,0.078,0.0
@@ -1023,6 +1785,12 @@ Tier-1,L98-59d,NH3,haze-retrained,absent,0.96,0.022,0.036,0.942,0.078,0.0
 Tier-1,L98-59d,NH3,haze+deck-retrained,absent,0.969,0.012,0.038,0.95,0.078,0.0
 Tier-1,L98-59d,NH3,the method,absent,0.962,0.016,0.044,0.94,0.078,0.0
 Tier-1,L98-59d,NH3,"census, same haze design",absent,0.96,0.016,0.048,0.936,0.078,0.0
+Tier-1,L98-59d,NH3,knn -> AIRS-only,absent,0.913,0.048,0.078,0.874,0.078,0.0
+Tier-1,L98-59d,NH3,mahalanobis -> AIRS-only,absent,0.914,0.048,0.076,0.876,0.078,0.0
+Tier-1,L98-59d,NH3,pca_recon -> AIRS-only,absent,0.951,0.024,0.05,0.926,0.078,0.0
+Tier-1,L98-59d,NH3,margin -> AIRS-only,absent,0.977,0.006,0.034,0.96,0.078,0.0
+Tier-1,L98-59d,NH3,ensemble -> AIRS-only,absent,0.964,0.024,0.024,0.952,0.078,0.0
+Tier-1,L98-59d,NH3,"amplitude flag, AIRS-only elsewhere",absent,0.919,0.046,0.07,0.884,0.078,0.0
 JWST,GJ1214b,CH4,published,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,GJ1214b,CH4,no-optical,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,GJ1214b,CH4,AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
@@ -1031,6 +1799,12 @@ JWST,GJ1214b,CH4,haze-retrained,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,GJ1214b,CH4,haze+deck-retrained,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,GJ1214b,CH4,the method,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,GJ1214b,CH4,"census, same haze design",present,0.0,0.0,0.0,1.0,1.0,0.0
+JWST,GJ1214b,CH4,knn -> AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
+JWST,GJ1214b,CH4,mahalanobis -> AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
+JWST,GJ1214b,CH4,pca_recon -> AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
+JWST,GJ1214b,CH4,margin -> AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
+JWST,GJ1214b,CH4,ensemble -> AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
+JWST,GJ1214b,CH4,"amplitude flag, AIRS-only elsewhere",present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,GJ1214b,H2O,published,,,0.0,0.0,1.0,1.0,0.0
 JWST,GJ1214b,H2O,no-optical,,,0.0,0.0,1.0,1.0,0.0
 JWST,GJ1214b,H2O,AIRS-only,,,0.0,0.0,1.0,1.0,0.0
@@ -1039,6 +1813,12 @@ JWST,GJ1214b,H2O,haze-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,GJ1214b,H2O,haze+deck-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,GJ1214b,H2O,the method,,,0.0,0.0,1.0,1.0,0.0
 JWST,GJ1214b,H2O,"census, same haze design",,,0.0,0.0,1.0,1.0,0.0
+JWST,GJ1214b,H2O,knn -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,GJ1214b,H2O,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,GJ1214b,H2O,pca_recon -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,GJ1214b,H2O,margin -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,GJ1214b,H2O,ensemble -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,GJ1214b,H2O,"amplitude flag, AIRS-only elsewhere",,,0.0,0.0,1.0,1.0,0.0
 JWST,GJ1214b,CO2,published,present,0.5,0.0,1.0,0.0,1.0,0.0
 JWST,GJ1214b,CO2,no-optical,present,0.5,0.0,1.0,0.0,1.0,0.0
 JWST,GJ1214b,CO2,AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
@@ -1047,6 +1827,12 @@ JWST,GJ1214b,CO2,haze-retrained,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,GJ1214b,CO2,haze+deck-retrained,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,GJ1214b,CO2,the method,present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,GJ1214b,CO2,"census, same haze design",present,0.5,0.0,1.0,0.0,1.0,0.0
+JWST,GJ1214b,CO2,knn -> AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
+JWST,GJ1214b,CO2,mahalanobis -> AIRS-only,present,0.5,0.0,1.0,0.0,1.0,0.0
+JWST,GJ1214b,CO2,pca_recon -> AIRS-only,present,0.5,0.0,1.0,0.0,1.0,0.0
+JWST,GJ1214b,CO2,margin -> AIRS-only,present,0.5,0.0,1.0,0.0,1.0,0.0
+JWST,GJ1214b,CO2,ensemble -> AIRS-only,present,0.5,0.0,1.0,0.0,1.0,0.0
+JWST,GJ1214b,CO2,"amplitude flag, AIRS-only elsewhere",present,0.0,0.0,0.0,1.0,1.0,0.0
 JWST,GJ1214b,NH3,published,,,0.0,0.0,1.0,1.0,0.0
 JWST,GJ1214b,NH3,no-optical,,,0.0,0.0,1.0,1.0,0.0
 JWST,GJ1214b,NH3,AIRS-only,,,0.0,0.0,1.0,1.0,0.0
@@ -1055,6 +1841,12 @@ JWST,GJ1214b,NH3,haze-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,GJ1214b,NH3,haze+deck-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,GJ1214b,NH3,the method,,,0.0,0.0,1.0,1.0,0.0
 JWST,GJ1214b,NH3,"census, same haze design",,,0.0,0.0,1.0,1.0,0.0
+JWST,GJ1214b,NH3,knn -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,GJ1214b,NH3,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,GJ1214b,NH3,pca_recon -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,GJ1214b,NH3,margin -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,GJ1214b,NH3,ensemble -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,GJ1214b,NH3,"amplitude flag, AIRS-only elsewhere",,,0.0,0.0,1.0,1.0,0.0
 Tier-1,GJ1214b,CH4,published,present,0.009,0.002,0.014,0.984,0.188,0.0
 Tier-1,GJ1214b,CH4,no-optical,present,0.004,0.0,0.008,0.992,0.188,0.0
 Tier-1,GJ1214b,CH4,AIRS-only,present,0.034,0.012,0.044,0.944,0.188,0.0
@@ -1063,6 +1855,12 @@ Tier-1,GJ1214b,CH4,haze-retrained,present,0.011,0.0,0.022,0.978,0.188,0.0
 Tier-1,GJ1214b,CH4,haze+deck-retrained,present,0.01,0.002,0.016,0.982,0.188,0.0
 Tier-1,GJ1214b,CH4,the method,present,0.022,0.01,0.024,0.966,0.188,0.0
 Tier-1,GJ1214b,CH4,"census, same haze design",present,0.021,0.01,0.022,0.968,0.188,0.0
+Tier-1,GJ1214b,CH4,knn -> AIRS-only,present,0.034,0.012,0.044,0.944,0.188,0.0
+Tier-1,GJ1214b,CH4,mahalanobis -> AIRS-only,present,0.032,0.01,0.044,0.946,0.188,0.0
+Tier-1,GJ1214b,CH4,pca_recon -> AIRS-only,present,0.025,0.008,0.034,0.958,0.188,0.0
+Tier-1,GJ1214b,CH4,margin -> AIRS-only,present,0.007,0.0,0.014,0.986,0.188,0.0
+Tier-1,GJ1214b,CH4,ensemble -> AIRS-only,present,0.009,0.002,0.014,0.984,0.188,0.0
+Tier-1,GJ1214b,CH4,"amplitude flag, AIRS-only elsewhere",present,0.032,0.012,0.04,0.948,0.188,0.0
 Tier-1,GJ1214b,H2O,published,,,0.016,0.032,0.952,0.188,0.0
 Tier-1,GJ1214b,H2O,no-optical,,,0.016,0.05,0.934,0.188,0.0
 Tier-1,GJ1214b,H2O,AIRS-only,,,0.028,0.06,0.912,0.188,0.0
@@ -1071,6 +1869,12 @@ Tier-1,GJ1214b,H2O,haze-retrained,,,0.02,0.052,0.928,0.188,0.0
 Tier-1,GJ1214b,H2O,haze+deck-retrained,,,0.016,0.054,0.93,0.188,0.0
 Tier-1,GJ1214b,H2O,the method,,,0.018,0.052,0.93,0.188,0.0
 Tier-1,GJ1214b,H2O,"census, same haze design",,,0.02,0.046,0.934,0.188,0.0
+Tier-1,GJ1214b,H2O,knn -> AIRS-only,,,0.028,0.06,0.912,0.188,0.0
+Tier-1,GJ1214b,H2O,mahalanobis -> AIRS-only,,,0.028,0.058,0.914,0.188,0.0
+Tier-1,GJ1214b,H2O,pca_recon -> AIRS-only,,,0.02,0.052,0.928,0.188,0.0
+Tier-1,GJ1214b,H2O,margin -> AIRS-only,,,0.016,0.032,0.952,0.188,0.0
+Tier-1,GJ1214b,H2O,ensemble -> AIRS-only,,,0.024,0.02,0.956,0.188,0.0
+Tier-1,GJ1214b,H2O,"amplitude flag, AIRS-only elsewhere",,,0.02,0.066,0.914,0.188,0.0
 Tier-1,GJ1214b,CO2,published,present,0.01,0.0,0.02,0.98,0.188,0.0
 Tier-1,GJ1214b,CO2,no-optical,present,0.012,0.002,0.02,0.978,0.188,0.0
 Tier-1,GJ1214b,CO2,AIRS-only,present,0.014,0.004,0.02,0.976,0.188,0.0
@@ -1079,6 +1883,12 @@ Tier-1,GJ1214b,CO2,haze-retrained,present,0.018,0.004,0.028,0.968,0.188,0.0
 Tier-1,GJ1214b,CO2,haze+deck-retrained,present,0.016,0.002,0.028,0.97,0.188,0.0
 Tier-1,GJ1214b,CO2,the method,present,0.016,0.004,0.024,0.972,0.188,0.0
 Tier-1,GJ1214b,CO2,"census, same haze design",present,0.014,0.004,0.02,0.976,0.188,0.0
+Tier-1,GJ1214b,CO2,knn -> AIRS-only,present,0.014,0.004,0.02,0.976,0.188,0.0
+Tier-1,GJ1214b,CO2,mahalanobis -> AIRS-only,present,0.014,0.004,0.02,0.976,0.188,0.0
+Tier-1,GJ1214b,CO2,pca_recon -> AIRS-only,present,0.012,0.002,0.02,0.978,0.188,0.0
+Tier-1,GJ1214b,CO2,margin -> AIRS-only,present,0.01,0.002,0.016,0.982,0.188,0.0
+Tier-1,GJ1214b,CO2,ensemble -> AIRS-only,present,0.006,0.0,0.012,0.988,0.188,0.0
+Tier-1,GJ1214b,CO2,"amplitude flag, AIRS-only elsewhere",present,0.017,0.004,0.026,0.97,0.188,0.0
 Tier-1,GJ1214b,NH3,published,,,0.014,0.05,0.936,0.188,0.0
 Tier-1,GJ1214b,NH3,no-optical,,,0.022,0.032,0.946,0.188,0.0
 Tier-1,GJ1214b,NH3,AIRS-only,,,0.068,0.09,0.842,0.188,0.0
@@ -1087,6 +1897,12 @@ Tier-1,GJ1214b,NH3,haze-retrained,,,0.022,0.072,0.906,0.188,0.0
 Tier-1,GJ1214b,NH3,haze+deck-retrained,,,0.022,0.05,0.928,0.188,0.0
 Tier-1,GJ1214b,NH3,the method,,,0.03,0.082,0.888,0.188,0.0
 Tier-1,GJ1214b,NH3,"census, same haze design",,,0.034,0.086,0.88,0.188,0.0
+Tier-1,GJ1214b,NH3,knn -> AIRS-only,,,0.068,0.09,0.842,0.188,0.0
+Tier-1,GJ1214b,NH3,mahalanobis -> AIRS-only,,,0.066,0.088,0.846,0.188,0.0
+Tier-1,GJ1214b,NH3,pca_recon -> AIRS-only,,,0.058,0.066,0.876,0.188,0.0
+Tier-1,GJ1214b,NH3,margin -> AIRS-only,,,0.016,0.048,0.936,0.188,0.0
+Tier-1,GJ1214b,NH3,ensemble -> AIRS-only,,,0.034,0.04,0.926,0.188,0.0
+Tier-1,GJ1214b,NH3,"amplitude flag, AIRS-only elsewhere",,,0.058,0.086,0.856,0.188,0.0
 JWST,LTT3780c,CH4,published,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,CH4,no-optical,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,CH4,AIRS-only,present,1.0,1.0,0.0,0.0,0.0,0.0
@@ -1095,6 +1911,12 @@ JWST,LTT3780c,CH4,haze-retrained,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,CH4,haze+deck-retrained,present,0.0,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,CH4,the method,present,1.0,1.0,0.0,0.0,0.0,0.0
 JWST,LTT3780c,CH4,"census, same haze design",present,1.0,1.0,0.0,0.0,0.0,0.0
+JWST,LTT3780c,CH4,knn -> AIRS-only,present,1.0,1.0,0.0,0.0,0.0,0.0
+JWST,LTT3780c,CH4,mahalanobis -> AIRS-only,present,1.0,1.0,0.0,0.0,0.0,0.0
+JWST,LTT3780c,CH4,pca_recon -> AIRS-only,present,1.0,1.0,0.0,0.0,0.0,0.0
+JWST,LTT3780c,CH4,margin -> AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,LTT3780c,CH4,ensemble -> AIRS-only,present,0.0,0.0,0.0,1.0,0.0,0.0
+JWST,LTT3780c,CH4,"amplitude flag, AIRS-only elsewhere",present,1.0,1.0,0.0,0.0,0.0,0.0
 JWST,LTT3780c,H2O,published,,,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,H2O,no-optical,,,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,H2O,AIRS-only,,,0.0,0.0,1.0,0.0,0.0
@@ -1103,6 +1925,12 @@ JWST,LTT3780c,H2O,haze-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,H2O,haze+deck-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,H2O,the method,,,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,H2O,"census, same haze design",,,0.0,0.0,1.0,0.0,0.0
+JWST,LTT3780c,H2O,knn -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,LTT3780c,H2O,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,LTT3780c,H2O,pca_recon -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,LTT3780c,H2O,margin -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,LTT3780c,H2O,ensemble -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,LTT3780c,H2O,"amplitude flag, AIRS-only elsewhere",,,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,CO2,published,,,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,CO2,no-optical,,,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,CO2,AIRS-only,,,0.0,0.0,1.0,0.0,0.0
@@ -1111,6 +1939,12 @@ JWST,LTT3780c,CO2,haze-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,CO2,haze+deck-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,CO2,the method,,,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,CO2,"census, same haze design",,,0.0,0.0,1.0,0.0,0.0
+JWST,LTT3780c,CO2,knn -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,LTT3780c,CO2,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,LTT3780c,CO2,pca_recon -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,LTT3780c,CO2,margin -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,LTT3780c,CO2,ensemble -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,LTT3780c,CO2,"amplitude flag, AIRS-only elsewhere",,,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,NH3,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,NH3,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,NH3,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -1119,6 +1953,12 @@ JWST,LTT3780c,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,NH3,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,LTT3780c,NH3,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,LTT3780c,NH3,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,LTT3780c,NH3,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,LTT3780c,NH3,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,LTT3780c,NH3,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,LTT3780c,NH3,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,LTT3780c,NH3,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,0.0,0.0
 Tier-1,LTT3780c,CH4,published,present,0.112,0.006,0.212,0.782,0.028,0.0
 Tier-1,LTT3780c,CH4,no-optical,present,0.027,0.002,0.05,0.948,0.028,0.0
 Tier-1,LTT3780c,CH4,AIRS-only,present,0.636,0.522,0.228,0.25,0.028,0.0
@@ -1127,6 +1967,12 @@ Tier-1,LTT3780c,CH4,haze-retrained,present,0.151,0.056,0.19,0.754,0.028,0.0
 Tier-1,LTT3780c,CH4,haze+deck-retrained,present,0.19,0.094,0.192,0.714,0.028,0.0
 Tier-1,LTT3780c,CH4,the method,present,0.56,0.434,0.252,0.314,0.028,0.0
 Tier-1,LTT3780c,CH4,"census, same haze design",present,0.575,0.448,0.254,0.298,0.028,0.0
+Tier-1,LTT3780c,CH4,knn -> AIRS-only,present,0.548,0.426,0.244,0.33,0.028,0.0
+Tier-1,LTT3780c,CH4,mahalanobis -> AIRS-only,present,0.629,0.516,0.226,0.258,0.028,0.0
+Tier-1,LTT3780c,CH4,pca_recon -> AIRS-only,present,0.43,0.316,0.228,0.456,0.028,0.0
+Tier-1,LTT3780c,CH4,margin -> AIRS-only,present,0.147,0.042,0.21,0.748,0.028,0.0
+Tier-1,LTT3780c,CH4,ensemble -> AIRS-only,present,0.345,0.276,0.138,0.586,0.028,0.0
+Tier-1,LTT3780c,CH4,"amplitude flag, AIRS-only elsewhere",present,0.62,0.508,0.224,0.268,0.028,0.0
 Tier-1,LTT3780c,H2O,published,,,0.0,0.0,1.0,0.028,0.0
 Tier-1,LTT3780c,H2O,no-optical,,,0.0,0.0,1.0,0.028,0.0
 Tier-1,LTT3780c,H2O,AIRS-only,,,0.0,0.002,0.998,0.028,0.0
@@ -1135,6 +1981,12 @@ Tier-1,LTT3780c,H2O,haze-retrained,,,0.0,0.0,1.0,0.028,0.0
 Tier-1,LTT3780c,H2O,haze+deck-retrained,,,0.0,0.002,0.998,0.028,0.0
 Tier-1,LTT3780c,H2O,the method,,,0.0,0.0,1.0,0.028,0.0
 Tier-1,LTT3780c,H2O,"census, same haze design",,,0.0,0.0,1.0,0.028,0.0
+Tier-1,LTT3780c,H2O,knn -> AIRS-only,,,0.0,0.002,0.998,0.028,0.0
+Tier-1,LTT3780c,H2O,mahalanobis -> AIRS-only,,,0.0,0.002,0.998,0.028,0.0
+Tier-1,LTT3780c,H2O,pca_recon -> AIRS-only,,,0.0,0.002,0.998,0.028,0.0
+Tier-1,LTT3780c,H2O,margin -> AIRS-only,,,0.0,0.002,0.998,0.028,0.0
+Tier-1,LTT3780c,H2O,ensemble -> AIRS-only,,,0.0,0.0,1.0,0.028,0.0
+Tier-1,LTT3780c,H2O,"amplitude flag, AIRS-only elsewhere",,,0.0,0.002,0.998,0.028,0.0
 Tier-1,LTT3780c,CO2,published,,,0.0,0.0,1.0,0.028,0.0
 Tier-1,LTT3780c,CO2,no-optical,,,0.0,0.0,1.0,0.028,0.0
 Tier-1,LTT3780c,CO2,AIRS-only,,,0.0,0.01,0.99,0.028,0.0
@@ -1143,6 +1995,12 @@ Tier-1,LTT3780c,CO2,haze-retrained,,,0.0,0.0,1.0,0.028,0.0
 Tier-1,LTT3780c,CO2,haze+deck-retrained,,,0.0,0.0,1.0,0.028,0.0
 Tier-1,LTT3780c,CO2,the method,,,0.0,0.002,0.998,0.028,0.0
 Tier-1,LTT3780c,CO2,"census, same haze design",,,0.0,0.002,0.998,0.028,0.0
+Tier-1,LTT3780c,CO2,knn -> AIRS-only,,,0.0,0.008,0.992,0.028,0.0
+Tier-1,LTT3780c,CO2,mahalanobis -> AIRS-only,,,0.0,0.01,0.99,0.028,0.0
+Tier-1,LTT3780c,CO2,pca_recon -> AIRS-only,,,0.0,0.004,0.996,0.028,0.0
+Tier-1,LTT3780c,CO2,margin -> AIRS-only,,,0.0,0.0,1.0,0.028,0.0
+Tier-1,LTT3780c,CO2,ensemble -> AIRS-only,,,0.0,0.0,1.0,0.028,0.0
+Tier-1,LTT3780c,CO2,"amplitude flag, AIRS-only elsewhere",,,0.0,0.01,0.99,0.028,0.0
 Tier-1,LTT3780c,NH3,published,absent,0.999,0.0,0.002,0.998,0.028,0.0
 Tier-1,LTT3780c,NH3,no-optical,absent,1.0,0.0,0.0,1.0,0.028,0.0
 Tier-1,LTT3780c,NH3,AIRS-only,absent,0.977,0.008,0.03,0.962,0.028,0.0
@@ -1151,6 +2009,12 @@ Tier-1,LTT3780c,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,0.028,0.0
 Tier-1,LTT3780c,NH3,haze+deck-retrained,absent,0.998,0.0,0.004,0.996,0.028,0.0
 Tier-1,LTT3780c,NH3,the method,absent,0.985,0.004,0.022,0.974,0.028,0.0
 Tier-1,LTT3780c,NH3,"census, same haze design",absent,0.984,0.004,0.024,0.972,0.028,0.0
+Tier-1,LTT3780c,NH3,knn -> AIRS-only,absent,0.977,0.008,0.03,0.962,0.028,0.0
+Tier-1,LTT3780c,NH3,mahalanobis -> AIRS-only,absent,0.977,0.008,0.03,0.962,0.028,0.0
+Tier-1,LTT3780c,NH3,pca_recon -> AIRS-only,absent,0.979,0.008,0.026,0.966,0.028,0.0
+Tier-1,LTT3780c,NH3,margin -> AIRS-only,absent,0.998,0.0,0.004,0.996,0.028,0.0
+Tier-1,LTT3780c,NH3,ensemble -> AIRS-only,absent,0.996,0.002,0.004,0.994,0.028,0.0
+Tier-1,LTT3780c,NH3,"amplitude flag, AIRS-only elsewhere",absent,0.979,0.006,0.03,0.964,0.028,0.0
 JWST,WASP-80b,CH4,published,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-80b,CH4,no-optical,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-80b,CH4,AIRS-only,,,0.0,0.0,1.0,1.0,0.0
@@ -1159,6 +2023,12 @@ JWST,WASP-80b,CH4,haze-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-80b,CH4,haze+deck-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-80b,CH4,the method,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-80b,CH4,"census, same haze design",,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-80b,CH4,knn -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-80b,CH4,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-80b,CH4,pca_recon -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-80b,CH4,margin -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-80b,CH4,ensemble -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-80b,CH4,"amplitude flag, AIRS-only elsewhere",,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-80b,H2O,published,present,0.5,0.0,1.0,0.0,1.0,0.0
 JWST,WASP-80b,H2O,no-optical,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-80b,H2O,AIRS-only,present,1.0,1.0,0.0,0.0,1.0,0.0
@@ -1167,6 +2037,12 @@ JWST,WASP-80b,H2O,haze-retrained,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-80b,H2O,haze+deck-retrained,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-80b,H2O,the method,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-80b,H2O,"census, same haze design",present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,WASP-80b,H2O,knn -> AIRS-only,present,0.5,0.0,1.0,0.0,1.0,0.0
+JWST,WASP-80b,H2O,mahalanobis -> AIRS-only,present,0.5,0.0,1.0,0.0,1.0,0.0
+JWST,WASP-80b,H2O,pca_recon -> AIRS-only,present,0.5,0.0,1.0,0.0,1.0,0.0
+JWST,WASP-80b,H2O,margin -> AIRS-only,present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,WASP-80b,H2O,ensemble -> AIRS-only,present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,WASP-80b,H2O,"amplitude flag, AIRS-only elsewhere",present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-80b,CO2,published,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-80b,CO2,no-optical,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-80b,CO2,AIRS-only,,,0.0,0.0,1.0,1.0,0.0
@@ -1175,6 +2051,12 @@ JWST,WASP-80b,CO2,haze-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-80b,CO2,haze+deck-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-80b,CO2,the method,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-80b,CO2,"census, same haze design",,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-80b,CO2,knn -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-80b,CO2,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-80b,CO2,pca_recon -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-80b,CO2,margin -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-80b,CO2,ensemble -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-80b,CO2,"amplitude flag, AIRS-only elsewhere",,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-80b,NH3,published,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-80b,NH3,no-optical,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-80b,NH3,AIRS-only,,,0.0,0.0,1.0,1.0,0.0
@@ -1183,6 +2065,12 @@ JWST,WASP-80b,NH3,haze-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-80b,NH3,haze+deck-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-80b,NH3,the method,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-80b,NH3,"census, same haze design",,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-80b,NH3,knn -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-80b,NH3,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-80b,NH3,pca_recon -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-80b,NH3,margin -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-80b,NH3,ensemble -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-80b,NH3,"amplitude flag, AIRS-only elsewhere",,,0.0,0.0,1.0,1.0,0.0
 Tier-1,WASP-80b,CH4,published,,,0.0,0.002,0.998,0.258,0.0
 Tier-1,WASP-80b,CH4,no-optical,,,0.0,0.002,0.998,0.258,0.0
 Tier-1,WASP-80b,CH4,AIRS-only,,,0.0,0.028,0.972,0.258,0.0
@@ -1191,6 +2079,12 @@ Tier-1,WASP-80b,CH4,haze-retrained,,,0.0,0.012,0.988,0.258,0.0
 Tier-1,WASP-80b,CH4,haze+deck-retrained,,,0.0,0.018,0.982,0.258,0.0
 Tier-1,WASP-80b,CH4,the method,,,0.0,0.022,0.978,0.258,0.0
 Tier-1,WASP-80b,CH4,"census, same haze design",,,0.0,0.012,0.988,0.258,0.0
+Tier-1,WASP-80b,CH4,knn -> AIRS-only,,,0.0,0.026,0.974,0.258,0.0
+Tier-1,WASP-80b,CH4,mahalanobis -> AIRS-only,,,0.0,0.024,0.976,0.258,0.0
+Tier-1,WASP-80b,CH4,pca_recon -> AIRS-only,,,0.0,0.012,0.988,0.258,0.0
+Tier-1,WASP-80b,CH4,margin -> AIRS-only,,,0.0,0.002,0.998,0.258,0.0
+Tier-1,WASP-80b,CH4,ensemble -> AIRS-only,,,0.0,0.002,0.998,0.258,0.0
+Tier-1,WASP-80b,CH4,"amplitude flag, AIRS-only elsewhere",,,0.0,0.028,0.972,0.258,0.0
 Tier-1,WASP-80b,H2O,published,present,0.06,0.028,0.064,0.908,0.258,0.0
 Tier-1,WASP-80b,H2O,no-optical,present,0.112,0.062,0.1,0.838,0.258,0.0
 Tier-1,WASP-80b,H2O,AIRS-only,present,0.163,0.084,0.158,0.758,0.258,0.0
@@ -1199,6 +2093,12 @@ Tier-1,WASP-80b,H2O,haze-retrained,present,0.137,0.076,0.122,0.802,0.258,0.0
 Tier-1,WASP-80b,H2O,haze+deck-retrained,present,0.139,0.07,0.138,0.792,0.258,0.0
 Tier-1,WASP-80b,H2O,the method,present,0.116,0.064,0.104,0.832,0.258,0.0
 Tier-1,WASP-80b,H2O,"census, same haze design",present,0.137,0.076,0.122,0.802,0.258,0.0
+Tier-1,WASP-80b,H2O,knn -> AIRS-only,present,0.155,0.078,0.154,0.768,0.258,0.0
+Tier-1,WASP-80b,H2O,mahalanobis -> AIRS-only,present,0.143,0.076,0.134,0.79,0.258,0.0
+Tier-1,WASP-80b,H2O,pca_recon -> AIRS-only,present,0.108,0.06,0.096,0.844,0.258,0.0
+Tier-1,WASP-80b,H2O,margin -> AIRS-only,present,0.073,0.036,0.074,0.89,0.258,0.0
+Tier-1,WASP-80b,H2O,ensemble -> AIRS-only,present,0.087,0.044,0.086,0.87,0.258,0.0
+Tier-1,WASP-80b,H2O,"amplitude flag, AIRS-only elsewhere",present,0.147,0.082,0.13,0.788,0.258,0.0
 Tier-1,WASP-80b,CO2,published,,,0.0,0.014,0.986,0.258,0.0
 Tier-1,WASP-80b,CO2,no-optical,,,0.0,0.014,0.986,0.258,0.0
 Tier-1,WASP-80b,CO2,AIRS-only,,,0.006,0.026,0.968,0.258,0.0
@@ -1207,6 +2107,12 @@ Tier-1,WASP-80b,CO2,haze-retrained,,,0.004,0.022,0.974,0.258,0.0
 Tier-1,WASP-80b,CO2,haze+deck-retrained,,,0.004,0.034,0.962,0.258,0.0
 Tier-1,WASP-80b,CO2,the method,,,0.006,0.024,0.97,0.258,0.0
 Tier-1,WASP-80b,CO2,"census, same haze design",,,0.004,0.022,0.974,0.258,0.0
+Tier-1,WASP-80b,CO2,knn -> AIRS-only,,,0.004,0.022,0.974,0.258,0.0
+Tier-1,WASP-80b,CO2,mahalanobis -> AIRS-only,,,0.004,0.016,0.98,0.258,0.0
+Tier-1,WASP-80b,CO2,pca_recon -> AIRS-only,,,0.002,0.016,0.982,0.258,0.0
+Tier-1,WASP-80b,CO2,margin -> AIRS-only,,,0.0,0.014,0.986,0.258,0.0
+Tier-1,WASP-80b,CO2,ensemble -> AIRS-only,,,0.004,0.014,0.982,0.258,0.0
+Tier-1,WASP-80b,CO2,"amplitude flag, AIRS-only elsewhere",,,0.006,0.028,0.966,0.258,0.0
 Tier-1,WASP-80b,NH3,published,,,0.0,0.006,0.994,0.258,0.0
 Tier-1,WASP-80b,NH3,no-optical,,,0.006,0.02,0.974,0.258,0.0
 Tier-1,WASP-80b,NH3,AIRS-only,,,0.054,0.078,0.868,0.258,0.0
@@ -1215,6 +2121,12 @@ Tier-1,WASP-80b,NH3,haze-retrained,,,0.012,0.034,0.954,0.258,0.0
 Tier-1,WASP-80b,NH3,haze+deck-retrained,,,0.01,0.038,0.952,0.258,0.0
 Tier-1,WASP-80b,NH3,the method,,,0.016,0.036,0.948,0.258,0.0
 Tier-1,WASP-80b,NH3,"census, same haze design",,,0.012,0.034,0.954,0.258,0.0
+Tier-1,WASP-80b,NH3,knn -> AIRS-only,,,0.054,0.074,0.872,0.258,0.0
+Tier-1,WASP-80b,NH3,mahalanobis -> AIRS-only,,,0.042,0.058,0.9,0.258,0.0
+Tier-1,WASP-80b,NH3,pca_recon -> AIRS-only,,,0.016,0.024,0.96,0.258,0.0
+Tier-1,WASP-80b,NH3,margin -> AIRS-only,,,0.0,0.014,0.986,0.258,0.0
+Tier-1,WASP-80b,NH3,ensemble -> AIRS-only,,,0.018,0.024,0.958,0.258,0.0
+Tier-1,WASP-80b,NH3,"amplitude flag, AIRS-only elsewhere",,,0.042,0.064,0.894,0.258,0.0
 JWST,HD209458b,CH4,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD209458b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD209458b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -1223,6 +2135,12 @@ JWST,HD209458b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD209458b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD209458b,CH4,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD209458b,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HD209458b,CH4,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HD209458b,CH4,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HD209458b,CH4,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HD209458b,CH4,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HD209458b,CH4,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HD209458b,CH4,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD209458b,H2O,published,,,0.0,1.0,0.0,0.0,0.0
 JWST,HD209458b,H2O,no-optical,,,1.0,0.0,0.0,0.0,0.0
 JWST,HD209458b,H2O,AIRS-only,,,1.0,0.0,0.0,0.0,0.0
@@ -1231,6 +2149,12 @@ JWST,HD209458b,H2O,haze-retrained,,,1.0,0.0,0.0,0.0,0.0
 JWST,HD209458b,H2O,haze+deck-retrained,,,1.0,0.0,0.0,0.0,0.0
 JWST,HD209458b,H2O,the method,,,1.0,0.0,0.0,0.0,0.0
 JWST,HD209458b,H2O,"census, same haze design",,,1.0,0.0,0.0,0.0,0.0
+JWST,HD209458b,H2O,knn -> AIRS-only,,,0.0,1.0,0.0,0.0,0.0
+JWST,HD209458b,H2O,mahalanobis -> AIRS-only,,,0.0,1.0,0.0,0.0,0.0
+JWST,HD209458b,H2O,pca_recon -> AIRS-only,,,0.0,1.0,0.0,0.0,0.0
+JWST,HD209458b,H2O,margin -> AIRS-only,,,0.0,1.0,0.0,0.0,0.0
+JWST,HD209458b,H2O,ensemble -> AIRS-only,,,0.0,1.0,0.0,0.0,0.0
+JWST,HD209458b,H2O,"amplitude flag, AIRS-only elsewhere",,,1.0,0.0,0.0,0.0,0.0
 JWST,HD209458b,CO2,published,,,0.0,0.0,1.0,0.0,0.0
 JWST,HD209458b,CO2,no-optical,,,0.0,0.0,1.0,0.0,0.0
 JWST,HD209458b,CO2,AIRS-only,,,0.0,0.0,1.0,0.0,0.0
@@ -1239,6 +2163,12 @@ JWST,HD209458b,CO2,haze-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,HD209458b,CO2,haze+deck-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,HD209458b,CO2,the method,,,0.0,0.0,1.0,0.0,0.0
 JWST,HD209458b,CO2,"census, same haze design",,,0.0,0.0,1.0,0.0,0.0
+JWST,HD209458b,CO2,knn -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,HD209458b,CO2,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,HD209458b,CO2,pca_recon -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,HD209458b,CO2,margin -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,HD209458b,CO2,ensemble -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
+JWST,HD209458b,CO2,"amplitude flag, AIRS-only elsewhere",,,0.0,0.0,1.0,0.0,0.0
 JWST,HD209458b,NH3,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD209458b,NH3,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD209458b,NH3,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -1247,6 +2177,12 @@ JWST,HD209458b,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD209458b,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD209458b,NH3,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,HD209458b,NH3,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HD209458b,NH3,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HD209458b,NH3,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HD209458b,NH3,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HD209458b,NH3,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HD209458b,NH3,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,HD209458b,NH3,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,0.0,0.0
 Tier-1,HD209458b,CH4,published,absent,1.0,0.0,0.0,1.0,0.306,0.0
 Tier-1,HD209458b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.306,0.0
 Tier-1,HD209458b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,0.306,0.0
@@ -1255,6 +2191,12 @@ Tier-1,HD209458b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,0.306,0.0
 Tier-1,HD209458b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.306,0.0
 Tier-1,HD209458b,CH4,the method,absent,1.0,0.0,0.0,1.0,0.306,0.0
 Tier-1,HD209458b,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.306,0.0
+Tier-1,HD209458b,CH4,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.306,0.0
+Tier-1,HD209458b,CH4,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.306,0.0
+Tier-1,HD209458b,CH4,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.306,0.0
+Tier-1,HD209458b,CH4,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.306,0.0
+Tier-1,HD209458b,CH4,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.306,0.0
+Tier-1,HD209458b,CH4,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,0.306,0.0
 Tier-1,HD209458b,H2O,published,,,0.12,0.198,0.682,0.306,0.0
 Tier-1,HD209458b,H2O,no-optical,,,0.388,0.322,0.29,0.306,0.0
 Tier-1,HD209458b,H2O,AIRS-only,,,0.622,0.23,0.148,0.306,0.0
@@ -1263,6 +2205,12 @@ Tier-1,HD209458b,H2O,haze-retrained,,,0.432,0.362,0.206,0.306,0.0
 Tier-1,HD209458b,H2O,haze+deck-retrained,,,0.514,0.314,0.172,0.306,0.0
 Tier-1,HD209458b,H2O,the method,,,0.438,0.268,0.294,0.306,0.0
 Tier-1,HD209458b,H2O,"census, same haze design",,,0.432,0.362,0.206,0.306,0.0
+Tier-1,HD209458b,H2O,knn -> AIRS-only,,,0.12,0.198,0.682,0.306,0.0
+Tier-1,HD209458b,H2O,mahalanobis -> AIRS-only,,,0.124,0.198,0.678,0.306,0.0
+Tier-1,HD209458b,H2O,pca_recon -> AIRS-only,,,0.244,0.194,0.562,0.306,0.0
+Tier-1,HD209458b,H2O,margin -> AIRS-only,,,0.192,0.314,0.494,0.306,0.0
+Tier-1,HD209458b,H2O,ensemble -> AIRS-only,,,0.3,0.158,0.542,0.306,0.0
+Tier-1,HD209458b,H2O,"amplitude flag, AIRS-only elsewhere",,,0.564,0.274,0.162,0.306,0.0
 Tier-1,HD209458b,CO2,published,,,0.002,0.014,0.984,0.306,0.0
 Tier-1,HD209458b,CO2,no-optical,,,0.004,0.016,0.98,0.306,0.0
 Tier-1,HD209458b,CO2,AIRS-only,,,0.026,0.05,0.924,0.306,0.0
@@ -1271,6 +2219,12 @@ Tier-1,HD209458b,CO2,haze-retrained,,,0.028,0.08,0.892,0.306,0.0
 Tier-1,HD209458b,CO2,haze+deck-retrained,,,0.042,0.078,0.88,0.306,0.0
 Tier-1,HD209458b,CO2,the method,,,0.014,0.062,0.924,0.306,0.0
 Tier-1,HD209458b,CO2,"census, same haze design",,,0.028,0.08,0.892,0.306,0.0
+Tier-1,HD209458b,CO2,knn -> AIRS-only,,,0.002,0.014,0.984,0.306,0.0
+Tier-1,HD209458b,CO2,mahalanobis -> AIRS-only,,,0.002,0.014,0.984,0.306,0.0
+Tier-1,HD209458b,CO2,pca_recon -> AIRS-only,,,0.006,0.018,0.976,0.306,0.0
+Tier-1,HD209458b,CO2,margin -> AIRS-only,,,0.004,0.02,0.976,0.306,0.0
+Tier-1,HD209458b,CO2,ensemble -> AIRS-only,,,0.018,0.04,0.942,0.306,0.0
+Tier-1,HD209458b,CO2,"amplitude flag, AIRS-only elsewhere",,,0.022,0.064,0.914,0.306,0.0
 Tier-1,HD209458b,NH3,published,absent,1.0,0.0,0.0,1.0,0.306,0.0
 Tier-1,HD209458b,NH3,no-optical,absent,0.999,0.0,0.002,0.998,0.306,0.0
 Tier-1,HD209458b,NH3,AIRS-only,absent,0.951,0.028,0.042,0.93,0.306,0.0
@@ -1279,6 +2233,12 @@ Tier-1,HD209458b,NH3,haze-retrained,absent,0.994,0.002,0.008,0.99,0.306,0.0
 Tier-1,HD209458b,NH3,haze+deck-retrained,absent,0.989,0.002,0.018,0.98,0.306,0.0
 Tier-1,HD209458b,NH3,the method,absent,0.987,0.004,0.018,0.978,0.306,0.0
 Tier-1,HD209458b,NH3,"census, same haze design",absent,0.994,0.002,0.008,0.99,0.306,0.0
+Tier-1,HD209458b,NH3,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.306,0.0
+Tier-1,HD209458b,NH3,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.306,0.0
+Tier-1,HD209458b,NH3,pca_recon -> AIRS-only,absent,0.995,0.002,0.006,0.992,0.306,0.0
+Tier-1,HD209458b,NH3,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.306,0.0
+Tier-1,HD209458b,NH3,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.306,0.0
+Tier-1,HD209458b,NH3,"amplitude flag, AIRS-only elsewhere",absent,0.962,0.02,0.036,0.944,0.306,0.0
 JWST,WASP-96b,CH4,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-96b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-96b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -1287,6 +2247,12 @@ JWST,WASP-96b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-96b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-96b,CH4,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-96b,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-96b,CH4,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-96b,CH4,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-96b,CH4,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-96b,CH4,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-96b,CH4,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-96b,CH4,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-96b,H2O,published,present,0.5,0.0,1.0,0.0,0.0,0.0
 JWST,WASP-96b,H2O,no-optical,present,1.0,1.0,0.0,0.0,0.0,0.0
 JWST,WASP-96b,H2O,AIRS-only,present,1.0,1.0,0.0,0.0,0.0,0.0
@@ -1295,6 +2261,12 @@ JWST,WASP-96b,H2O,haze-retrained,present,1.0,1.0,0.0,0.0,0.0,0.0
 JWST,WASP-96b,H2O,haze+deck-retrained,present,1.0,1.0,0.0,0.0,0.0,0.0
 JWST,WASP-96b,H2O,the method,present,1.0,1.0,0.0,0.0,0.0,0.0
 JWST,WASP-96b,H2O,"census, same haze design",present,1.0,1.0,0.0,0.0,0.0,0.0
+JWST,WASP-96b,H2O,knn -> AIRS-only,present,0.5,0.0,1.0,0.0,0.0,0.0
+JWST,WASP-96b,H2O,mahalanobis -> AIRS-only,present,0.5,0.0,1.0,0.0,0.0,0.0
+JWST,WASP-96b,H2O,pca_recon -> AIRS-only,present,0.5,0.0,1.0,0.0,0.0,0.0
+JWST,WASP-96b,H2O,margin -> AIRS-only,present,1.0,1.0,0.0,0.0,0.0,0.0
+JWST,WASP-96b,H2O,ensemble -> AIRS-only,present,1.0,1.0,0.0,0.0,0.0,0.0
+JWST,WASP-96b,H2O,"amplitude flag, AIRS-only elsewhere",present,1.0,1.0,0.0,0.0,0.0,0.0
 JWST,WASP-96b,CO2,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-96b,CO2,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-96b,CO2,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -1303,6 +2275,12 @@ JWST,WASP-96b,CO2,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-96b,CO2,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-96b,CO2,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-96b,CO2,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-96b,CO2,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-96b,CO2,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-96b,CO2,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-96b,CO2,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-96b,CO2,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-96b,CO2,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-96b,NH3,published,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-96b,NH3,no-optical,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-96b,NH3,AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
@@ -1311,6 +2289,12 @@ JWST,WASP-96b,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-96b,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-96b,NH3,the method,absent,1.0,0.0,0.0,1.0,0.0,0.0
 JWST,WASP-96b,NH3,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-96b,NH3,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-96b,NH3,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-96b,NH3,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-96b,NH3,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-96b,NH3,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.0,0.0
+JWST,WASP-96b,NH3,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,0.0,0.0
 Tier-1,WASP-96b,CH4,published,absent,1.0,0.0,0.0,1.0,0.136,0.0
 Tier-1,WASP-96b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.136,0.0
 Tier-1,WASP-96b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,0.136,0.0
@@ -1319,6 +2303,12 @@ Tier-1,WASP-96b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,0.136,0.0
 Tier-1,WASP-96b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.136,0.0
 Tier-1,WASP-96b,CH4,the method,absent,1.0,0.0,0.0,1.0,0.136,0.0
 Tier-1,WASP-96b,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.136,0.0
+Tier-1,WASP-96b,CH4,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.136,0.0
+Tier-1,WASP-96b,CH4,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.136,0.0
+Tier-1,WASP-96b,CH4,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.136,0.0
+Tier-1,WASP-96b,CH4,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.136,0.0
+Tier-1,WASP-96b,CH4,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.136,0.0
+Tier-1,WASP-96b,CH4,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,0.136,0.0
 Tier-1,WASP-96b,H2O,published,present,0.229,0.14,0.178,0.682,0.136,0.0
 Tier-1,WASP-96b,H2O,no-optical,present,0.448,0.352,0.192,0.456,0.136,0.0
 Tier-1,WASP-96b,H2O,AIRS-only,present,0.482,0.386,0.192,0.422,0.136,0.0
@@ -1327,6 +2317,12 @@ Tier-1,WASP-96b,H2O,haze-retrained,present,0.433,0.304,0.258,0.438,0.136,0.0
 Tier-1,WASP-96b,H2O,haze+deck-retrained,present,0.477,0.352,0.25,0.398,0.136,0.0
 Tier-1,WASP-96b,H2O,the method,present,0.37,0.25,0.24,0.51,0.136,0.0
 Tier-1,WASP-96b,H2O,"census, same haze design",present,0.357,0.244,0.226,0.53,0.136,0.0
+Tier-1,WASP-96b,H2O,knn -> AIRS-only,present,0.379,0.282,0.194,0.524,0.136,0.0
+Tier-1,WASP-96b,H2O,mahalanobis -> AIRS-only,present,0.366,0.266,0.2,0.534,0.136,0.0
+Tier-1,WASP-96b,H2O,pca_recon -> AIRS-only,present,0.276,0.186,0.18,0.634,0.136,0.0
+Tier-1,WASP-96b,H2O,margin -> AIRS-only,present,0.285,0.162,0.246,0.592,0.136,0.0
+Tier-1,WASP-96b,H2O,ensemble -> AIRS-only,present,0.319,0.254,0.13,0.616,0.136,0.0
+Tier-1,WASP-96b,H2O,"amplitude flag, AIRS-only elsewhere",present,0.48,0.376,0.208,0.416,0.136,0.0
 Tier-1,WASP-96b,CO2,published,absent,0.987,0.0,0.026,0.974,0.136,0.0
 Tier-1,WASP-96b,CO2,no-optical,absent,0.979,0.004,0.034,0.962,0.136,0.0
 Tier-1,WASP-96b,CO2,AIRS-only,absent,0.953,0.022,0.05,0.928,0.136,0.0
@@ -1335,6 +2331,12 @@ Tier-1,WASP-96b,CO2,haze-retrained,absent,0.961,0.018,0.042,0.94,0.136,0.0
 Tier-1,WASP-96b,CO2,haze+deck-retrained,absent,0.951,0.024,0.05,0.926,0.136,0.0
 Tier-1,WASP-96b,CO2,the method,absent,0.969,0.01,0.042,0.948,0.136,0.0
 Tier-1,WASP-96b,CO2,"census, same haze design",absent,0.974,0.006,0.04,0.954,0.136,0.0
+Tier-1,WASP-96b,CO2,knn -> AIRS-only,absent,0.965,0.014,0.042,0.944,0.136,0.0
+Tier-1,WASP-96b,CO2,mahalanobis -> AIRS-only,absent,0.977,0.004,0.038,0.958,0.136,0.0
+Tier-1,WASP-96b,CO2,pca_recon -> AIRS-only,absent,0.983,0.002,0.03,0.968,0.136,0.0
+Tier-1,WASP-96b,CO2,margin -> AIRS-only,absent,0.98,0.008,0.024,0.968,0.136,0.0
+Tier-1,WASP-96b,CO2,ensemble -> AIRS-only,absent,0.973,0.016,0.022,0.962,0.136,0.0
+Tier-1,WASP-96b,CO2,"amplitude flag, AIRS-only elsewhere",absent,0.952,0.024,0.048,0.928,0.136,0.0
 Tier-1,WASP-96b,NH3,published,absent,1.0,0.0,0.0,1.0,0.136,0.0
 Tier-1,WASP-96b,NH3,no-optical,absent,0.998,0.0,0.004,0.996,0.136,0.0
 Tier-1,WASP-96b,NH3,AIRS-only,absent,0.987,0.004,0.018,0.978,0.136,0.0
@@ -1343,6 +2345,12 @@ Tier-1,WASP-96b,NH3,haze-retrained,absent,0.999,0.0,0.002,0.998,0.136,0.0
 Tier-1,WASP-96b,NH3,haze+deck-retrained,absent,0.999,0.0,0.002,0.998,0.136,0.0
 Tier-1,WASP-96b,NH3,the method,absent,0.997,0.002,0.002,0.996,0.136,0.0
 Tier-1,WASP-96b,NH3,"census, same haze design",absent,0.995,0.004,0.002,0.994,0.136,0.0
+Tier-1,WASP-96b,NH3,knn -> AIRS-only,absent,0.992,0.002,0.012,0.986,0.136,0.0
+Tier-1,WASP-96b,NH3,mahalanobis -> AIRS-only,absent,0.994,0.002,0.008,0.99,0.136,0.0
+Tier-1,WASP-96b,NH3,pca_recon -> AIRS-only,absent,0.998,0.0,0.004,0.996,0.136,0.0
+Tier-1,WASP-96b,NH3,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.136,0.0
+Tier-1,WASP-96b,NH3,ensemble -> AIRS-only,absent,0.998,0.002,0.0,0.998,0.136,0.0
+Tier-1,WASP-96b,NH3,"amplitude flag, AIRS-only elsewhere",absent,0.989,0.002,0.018,0.98,0.136,0.0
 JWST,WASP-17b,CH4,published,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-17b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-17b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
@@ -1351,6 +2359,12 @@ JWST,WASP-17b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-17b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-17b,CH4,the method,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-17b,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-17b,CH4,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-17b,CH4,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-17b,CH4,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-17b,CH4,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-17b,CH4,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-17b,CH4,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-17b,H2O,published,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-17b,H2O,no-optical,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-17b,H2O,AIRS-only,present,1.0,1.0,0.0,0.0,1.0,0.0
@@ -1359,6 +2373,12 @@ JWST,WASP-17b,H2O,haze-retrained,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-17b,H2O,haze+deck-retrained,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-17b,H2O,the method,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-17b,H2O,"census, same haze design",present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,WASP-17b,H2O,knn -> AIRS-only,present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,WASP-17b,H2O,mahalanobis -> AIRS-only,present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,WASP-17b,H2O,pca_recon -> AIRS-only,present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,WASP-17b,H2O,margin -> AIRS-only,present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,WASP-17b,H2O,ensemble -> AIRS-only,present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,WASP-17b,H2O,"amplitude flag, AIRS-only elsewhere",present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-17b,CO2,published,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-17b,CO2,no-optical,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-17b,CO2,AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
@@ -1367,6 +2387,12 @@ JWST,WASP-17b,CO2,haze-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-17b,CO2,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-17b,CO2,the method,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-17b,CO2,"census, same haze design",absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-17b,CO2,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-17b,CO2,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-17b,CO2,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-17b,CO2,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-17b,CO2,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-17b,CO2,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-17b,NH3,published,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-17b,NH3,no-optical,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-17b,NH3,AIRS-only,,,0.0,0.0,1.0,1.0,0.0
@@ -1375,6 +2401,12 @@ JWST,WASP-17b,NH3,haze-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-17b,NH3,haze+deck-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-17b,NH3,the method,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-17b,NH3,"census, same haze design",,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-17b,NH3,knn -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-17b,NH3,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-17b,NH3,pca_recon -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-17b,NH3,margin -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-17b,NH3,ensemble -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-17b,NH3,"amplitude flag, AIRS-only elsewhere",,,0.0,0.0,1.0,1.0,0.0
 Tier-1,WASP-17b,CH4,published,absent,0.999,0.0,0.002,0.998,0.922,0.0
 Tier-1,WASP-17b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.922,0.0
 Tier-1,WASP-17b,CH4,AIRS-only,absent,0.991,0.0,0.018,0.982,0.922,0.0
@@ -1383,6 +2415,12 @@ Tier-1,WASP-17b,CH4,haze-retrained,absent,0.998,0.0,0.004,0.996,0.922,0.0
 Tier-1,WASP-17b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.922,0.0
 Tier-1,WASP-17b,CH4,the method,absent,0.998,0.0,0.004,0.996,0.922,0.0
 Tier-1,WASP-17b,CH4,"census, same haze design",absent,0.998,0.0,0.004,0.996,0.922,0.0
+Tier-1,WASP-17b,CH4,knn -> AIRS-only,absent,0.992,0.0,0.016,0.984,0.922,0.0
+Tier-1,WASP-17b,CH4,mahalanobis -> AIRS-only,absent,0.992,0.0,0.016,0.984,0.922,0.0
+Tier-1,WASP-17b,CH4,pca_recon -> AIRS-only,absent,0.996,0.0,0.008,0.992,0.922,0.0
+Tier-1,WASP-17b,CH4,margin -> AIRS-only,absent,0.999,0.0,0.002,0.998,0.922,0.0
+Tier-1,WASP-17b,CH4,ensemble -> AIRS-only,absent,0.997,0.0,0.006,0.994,0.922,0.0
+Tier-1,WASP-17b,CH4,"amplitude flag, AIRS-only elsewhere",absent,0.996,0.0,0.008,0.992,0.922,0.0
 Tier-1,WASP-17b,H2O,published,present,0.766,0.676,0.18,0.144,0.922,0.0
 Tier-1,WASP-17b,H2O,no-optical,present,0.881,0.832,0.098,0.07,0.922,0.0
 Tier-1,WASP-17b,H2O,AIRS-only,present,0.56,0.454,0.212,0.334,0.922,0.0
@@ -1391,6 +2429,12 @@ Tier-1,WASP-17b,H2O,haze-retrained,present,0.888,0.822,0.132,0.046,0.922,0.0
 Tier-1,WASP-17b,H2O,haze+deck-retrained,present,0.868,0.794,0.148,0.058,0.922,0.0
 Tier-1,WASP-17b,H2O,the method,present,0.88,0.812,0.136,0.052,0.922,0.0
 Tier-1,WASP-17b,H2O,"census, same haze design",present,0.888,0.822,0.132,0.046,0.922,0.0
+Tier-1,WASP-17b,H2O,knn -> AIRS-only,present,0.565,0.46,0.21,0.33,0.922,0.0
+Tier-1,WASP-17b,H2O,mahalanobis -> AIRS-only,present,0.564,0.458,0.212,0.33,0.922,0.0
+Tier-1,WASP-17b,H2O,pca_recon -> AIRS-only,present,0.706,0.612,0.188,0.2,0.922,0.0
+Tier-1,WASP-17b,H2O,margin -> AIRS-only,present,0.672,0.592,0.16,0.248,0.922,0.0
+Tier-1,WASP-17b,H2O,ensemble -> AIRS-only,present,0.737,0.656,0.162,0.182,0.922,0.0
+Tier-1,WASP-17b,H2O,"amplitude flag, AIRS-only elsewhere",present,0.87,0.798,0.144,0.058,0.922,0.0
 Tier-1,WASP-17b,CO2,published,absent,1.0,0.0,0.0,1.0,0.922,0.0
 Tier-1,WASP-17b,CO2,no-optical,absent,1.0,0.0,0.0,1.0,0.922,0.0
 Tier-1,WASP-17b,CO2,AIRS-only,absent,1.0,0.0,0.0,1.0,0.922,0.0
@@ -1399,6 +2443,12 @@ Tier-1,WASP-17b,CO2,haze-retrained,absent,1.0,0.0,0.0,1.0,0.922,0.0
 Tier-1,WASP-17b,CO2,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.922,0.0
 Tier-1,WASP-17b,CO2,the method,absent,1.0,0.0,0.0,1.0,0.922,0.0
 Tier-1,WASP-17b,CO2,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.922,0.0
+Tier-1,WASP-17b,CO2,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.922,0.0
+Tier-1,WASP-17b,CO2,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.922,0.0
+Tier-1,WASP-17b,CO2,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.922,0.0
+Tier-1,WASP-17b,CO2,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.922,0.0
+Tier-1,WASP-17b,CO2,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.922,0.0
+Tier-1,WASP-17b,CO2,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,0.922,0.0
 Tier-1,WASP-17b,NH3,published,,,0.0,0.0,1.0,0.922,0.0
 Tier-1,WASP-17b,NH3,no-optical,,,0.0,0.0,1.0,0.922,0.0
 Tier-1,WASP-17b,NH3,AIRS-only,,,0.0,0.0,1.0,0.922,0.0
@@ -1407,6 +2457,12 @@ Tier-1,WASP-17b,NH3,haze-retrained,,,0.0,0.0,1.0,0.922,0.0
 Tier-1,WASP-17b,NH3,haze+deck-retrained,,,0.0,0.0,1.0,0.922,0.0
 Tier-1,WASP-17b,NH3,the method,,,0.0,0.0,1.0,0.922,0.0
 Tier-1,WASP-17b,NH3,"census, same haze design",,,0.0,0.0,1.0,0.922,0.0
+Tier-1,WASP-17b,NH3,knn -> AIRS-only,,,0.0,0.0,1.0,0.922,0.0
+Tier-1,WASP-17b,NH3,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,0.922,0.0
+Tier-1,WASP-17b,NH3,pca_recon -> AIRS-only,,,0.0,0.0,1.0,0.922,0.0
+Tier-1,WASP-17b,NH3,margin -> AIRS-only,,,0.0,0.0,1.0,0.922,0.0
+Tier-1,WASP-17b,NH3,ensemble -> AIRS-only,,,0.0,0.0,1.0,0.922,0.0
+Tier-1,WASP-17b,NH3,"amplitude flag, AIRS-only elsewhere",,,0.0,0.0,1.0,0.922,0.0
 JWST,WASP-94Ab,CH4,published,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-94Ab,CH4,no-optical,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-94Ab,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
@@ -1415,6 +2471,12 @@ JWST,WASP-94Ab,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-94Ab,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-94Ab,CH4,the method,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-94Ab,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-94Ab,CH4,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-94Ab,CH4,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-94Ab,CH4,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-94Ab,CH4,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-94Ab,CH4,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-94Ab,CH4,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-94Ab,H2O,published,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-94Ab,H2O,no-optical,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-94Ab,H2O,AIRS-only,present,1.0,1.0,0.0,0.0,1.0,0.0
@@ -1423,6 +2485,12 @@ JWST,WASP-94Ab,H2O,haze-retrained,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-94Ab,H2O,haze+deck-retrained,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-94Ab,H2O,the method,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-94Ab,H2O,"census, same haze design",present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,WASP-94Ab,H2O,knn -> AIRS-only,present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,WASP-94Ab,H2O,mahalanobis -> AIRS-only,present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,WASP-94Ab,H2O,pca_recon -> AIRS-only,present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,WASP-94Ab,H2O,margin -> AIRS-only,present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,WASP-94Ab,H2O,ensemble -> AIRS-only,present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,WASP-94Ab,H2O,"amplitude flag, AIRS-only elsewhere",present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-94Ab,CO2,published,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-94Ab,CO2,no-optical,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-94Ab,CO2,AIRS-only,,,0.0,0.0,1.0,1.0,0.0
@@ -1431,6 +2499,12 @@ JWST,WASP-94Ab,CO2,haze-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-94Ab,CO2,haze+deck-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-94Ab,CO2,the method,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-94Ab,CO2,"census, same haze design",,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-94Ab,CO2,knn -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-94Ab,CO2,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-94Ab,CO2,pca_recon -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-94Ab,CO2,margin -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-94Ab,CO2,ensemble -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-94Ab,CO2,"amplitude flag, AIRS-only elsewhere",,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-94Ab,NH3,published,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-94Ab,NH3,no-optical,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-94Ab,NH3,AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
@@ -1439,6 +2513,12 @@ JWST,WASP-94Ab,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-94Ab,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-94Ab,NH3,the method,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-94Ab,NH3,"census, same haze design",absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-94Ab,NH3,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-94Ab,NH3,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-94Ab,NH3,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-94Ab,NH3,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-94Ab,NH3,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-94Ab,NH3,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,1.0,0.0
 Tier-1,WASP-94Ab,CH4,published,absent,1.0,0.0,0.0,1.0,0.936,0.0
 Tier-1,WASP-94Ab,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.936,0.0
 Tier-1,WASP-94Ab,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,0.936,0.0
@@ -1447,6 +2527,12 @@ Tier-1,WASP-94Ab,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,0.936,0.0
 Tier-1,WASP-94Ab,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.936,0.0
 Tier-1,WASP-94Ab,CH4,the method,absent,1.0,0.0,0.0,1.0,0.936,0.0
 Tier-1,WASP-94Ab,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.936,0.0
+Tier-1,WASP-94Ab,CH4,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.936,0.0
+Tier-1,WASP-94Ab,CH4,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.936,0.0
+Tier-1,WASP-94Ab,CH4,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.936,0.0
+Tier-1,WASP-94Ab,CH4,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.936,0.0
+Tier-1,WASP-94Ab,CH4,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.936,0.0
+Tier-1,WASP-94Ab,CH4,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,0.936,0.0
 Tier-1,WASP-94Ab,H2O,published,present,0.596,0.446,0.3,0.254,0.936,0.0
 Tier-1,WASP-94Ab,H2O,no-optical,present,0.866,0.798,0.136,0.066,0.936,0.0
 Tier-1,WASP-94Ab,H2O,AIRS-only,present,0.564,0.454,0.22,0.326,0.936,0.0
@@ -1455,6 +2541,12 @@ Tier-1,WASP-94Ab,H2O,haze-retrained,present,0.829,0.736,0.186,0.078,0.936,0.0
 Tier-1,WASP-94Ab,H2O,haze+deck-retrained,present,0.809,0.71,0.198,0.092,0.936,0.0
 Tier-1,WASP-94Ab,H2O,the method,present,0.814,0.718,0.192,0.09,0.936,0.0
 Tier-1,WASP-94Ab,H2O,"census, same haze design",present,0.829,0.736,0.186,0.078,0.936,0.0
+Tier-1,WASP-94Ab,H2O,knn -> AIRS-only,present,0.552,0.412,0.28,0.308,0.936,0.0
+Tier-1,WASP-94Ab,H2O,mahalanobis -> AIRS-only,present,0.564,0.424,0.28,0.296,0.936,0.0
+Tier-1,WASP-94Ab,H2O,pca_recon -> AIRS-only,present,0.601,0.466,0.27,0.264,0.936,0.0
+Tier-1,WASP-94Ab,H2O,margin -> AIRS-only,present,0.575,0.428,0.294,0.278,0.936,0.0
+Tier-1,WASP-94Ab,H2O,ensemble -> AIRS-only,present,0.577,0.472,0.21,0.318,0.936,0.0
+Tier-1,WASP-94Ab,H2O,"amplitude flag, AIRS-only elsewhere",present,0.809,0.716,0.186,0.098,0.936,0.0
 Tier-1,WASP-94Ab,CO2,published,,,0.004,0.01,0.986,0.936,0.0
 Tier-1,WASP-94Ab,CO2,no-optical,,,0.008,0.028,0.964,0.936,0.0
 Tier-1,WASP-94Ab,CO2,AIRS-only,,,0.034,0.066,0.9,0.936,0.0
@@ -1463,6 +2555,12 @@ Tier-1,WASP-94Ab,CO2,haze-retrained,,,0.028,0.042,0.93,0.936,0.0
 Tier-1,WASP-94Ab,CO2,haze+deck-retrained,,,0.036,0.044,0.92,0.936,0.0
 Tier-1,WASP-94Ab,CO2,the method,,,0.03,0.042,0.928,0.936,0.0
 Tier-1,WASP-94Ab,CO2,"census, same haze design",,,0.028,0.042,0.93,0.936,0.0
+Tier-1,WASP-94Ab,CO2,knn -> AIRS-only,,,0.018,0.034,0.948,0.936,0.0
+Tier-1,WASP-94Ab,CO2,mahalanobis -> AIRS-only,,,0.014,0.038,0.948,0.936,0.0
+Tier-1,WASP-94Ab,CO2,pca_recon -> AIRS-only,,,0.014,0.02,0.966,0.936,0.0
+Tier-1,WASP-94Ab,CO2,margin -> AIRS-only,,,0.01,0.018,0.972,0.936,0.0
+Tier-1,WASP-94Ab,CO2,ensemble -> AIRS-only,,,0.02,0.026,0.954,0.936,0.0
+Tier-1,WASP-94Ab,CO2,"amplitude flag, AIRS-only elsewhere",,,0.03,0.042,0.928,0.936,0.0
 Tier-1,WASP-94Ab,NH3,published,absent,1.0,0.0,0.0,1.0,0.936,0.0
 Tier-1,WASP-94Ab,NH3,no-optical,absent,1.0,0.0,0.0,1.0,0.936,0.0
 Tier-1,WASP-94Ab,NH3,AIRS-only,absent,0.985,0.01,0.01,0.98,0.936,0.0
@@ -1471,6 +2569,12 @@ Tier-1,WASP-94Ab,NH3,haze-retrained,absent,0.999,0.0,0.002,0.998,0.936,0.0
 Tier-1,WASP-94Ab,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.936,0.0
 Tier-1,WASP-94Ab,NH3,the method,absent,0.999,0.0,0.002,0.998,0.936,0.0
 Tier-1,WASP-94Ab,NH3,"census, same haze design",absent,0.999,0.0,0.002,0.998,0.936,0.0
+Tier-1,WASP-94Ab,NH3,knn -> AIRS-only,absent,0.988,0.008,0.008,0.984,0.936,0.0
+Tier-1,WASP-94Ab,NH3,mahalanobis -> AIRS-only,absent,0.991,0.006,0.006,0.988,0.936,0.0
+Tier-1,WASP-94Ab,NH3,pca_recon -> AIRS-only,absent,0.995,0.004,0.002,0.994,0.936,0.0
+Tier-1,WASP-94Ab,NH3,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.936,0.0
+Tier-1,WASP-94Ab,NH3,ensemble -> AIRS-only,absent,0.998,0.002,0.0,0.998,0.936,0.0
+Tier-1,WASP-94Ab,NH3,"amplitude flag, AIRS-only elsewhere",absent,0.999,0.0,0.002,0.998,0.936,0.0
 JWST,HIP67522b,CH4,published,,,0.0,0.0,1.0,0.0,1.0
 JWST,HIP67522b,CH4,no-optical,,,0.0,0.0,1.0,0.0,1.0
 JWST,HIP67522b,CH4,AIRS-only,,,0.0,0.0,1.0,0.0,1.0
@@ -1479,6 +2583,12 @@ JWST,HIP67522b,CH4,haze-retrained,,,0.0,0.0,1.0,0.0,1.0
 JWST,HIP67522b,CH4,haze+deck-retrained,,,0.0,0.0,1.0,0.0,1.0
 JWST,HIP67522b,CH4,the method,,,0.0,1.0,0.0,0.0,1.0
 JWST,HIP67522b,CH4,"census, same haze design",,,0.0,1.0,0.0,0.0,1.0
+JWST,HIP67522b,CH4,knn -> AIRS-only,,,0.0,0.0,1.0,0.0,1.0
+JWST,HIP67522b,CH4,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,0.0,1.0
+JWST,HIP67522b,CH4,pca_recon -> AIRS-only,,,0.0,0.0,1.0,0.0,1.0
+JWST,HIP67522b,CH4,margin -> AIRS-only,,,0.0,0.0,1.0,0.0,1.0
+JWST,HIP67522b,CH4,ensemble -> AIRS-only,,,0.0,0.0,1.0,0.0,1.0
+JWST,HIP67522b,CH4,"amplitude flag, AIRS-only elsewhere",,,0.0,1.0,0.0,0.0,1.0
 JWST,HIP67522b,H2O,published,,,0.0,0.0,1.0,0.0,1.0
 JWST,HIP67522b,H2O,no-optical,,,0.0,0.0,1.0,0.0,1.0
 JWST,HIP67522b,H2O,AIRS-only,,,0.0,0.0,1.0,0.0,1.0
@@ -1487,6 +2597,12 @@ JWST,HIP67522b,H2O,haze-retrained,,,0.0,0.0,1.0,0.0,1.0
 JWST,HIP67522b,H2O,haze+deck-retrained,,,0.0,0.0,1.0,0.0,1.0
 JWST,HIP67522b,H2O,the method,,,0.0,1.0,0.0,0.0,1.0
 JWST,HIP67522b,H2O,"census, same haze design",,,0.0,1.0,0.0,0.0,1.0
+JWST,HIP67522b,H2O,knn -> AIRS-only,,,0.0,0.0,1.0,0.0,1.0
+JWST,HIP67522b,H2O,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,0.0,1.0
+JWST,HIP67522b,H2O,pca_recon -> AIRS-only,,,0.0,0.0,1.0,0.0,1.0
+JWST,HIP67522b,H2O,margin -> AIRS-only,,,0.0,0.0,1.0,0.0,1.0
+JWST,HIP67522b,H2O,ensemble -> AIRS-only,,,0.0,0.0,1.0,0.0,1.0
+JWST,HIP67522b,H2O,"amplitude flag, AIRS-only elsewhere",,,0.0,1.0,0.0,0.0,1.0
 JWST,HIP67522b,CO2,published,absent,0.0,1.0,0.0,0.0,0.0,1.0
 JWST,HIP67522b,CO2,no-optical,absent,0.0,1.0,0.0,0.0,0.0,1.0
 JWST,HIP67522b,CO2,AIRS-only,absent,0.0,1.0,0.0,0.0,0.0,1.0
@@ -1495,6 +2611,12 @@ JWST,HIP67522b,CO2,haze-retrained,absent,0.0,1.0,0.0,0.0,0.0,1.0
 JWST,HIP67522b,CO2,haze+deck-retrained,absent,0.0,1.0,0.0,0.0,0.0,1.0
 JWST,HIP67522b,CO2,the method,absent,0.5,0.0,1.0,0.0,0.0,1.0
 JWST,HIP67522b,CO2,"census, same haze design",absent,0.5,0.0,1.0,0.0,0.0,1.0
+JWST,HIP67522b,CO2,knn -> AIRS-only,absent,0.0,1.0,0.0,0.0,0.0,1.0
+JWST,HIP67522b,CO2,mahalanobis -> AIRS-only,absent,0.0,1.0,0.0,0.0,0.0,1.0
+JWST,HIP67522b,CO2,pca_recon -> AIRS-only,absent,0.0,1.0,0.0,0.0,0.0,1.0
+JWST,HIP67522b,CO2,margin -> AIRS-only,absent,0.0,1.0,0.0,0.0,0.0,1.0
+JWST,HIP67522b,CO2,ensemble -> AIRS-only,absent,0.0,1.0,0.0,0.0,0.0,1.0
+JWST,HIP67522b,CO2,"amplitude flag, AIRS-only elsewhere",absent,0.5,0.0,1.0,0.0,0.0,1.0
 JWST,HIP67522b,NH3,published,,,0.0,0.0,1.0,0.0,1.0
 JWST,HIP67522b,NH3,no-optical,,,0.0,0.0,1.0,0.0,1.0
 JWST,HIP67522b,NH3,AIRS-only,,,0.0,1.0,0.0,0.0,1.0
@@ -1503,6 +2625,12 @@ JWST,HIP67522b,NH3,haze-retrained,,,0.0,0.0,1.0,0.0,1.0
 JWST,HIP67522b,NH3,haze+deck-retrained,,,0.0,0.0,1.0,0.0,1.0
 JWST,HIP67522b,NH3,the method,,,0.0,1.0,0.0,0.0,1.0
 JWST,HIP67522b,NH3,"census, same haze design",,,0.0,1.0,0.0,0.0,1.0
+JWST,HIP67522b,NH3,knn -> AIRS-only,,,0.0,0.0,1.0,0.0,1.0
+JWST,HIP67522b,NH3,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,0.0,1.0
+JWST,HIP67522b,NH3,pca_recon -> AIRS-only,,,0.0,0.0,1.0,0.0,1.0
+JWST,HIP67522b,NH3,margin -> AIRS-only,,,0.0,0.0,1.0,0.0,1.0
+JWST,HIP67522b,NH3,ensemble -> AIRS-only,,,0.0,0.0,1.0,0.0,1.0
+JWST,HIP67522b,NH3,"amplitude flag, AIRS-only elsewhere",,,0.0,1.0,0.0,0.0,1.0
 Tier-1,HIP67522b,CH4,published,,,0.0,0.0,1.0,0.0,1.0
 Tier-1,HIP67522b,CH4,no-optical,,,0.0,0.0,1.0,0.0,1.0
 Tier-1,HIP67522b,CH4,AIRS-only,,,0.0,0.0,1.0,0.0,1.0
@@ -1511,6 +2639,12 @@ Tier-1,HIP67522b,CH4,haze-retrained,,,0.0,0.0,1.0,0.0,1.0
 Tier-1,HIP67522b,CH4,haze+deck-retrained,,,0.0,0.0,1.0,0.0,1.0
 Tier-1,HIP67522b,CH4,the method,,,0.0,1.0,0.0,0.0,1.0
 Tier-1,HIP67522b,CH4,"census, same haze design",,,0.0,1.0,0.0,0.0,1.0
+Tier-1,HIP67522b,CH4,knn -> AIRS-only,,,0.0,0.0,1.0,0.0,1.0
+Tier-1,HIP67522b,CH4,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,0.0,1.0
+Tier-1,HIP67522b,CH4,pca_recon -> AIRS-only,,,0.0,0.0,1.0,0.0,1.0
+Tier-1,HIP67522b,CH4,margin -> AIRS-only,,,0.0,0.0,1.0,0.0,1.0
+Tier-1,HIP67522b,CH4,ensemble -> AIRS-only,,,0.0,0.0,1.0,0.0,1.0
+Tier-1,HIP67522b,CH4,"amplitude flag, AIRS-only elsewhere",,,0.0,1.0,0.0,0.0,1.0
 Tier-1,HIP67522b,H2O,published,,,0.0,0.0,1.0,0.0,1.0
 Tier-1,HIP67522b,H2O,no-optical,,,0.0,0.0,1.0,0.0,1.0
 Tier-1,HIP67522b,H2O,AIRS-only,,,0.0,0.0,1.0,0.0,1.0
@@ -1519,6 +2653,12 @@ Tier-1,HIP67522b,H2O,haze-retrained,,,0.0,0.0,1.0,0.0,1.0
 Tier-1,HIP67522b,H2O,haze+deck-retrained,,,0.0,0.0,1.0,0.0,1.0
 Tier-1,HIP67522b,H2O,the method,,,0.0,1.0,0.0,0.0,1.0
 Tier-1,HIP67522b,H2O,"census, same haze design",,,0.0,1.0,0.0,0.0,1.0
+Tier-1,HIP67522b,H2O,knn -> AIRS-only,,,0.0,0.0,1.0,0.0,1.0
+Tier-1,HIP67522b,H2O,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,0.0,1.0
+Tier-1,HIP67522b,H2O,pca_recon -> AIRS-only,,,0.0,0.0,1.0,0.0,1.0
+Tier-1,HIP67522b,H2O,margin -> AIRS-only,,,0.0,0.0,1.0,0.0,1.0
+Tier-1,HIP67522b,H2O,ensemble -> AIRS-only,,,0.0,0.0,1.0,0.0,1.0
+Tier-1,HIP67522b,H2O,"amplitude flag, AIRS-only elsewhere",,,0.0,1.0,0.0,0.0,1.0
 Tier-1,HIP67522b,CO2,published,absent,0.073,0.854,0.146,0.0,0.0,1.0
 Tier-1,HIP67522b,CO2,no-optical,absent,0.015,0.97,0.03,0.0,0.0,1.0
 Tier-1,HIP67522b,CO2,AIRS-only,absent,0.0,1.0,0.0,0.0,0.0,1.0
@@ -1527,6 +2667,12 @@ Tier-1,HIP67522b,CO2,haze-retrained,absent,0.0,1.0,0.0,0.0,0.0,1.0
 Tier-1,HIP67522b,CO2,haze+deck-retrained,absent,0.0,1.0,0.0,0.0,0.0,1.0
 Tier-1,HIP67522b,CO2,the method,absent,0.5,0.0,1.0,0.0,0.0,1.0
 Tier-1,HIP67522b,CO2,"census, same haze design",absent,0.5,0.0,1.0,0.0,0.0,1.0
+Tier-1,HIP67522b,CO2,knn -> AIRS-only,absent,0.073,0.854,0.146,0.0,0.0,1.0
+Tier-1,HIP67522b,CO2,mahalanobis -> AIRS-only,absent,0.073,0.854,0.146,0.0,0.0,1.0
+Tier-1,HIP67522b,CO2,pca_recon -> AIRS-only,absent,0.073,0.854,0.146,0.0,0.0,1.0
+Tier-1,HIP67522b,CO2,margin -> AIRS-only,absent,0.002,0.996,0.004,0.0,0.0,1.0
+Tier-1,HIP67522b,CO2,ensemble -> AIRS-only,absent,0.056,0.888,0.112,0.0,0.0,1.0
+Tier-1,HIP67522b,CO2,"amplitude flag, AIRS-only elsewhere",absent,0.5,0.0,1.0,0.0,0.0,1.0
 Tier-1,HIP67522b,NH3,published,,,0.0,0.0,1.0,0.0,1.0
 Tier-1,HIP67522b,NH3,no-optical,,,0.0,0.0,1.0,0.0,1.0
 Tier-1,HIP67522b,NH3,AIRS-only,,,0.11,0.188,0.702,0.0,1.0
@@ -1535,6 +2681,12 @@ Tier-1,HIP67522b,NH3,haze-retrained,,,0.0,0.0,1.0,0.0,1.0
 Tier-1,HIP67522b,NH3,haze+deck-retrained,,,0.0,0.0,1.0,0.0,1.0
 Tier-1,HIP67522b,NH3,the method,,,0.0,1.0,0.0,0.0,1.0
 Tier-1,HIP67522b,NH3,"census, same haze design",,,0.0,1.0,0.0,0.0,1.0
+Tier-1,HIP67522b,NH3,knn -> AIRS-only,,,0.0,0.0,1.0,0.0,1.0
+Tier-1,HIP67522b,NH3,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,0.0,1.0
+Tier-1,HIP67522b,NH3,pca_recon -> AIRS-only,,,0.0,0.0,1.0,0.0,1.0
+Tier-1,HIP67522b,NH3,margin -> AIRS-only,,,0.0,0.0,1.0,0.0,1.0
+Tier-1,HIP67522b,NH3,ensemble -> AIRS-only,,,0.0,0.0,1.0,0.0,1.0
+Tier-1,HIP67522b,NH3,"amplitude flag, AIRS-only elsewhere",,,0.0,1.0,0.0,0.0,1.0
 JWST,HAT-P-12b,CH4,published,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-12b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-12b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
@@ -1543,6 +2695,12 @@ JWST,HAT-P-12b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-12b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-12b,CH4,the method,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-12b,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,HAT-P-12b,CH4,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,HAT-P-12b,CH4,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,HAT-P-12b,CH4,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,HAT-P-12b,CH4,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,HAT-P-12b,CH4,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,HAT-P-12b,CH4,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-12b,H2O,published,present,0.5,0.0,1.0,0.0,1.0,0.0
 JWST,HAT-P-12b,H2O,no-optical,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,HAT-P-12b,H2O,AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
@@ -1551,6 +2709,12 @@ JWST,HAT-P-12b,H2O,haze-retrained,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,HAT-P-12b,H2O,haze+deck-retrained,present,0.5,0.0,1.0,0.0,1.0,0.0
 JWST,HAT-P-12b,H2O,the method,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,HAT-P-12b,H2O,"census, same haze design",present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,HAT-P-12b,H2O,knn -> AIRS-only,present,0.5,0.0,1.0,0.0,1.0,0.0
+JWST,HAT-P-12b,H2O,mahalanobis -> AIRS-only,present,0.5,0.0,1.0,0.0,1.0,0.0
+JWST,HAT-P-12b,H2O,pca_recon -> AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
+JWST,HAT-P-12b,H2O,margin -> AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
+JWST,HAT-P-12b,H2O,ensemble -> AIRS-only,present,0.0,0.0,0.0,1.0,1.0,0.0
+JWST,HAT-P-12b,H2O,"amplitude flag, AIRS-only elsewhere",present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,HAT-P-12b,CO2,published,,,1.0,0.0,0.0,1.0,0.0
 JWST,HAT-P-12b,CO2,no-optical,,,1.0,0.0,0.0,1.0,0.0
 JWST,HAT-P-12b,CO2,AIRS-only,,,1.0,0.0,0.0,1.0,0.0
@@ -1559,6 +2723,12 @@ JWST,HAT-P-12b,CO2,haze-retrained,,,1.0,0.0,0.0,1.0,0.0
 JWST,HAT-P-12b,CO2,haze+deck-retrained,,,1.0,0.0,0.0,1.0,0.0
 JWST,HAT-P-12b,CO2,the method,,,1.0,0.0,0.0,1.0,0.0
 JWST,HAT-P-12b,CO2,"census, same haze design",,,1.0,0.0,0.0,1.0,0.0
+JWST,HAT-P-12b,CO2,knn -> AIRS-only,,,1.0,0.0,0.0,1.0,0.0
+JWST,HAT-P-12b,CO2,mahalanobis -> AIRS-only,,,1.0,0.0,0.0,1.0,0.0
+JWST,HAT-P-12b,CO2,pca_recon -> AIRS-only,,,1.0,0.0,0.0,1.0,0.0
+JWST,HAT-P-12b,CO2,margin -> AIRS-only,,,1.0,0.0,0.0,1.0,0.0
+JWST,HAT-P-12b,CO2,ensemble -> AIRS-only,,,1.0,0.0,0.0,1.0,0.0
+JWST,HAT-P-12b,CO2,"amplitude flag, AIRS-only elsewhere",,,1.0,0.0,0.0,1.0,0.0
 JWST,HAT-P-12b,NH3,published,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-12b,NH3,no-optical,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-12b,NH3,AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
@@ -1567,6 +2737,12 @@ JWST,HAT-P-12b,NH3,haze-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-12b,NH3,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-12b,NH3,the method,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,HAT-P-12b,NH3,"census, same haze design",absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,HAT-P-12b,NH3,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,HAT-P-12b,NH3,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,HAT-P-12b,NH3,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,HAT-P-12b,NH3,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,HAT-P-12b,NH3,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,HAT-P-12b,NH3,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,1.0,0.0
 Tier-1,HAT-P-12b,CH4,published,absent,1.0,0.0,0.0,1.0,0.646,0.0
 Tier-1,HAT-P-12b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.646,0.0
 Tier-1,HAT-P-12b,CH4,AIRS-only,absent,0.997,0.0,0.006,0.994,0.646,0.0
@@ -1575,6 +2751,12 @@ Tier-1,HAT-P-12b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,0.646,0.0
 Tier-1,HAT-P-12b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.646,0.0
 Tier-1,HAT-P-12b,CH4,the method,absent,1.0,0.0,0.0,1.0,0.646,0.0
 Tier-1,HAT-P-12b,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.646,0.0
+Tier-1,HAT-P-12b,CH4,knn -> AIRS-only,absent,0.997,0.0,0.006,0.994,0.646,0.0
+Tier-1,HAT-P-12b,CH4,mahalanobis -> AIRS-only,absent,0.997,0.0,0.006,0.994,0.646,0.0
+Tier-1,HAT-P-12b,CH4,pca_recon -> AIRS-only,absent,0.998,0.0,0.004,0.996,0.646,0.0
+Tier-1,HAT-P-12b,CH4,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.646,0.0
+Tier-1,HAT-P-12b,CH4,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.646,0.0
+Tier-1,HAT-P-12b,CH4,"amplitude flag, AIRS-only elsewhere",absent,0.999,0.0,0.002,0.998,0.646,0.0
 Tier-1,HAT-P-12b,H2O,published,present,0.061,0.024,0.074,0.902,0.646,0.0
 Tier-1,HAT-P-12b,H2O,no-optical,present,0.123,0.072,0.102,0.826,0.646,0.0
 Tier-1,HAT-P-12b,H2O,AIRS-only,present,0.091,0.056,0.07,0.874,0.646,0.0
@@ -1583,6 +2765,12 @@ Tier-1,HAT-P-12b,H2O,haze-retrained,present,0.125,0.07,0.11,0.82,0.646,0.0
 Tier-1,HAT-P-12b,H2O,haze+deck-retrained,present,0.13,0.072,0.116,0.812,0.646,0.0
 Tier-1,HAT-P-12b,H2O,the method,present,0.103,0.054,0.098,0.848,0.646,0.0
 Tier-1,HAT-P-12b,H2O,"census, same haze design",present,0.125,0.07,0.11,0.82,0.646,0.0
+Tier-1,HAT-P-12b,H2O,knn -> AIRS-only,present,0.086,0.052,0.068,0.88,0.646,0.0
+Tier-1,HAT-P-12b,H2O,mahalanobis -> AIRS-only,present,0.084,0.048,0.072,0.88,0.646,0.0
+Tier-1,HAT-P-12b,H2O,pca_recon -> AIRS-only,present,0.075,0.034,0.082,0.884,0.646,0.0
+Tier-1,HAT-P-12b,H2O,margin -> AIRS-only,present,0.071,0.032,0.078,0.89,0.646,0.0
+Tier-1,HAT-P-12b,H2O,ensemble -> AIRS-only,present,0.062,0.034,0.056,0.91,0.646,0.0
+Tier-1,HAT-P-12b,H2O,"amplitude flag, AIRS-only elsewhere",present,0.115,0.064,0.102,0.834,0.646,0.0
 Tier-1,HAT-P-12b,CO2,published,,,0.014,0.064,0.922,0.646,0.0
 Tier-1,HAT-P-12b,CO2,no-optical,,,0.022,0.086,0.892,0.646,0.0
 Tier-1,HAT-P-12b,CO2,AIRS-only,,,0.142,0.174,0.684,0.646,0.0
@@ -1591,6 +2779,12 @@ Tier-1,HAT-P-12b,CO2,haze-retrained,,,0.076,0.112,0.812,0.646,0.0
 Tier-1,HAT-P-12b,CO2,haze+deck-retrained,,,0.082,0.138,0.78,0.646,0.0
 Tier-1,HAT-P-12b,CO2,the method,,,0.08,0.13,0.79,0.646,0.0
 Tier-1,HAT-P-12b,CO2,"census, same haze design",,,0.076,0.112,0.812,0.646,0.0
+Tier-1,HAT-P-12b,CO2,knn -> AIRS-only,,,0.106,0.17,0.724,0.646,0.0
+Tier-1,HAT-P-12b,CO2,mahalanobis -> AIRS-only,,,0.082,0.146,0.772,0.646,0.0
+Tier-1,HAT-P-12b,CO2,pca_recon -> AIRS-only,,,0.05,0.086,0.864,0.646,0.0
+Tier-1,HAT-P-12b,CO2,margin -> AIRS-only,,,0.036,0.06,0.904,0.646,0.0
+Tier-1,HAT-P-12b,CO2,ensemble -> AIRS-only,,,0.09,0.076,0.834,0.646,0.0
+Tier-1,HAT-P-12b,CO2,"amplitude flag, AIRS-only elsewhere",,,0.09,0.132,0.778,0.646,0.0
 Tier-1,HAT-P-12b,NH3,published,absent,1.0,0.0,0.0,1.0,0.646,0.0
 Tier-1,HAT-P-12b,NH3,no-optical,absent,0.998,0.0,0.004,0.996,0.646,0.0
 Tier-1,HAT-P-12b,NH3,AIRS-only,absent,0.986,0.006,0.016,0.978,0.646,0.0
@@ -1599,6 +2793,12 @@ Tier-1,HAT-P-12b,NH3,haze-retrained,absent,0.996,0.0,0.008,0.992,0.646,0.0
 Tier-1,HAT-P-12b,NH3,haze+deck-retrained,absent,0.998,0.0,0.004,0.996,0.646,0.0
 Tier-1,HAT-P-12b,NH3,the method,absent,0.996,0.0,0.008,0.992,0.646,0.0
 Tier-1,HAT-P-12b,NH3,"census, same haze design",absent,0.996,0.0,0.008,0.992,0.646,0.0
+Tier-1,HAT-P-12b,NH3,knn -> AIRS-only,absent,0.988,0.004,0.016,0.98,0.646,0.0
+Tier-1,HAT-P-12b,NH3,mahalanobis -> AIRS-only,absent,0.991,0.004,0.01,0.986,0.646,0.0
+Tier-1,HAT-P-12b,NH3,pca_recon -> AIRS-only,absent,0.994,0.004,0.004,0.992,0.646,0.0
+Tier-1,HAT-P-12b,NH3,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.646,0.0
+Tier-1,HAT-P-12b,NH3,ensemble -> AIRS-only,absent,0.996,0.002,0.004,0.994,0.646,0.0
+Tier-1,HAT-P-12b,NH3,"amplitude flag, AIRS-only elsewhere",absent,0.992,0.002,0.012,0.986,0.646,0.0
 JWST,WASP-39b,CH4,published,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-39b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-39b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
@@ -1607,6 +2807,12 @@ JWST,WASP-39b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-39b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-39b,CH4,the method,absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-39b,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-39b,CH4,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-39b,CH4,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-39b,CH4,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-39b,CH4,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-39b,CH4,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-39b,CH4,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-39b,H2O,published,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-39b,H2O,no-optical,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-39b,H2O,AIRS-only,present,1.0,1.0,0.0,0.0,1.0,0.0
@@ -1615,6 +2821,12 @@ JWST,WASP-39b,H2O,haze-retrained,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-39b,H2O,haze+deck-retrained,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-39b,H2O,the method,present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-39b,H2O,"census, same haze design",present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,WASP-39b,H2O,knn -> AIRS-only,present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,WASP-39b,H2O,mahalanobis -> AIRS-only,present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,WASP-39b,H2O,pca_recon -> AIRS-only,present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,WASP-39b,H2O,margin -> AIRS-only,present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,WASP-39b,H2O,ensemble -> AIRS-only,present,1.0,1.0,0.0,0.0,1.0,0.0
+JWST,WASP-39b,H2O,"amplitude flag, AIRS-only elsewhere",present,1.0,1.0,0.0,0.0,1.0,0.0
 JWST,WASP-39b,CO2,published,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-39b,CO2,no-optical,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-39b,CO2,AIRS-only,,,0.0,0.0,1.0,1.0,0.0
@@ -1623,6 +2835,12 @@ JWST,WASP-39b,CO2,haze-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-39b,CO2,haze+deck-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-39b,CO2,the method,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-39b,CO2,"census, same haze design",,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-39b,CO2,knn -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-39b,CO2,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-39b,CO2,pca_recon -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-39b,CO2,margin -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-39b,CO2,ensemble -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-39b,CO2,"amplitude flag, AIRS-only elsewhere",,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-39b,NH3,published,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-39b,NH3,no-optical,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-39b,NH3,AIRS-only,,,0.0,0.0,1.0,1.0,0.0
@@ -1631,6 +2849,12 @@ JWST,WASP-39b,NH3,haze-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-39b,NH3,haze+deck-retrained,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-39b,NH3,the method,,,0.0,0.0,1.0,1.0,0.0
 JWST,WASP-39b,NH3,"census, same haze design",,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-39b,NH3,knn -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-39b,NH3,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-39b,NH3,pca_recon -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-39b,NH3,margin -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-39b,NH3,ensemble -> AIRS-only,,,0.0,0.0,1.0,1.0,0.0
+JWST,WASP-39b,NH3,"amplitude flag, AIRS-only elsewhere",,,0.0,0.0,1.0,1.0,0.0
 Tier-1,WASP-39b,CH4,published,absent,1.0,0.0,0.0,1.0,0.972,0.0
 Tier-1,WASP-39b,CH4,no-optical,absent,1.0,0.0,0.0,1.0,0.972,0.0
 Tier-1,WASP-39b,CH4,AIRS-only,absent,1.0,0.0,0.0,1.0,0.972,0.0
@@ -1639,6 +2863,12 @@ Tier-1,WASP-39b,CH4,haze-retrained,absent,1.0,0.0,0.0,1.0,0.972,0.0
 Tier-1,WASP-39b,CH4,haze+deck-retrained,absent,1.0,0.0,0.0,1.0,0.972,0.0
 Tier-1,WASP-39b,CH4,the method,absent,1.0,0.0,0.0,1.0,0.972,0.0
 Tier-1,WASP-39b,CH4,"census, same haze design",absent,1.0,0.0,0.0,1.0,0.972,0.0
+Tier-1,WASP-39b,CH4,knn -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.972,0.0
+Tier-1,WASP-39b,CH4,mahalanobis -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.972,0.0
+Tier-1,WASP-39b,CH4,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.972,0.0
+Tier-1,WASP-39b,CH4,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.972,0.0
+Tier-1,WASP-39b,CH4,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.972,0.0
+Tier-1,WASP-39b,CH4,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,0.972,0.0
 Tier-1,WASP-39b,H2O,published,present,0.644,0.476,0.336,0.188,0.972,0.0
 Tier-1,WASP-39b,H2O,no-optical,present,0.931,0.88,0.102,0.018,0.972,0.0
 Tier-1,WASP-39b,H2O,AIRS-only,present,0.819,0.744,0.15,0.106,0.972,0.0
@@ -1647,6 +2877,12 @@ Tier-1,WASP-39b,H2O,haze-retrained,present,0.931,0.888,0.086,0.026,0.972,0.0
 Tier-1,WASP-39b,H2O,haze+deck-retrained,present,0.942,0.908,0.068,0.024,0.972,0.0
 Tier-1,WASP-39b,H2O,the method,present,0.926,0.878,0.096,0.026,0.972,0.0
 Tier-1,WASP-39b,H2O,"census, same haze design",present,0.931,0.888,0.086,0.026,0.972,0.0
+Tier-1,WASP-39b,H2O,knn -> AIRS-only,present,0.644,0.476,0.336,0.188,0.972,0.0
+Tier-1,WASP-39b,H2O,mahalanobis -> AIRS-only,present,0.644,0.474,0.34,0.186,0.972,0.0
+Tier-1,WASP-39b,H2O,pca_recon -> AIRS-only,present,0.69,0.544,0.292,0.164,0.972,0.0
+Tier-1,WASP-39b,H2O,margin -> AIRS-only,present,0.706,0.566,0.28,0.154,0.972,0.0
+Tier-1,WASP-39b,H2O,ensemble -> AIRS-only,present,0.714,0.602,0.224,0.174,0.972,0.0
+Tier-1,WASP-39b,H2O,"amplitude flag, AIRS-only elsewhere",present,0.929,0.884,0.09,0.026,0.972,0.0
 Tier-1,WASP-39b,CO2,published,,,0.008,0.026,0.966,0.972,0.0
 Tier-1,WASP-39b,CO2,no-optical,,,0.026,0.05,0.924,0.972,0.0
 Tier-1,WASP-39b,CO2,AIRS-only,,,0.056,0.08,0.864,0.972,0.0
@@ -1655,6 +2891,12 @@ Tier-1,WASP-39b,CO2,haze-retrained,,,0.054,0.078,0.868,0.972,0.0
 Tier-1,WASP-39b,CO2,haze+deck-retrained,,,0.076,0.078,0.846,0.972,0.0
 Tier-1,WASP-39b,CO2,the method,,,0.054,0.076,0.87,0.972,0.0
 Tier-1,WASP-39b,CO2,"census, same haze design",,,0.054,0.078,0.868,0.972,0.0
+Tier-1,WASP-39b,CO2,knn -> AIRS-only,,,0.008,0.026,0.966,0.972,0.0
+Tier-1,WASP-39b,CO2,mahalanobis -> AIRS-only,,,0.012,0.026,0.962,0.972,0.0
+Tier-1,WASP-39b,CO2,pca_recon -> AIRS-only,,,0.024,0.028,0.948,0.972,0.0
+Tier-1,WASP-39b,CO2,margin -> AIRS-only,,,0.016,0.052,0.932,0.972,0.0
+Tier-1,WASP-39b,CO2,ensemble -> AIRS-only,,,0.024,0.04,0.936,0.972,0.0
+Tier-1,WASP-39b,CO2,"amplitude flag, AIRS-only elsewhere",,,0.054,0.076,0.87,0.972,0.0
 Tier-1,WASP-39b,NH3,published,,,0.0,0.0,1.0,0.972,0.0
 Tier-1,WASP-39b,NH3,no-optical,,,0.0,0.0,1.0,0.972,0.0
 Tier-1,WASP-39b,NH3,AIRS-only,,,0.0,0.0,1.0,0.972,0.0
@@ -1663,3 +2905,9 @@ Tier-1,WASP-39b,NH3,haze-retrained,,,0.0,0.0,1.0,0.972,0.0
 Tier-1,WASP-39b,NH3,haze+deck-retrained,,,0.0,0.0,1.0,0.972,0.0
 Tier-1,WASP-39b,NH3,the method,,,0.0,0.0,1.0,0.972,0.0
 Tier-1,WASP-39b,NH3,"census, same haze design",,,0.0,0.0,1.0,0.972,0.0
+Tier-1,WASP-39b,NH3,knn -> AIRS-only,,,0.0,0.0,1.0,0.972,0.0
+Tier-1,WASP-39b,NH3,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,0.972,0.0
+Tier-1,WASP-39b,NH3,pca_recon -> AIRS-only,,,0.0,0.0,1.0,0.972,0.0
+Tier-1,WASP-39b,NH3,margin -> AIRS-only,,,0.0,0.0,1.0,0.972,0.0
+Tier-1,WASP-39b,NH3,ensemble -> AIRS-only,,,0.0,0.0,1.0,0.972,0.0
+Tier-1,WASP-39b,NH3,"amplitude flag, AIRS-only elsewhere",,,0.0,0.0,1.0,0.972,0.0

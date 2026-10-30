@@ -1,0 +1,26 @@
+Numba not installed, using numpy instead
+{'planet': 'HAT-P-26b', 'real': np.float64(159.21155444621417), 'twin': np.float32(846.6353), 'pub_min': np.float32(357.03116), 'h2o4_min': np.float32(45.96349), 'h2o5_min': np.float32(31.286697), 'floor_min': np.float32(30.813316)}
+{'planet': 'WASP-107b', 'real': np.float64(263.42591114444406), 'twin': np.float32(1171.0002), 'pub_min': np.float32(535.4569), 'h2o4_min': np.float32(157.9396), 'h2o5_min': np.float32(84.73574), 'floor_min': np.float32(47.2121)}
+{'planet': 'WASP-39b', 'real': np.float64(319.3438253946896), 'twin': np.float32(1190.2808), 'pub_min': np.float32(583.67175), 'h2o4_min': np.float32(221.88266), 'h2o5_min': np.float32(114.95173), 'floor_min': np.float32(61.079723)}
+{'planet': 'GJ3470b', 'real': np.float64(52.7196468003355), 'twin': np.float32(182.0719), 'pub_min': np.float32(93.50272), 'h2o4_min': np.float32(29.255573), 'h2o5_min': np.float32(16.071795), 'floor_min': np.float32(7.04851)}
+{'planet': 'WASP-166b', 'real': np.float64(69.32729922229214), 'twin': np.float32(212.86856), 'pub_min': np.float32(119.414), 'h2o4_min': np.float32(41.19072), 'h2o5_min': np.float32(19.76665), 'floor_min': np.float32(10.790343)}
+{'planet': 'WASP-17b', 'real': np.float64(370.08399207289307), 'twin': np.float32(1477.5814), 'pub_min': np.float32(752.09283), 'h2o4_min': np.float32(458.60208), 'h2o5_min': np.float32(236.40358), 'floor_min': np.float32(56.539543)}
+{'planet': 'WASP-80b', 'real': np.float64(79.5632205862253), 'twin': np.float32(230.0238), 'pub_min': np.float32(138.16472), 'h2o4_min': np.float32(48.498344), 'h2o5_min': np.float32(24.784204), 'floor_min': np.float32(9.126899)}
+{'planet': 'HD209458b', 'real': np.float64(98.98742532790035), 'twin': np.float32(232.96912), 'pub_min': np.float32(175.09143), 'h2o4_min': np.float32(81.94684), 'h2o5_min': np.float32(43.1154), 'floor_min': np.float32(27.482958)}
+{'planet': 'WASP-94Ab', 'real': np.float64(129.99934048980992), 'twin': np.float32(428.5917), 'pub_min': np.float32(291.1101), 'h2o4_min': np.float32(125.18805), 'h2o5_min': np.float32(68.067085), 'floor_min': np.float32(44.749096)}
+{'planet': 'HAT-P-12b', 'real': np.float64(157.945806879188), 'twin': np.float32(843.01404), 'pub_min': np.float32(425.25418), 'h2o4_min': np.float32(125.14794), 'h2o5_min': np.float32(63.617153), 'floor_min': np.float32(30.837276)}
+   planet  real   twin  pub_min  h2o4_min  h2o5_min  floor_min
+HAT-P-26b 159.0  847.0    357.0      46.0      31.0       31.0
+WASP-107b 263.0 1171.0    535.0     158.0      85.0       47.0
+ WASP-39b 319.0 1190.0    584.0     222.0     115.0       61.0
+  GJ3470b  53.0  182.0     94.0      29.0      16.0        7.0
+WASP-166b  69.0  213.0    119.0      41.0      20.0       11.0
+ WASP-17b 370.0 1478.0    752.0     459.0     236.0       57.0
+ WASP-80b  80.0  230.0    138.0      48.0      25.0        9.0
+HD209458b  99.0  233.0    175.0      82.0      43.0       27.0
+WASP-94Ab 130.0  429.0    291.0     125.0      68.0       45.0
+HAT-P-12b 158.0  843.0    425.0     125.0      64.0       31.0
+pub_min population can go at or below the real dispersion on 0 of 10
+h2o4_min population can go at or below the real dispersion on 9 of 10
+h2o5_min population can go at or below the real dispersion on 10 of 10
+floor_min population can go at or below the real dispersion on 10 of 10

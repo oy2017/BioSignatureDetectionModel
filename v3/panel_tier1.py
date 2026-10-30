@@ -25,7 +25,8 @@ import jwst_to_ariel as J  # noqa: E402
 import router_real as RR  # noqa: E402
 
 OUT = os.path.join(RESULTS, "jwst_panel"); MOLS, LEARNERS = D.MOLS, D.LEARNERS; BASE = lambda s: s.replace("-alt", "").replace("-hu", "").replace("-hm", "")
-DESIGNS = ["published", "no-optical", "AIRS-only", "shape flag", "haze-retrained", "haze+deck-retrained", "the method", "census, same haze design"]
+RULES_G, RULES_C = ("knn", "mahalanobis", "pca_recon"), ("margin", "ensemble")   # the existing rules as routers to the AIRS-only variant, added after the referee pass of 2026-10-30
+DESIGNS = ["published", "no-optical", "AIRS-only", "shape flag", "haze-retrained", "haze+deck-retrained", "the method", "census, same haze design", "knn -> AIRS-only", "mahalanobis -> AIRS-only", "pca_recon -> AIRS-only", "margin -> AIRS-only", "ensemble -> AIRS-only", "amplitude flag, AIRS-only elsewhere"]
 
 
 class Context:
@@ -34,6 +35,7 @@ class Context:
     def __init__(self):
         cases, Pte, e, sig = D.test_cases(); self.sc = D.Scorer(e); S0, _, _ = self.sc.scores(cases["clean"]); q = lambda s: np.quantile(s[np.isfinite(s)], 1 - D.DECLINE)
         self.thr_opt = q(S0[("optical", None)]); self.thr_dis = {(m, k): q(S0[("disagree", (m, k))]) for m in MOLS for k in LEARNERS}
+        self.thr_g = {r: q(S0[(r, None)]) for r in RULES_G}; self.thr_c = {(r, m, k): q(S0[(r, (m, k))]) for r in RULES_C for m in MOLS for k in LEARNERS}
         self.ret = {s: joblib.load(os.path.join(DATA, "alfnoor_jwst", f"learners_all_{s}.joblib")) for s in ("haze", "hazedeck")}
         self.M = pd.read_parquet("data/mcs/mcs_params.parquet").drop_duplicates("name").set_index("name"); self.edges, _ = J.tier3_layout()
 
@@ -41,6 +43,7 @@ class Context:
 def score(ctx, X, meas, base_name, noise2, hi, lo, census=False, extra_design=True):
     """Votes of every design on a batch of 104-bin spectra X, with the flags recomputed from each spectrum. hi, lo: the amplitude thresholds through this reduction's measured bins."""
     sc = ctx.sc; Z = AT.norm(X); opt = np.abs(sc._optical(Z) - sc.opt_mu) / sc.opt_sd > ctx.thr_opt; P = sc.probs(X); PR = {s: {(m, k): AT.prob(L["models"][("1e-4", m, k)], AJ.znorm(X, L["cols"])) for m in MOLS for k in LEARNERS} for s, L in ctx.ret.items()}
+    S_, _, _ = sc.scores(X)
     md = float(ctx.M.loc[base_name, "modulation_5H"]) * 1e6
     v = np.var(X[:, meas] * 1e6, axis=1) - noise2; ratio = np.full(len(X), np.inf); ratio[v > 0] = md / np.sqrt(v[v > 0]); up = np.isfinite(ratio) & (ratio > hi); low = ratio < lo
     out = {}
@@ -48,8 +51,10 @@ def score(ctx, X, meas, base_name, noise2, hi, lo, census=False, extra_design=Tr
         votes = {d: np.zeros(len(X)) for d in DESIGNS}
         for k in LEARNERS:
             pa, pn, ps = P["all"][(m, k)], P["no_optical"][(m, k)], P["airs_only"][(m, k)]; dis = np.maximum(np.abs(pa - pn), np.abs(pa - ps)) > ctx.thr_dis[(m, k)]; shape = np.where(opt | dis, ps, pa)
-            for d, p in (("published", pa), ("no-optical", pn), ("AIRS-only", ps), ("shape flag", shape), ("haze-retrained", PR["haze"][(m, k)]), ("haze+deck-retrained", PR["hazedeck"][(m, k)]), ("the method", np.where(up, PR["haze"][(m, k)], shape)), ("census, same haze design", PR["haze"][(m, k)] if census else shape)):
+            for d, p in (("published", pa), ("no-optical", pn), ("AIRS-only", ps), ("shape flag", shape), ("haze-retrained", PR["haze"][(m, k)]), ("haze+deck-retrained", PR["hazedeck"][(m, k)]), ("the method", np.where(up, PR["haze"][(m, k)], shape)), ("census, same haze design", PR["haze"][(m, k)] if census else shape), ("amplitude flag, AIRS-only elsewhere", np.where(up, PR["haze"][(m, k)], ps))):
                 votes[d] += p >= 0.5
+            for r in RULES_G: votes[f"{r} -> AIRS-only"] += np.where(S_[(r, None)] > ctx.thr_g[r], ps, pa) >= 0.5
+            for r in RULES_C: votes[f"{r} -> AIRS-only"] += np.where(S_[(r, (m, k))] > ctx.thr_c[(r, m, k)], ps, pa) >= 0.5
         out[m] = (votes, low, up)
     return out
 
@@ -68,7 +73,7 @@ def main(n=500):
                 votes, low, up = res[m]; lab = d["labels"].get(m)
                 for name in DESIGNS:
                     pr = votes[name] >= 3; ab = votes[name] <= 1; sp = ~(pr | ab)
-                    if name == "the method": sp = sp | low; pr = pr & ~low; ab = ab & ~low
+                    if name in ("the method", "amplitude flag, AIRS-only elsewhere"): sp = sp | low; pr = pr & ~low; ab = ab & ~low
                     if name.startswith("census") and pl == "HIP67522b": sp = np.ones_like(sp); pr = np.zeros_like(pr); ab = np.zeros_like(ab)   # the census's own reading: nine times more featured than its twin, withheld as the lower cut does
                     cr = np.nan if lab is None else float(np.mean((pr if lab == "present" else ab) + 0.5 * sp))
                     rows.append(dict(precision=prec, planet=pl, molecule=m, design=name, label=lab, credit=cr, present=float(pr.mean()), split=float(sp.mean()), absent=float(ab.mean()), up=float(up.mean()), low=float(low.mean())))

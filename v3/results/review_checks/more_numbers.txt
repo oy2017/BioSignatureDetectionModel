@@ -1,0 +1,66 @@
+16:== the classifier's errors on the same realisation (four learners pooled, all bins): share 'recoverable' by the noise-free posterior
+17:   (p_true > 0.95), share decidable by the noisy posterior, and share each retrieval gets right at p_present >= 0.5
+18:  CH4  wrong  266   recoverable (noise-free)  42.9 %   decidable (noisy)  47.7 %   retrieval right: noise-free  89.5 %  noisy  85.0 %
+19:  H2O  wrong  317   recoverable (noise-free)  23.3 %   decidable (noisy)  27.1 %   retrieval right: noise-free  62.8 %  noisy  59.0 %
+20:  CO2  wrong  273   recoverable (noise-free)  39.2 %   decidable (noisy)  38.8 %   retrieval right: noise-free  84.6 %  noisy  73.6 %
+21:  NH3  wrong  321   recoverable (noise-free)  46.7 %   decidable (noisy)  40.5 %   retrieval right: noise-free  81.3 %  noisy  73.8 %
+22:  all  wrong 1177   recoverable (noise-free)  37.8 %   decidable (noisy)  38.1 %   retrieval right: noise-free  78.9 %  noisy  72.3 %
+1. Retrieval on undecidable labels (p_true <= 0.95)
+CH4 right (p_true>.5) 80.6; majority class 56.5; within 0.1 of the 0.29 prior 14.8; present among right 37
+H2O right (p_true>.5) 84.6; majority class 59.8; within 0.1 of the 0.29 prior 18.1; present among right 32
+CO2 right (p_true>.5) 86.0; majority class 53.3; within 0.1 of the 0.29 prior 19.4; present among right 50
+NH3 right (p_true>.5) 81.0; majority class 55.6; within 0.1 of the 0.29 prior 17.3; present among right 51
+
+2. Transplants on absent labels: learners present (majority >=3, split ==2)
+  AIRS bins majority 0 split 0 of 37
+  NIRSpec channel majority 1 split 0 of 37
+  both, all below 1.95 um majority 10 split 7 of 37
+  filled bins below 1.95 um majority 10 split 8 of 37
+  measured bins below 1.95 um majority 1 split 2 of 37
+  optical points majority 14 split 13 of 37
+  real majority 1 split 0 of 37
+
+3. Present labels with a twin above the training ceiling of -2
+15 of 24 [('TOI-270d', 'CH4', -1.64), ('TOI-270d', 'CO2', -1.67), ('K2-18b', 'CH4', -1.74), ('K2-18b-alt', 'CH4', -1.74), ('GJ3470b', 'H2O', -1.08), ('WASP-166b', 'H2O', -1.3), ('TOI-1231b', 'CH4', -0.85), ('TOI-1231b', 'CO2', -1.9), ('K2-18b-hu', 'CH4', -1.74), ('TOI-270d-hm', 'CH4', -1.64), ('TOI-270d-hm', 'CO2', -1.67), ('WASP-80b', 'H2O', -1.8), ('GJ9827d', 'H2O', -1.86), ('WASP-94Ab', 'H2O', -1.6), ('HAT-P-12b', 'H2O', -1.82)]
+
+4. The present labels the re-implemented classifier does not find
+     planet molecule verdict  twin    airs  method                             cause
+   TOI-270d      CH4  absent  0.63   split  absent                      not assigned
+   TOI-270d      CO2  absent  0.06  absent  absent                          coverage
+     K2-18b      CH4  absent  0.98 present present below 1.95 um, AIRS-only finds it
+ K2-18b-alt      CH4  absent  1.00 present present below 1.95 um, AIRS-only finds it
+  WASP-107b      H2O  absent  0.00  absent  absent                          coverage
+  HAT-P-26b      H2O  absent  0.00  absent  absent                          coverage
+  HAT-P-26b      CO2   split  1.00 present   split below 1.95 um, AIRS-only finds it
+    GJ3470b      H2O  absent  0.00  absent  absent                          coverage
+    GJ3470b      CO2   split  0.92 present present below 1.95 um, AIRS-only finds it
+  WASP-166b      H2O  absent  0.00  absent present                          coverage
+  WASP-166b      CO2  absent  0.00 present present                          coverage
+  TOI-1231b      CH4   split  1.00 present present below 1.95 um, AIRS-only finds it
+  TOI-1231b      CO2  absent  0.09  absent  absent                          coverage
+  K2-18b-hu      CH4  absent  1.00 present   split below 1.95 um, AIRS-only finds it
+TOI-270d-hm      CH4  absent  0.00 present present                          coverage
+TOI-270d-hm      CO2  absent  0.01  absent  absent                          coverage
+    GJ9827d      H2O  absent  1.00  absent  absent                      not assigned
+    GJ1214b      CH4  absent   NaN  absent  absent                           no twin
+    GJ1214b      CO2   split   NaN  absent  absent                           no twin
+   LTT3780c      CH4  absent  0.80 present present below 1.95 um, AIRS-only finds it
+   WASP-80b      H2O   split  0.00 present present                          coverage
+   WASP-96b      H2O   split  1.00 present present below 1.95 um, AIRS-only finds it
+  HAT-P-12b      H2O   split  1.00  absent present                      not assigned
+{'coverage': 10, 'below 1.95 um, AIRS-only finds it': 8, 'not assigned': 3, 'no twin': 2}
+
+5. e3 budget, fifth hazed, f=20 %
+0.1 CH4 classifier 24; clear everywhere 33; optical->clear 39; optical->free 12; random->free 16
+0.1 H2O classifier 65; clear everywhere 35; optical->clear 68; optical->free 40; random->free 50
+0.1 joint classifier 114; clear everywhere 65; optical->clear 110; optical->free 86; random->free 99
+0.2 CH4 classifier 29; clear everywhere 68; optical->clear 71; optical->free 13; random->free 20
+0.2 H2O classifier 73; clear everywhere 70; optical->clear 94; optical->free 40; random->free 58
+0.2 joint classifier 124; clear everywhere 115; optical->clear 141; optical->free 87; random->free 108
+
+6.
+
+7. Method against fixes label by label: see the transcript of the check; leave-one-planet-out
+AIRS-only total 1.5 differ 7 better 4 worse 3 leave-one-planet-out min 0.5
+haze+deck-retrained total 2.0 differ 9 better 6 worse 3 leave-one-planet-out min 1.0
+shape flag total 2.5 differ 5 better 4 worse 1 leave-one-planet-out min 1.5

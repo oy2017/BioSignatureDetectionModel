@@ -1,0 +1,24 @@
+planet,molecule,verdict,twin,airs,method,cause
+TOI-270d,CH4,absent,0.63,split,absent,not assigned
+TOI-270d,CO2,absent,0.06,absent,absent,coverage
+K2-18b,CH4,absent,0.98,present,present,"below 1.95 um, AIRS-only finds it"
+K2-18b-alt,CH4,absent,1.0,present,present,"below 1.95 um, AIRS-only finds it"
+WASP-107b,H2O,absent,0.0,absent,absent,coverage
+HAT-P-26b,H2O,absent,0.0,absent,absent,coverage
+HAT-P-26b,CO2,split,0.995,present,split,"below 1.95 um, AIRS-only finds it"
+GJ3470b,H2O,absent,0.0,absent,absent,coverage
+GJ3470b,CO2,split,0.925,present,present,"below 1.95 um, AIRS-only finds it"
+WASP-166b,H2O,absent,0.005,absent,present,coverage
+WASP-166b,CO2,absent,0.0,present,present,coverage
+TOI-1231b,CH4,split,1.0,present,present,"below 1.95 um, AIRS-only finds it"
+TOI-1231b,CO2,absent,0.09,absent,absent,coverage
+K2-18b-hu,CH4,absent,1.0,present,split,"below 1.95 um, AIRS-only finds it"
+TOI-270d-hm,CH4,absent,0.0,present,present,coverage
+TOI-270d-hm,CO2,absent,0.01,absent,absent,coverage
+GJ9827d,H2O,absent,1.0,absent,absent,not assigned
+GJ1214b,CH4,absent,,absent,absent,no twin
+GJ1214b,CO2,split,,absent,absent,no twin
+LTT3780c,CH4,absent,0.805,present,present,"below 1.95 um, AIRS-only finds it"
+WASP-80b,H2O,split,0.0,present,present,coverage
+WASP-96b,H2O,split,1.0,present,present,"below 1.95 um, AIRS-only finds it"
+HAT-P-12b,H2O,split,1.0,absent,present,not assigned

@@ -26,14 +26,14 @@ BASE = PT.BASE; DRAWS = 500; ROOT = os.path.join(HERE, "data", "jwst", "panel")
 
 
 def convert(planet):
-    S, source = JP.segments(ROOT, planet); edges, _ = J.tier3_layout(); ref = max(S, key=lambda k: len(S[k]["wl"])); off = J.align_offsets(S, ref); d, e, cov = J.combine(S, edges, off)
+    S, source = JP.fourth_segments(ROOT, planet); edges, _ = J.tier3_layout(); ref = max(S, key=lambda k: len(S[k]["wl"])); off = J.align_offsets(S, ref); d, e, cov = J.combine(S, edges, off)
     filled = ~np.isfinite(d) | (cov.covered.to_numpy() < 0.5); d_f = d.copy(); d_f[filled] = np.nanmean(d[~filled]) if (~filled).any() else np.nan
     cov["filled"] = filled; cov["depth"] = d_f; cov["err"] = np.where(filled, np.nan, e); cov.to_csv(os.path.join(OUT, f"{planet}_coverage.csv"), index=False)
     return d_f, filled, np.where(filled, np.nan, e), source, edges
 
 
 def main():
-    Xc, Xo, mod, chk, edges = AF.populations(); ctx = PT.Context(); rows, flags = [], []
+    Xc, Xo, mod, chk, edges = AF.populations(); ctx = PT.Context(); rows, flags = [], []; assert JP.FOURTH, "labels must be committed first"
     ratio = lambda X, m: mod / (X[:, m].std(1) * 1e6)
     for pl, labs in JP.FOURTH.items():
         x, filled, err, source, _ = convert(pl); meas = ~filled; hi = ratio(Xc, meas).max(); lo = np.percentile(ratio(Xo, meas), 1); s = J.ariel_sigma(BASE(pl), edges)
@@ -44,7 +44,7 @@ def main():
                 votes, low, up = res[m]; lab = labs.get(m)
                 for name in DESIGNS:
                     pr = votes[name] >= 3; ab = votes[name] <= 1; sp = ~(pr | ab)
-                    if name == "the method": sp = sp | low; pr = pr & ~low; ab = ab & ~low
+                    if name in ("the method", "amplitude flag, AIRS-only elsewhere"): sp = sp | low; pr = pr & ~low; ab = ab & ~low
                     cr = np.nan if lab is None else float(np.mean((pr if lab == "present" else ab) + 0.5 * sp))
                     rows.append(dict(precision=prec, planet=pl, molecule=m, design=name, label=lab, credit=cr, present=float(pr.mean()), split=float(sp.mean()), absent=float(ab.mean()), up=float(up.mean()), low=float(low.mean())))
             if prec == "JWST":
@@ -52,6 +52,19 @@ def main():
                 flags.append(dict(planet=pl, source=source, filled=int(filled.sum()), measured=int(meas.sum()), measured_optical=int((meas & (0.5 * (edges[1:] + edges[:-1]) < 1.1)).sum()), ratio=(md / np.sqrt(v)) if v > 0 else np.inf, hi=hi, lo=lo, mass_flag=None))
         print(pl, flush=True)
     df = pd.DataFrame(rows); df.to_csv(os.path.join(OUT, "fourth_batch.csv"), index=False); Fl = pd.DataFrame(flags).set_index("planet"); Fl.to_csv(os.path.join(OUT, "fourth_batch_flags.csv"))
+    # the mask control of Section 2.6: the clear twin through the reduction's own mask at the real errors, read by the all-input design (V1298 Tau b has no usable twin: its H2O and CO2 are detected but no abundance is printed)
+    import jwst_muting_census as C
+    ctl = []; cen = 0.5 * (edges[1:] + edges[:-1]); sc = ctx.sc
+    for pl, ab in JP.FOURTH_TWINS.items():
+        cov = pd.read_csv(os.path.join(OUT, f"{pl}_coverage.csv")); x = cov.depth.to_numpy(); filled = cov.filled.to_numpy(bool); meas = ~filled; err = cov.err.to_numpy()
+        r = C.M[C.M.name == BASE(pl)].iloc[0].to_dict(); r.update({"atm top_pressure": 1e-4, "atm CO": -15.0, "atm O3": -15.0, **{f"atm {k}": v for k, v in ab.items()}}); t = C.render(r)
+        if t is None: continue
+        base = t.copy(); base[filled] = np.mean(base[meas]); e_ = np.where(meas, np.nan_to_num(err), 0.0); X = base[None, :] + np.random.default_rng(405).normal(0, 1, (200, len(base))) * e_; Pz = sc.probs(X)
+        for m in MOLS:
+            lab = JP.FOURTH[pl].get(m)
+            if lab is None: continue
+            f = float((sum((Pz["all"][(m, k)] >= 0.5).astype(int) for k in PT.LEARNERS) >= 3).mean()); ctl.append(dict(planet=pl, molecule=m, label=lab, twin_found=f, control="passes" if (f >= 0.5) == (lab == "present") else "fails"))
+    Ct = pd.DataFrame(ctl); Ct.to_csv(os.path.join(OUT, "fourth_batch_control.csv"), index=False)
     L = [f"The frozen routing method on the fourth batch: {len(JP.FOURTH)} reductions; labels committed before this run; right 1, split or withheld 0.5, wrong 0", ""]
     L.append(Fl.drop(columns=["mass_flag", "source"]).round(2).to_string()); L.append("")
     rng = np.random.default_rng(405)
@@ -64,13 +77,19 @@ def main():
             ps = q[(q.design == name) & (q.label == "present")].credit.sum(); ab = q[(q.design == name) & (q.label == "absent")].credit.sum()
             L.append(f"  {name:<24} {piv[name].sum():6.1f}   vs re-implemented {piv[name].sum() - piv['published'].sum():+5.1f} ({np.percentile(a, 2.5):+5.1f},{np.percentile(a, 97.5):+5.1f})   method minus this {piv['the method'].sum() - piv[name].sum():+5.1f} ({np.percentile(b, 2.5):+5.1f},{np.percentile(b, 97.5):+5.1f})   present {ps:5.1f}  absent {ab:5.1f}")
         L.append("")
+    L.append("Mask control (all-input design on the clear twin through the same mask, at the real errors):"); L.append(Ct.round(2).to_string(index=False)); L.append("")
+    passing = set(zip(Ct[Ct.control == "passes"].planet, Ct[Ct.control == "passes"].molecule))
+    for prec in ("JWST", "Tier-1"):
+        q = df[(df.precision == prec) & df.label.notna()]; piv = q.pivot_table(index=["planet", "molecule"], columns="design", values="credit")[DESIGNS]; keep = [k for k in piv.index if k in passing]
+        L.append(f"{prec}, on the {len(keep)} labels passing the control: " + ", ".join(f"{d} {piv.loc[keep, d].sum():.1f}" for d in DESIGNS))
+    L.append("")
     # label by label at JWST precision, and the expectations of section H
     J0 = df[df.precision == "JWST"]; V = J0.assign(v=np.where(J0.low > 0, "withheld", np.where(J0.present == 1, "present", np.where(J0.absent == 1, "absent", "split")))).pivot_table(index=["planet", "molecule", "label"], columns="design", values="v", aggfunc="first")[DESIGNS]
     L.append(V.to_string()); L.append("")
     P_ = V.reset_index(); pub = P_["published"]; met = P_["the method"]; lab = P_["label"]
     ch = P_[pub != met][["planet", "molecule", "label", "published", "the method"]]; L.append("the method against the re-implemented classifier, changed labels:"); L.append(ch.to_string(index=False)); rw = int(((pub == lab) & (met != lab) & (met != "split") & (met != "withheld")).sum())
     tj, tt = [df[(df.precision == p) & df.label.notna()].pivot_table(index=["planet", "molecule"], columns="design", values="credit")[DESIGNS].sum() for p in ("JWST", "Tier-1")]
-    L += ["", "Expectations of section H:", f"H1 method above the re-implemented classifier at JWST precision: {tj['the method'] - tj['published']:+.1f}", f"H2 method within two labels of AIRS-only ({tj['the method'] - tj['AIRS-only']:+.1f}) and of haze+deck-retrained ({tj['the method'] - tj['haze+deck-retrained']:+.1f})", f"H3 gain at Tier-1 ({tt['the method'] - tt['published']:+.1f}) smaller than at JWST precision ({tj['the method'] - tj['published']:+.1f})", f"H4 labels from right to wrong: {rw}", "H5, H6: read the tables above"]
+    L += ["", "Expectations of section H:", f"H1 method above the re-implemented classifier at JWST precision: {tj['the method'] - tj['published']:+.1f}", f"H2 method within two labels of AIRS-only ({tj['the method'] - tj['AIRS-only']:+.1f}) and of haze+deck-retrained ({tj['the method'] - tj['haze+deck-retrained']:+.1f})", f"H3 gain at Tier-1 ({tt['the method'] - tt['published']:+.1f}) smaller than at JWST precision ({tj['the method'] - tj['published']:+.1f})", f"H4 labels from right to wrong: {rw}", "H5, H6: read the tables above (giants by the catalogue mass above 0.1 Jupiter masses: TrES-4 b, HATS-6 b, TOI-5205 b, TOI-6894 b, TOI-199 b, NGTS-2 b, HAT-P-30 b, HAT-P-1 b and WASP-121 b)"]
     L.append(""); up = df[(df.precision == "Tier-1") & (df.design == "the method") & (df.molecule == "CH4")].set_index("planet"); L.append("amplitude flag, share of Tier-1 draws above the threshold: " + ", ".join(f"{p} {up.up[p]:.2f}" for p in up.index))
     txt = "\n".join(L); open(os.path.join(OUT, "fourth_batch.txt"), "w").write(txt + "\n"); print(txt)
 
