@@ -165,3 +165,10 @@ Primary measure: balanced credit, the mean of the credit on present and on absen
 - J3. matched+amp above AIRS-only and above haze+deck-retrained at JWST precision.
 - J4. matched+amp's false-present rate no higher than the frozen method's at JWST precision.
 Sensitivities fixed now: labels within 0.5 dex of the threshold removed; each molecule alone. These grid abundances are equilibrium values tied to temperature, so this tests a different forward model, not real atmospheres.
+
+## K. Real spectra unseen by any design (written 2026-10-30, before any verdict on them)
+
+Design under test: matched+amp of section I, unchanged, against the frozen method and the other designs. Spectra and labels: `independent_test.py` (LABELS), from `independent_data_survey.md`; provenance in `results/independent_test/SOURCES.md`. 17 labels on 12 planets (7 present, 10 absent): V1298 Tau c JWST (H2O present; CH4, CO2, NH3 absent), HAT-P-14 b JWST (CH4, CO2 absent), and HST G141 water on 11 planets. LTT 9779 b is not scored: its absent label and a companion paper's 3.1-sigma water disagree. Scored at the observed precision only; right 1, split or withheld 0.5, wrong 0. The HST labels are mostly TauREx retrievals of one water band, and absent there mostly means a flat spectrum, so the HST part tests water at G141 coverage and nothing more; the frozen designs must see it through a flat fill of about nine tenths of their bins, which is the handicap the new design was built to remove.
+- K1. matched+amp scores above the frozen method on the 17 labels.
+- K2. matched+amp's balanced credit is above 0.5 on the HST labels.
+- K3. It finds at least 4 of the 7 present labels with at most 3 of the 10 absent labels wrong.
