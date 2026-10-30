@@ -76,9 +76,12 @@ def select_departure(Pte, n, seed=SEED):
 
 
 HAZE_LOG_RANGE = (3.0, 10.0)   # log10 particle mixing ratio (m^-3) when the haze density is a free parameter; 10^3 is haze-free to < 1 ppm
+POWERLAW_LOG_SIGMA0 = (-34.0, -24.0)   # log10 cross-section (m^2 per molecule) at 1 um of the power-law haze; 10^-34 is haze-free
+POWERLAW_ALPHA = (0.0, 6.0)             # scattering slope; Rayleigh is 4
+RADIUS_FACTOR = (0.9, 1.1)              # free planetary radius as a factor on the catalogue radius
 
 
-def retrieve_one(i, row, obs, sig, wl, edges, npoints, maxcall, seed, haze=None, timeout=10800, free_haze=False, ab_range=AB_RANGE, fill=None):
+def retrieve_one(i, row, obs, sig, wl, edges, npoints, maxcall, seed, haze=None, timeout=10800, free_haze=False, ab_range=AB_RANGE, fill=None, aerosol="none", free_radius=False):
     """One nested-sampling retrieval; `timeout` (s) is a wall-clock cap, because nestle's inner rejection loop has no
     call cap and a pathological likelihood (a departed spectrum the model cannot fit) can spin in it for hours."""
     import signal
@@ -92,10 +95,19 @@ def retrieve_one(i, row, obs, sig, wl, edges, npoints, maxcall, seed, haze=None,
     t0 = time.time()
     try:
         r = dict(row); tm = FM.build_model(r, list(G.GASES), fill, cloud_pressure=float(r["cloud_pressure"]), haze=haze)
+        if aerosol == "powerlaw":
+            tm.add_contribution(FM.PowerLawHazeContribution()); tm.build()
+        r0 = float(tm["planet_radius"]) if free_radius else None
         T_p = float(r["T_p"])
-        lo = np.array([T_RANGE[0] * T_p, LOGP_RANGE[0]] + [ab_range[0]] * 4 + [-OFFSET] + ([HAZE_LOG_RANGE[0]] if free_haze else []))
-        hi = np.array([T_RANGE[1] * T_p, LOGP_RANGE[1]] + [ab_range[1]] * 4 + [OFFSET] + ([HAZE_LOG_RANGE[1]] if free_haze else []))
-        ndim = len(lo)
+        lo = [T_RANGE[0] * T_p, LOGP_RANGE[0]] + [ab_range[0]] * 4 + [-OFFSET]; hi = [T_RANGE[1] * T_p, LOGP_RANGE[1]] + [ab_range[1]] * 4 + [OFFSET]
+        names = ["T", "logP", "CH4", "H2O", "CO2", "NH3", "offset"]
+        if free_haze:
+            lo.append(HAZE_LOG_RANGE[0]); hi.append(HAZE_LOG_RANGE[1]); names.append("haze")
+        if aerosol == "powerlaw":
+            lo += [POWERLAW_LOG_SIGMA0[0], POWERLAW_ALPHA[0]]; hi += [POWERLAW_LOG_SIGMA0[1], POWERLAW_ALPHA[1]]; names += ["pl_logsigma0", "pl_alpha"]
+        if free_radius:
+            lo.append(RADIUS_FACTOR[0]); hi.append(RADIUS_FACTOR[1]); names.append("rfac")
+        lo = np.array(lo); hi = np.array(hi); ndim = len(lo); ix = {n: k for k, n in enumerate(names)}
 
         def prior(u):
             return lo + u * (hi - lo)
@@ -105,7 +117,11 @@ def retrieve_one(i, row, obs, sig, wl, edges, npoints, maxcall, seed, haze=None,
             for k, m in enumerate(MOLS):
                 tm[m] = 10.0 ** x[2 + k]
             if free_haze:
-                tm["lee_mie_mix_ratio"] = 10.0 ** x[7]
+                tm["lee_mie_mix_ratio"] = 10.0 ** x[ix["haze"]]
+            if aerosol == "powerlaw":
+                tm["haze_log_sigma0"] = x[ix["pl_logsigma0"]]; tm["haze_alpha"] = x[ix["pl_alpha"]]
+            if free_radius:
+                tm["planet_radius"] = r0 * x[ix["rfac"]]
             try:
                 wn, d = tm.model()[:2]
             except TimeoutError:
@@ -127,9 +143,9 @@ def retrieve_one(i, row, obs, sig, wl, edges, npoints, maxcall, seed, haze=None,
             s = res.samples[:, 2 + k]; p = float(w[s > THRESH].sum()); lab = int(r[f"atm {m}"] > THRESH)
             q = lambda f: float(np.interp(f, np.cumsum(w[np.argsort(s)]), np.sort(s)))
             out.update({f"{m}_label": lab, f"{m}_p_present": p, f"{m}_p_true": p if lab else 1 - p, f"{m}_med": q(0.5), f"{m}_lo": q(0.16), f"{m}_hi": q(0.84), f"{m}_true": float(r[f"atm {m}"])})
-        if free_haze:
-            s = res.samples[:, 7]; q = lambda f: float(np.interp(f, np.cumsum(w[np.argsort(s)]), np.sort(s)))
-            out.update(dict(haze_med=q(0.5), haze_lo=q(0.16), haze_hi=q(0.84)))
+        for nm in [n for n in ("haze", "pl_logsigma0", "pl_alpha", "rfac") if n in ix]:
+            s = res.samples[:, ix[nm]]; q = lambda f: float(np.interp(f, np.cumsum(w[np.argsort(s)]), np.sort(s)))
+            out.update({f"{nm}_med": q(0.5), f"{nm}_lo": q(0.16), f"{nm}_hi": q(0.84)})
         return out
     except Exception as e:
         signal.alarm(0)
@@ -221,8 +237,10 @@ def main():
     ap.add_argument("--population", default="pop1", choices=["pop1", "mcs"], help="mcs: the Mission Candidate Sample population of mcs_testset.py (equilibrium chemistry, clear, pure-H2 fill), tag _mcs")
     ap.add_argument("--prior", default="train", choices=["train", "population"], help="abundance prior: the training grid's 1e-9..1e-2 (default) or the test population's 1e-7..1e-2 (tag _popprior)")
     ap.add_argument("--seed-offset", type=int, default=0, help="offset of the nested-sampling seed (repeat-seed check)"); ap.add_argument("--tag", default="", help="extra output tag")
+    ap.add_argument("--aerosol", default="none", choices=["none", "powerlaw"], help="powerlaw: a power-law scattering haze (two free parameters) in the forward model, a different family from the Lee-Mie haze of the departures (tag _powerlaw)")
+    ap.add_argument("--free-radius", action="store_true", help="planetary radius free within +-10 %% of the catalogue value (tag _freeradius)")
     a = ap.parse_args()
-    tag = ("_mcs" if a.population == "mcs" else "") + ("" if a.departure == "none" else f"_{a.departure}") + ("_modelled" if a.model_departure else "") + ("_freehaze" if a.free_haze else "") + ("_noisy" if a.noisy else "") + ("_popprior" if a.prior == "population" else "") + (f"_{a.tag}" if a.tag else "")
+    tag = ("_mcs" if a.population == "mcs" else "") + ("" if a.departure == "none" else f"_{a.departure}") + ("_modelled" if a.model_departure else "") + ("_freehaze" if a.free_haze else "") + ("_powerlaw" if a.aerosol == "powerlaw" else "") + ("_freeradius" if a.free_radius else "") + ("_noisy" if a.noisy else "") + ("_popprior" if a.prior == "population" else "") + (f"_{a.tag}" if a.tag else "")
     ab_range = (-7.0, -2.0) if a.prior == "population" else AB_RANGE
     if a.population == "mcs" and (a.noisy or a.departure != "none" or a.prior == "population"):
         sys.exit("--population mcs: no --noisy, --departure or --prior population (the MCS population has no uniform prior)")
@@ -274,7 +292,7 @@ def main():
     # one pool over every planet, results streamed as they finish (no batch barrier, so a slow planet holds no one up);
     # the CSV is rewritten every `a.jobs` results and the run resumes from it
     gen = Parallel(n_jobs=a.jobs, return_as="generator_unordered")(
-        delayed(retrieve_one)(int(Pte.iloc[i]["_index"]), Pte.iloc[i].to_dict(), Xb[i], sig[i], wl, edges, a.npoints, a.maxcall, SEED + int(i) + a.seed_offset, haze, a.timeout, a.free_haze, ab_range, fill) for i in todo)
+        delayed(retrieve_one)(int(Pte.iloc[i]["_index"]), Pte.iloc[i].to_dict(), Xb[i], sig[i], wl, edges, a.npoints, a.maxcall, SEED + int(i) + a.seed_offset, haze, a.timeout, a.free_haze, ab_range, fill, a.aerosol, a.free_radius) for i in todo)
     pending = []
     for k, row in enumerate(gen, 1):
         pending.append(row)

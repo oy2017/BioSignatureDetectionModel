@@ -1045,6 +1045,37 @@ with two of the three added methane-bearing spectra recovered by the flags and t
 label of the set. The giants' muting generalises with two informative exceptions. Written into the abstract, 2.6
 (Table 3), 3.5 (Table 8, Figure 4), 3.6, Discussion, Table C1 and both letters; refs 70-81 added.
 
+### F16. The muting census as a router: each real failure class to its own remedy gives 47 of 56 panel labels (2026-10-29; `muting_router.py`)
+
+Zero-compute test from existing outputs (`results/jwst_panel/{muting_census,muting_bootstrap,router_real}.csv`, the
+base and retrained panel verdicts). A planet whose muting exceeds the prior's most muted twin at its bulk parameters
+(point estimate; 9 reductions, 8 with P > 0.95) is sent to the design retrained with hazed + deep-deck training planets;
+every other planet keeps the published design or the either-flag routing. Results (scored labels; giants = ten warm giants
+with abundances):
+
+| router | scored | on muting-flagged | on giants | CH₄ P/split/A |
+| :-- | --: | --: | --: | --: |
+| none | 37/53 | 16/21 | 17/22 | 0/1/7 |
+| either → AIRS-only | 44/54 | 18/22 | 20/24 | 5/1/2 |
+| muting → retrained hazedeck | 42/56 | 21/24 | 22/25 | 0/1/7 |
+| retrained hazedeck everywhere | 45/56 | 21/24 | 23/26 | 2/2/4 |
+| **muting → retrained, else either → AIRS-only** | **47/56** | 21/24 | 23/26 | 5/1/2 |
+| retrained everywhere, either → its AIRS-only (no census) | 46/58 | 19/23 | 21/25 | 6/0/2 |
+
+The muting route changes five labels, all on giants and all to the right answer (HAT-P-26 b CO₂, GJ 3470 b CO₂,
+WASP-166 b H₂O and CO₂, WASP-80 b H₂O: split/absent → present) and nothing else; "either, then muting" (either flag
+first at the cell level) loses the gain because the disagreement flag fires on at least one learner on those cells, so the
+order is census first. The no-census version finds methane on six of eight (K2-18 b-hu becomes present) but pays two
+labels (HD 189733 b CO₂ absent → present, GJ 1214 b CO₂ split → absent).
+
+Reading: the real misses are two classes with two remedies. The methane sub-Neptunes are a shape failure (the optical
+points), repaired by another input; the giants are an amplitude failure (muting beyond the prior), repaired by extending
+the prior. A two-axis diagnostic, amplitude against the prior and shape across the nested inputs, each routed to its own
+remedy, is the pipeline the panel supports. Caveat stated in the paper: the census twin needs a composition, so the
+amplitude flag is computable only after a retrieval (or from the literature, as here); the version without it is the
+retrained design everywhere plus the either flag. Added to Sections 3.5, 3.6, the Discussion, the abstract and the
+Conclusion.
+
 ### What these add up to, provisionally
 
 A simulator-trained classifier that reproduces its published in-simulator accuracies is mostly right

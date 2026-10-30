@@ -41,6 +41,46 @@ from taurex.cache import OpacityCache
 from taurex.chemistry import ConstantGas, TaurexChemistry
 from taurex.contributions import (AbsorptionContribution, LeeMieContribution, RayleighContribution,
                                   SimpleCloudsContribution)
+from taurex.contributions import Contribution
+from taurex.data.fittable import fitparam
+
+
+class PowerLawHazeContribution(Contribution):
+    """A scattering haze with a power-law cross-section filling the column: sigma(lambda) = sigma0 (lambda / 1 um)^-alpha,
+    in m^2 per molecule of the column (the 'enhanced Rayleigh' parameterisation used in free retrievals of real spectra,
+    e.g. Pinhas et al. 2018, MacDonald & Madhusudhan 2017). It is a different family from the Lee et al. (2013) Mie haze
+    the departures use, so a fit with it is a test of a misspecified aerosol model, not of knowing the generator."""
+
+    def __init__(self, haze_log_sigma0=-40.0, haze_alpha=4.0):
+        super().__init__("PowerLawHaze"); self._log_sigma0 = float(haze_log_sigma0); self._alpha = float(haze_alpha)
+
+    @fitparam(param_name="haze_log_sigma0", param_latex=r"$\log\sigma_0$", default_fit=False, default_bounds=[-40, -20])
+    def hazeLogSigma0(self):  # noqa: N802
+        return self._log_sigma0
+
+    @hazeLogSigma0.setter
+    def hazeLogSigma0(self, v):  # noqa: N802
+        self._log_sigma0 = float(v)
+
+    @fitparam(param_name="haze_alpha", param_latex=r"$\alpha$", default_fit=False, default_bounds=[0, 8])
+    def hazeAlpha(self):  # noqa: N802
+        return self._alpha
+
+    @hazeAlpha.setter
+    def hazeAlpha(self, v):  # noqa: N802
+        self._alpha = float(v)
+
+    def prepare_each(self, model, wngrid):
+        self._nlayers = model.nLayers; self._ngrid = wngrid.shape[0]
+        lam_um = 1e4 / np.asarray(wngrid, float)
+        sig = 10.0 ** self._log_sigma0 * lam_um ** (-self._alpha)
+        self.sigma_xsec = np.repeat(sig[None, :], self._nlayers, axis=0)
+        yield "PowerLawHaze", self.sigma_xsec
+
+    @classmethod
+    def input_keywords(cls):
+        return ("PowerLawHaze",)
+
 from taurex.model import TransmissionModel
 from taurex.planet import Planet as TauPlanet
 from taurex.stellar import BlackbodyStar
