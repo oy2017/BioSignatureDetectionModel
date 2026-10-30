@@ -140,3 +140,14 @@ separable from the AIRS-only input (+1.5, interval -1.5 to 5.7) or the haze+deck
 - H4. The method moves at most one label from right to wrong against the published classifier.
 - H5. The amplitude flag fires on at least half of the giants among the new planets (planets above 0.1 Jupiter masses with a published H2/He-dominated atmosphere).
 - H6. Any new methane-present label on an H2-dominated planet is called absent by the all-input design and present by the AIRS-only input.
+
+## I. A method built for each reduction (written 2026-10-30, after the fourth batch was seen; no verdict of this design computed yet)
+
+Reason: the frozen method fills unmeasured bins with a flat value and feeds learners trained on full-coverage spectra at another noise; five of the eight new present labels fail the mask control, so those learners could not read even a clear twin through that mask. This design removes that step. All 35 planets have been seen, so scores here are development scores; only unseen spectra or an independent simulator can confirm a gain.
+
+Rule, fixed before the first run. For each reduction, four learners of the same kinds and settings per molecule, trained on the POP-III natives (the faithful and haze+deck sets pooled) binned to the same 104 bins, cut to that reduction's measured bins only with no fill, each spectrum's depth deviations rescaled by the ratio of the planet's five-scale-height modulation to the training planet's, with the reduction's own per-bin errors added as noise (in quadrature with the Tier-1 sigma at Tier-1). Label above 1e-4; majority of four; right 1, split 0.5, wrong 0. "matched" uses the z-score of the published design. "matched+amp" also draws a muting factor log-uniform in 0.1 to 1 on half the training rows, and gives the learners the logarithm of the spectrum's dispersion over its noise as one more input. matched+amp is the primary design.
+
+Expected:
+- I1. matched+amp finds more present labels than the frozen method on the 35 planets at JWST precision.
+- I2. It raises the score on the fourth batch above 16.0 of 24 at JWST precision, with no more false present calls than the frozen method's 2.5 lost there.
+- I3. Its AUROC at Tier-1 on the fourth batch exceeds the frozen method's 0.60.
