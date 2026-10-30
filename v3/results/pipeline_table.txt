@@ -1,5 +1,5 @@
 Detector pipelines side by side (pipeline_table.py): simulated accuracy (%, mean over four learners and four molecules, POP-I at Tier-1 noise)
-and the real JWST panel (26 reductions; scored labels correct; CH4 verdicts on the eight methane reductions). Census-first row simulated as the either row (see docstring).
+and the real JWST panel (26 reductions; scored labels correct; CH4 verdicts on the eight methane reductions). Census rows simulated as the either row (see docstring; the scale-height census flags about 5 % of clean simulated planets).
 
   pipeline                                                            clean     haze 3e7  deck 1e2 Pa   spots 20 %     noise x2    panel  CH4 p/s/a
   consortium classifier, all inputs                                    81.2         63.5         71.4         70.4         71.9    42/59      0/1/7
@@ -8,3 +8,5 @@ and the real JWST panel (26 reductions; scored labels correct; CH4 verdicts on t
   retrained (haze + deck), all inputs                                  80.2         73.6         74.6         76.1         71.7    50/62      2/2/4
   retrained, either flag -> its AIRS-only                              76.3         73.7         73.9         74.9         70.1    51/65      6/0/2
   census-first: muting -> retrained, else either -> AIRS-only          76.6         73.3         71.8         73.9         70.2    52/62      5/1/2
+  scale-height census (no composition) -> retrained haze, else either         76.6         73.3         71.8         73.9         70.2    52/63      4/1/3
+  same, two-sided: amplified -> withheld                               76.6         73.3         71.8         73.9         70.2    51/61      4/1/3

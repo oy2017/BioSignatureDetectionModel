@@ -1217,6 +1217,33 @@ Reading. The census-first gain survives a batch it had not seen (no label lost),
 lost), and the held-out batch adds a third real class: amplitude above the prior from wrong bulk parameters. Written into
 the abstract, 2.5 (Table 2, refs 82-86), 3.5, 3.6, Discussion, Conclusion and both letters; Figure 4 regenerated.
 
+### F22. The census without a composition: the catalogue's five-scale-height modulation over the data's dispersion flags the same ten giants (AUROC 0.97 against the composition-based census) and the whole pipeline becomes computable from the catalogue and the spectrum alone (2026-10-29; `muting_router.py scale_height_proxy`)
+
+Proxy = modulation_5H (mass, radius, T_eq, H₂/He; the catalogue quantity the noise model already uses) / noise-corrected
+dispersion of the real spectrum over its measured bins. No retrieval, no literature abundance. Threshold fixed from the
+simulated population before looking at the panel: the largest value any clear POP-I planet reaches, 5.25 (the population
+rendered with its own decks: median 2.56, 90th 4.18, 95th 5.01, 99th 8.68, max 26); the other direction at the
+population's first percentile, 0.47.
+
+Real panel: the ten beyond-prior giants all above 5.7 (HAT-P-26 b 5.7, WASP-166 b 6.2, WASP-39 b 6.9, WASP-17 b 7.2,
+HD 209458 b 8.1, WASP-94A b 8.9, WASP-107 b 9.3, HAT-P-12 b 11.4, GJ 3470 b 11.7, WASP-80 b 11.9); the within-prior
+planets at 1.5-5.1 except four sub-Neptunes within 0.25 of the threshold (TOI-421 b 5.39, WASP-52 b 5.39, TOI-1231 b 5.44,
+TOI-270 d Holmberg 5.48) and HAT-P-18 b (8.0, the marginal census case, P 0.82); AUROC 0.97 for the strict census flag.
+HIP 67522 b at 0.32, below the population's first percentile: the amplified case is flagged in the other direction.
+
+Routers (`muting_router.txt`): proxy → retrained haze, else either → AIRS-only 52/63 (census-first 52/62, none 42/59);
+proxy → retrained hazedeck 51/62; two-sided with the amplified planet's verdicts withheld 51/61 (HIP 67522 b's false
+positive leaves the scored set). Methane 4/1/3 instead of 5/1/2: the one loss is TOI-1231 b, a methane planet within the
+prior that the proxy flags at 5.44 and the retrained design calls split. Every other label the composition-based census
+gains, the proxy gains.
+
+Reading. The caveat that the census needs a composition is removed: the amplitude axis can be read from the catalogue's
+scale height and the data, the shape axis from the nested inputs, and both remedies are trained designs; nothing in the
+pipeline uses a retrieval or a published abundance. The price is a looser flag (five near-threshold planets) and one
+methane recovery. This is what makes the pipeline a method rather than a diagnosis: departure-aware training, two
+catalogue-and-data flags, two remedies, a withheld verdict for the amplified class. Goes into the restructure as the method;
+the composition-based census stays as the analysis that explains the flag.
+
 ### What these add up to, provisionally
 
 A simulator-trained classifier that reproduces its published in-simulator accuracies is mostly right

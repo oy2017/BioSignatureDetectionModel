@@ -48,13 +48,15 @@ def main():
         ("retrained (haze + deck), all inputs", sim(rem_h, "either", "frozen") if rem_h is not None else {}, panel(mr, "retrained hazedeck everywhere")),
         ("retrained, either flag -> its AIRS-only", sim(rem_h, "either", "remedied") if rem_h is not None else {}, panel(mr, "retrained hazedeck everywhere, either -> its AIRS-only")),
         ("census-first: muting -> retrained, else either -> AIRS-only", sim(rem, "either", "remedied"), panel(mr, "muting -> retrained hazedeck, else either -> AIRS-only")),
+        ("scale-height census (no composition) -> retrained haze, else either", sim(rem, "either", "remedied"), panel(mr, "proxy -> retrained haze, else either -> AIRS-only")),
+        ("same, two-sided: amplified -> withheld", sim(rem, "either", "remedied"), panel(mr, "proxy (two-sided) -> retrained hazedeck, amplified -> withheld, else either -> AIRS-only")),
     ]
     out = []
     for name, s, (sc, ch4) in rows:
         r = dict(pipeline=name); r.update({lab: s.get(c, np.nan) for c, lab in CASES}); r["panel scored"] = sc; r["panel CH4 present/split/absent"] = ch4; out.append(r)
     df = pd.DataFrame(out); df.to_csv(os.path.join(RESULTS, "pipeline_table.csv"), index=False)
     L = ["Detector pipelines side by side (pipeline_table.py): simulated accuracy (%, mean over four learners and four molecules, POP-I at Tier-1 noise)",
-         "and the real JWST panel (26 reductions; scored labels correct; CH4 verdicts on the eight methane reductions). Census-first row simulated as the either row (see docstring).", "",
+         "and the real JWST panel (26 reductions; scored labels correct; CH4 verdicts on the eight methane reductions). Census rows simulated as the either row (see docstring; the scale-height census flags about 5 % of clean simulated planets).", "",
          f"  {'pipeline':<60} " + " ".join(f"{lab:>12}" for _, lab in CASES) + f" {'panel':>8} {'CH4 p/s/a':>10}"]
     for _, r in df.iterrows():
         L.append(f"  {r.pipeline:<60} " + " ".join(f"{r[lab]:12.1f}" if np.isfinite(r[lab]) else f"{'-':>12}" for _, lab in CASES) + f" {r['panel scored']:>8} {r['panel CH4 present/split/absent']:>10}")
