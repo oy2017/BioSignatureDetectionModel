@@ -1,0 +1,31 @@
+1. Power: draw 12 planets from the 23 of the panel (the method built on them, so this favours it); gain over the re-implemented classifier per draw
+ JWST: per 24 labels mean +3.0, 2.5-97.5 % +0.4 to +5.9; share of draws at or below the observed new-batch gain (0.0): 2.1 %
+ Tier-1: per 24 labels mean +1.0, 2.5-97.5 % +0.3 to +1.9; share of draws at or below the observed new-batch gain (-0.2): 0.0 %
+
+2. Present and absent labels separately: method minus re-implemented classifier, bootstrap over planets
+ panel       JWST   present  n= 26 re-implemented   6.5 method  15.0 diff  +8.5 (+3.0,+15.0) on 16 planets
+ panel       JWST   absent   n= 40 re-implemented  39.0 method  39.0 diff  +0.0 (-1.5,+1.5) on 19 planets
+ panel       Tier-1 present  n= 26 re-implemented   3.0 method   5.7 diff  +2.7 (+1.5,+4.1) on 16 planets
+ panel       Tier-1 absent   n= 40 re-implemented  38.7 method  38.7 diff  -0.0 (-0.7,+1.0) on 19 planets
+ new planets JWST   present  n=  8 re-implemented   0.0 method   2.5 diff  +2.5 (+1.0,+4.0) on 6 planets
+ new planets JWST   absent   n= 16 re-implemented  16.0 method  13.5 diff  -2.5 (-5.0,-0.5) on 8 planets
+ new planets Tier-1 present  n=  8 re-implemented   0.3 method   1.3 diff  +1.0 (+0.2,+2.4) on 6 planets
+ new planets Tier-1 absent   n= 16 re-implemented  15.9 method  14.7 diff  -1.2 (-2.7,-0.3) on 8 planets
+
+3. Asymmetric cost: credit with a missed present label weighted w against a false present (per the reviewer comment B11); method minus each design
+ panel        w=1: published 45.5, AIRS-only 52.5, haze+deck-retrained 52.0, shape flag 51.5, the method 54.0
+ panel        w=2: published 52.0, AIRS-only 67.0, haze+deck-retrained 66.0, shape flag 64.5, the method 69.0
+ panel        w=3: published 58.5, AIRS-only 81.5, haze+deck-retrained 80.0, shape flag 77.5, the method 84.0
+ panel        w=5: published 71.5, AIRS-only 110.5, haze+deck-retrained 108.0, shape flag 103.5, the method 114.0
+ new planets  w=1: published 16.0, AIRS-only 15.5, haze+deck-retrained 16.5, shape flag 16.0, the method 16.0
+ new planets  w=2: published 16.0, AIRS-only 18.5, haze+deck-retrained 19.0, shape flag 19.0, the method 18.5
+ new planets  w=3: published 16.0, AIRS-only 21.5, haze+deck-retrained 21.5, shape flag 22.0, the method 21.0
+ new planets  w=5: published 16.0, AIRS-only 27.5, haze+deck-retrained 26.5, shape flag 28.0, the method 26.0
+
+4. Ranking: AUROC of present against absent labels, score = share of draws present + half split, Tier-1; per molecule pooled; 95 % bootstrap of method minus re-implemented over planets
+ panel: published 0.85, AIRS-only 0.83, haze+deck-retrained 0.85, shape flag 0.87, the method 0.87; method minus re-implemented -0.02 to +0.06
+ new planets: published 0.82, AIRS-only 0.59, haze+deck-retrained 0.69, shape flag 0.60, the method 0.60; method minus re-implemented -0.43 to -0.03
+
+5. Pooled, all 90 labels, 35 planets, descriptive only (66 are development labels)
+ JWST: labels 90; published 61.5, AIRS-only 68.0, haze+deck-retrained 68.5, shape flag 67.5, the method 70.0; method minus re-implemented +8.5 (+1.0,+17.0)
+ Tier-1: labels 90; published 57.9, AIRS-only 59.1, haze+deck-retrained 59.9, shape flag 59.2, the method 60.4; method minus re-implemented +2.4 (-0.3,+5.3)
