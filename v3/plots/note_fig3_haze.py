@@ -1,7 +1,7 @@
 """Note Figure 3: why haze blinds the consortium classifier. (a) One test planet with CH4 above 1e-4 at the
-classifier's Tier-3 binning, without haze and with haze at 3e7 m^-3 (noise-free; the three photometric points
+classifier's Tier-3 binning, without haze and with haze at 3e7 m^-3 (noise-free; the three optical points
 shaded). (b) Share of planets that truly contain each molecule which the classifier reports as present, against
-haze density, for the published inputs, the inputs without the three photometric points, and the AIRS bins only
+haze density, for the published inputs, the inputs without the three optical points, and the AIRS bins only
 (mean over the four classifiers and four molecules)."""
 import os, sys
 import numpy as np, pandas as pd
@@ -26,17 +26,17 @@ def main():
     a.plot(cen, Hb[i] * 1e6, color=SERIES[1], marker="o", ms=2.4, lw=1.0, label="haze 3×10$^7$ m$^{-3}$")
     a.set_xscale("log"); a.set_xticks([0.5, 1, 2, 3, 5, 7.8]); a.set_xticklabels(["0.5", "1", "2", "3", "5", "7.8"])
     a.set_xlabel("Wavelength (µm)"); a.set_ylabel("Transit depth (ppm)"); a.legend(loc="upper right")
-    a.text(0.74, 6330, "photometric\npoints", ha="center", va="center", fontsize=6.5, color=INK2)
+    a.text(0.74, 6330, "optical\npoints", ha="center", va="center", fontsize=6.5, color=INK2)
     panel_label(a, "a")
     b = axs[1]
     d = pd.read_csv(os.path.join(RES, "alfnoor_haze_mechanism.csv"))
     g = d.groupby(["variant", "case"]).recall.mean() * 100
     xs = {"clean": 1e4, "haze2e6": 2e6, "haze3e7": 3e7, "haze2p4e8": 2.4e8, "haze1e10": 1e10}
-    for k, (v, lab) in enumerate((("A published", "published inputs"), ("C no_optical", "photometric points removed"), ("D airs_only", "AIRS bins only"))):
+    for k, (v, lab) in enumerate((("A published", "published inputs"), ("C no_optical", "optical points removed"), ("D airs_only", "AIRS bins only"))):
         b.plot(list(xs.values()), [g.loc[(v, c)] for c in xs], color=SERIES[[1, 0, 2][k]], marker="o", ms=3.5, label=lab)
     b.set_xscale("log"); b.set_xticks(list(xs.values())); b.set_xticklabels(["none", "2e6", "3e7", "2.4e8", "1e10"])
     b.set_xlabel("Haze density (m$^{-3}$)"); b.set_ylabel("Present molecules detected (%)"); b.set_ylim(0, 75)
-    b.legend(loc="lower left", fontsize=6.8); panel_label(b, "b")
+    b.legend(loc="upper right", fontsize=6.8, framealpha=1); panel_label(b, "b")
     fig.tight_layout(w_pad=1.5)
     save(fig, "note_fig3_haze.png")
 

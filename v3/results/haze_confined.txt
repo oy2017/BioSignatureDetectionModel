@@ -1,0 +1,3 @@
+hazetop1  {'radius': 0.1, 'q': 40, 'mix_ratio': 30000000.0, 'topP': 1.0}: 955 of 955 rendered, 230 s; hazed minus own-deck depth, ppm, 10th / median / 90th percentile of planets: optical 93 / 409 / 1479; NIRSpec 6 / 36 / 190; AIRS 0 / 1 / 7
+plhaze29  {'log_sigma0': -29.0, 'alpha': 4.0}: 955 of 955 rendered, 212 s; hazed minus own-deck depth, ppm, 10th / median / 90th percentile of planets: optical 98 / 373 / 1244; NIRSpec 11 / 61 / 304; AIRS 0 / 1 / 20
+plhaze28  {'log_sigma0': -28.0, 'alpha': 4.0}: 955 of 955 rendered, 194 s; hazed minus own-deck depth, ppm, 10th / median / 90th percentile of planets: optical 151 / 546 / 1880; NIRSpec 36 / 170 / 668; AIRS 1 / 11 / 91

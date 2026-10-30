@@ -1,0 +1,7 @@
+Collision-induced absorption, 200 random POP-I planets with their own decks, binned difference with minus without (ppm); median / 90th / 99th / max over planets
+largest change in any bin: 1.1 / 49.1 / 171.7 / 500.3
+spread of the change across the bins (what survives the per-spectrum normalisation): 0.2 / 7.9 / 34.5 / 98.4
+mean change: 0.1 / 3.2 / 25.8 / 65.4
+spread of the change as % of the spectrum's dispersion: 0.1 / 4.8 / 39.8 / 51.3
+planets with a change above 3 ppm in some bin: 38 %; above 30 ppm: 16 %
+wavelength of the largest change, median 1.80 um

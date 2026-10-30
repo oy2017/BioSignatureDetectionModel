@@ -1251,12 +1251,12 @@ was wrong and is corrected. Hazed minus clear depth at 3 × 10⁷ m⁻³ on thre
 
 | planet | as run | top 10⁻⁶ Pa | top 10⁻² Pa | haze below 1 Pa | haze below 100 Pa |
 | :-- | --: | --: | --: | --: | --: |
-| HATS-22 b | 258 / 27 / 1 | 334 / 38 / 2 | 184 / 17 / 1 | 116 / 9 / 0 | 53 / 3 / 0 |
-| K2-36 c | 3978 / 770 / 52 | 7746 / 1966 / 151 | 2024 / 280 / 15 | 916 / 73 / 2 | 281 / 6 / 0 |
-| TOI-3856 b | 3900 / 956 / 63 | 5321 / 1482 / 108 | 2639 / 542 / 30 | 1547 / 234 / 9 | 597 / 46 / 0 |
+| HATS-22 b | 223 / 22 / 1 | 290 / 31 / 2 | 160 / 14 / 1 | 101 / 8 / 0 | 47 / 3 / 0 |
+| K2-36 c | 2737 / 465 / 30 | 4836 / 1045 / 76 | 1489 / 185 / 10 | 710 / 53 / 2 | 229 / 5 / 0 |
+| TOI-3856 b | 3230 / 746 / 48 | 4371 / 1145 / 81 | 2202 / 428 / 24 | 1302 / 188 / 7 | 509 / 38 / 0 |
 
-Reading. Moving the top by two decades changes the optical excess by up to a factor of two, and confining the haze below 1 Pa shrinks it
-two to four times (below 100 Pa, five to fourteen). The excess stays concentrated in the optical points in every configuration, and more
+(Rerun with the H₂/He fill; the first run of this test used pure H₂ by mistake.) Reading. Moving the top by two decades changes the optical excess by up to a factor of two, and confining the haze below 1 Pa shrinks it
+two to four times (below 100 Pa, five to twelve). The excess stays concentrated in the optical points in every configuration, and more
 so when confined, so the mechanism is not an artefact on this evidence. The size of the classifier's loss, the optical flag's near-total firing rate, the
 oracle match and the retrieval results under haze are specific to this column-filling haze until rerun with a confined one. Three planets
 and no classifier run yet.
@@ -1285,6 +1285,51 @@ retrained and pipeline in any measured column. The amplitude flag changes simula
 have no dispersion above their noise, 15.5 % under the deep deck. Its lower cut withholds 25 % of planets under threefold noise, because the nominal noise is removed
 and the excess reads as amplitude, so the two-sided form has a false alarm under unmodelled noise. On the third batch the pipeline's extra half label over the published
 classifier comes from the haze-only training set, chosen after those planets were seen. The sign tests in the manuscript are to be replaced by these intervals.
+
+### F25. The amplitude flag through each reduction's coverage, rule committed before it was computed: same score, one methane recovery back (2026-10-30; `amplitude_flag.py`, expectations F1-F3)
+
+The first form compared a dispersion over the measured bins with a full-bin population statistic, and skipped GJ 1214 b and L 98-59 d by accident (no twin, so no census
+row). Rule: upper threshold the largest ratio of any clear POP-I planet through the reduction's measured bins, lower cut the first percentile of POP-I with its own decks through them,
+flagged planets to the haze-retrained design. Thresholds 5.09-9.20. Up on 12 of 26 reductions: 8 of the 10 census giants (not HAT-P-26 b 5.71/8.33, HD 209458 b 8.12/8.91), plus HAT-P-18 b,
+TOI-1231 b (5.44/5.09), L 98-59 d (10.6) and GJ 1214 b (63, CO₂-dominated). Low: HIP 67522 b. Dropped out from the first form: TOI-421 b, WASP-52 b, TOI-270 d Holmberg.
+
+| form, two-sided, haze set | up | giants | of 66 | wrong | CH₄ | vs published | vs AIRS-only |
+| :-- | --: | --: | --: | --: | :-- | :-- | :-- |
+| mask, clear maximum (the rule) | 12 | 8 | 54.0 | 10 | 5/1/2 | +8.5 (2.8, 14.0) | +1.5 (-1.5, 5.7) |
+| mask, clear 99th | 14 | 9 | 54.0 | 10 | 5/1/2 | +8.5 (2.8, 14.0) | +1.5 (-1.5, 5.7) |
+| mask, own-deck 99th | 6 | 4 | 53.0 | 11 | 5/1/2 | +7.5 (2.5, 12.0) | +0.5 (-2.0, 4.0) |
+| AIRS range, clear maximum | 6 | 4 | 53.0 | 11 | 5/1/2 | +7.5 (2.5, 12.0) | +0.5 (-2.0, 4.0) |
+| full bins, first form | 17 | 10 | 53.5 | 11 | 4/1/3 | +8.0 (2.4, 13.6) | +1.0 (-3.2, 5.8) |
+
+F1, F2, F3 all met. Rule against published: six wrong to right, none right to wrong, five split to right, two worse (HD 189733 b CO₂ absent to split, GJ 1214 b CO₂ split to absent). By batch,
+method against published: 31.5/25.5 of 40, 16.0/14.5 of 19, 6.5/5.5 of 7. WASP-39 b was also run through the retrained designs, which had skipped it; both its scored labels stay right. Reading: the
+score depends little on the flag's form, so the panel is a weak test of it. It is not an independent test either: the rule was committed before it was computed, but after all three batches were known.
+
+### F26. The haze failure is not an artefact of the column-filling haze (2026-10-30; `haze_confined.py`, `pipeline_sim.py`, expectations G1-G5)
+
+Rendered POP-I under Lee-Mie 3 × 10⁷ m⁻³ below 1 Pa, and a power law at constant mixing ratio, slope 4, log σ₀(1 µm) −29 and −28 (log a ≈ 3.1 and 4.1 at 0.35 µm). Median optical excess 409, 373, 546 ppm against 1,094; AIRS 1, 1, 11 ppm against 5.
+
+| design, accuracy | clean | column-filling 3e7 | below 1 Pa | log a 3.1 | log a 4.1 |
+| :-- | --: | --: | --: | --: | --: |
+| all inputs | 81.2 | 63.5 | 66.5 | 67.1 | 65.0 |
+| no-optical | 77.4 | 71.8 | 76.1 | 74.9 | 70.7 |
+| AIRS-only | 73.8 | 73.3 | 73.7 | 73.6 | 72.9 |
+| shape flag → AIRS-only | 76.6 | 73.3 | 73.3 | 72.7 | 72.8 |
+| haze-retrained | 80.1 | 73.2 | 74.5 | 73.9 | 71.2 |
+| haze+deck-retrained | 80.2 | 73.6 | 75.5 | 75.4 | 72.4 |
+| the method | 76.7 | 73.1 | 73.5 | 73.1 | 72.6 |
+
+G1-G4 met; G5 in part (recovers 54, 48, 38 % with the haze set, 61, 59, 46 % with haze and decks). Recall of present labels 64 % clean, 16, 17, 11 % under them. Optical-excess score fires on 88, 76, 97 %; shape flag on 90, 79, 98 %.
+Reading: the mechanism and the immunity of AIRS-only survive. New: where the slope is confined to the optical points, the no-optical design is the best input under the two weaker hazes, and the routing to AIRS-only gives up about a point against it there; on real spectra no-optical finds no methane, so the routing was not changed.
+
+### F27. Collision-induced absorption: "at most 3 ppm" was wrong, and it hardly matters to the classifier (2026-10-30; `cia_effect.py`)
+
+The draft's number had no script in the repository. With the HITRAN 2011 H₂-H₂ and H₂-He tables on 200 random POP-I planets with their own decks, the largest change in any bin is a median 1.1 ppm, 90th percentile 49, 99th 172, maximum 500; 38 % of planets exceed 3 ppm and 16 % exceed 30.
+Both populations re-rendered with it and the design refitted: the 48 accuracies move by a mean of −0.01, mean absolute 0.43, at most 1.89 points; against the published values the mean absolute difference is 1.63 against 1.44 without it, at most 4.03 against 3.71. So it could have been included, and including it does not improve the reproduction. The statement in 2.2 is corrected.
+
+### F28. The clear-model retrieval's evidence catches the haze (2026-10-30)
+
+99.6 % of the hazed planets fall below the first percentile of the clean log Z (AUROC 1.00; paired drop at least 20 for 99 %). So "the existing method loses 69" is the retrieval read by its posterior. Re-run with the haze free where the evidence fails, it loses nothing at about 520 core-hours (0.8 × 365 + 0.2 × 500 + 0.2 × 635) against 127 for the 20 % budget. Table 11's "free-haze retrieval of every planet" row was exactly this composite, because the clean planets use the clean retrieval, and is relabelled.
 
 ### What these add up to (2026-10-29, after the restructure)
 

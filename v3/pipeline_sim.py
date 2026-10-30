@@ -29,7 +29,7 @@ import muting_router as MR  # noqa: E402
 
 MOLS, LEARNERS = D.MOLS, D.LEARNERS
 CASES = ["clean", "haze2e6", "haze3e7", "cloud1e2", "spots20", "compound", "white_x2", "white_x3"]
-CONFINED = ["hazetop1", "plhaze29", "plhaze28"]   # haze_confined.py; used when rendered
+CONFINED = ["hazetop1", "plhaze29", "plhaze28", "cia"]   # haze_confined.py and cia_effect.py; used when rendered
 CASES += [c for c in CONFINED if os.path.exists(os.path.join(F.DIRS["faithful"], f"pop1_native_{c}.npy"))]
 
 
@@ -68,6 +68,8 @@ def main():
     def dis(P, m, k):
         p = P["all"][(m, k)]; return np.maximum(np.abs(p - P["no_optical"][(m, k)]), np.abs(p - P["airs_only"][(m, k)]))
     P0 = sc.probs(cases["clean"]); thr_opt = np.quantile(opt(cases["clean"]), 0.9); thr_dis = {(m, k): np.quantile(dis(P0, m, k), 0.9) for m in MOLS for k in LEARNERS}
+    d1 = lambda P, m, k: np.abs(P["all"][(m, k)] - P["no_optical"][(m, k)]); d2 = lambda P, m, k: np.abs(P["no_optical"][(m, k)] - P["airs_only"][(m, k)])
+    thr_d1 = {(m, k): np.quantile(d1(P0, m, k), 0.9) for m in MOLS for k in LEARNERS}; thr_d2 = {(m, k): np.quantile(d2(P0, m, k), 0.9) for m in MOLS for k in LEARNERS}
     rows, rates = [], []
     for c in CASES:
         X = cases[c]; P = P0 if c == "clean" else sc.probs(X); o = opt(X)
@@ -79,7 +81,7 @@ def main():
                 p, pa = P["all"][(m, k)], P["airs_only"][(m, k)]; shape = (o > thr_opt) | (dis(P, m, k) > thr_dis[(m, k)]); ps = np.where(shape, pa, p); t = y[m]
                 def rec(name, pp, keep=None):
                     keep = np.ones(len(pp), bool) if keep is None else keep; right = (pp >= 0.5) == t
-                    rows.append(dict(case=c, molecule=m, learner=k, pipeline=name, accuracy=100 * right[keep].mean(), coverage=100 * keep.mean(), half_credit=100 * (right[keep].sum() + 0.5 * (~keep).sum()) / len(t), recall=100 * (pp >= 0.5)[keep & t].mean(), shape_flagged=100 * shape.mean()))
+                    rows.append(dict(case=c, molecule=m, learner=k, pipeline=name, accuracy=100 * right[keep].mean(), coverage=100 * keep.mean(), half_credit=100 * (right[keep].sum() + 0.5 * (~keep).sum()) / len(t), recall=100 * (pp >= 0.5)[keep & t].mean(), shape_flagged=100 * shape.mean(), d1_flagged=100 * (d1(P, m, k) > thr_d1[(m, k)]).mean(), d2_flagged=100 * (d2(P, m, k) > thr_d2[(m, k)]).mean(), disagree_flagged=100 * (dis(P, m, k) > thr_dis[(m, k)]).mean()))
                 rec("published, all inputs", p); rec("no-optical everywhere", P["no_optical"][(m, k)]); rec("AIRS-only everywhere", pa); rec("shape flag -> AIRS-only", ps)
                 for s in ret:
                     pr = PR[s][(m, k)]; rec(f"retrained ({s}) everywhere", pr)
@@ -87,7 +89,7 @@ def main():
                         up = np.isfinite(r) & (r > T_HI); low = r < T_LO; pp = np.where(up, pr, ps)
                         rec(f"pipeline ({s}, flag {a})", pp); rec(f"pipeline ({s}, flag {a}), two-sided", pp, ~low)
         print("done", c, flush=True)
-    df = pd.DataFrame(rows); df.to_csv(os.path.join(RESULTS, "pipeline_sim.csv"), index=False)
+    df = pd.DataFrame(rows); df.to_csv(os.path.join(RESULTS, "pipeline_sim.csv"), index=False); pd.DataFrame(rates).to_csv(os.path.join(RESULTS, "pipeline_sim_rates.csv"), index=False)
     L = [f"Full pipeline in simulation (pipeline_sim.py): accuracy %, mean over four learners and four molecules, POP-I ({len(Pte)} planets), thresholds T_HI {T_HI:.2f}, T_LO {T_LO:.2f}", ""]
     piv = df.groupby(["pipeline", "case"]).accuracy.mean().unstack("case")[CASES]; order = [p for p in dict.fromkeys(df.pipeline)]
     L.append(f"{'pipeline':<48} " + " ".join(f"{c:>9}" for c in CASES))
@@ -98,6 +100,8 @@ def main():
     for p_ in [q for q in order if "two-sided" in q]:
         g = df[df.pipeline == p_].groupby("case")[["coverage", "half_credit"]].mean().loc[CASES]; L.append(f"{p_:<48} " + " ".join(f"{g.coverage[c]:4.0f}/{g.half_credit[c]:4.1f}" for c in CASES))
     g = df[df.pipeline == "shape flag -> AIRS-only"].groupby("case").shape_flagged.mean().loc[CASES]; L += ["", "shape flag fires, % of cells: " + ", ".join(f"{c} {g[c]:.1f}" for c in CASES)]
+    for col, lab in (("disagree_flagged", "input disagreement"), ("d1_flagged", "first nest level (all vs no-optical)"), ("d2_flagged", "second nest level (no-optical vs AIRS-only)")):
+        g2 = df[df.pipeline == "shape flag -> AIRS-only"].groupby("case")[col].mean().loc[CASES]; L.append(f"{lab} fires, % of cells: " + ", ".join(f"{c} {g2[c]:.1f}" for c in CASES))
     L += ["", "amplitude flag and optical flag rates, % of planets"]; L.append(pd.DataFrame(rates).round(1).to_string(index=False))
     txt = "\n".join(L); open(os.path.join(RESULTS, "pipeline_sim.txt"), "w").write(txt + "\n"); print(txt)
 

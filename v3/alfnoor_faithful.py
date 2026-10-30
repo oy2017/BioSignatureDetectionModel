@@ -40,7 +40,7 @@ import alfnoor_screen as AS  # noqa: E402
 
 FILL = ["H2", "He"]            # TauREx default He/H2 ratio 0.1757 (paper: 0.17)
 TOP_PA = 1e-4
-DIRS = {"old": os.path.join(DATA, "alfnoor"), "faithful": os.path.join(DATA, "alfnoor_faithful")}
+DIRS = {"old": os.path.join(DATA, "alfnoor"), "faithful": os.path.join(DATA, "alfnoor_faithful"), "faithful_cia": os.path.join(DATA, "alfnoor_faithful_cia")}
 
 
 def layout_edges(layout):

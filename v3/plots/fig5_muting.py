@@ -11,15 +11,11 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from style import INK, INK2, MUTED, GRID, SERIES, figure, panel_label, save  # noqa: E402
 V3 = os.path.dirname(os.path.dirname(os.path.abspath(__file__))); RES = os.path.join(V3, "results", "jwst_panel")
 SUFFIX = {"-alt": " (Schmidt & MacDonald)", "-hu": " (Hu et al.)", "-hm": " (Holmberg & Madhusudhan)"}
-GIANTS = ["HAT-P-26b", "WASP-107b", "WASP-39b", "GJ3470b", "WASP-166b", "WASP-96b", "WASP-17b", "WASP-80b", "HD209458b", "WASP-52b"]
+GIANTS = ["HAT-P-26b", "WASP-107b", "WASP-39b", "GJ3470b", "WASP-166b", "WASP-96b", "WASP-17b", "WASP-80b", "HD209458b", "WASP-52b", "WASP-94Ab", "HAT-P-12b"]
 
 def pretty(n):
-    suf = ""
-    for k, v in SUFFIX.items():
-        if n.endswith(k):
-            n, suf = n[: -len(k)], v
-    return re.sub(r"(\d)([a-d])$", r"\1 \2", n) + suf
-
+    return {"TOI-270d": "TOI-270 d (Felix)", "TOI-270d-hm": "TOI-270 d (Holmberg)", "K2-18b": "K2-18 b (Madhusudhan)", "K2-18b-alt": "K2-18 b (Schmidt)", "K2-18b-hu": "K2-18 b (Hu)", "LTT3780c": "TOI-732 c",
+            "GJ3470b": "GJ 3470 b", "GJ9827d": "GJ 9827 d", "HD189733b": "HD 189733 b", "HD209458b": "HD 209458 b", "HIP67522b": "HIP 67522 b", "WASP-94Ab": "WASP-94A b"}.get(n, n[:-1] + " " + n[-1])
 def main():
     C = pd.read_csv(os.path.join(RES, "muting_census.csv")); P = pd.read_csv(os.path.join(RES, "muting_population.csv"))
     C = C.sort_values("muting").reset_index(drop=True)
@@ -39,11 +35,10 @@ def main():
     b = axs[1]; m = np.sort(P.muting.to_numpy()); b.plot(m, np.arange(1, len(m) + 1) / len(m) * 100, color=SERIES[0], lw=1.4, label=f"POP-I ({len(m)} planets)")
     G = C[C.planet.isin(GIANTS)].sort_values("muting").reset_index(drop=True)
     for i, r in G.iterrows():
-        b.axvline(r.muting, color=SERIES[1], lw=0.7, alpha=.8)
-        b.text(r.muting * 1.04, [4, 34, 64][i % 3], pretty(r.planet), fontsize=6, color=SERIES[1], rotation=90, va="bottom", ha="left")
+        b.axvline(r.muting, color=SERIES[1], lw=0.7, alpha=.8, label="the twelve giants" if i == 0 else None)   # named in panel a
     b.set_xscale("log"); b.set_xticks([0.5, 1, 2, 3, 5]); b.set_xticklabels(["0.5", "1", "2", "3", "5"]); b.set_xlim(0.45, 7)
     b.set_xlabel("Muting by the planet's\nown deck"); b.set_ylabel("POP-I planets muted less (%)"); b.set_ylim(0, 101)
-    b.legend(loc="upper left", fontsize=6.5); panel_label(b, "b")
+    b.legend(loc="lower right", fontsize=6.5, framealpha=1); panel_label(b, "b")
     save(fig, "fig5_muting.png")
 
 if __name__ == "__main__":

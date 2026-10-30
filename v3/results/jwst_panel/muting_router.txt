@@ -1,5 +1,5 @@
 Prior-extension routing on the real panel (26 reductions): a planet muted beyond the training prior's most muted twin is sent to the retrained design
-  muting flag fires on 11 reductions (point estimate), 10 with P(beyond prior) > 0.95; retrained verdicts exist for 25 of 26
+  muting flag fires on 11 reductions (point estimate), 10 with P(beyond prior) > 0.95; retrained verdicts exist for 26 of 26
 
 router                                                      scored correct  on muting-flagged planets  on the giants   methane present/split/absent
 none                                                            42/59                21/26                22/27               0 / 1 / 7

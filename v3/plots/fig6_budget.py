@@ -2,7 +2,7 @@
 population with a fifth of the planets hazed (e3_budget.py, results/e3_budget_freehaze.csv). Lines: the orderings
 that choose which planets the free-haze retrieval re-scores (mean over draws, band = +/- 1 sd for random and the
 optical score); dashed: the same optical ordering routed to the existing clear-model retrieval; horizontal: the
-classifier alone, the clear-model retrieval of every planet and the free-haze retrieval of every planet."""
+classifier alone, the clear-model retrieval of every planet, and that retrieval re-run with the haze density free where its evidence fails."""
 import os, sys
 import numpy as np, pandas as pd
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -23,7 +23,7 @@ def main():
     d = g[g.strategy == "+ optical, clear-model retrieval"].sort_values("f")
     ax.plot(100 * d.f, d["mean"], color=SERIES[1], marker="o", ls="--", label="optical excess → clear-model retrieval", lw=1.4)
     for key, lab, ls in (("classifier alone", "classifier alone, no retrieval", ":"), ("clear-model retrieval of every planet (existing method)", "clear-model retrieval of every planet", "-."),
-                         ("freehaze retrieval of every planet", "free-haze retrieval of every planet", (0, (1, 1)))):
+                         ("freehaze retrieval of every planet", "clear-model retrieval, re-run with haze free where the evidence fails", (0, (1, 1)))):
         v = E[E.strategy == key].lost.mean(); ax.axhline(v, color=INK2, ls=ls, lw=1.0); ax.text(51, v + 1, lab, fontsize=6.8, color=INK2, ha="right", va="bottom")
     ax.set_xlabel("Retrieval budget f (% of planets re-scored)"); ax.set_ylabel("CH$_4$-bearing targets lost (of 359)")
     ax.set_xlim(8, 52); ax.set_ylim(0, 80); ax.legend(loc="upper right", ncol=2, fontsize=6.8, bbox_to_anchor=(1.0, 0.62))

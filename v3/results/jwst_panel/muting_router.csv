@@ -1999,83 +1999,83 @@ HAT-P-12b,NH3,"retrained hazedeck everywhere, either -> its AIRS-only",absent,ab
 HAT-P-12b,NH3,retrained union everywhere,absent,absent,True,True,True,True
 HAT-P-12b,NH3,"muting -> retrained union, else either -> AIRS-only",absent,absent,True,True,True,True
 HAT-P-12b,NH3,"retrained union everywhere, either -> its AIRS-only",absent,absent,True,True,True,True
-WASP-39b,CH4,none,absent,absent,True,True,False,True
-WASP-39b,CH4,either -> AIRS-only,absent,absent,True,True,False,True
-WASP-39b,CH4,muting -> retrained haze,absent,absent,True,True,False,True
-WASP-39b,CH4,muting (strict) -> retrained haze,absent,absent,True,True,False,True
-WASP-39b,CH4,"either, then muting -> retrained haze",absent,absent,True,True,False,True
-WASP-39b,CH4,muting -> retrained hazedeck,absent,absent,True,True,False,True
-WASP-39b,CH4,muting (strict) -> retrained hazedeck,absent,absent,True,True,False,True
-WASP-39b,CH4,"either, then muting -> retrained hazedeck",absent,absent,True,True,False,True
-WASP-39b,CH4,muting -> retrained union,absent,absent,True,True,False,True
-WASP-39b,CH4,muting (strict) -> retrained union,absent,absent,True,True,False,True
-WASP-39b,CH4,"either, then muting -> retrained union",absent,absent,True,True,False,True
-WASP-39b,CH4,"proxy -> retrained hazedeck, else either -> AIRS-only",absent,absent,True,True,False,True
-WASP-39b,CH4,"proxy -> retrained haze, else either -> AIRS-only",absent,absent,True,True,False,True
-WASP-39b,CH4,"proxy (two-sided) -> retrained hazedeck, amplified -> withheld, else either -> AIRS-only",absent,absent,True,True,False,True
-WASP-39b,CH4,retrained hazedeck everywhere,absent,absent,True,True,False,True
-WASP-39b,CH4,"muting -> retrained hazedeck, else either -> AIRS-only",absent,absent,True,True,False,True
-WASP-39b,CH4,"retrained hazedeck everywhere, either -> its AIRS-only",absent,absent,True,True,False,True
-WASP-39b,CH4,retrained union everywhere,absent,absent,True,True,False,True
-WASP-39b,CH4,"muting -> retrained union, else either -> AIRS-only",absent,absent,True,True,False,True
-WASP-39b,CH4,"retrained union everywhere, either -> its AIRS-only",absent,absent,True,True,False,True
-WASP-39b,H2O,none,present,present,True,True,False,True
-WASP-39b,H2O,either -> AIRS-only,present,present,True,True,False,True
-WASP-39b,H2O,muting -> retrained haze,present,present,True,True,False,True
-WASP-39b,H2O,muting (strict) -> retrained haze,present,present,True,True,False,True
-WASP-39b,H2O,"either, then muting -> retrained haze",present,present,True,True,False,True
-WASP-39b,H2O,muting -> retrained hazedeck,present,present,True,True,False,True
-WASP-39b,H2O,muting (strict) -> retrained hazedeck,present,present,True,True,False,True
-WASP-39b,H2O,"either, then muting -> retrained hazedeck",present,present,True,True,False,True
-WASP-39b,H2O,muting -> retrained union,present,present,True,True,False,True
-WASP-39b,H2O,muting (strict) -> retrained union,present,present,True,True,False,True
-WASP-39b,H2O,"either, then muting -> retrained union",present,present,True,True,False,True
-WASP-39b,H2O,"proxy -> retrained hazedeck, else either -> AIRS-only",present,present,True,True,False,True
-WASP-39b,H2O,"proxy -> retrained haze, else either -> AIRS-only",present,present,True,True,False,True
-WASP-39b,H2O,"proxy (two-sided) -> retrained hazedeck, amplified -> withheld, else either -> AIRS-only",present,present,True,True,False,True
-WASP-39b,H2O,retrained hazedeck everywhere,present,present,True,True,False,True
-WASP-39b,H2O,"muting -> retrained hazedeck, else either -> AIRS-only",present,present,True,True,False,True
-WASP-39b,H2O,"retrained hazedeck everywhere, either -> its AIRS-only",present,present,True,True,False,True
-WASP-39b,H2O,retrained union everywhere,present,present,True,True,False,True
-WASP-39b,H2O,"muting -> retrained union, else either -> AIRS-only",present,present,True,True,False,True
-WASP-39b,H2O,"retrained union everywhere, either -> its AIRS-only",present,present,True,True,False,True
-WASP-39b,CO2,none,absent,,True,True,False,
-WASP-39b,CO2,either -> AIRS-only,absent,,True,True,False,
-WASP-39b,CO2,muting -> retrained haze,absent,,True,True,False,
-WASP-39b,CO2,muting (strict) -> retrained haze,absent,,True,True,False,
-WASP-39b,CO2,"either, then muting -> retrained haze",absent,,True,True,False,
-WASP-39b,CO2,muting -> retrained hazedeck,absent,,True,True,False,
-WASP-39b,CO2,muting (strict) -> retrained hazedeck,absent,,True,True,False,
-WASP-39b,CO2,"either, then muting -> retrained hazedeck",absent,,True,True,False,
-WASP-39b,CO2,muting -> retrained union,absent,,True,True,False,
-WASP-39b,CO2,muting (strict) -> retrained union,absent,,True,True,False,
-WASP-39b,CO2,"either, then muting -> retrained union",absent,,True,True,False,
-WASP-39b,CO2,"proxy -> retrained hazedeck, else either -> AIRS-only",absent,,True,True,False,
-WASP-39b,CO2,"proxy -> retrained haze, else either -> AIRS-only",absent,,True,True,False,
-WASP-39b,CO2,"proxy (two-sided) -> retrained hazedeck, amplified -> withheld, else either -> AIRS-only",absent,,True,True,False,
-WASP-39b,CO2,retrained hazedeck everywhere,absent,,True,True,False,
-WASP-39b,CO2,"muting -> retrained hazedeck, else either -> AIRS-only",absent,,True,True,False,
-WASP-39b,CO2,"retrained hazedeck everywhere, either -> its AIRS-only",absent,,True,True,False,
-WASP-39b,CO2,retrained union everywhere,absent,,True,True,False,
-WASP-39b,CO2,"muting -> retrained union, else either -> AIRS-only",absent,,True,True,False,
-WASP-39b,CO2,"retrained union everywhere, either -> its AIRS-only",absent,,True,True,False,
-WASP-39b,NH3,none,absent,,True,True,False,
-WASP-39b,NH3,either -> AIRS-only,absent,,True,True,False,
-WASP-39b,NH3,muting -> retrained haze,absent,,True,True,False,
-WASP-39b,NH3,muting (strict) -> retrained haze,absent,,True,True,False,
-WASP-39b,NH3,"either, then muting -> retrained haze",absent,,True,True,False,
-WASP-39b,NH3,muting -> retrained hazedeck,absent,,True,True,False,
-WASP-39b,NH3,muting (strict) -> retrained hazedeck,absent,,True,True,False,
-WASP-39b,NH3,"either, then muting -> retrained hazedeck",absent,,True,True,False,
-WASP-39b,NH3,muting -> retrained union,absent,,True,True,False,
-WASP-39b,NH3,muting (strict) -> retrained union,absent,,True,True,False,
-WASP-39b,NH3,"either, then muting -> retrained union",absent,,True,True,False,
-WASP-39b,NH3,"proxy -> retrained hazedeck, else either -> AIRS-only",absent,,True,True,False,
-WASP-39b,NH3,"proxy -> retrained haze, else either -> AIRS-only",absent,,True,True,False,
-WASP-39b,NH3,"proxy (two-sided) -> retrained hazedeck, amplified -> withheld, else either -> AIRS-only",absent,,True,True,False,
-WASP-39b,NH3,retrained hazedeck everywhere,absent,,True,True,False,
-WASP-39b,NH3,"muting -> retrained hazedeck, else either -> AIRS-only",absent,,True,True,False,
-WASP-39b,NH3,"retrained hazedeck everywhere, either -> its AIRS-only",absent,,True,True,False,
-WASP-39b,NH3,retrained union everywhere,absent,,True,True,False,
-WASP-39b,NH3,"muting -> retrained union, else either -> AIRS-only",absent,,True,True,False,
-WASP-39b,NH3,"retrained union everywhere, either -> its AIRS-only",absent,,True,True,False,
+WASP-39b,CH4,none,absent,absent,True,True,True,True
+WASP-39b,CH4,either -> AIRS-only,absent,absent,True,True,True,True
+WASP-39b,CH4,muting -> retrained haze,absent,absent,True,True,True,True
+WASP-39b,CH4,muting (strict) -> retrained haze,absent,absent,True,True,True,True
+WASP-39b,CH4,"either, then muting -> retrained haze",absent,absent,True,True,True,True
+WASP-39b,CH4,muting -> retrained hazedeck,absent,absent,True,True,True,True
+WASP-39b,CH4,muting (strict) -> retrained hazedeck,absent,absent,True,True,True,True
+WASP-39b,CH4,"either, then muting -> retrained hazedeck",absent,absent,True,True,True,True
+WASP-39b,CH4,muting -> retrained union,absent,absent,True,True,True,True
+WASP-39b,CH4,muting (strict) -> retrained union,absent,absent,True,True,True,True
+WASP-39b,CH4,"either, then muting -> retrained union",absent,absent,True,True,True,True
+WASP-39b,CH4,"proxy -> retrained hazedeck, else either -> AIRS-only",absent,absent,True,True,True,True
+WASP-39b,CH4,"proxy -> retrained haze, else either -> AIRS-only",absent,absent,True,True,True,True
+WASP-39b,CH4,"proxy (two-sided) -> retrained hazedeck, amplified -> withheld, else either -> AIRS-only",absent,absent,True,True,True,True
+WASP-39b,CH4,retrained hazedeck everywhere,absent,absent,True,True,True,True
+WASP-39b,CH4,"muting -> retrained hazedeck, else either -> AIRS-only",absent,absent,True,True,True,True
+WASP-39b,CH4,"retrained hazedeck everywhere, either -> its AIRS-only",absent,absent,True,True,True,True
+WASP-39b,CH4,retrained union everywhere,absent,absent,True,True,True,True
+WASP-39b,CH4,"muting -> retrained union, else either -> AIRS-only",absent,absent,True,True,True,True
+WASP-39b,CH4,"retrained union everywhere, either -> its AIRS-only",absent,absent,True,True,True,True
+WASP-39b,H2O,none,present,present,True,True,True,True
+WASP-39b,H2O,either -> AIRS-only,present,present,True,True,True,True
+WASP-39b,H2O,muting -> retrained haze,present,present,True,True,True,True
+WASP-39b,H2O,muting (strict) -> retrained haze,present,present,True,True,True,True
+WASP-39b,H2O,"either, then muting -> retrained haze",present,present,True,True,True,True
+WASP-39b,H2O,muting -> retrained hazedeck,present,present,True,True,True,True
+WASP-39b,H2O,muting (strict) -> retrained hazedeck,present,present,True,True,True,True
+WASP-39b,H2O,"either, then muting -> retrained hazedeck",present,present,True,True,True,True
+WASP-39b,H2O,muting -> retrained union,present,present,True,True,True,True
+WASP-39b,H2O,muting (strict) -> retrained union,present,present,True,True,True,True
+WASP-39b,H2O,"either, then muting -> retrained union",present,present,True,True,True,True
+WASP-39b,H2O,"proxy -> retrained hazedeck, else either -> AIRS-only",present,present,True,True,True,True
+WASP-39b,H2O,"proxy -> retrained haze, else either -> AIRS-only",present,present,True,True,True,True
+WASP-39b,H2O,"proxy (two-sided) -> retrained hazedeck, amplified -> withheld, else either -> AIRS-only",present,present,True,True,True,True
+WASP-39b,H2O,retrained hazedeck everywhere,present,present,True,True,True,True
+WASP-39b,H2O,"muting -> retrained hazedeck, else either -> AIRS-only",present,present,True,True,True,True
+WASP-39b,H2O,"retrained hazedeck everywhere, either -> its AIRS-only",present,present,True,True,True,True
+WASP-39b,H2O,retrained union everywhere,present,present,True,True,True,True
+WASP-39b,H2O,"muting -> retrained union, else either -> AIRS-only",present,present,True,True,True,True
+WASP-39b,H2O,"retrained union everywhere, either -> its AIRS-only",present,present,True,True,True,True
+WASP-39b,CO2,none,absent,,True,True,True,
+WASP-39b,CO2,either -> AIRS-only,absent,,True,True,True,
+WASP-39b,CO2,muting -> retrained haze,absent,,True,True,True,
+WASP-39b,CO2,muting (strict) -> retrained haze,absent,,True,True,True,
+WASP-39b,CO2,"either, then muting -> retrained haze",absent,,True,True,True,
+WASP-39b,CO2,muting -> retrained hazedeck,absent,,True,True,True,
+WASP-39b,CO2,muting (strict) -> retrained hazedeck,absent,,True,True,True,
+WASP-39b,CO2,"either, then muting -> retrained hazedeck",absent,,True,True,True,
+WASP-39b,CO2,muting -> retrained union,absent,,True,True,True,
+WASP-39b,CO2,muting (strict) -> retrained union,absent,,True,True,True,
+WASP-39b,CO2,"either, then muting -> retrained union",absent,,True,True,True,
+WASP-39b,CO2,"proxy -> retrained hazedeck, else either -> AIRS-only",absent,,True,True,True,
+WASP-39b,CO2,"proxy -> retrained haze, else either -> AIRS-only",absent,,True,True,True,
+WASP-39b,CO2,"proxy (two-sided) -> retrained hazedeck, amplified -> withheld, else either -> AIRS-only",absent,,True,True,True,
+WASP-39b,CO2,retrained hazedeck everywhere,absent,,True,True,True,
+WASP-39b,CO2,"muting -> retrained hazedeck, else either -> AIRS-only",absent,,True,True,True,
+WASP-39b,CO2,"retrained hazedeck everywhere, either -> its AIRS-only",absent,,True,True,True,
+WASP-39b,CO2,retrained union everywhere,absent,,True,True,True,
+WASP-39b,CO2,"muting -> retrained union, else either -> AIRS-only",absent,,True,True,True,
+WASP-39b,CO2,"retrained union everywhere, either -> its AIRS-only",absent,,True,True,True,
+WASP-39b,NH3,none,absent,,True,True,True,
+WASP-39b,NH3,either -> AIRS-only,absent,,True,True,True,
+WASP-39b,NH3,muting -> retrained haze,absent,,True,True,True,
+WASP-39b,NH3,muting (strict) -> retrained haze,absent,,True,True,True,
+WASP-39b,NH3,"either, then muting -> retrained haze",absent,,True,True,True,
+WASP-39b,NH3,muting -> retrained hazedeck,absent,,True,True,True,
+WASP-39b,NH3,muting (strict) -> retrained hazedeck,absent,,True,True,True,
+WASP-39b,NH3,"either, then muting -> retrained hazedeck",absent,,True,True,True,
+WASP-39b,NH3,muting -> retrained union,absent,,True,True,True,
+WASP-39b,NH3,muting (strict) -> retrained union,absent,,True,True,True,
+WASP-39b,NH3,"either, then muting -> retrained union",absent,,True,True,True,
+WASP-39b,NH3,"proxy -> retrained hazedeck, else either -> AIRS-only",absent,,True,True,True,
+WASP-39b,NH3,"proxy -> retrained haze, else either -> AIRS-only",absent,,True,True,True,
+WASP-39b,NH3,"proxy (two-sided) -> retrained hazedeck, amplified -> withheld, else either -> AIRS-only",absent,,True,True,True,
+WASP-39b,NH3,retrained hazedeck everywhere,absent,,True,True,True,
+WASP-39b,NH3,"muting -> retrained hazedeck, else either -> AIRS-only",absent,,True,True,True,
+WASP-39b,NH3,"retrained hazedeck everywhere, either -> its AIRS-only",absent,,True,True,True,
+WASP-39b,NH3,retrained union everywhere,absent,,True,True,True,
+WASP-39b,NH3,"muting -> retrained union, else either -> AIRS-only",absent,,True,True,True,
+WASP-39b,NH3,"retrained union everywhere, either -> its AIRS-only",absent,,True,True,True,

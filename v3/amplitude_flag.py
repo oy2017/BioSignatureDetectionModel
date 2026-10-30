@@ -92,7 +92,7 @@ def main():
          f"{'reduction':<12} {'bins':>4} {'ratio':>7} {'hi max':>7} {'hi p99':>7} {'own p99':>7} {'lo p01':>7} {'pop>hi %':>8} {'AIRS ratio':>10} {'AIRS hi':>8} census  flag"]
     U0 = RULES["mask, clear maximum (the rule)"][0](F); W0 = RULES["mask, clear maximum (the rule)"][1](F)
     for pl, r in F.iterrows():
-        L.append(f"{pl:<12} {r.bins:>4d} {r.ratio:7.2f} {r.hi_clear_max:7.2f} {r.hi_clear_p99:7.2f} {r.hi_own_p99:7.2f} {r.lo_own_p01:7.2f} {r.pop_up_rate:8.1f} {r.ratio_airs:10.2f} {r.hi_airs:8.2f} {'beyond' if r.census_beyond else '      '}  {'UP' if U0[pl] else ('LOW' if W0[pl] else '')}")
+        L.append(f"{pl:<12} {int(r.bins):>4d} {r.ratio:7.2f} {r.hi_clear_max:7.2f} {r.hi_clear_p99:7.2f} {r.hi_own_p99:7.2f} {r.lo_own_p01:7.2f} {r.pop_up_rate:8.1f} {r.ratio_airs:10.2f} {r.hi_airs:8.2f} {'beyond' if r.census_beyond else '      '}  {'UP' if U0[pl] else ('LOW' if W0[pl] else '')}")
     L += ["", f"POP-I own-deck spectra flagged upper through the panel's masks: median {F.pop_up_rate.median():.1f} %, range {F.pop_up_rate.min():.1f}-{F.pop_up_rate.max():.1f} %", "", "flags under each rule:"]
     for rule, (u, w) in flagged.items():
         cen_ = set(F.index[F.census_beyond]); L.append(f"  {rule:<34} up {len(u):>2} ({len(set(u) & cen_)} of {len(cen_)} census giants); low {w}; up, not beyond by census: {sorted(set(u) - cen_)}; census giants not flagged: {sorted(cen_ - set(u))}")

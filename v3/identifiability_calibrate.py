@@ -232,7 +232,7 @@ def main():
     ap.add_argument("--npoints", type=int, default=100); ap.add_argument("--maxcall", type=int, default=20000)
     ap.add_argument("--noisy", action="store_true", help="retrieve the classifier's noisy realisation instead of the noise-free spectrum"); ap.add_argument("--random-sample", action="store_true", help="--n planets drawn at random by index, the same under every departure"); ap.add_argument("--summarize", action="store_true")
     ap.add_argument("--timeout", type=float, default=10800, help="wall-clock cap per planet in seconds (recorded as an error row)")
-    ap.add_argument("--departure", default="none", choices=["none", "haze3e7", "haze2e6", "cloud1e2", "spots20"] + list(NOISE_X)); ap.add_argument("--model-departure", action="store_true", help="haze in the forward model at its true density")
+    ap.add_argument("--departure", default="none", choices=["none", "haze3e7", "haze2e6", "cloud1e2", "spots20", "hazetop1", "plhaze29", "plhaze28"] + list(NOISE_X)); ap.add_argument("--model-departure", action="store_true", help="haze in the forward model at its true density")
     ap.add_argument("--free-haze", action="store_true", help="haze in the forward model with its density a free parameter (the fallback a pipeline could run on any spectrum)")
     ap.add_argument("--population", default="pop1", choices=["pop1", "mcs"], help="mcs: the Mission Candidate Sample population of mcs_testset.py (equilibrium chemistry, clear, pure-H2 fill), tag _mcs")
     ap.add_argument("--prior", default="train", choices=["train", "population"], help="abundance prior: the training grid's 1e-9..1e-2 (default) or the test population's 1e-7..1e-2 (tag _popprior)")
@@ -247,7 +247,7 @@ def main():
     if a.summarize:
         (summarize_departure(tag[1:]) if tag else summarize()); return
     src = AF.DIRS["faithful"]; wl = np.load(os.path.join(DATA, "native_wl.npy")); edges = AF.layout_edges("tier3_r20")
-    nat = {"haze3e7": "pop1_native_haze3e7", "haze2e6": "pop1_native_haze2e6", "cloud1e2": "pop1_native_cloud1e2"}.get(a.departure, "pop1_native")
+    nat = {"haze3e7": "pop1_native_haze3e7", "haze2e6": "pop1_native_haze2e6", "cloud1e2": "pop1_native_cloud1e2", "hazetop1": "pop1_native_hazetop1", "plhaze29": "pop1_native_plhaze29", "plhaze28": "pop1_native_plhaze28"}.get(a.departure, "pop1_native")
     if a.population == "mcs":
         # real Ariel targets with FastChem equilibrium chemistry (mcs_testset.py): clear atmospheres (the retrieval's deck stays free),
         # pure-H2 fill as rendered, Tier-1 radiometric noise from the catalogue's transit counts

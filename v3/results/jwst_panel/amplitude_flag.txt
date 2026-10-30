@@ -1,0 +1,64 @@
+Amplitude flag through each reduction's coverage (amplitude_flag.py). Population check: clear dispersions match the census within 0.00 % (median). Full-bin thresholds 5.25, 0.47.
+
+reduction    bins   ratio  hi max  hi p99 own p99  lo p01 pop>hi % AIRS ratio  AIRS hi census  flag
+TOI-270d       87    3.08    5.74    5.19    8.76    0.49      3.6       2.96    10.23         
+K2-18b         99    1.49    5.63    5.02    8.62    0.49      3.2       1.42     7.92         
+K2-18b-alt     88    3.34    5.44    4.78    8.78    0.49      3.9       3.17    10.23         
+TOI-421b       89    5.39    5.78    5.20    8.83    0.50      3.4       5.52     9.84         
+HAT-P-18b      48    7.99    6.13    4.87    9.96    0.59      3.7       7.32    15.77         UP
+WASP-107b      54    9.31    7.29    6.36    8.13    0.52      1.6       9.31     7.29 beyond  UP
+HD189733b      56    5.09    8.88    6.96    8.52    0.54      0.8       5.09     8.88         
+HAT-P-26b      35    5.71    8.33    6.48    8.41    0.48      1.0       5.71     8.33 beyond  
+GJ3470b        53   11.70    8.66    6.80    8.37    0.53      0.9      11.70     8.66 beyond  UP
+WASP-166b      90    6.20    5.80    5.23    8.85    0.50      3.4       5.98     9.90 beyond  UP
+TOI-1231b      74    5.44    5.09    4.53    8.60    0.45      4.4       5.65     9.68         UP
+K2-18b-hu      88    3.92    5.44    4.78    8.78    0.49      3.9       4.58    10.23         
+TOI-270d-hm    41    5.48    8.36    6.44    8.09    0.48      0.8       5.48     8.36         
+GJ9827d        50     inf    6.18    4.93   10.11    0.60      3.7        inf    16.18         
+WASP-52b       37    5.39    8.46    6.50    8.51    0.48      1.0       5.39     8.46         
+L98-59d        37   10.57    8.46    6.50    8.51    0.48      1.0      10.57     8.46         UP
+GJ1214b        38   63.44    8.31    6.41    7.94    0.48      0.8      63.44     8.31         UP
+LTT3780c       97    2.08    5.58    4.99    8.54    0.48      3.2       1.99     7.84         
+WASP-80b       49   11.93    9.20    7.51    9.38    0.57      1.3      11.93     9.20 beyond  UP
+HD209458b      58    8.12    8.91    6.99    8.45    0.54      0.8       8.12     8.91 beyond  
+WASP-96b       88    3.36    5.44    4.78    8.78    0.49      3.9       3.15    10.23         
+WASP-17b       63    7.23    6.07    4.88    9.49    0.57      3.5       6.67     8.44 beyond  UP
+WASP-94Ab      83    8.87    5.85    5.26    9.07    0.48      3.7       8.48    10.27 beyond  UP
+HIP67522b      41    0.32    8.36    6.44    8.09    0.48      0.8       0.32     8.36         LOW
+HAT-P-12b     103   11.37    5.39    4.74    8.67    0.48      3.8      11.01     7.82 beyond  UP
+WASP-39b      103    6.94    5.23    4.54    8.65    0.47      4.1       6.66     7.77 beyond  UP
+
+POP-I own-deck spectra flagged upper through the panel's masks: median 3.3 %, range 0.8-4.4 %
+
+flags under each rule:
+  mask, clear maximum (the rule)     up 12 (8 of 10 census giants); low ['HIP67522b']; up, not beyond by census: ['GJ1214b', 'HAT-P-18b', 'L98-59d', 'TOI-1231b']; census giants not flagged: ['HAT-P-26b', 'HD209458b']
+  mask, clear 99th                   up 14 (9 of 10 census giants); low ['HIP67522b']; up, not beyond by census: ['GJ1214b', 'HAT-P-18b', 'L98-59d', 'TOI-1231b', 'TOI-421b']; census giants not flagged: ['HAT-P-26b']
+  mask, own-deck 99th                up  6 (4 of 10 census giants); low ['HIP67522b']; up, not beyond by census: ['GJ1214b', 'L98-59d']; census giants not flagged: ['HAT-P-26b', 'HD209458b', 'WASP-166b', 'WASP-17b', 'WASP-39b', 'WASP-94Ab']
+  AIRS range, clear maximum          up  6 (4 of 10 census giants); low ['HIP67522b']; up, not beyond by census: ['GJ1214b', 'L98-59d']; census giants not flagged: ['HAT-P-26b', 'HD209458b', 'WASP-166b', 'WASP-17b', 'WASP-39b', 'WASP-94Ab']
+  full bins, first form              up 17 (10 of 10 census giants); low ['HIP67522b']; up, not beyond by census: ['GJ1214b', 'HAT-P-18b', 'L98-59d', 'TOI-1231b', 'TOI-270d-hm', 'TOI-421b', 'WASP-52b']; census giants not flagged: []
+
+fixed denominator, 66 labelled cells, 23 planets; right 1, split or withheld 0.5, wrong 0; 95 % planet bootstrap; descriptive
+pipeline                                              score wrong split CH4 p/s/a           vs published           vs AIRS-only
+mask, clear maximum (the rule) -> haze                 53.5    11     3 5/1/2         +8.0 ( +2.3,+13.4)     +1.0 ( -1.9, +5.0)
+mask, clear maximum (the rule) -> haze, two-sided      54.0    10     4 5/1/2         +8.5 ( +2.8,+14.0)     +1.5 ( -1.5, +5.7)
+mask, clear maximum (the rule) -> hazedeck             54.0    10     4 5/1/2         +8.5 ( +3.1,+13.8)     +1.5 ( -1.6, +5.7)
+mask, clear maximum (the rule) -> hazedeck, two-sided   54.5     9     5 5/1/2         +9.0 ( +3.6,+14.3)     +2.0 ( -1.2, +6.4)
+mask, clear 99th -> haze                               53.5    11     3 5/1/2         +8.0 ( +2.3,+13.4)     +1.0 ( -1.9, +5.0)
+mask, clear 99th -> haze, two-sided                    54.0    10     4 5/1/2         +8.5 ( +2.8,+14.0)     +1.5 ( -1.5, +5.7)
+mask, clear 99th -> hazedeck                           54.0    10     4 5/1/2         +8.5 ( +3.1,+13.8)     +1.5 ( -1.6, +5.7)
+mask, clear 99th -> hazedeck, two-sided                54.5     9     5 5/1/2         +9.0 ( +3.6,+14.3)     +2.0 ( -1.2, +6.4)
+mask, own-deck 99th -> haze                            52.5    12     3 5/1/2         +7.0 ( +2.0,+11.5)     +0.0 ( -2.3, +3.2)
+mask, own-deck 99th -> haze, two-sided                 53.0    11     4 5/1/2         +7.5 ( +2.5,+12.0)     +0.5 ( -2.0, +4.0)
+mask, own-deck 99th -> hazedeck                        53.0    11     4 5/1/2         +7.5 ( +2.8,+11.8)     +0.5 ( -2.0, +4.0)
+mask, own-deck 99th -> hazedeck, two-sided             53.5    10     5 5/1/2         +8.0 ( +3.4,+12.4)     +1.0 ( -1.7, +4.8)
+AIRS range, clear maximum -> haze                      52.5    12     3 5/1/2         +7.0 ( +2.0,+11.5)     +0.0 ( -2.3, +3.2)
+AIRS range, clear maximum -> haze, two-sided           53.0    11     4 5/1/2         +7.5 ( +2.5,+12.0)     +0.5 ( -2.0, +4.0)
+AIRS range, clear maximum -> hazedeck                  53.0    11     4 5/1/2         +7.5 ( +2.8,+11.8)     +0.5 ( -2.0, +4.0)
+AIRS range, clear maximum -> hazedeck, two-sided       53.5    10     5 5/1/2         +8.0 ( +3.4,+12.4)     +1.0 ( -1.7, +4.8)
+full bins, first form -> haze                          53.0    12     2 4/1/3         +7.5 ( +1.8,+13.0)     +0.5 ( -3.6, +5.1)
+full bins, first form -> haze, two-sided               53.5    11     3 4/1/3         +8.0 ( +2.4,+13.6)     +1.0 ( -3.2, +5.8)
+full bins, first form -> hazedeck                      53.5    11     3 4/1/3         +8.0 ( +2.6,+13.4)     +1.0 ( -3.2, +5.8)
+full bins, first form -> hazedeck, two-sided           54.0    10     4 4/1/3         +8.5 ( +3.1,+14.1)     +1.5 ( -2.8, +6.5)
+published                                              45.5    17     7 0/1/7         +0.0 ( +0.0, +0.0)     -7.0 (-12.5, -0.5)
+AIRS-only everywhere                                   52.5    13     1 6/1/1         +7.0 ( +0.5,+12.5)     +0.0 ( +0.0, +0.0)
+shape flag -> AIRS-only                                51.5    12     5 5/1/2         +6.0 ( +1.0,+10.5)     -1.0 ( -3.1, +1.5)

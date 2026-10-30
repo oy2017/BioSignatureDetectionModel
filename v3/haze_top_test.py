@@ -18,7 +18,7 @@ ms=P['modulation_5H'].to_numpy(); order=np.argsort(ms); picks=[order[int(.1*len(
 opt,nir,air=cen<1.1,(cen>1.1)&(cen<1.95),cen>1.95
 def spec(r,top=1e-4,haze=None):
     r=dict(r); r['atm top_pressure']=top
-    y=FM.spectrum(r,wl,SA.GASES,SA.FILL_GAS,cloud_pressure=cp,haze=haze)
+    y=FM.spectrum(r,wl,SA.GASES,AF.FILL,cloud_pressure=cp,haze=haze)
     return bin_native(np.asarray(y,float)[None,:],wl,edges)[0]
 print('HAZE radius',SA.HAZE_RADIUS,'q',SA.HAZE_Q,' | delta depth hazed-clear (ppm): optical / NIRSpec / AIRS mean')
 for i in picks:
