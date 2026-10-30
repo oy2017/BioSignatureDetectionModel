@@ -1,0 +1,19 @@
+HAZE radius 0.1 q 40  | delta depth hazed-clear (ppm): optical / NIRSpec / AIRS mean
+HATS-22b: T 989 K, Rp 10.7, Mp 871, 5H mod 97 ppm, own deck 7.31e+04 Pa
+   whole column, model top 1e-4 Pa (as run)          258      27      1
+   whole column, model top 1e-6 Pa                   334      38      2
+   whole column, model top 1e-2 Pa                   184      17      1
+   confined below 1 Pa, top 1e-4                     116       9      0
+   confined below 100 Pa, top 1e-4                    53       3      0
+K2-36c: T 869 K, Rp 3.2, Mp 8, 5H mod 339 ppm, own deck 1.2e+04 Pa
+   whole column, model top 1e-4 Pa (as run)         3978     770     52
+   whole column, model top 1e-6 Pa                  7746    1966    151
+   whole column, model top 1e-2 Pa                  2024     280     15
+   confined below 1 Pa, top 1e-4                     916      73      2
+   confined below 100 Pa, top 1e-4                   281       6      0
+TOI-3856b: T 1266 K, Rp 13.6, Mp 172, 5H mod 978 ppm, own deck 6.07e+03 Pa
+   whole column, model top 1e-4 Pa (as run)         3900     956     63
+   whole column, model top 1e-6 Pa                  5321    1482    108
+   whole column, model top 1e-2 Pa                  2639     542     30
+   confined below 1 Pa, top 1e-4                    1547     234      9
+   confined below 100 Pa, top 1e-4                   597      46      0

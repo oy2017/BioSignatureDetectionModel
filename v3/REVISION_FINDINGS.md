@@ -1220,8 +1220,7 @@ the abstract, 2.5 (Table 2, refs 82-86), 3.5, 3.6, Discussion, Conclusion and bo
 ### F22. The census without a composition: the catalogue's five-scale-height modulation over the data's dispersion flags the same ten giants (AUROC 0.97 against the composition-based census) and the whole pipeline becomes computable from the catalogue and the spectrum alone (2026-10-29; `muting_router.py scale_height_proxy`)
 
 Proxy = modulation_5H (mass, radius, T_eq, H₂/He; the catalogue quantity the noise model already uses) / noise-corrected
-dispersion of the real spectrum over its measured bins. No retrieval, no literature abundance. Threshold fixed from the
-simulated population before looking at the panel: the largest value any clear POP-I planet reaches, 5.25 (the population
+dispersion of the real spectrum over its measured bins. No retrieval, no literature abundance. Threshold taken from the simulated population (CORRECTED 2026-10-30: the statistic was chosen after the flag's value on every panel planet had been printed, not before looking at the panel): the largest value any clear POP-I planet reaches, 5.25 (the population
 rendered with its own decks: median 2.56, 90th 4.18, 95th 5.01, 99th 8.68, max 26); the other direction at the
 population's first percentile, 0.47.
 
@@ -1233,8 +1232,7 @@ HIP 67522 b at 0.32, below the population's first percentile: the amplified case
 
 Routers (`muting_router.txt`): proxy → retrained haze, else either → AIRS-only 52/63 (census-first 52/62, none 42/59);
 proxy → retrained hazedeck 51/62; two-sided with the amplified planet's verdicts withheld 51/61 (HIP 67522 b's false
-positive leaves the scored set). Methane 4/1/3 instead of 5/1/2: the one loss is TOI-1231 b, a methane planet within the
-prior that the proxy flags at 5.44 and the retrained design calls split. Every other label the composition-based census
+positive leaves the scored set). Methane 4/1/3 instead of 5/1/2: the one loss is the Holmberg reduction of TOI-270 d (CORRECTED 2026-10-30, the original text named TOI-1231 b), a methane planet within the prior that the proxy flags at 5.48 and the haze-retrained design calls absent; the denominator rises by one because that design turns HAT-P-12 b's water from split to present. Every other label the composition-based census
 gains, the proxy gains.
 
 Reading. The caveat that the census needs a composition is removed: the amplitude axis can be read from the catalogue's
@@ -1243,6 +1241,25 @@ pipeline uses a retrieval or a published abundance. The price is a looser flag (
 methane recovery. This is what makes the pipeline a method rather than a diagnosis: departure-aware training, two
 catalogue-and-data flags, two remedies, a withheld verdict for the amplified class. Goes into the restructure as the method;
 the composition-based census stays as the analysis that explains the flag.
+
+### F23. The simulated haze's optical excess is partly set by the model's top boundary (2026-10-30; `haze_top_test.py`, `results/haze_top_test.txt`)
+
+Found by the domain referee of the 2026-10-30 review and checked here. TauREx's LeeMieContribution passes a density profile of
+ones and documents `lee_mie_mix_ratio` as particles/m³, and `forward_model.build_model` leaves bottomP and topP unset, so every haze
+run so far has one number density in all 100 layers from the base to the 10⁻⁴ Pa top. "Quoted as a number density at 1 mbar" in 2.3
+was wrong and is corrected. Hazed minus clear depth at 3 × 10⁷ m⁻³ on three planets, averaged over optical / Ariel NIRSpec / AIRS (ppm):
+
+| planet | as run | top 10⁻⁶ Pa | top 10⁻² Pa | haze below 1 Pa | haze below 100 Pa |
+| :-- | --: | --: | --: | --: | --: |
+| HATS-22 b | 258 / 27 / 1 | 334 / 38 / 2 | 184 / 17 / 1 | 116 / 9 / 0 | 53 / 3 / 0 |
+| K2-36 c | 3978 / 770 / 52 | 7746 / 1966 / 151 | 2024 / 280 / 15 | 916 / 73 / 2 | 281 / 6 / 0 |
+| TOI-3856 b | 3900 / 956 / 63 | 5321 / 1482 / 108 | 2639 / 542 / 30 | 1547 / 234 / 9 | 597 / 46 / 0 |
+
+Reading. Moving the top by two decades changes the optical excess by up to a factor of two, and confining the haze below 1 Pa shrinks it
+two to four times (below 100 Pa, five to fourteen). The excess stays concentrated in the optical points in every configuration, and more
+so when confined, so the mechanism is not an artefact on this evidence. The size of the classifier's loss, the optical flag's near-total firing rate, the
+oracle match and the retrieval results under haze are specific to this column-filling haze until rerun with a confined one. Three planets
+and no classifier run yet.
 
 ### What these add up to (2026-10-29, after the restructure)
 
