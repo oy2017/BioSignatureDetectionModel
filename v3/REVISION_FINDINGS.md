@@ -1261,6 +1261,31 @@ so when confined, so the mechanism is not an artefact on this evidence. The size
 oracle match and the retrieval results under haze are specific to this column-filling haze until rerun with a confined one. Three planets
 and no classifier run yet.
 
+### F24. The pipeline measured: better than the published classifier on real spectra, tied with two simpler fixes, between them in simulation (2026-10-30; `pipeline_sim.py`, `pipeline_bootstrap.py`)
+
+Simulated rows are now measured on the same test cases and noise draw, not copied from the shape-flag row. Real panel on one fixed
+denominator, all 66 labelled cells of 23 planets, right 1, split or withheld one half, wrong 0, with a 95 % bootstrap over planets (descriptive:
+the flags and about twenty variants were chosen on this panel):
+
+| design | of 66 | wrong | vs published | vs AIRS-only | third batch, of 7 | CH₄ of 8 | clean | haze 3e7 | deck 1e2 | spots 20 | noise x2 |
+| :-- | --: | --: | --: | --: | --: | --: | --: | --: | --: | --: | --: |
+| published | 45.5 | 17 | | -7.0 (-12.5, -0.5) | 5.5 | 0 | 81.2 | 63.5 | 71.4 | 70.4 | 71.9 |
+| AIRS-only everywhere | 52.5 | 13 | +7.0 (+0.5, +12.5) | | 5.0 | 6 | 73.8 | 73.3 | 72.1 | 74.0 | 68.3 |
+| shape flag → AIRS-only | 51.5 | 12 | +6.0 (+1.0, +10.5) | -1.0 (-3.1, +1.5) | 5.0 | 5 | 76.6 | 73.3 | 71.8 | 73.9 | 70.2 |
+| retrained (haze + deck) everywhere | 52.0 | 12 | +6.5 (+1.1, +11.9) | -0.5 (-5.1, +5.0) | 5.5 | 2 | 80.2 | 73.6 | 74.6 | 76.1 | 71.7 |
+| retrained, shape flag → its AIRS-only | 51.5 | 14 | +6.0 (-0.5, +11.5) | -1.0 (-2.5, 0.0) | 5.0 | 6 | 76.3 | 73.7 | 73.9 | 74.9 | 70.1 |
+| census pipeline (needs a composition) | 54.0 | 10 | +8.5 (+3.1, +13.6) | +1.5 (-1.0, +5.0) | 5.5 | 5 | not run | | | | |
+| scale-height pipeline (haze) | 53.5 | 11 | +8.0 (+2.6, +13.4) | +1.0 (-3.2, +5.7) | 6.0 | 4 | 76.7 | 73.3 | 71.9 | 74.0 | 70.2 |
+| scale-height pipeline, two-sided (haze + deck) | 53.5 | 10 | +8.0 (+2.6, +13.6) | +1.0 (-3.0, +5.5) | 6.0 | 4 | 76.7 | 73.2 | 71.9 | 74.2 | 70.0 |
+
+Reading. The pipeline beats the published classifier on real spectra (the comparison E3 asks for), at 4.5 points of clean simulated accuracy. It
+cannot be told apart from AIRS-only everywhere or the retrained design on the panel. In simulation it beats AIRS-only on clean (+2.9) and noisy (+1.9, +1.0)
+spectra and ties it under haze and spots, and the retrained design beats it on clean, weak haze, deck, spots and noise. It is never the worst of published, AIRS-only,
+retrained and pipeline in any measured column. The amplitude flag changes simulated accuracy by 0.1 points: it fires on 6.8 % of clean planets at Tier-1 noise and 7.9 %
+have no dispersion above their noise, 15.5 % under the deep deck. Its lower cut withholds 25 % of planets under threefold noise, because the nominal noise is removed
+and the excess reads as amplitude, so the two-sided form has a false alarm under unmodelled noise. On the third batch the pipeline's extra half label over the published
+classifier comes from the haze-only training set, chosen after those planets were seen. The sign tests in the manuscript are to be replaced by these intervals.
+
 ### What these add up to (2026-10-29, after the restructure)
 
 The manuscript was restructured on 2026-10-29 around one argument (commit after F22): 3.2 identifiability ceiling, 3.3 error
