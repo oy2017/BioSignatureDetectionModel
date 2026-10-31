@@ -1415,3 +1415,7 @@ All seen, none used to choose. Tier-1: 63.4 against 57.9 of 88, +5.6 (.7, 10.6),
 ### F44. At Ariel's coverage it beats the published design on its own population (2026-10-30)
 
 Clean accuracy 84.2 against 81.2, recall 81 against 63; haze 3e7 80.5 against 63.5; 13 and 34 targets lost against 20 and 51. More CH4 lost than the classifier under the confined haze and the high deck. Errors under haze: 202 recoverable and 544 on undecidable labels, against 675 and 719: it removes what the spectra could decide and leaves the undecided undecided.
+
+### F45. Most of the decline gain was the gas mix; stratifying by call helps on grids and not on real labels (2026-10-31)
+
+Declining the least confident 30 % adds .075 to .117 pooled, .007 to .045 within gas, against .006 to .033 for the classifier's best rule. Calls on a gas's rarer answer sit near .5, so one cut declines most of them. Keeping 70 % of present and of absent calls separately adds .044 to .078 on the grids, +.034 to +.055 over the classifier's best stratified rule (5 of 6 intervals above zero), post hoc. On real labels it lowers balanced credit: JWST .788 to .754 (-.078,+.025), Tier-1 .682 to .643 (-.072,+.007). A lead for a prospective test, not a measured gain. `results/round3/round3_margin_stratified.txt`, `round3_margin_stratified_real.txt`; expectations W.
