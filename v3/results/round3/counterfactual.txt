@@ -1,0 +1,10 @@
+JWST   all  truly present:  12849  called present, full 0.627, opacity removed 0.114, own absorption +0.513 (+0.473,+0.553); flips to absent 0.820 of those called present
+JWST   H2O  truly present:   6145  called present, full 0.582, opacity removed 0.159, own absorption +0.423 (+0.356,+0.494); flips to absent 0.729 of those called present
+JWST   CH4  truly present:   2858  called present, full 0.803, opacity removed 0.003, own absorption +0.800 (+0.710,+0.861); flips to absent 0.997 of those called present
+JWST   CO2  truly present:   2997  called present, full 0.682, opacity removed 0.152, own absorption +0.529 (+0.453,+0.606); flips to absent 0.776 of those called present
+JWST   NH3  truly present:    849  called present, full 0.161, opacity removed 0.020, own absorption +0.141 (+0.077,+0.182); flips to absent 0.876 of those called present
+Tier-1 all  truly present:  12849  called present, full 0.516, opacity removed 0.096, own absorption +0.420 (+0.376,+0.474); flips to absent 0.814 of those called present
+Tier-1 H2O  truly present:   6145  called present, full 0.524, opacity removed 0.130, own absorption +0.394 (+0.309,+0.487); flips to absent 0.753 of those called present
+Tier-1 CH4  truly present:   2858  called present, full 0.721, opacity removed 0.022, own absorption +0.699 (+0.651,+0.743); flips to absent 0.969 of those called present
+Tier-1 CO2  truly present:   2997  called present, full 0.391, opacity removed 0.107, own absorption +0.284 (+0.211,+0.364); flips to absent 0.727 of those called present
+Tier-1 NH3  truly present:    849  called present, full 0.211, opacity removed 0.066, own absorption +0.145 (+0.119,+0.166); flips to absent 0.687 of those called present
