@@ -15,7 +15,7 @@ import matched_learner as ML  # noqa: E402
 import round3_learner as R  # noqa: E402
 from sklearn.neural_network import MLPClassifier  # noqa: E402
 
-MOLS = R.MOLS; KEEP = 0.7; CONDS = ("local", "crossfield")
+MOLS = R.MOLS; KEEP = 0.7; CONDS = ("rainout", "local", "crossfield")
 
 
 def run(j, i, prec, X, P, grids):
@@ -31,7 +31,7 @@ def run(j, i, prec, X, P, grids):
 
 
 def main():
-    jobs = int(sys.argv[1]) if len(sys.argv) > 1 else 8; X, P = R.population("C+B-mlp"); grids = {c: dict(np.load(os.path.join(R.GRIDS, f"grid_{c}.npz"))) for c in CONDS}; L = ML.jobs_list(); A = pd.concat(Parallel(n_jobs=jobs)(delayed(run)(j, i, p, X, P, grids) for i, j in enumerate(L) for p in ("JWST", "Tier-1"))); Out = []; rng = np.random.default_rng(405)
+    jobs = int(sys.argv[1]) if len(sys.argv) > 1 else 8; X, P = R.population("C+B-mlp"); grids = {c: dict(np.load(os.path.join(R.GRIDS, f"grid_{c}.npz"))) for c in CONDS}; L = ML.jobs_list(); A = pd.concat(Parallel(n_jobs=jobs)(delayed(run)(j, i, p, X, P, grids) for i, j in enumerate(L) for p in ("JWST", "Tier-1"))); A.to_csv(os.path.join(R.OUT, "round3_rules_rows.csv.gz"), index=False); Out = []; rng = np.random.default_rng(405)
     def bal(g): return 0.5 * (g[g.y].present.mean() + 1 - g[~g.y].present.mean())
     for c in CONDS:
         Y = pd.read_csv(os.path.join(R.GRIDS, f"truth_{c}.csv")).melt(id_vars=["planet", "row"], value_vars=[f"v_{m}" for m in MOLS], var_name="molecule", value_name="v"); Y["molecule"] = Y.molecule.str[2:]; a = A[A.cond == c].merge(Y, on=["planet", "row", "molecule"]); a["y"] = a.v > -4; a["u"] = a.planet.map(ML.BASE)

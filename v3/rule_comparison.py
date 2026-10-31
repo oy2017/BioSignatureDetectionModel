@@ -1,4 +1,4 @@
-"""Recognising unreliable verdicts against the existing rules, and the routing method on opacity-removed spectra (REVISION_EXPECTATIONS.md, section T). Writes results/round3/rule_comparison.txt and routing_counterfactual.txt."""
+"""Recognising unreliable verdicts against the existing rules (REVISION_EXPECTATIONS.md, sections T and V). Writes results/round3/rule_comparison.txt and rule_rows_<cond>.csv.gz. The routing method on opacity-removed spectra, results/round3/routing_counterfactual.txt, was computed by this file at commit 2e035c3."""
 import os
 import sys
 import warnings
@@ -52,8 +52,8 @@ def boot(a, b, rng):
 
 def main():
     ctx = PT.Context(); L = ML.jobs_list(); Lines = []; rng = np.random.default_rng(405); Th = pd.read_csv(os.path.join(OUT, "thresholds_C+B-mlp.csv")).melt(id_vars=["planet", "precision"], var_name="molecule", value_name="t")
-    for cond in ("local", "crossfield"):
-        Z = np.load(os.path.join("results", "goyal_test", f"grid_{cond}.npz")); A = rules(ctx, L, Z, cond); Y = pd.read_csv(os.path.join("results", "goyal_test", f"truth_{cond}.csv")).melt(id_vars=["planet", "row"], value_vars=[f"v_{m}" for m in MOLS], var_name="molecule", value_name="v"); Y["molecule"] = Y.molecule.str[2:]; A = A.merge(Y, on=["planet", "row", "molecule"]); A["y"] = A.v > -4; A["u"] = A.planet.map(ML.BASE)
+    for cond in ("rainout", "local", "crossfield"):
+        Z = np.load(os.path.join("results", "goyal_test", f"grid_{cond}.npz")); A = rules(ctx, L, Z, cond); Y = pd.read_csv(os.path.join("results", "goyal_test", f"truth_{cond}.csv")).melt(id_vars=["planet", "row"], value_vars=[f"v_{m}" for m in MOLS], var_name="molecule", value_name="v"); Y["molecule"] = Y.molecule.str[2:]; A.to_csv(os.path.join(OUT, f"rule_rows_{cond}.csv.gz"), index=False); A = A.merge(Y, on=["planet", "row", "molecule"]); A["y"] = A.v > -4; A["u"] = A.planet.map(ML.BASE)
         E = pd.read_csv(os.path.join(OUT, f"votes_C+B-mlp_{cond}.csv.gz")).merge(Y, on=["planet", "row", "molecule"]).merge(Th, on=["planet", "precision", "molecule"]); E["y"] = E.v > -4; E["u"] = E.planet.map(ML.BASE); E["conf"] = np.abs(E.prob - E.t)
         for prec in ("JWST", "Tier-1"):
             for mol in ["all"] + MOLS:
@@ -65,17 +65,6 @@ def main():
                     lo, hi = boot(kept_e, K[bn], rng); s.append(f"ensemble kept minus best rule ({bn}) {balanced(kept_e) - best:+.3f} ({lo:+.3f},{hi:+.3f})")
                 Lines.append("  ".join(s)); print(Lines[-1], flush=True)
     open(os.path.join(OUT, "rule_comparison.txt"), "w").write("\n".join(Lines) + "\n")
-    Yc = pd.read_csv(os.path.join("results", "goyal_test", "truth_crossfield.csv")); M = pd.read_parquet("data/mcs/mcs_params.parquet").drop_duplicates("name").set_index("name"); e, _ = J.tier3_layout(); F = pd.read_csv("results/jwst_panel/amplitude_flag.csv").set_index("planet"); Fl = pd.read_csv("results/jwst_panel_fourth/fourth_batch_flags.csv").set_index("planet"); rows = []
-    Zc = np.load(os.path.join("results", "goyal_test", "grid_crossfield.npz"))
-    for i, j in enumerate(L):
-        C = CC.spectra(j, Yc, M, e); full = GT.run_frozen(ctx, j, i, Zc[j[1]], F, Fl); full = full[full.design == "the method"]
-        for g in MOLS:
-            q = GT.run_frozen(ctx, j, i, C[g], F, Fl); q = q[(q.design == "the method") & (q.molecule == g)].rename(columns=dict(present="removed")); f = full[full.molecule == g].rename(columns=dict(present="full")); rows.append(f[["planet", "precision", "molecule", "row", "full"]].merge(q[["precision", "row", "removed"]], on=["precision", "row"]))
-    Q = pd.concat(rows); T = Yc.melt(id_vars=["planet", "row"], value_vars=[f"v_{m}" for m in MOLS], var_name="molecule", value_name="v"); T["molecule"] = T.molecule.str[2:]; Q = Q.merge(T, on=["planet", "row", "molecule"]); Q = Q[Q.v > -4]; L2 = []
-    for p in ("JWST", "Tier-1"):
-        for m in ["all"] + MOLS:
-            g = Q[(Q.precision == p) & ((Q.molecule == m) | (m == "all"))]; L2.append(f"{p:<7}{m:<4} routing method: called present, full {g.full.mean():.3f}, opacity removed {g.removed.mean():.3f}, flips {(g.full.gt(0) & g.removed.eq(0)).sum() / max(g.full.sum(), 1):.3f}")
-    t = "\n".join(L2); open(os.path.join(OUT, "routing_counterfactual.txt"), "w").write(t + "\n"); print(t)
 
 
 if __name__ == "__main__":

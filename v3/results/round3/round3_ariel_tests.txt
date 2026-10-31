@@ -1,0 +1,33 @@
+U2, U3: per case, targets lost CH4 / H2O with the ensemble, with its 10 % least confident sent to the back, and error AUROC of its distance from the threshold, per molecule
+  clean      13 / 34  declined 50 / 65  error AUROC 0.78 0.69 0.69 0.83  mean 0.75
+  haze2e6    25 / 47  declined 72 / 95  error AUROC 0.72 0.68 0.73 0.74  mean 0.72
+  haze3e7    19 / 42  declined 65 / 82  error AUROC 0.77 0.69 0.78 0.73  mean 0.74
+  cloud1e2   37 / 63  declined 105 / 109  error AUROC 0.72 0.65 0.72 0.69  mean 0.69
+  spots20    23 / 50  declined 56 / 83  error AUROC 0.74 0.69 0.65 0.73  mean 0.70
+  compound   25 / 56  declined 64 / 90  error AUROC 0.72 0.66 0.75 0.71  mean 0.71
+  white_x2   35 / 61  declined 80 / 108  error AUROC 0.75 0.65 0.68 0.75  mean 0.71
+  white_x3   51 / 73  declined 104 / 125  error AUROC 0.71 0.66 0.67 0.71  mean 0.69
+  mute3      54 / 71  declined 107 / 142  error AUROC 0.70 0.64 0.68 0.71  mean 0.69
+  plhaze29   28 / 58  declined 88 / 103  error AUROC 0.72 0.65 0.72 0.69  mean 0.70
+U4: AUROC for recognising undecidable labels (p_true <= .95) on clean spectra, CH4 H2O CO2 NH3: 0.72 0.66 0.59 0.79
+U5: targets lost, mean +- sd over ten draws, CH4 / H2O
+  clean      16.2 +- 2.7 / 30.9 +- 5.2
+  haze2e6    24.2 +- 3.3 / 49.7 +- 4.6
+  haze3e7    15.8 +- 2.8 / 47.3 +- 5.3
+  cloud1e2   33.5 +- 4.1 / 68.5 +- 4.4
+  spots20    25.1 +- 2.9 / 51.4 +- 4.2
+  compound   24.7 +- 2.3 / 55.6 +- 4.7
+  white_x2   32.8 +- 2.8 / 56.1 +- 5.6
+  white_x3   49.2 +- 4.0 / 74.0 +- 5.6
+  mute3      49.9 +- 4.4 / 74.4 +- 7.7
+  plhaze29   25.9 +- 3.6 / 66.0 +- 4.0
+
+U6: held-out grids through all 104 bins at Tier-1 noise, balanced credit (present, false-present), and ensemble minus design with a 95 % bootstrap over planets
+  local      ensemble     0.690 (0.545, 0.166)  ensemble minus this +0.000 (+0.000,+0.000)
+  local      classifier   0.573 (0.185, 0.029)  ensemble minus this +0.116 (+0.101,+0.129)
+  local      AIRS-only    0.559 (0.244, 0.103)  ensemble minus this +0.130 (+0.114,+0.142)
+  local      haze+deck    0.577 (0.253, 0.082)  ensemble minus this +0.113 (+0.091,+0.127)
+  crossfield ensemble     0.781 (0.643, 0.080)  ensemble minus this +0.000 (+0.000,+0.000)
+  crossfield classifier   0.660 (0.349, 0.020)  ensemble minus this +0.122 (+0.106,+0.134)
+  crossfield AIRS-only    0.629 (0.308, 0.038)  ensemble minus this +0.152 (+0.146,+0.158)
+  crossfield haze+deck    0.663 (0.371, 0.033)  ensemble minus this +0.118 (+0.107,+0.128)

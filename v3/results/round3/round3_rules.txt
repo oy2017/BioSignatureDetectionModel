@@ -1,0 +1,20 @@
+local      JWST   all  no decline 0.711  own 0.721  margin 0.786  ensemble 0.763  knn 0.701  mahalanobis 0.705  pca_recon 0.707  own minus best rule (margin) -0.065 (-0.083,-0.049)
+local      JWST   CH4  no decline 0.765  own 0.825  margin 0.822  ensemble 0.818  knn 0.785  mahalanobis 0.780  pca_recon 0.781
+local      JWST   H2O  no decline 0.703  own 0.737  margin 0.779  ensemble 0.741  knn 0.686  mahalanobis 0.686  pca_recon 0.678
+local      JWST   CO2  no decline 0.685  own 0.710  margin 0.630  ensemble 0.627  knn 0.702  mahalanobis 0.700  pca_recon 0.718
+local      JWST   NH3  no decline 0.670  own 0.635  margin 0.638  ensemble 0.664  knn 0.598  mahalanobis 0.665  pca_recon 0.671
+local      Tier-1 all  no decline 0.636  own 0.648  margin 0.713  ensemble 0.671  knn 0.639  mahalanobis 0.629  pca_recon 0.624  own minus best rule (margin) -0.065 (-0.079,-0.051)
+local      Tier-1 CH4  no decline 0.712  own 0.772  margin 0.771  ensemble 0.756  knn 0.746  mahalanobis 0.732  pca_recon 0.719
+local      Tier-1 H2O  no decline 0.604  own 0.623  margin 0.620  ensemble 0.631  knn 0.598  mahalanobis 0.592  pca_recon 0.585
+local      Tier-1 CO2  no decline 0.607  own 0.608  margin 0.567  ensemble 0.577  knn 0.616  mahalanobis 0.610  pca_recon 0.610
+local      Tier-1 NH3  no decline 0.612  own 0.585  margin 0.606  ensemble 0.611  knn 0.598  mahalanobis 0.603  pca_recon 0.602
+crossfield JWST   all  no decline 0.773  own 0.801  margin 0.880  ensemble 0.849  knn 0.763  mahalanobis 0.762  pca_recon 0.753  own minus best rule (margin) -0.078 (-0.097,-0.062)
+crossfield JWST   CH4  no decline 0.880  own 0.897  margin 0.964  ensemble 0.961  knn 0.884  mahalanobis 0.893  pca_recon 0.884
+crossfield JWST   H2O  no decline 0.684  own 0.726  margin 0.769  ensemble 0.737  knn 0.675  mahalanobis 0.670  pca_recon 0.669
+crossfield JWST   CO2  no decline 0.777  own 0.850  margin 0.805  ensemble 0.791  knn 0.807  mahalanobis 0.789  pca_recon 0.785
+crossfield JWST   NH3  no decline 0.550  own 0.526  margin 0.533  ensemble 0.541  knn 0.529  mahalanobis 0.566  pca_recon 0.568
+crossfield Tier-1 all  no decline 0.700  own 0.739  margin 0.817  ensemble 0.753  knn 0.705  mahalanobis 0.695  pca_recon 0.683  own minus best rule (margin) -0.078 (-0.095,-0.063)
+crossfield Tier-1 CH4  no decline 0.828  own 0.870  margin 0.951  ensemble 0.904  knn 0.857  mahalanobis 0.846  pca_recon 0.823
+crossfield Tier-1 H2O  no decline 0.632  own 0.659  margin 0.673  ensemble 0.642  knn 0.636  mahalanobis 0.622  pca_recon 0.617
+crossfield Tier-1 CO2  no decline 0.618  own 0.654  margin 0.599  ensemble 0.608  knn 0.631  mahalanobis 0.618  pca_recon 0.610
+crossfield Tier-1 NH3  no decline 0.552  own 0.537  margin 0.547  ensemble 0.546  knn 0.538  mahalanobis 0.562  pca_recon 0.560
