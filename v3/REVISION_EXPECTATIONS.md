@@ -245,3 +245,7 @@ Rule: within each gas and precision, keep the most confident 70 % of present cal
 - W1. Stratified margin adds more balanced credit than the unstratified margin in at least 4 of the 6 grid-precision cases.
 - W2. Stratified margin minus the classifier's best stratified rule: interval above zero in at least 4 of the 6 cases.
 - W3. If W2 holds, the rule still needs a test on spectra not used to design it before the paper may claim it as a measured gain.
+
+Correction to W (written 2026-10-31, after the first run): the opening paragraph is wrong about the mechanism. The margin rule is distance of the probability from .5, not from the threshold (U1). Calls on the rarer answer sit near .5, so a single scale declines most of them; thresholds capped at 10 % false-present are not the stated cause.
+
+Results of W, seen grids, post hoc: W1 met in 6 of 6 (stratified adds .044 to .078, flat .007 to .045). W2 met in 5 of 6: difference from the classifier's best stratified rule +.034 to +.055; the photochemical grid at JWST precision has interval (-.007,+.055). W3 not yet tested.

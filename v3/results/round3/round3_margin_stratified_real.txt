@@ -1,0 +1,2 @@
+JWST    n=105 none balanced 0.788 right 84.0; flat n=73 0.736; stratified n=73 0.754 right 56.0; stratified minus none -0.034 (-0.078,+0.025)
+Tier-1  n=88 none balanced 0.682 right 63.4; flat n=62 0.608; stratified n=62 0.643 right 42.4; stratified minus none -0.038 (-0.072,+0.007)
