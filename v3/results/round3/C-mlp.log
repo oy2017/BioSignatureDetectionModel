@@ -1,0 +1,101 @@
+Numba not installed, using numpy instead
+(15286, 104)
+[Parallel(n_jobs=6)]: Using backend LokyBackend with 6 concurrent workers.
+Numba not installed, using numpy instead
+TOI-421b JWST
+Numba not installed, using numpy instead
+K2-18b-alt JWST
+Numba not installed, using numpy instead
+K2-18b JWST
+Numba not installed, using numpy instead
+TOI-270d JWST
+Numba not installed, using numpy instead
+HAT-P-18b JWST
+Numba not installed, using numpy instead
+WASP-107b JWST
+[Parallel(n_jobs=6)]: Done   6 tasks      | elapsed:  2.0min
+HAT-P-26b JWST
+HD189733b JWST
+GJ3470b JWST
+TOI-1231b JWST
+WASP-166b JWST
+K2-18b-hu JWST
+TOI-270d-hm JWST
+L98-59d JWST
+WASP-52b JWST
+GJ9827d JWST
+LTT3780c JWST
+GJ1214b JWST
+WASP-80b JWST
+HD209458b JWST
+WASP-96b JWST
+WASP-17b JWST
+HIP67522b JWST
+WASP-94Ab JWST
+HAT-P-12b JWST
+TrES-4b JWST
+HATS-6b JWST
+TOI-5205b JWST
+WASP-39b JWST
+LP791-18c JWST
+TOI-199b JWST
+NGTS-2b JWST
+HAT-P-30b JWST
+TOI-6894b JWST
+TOI-1130b JWST
+HAT-P-1b JWST
+HAT-P-14b-JWST JWST
+Kepler-51d JWST
+V1298Tauc-JWST JWST
+WASP-121b JWST
+HAT-P-32b JWST
+HAT-P-41b JWST
+HD106315c JWST
+WASP-62b JWST
+WASP-79b JWST
+V1298Tauc-HST JWST
+GJ436b JWST
+HAT-P-2b JWST
+K2-24b JWST
+HIP41378f JWST
+WASP-103b JWST
+TOI-270d Tier-1
+K2-18b Tier-1
+K2-18b-alt Tier-1
+TOI-421b Tier-1
+HAT-P-18b Tier-1
+HD189733b Tier-1
+WASP-107b Tier-1
+HAT-P-26b Tier-1
+GJ3470b Tier-1
+[Parallel(n_jobs=6)]: Done  60 tasks      | elapsed: 12.4min
+TOI-1231b Tier-1
+WASP-166b Tier-1
+K2-18b-hu Tier-1
+TOI-270d-hm Tier-1
+GJ9827d Tier-1
+WASP-52b Tier-1
+L98-59d Tier-1
+GJ1214b Tier-1
+LTT3780c Tier-1
+WASP-80b Tier-1
+WASP-96b Tier-1
+HD209458b Tier-1
+WASP-94Ab Tier-1
+WASP-17b Tier-1
+HAT-P-12b Tier-1
+HIP67522b Tier-1
+TrES-4b Tier-1
+WASP-39b Tier-1
+HATS-6b Tier-1
+TOI-5205b Tier-1
+TOI-6894b Tier-1
+TOI-199b Tier-1
+LP791-18c Tier-1
+NGTS-2b Tier-1
+HAT-P-30b Tier-1
+HAT-P-1b Tier-1
+TOI-1130b Tier-1
+Kepler-51d Tier-1
+WASP-121b Tier-1
+[Parallel(n_jobs=6)]: Done  89 out of  89 | elapsed: 16.5min finished

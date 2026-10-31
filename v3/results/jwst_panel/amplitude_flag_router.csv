@@ -1,14 +1,14 @@
 planet,molecule,"mask, clear maximum (the rule) -> haze","mask, clear maximum (the rule) -> haze, two-sided","mask, clear maximum (the rule) -> hazedeck","mask, clear maximum (the rule) -> hazedeck, two-sided","mask, clear 99th -> haze","mask, clear 99th -> haze, two-sided","mask, clear 99th -> hazedeck","mask, clear 99th -> hazedeck, two-sided","mask, own-deck 99th -> haze","mask, own-deck 99th -> haze, two-sided","mask, own-deck 99th -> hazedeck","mask, own-deck 99th -> hazedeck, two-sided","AIRS range, clear maximum -> haze","AIRS range, clear maximum -> haze, two-sided","AIRS range, clear maximum -> hazedeck","AIRS range, clear maximum -> hazedeck, two-sided","full bins, first form -> haze","full bins, first form -> haze, two-sided","full bins, first form -> hazedeck","full bins, first form -> hazedeck, two-sided",published,AIRS-only everywhere,shape flag -> AIRS-only,label
-TOI-270d,CH4,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,split,absent,present
+TOI-270d,CH4,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,split,present,absent,present
 TOI-270d,H2O,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,
 TOI-270d,CO2,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,present
-TOI-270d,NH3,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent
+TOI-270d,NH3,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,split,split,absent,absent
 K2-18b,CH4,present,present,present,present,present,present,present,present,present,present,present,present,present,present,present,present,present,present,present,present,absent,present,present,present
-K2-18b,H2O,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent
+K2-18b,H2O,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,
 K2-18b,CO2,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,
 K2-18b,NH3,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent
 K2-18b-alt,CH4,present,present,present,present,present,present,present,present,present,present,present,present,present,present,present,present,present,present,present,present,absent,present,present,present
-K2-18b-alt,H2O,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent
+K2-18b-alt,H2O,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,
 K2-18b-alt,CO2,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,
 K2-18b-alt,NH3,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent
 TOI-421b,CH4,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent
@@ -91,10 +91,10 @@ WASP-94Ab,CH4,absent,absent,absent,absent,absent,absent,absent,absent,absent,abs
 WASP-94Ab,H2O,present,present,present,present,present,present,present,present,present,present,present,present,present,present,present,present,present,present,present,present,present,present,present,present
 WASP-94Ab,CO2,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,
 WASP-94Ab,NH3,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent
-HIP67522b,CH4,absent,split,absent,split,absent,split,absent,split,absent,split,absent,split,absent,split,absent,split,absent,split,absent,split,absent,absent,absent,
-HIP67522b,H2O,absent,split,absent,split,absent,split,absent,split,absent,split,absent,split,absent,split,absent,split,absent,split,absent,split,absent,absent,absent,
-HIP67522b,CO2,present,split,present,split,present,split,present,split,present,split,present,split,present,split,present,split,present,split,present,split,present,present,present,absent
-HIP67522b,NH3,absent,split,absent,split,absent,split,absent,split,absent,split,absent,split,absent,split,absent,split,absent,split,absent,split,absent,split,absent,
+HIP67522b,CH4,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,
+HIP67522b,H2O,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,
+HIP67522b,CO2,present,present,present,present,present,present,present,present,present,present,present,present,present,present,present,present,present,present,present,present,present,present,present,absent
+HIP67522b,NH3,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,split,absent,
 HAT-P-12b,CH4,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent
 HAT-P-12b,H2O,present,present,split,split,present,present,split,split,present,present,split,split,present,present,split,split,present,present,split,split,split,absent,absent,present
 HAT-P-12b,CO2,present,present,present,present,present,present,present,present,present,present,present,present,present,present,present,present,present,present,present,present,present,present,present,

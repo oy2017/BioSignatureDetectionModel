@@ -1,0 +1,126 @@
+Numba not installed, using numpy instead
+TOI-270d
+K2-18b
+K2-18b-alt
+TOI-421b
+HAT-P-18b
+WASP-107b
+HD189733b
+HAT-P-26b
+GJ3470b
+WASP-166b
+WASP-39b
+TOI-1231b
+K2-18b-hu
+TOI-270d-hm
+LTT3780c
+WASP-96b
+WASP-17b
+WASP-80b
+HD209458b
+WASP-52b
+GJ9827d
+WASP-94Ab
+HIP67522b
+HAT-P-12b
+Transplants on the real reductions: learners of four calling each present label present, with one block replaced by the clear twin's (all-input design)
+
+variant                                                               real  optical points  NIRSpec channel  both, all below 1.95 um  filled bins below 1.95 um  measured bins below 1.95 um  AIRS bins
+planet      molecule measured_optical measured_nirspec measured_airs                                                                                                                                   
+GJ3470b     CO2      0                0                53                2               2                1                        3                          3                            2          0
+            H2O      0                0                53                0               3                1                        3                          3                            0          2
+GJ9827d     H2O      2                11               37                1               4                3                        4                          2                            4          2
+HAT-P-12b   H2O      2                11               90                2               3                2                        4                          3                            4          2
+HAT-P-26b   CO2      0                0                35                2               2                0                        2                          2                            2          2
+            H2O      0                0                35                0               3                0                        3                          3                            0          2
+K2-18b      CH4      1                11               87                0               1                2                        4                          1                            2          3
+K2-18b-alt  CH4      2                11               75                1               3                3                        4                          3                            4          3
+K2-18b-hu   CH4      2                11               75                1               3                3                        4                          1                            4          2
+LTT3780c    CH4      1                11               85                0               4                2                        4                          3                            2          4
+TOI-1231b   CH4      2                11               61                2               3                4                        4                          3                            4          1
+            CO2      2                11               61                0               0                0                        0                          0                            0          0
+TOI-270d    CH4      1                11               75                1               2                3                        4                          2                            3          1
+            CO2      1                11               75                0               2                1                        3                          1                            1          0
+TOI-270d-hm CH4      0                0                41                0               3                2                        4                          4                            0          1
+            CO2      0                0                41                0               3                1                        3                          3                            0          0
+WASP-107b   H2O      0                0                54                0               3                3                        3                          3                            0          2
+WASP-166b   CO2      1                11               78                1               2                1                        3                          3                            2          2
+            H2O      1                11               78                0               4                0                        3                          4                            0          2
+WASP-17b    H2O      2                11               50                4               3                1                        3                          4                            4          2
+WASP-39b    H2O      3                11               89                3               4                2                        4                          3                            4          2
+WASP-80b    H2O      0                0                49                2               3                0                        3                          3                            2          1
+WASP-94Ab   H2O      1                11               71                4               4                1                        4                          4                            2          2
+WASP-96b    H2O      2                11               75                2               4                2                        4                          4                            4          2
+
+CH4: of 7 present labels, majority (at least 3) with: real 0, optical points 5, NIRSpec channel 4, both, all below 1.95 um 7, filled bins below 1.95 um 4, measured bins below 1.95 um 4, AIRS bins 3
+CO2: of 6 present labels, majority (at least 3) with: real 0, optical points 1, NIRSpec channel 0, both, all below 1.95 um 4, filled bins below 1.95 um 3, measured bins below 1.95 um 0, AIRS bins 0
+H2O: of 11 present labels, majority (at least 3) with: real 3, optical points 11, NIRSpec channel 2, both, all below 1.95 um 11, filled bins below 1.95 um 10, measured bins below 1.95 um 5, AIRS bins 0
+all: of 24: real 3, optical points 17, NIRSpec channel 6, both, all below 1.95 um 22, filled bins below 1.95 um 17, measured bins below 1.95 um 9, AIRS bins 3
+
+of the 21 present labels the real spectrum misses, repaired (at least 3) by: optical points 14, NIRSpec channel 6, both, all below 1.95 um 19, filled bins below 1.95 um 14, measured bins below 1.95 um 7, AIRS bins 3
+of the 7 methane misses with a twin, repaired by: optical points 5, NIRSpec channel 4, both, all below 1.95 um 7, filled bins below 1.95 um 4, measured bins below 1.95 um 4, AIRS bins 3
+
+Scaled twins at JWST noise: detection frequency of each present label, clear twin through the mask against the twin scaled to the real dispersion (all-input and AIRS-only)
+variant                airs_only               all      
+test                 scaled twin  twin scaled twin  twin
+planet      molecule                                    
+GJ3470b     CO2             0.99  1.00        0.30  0.92
+            H2O             0.40  0.70        0.00  0.00
+GJ9827d     H2O              NaN  1.00         NaN  1.00
+HAT-P-12b   H2O             1.00  1.00        1.00  1.00
+HAT-P-26b   CO2             0.98  1.00        0.60  1.00
+            H2O             0.00  0.00        0.00  0.00
+K2-18b      CH4             1.00  1.00        1.00  0.98
+K2-18b-alt  CH4             0.87  1.00        0.90  1.00
+K2-18b-hu   CH4             1.00  1.00        1.00  1.00
+LTT3780c    CH4             0.98  0.98        0.82  0.80
+TOI-1231b   CH4             0.98  1.00        1.00  1.00
+            CO2             0.02  0.02        0.06  0.09
+TOI-270d    CH4             1.00  0.98        0.87  0.63
+            CO2             0.74  0.46        0.10  0.06
+TOI-270d-hm CH4             0.82  0.84        0.00  0.00
+            CO2             0.52  0.54        0.01  0.01
+WASP-107b   H2O             0.00  0.00        0.00  0.00
+WASP-166b   CO2             0.80  0.86        0.12  0.00
+            H2O             0.71  1.00        0.10  0.00
+WASP-17b    H2O             1.00  1.00        1.00  1.00
+WASP-39b    H2O             1.00  1.00        1.00  1.00
+WASP-80b    H2O             0.62  0.98        0.06  0.00
+WASP-94Ab   H2O             1.00  1.00        0.04  0.00
+WASP-96b    H2O             1.00  1.00        1.00  1.00
+
+JWST, all: on the 23 labels with both, mean detection frequency twin 0.50, scaled twin 0.48; labels found (>= 0.5): twin 12, scaled 11; all 24 labels with a twin: twin found 13
+JWST, airs_only: on the 23 labels with both, mean detection frequency twin 0.80, scaled twin 0.76; labels found (>= 0.5): twin 19, scaled 19; all 24 labels with a twin: twin found 20
+
+Scaled twins at Tier-1 noise: detection frequency of each present label, clear twin through the mask against the twin scaled to the real dispersion (all-input and AIRS-only)
+variant                airs_only               all      
+test                 scaled twin  twin scaled twin  twin
+planet      molecule                                    
+GJ3470b     CO2             0.05  0.61        0.02  0.14
+            H2O             0.04  0.14        0.00  0.02
+GJ9827d     H2O              NaN  0.89         NaN  1.00
+HAT-P-12b   H2O             0.26  1.00        0.30  1.00
+HAT-P-26b   CO2             0.12  0.92        0.02  0.30
+            H2O             0.00  0.00        0.00  0.00
+K2-18b      CH4             0.96  0.82        0.90  0.65
+K2-18b-alt  CH4             0.38  0.83        0.30  0.84
+K2-18b-hu   CH4             0.36  0.90        0.27  0.90
+LTT3780c    CH4             0.74  0.74        0.47  0.42
+TOI-1231b   CH4             0.26  0.56        0.18  0.60
+            CO2             0.00  0.00        0.00  0.00
+TOI-270d    CH4             0.47  0.23        0.20  0.08
+            CO2             0.06  0.01        0.00  0.00
+TOI-270d-hm CH4             0.04  0.04        0.00  0.00
+            CO2             0.01  0.01        0.00  0.00
+WASP-107b   H2O             0.18  0.01        0.02  0.00
+WASP-166b   CO2             0.25  0.86        0.04  0.14
+            H2O             0.15  0.78        0.04  0.06
+WASP-17b    H2O             0.91  1.00        0.98  1.00
+WASP-39b    H2O             0.82  1.00        1.00  1.00
+WASP-80b    H2O             0.10  0.38        0.01  0.05
+WASP-94Ab   H2O             0.51  1.00        0.15  0.12
+WASP-96b    H2O             0.29  0.50        0.53  0.84
+
+Tier-1, all: on the 23 labels with both, mean detection frequency twin 0.36, scaled twin 0.24; labels found (>= 0.5): twin 8, scaled 4; all 24 labels with a twin: twin found 9
+Tier-1, airs_only: on the 23 labels with both, mean detection frequency twin 0.54, scaled twin 0.30; labels found (>= 0.5): twin 14, scaled 5; all 24 labels with a twin: twin found 15
+

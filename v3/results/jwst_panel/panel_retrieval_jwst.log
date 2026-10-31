@@ -1,0 +1,107 @@
+Numba not installed, using numpy instead
+jwst clear 26 to retrieve
+K2-18b-alt 22.2 -73.75968943762742
+TOI-270d 26.6 -342.26919418745706
+TOI-421b 28.7 -79.3748391923713
+K2-18b 33.1 -225.93021815745698
+GJ3470b 45.2 -72.29307199483897
+HAT-P-18b 46.3 -126.81274168974181
+GJ9827d 11.3 -33.17640610672794
+TOI-270d-hm 25.3 -43.608787678083985
+TOI-1231b 34.6 -94.47969813303615
+HAT-P-26b 68.3 -100.88746885365109
+L98-59d 16.1 -52.48645800183855
+WASP-166b 51.0 -110.56010304544667
+K2-18b-hu 47.5 -184.72385552165278
+HD189733b 76.5 -140.09061600284036
+LTT3780c 21.3 -101.65899570977442
+WASP-107b 96.6 -419.2823512566898
+WASP-52b 56.7 -108.40955487163869
+GJ1214b 47.0 -41.214086653410526
+Numba not installed, using numpy instead
+HIP67522b 31.8 -390.7467594875563
+Numba not installed, using numpy instead
+WASP-96b 50.1 -160.63938097003773
+Numba not installed, using numpy instead
+WASP-80b 62.3 -51.79872441953519
+Numba not installed, using numpy instead
+WASP-17b 85.9 -722.9350575784998
+WASP-94Ab 90.5 -355.2586891342733
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+HD209458b 101.8 -133.8053445726334
+Numba not installed, using numpy instead
+HAT-P-12b 85.3 -251.98320801785854
+Numba not installed, using numpy instead
+WASP-39b 88.7 -1014.537198241371
+jwst freehaze 26 to retrieve
+TOI-270d 68.6 -343.8495296672993
+K2-18b-alt 75.9 -73.47404466192184
+K2-18b 91.1 -226.34254877436717
+TOI-421b 125.1 -79.92878959756698
+GJ3470b 126.0 -72.44920902812989
+TOI-1231b 63.0 -87.12110578052037
+K2-18b-hu 65.1 -165.78810546715442
+HAT-P-26b 161.1 -102.13479570670671
+GJ9827d 44.9 -33.30671114562338
+TOI-270d-hm 50.2 -43.35931574346534
+Traceback (most recent call last):
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/nestle.py", line 1169, in __call__
+    return self.func(x, *self.args, **self.kwargs)
+  File "/Users/fanyang/BioSignatureDetectionModel/v3/identifiability_calibrate.py", line 126, in loglike
+    wn, d = tm.model()[:2]
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/model/simplemodel.py", line 522, in model
+    contrib.prepare(self, native_grid)
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/contributions/absorption.py", line 315, in prepare
+    for gas, sigma in self.prepare_each(model, wngrid):
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/contributions/absorption.py", line 286, in prepare_each
+    xsec.opacity(temperature, pressure, wngrid) * gas_mix[idx_layer]
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/opacity/opacity.py", line 104, in opacity
+    orig = self.compute_opacity(temperature, pressure, wngrid_filter)
+  File "/Users/fanyang/BioSignatureDetectionModel/v3/identifiability_calibrate.py", line 92, in _alarm
+    raise TimeoutError(f"timeout after {timeout} s")
+TimeoutError: timeout after 10800 s
+HD189733b 180.0 None
+Traceback (most recent call last):
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/nestle.py", line 1169, in __call__
+    return self.func(x, *self.args, **self.kwargs)
+  File "/Users/fanyang/BioSignatureDetectionModel/v3/identifiability_calibrate.py", line 126, in loglike
+    wn, d = tm.model()[:2]
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/model/simplemodel.py", line 522, in model
+    contrib.prepare(self, native_grid)
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/contributions/absorption.py", line 315, in prepare
+    for gas, sigma in self.prepare_each(model, wngrid):
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/contributions/absorption.py", line 286, in prepare_each
+    xsec.opacity(temperature, pressure, wngrid) * gas_mix[idx_layer]
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/opacity/opacity.py", line 104, in opacity
+    orig = self.compute_opacity(temperature, pressure, wngrid_filter)
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/opacity/interpolateopacity.py", line 292, in compute_opacity
+    self.interp_bilinear_grid(
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/opacity/interpolateopacity.py", line 226, in interp_bilinear_grid
+    q_21 = self.xsecGrid[p_idx_max, t_idx_min][wngrid_filter].ravel()
+  File "/Users/fanyang/BioSignatureDetectionModel/v3/identifiability_calibrate.py", line 92, in _alarm
+    raise TimeoutError(f"timeout after {timeout} s")
+TimeoutError: timeout after 10800 s
+HAT-P-18b 180.0 None
+Traceback (most recent call last):
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/nestle.py", line 1169, in __call__
+    return self.func(x, *self.args, **self.kwargs)
+  File "/Users/fanyang/BioSignatureDetectionModel/v3/identifiability_calibrate.py", line 126, in loglike
+    wn, d = tm.model()[:2]
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/model/simplemodel.py", line 522, in model
+    contrib.prepare(self, native_grid)
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/contributions/absorption.py", line 315, in prepare
+    for gas, sigma in self.prepare_each(model, wngrid):
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/contributions/absorption.py", line 281, in prepare_each
+    self.debug("Got index,tp %s %s", idx_layer, tp)
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/log/logger.py", line 79, in debug
+    frame = inspect.currentframe()
+  File "/Users/fanyang/.local/share/uv/python/cpython-3.10-macos-aarch64-none/lib/python3.10/inspect.py", line 1669, in currentframe
+    return sys._getframe(1) if hasattr(sys, "_getframe") else None
+  File "/Users/fanyang/BioSignatureDetectionModel/v3/identifiability_calibrate.py", line 92, in _alarm
+    raise TimeoutError(f"timeout after {timeout} s")
+TimeoutError: timeout after 10800 s
+WASP-107b 180.0 None
+L98-59d 41.7 -52.311607810359774
+WASP-166b 137.2 -111.2306456924259
+LTT3780c 48.2 -101.77384867914233

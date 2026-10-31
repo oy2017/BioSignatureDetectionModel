@@ -1,5 +1,5 @@
 LTT3780c: TOI-732 c, Rigby et al. 2025 (OSF wsjmu): JexoRes NIRISS order 1, NIRSpec G395H and MIRI LRS at native resolution
-segments: SOSS 1018 pts 0.85-2.83 um, offset +0 ppm; NRS1 695 pts 2.74-3.71 um, offset -59 ppm; NRS2 980 pts 3.82-5.17 um, offset +0 ppm; MIRI 29 pts 5.78-11.79 um, offset +0 ppm
+segments: SOSS 1018 pts 0.85-2.83 um, offset +0 ppm; NRS1 695 pts 2.74-3.71 um, offset -59 ppm; NRS2 980 pts 3.82-5.17 um, offset -59 ppm; MIRI 29 pts 5.78-11.79 um, offset +0 ppm
 coverage by channel: AIRS-CH0 3/69 filled, AIRS-CH1 2/21 filled, FGS1 1/1 filled, FGS2 0/1 filled, NIRSpec 0/11 filled, VISPhot 1/1 filled
 == LTT3780c [TOI-732 c, Rigby et al. 2025 (OSF wsjmu): JexoRes NIRISS order 1, NIRSpec G395H and MIRI LRS at native resolution; 7 of 104 bins flat-filled]: verdicts at the delivered precision (1 = present)
 -- threshold 1e-5
@@ -9,7 +9,7 @@ airs_only  CH4       1.0  1.0  1.0  1.0
            CO2       0.0  0.0  0.0  0.0
            H2O       0.0  0.0  0.0  0.0
            NH3       0.0  0.0  0.0  1.0
-all        CH4       1.0  0.0  0.0  0.0
+all        CH4       1.0  0.0  0.0  1.0
            CO2       0.0  0.0  0.0  0.0
            H2O       0.0  0.0  0.0  0.0
            NH3       0.0  0.0  0.0  0.0
@@ -24,7 +24,7 @@ airs_only  CH4       1.0  1.0  1.0  1.0
            CO2       0.0  0.0  0.0  0.0
            H2O       0.0  0.0  0.0  0.0
            NH3       0.0  0.0  0.0  0.0
-all        CH4       0.0  0.0  0.0  0.0
+all        CH4       1.0  0.0  0.0  0.0
            CO2       0.0  0.0  0.0  0.0
            H2O       0.0  0.0  0.0  0.0
            NH3       0.0  0.0  0.0  0.0
@@ -35,7 +35,7 @@ no_optical CH4       1.0  0.0  0.0  0.0
 -- threshold 1e-3
 learner              KNN  MLP  RFC  SVC
 variant    molecule                    
-airs_only  CH4       1.0  0.0  0.0  0.0
+airs_only  CH4       0.0  0.0  0.0  0.0
            CO2       0.0  0.0  0.0  0.0
            H2O       0.0  0.0  0.0  0.0
            NH3       0.0  0.0  0.0  0.0
@@ -43,23 +43,23 @@ all        CH4       0.0  0.0  0.0  0.0
            CO2       0.0  0.0  0.0  0.0
            H2O       0.0  0.0  0.0  0.0
            NH3       0.0  0.0  0.0  0.0
-no_optical CH4       0.0  0.0  0.0  0.0
+no_optical CH4       1.0  0.0  0.0  0.0
            CO2       0.0  0.0  0.0  0.0
            H2O       0.0  0.0  0.0  0.0
            NH3       0.0  0.0  0.0  0.0
 == LTT3780c [TOI-732 c, Rigby et al. 2025 (OSF wsjmu): JexoRes NIRISS order 1, NIRSpec G395H and MIRI LRS at native resolution; 7 of 104 bins flat-filled]: fraction of 500 Ariel tier1 noise draws called present (threshold 1e-4)
 learner               KNN   MLP   RFC   SVC
 variant    molecule                        
-airs_only  CH4       81.0  56.0  36.0  71.0
-           CO2        4.0   2.0   0.0   0.0
-           H2O        1.0   1.0   0.0   0.0
-           NH3        3.0   5.0   0.0   8.0
-all        CH4       62.0  25.0   0.0   0.0
+airs_only  CH4       82.0  61.0  39.0  77.0
            CO2        2.0   1.0   0.0   0.0
-           H2O        0.0   1.0   0.0   0.0
+           H2O        1.0   2.0   0.0   0.0
+           NH3        5.0  12.0   1.0  14.0
+all        CH4       62.0  28.0   0.0   1.0
+           CO2        1.0   0.0   0.0   0.0
+           H2O        1.0   1.0   0.0   0.0
            NH3        1.0   2.0   0.0   0.0
-no_optical CH4       70.0   5.0   0.0   1.0
+no_optical CH4       71.0   6.0   0.0   1.0
            CO2        2.0   0.0   0.0   0.0
            H2O        1.0   0.0   0.0   0.0
-           NH3        2.0   0.0   0.0   0.0
-== band metric (Mugnai et al. 2021, Eq. 3): M_H2O = -0.10, M_CH4 = -0.38, M_CO2 = 0.18  (their flags: CH4 >= 0.22, CO2 >= 0.26, H2O >= 0.80)
+           NH3        3.0   0.0   0.0   0.0
+== band metric (Mugnai et al. 2021, Eq. 3): M_H2O = 0.20, M_CH4 = 0.21, M_CO2 = -0.17  (their flags: CH4 >= 0.22, CO2 >= 0.26, H2O >= 0.80)
