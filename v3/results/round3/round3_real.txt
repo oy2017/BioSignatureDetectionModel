@@ -1,0 +1,42 @@
+== real labels: ensemble against each design; difference with a 95 % bootstrap over planets
+  JWST   panel       n=64  published             ensemble  49.0  this  43.5   +5.5 (-4.5,+16.0)
+  JWST   panel       n=64  AIRS-only             ensemble  49.0  this  50.0   -1.0 (-9.0,+7.0)
+  JWST   panel       n=64  haze+deck-retrained   ensemble  49.0  this  50.5   -1.5 (-9.5,+7.5)
+  JWST   panel       n=64  the method            ensemble  49.0  this  52.0   -3.0 (-10.0,+4.5)
+  JWST   fourth      n=24  published             ensemble  19.0  this  16.0   +3.0 (-3.0,+9.0)
+  JWST   fourth      n=24  AIRS-only             ensemble  19.0  this  15.5   +3.5 (-1.0,+8.0)
+  JWST   fourth      n=24  haze+deck-retrained   ensemble  19.0  this  16.5   +2.5 (-2.5,+6.5)
+  JWST   fourth      n=24  the method            ensemble  19.0  this  16.0   +3.0 (-1.0,+7.0)
+  JWST   independent n=17  published             ensemble  16.0  this  15.5   +0.5 (-2.5,+3.0)
+  JWST   independent n=17  AIRS-only             ensemble  16.0  this  11.0   +5.0 (+2.0,+8.0)
+  JWST   independent n=17  haze+deck-retrained   ensemble  16.0  this  16.0   +0.0 (-2.5,+2.0)
+  JWST   independent n=17  the method            ensemble  16.0  this  13.5   +2.5 (+0.0,+5.5)
+  JWST   all         n=105 published             ensemble  84.0  this  75.0   +9.0 (-3.0,+21.5)
+  JWST   all         n=105 AIRS-only             ensemble  84.0  this  76.5   +7.5 (-3.0,+18.0)
+  JWST   all         n=105 haze+deck-retrained   ensemble  84.0  this  83.0   +1.0 (-9.0,+11.5)
+  JWST   all         n=105 the method            ensemble  84.0  this  81.5   +2.5 (-6.5,+11.5)
+  Tier-1 panel       n=64  published             ensemble  46.6  this  39.6   +6.9 (+2.1,+11.9)
+  Tier-1 panel       n=64  AIRS-only             ensemble  46.6  this  41.4   +5.2 (+1.5,+9.0)
+  Tier-1 panel       n=64  haze+deck-retrained   ensemble  46.6  this  41.6   +4.9 (+1.3,+8.5)
+  Tier-1 panel       n=64  the method            ensemble  46.6  this  41.9   +4.6 (+0.8,+8.5)
+  Tier-1 fourth      n=24  published             ensemble  16.9  this  16.2   +0.7 (-4.0,+6.0)
+  Tier-1 fourth      n=24  AIRS-only             ensemble  16.9  this  15.7   +1.1 (-1.4,+3.8)
+  Tier-1 fourth      n=24  haze+deck-retrained   ensemble  16.9  this  16.4   +0.5 (-2.9,+4.0)
+  Tier-1 fourth      n=24  the method            ensemble  16.9  this  15.9   +1.0 (-2.0,+4.1)
+  Tier-1 all         n=88  published             ensemble  63.4  this  55.8   +7.6 (+0.7,+14.8)
+  Tier-1 all         n=88  AIRS-only             ensemble  63.4  this  57.1   +6.3 (+1.7,+11.0)
+  Tier-1 all         n=88  haze+deck-retrained   ensemble  63.4  this  58.0   +5.4 (+0.3,+10.5)
+  Tier-1 all         n=88  the method            ensemble  63.4  this  57.9   +5.6 (+0.7,+10.7)
+== grids: share of present calls that are truly present (precision), at the grid prevalence and at a stated prevalence of 0.1
+  rainout    JWST   C+B-mlp     prevalence 0.43  precision 0.817  at prevalence 0.1 0.399
+  rainout    Tier-1 C+B-mlp     prevalence 0.43  precision 0.776  at prevalence 0.1 0.340
+  rainout    JWST   the method  prevalence 0.43  precision 0.787  at prevalence 0.1 0.354
+  rainout    Tier-1 the method  prevalence 0.43  precision 0.761  at prevalence 0.1 0.321
+  local      JWST   C+B-mlp     prevalence 0.36  precision 0.658  at prevalence 0.1 0.276
+  local      Tier-1 C+B-mlp     prevalence 0.36  precision 0.590  at prevalence 0.1 0.222
+  local      JWST   the method  prevalence 0.36  precision 0.535  at prevalence 0.1 0.186
+  local      Tier-1 the method  prevalence 0.36  precision 0.507  at prevalence 0.1 0.170
+  crossfield JWST   C+B-mlp     prevalence 0.46  precision 0.870  at prevalence 0.1 0.462
+  crossfield Tier-1 C+B-mlp     prevalence 0.46  precision 0.795  at prevalence 0.1 0.331
+  crossfield JWST   the method  prevalence 0.46  precision 0.848  at prevalence 0.1 0.416
+  crossfield Tier-1 the method  prevalence 0.46  precision 0.799  at prevalence 0.1 0.337
