@@ -82,8 +82,8 @@ def independent():
     return L
 
 
-def run(j, i, prec, cand, X, P, grids):
-    batch, pl, labs, x, err, filled, s, md = j; meas = ~filled; e = np.nan_to_num(err[meas]); e = np.sqrt(e ** 2 + s[meas] ** 2) if prec == "Tier-1" else e; noise = float(np.sqrt(np.mean(e ** 2))); seed = SEED + 5000 + 10 * i + (0 if prec == "JWST" else 3)
+def run(j, i, prec, cand, X, P, grids, o=0):
+    batch, pl, labs, x, err, filled, s, md = j; meas = ~filled; e = np.nan_to_num(err[meas]); e = np.sqrt(e ** 2 + s[meas] ** 2) if prec == "Tier-1" else e; noise = float(np.sqrt(np.mean(e ** 2))); seed = SEED + 5000 + 10 * i + (0 if prec == "JWST" else 3) + 100000 * o
     decide, t = fit_mlp(X, P, meas, e, md, noise, seed) if cand.endswith("mlp") else fit_vote(X, P, meas, e, md, noise, seed, "+bal" in cand); votes, real = [], []
     Xr = x[None, :] if prec == "JWST" else J.noise_draws(x, s, DRAWS, seed=405 + i); res = decide(ML.features(Xr, meas, noise, True))
     for m in MOLS:
@@ -97,9 +97,9 @@ def run(j, i, prec, cand, X, P, grids):
 
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument("--cand", required=True, choices=["C-mlp", "C+B-mlp", "C-vote", "C+B-vote", "B+bal-vote", "C+bal-vote"]); ap.add_argument("--cond", nargs="*", default=["rainout"]); ap.add_argument("--jobs", type=int, default=6); a = ap.parse_args()
+    ap = argparse.ArgumentParser(); ap.add_argument("--cand", required=True, choices=["C-mlp", "C+B-mlp", "C-vote", "C+B-vote", "B+bal-vote", "C+bal-vote"]); ap.add_argument("--cond", nargs="*", default=["rainout"]); ap.add_argument("--jobs", type=int, default=6); ap.add_argument("--seed-offset", type=int, default=0); a = ap.parse_args(); global OUT; OUT = os.path.join(OUT, f"seed{a.seed_offset}") if a.seed_offset else OUT; os.makedirs(OUT, exist_ok=True)
     X, P = population(a.cand); print(X.shape, flush=True); grids = {c: dict(np.load(os.path.join(GRIDS, f"grid_{c}.npz"))) for c in a.cond}; L = ML.jobs_list(); n = len(L); L = L + independent()
-    task = [(j, i, "JWST") for i, j in enumerate(L)] + [(j, i, "Tier-1") for i, j in enumerate(L[:n])]; R = Parallel(n_jobs=a.jobs, verbose=5)(delayed(run)(j, i, p, a.cand, X, P, grids) for j, i, p in task)
+    task = [(j, i, "JWST") for i, j in enumerate(L)] + [(j, i, "Tier-1") for i, j in enumerate(L[:n])]; R = Parallel(n_jobs=a.jobs, verbose=5)(delayed(run)(j, i, p, a.cand, X, P, grids, a.seed_offset) for j, i, p in task)
     V = [v for r in R for v in r[0]]
     if V:
         V = pd.concat(V)
