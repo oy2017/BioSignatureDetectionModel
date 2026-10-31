@@ -1,19 +1,29 @@
-local      JWST   all  ensemble all 0.711, kept 0.721; classifier all 0.559  margin 0.522  ensemble 0.526  knn 0.573  mahalanobis 0.556  pca_recon 0.545  ensemble kept minus best rule (knn) +0.148 (+0.121,+0.170)
+rainout    JWST   all  ensemble all 0.765, kept 0.799; classifier all 0.583  margin 0.535  ensemble 0.538  knn 0.600  mahalanobis 0.573  pca_recon 0.548  ensemble kept minus best rule (knn) +0.198 (+0.162,+0.232)
+rainout    JWST   CH4  ensemble all 0.811, kept 0.876; classifier all 0.620  margin 0.590  ensemble 0.624  knn 0.654  mahalanobis 0.583  pca_recon 0.535
+rainout    JWST   H2O  ensemble all 0.722, kept 0.749; classifier all 0.558  margin 0.541  ensemble 0.534  knn 0.561  mahalanobis 0.554  pca_recon 0.537
+rainout    JWST   CO2  ensemble all 0.824, kept 0.910; classifier all 0.597  margin 0.504  ensemble 0.564  knn 0.607  mahalanobis 0.611  pca_recon 0.609
+rainout    JWST   NH3  ensemble all 0.638, kept 0.596; classifier all 0.509  margin 0.500  ensemble 0.500  knn 0.511  mahalanobis 0.502  pca_recon 0.502
+rainout    Tier-1 all  ensemble all 0.698, kept 0.727; classifier all 0.533  margin 0.510  ensemble 0.510  knn 0.544  mahalanobis 0.537  pca_recon 0.526  ensemble kept minus best rule (knn) +0.183 (+0.155,+0.208)
+rainout    Tier-1 CH4  ensemble all 0.764, kept 0.812; classifier all 0.541  margin 0.515  ensemble 0.522  knn 0.556  mahalanobis 0.540  pca_recon 0.521
+rainout    Tier-1 H2O  ensemble all 0.646, kept 0.664; classifier all 0.525  margin 0.515  ensemble 0.514  knn 0.533  mahalanobis 0.530  pca_recon 0.522
+rainout    Tier-1 CO2  ensemble all 0.707, kept 0.749; classifier all 0.536  margin 0.500  ensemble 0.506  knn 0.545  mahalanobis 0.544  pca_recon 0.543
+rainout    Tier-1 NH3  ensemble all 0.609, kept 0.584; classifier all 0.505  margin 0.500  ensemble 0.500  knn 0.507  mahalanobis 0.505  pca_recon 0.503
+local      JWST   all  ensemble all 0.711, kept 0.721; classifier all 0.559  margin 0.522  ensemble 0.526  knn 0.573  mahalanobis 0.556  pca_recon 0.545  ensemble kept minus best rule (knn) +0.148 (+0.123,+0.176)
 local      JWST   CH4  ensemble all 0.765, kept 0.825; classifier all 0.582  margin 0.573  ensemble 0.602  knn 0.616  mahalanobis 0.548  pca_recon 0.523
 local      JWST   H2O  ensemble all 0.703, kept 0.737; classifier all 0.550  margin 0.534  ensemble 0.532  knn 0.556  mahalanobis 0.547  pca_recon 0.533
 local      JWST   CO2  ensemble all 0.685, kept 0.710; classifier all 0.565  margin 0.501  ensemble 0.523  knn 0.579  mahalanobis 0.580  pca_recon 0.580
 local      JWST   NH3  ensemble all 0.670, kept 0.635; classifier all 0.510  margin 0.500  ensemble 0.500  knn 0.512  mahalanobis 0.502  pca_recon 0.502
-local      Tier-1 all  ensemble all 0.636, kept 0.648; classifier all 0.524  margin 0.505  ensemble 0.507  knn 0.531  mahalanobis 0.529  pca_recon 0.524  ensemble kept minus best rule (knn) +0.117 (+0.095,+0.139)
+local      Tier-1 all  ensemble all 0.636, kept 0.648; classifier all 0.524  margin 0.505  ensemble 0.507  knn 0.531  mahalanobis 0.529  pca_recon 0.524  ensemble kept minus best rule (knn) +0.117 (+0.093,+0.138)
 local      Tier-1 CH4  ensemble all 0.712, kept 0.772; classifier all 0.529  margin 0.511  ensemble 0.513  knn 0.542  mahalanobis 0.534  pca_recon 0.516
 local      Tier-1 H2O  ensemble all 0.604, kept 0.623; classifier all 0.513  margin 0.504  ensemble 0.509  knn 0.516  mahalanobis 0.518  pca_recon 0.516
 local      Tier-1 CO2  ensemble all 0.607, kept 0.608; classifier all 0.524  margin 0.500  ensemble 0.503  knn 0.529  mahalanobis 0.531  pca_recon 0.532
 local      Tier-1 NH3  ensemble all 0.612, kept 0.585; classifier all 0.507  margin 0.500  ensemble 0.500  knn 0.509  mahalanobis 0.506  pca_recon 0.505
-crossfield JWST   all  ensemble all 0.773, kept 0.801; classifier all 0.607  margin 0.555  ensemble 0.555  knn 0.646  mahalanobis 0.599  pca_recon 0.577  ensemble kept minus best rule (knn) +0.155 (+0.112,+0.203)
+crossfield JWST   all  ensemble all 0.773, kept 0.801; classifier all 0.607  margin 0.555  ensemble 0.555  knn 0.646  mahalanobis 0.599  pca_recon 0.577  ensemble kept minus best rule (knn) +0.155 (+0.107,+0.192)
 crossfield JWST   CH4  ensemble all 0.880, kept 0.897; classifier all 0.619  margin 0.575  ensemble 0.622  knn 0.671  mahalanobis 0.576  pca_recon 0.535
 crossfield JWST   H2O  ensemble all 0.684, kept 0.726; classifier all 0.604  margin 0.584  ensemble 0.576  knn 0.626  mahalanobis 0.588  pca_recon 0.578
 crossfield JWST   CO2  ensemble all 0.777, kept 0.851; classifier all 0.597  margin 0.539  ensemble 0.551  knn 0.656  mahalanobis 0.628  pca_recon 0.608
 crossfield JWST   NH3  ensemble all 0.550, kept 0.526; classifier all 0.502  margin 0.500  ensemble 0.500  knn 0.503  mahalanobis 0.500  pca_recon 0.503
-crossfield Tier-1 all  ensemble all 0.700, kept 0.739; classifier all 0.544  margin 0.516  ensemble 0.521  knn 0.567  mahalanobis 0.544  pca_recon 0.532  ensemble kept minus best rule (knn) +0.173 (+0.146,+0.198)
+crossfield Tier-1 all  ensemble all 0.700, kept 0.739; classifier all 0.544  margin 0.516  ensemble 0.521  knn 0.567  mahalanobis 0.544  pca_recon 0.532  ensemble kept minus best rule (knn) +0.173 (+0.148,+0.198)
 crossfield Tier-1 CH4  ensemble all 0.828, kept 0.870; classifier all 0.540  margin 0.506  ensemble 0.506  knn 0.559  mahalanobis 0.537  pca_recon 0.519
 crossfield Tier-1 H2O  ensemble all 0.632, kept 0.659; classifier all 0.549  margin 0.534  ensemble 0.541  knn 0.570  mahalanobis 0.545  pca_recon 0.535
 crossfield Tier-1 CO2  ensemble all 0.618, kept 0.654; classifier all 0.519  margin 0.502  ensemble 0.502  knn 0.538  mahalanobis 0.524  pca_recon 0.519
