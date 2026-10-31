@@ -1391,3 +1391,27 @@ Scaled twins: at JWST errors a twin scaled to the real dispersion is found as of
 The manuscript's argument, with its table numbers as of commit c4101bf (Table 7 methane, 8 remedies, 9 designs on the panel, 10 simulation, 11 selection, 12 retrievals, 13 rules, 14 budget): (1) under the training prior, a third to a half of the Tier-1 labels are undecided at the 0.95 level, partly because a fifth of them sit next to the threshold, and about four fifths of the classifier's clean errors fall on them. (2) Haze leaves the labels decidable when its strength is known, noise does not, a high deck is partly each. (3) On real spectra the re-implemented classifier is right on almost every absent label and misses most present ones, for three separable reasons: coverage, the inputs below 1.95 um, and at Tier-1 noise muting. (4) A routing method, new in its combination, gains 8.5 of 66 labels at JWST precision and 2.7 at Tier-1 noise on its development panel, at 4.9 points of clean simulated accuracy, and nothing on 12 new planets (F36). (5) The clear-model retrieval fails more confidently than the classifier under haze, and a flag's destination decides whether it helps.
 
 Everything earlier in this log is the record as it came in; numbers there that differ from the above were corrected as noted in F29-F35 and in the commit messages.
+
+### F39. The pipeline audit: corrections that change the panel but not the story of the routing method (2026-10-30)
+
+After the independent test an audit traced the data path. Definite errors: one NRS1 and NRS2 offset each, which reversed TOI-270 d's 3.3 um contrast (+87 ppm published, -110 after alignment, +83 in Holmberg's reduction); WASP-107 b half-widths read as widths (13 bins lost); a profile width read as a bin width; HIP 67522 b at 186 instead of 13.8 Earth masses; two K2-18 b H2O labels on limits above the threshold. Binning, units, errors and the grid rescale were correct. Panel after correction: re-implemented classifier 43.5 of 64, routing method 52.0, AIRS-only 50.0, haze+deck 50.5. The routing method's gain over the classifier stays 8.5, at Tier-1 falls to 2.3. Its result on the 12 new planets does not change. HIP 67522 b's flag no longer fires and its false CO2 stands.
+
+### F40. The training recipe was the larger fault (2026-10-30)
+
+The bugs are worth about one present label. The audit's other measurements matter more: a target gas is usually the most abundant in training (CH4 .68, CO2 .69) and not on a grid (CO2 .00, NH3 .00), with recall .71 against .19 for H2O by that split; hard votes on a population 29 % present set a threshold nobody chose (grid CO2 AUROC .86, recall .18). A classifier retrained on the grid itself reaches recall .72 where the population's reaches .05, so the information survives the real error bars. Mixed temperatures were tested and are not the cause.
+
+### F41. The matched ensemble beats every design on two held-out grids (2026-10-30)
+
+Rule committed, design frozen on the rainout grid, each held-out grid scored once. Balanced credit, ensemble against routing method: local condensation .711 against .574 at JWST precision, +.137 (.110, .156), and .636 against .531 at Tier-1, +.105 (.089, .119); photochemical .773 against .658, +.115 (.089, .136), and .700 against .567, +.133 (.120, .144). Above every other design, for each gas. False-present .081 to .173, above the .15 limit on local condensation. Three seeds move it by at most .011.
+
+### F42. Most of what it calls present is the molecule's own absorption (2026-10-30)
+
+On the photochemical grid, with a gas's opacity removed and its chemistry unchanged, the present rate on truly present labels falls from .627 to .114 at JWST precision (expected .35); CH4 from .803 to .003. Yet removing only the main bands leaves most of the score: the design reads more of the spectrum than those bands. On real labels, removing the main bands halves present credit, 30 to 15 of 41. One grid, no aerosols, and the old designs were not run.
+
+### F43. On real spectra the gain is clear at Tier-1, modest at JWST precision, not confirmed (2026-10-30)
+
+All seen, none used to choose. Tier-1: 63.4 against 57.9 of 88, +5.6 (.7, 10.6), interval excluding zero against every comparator; methane on 4.7 of 8 reductions on average against at most 1.7. JWST precision: 84.0 against 81.5 of 105; below the routing method on that method's panel, 49.0 against 52.0, because absent credit falls from 59.0 to 54.0 overall. M3 failed. Real superiority needs spectra nobody has seen.
+
+### F44. At Ariel's coverage it beats the published design on its own population (2026-10-30)
+
+Clean accuracy 84.2 against 81.2, recall 81 against 63; haze 3e7 80.5 against 63.5; 13 and 34 targets lost against 20 and 51. More CH4 lost than the classifier under the confined haze and the high deck. Errors under haze: 202 recoverable and 544 on undecidable labels, against 675 and 719: it removes what the spectra could decide and leaves the undecided undecided.

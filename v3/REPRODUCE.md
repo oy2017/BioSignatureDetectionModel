@@ -27,3 +27,30 @@ Every table and figure of `jhss/manuscript.md`, the script that writes it and th
 | Table {missed}, existing rules as routers, transplant specificity, prior reach, classes against levels | `review_checks/*.py` | `results/review_checks/` |
 | Tables {panel4}, {fourth}: the independent test | `jwst_panel.FOURTH`, `fourth_batch.py`; survey `jwst_fourth_batch_survey.md` | `results/jwst_panel_fourth/`, `results/jwst_panel/fourth_batch_second_reader.csv` |
 The manuscript, the letters and the journal's Word files: `jhss/build_manuscript.py both`, `jhss/build_manuscript.py docx response_to_reviewer_comments.md`, `jhss/build_manuscript.py docx cover_letter.md`; separate JPEG figures: `jhss/export_figures.py`.
+
+## The corrections and the matched ensemble (Sections 2.10 and 3.7)
+
+The audit's corrections are in the code, except the catalogue mass, which is applied once to the built catalogue: `python mcs_corrections.py`.
+
+Data, downloaded by hand into these folders; neither is committed:
+- Goyal et al. (2019) generic grid, Google Drive folder 1ZFbkPdqg37_Om7ECSspSpEp5QrUMfA9J: `data/goyal2019/{chem_rainout.tar, trans_rainout.tar, chem_local.tar, trans_local.tar}`. Extract the rainout tars into `data/goyal2019/x/`. The local chemistry tar uses the same folder and file names as the rainout one, so extract it elsewhere and move its `chemfiles_txt` to `data/goyal2019/x/chemfiles_local`; `trans_local.tar` goes into `x/` as it is.
+- Crossfield et al. (2025) grid, Zenodo 17101615, `final_model_grid.tar.gz`: extract into `data/crossfield2025/x/`, leaving out `*.vul` and `*mmr*`.
+
+Order, each result under `results/`:
+
+| Result | Command | Output |
+|---|---|---|
+| Populations | `broad_population.py 4`, `correlated_population.py 6` | `data/broad/`, `data/correlated/` |
+| Rainout grid, older designs | `goyal_test.py --cond rainout` | `goyal_test/` |
+| Candidates | `round3_learner.py --cand C-mlp`, `--cand C+B-mlp`, `--cand B+bal-vote` | `round3/` |
+| Held-out grids | `goyal_test.py --cond local`, `crossfield_test.py --build`, `--score`, `round3_learner.py --cand C+B-mlp --cond rainout local crossfield` | `round3/`, `goyal_test/` |
+| Grid scores | `review_checks/goyal_score.py <cond>` | `goyal_test/goyal_<cond>.txt` |
+| Seeds | `round3_learner.py --cand C+B-mlp --cond rainout local crossfield --seed-offset 1`, `2` | `round3/seed1`, `seed2` |
+| Band removal | `band_control.py`, then `review_checks/round3_checks.py` | `round3/round3_checks.txt` |
+| Opacity removed | `crossfield_counterfactual.py` | `round3/counterfactual.txt` |
+| Ariel coverage, Table 21 | `round3_ariel.py` | `round3/round3_ariel.txt` |
+| Confidence | `review_checks/round3_confidence.py` | `round3/round3_confidence.txt` |
+| Figure 6 | `plots/fig7_grids.py` | `figures/fig7_grids.png` |
+| Earlier forms | `matched_learner.py`, `matched_ariel.py`, `broad_learner.py`, `independent_test.py`, `review_checks/matched_score.py`, `review_checks/broad_score.py` | `matched_learner/`, `goyal_test/`, `independent_test/` |
+
+The real panel's dependent tables are rerun after a change of conversion in this order: `jwst_panel.py`, `alfnoor_retrain.py --panel` (remove `results/jwst_panel_{haze,hazedeck,union}` first; `WASP-39b_*` there comes from the benchmark assembly), `router_real.py`, `muting_router.py`, `amplitude_flag.py`, `panel_tier1.py`, `fourth_batch.py`, `jwst_muting_census.py`, `muting_bootstrap.py`, `jwst_controls.py`, `panel_mechanism.py`, `panel_control.py`, `label_sensitivity.py`, `pipeline_table.py`, `review_checks/*.py`.
