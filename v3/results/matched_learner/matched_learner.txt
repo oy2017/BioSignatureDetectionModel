@@ -1,10 +1,10 @@
-== JWST panel: 66 labels
-  published              score  45.5  present   6.5/26  absent  39.0/40  balanced 0.613  AUROC 0.68  vs method  -8.5 (-15.5,-2.5)
-  AIRS-only              score  52.5  present  14.5/26  absent  38.0/40  balanced 0.754  AUROC 0.76  vs method  -1.5 (-5.0,+1.5)
-  haze+deck-retrained    score  52.0  present  14.0/26  absent  38.0/40  balanced 0.744  AUROC 0.78  vs method  -2.0 (-6.0,+2.0)
-  the method             score  54.0  present  15.0/26  absent  39.0/40  balanced 0.776  AUROC 0.80  
-  matched                score  51.0  present  12.0/26  absent  39.0/40  balanced 0.718  AUROC 0.75  vs method  -3.0 (-7.5,+2.0)
-  matched+amp            score  51.5  present  13.0/26  absent  38.5/40  balanced 0.731  AUROC 0.78  vs method  -2.5 (-6.5,+1.5)
+== JWST panel: 64 labels
+  published              score  43.5  present   7.0/26  absent  36.5/38  balanced 0.615  AUROC 0.68  vs method  -8.5 (-15.5,-2.5)
+  AIRS-only              score  50.0  present  15.0/26  absent  35.0/38  balanced 0.749  AUROC 0.75  vs method  -2.0 (-5.5,+1.0)
+  haze+deck-retrained    score  50.5  present  14.5/26  absent  36.0/38  balanced 0.753  AUROC 0.80  vs method  -1.5 (-6.0,+2.5)
+  the method             score  52.0  present  16.0/26  absent  36.0/38  balanced 0.781  AUROC 0.80  
+  matched                score  51.0  present  12.0/26  absent  39.0/40  balanced 0.718  AUROC 0.75  vs method  -3.0 (-8.0,+2.0)
+  matched+amp            score  51.5  present  13.0/26  absent  38.5/40  balanced 0.731  AUROC 0.78  vs method  -2.5 (-6.0,+1.0)
 == JWST fourth: 24 labels
   published              score  16.0  present   0.0/8  absent  16.0/16  balanced 0.500  AUROC 0.50  vs method  +0.0 (-4.0,+4.0)
   AIRS-only              score  15.5  present   3.0/8  absent  12.5/16  balanced 0.578  AUROC 0.61  vs method  -0.5 (-2.0,+1.0)
@@ -12,20 +12,20 @@
   the method             score  16.0  present   2.5/8  absent  13.5/16  balanced 0.578  AUROC 0.64  
   matched                score  16.0  present   2.0/8  absent  14.0/16  balanced 0.562  AUROC 0.61  vs method  +0.0 (-3.5,+3.5)
   matched+amp            score  19.5  present   4.5/8  absent  15.0/16  balanced 0.750  AUROC 0.78  vs method  +3.5 (+0.5,+6.5)
-== JWST all: 90 labels
-  published              score  61.5  present   6.5/34  absent  55.0/56  balanced 0.587  AUROC 0.64  vs method  -8.5 (-17.0,-1.0)
-  AIRS-only              score  68.0  present  17.5/34  absent  50.5/56  balanced 0.708  AUROC 0.73  vs method  -2.0 (-6.0,+1.5)
-  haze+deck-retrained    score  68.5  present  16.5/34  absent  52.0/56  balanced 0.707  AUROC 0.74  vs method  -1.5 (-6.0,+3.0)
-  the method             score  70.0  present  17.5/34  absent  52.5/56  balanced 0.726  AUROC 0.76  
-  matched                score  67.0  present  14.0/34  absent  53.0/56  balanced 0.679  AUROC 0.72  vs method  -3.0 (-8.5,+3.0)
-  matched+amp            score  71.0  present  17.5/34  absent  53.5/56  balanced 0.735  AUROC 0.78  vs method  +1.0 (-4.5,+6.5)
-== Tier-1 panel: 66 labels
-  published              score  41.7  present   3.0/26  absent  38.7/40  balanced 0.542  AUROC 0.85  vs method  -2.7 (-4.4,-1.1)
-  AIRS-only              score  43.4  present   5.8/26  absent  37.6/40  balanced 0.582  AUROC 0.83  vs method  -1.0 (-2.5,+0.2)
-  haze+deck-retrained    score  43.5  present   5.6/26  absent  37.9/40  balanced 0.582  AUROC 0.85  vs method  -0.9 (-2.4,+0.4)
-  the method             score  44.4  present   5.7/26  absent  38.7/40  balanced 0.594  AUROC 0.87  
-  matched                score  43.4  present   5.0/26  absent  38.5/40  balanced 0.576  AUROC 0.85  vs method  -1.0 (-2.9,+0.7)
-  matched+amp            score  45.4  present   7.1/26  absent  38.3/40  balanced 0.615  AUROC 0.90  vs method  +0.9 (-0.6,+2.3)
+== JWST all: 88 labels
+  published              score  59.5  present   7.0/34  absent  52.5/54  balanced 0.589  AUROC 0.64  vs method  -8.5 (-17.0,-1.0)
+  AIRS-only              score  65.5  present  18.0/34  absent  47.5/54  balanced 0.705  AUROC 0.72  vs method  -2.5 (-6.5,+1.0)
+  haze+deck-retrained    score  67.0  present  17.0/34  absent  50.0/54  balanced 0.713  AUROC 0.75  vs method  -1.0 (-5.5,+3.5)
+  the method             score  68.0  present  18.5/34  absent  49.5/54  balanced 0.730  AUROC 0.76  
+  matched                score  67.0  present  14.0/34  absent  53.0/56  balanced 0.679  AUROC 0.72  vs method  -3.0 (-9.0,+3.0)
+  matched+amp            score  71.0  present  17.5/34  absent  53.5/56  balanced 0.735  AUROC 0.78  vs method  +1.0 (-4.0,+6.0)
+== Tier-1 panel: 64 labels
+  published              score  39.7  present   3.1/26  absent  36.6/38  balanced 0.540  AUROC 0.83  vs method  -2.3 (-4.0,-0.8)
+  AIRS-only              score  41.4  present   6.2/26  absent  35.2/38  balanced 0.582  AUROC 0.81  vs method  -0.6 (-1.7,+0.4)
+  haze+deck-retrained    score  41.6  present   5.8/26  absent  35.8/38  balanced 0.583  AUROC 0.85  vs method  -0.3 (-1.4,+0.7)
+  the method             score  41.9  present   5.9/26  absent  36.1/38  balanced 0.588  AUROC 0.83  
+  matched                score  43.4  present   5.0/26  absent  38.5/40  balanced 0.576  AUROC 0.85  vs method  -0.5 (-2.3,+1.0)
+  matched+amp            score  45.4  present   7.1/26  absent  38.3/40  balanced 0.615  AUROC 0.90  vs method  +1.4 (+0.4,+2.5)
 == Tier-1 fourth: 24 labels
   published              score  16.2  present   0.3/8  absent  15.9/16  balanced 0.514  AUROC 0.82  vs method  +0.2 (-2.0,+2.4)
   AIRS-only              score  15.7  present   1.5/8  absent  14.2/16  balanced 0.540  AUROC 0.59  vs method  -0.2 (-0.7,+0.3)
@@ -33,13 +33,13 @@
   the method             score  15.9  present   1.3/8  absent  14.7/16  balanced 0.537  AUROC 0.60  
   matched                score  17.0  present   1.8/8  absent  15.2/16  balanced 0.585  AUROC 0.79  vs method  +1.0 (+0.1,+2.1)
   matched+amp            score  16.8  present   1.9/8  absent  14.9/16  balanced 0.585  AUROC 0.77  vs method  +0.9 (-0.1,+2.0)
-== Tier-1 all: 90 labels
-  published              score  57.9  present   3.3/34  absent  54.6/56  balanced 0.536  AUROC 0.85  vs method  -2.4 (-5.2,+0.4)
-  AIRS-only              score  59.1  present   7.4/34  absent  51.8/56  balanced 0.571  AUROC 0.78  vs method  -1.2 (-2.8,+0.1)
-  haze+deck-retrained    score  59.9  present   6.9/34  absent  53.0/56  balanced 0.575  AUROC 0.82  vs method  -0.4 (-2.2,+1.2)
-  the method             score  60.4  present   7.0/34  absent  53.4/56  balanced 0.579  AUROC 0.82  
-  matched                score  60.4  present   6.7/34  absent  53.7/56  balanced 0.578  AUROC 0.82  vs method  +0.0 (-2.3,+2.1)
-  matched+amp            score  62.2  present   9.0/34  absent  53.2/56  balanced 0.607  AUROC 0.87  vs method  +1.8 (-0.0,+3.6)
+== Tier-1 all: 88 labels
+  published              score  55.8  present   3.4/34  absent  52.5/54  balanced 0.535  AUROC 0.83  vs method  -2.1 (-4.8,+0.7)
+  AIRS-only              score  57.1  present   7.7/34  absent  49.4/54  balanced 0.571  AUROC 0.77  vs method  -0.8 (-2.0,+0.4)
+  haze+deck-retrained    score  58.0  present   7.1/34  absent  51.0/54  balanced 0.576  AUROC 0.82  vs method  +0.2 (-1.2,+1.6)
+  the method             score  57.9  present   7.2/34  absent  50.7/54  balanced 0.575  AUROC 0.80  
+  matched                score  60.4  present   6.7/34  absent  53.7/56  balanced 0.578  AUROC 0.82  vs method  +0.5 (-1.6,+2.5)
+  matched+amp            score  62.2  present   9.0/34  absent  53.2/56  balanced 0.607  AUROC 0.87  vs method  +2.3 (+0.9,+3.9)
 
 design                              matched matched+amp the method
 batch  planet      molecule label                                 
@@ -88,12 +88,12 @@ panel  GJ1214b     CH4      present       A           A          A
                    NH3      absent        A           A          A
        HD209458b   CH4      absent        A           A          A
                    NH3      absent        A           A          A
-       HIP67522b   CO2      absent        P           P          S
+       HIP67522b   CO2      absent        P           P          P
        K2-18b      CH4      present       P           P          P
-                   H2O      absent        A           A          A
+                   H2O      absent        A           A        NaN
                    NH3      absent        A           A          A
        K2-18b-alt  CH4      present       A           A          P
-                   H2O      absent        A           A          A
+                   H2O      absent        A           A        NaN
                    NH3      absent        A           A          A
        K2-18b-hu   CH4      present       P           S          S
                    H2O      absent        A           A          A
@@ -105,9 +105,9 @@ panel  GJ1214b     CH4      present       A           A          A
                    NH3      absent        A           A          A
        TOI-1231b   CH4      present       S           S          P
                    CO2      present       A           A          A
-       TOI-270d    CH4      present       A           A          A
+       TOI-270d    CH4      present       A           A          P
                    CO2      present       A           S          A
-                   NH3      absent        A           A          A
+                   NH3      absent        A           A          S
        TOI-270d-hm CH4      present       A           P          P
                    CO2      present       A           A          A
                    NH3      absent        A           A          A

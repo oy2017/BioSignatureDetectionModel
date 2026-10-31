@@ -36,6 +36,7 @@ print('HIP 67522 b')
 pl='HIP67522b'; ab=C.TWINS[pl]; x,meas,err,filled=load(pl); r=M[M.name==pl].iloc[0]
 print({k:r[k] for k in M.columns if k in ('p_mass','p_radius','p_mass_err','modulation_5H','atm temperature','s radius','tier1_transits','mass_flag')})
 t,rr=twin(pl,ab)
+if t is None: print('no clear twin renders at the corrected mass, 13.8 Earth masses: the atmosphere is not bound in the forward model'); raise SystemExit
 mu=np.mean(t[meas]); s_corr=np.sqrt(max(np.std(x[meas])**2-np.nanmean(err[meas]**2),0)); s_t=np.std(t[meas]); f=s_corr/s_t; print('scale factor',round(f,2),'real corrected ppm',round(s_corr*1e6),'twin ppm',round(s_t*1e6))
 def thr(b):
     y=b.copy(); y[filled]=np.mean(y[meas]); return y

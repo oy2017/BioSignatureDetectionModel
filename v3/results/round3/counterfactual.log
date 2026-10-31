@@ -1,0 +1,96 @@
+Numba not installed, using numpy instead
+spectra
+Numba not installed, using numpy instead
+TOI-421b Tier-1
+Numba not installed, using numpy instead
+TOI-270d Tier-1
+Numba not installed, using numpy instead
+K2-18b-alt Tier-1
+Numba not installed, using numpy instead
+K2-18b-alt JWST
+Numba not installed, using numpy instead
+K2-18b Tier-1
+Numba not installed, using numpy instead
+K2-18b JWST
+Numba not installed, using numpy instead
+TOI-421b JWST
+Numba not installed, using numpy instead
+TOI-270d JWST
+HAT-P-18b Tier-1
+WASP-107b Tier-1
+HAT-P-26b Tier-1
+HD189733b Tier-1
+HAT-P-18b JWST
+HD189733b JWST
+HAT-P-26b JWST
+GJ3470b Tier-1
+WASP-166b Tier-1
+GJ3470b JWST
+WASP-166b JWST
+WASP-107b JWST
+TOI-1231b Tier-1
+TOI-1231b JWST
+K2-18b-hu Tier-1
+K2-18b-hu JWST
+GJ9827d Tier-1
+TOI-270d-hm Tier-1
+TOI-270d-hm JWST
+GJ9827d JWST
+WASP-52b Tier-1
+L98-59d Tier-1
+L98-59d JWST
+GJ1214b Tier-1
+LTT3780c Tier-1
+LTT3780c JWST
+WASP-52b JWST
+WASP-80b JWST
+WASP-80b Tier-1
+HD209458b Tier-1
+WASP-96b Tier-1
+GJ1214b JWST
+WASP-96b JWST
+HD209458b JWST
+WASP-17b Tier-1
+WASP-17b JWST
+WASP-94Ab Tier-1
+HIP67522b JWST
+WASP-94Ab JWST
+HIP67522b Tier-1
+HAT-P-12b Tier-1
+HAT-P-12b JWST
+WASP-39b Tier-1
+TrES-4b Tier-1
+HATS-6b Tier-1
+HATS-6b JWST
+TrES-4b JWST
+TOI-5205b JWST
+TOI-5205b Tier-1
+TOI-6894b Tier-1
+TOI-199b JWST
+WASP-39b JWST
+TOI-199b Tier-1
+LP791-18c Tier-1
+TOI-6894b JWST
+LP791-18c JWST
+NGTS-2b Tier-1
+HAT-P-30b Tier-1
+NGTS-2b JWST
+HAT-P-1b Tier-1
+HAT-P-30b JWST
+TOI-1130b Tier-1
+TOI-1130b JWST
+Kepler-51d Tier-1
+HAT-P-1b JWST
+WASP-121b Tier-1
+Kepler-51d JWST
+WASP-121b JWST
+JWST   all  truly present:  12849  called present, full 0.627, opacity removed 0.114, own absorption +0.513 (+0.473,+0.553); flips to absent 0.820 of those called present
+JWST   H2O  truly present:   6145  called present, full 0.582, opacity removed 0.159, own absorption +0.423 (+0.356,+0.494); flips to absent 0.729 of those called present
+JWST   CH4  truly present:   2858  called present, full 0.803, opacity removed 0.003, own absorption +0.800 (+0.710,+0.861); flips to absent 0.997 of those called present
+JWST   CO2  truly present:   2997  called present, full 0.682, opacity removed 0.152, own absorption +0.529 (+0.453,+0.606); flips to absent 0.776 of those called present
+JWST   NH3  truly present:    849  called present, full 0.161, opacity removed 0.020, own absorption +0.141 (+0.077,+0.182); flips to absent 0.876 of those called present
+Tier-1 all  truly present:  12849  called present, full 0.516, opacity removed 0.096, own absorption +0.420 (+0.376,+0.474); flips to absent 0.814 of those called present
+Tier-1 H2O  truly present:   6145  called present, full 0.524, opacity removed 0.130, own absorption +0.394 (+0.309,+0.487); flips to absent 0.753 of those called present
+Tier-1 CH4  truly present:   2858  called present, full 0.721, opacity removed 0.022, own absorption +0.699 (+0.651,+0.743); flips to absent 0.969 of those called present
+Tier-1 CO2  truly present:   2997  called present, full 0.391, opacity removed 0.107, own absorption +0.284 (+0.211,+0.364); flips to absent 0.727 of those called present
+Tier-1 NH3  truly present:    849  called present, full 0.211, opacity removed 0.066, own absorption +0.145 (+0.119,+0.166); flips to absent 0.687 of those called present

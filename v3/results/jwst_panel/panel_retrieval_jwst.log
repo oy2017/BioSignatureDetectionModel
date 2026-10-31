@@ -105,3 +105,66 @@ WASP-107b 180.0 None
 L98-59d 41.7 -52.311607810359774
 WASP-166b 137.2 -111.2306456924259
 LTT3780c 48.2 -101.77384867914233
+GJ1214b 82.7 -41.98432393908567
+HIP67522b 48.7 -391.30501022357436
+Numba not installed, using numpy instead
+WASP-96b 138.0 -161.83602089554503
+Traceback (most recent call last):
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/nestle.py", line 1169, in __call__
+    return self.func(x, *self.args, **self.kwargs)
+  File "/Users/fanyang/BioSignatureDetectionModel/v3/identifiability_calibrate.py", line 126, in loglike
+    wn, d = tm.model()[:2]
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/model/simplemodel.py", line 522, in model
+    contrib.prepare(self, native_grid)
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/contributions/absorption.py", line 315, in prepare
+    for gas, sigma in self.prepare_each(model, wngrid):
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/contributions/absorption.py", line 286, in prepare_each
+    xsec.opacity(temperature, pressure, wngrid) * gas_mix[idx_layer]
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/opacity/opacity.py", line 104, in opacity
+    orig = self.compute_opacity(temperature, pressure, wngrid_filter)
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/opacity/interpolateopacity.py", line 292, in compute_opacity
+    self.interp_bilinear_grid(
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/opacity/interpolateopacity.py", line 235, in interp_bilinear_grid
+    return intepr_bilin(
+  File "/Users/fanyang/BioSignatureDetectionModel/v3/identifiability_calibrate.py", line 92, in _alarm
+    raise TimeoutError(f"timeout after {timeout} s")
+TimeoutError: timeout after 10800 s
+WASP-52b 180.0 None
+Numba not installed, using numpy instead
+Exception while calling loglikelihood function:
+  params: [ 7.56288547e+02  5.34902215e+00 -3.99077575e+00 -4.52025603e+00
+ -8.96390781e+00 -4.32451569e+00 -4.96522854e-03  7.62360114e+00]
+  args: []
+  kwargs: {}
+  exception:
+Numba not installed, using numpy instead
+Exception while calling loglikelihood function:
+  params: [ 1.13551037e+03  4.55416231e+00 -8.66655573e+00 -5.94264682e+00
+ -8.39190483e+00 -8.34685738e+00  4.15944424e-03  8.37589480e+00]
+  args: []
+  kwargs: {}
+  exception:
+WASP-80b 151.9 -51.93112692311756
+Numba not installed, using numpy instead
+WASP-17b 158.0 -725.6207801018716
+Numba not installed, using numpy instead
+Exception while calling loglikelihood function:
+  params: [ 5.45682418e+02  3.88369966e+00 -8.25916455e+00 -5.99080956e+00
+ -7.03297064e+00 -7.76276818e+00 -1.99184799e-03  7.63016538e+00]
+  args: []
+  kwargs: {}
+  exception:
+HD209458b 171.6 -129.59565721692266
+Numba not installed, using numpy instead
+Exception while calling loglikelihood function:
+  params: [ 9.18544971e+02  5.21698164e+00 -8.97897938e+00 -5.80860304e+00
+ -8.33605253e+00 -7.70577941e+00  1.34722574e-03  4.94348960e+00]
+  args: []
+  kwargs: {}
+  exception:
+HAT-P-12b 140.6 -238.20484221379454
+WASP-94Ab 162.5 -296.11828714866107
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+WASP-39b 135.8 -1016.9711543327566
+Numba not installed, using numpy instead

@@ -613,7 +613,7 @@ Under the training prior, at the 0.95 level and on noise-free spectra, a third t
 
 ## Acknowledgements
 
-Computations used open-source software (TauREx 3, MultiREx, Exo-Transmit, FastChem, ExoSim 2, scikit-learn, XGBoost, nestle) and public data (the ExoMolOP tables, the PHOENIX stellar atlas, the Ariel Mission Candidate Sample, and the JWST spectra in the Zenodo, OSF and VizieR records cited). No financial support was received.
+Computations used open-source software (TauREx 3, MultiREx, Exo-Transmit, FastChem, ExoSim 2, scikit-learn, XGBoost, nestle) and public data (the ExoMolOP tables, the PHOENIX stellar atlas, the Ariel Mission Candidate Sample, and the JWST spectra in the Zenodo, OSF and VizieR records cited). No financial support was received. The author declares no conflict of interest.
 
 The author thanks Rachael Kaci, instructor of the Advanced Authentic Research (AAR) program at Henry M. Gunn High School, and research mentor Victoria Lloyd, for their guidance and feedback throughout this project.
 

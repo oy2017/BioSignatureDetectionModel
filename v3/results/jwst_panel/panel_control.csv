@@ -3,10 +3,8 @@ TOI-270d,CH4,present,passes,passes
 TOI-270d,CO2,present,fails,fails
 TOI-270d,NH3,absent,passes,passes
 K2-18b,CH4,present,passes,passes
-K2-18b,H2O,absent,passes,passes
 K2-18b,NH3,absent,passes,passes
 K2-18b-alt,CH4,present,passes,passes
-K2-18b-alt,H2O,absent,passes,passes
 K2-18b-alt,NH3,absent,passes,passes
 TOI-421b,CH4,absent,passes,passes
 TOI-421b,CO2,absent,passes,passes
@@ -14,7 +12,7 @@ HAT-P-18b,CH4,absent,passes,passes
 HAT-P-18b,CO2,absent,passes,passes
 HAT-P-18b,NH3,absent,passes,passes
 WASP-107b,CH4,absent,passes,passes
-WASP-107b,H2O,present,fails,fails
+WASP-107b,H2O,present,fails,passes
 WASP-107b,NH3,absent,passes,passes
 HD189733b,CH4,absent,passes,passes
 HD189733b,CO2,absent,passes,fails
@@ -59,7 +57,7 @@ WASP-17b,CO2,absent,passes,passes
 WASP-94Ab,CH4,absent,passes,passes
 WASP-94Ab,H2O,present,fails,passes
 WASP-94Ab,NH3,absent,passes,passes
-HIP67522b,CO2,absent,passes,passes
+HIP67522b,CO2,absent,no twin,no twin
 HAT-P-12b,CH4,absent,passes,passes
 HAT-P-12b,H2O,present,passes,passes
 HAT-P-12b,NH3,absent,passes,passes

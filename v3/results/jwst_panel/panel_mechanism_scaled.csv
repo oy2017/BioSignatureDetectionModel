@@ -1,10 +1,10 @@
 planet,molecule,label,test,precision,variant,scale,present_freq,split_freq
-TOI-270d,CH4,present,twin,JWST,all,1.0,0.63,0.26
+TOI-270d,CH4,present,twin,JWST,all,1.0,0.625,0.265
 TOI-270d,CH4,present,twin,JWST,airs_only,1.0,0.985,0.01
 TOI-270d,H2O,,twin,JWST,all,1.0,0.01,0.11
-TOI-270d,H2O,,twin,JWST,airs_only,1.0,0.235,0.21
-TOI-270d,CO2,present,twin,JWST,all,1.0,0.06,0.12
-TOI-270d,CO2,present,twin,JWST,airs_only,1.0,0.465,0.175
+TOI-270d,H2O,,twin,JWST,airs_only,1.0,0.23,0.215
+TOI-270d,CO2,present,twin,JWST,all,1.0,0.055,0.125
+TOI-270d,CO2,present,twin,JWST,airs_only,1.0,0.47,0.17
 TOI-270d,NH3,absent,twin,JWST,all,1.0,0.0,0.0
 TOI-270d,NH3,absent,twin,JWST,airs_only,1.0,0.0,0.0
 TOI-270d,CH4,present,twin,Tier-1,all,1.0,0.085,0.105
@@ -15,82 +15,82 @@ TOI-270d,CO2,present,twin,Tier-1,all,1.0,0.0,0.015
 TOI-270d,CO2,present,twin,Tier-1,airs_only,1.0,0.01,0.055
 TOI-270d,NH3,absent,twin,Tier-1,all,1.0,0.0,0.0
 TOI-270d,NH3,absent,twin,Tier-1,airs_only,1.0,0.03,0.025
-TOI-270d,CH4,present,scaled twin,JWST,all,1.5048829233098513,0.87,0.11
-TOI-270d,CH4,present,scaled twin,JWST,airs_only,1.5048829233098513,1.0,0.0
-TOI-270d,H2O,,scaled twin,JWST,all,1.5048829233098513,0.005,0.1
-TOI-270d,H2O,,scaled twin,JWST,airs_only,1.5048829233098513,0.41,0.345
-TOI-270d,CO2,present,scaled twin,JWST,all,1.5048829233098513,0.105,0.27
-TOI-270d,CO2,present,scaled twin,JWST,airs_only,1.5048829233098513,0.74,0.2
-TOI-270d,NH3,absent,scaled twin,JWST,all,1.5048829233098513,0.0,0.0
-TOI-270d,NH3,absent,scaled twin,JWST,airs_only,1.5048829233098513,0.0,0.0
-TOI-270d,CH4,present,scaled twin,Tier-1,all,1.5048829233098513,0.205,0.195
-TOI-270d,CH4,present,scaled twin,Tier-1,airs_only,1.5048829233098513,0.47,0.19
-TOI-270d,H2O,,scaled twin,Tier-1,all,1.5048829233098513,0.01,0.05
-TOI-270d,H2O,,scaled twin,Tier-1,airs_only,1.5048829233098513,0.035,0.105
-TOI-270d,CO2,present,scaled twin,Tier-1,all,1.5048829233098513,0.005,0.02
-TOI-270d,CO2,present,scaled twin,Tier-1,airs_only,1.5048829233098513,0.055,0.11
-TOI-270d,NH3,absent,scaled twin,Tier-1,all,1.5048829233098513,0.0,0.0
-TOI-270d,NH3,absent,scaled twin,Tier-1,airs_only,1.5048829233098513,0.0,0.005
+TOI-270d,CH4,present,scaled twin,JWST,all,1.6287989455166767,0.89,0.095
+TOI-270d,CH4,present,scaled twin,JWST,airs_only,1.6287989455166767,1.0,0.0
+TOI-270d,H2O,,scaled twin,JWST,all,1.6287989455166767,0.005,0.1
+TOI-270d,H2O,,scaled twin,JWST,airs_only,1.6287989455166767,0.445,0.355
+TOI-270d,CO2,present,scaled twin,JWST,all,1.6287989455166767,0.15,0.29
+TOI-270d,CO2,present,scaled twin,JWST,airs_only,1.6287989455166767,0.8,0.155
+TOI-270d,NH3,absent,scaled twin,JWST,all,1.6287989455166767,0.0,0.0
+TOI-270d,NH3,absent,scaled twin,JWST,airs_only,1.6287989455166767,0.0,0.0
+TOI-270d,CH4,present,scaled twin,Tier-1,all,1.6287989455166767,0.225,0.22
+TOI-270d,CH4,present,scaled twin,Tier-1,airs_only,1.6287989455166767,0.55,0.175
+TOI-270d,H2O,,scaled twin,Tier-1,all,1.6287989455166767,0.01,0.05
+TOI-270d,H2O,,scaled twin,Tier-1,airs_only,1.6287989455166767,0.035,0.12
+TOI-270d,CO2,present,scaled twin,Tier-1,all,1.6287989455166767,0.005,0.03
+TOI-270d,CO2,present,scaled twin,Tier-1,airs_only,1.6287989455166767,0.055,0.13
+TOI-270d,NH3,absent,scaled twin,Tier-1,all,1.6287989455166767,0.0,0.0
+TOI-270d,NH3,absent,scaled twin,Tier-1,airs_only,1.6287989455166767,0.0,0.005
 K2-18b,CH4,present,twin,JWST,all,1.0,0.98,0.02
 K2-18b,CH4,present,twin,JWST,airs_only,1.0,0.995,0.005
-K2-18b,H2O,absent,twin,JWST,all,1.0,0.0,0.0
-K2-18b,H2O,absent,twin,JWST,airs_only,1.0,0.0,0.01
+K2-18b,H2O,,twin,JWST,all,1.0,0.0,0.0
+K2-18b,H2O,,twin,JWST,airs_only,1.0,0.0,0.01
 K2-18b,CO2,,twin,JWST,all,1.0,0.005,0.005
 K2-18b,CO2,,twin,JWST,airs_only,1.0,0.005,0.045
 K2-18b,NH3,absent,twin,JWST,all,1.0,0.0,0.0
 K2-18b,NH3,absent,twin,JWST,airs_only,1.0,0.0,0.0
 K2-18b,CH4,present,twin,Tier-1,all,1.0,0.65,0.17
 K2-18b,CH4,present,twin,Tier-1,airs_only,1.0,0.82,0.15
-K2-18b,H2O,absent,twin,Tier-1,all,1.0,0.0,0.015
-K2-18b,H2O,absent,twin,Tier-1,airs_only,1.0,0.0,0.015
+K2-18b,H2O,,twin,Tier-1,all,1.0,0.0,0.015
+K2-18b,H2O,,twin,Tier-1,airs_only,1.0,0.0,0.015
 K2-18b,CO2,,twin,Tier-1,all,1.0,0.0,0.015
 K2-18b,CO2,,twin,Tier-1,airs_only,1.0,0.005,0.015
 K2-18b,NH3,absent,twin,Tier-1,all,1.0,0.0,0.0
 K2-18b,NH3,absent,twin,Tier-1,airs_only,1.0,0.01,0.005
 K2-18b,CH4,present,scaled twin,JWST,all,1.3807437734128354,1.0,0.0
 K2-18b,CH4,present,scaled twin,JWST,airs_only,1.3807437734128354,1.0,0.0
-K2-18b,H2O,absent,scaled twin,JWST,all,1.3807437734128354,0.0,0.0
-K2-18b,H2O,absent,scaled twin,JWST,airs_only,1.3807437734128354,0.0,0.0
+K2-18b,H2O,,scaled twin,JWST,all,1.3807437734128354,0.0,0.0
+K2-18b,H2O,,scaled twin,JWST,airs_only,1.3807437734128354,0.0,0.0
 K2-18b,CO2,,scaled twin,JWST,all,1.3807437734128354,0.005,0.005
 K2-18b,CO2,,scaled twin,JWST,airs_only,1.3807437734128354,0.01,0.06
 K2-18b,NH3,absent,scaled twin,JWST,all,1.3807437734128354,0.0,0.0
 K2-18b,NH3,absent,scaled twin,JWST,airs_only,1.3807437734128354,0.0,0.0
 K2-18b,CH4,present,scaled twin,Tier-1,all,1.3807437734128354,0.895,0.09
 K2-18b,CH4,present,scaled twin,Tier-1,airs_only,1.3807437734128354,0.96,0.04
-K2-18b,H2O,absent,scaled twin,Tier-1,all,1.3807437734128354,0.0,0.005
-K2-18b,H2O,absent,scaled twin,Tier-1,airs_only,1.3807437734128354,0.0,0.01
+K2-18b,H2O,,scaled twin,Tier-1,all,1.3807437734128354,0.0,0.005
+K2-18b,H2O,,scaled twin,Tier-1,airs_only,1.3807437734128354,0.0,0.01
 K2-18b,CO2,,scaled twin,Tier-1,all,1.3807437734128354,0.0,0.015
 K2-18b,CO2,,scaled twin,Tier-1,airs_only,1.3807437734128354,0.005,0.035
 K2-18b,NH3,absent,scaled twin,Tier-1,all,1.3807437734128354,0.0,0.0
 K2-18b,NH3,absent,scaled twin,Tier-1,airs_only,1.3807437734128354,0.0,0.005
 K2-18b-alt,CH4,present,twin,JWST,all,1.0,1.0,0.0
 K2-18b-alt,CH4,present,twin,JWST,airs_only,1.0,1.0,0.0
-K2-18b-alt,H2O,absent,twin,JWST,all,1.0,0.0,0.005
-K2-18b-alt,H2O,absent,twin,JWST,airs_only,1.0,0.0,0.0
+K2-18b-alt,H2O,,twin,JWST,all,1.0,0.0,0.005
+K2-18b-alt,H2O,,twin,JWST,airs_only,1.0,0.0,0.0
 K2-18b-alt,CO2,,twin,JWST,all,1.0,0.01,0.035
 K2-18b-alt,CO2,,twin,JWST,airs_only,1.0,0.01,0.015
 K2-18b-alt,NH3,absent,twin,JWST,all,1.0,0.0,0.0
 K2-18b-alt,NH3,absent,twin,JWST,airs_only,1.0,0.0,0.0
 K2-18b-alt,CH4,present,twin,Tier-1,all,1.0,0.835,0.095
 K2-18b-alt,CH4,present,twin,Tier-1,airs_only,1.0,0.83,0.125
-K2-18b-alt,H2O,absent,twin,Tier-1,all,1.0,0.01,0.025
-K2-18b-alt,H2O,absent,twin,Tier-1,airs_only,1.0,0.0,0.02
+K2-18b-alt,H2O,,twin,Tier-1,all,1.0,0.01,0.025
+K2-18b-alt,H2O,,twin,Tier-1,airs_only,1.0,0.0,0.02
 K2-18b-alt,CO2,,twin,Tier-1,all,1.0,0.0,0.015
 K2-18b-alt,CO2,,twin,Tier-1,airs_only,1.0,0.0,0.01
 K2-18b-alt,NH3,absent,twin,Tier-1,all,1.0,0.0,0.0
 K2-18b-alt,NH3,absent,twin,Tier-1,airs_only,1.0,0.01,0.0
 K2-18b-alt,CH4,present,scaled twin,JWST,all,0.5864063367872331,0.905,0.065
 K2-18b-alt,CH4,present,scaled twin,JWST,airs_only,0.5864063367872331,0.87,0.09
-K2-18b-alt,H2O,absent,scaled twin,JWST,all,0.5864063367872331,0.0,0.045
-K2-18b-alt,H2O,absent,scaled twin,JWST,airs_only,0.5864063367872331,0.005,0.025
+K2-18b-alt,H2O,,scaled twin,JWST,all,0.5864063367872331,0.0,0.045
+K2-18b-alt,H2O,,scaled twin,JWST,airs_only,0.5864063367872331,0.005,0.025
 K2-18b-alt,CO2,,scaled twin,JWST,all,0.5864063367872331,0.005,0.025
 K2-18b-alt,CO2,,scaled twin,JWST,airs_only,0.5864063367872331,0.0,0.035
 K2-18b-alt,NH3,absent,scaled twin,JWST,all,0.5864063367872331,0.0,0.0
 K2-18b-alt,NH3,absent,scaled twin,JWST,airs_only,0.5864063367872331,0.0,0.025
 K2-18b-alt,CH4,present,scaled twin,Tier-1,all,0.5864063367872331,0.3,0.25
 K2-18b-alt,CH4,present,scaled twin,Tier-1,airs_only,0.5864063367872331,0.385,0.195
-K2-18b-alt,H2O,absent,scaled twin,Tier-1,all,0.5864063367872331,0.01,0.025
-K2-18b-alt,H2O,absent,scaled twin,Tier-1,airs_only,0.5864063367872331,0.015,0.02
+K2-18b-alt,H2O,,scaled twin,Tier-1,all,0.5864063367872331,0.01,0.025
+K2-18b-alt,H2O,,scaled twin,Tier-1,airs_only,0.5864063367872331,0.015,0.02
 K2-18b-alt,CO2,,scaled twin,Tier-1,all,0.5864063367872331,0.0,0.02
 K2-18b-alt,CO2,,scaled twin,Tier-1,airs_only,0.5864063367872331,0.0,0.015
 K2-18b-alt,NH3,absent,scaled twin,Tier-1,all,0.5864063367872331,0.0,0.015
@@ -162,35 +162,35 @@ HAT-P-18b,NH3,absent,scaled twin,Tier-1,airs_only,0.27031185328167795,0.0,0.015
 WASP-107b,CH4,absent,twin,JWST,all,1.0,0.0,0.0
 WASP-107b,CH4,absent,twin,JWST,airs_only,1.0,0.0,0.0
 WASP-107b,H2O,present,twin,JWST,all,1.0,0.0,0.0
-WASP-107b,H2O,present,twin,JWST,airs_only,1.0,0.0,1.0
-WASP-107b,CO2,,twin,JWST,all,1.0,1.0,0.0
+WASP-107b,H2O,present,twin,JWST,airs_only,1.0,0.68,0.32
+WASP-107b,CO2,,twin,JWST,all,1.0,0.0,0.995
 WASP-107b,CO2,,twin,JWST,airs_only,1.0,1.0,0.0
 WASP-107b,NH3,absent,twin,JWST,all,1.0,0.0,0.0
 WASP-107b,NH3,absent,twin,JWST,airs_only,1.0,0.0,0.0
 WASP-107b,CH4,absent,twin,Tier-1,all,1.0,0.0,0.0
 WASP-107b,CH4,absent,twin,Tier-1,airs_only,1.0,0.0,0.0
-WASP-107b,H2O,present,twin,Tier-1,all,1.0,0.0,0.0
-WASP-107b,H2O,present,twin,Tier-1,airs_only,1.0,0.01,0.7
-WASP-107b,CO2,,twin,Tier-1,all,1.0,0.92,0.065
+WASP-107b,H2O,present,twin,Tier-1,all,1.0,0.0,0.01
+WASP-107b,H2O,present,twin,Tier-1,airs_only,1.0,0.77,0.23
+WASP-107b,CO2,,twin,Tier-1,all,1.0,0.25,0.37
 WASP-107b,CO2,,twin,Tier-1,airs_only,1.0,1.0,0.0
 WASP-107b,NH3,absent,twin,Tier-1,all,1.0,0.0,0.0
 WASP-107b,NH3,absent,twin,Tier-1,airs_only,1.0,0.0,0.0
-WASP-107b,CH4,absent,scaled twin,JWST,all,0.22495805729898483,0.0,0.0
-WASP-107b,CH4,absent,scaled twin,JWST,airs_only,0.22495805729898483,0.0,0.0
-WASP-107b,H2O,present,scaled twin,JWST,all,0.22495805729898483,0.0,0.0
-WASP-107b,H2O,present,scaled twin,JWST,airs_only,0.22495805729898483,0.0,0.93
-WASP-107b,CO2,,scaled twin,JWST,all,0.22495805729898483,1.0,0.0
-WASP-107b,CO2,,scaled twin,JWST,airs_only,0.22495805729898483,1.0,0.0
-WASP-107b,NH3,absent,scaled twin,JWST,all,0.22495805729898483,0.0,0.0
-WASP-107b,NH3,absent,scaled twin,JWST,airs_only,0.22495805729898483,0.0,0.0
-WASP-107b,CH4,absent,scaled twin,Tier-1,all,0.22495805729898483,0.0,0.0
-WASP-107b,CH4,absent,scaled twin,Tier-1,airs_only,0.22495805729898483,0.0,0.0
-WASP-107b,H2O,present,scaled twin,Tier-1,all,0.22495805729898483,0.02,0.045
-WASP-107b,H2O,present,scaled twin,Tier-1,airs_only,0.22495805729898483,0.175,0.135
-WASP-107b,CO2,,scaled twin,Tier-1,all,0.22495805729898483,0.2,0.21
-WASP-107b,CO2,,scaled twin,Tier-1,airs_only,0.22495805729898483,0.755,0.09
-WASP-107b,NH3,absent,scaled twin,Tier-1,all,0.22495805729898483,0.0,0.0
-WASP-107b,NH3,absent,scaled twin,Tier-1,airs_only,0.22495805729898483,0.01,0.08
+WASP-107b,CH4,absent,scaled twin,JWST,all,0.25027453901322055,0.0,0.0
+WASP-107b,CH4,absent,scaled twin,JWST,airs_only,0.25027453901322055,0.0,0.0
+WASP-107b,H2O,present,scaled twin,JWST,all,0.25027453901322055,0.0,0.0
+WASP-107b,H2O,present,scaled twin,JWST,airs_only,0.25027453901322055,0.66,0.34
+WASP-107b,CO2,,scaled twin,JWST,all,0.25027453901322055,0.205,0.685
+WASP-107b,CO2,,scaled twin,JWST,airs_only,0.25027453901322055,1.0,0.0
+WASP-107b,NH3,absent,scaled twin,JWST,all,0.25027453901322055,0.0,0.0
+WASP-107b,NH3,absent,scaled twin,JWST,airs_only,0.25027453901322055,0.0,0.0
+WASP-107b,CH4,absent,scaled twin,Tier-1,all,0.25027453901322055,0.0,0.0
+WASP-107b,CH4,absent,scaled twin,Tier-1,airs_only,0.25027453901322055,0.0,0.0
+WASP-107b,H2O,present,scaled twin,Tier-1,all,0.25027453901322055,0.05,0.04
+WASP-107b,H2O,present,scaled twin,Tier-1,airs_only,0.25027453901322055,0.41,0.23
+WASP-107b,CO2,,scaled twin,Tier-1,all,0.25027453901322055,0.14,0.15
+WASP-107b,CO2,,scaled twin,Tier-1,airs_only,0.25027453901322055,0.63,0.155
+WASP-107b,NH3,absent,scaled twin,Tier-1,all,0.25027453901322055,0.0,0.0
+WASP-107b,NH3,absent,scaled twin,Tier-1,airs_only,0.25027453901322055,0.02,0.025
 HD189733b,CH4,absent,twin,JWST,all,1.0,0.0,0.0
 HD189733b,CH4,absent,twin,JWST,airs_only,1.0,0.0,0.0
 HD189733b,H2O,,twin,JWST,all,1.0,0.0,0.56
@@ -335,22 +335,22 @@ WASP-39b,CO2,,twin,Tier-1,all,1.0,0.005,0.03
 WASP-39b,CO2,,twin,Tier-1,airs_only,1.0,0.0,0.0
 WASP-39b,NH3,,twin,Tier-1,all,1.0,0.0,0.0
 WASP-39b,NH3,,twin,Tier-1,airs_only,1.0,0.0,0.0
-WASP-39b,CH4,absent,scaled twin,JWST,all,0.2682928628631524,0.0,0.0
-WASP-39b,CH4,absent,scaled twin,JWST,airs_only,0.2682928628631524,0.0,0.0
-WASP-39b,H2O,present,scaled twin,JWST,all,0.2682928628631524,1.0,0.0
-WASP-39b,H2O,present,scaled twin,JWST,airs_only,0.2682928628631524,1.0,0.0
-WASP-39b,CO2,,scaled twin,JWST,all,0.2682928628631524,0.0,0.0
-WASP-39b,CO2,,scaled twin,JWST,airs_only,0.2682928628631524,0.0,0.0
-WASP-39b,NH3,,scaled twin,JWST,all,0.2682928628631524,0.0,0.0
-WASP-39b,NH3,,scaled twin,JWST,airs_only,0.2682928628631524,0.0,0.0
-WASP-39b,CH4,absent,scaled twin,Tier-1,all,0.2682928628631524,0.0,0.0
-WASP-39b,CH4,absent,scaled twin,Tier-1,airs_only,0.2682928628631524,0.0,0.0
-WASP-39b,H2O,present,scaled twin,Tier-1,all,0.2682928628631524,1.0,0.0
-WASP-39b,H2O,present,scaled twin,Tier-1,airs_only,0.2682928628631524,0.825,0.11
-WASP-39b,CO2,,scaled twin,Tier-1,all,0.2682928628631524,0.065,0.12
-WASP-39b,CO2,,scaled twin,Tier-1,airs_only,0.2682928628631524,0.05,0.06
-WASP-39b,NH3,,scaled twin,Tier-1,all,0.2682928628631524,0.0,0.0
-WASP-39b,NH3,,scaled twin,Tier-1,airs_only,0.2682928628631524,0.0,0.0
+WASP-39b,CH4,absent,scaled twin,JWST,all,0.26927472251661816,0.0,0.0
+WASP-39b,CH4,absent,scaled twin,JWST,airs_only,0.26927472251661816,0.0,0.0
+WASP-39b,H2O,present,scaled twin,JWST,all,0.26927472251661816,1.0,0.0
+WASP-39b,H2O,present,scaled twin,JWST,airs_only,0.26927472251661816,1.0,0.0
+WASP-39b,CO2,,scaled twin,JWST,all,0.26927472251661816,0.0,0.0
+WASP-39b,CO2,,scaled twin,JWST,airs_only,0.26927472251661816,0.0,0.0
+WASP-39b,NH3,,scaled twin,JWST,all,0.26927472251661816,0.0,0.0
+WASP-39b,NH3,,scaled twin,JWST,airs_only,0.26927472251661816,0.0,0.0
+WASP-39b,CH4,absent,scaled twin,Tier-1,all,0.26927472251661816,0.0,0.0
+WASP-39b,CH4,absent,scaled twin,Tier-1,airs_only,0.26927472251661816,0.0,0.0
+WASP-39b,H2O,present,scaled twin,Tier-1,all,0.26927472251661816,1.0,0.0
+WASP-39b,H2O,present,scaled twin,Tier-1,airs_only,0.26927472251661816,0.83,0.105
+WASP-39b,CO2,,scaled twin,Tier-1,all,0.26927472251661816,0.065,0.12
+WASP-39b,CO2,,scaled twin,Tier-1,airs_only,0.26927472251661816,0.05,0.05
+WASP-39b,NH3,,scaled twin,Tier-1,all,0.26927472251661816,0.0,0.0
+WASP-39b,NH3,,scaled twin,Tier-1,airs_only,0.26927472251661816,0.0,0.0
 TOI-1231b,CH4,present,twin,JWST,all,1.0,1.0,0.0
 TOI-1231b,CH4,present,twin,JWST,airs_only,1.0,1.0,0.0
 TOI-1231b,H2O,,twin,JWST,all,1.0,0.0,0.0
@@ -463,22 +463,22 @@ LTT3780c,CO2,,twin,Tier-1,all,1.0,0.0,0.0
 LTT3780c,CO2,,twin,Tier-1,airs_only,1.0,0.0,0.02
 LTT3780c,NH3,absent,twin,Tier-1,all,1.0,0.0,0.0
 LTT3780c,NH3,absent,twin,Tier-1,airs_only,1.0,0.01,0.025
-LTT3780c,CH4,present,scaled twin,JWST,all,1.0307052477512435,0.815,0.15
-LTT3780c,CH4,present,scaled twin,JWST,airs_only,1.0307052477512435,0.985,0.015
-LTT3780c,H2O,,scaled twin,JWST,all,1.0307052477512435,0.005,0.01
-LTT3780c,H2O,,scaled twin,JWST,airs_only,1.0307052477512435,0.06,0.085
-LTT3780c,CO2,,scaled twin,JWST,all,1.0307052477512435,0.0,0.005
-LTT3780c,CO2,,scaled twin,JWST,airs_only,1.0307052477512435,0.005,0.005
-LTT3780c,NH3,absent,scaled twin,JWST,all,1.0307052477512435,0.0,0.0
-LTT3780c,NH3,absent,scaled twin,JWST,airs_only,1.0307052477512435,0.0,0.005
-LTT3780c,CH4,present,scaled twin,Tier-1,all,1.0307052477512435,0.47,0.16
-LTT3780c,CH4,present,scaled twin,Tier-1,airs_only,1.0307052477512435,0.745,0.145
-LTT3780c,H2O,,scaled twin,Tier-1,all,1.0307052477512435,0.005,0.03
-LTT3780c,H2O,,scaled twin,Tier-1,airs_only,1.0307052477512435,0.025,0.075
-LTT3780c,CO2,,scaled twin,Tier-1,all,1.0307052477512435,0.0,0.0
-LTT3780c,CO2,,scaled twin,Tier-1,airs_only,1.0307052477512435,0.0,0.02
-LTT3780c,NH3,absent,scaled twin,Tier-1,all,1.0307052477512435,0.0,0.0
-LTT3780c,NH3,absent,scaled twin,Tier-1,airs_only,1.0307052477512435,0.01,0.015
+LTT3780c,CH4,present,scaled twin,JWST,all,1.0080813778455735,0.805,0.15
+LTT3780c,CH4,present,scaled twin,JWST,airs_only,1.0080813778455735,0.985,0.015
+LTT3780c,H2O,,scaled twin,JWST,all,1.0080813778455735,0.005,0.01
+LTT3780c,H2O,,scaled twin,JWST,airs_only,1.0080813778455735,0.06,0.085
+LTT3780c,CO2,,scaled twin,JWST,all,1.0080813778455735,0.0,0.005
+LTT3780c,CO2,,scaled twin,JWST,airs_only,1.0080813778455735,0.005,0.005
+LTT3780c,NH3,absent,scaled twin,JWST,all,1.0080813778455735,0.0,0.0
+LTT3780c,NH3,absent,scaled twin,JWST,airs_only,1.0080813778455735,0.0,0.01
+LTT3780c,CH4,present,scaled twin,Tier-1,all,1.0080813778455735,0.425,0.2
+LTT3780c,CH4,present,scaled twin,Tier-1,airs_only,1.0080813778455735,0.735,0.14
+LTT3780c,H2O,,scaled twin,Tier-1,all,1.0080813778455735,0.005,0.025
+LTT3780c,H2O,,scaled twin,Tier-1,airs_only,1.0080813778455735,0.025,0.08
+LTT3780c,CO2,,scaled twin,Tier-1,all,1.0080813778455735,0.0,0.0
+LTT3780c,CO2,,scaled twin,Tier-1,airs_only,1.0080813778455735,0.0,0.02
+LTT3780c,NH3,absent,scaled twin,Tier-1,all,1.0080813778455735,0.0,0.0
+LTT3780c,NH3,absent,scaled twin,Tier-1,airs_only,1.0080813778455735,0.01,0.025
 WASP-96b,CH4,absent,twin,JWST,all,1.0,0.0,0.0
 WASP-96b,CH4,absent,twin,JWST,airs_only,1.0,0.0,0.0
 WASP-96b,H2O,present,twin,JWST,all,1.0,1.0,0.0
@@ -687,38 +687,6 @@ WASP-94Ab,CO2,,scaled twin,Tier-1,all,0.30331745117889763,0.0,0.015
 WASP-94Ab,CO2,,scaled twin,Tier-1,airs_only,0.30331745117889763,0.035,0.125
 WASP-94Ab,NH3,absent,scaled twin,Tier-1,all,0.30331745117889763,0.0,0.0
 WASP-94Ab,NH3,absent,scaled twin,Tier-1,airs_only,0.30331745117889763,0.0,0.01
-HIP67522b,CH4,,twin,JWST,all,1.0,0.0,0.0
-HIP67522b,CH4,,twin,JWST,airs_only,1.0,0.0,0.005
-HIP67522b,H2O,,twin,JWST,all,1.0,0.0,0.035
-HIP67522b,H2O,,twin,JWST,airs_only,1.0,0.015,0.055
-HIP67522b,CO2,absent,twin,JWST,all,1.0,0.07,0.19
-HIP67522b,CO2,absent,twin,JWST,airs_only,1.0,0.41,0.175
-HIP67522b,NH3,,twin,JWST,all,1.0,0.0,0.0
-HIP67522b,NH3,,twin,JWST,airs_only,1.0,0.05,0.09
-HIP67522b,CH4,,twin,Tier-1,all,1.0,0.0,0.0
-HIP67522b,CH4,,twin,Tier-1,airs_only,1.0,0.0,0.0
-HIP67522b,H2O,,twin,Tier-1,all,1.0,0.0,0.02
-HIP67522b,H2O,,twin,Tier-1,airs_only,1.0,0.02,0.09
-HIP67522b,CO2,absent,twin,Tier-1,all,1.0,0.02,0.085
-HIP67522b,CO2,absent,twin,Tier-1,airs_only,1.0,0.135,0.185
-HIP67522b,NH3,,twin,Tier-1,all,1.0,0.0,0.01
-HIP67522b,NH3,,twin,Tier-1,airs_only,1.0,0.095,0.115
-HIP67522b,CH4,,scaled twin,JWST,all,9.041844335670438,0.0,0.0
-HIP67522b,CH4,,scaled twin,JWST,airs_only,9.041844335670438,0.0,0.0
-HIP67522b,H2O,,scaled twin,JWST,all,9.041844335670438,0.0,0.0
-HIP67522b,H2O,,scaled twin,JWST,airs_only,9.041844335670438,0.0,0.0
-HIP67522b,CO2,absent,scaled twin,JWST,all,9.041844335670438,0.285,0.48
-HIP67522b,CO2,absent,scaled twin,JWST,airs_only,9.041844335670438,1.0,0.0
-HIP67522b,NH3,,scaled twin,JWST,all,9.041844335670438,0.0,0.0
-HIP67522b,NH3,,scaled twin,JWST,airs_only,9.041844335670438,0.0,0.01
-HIP67522b,CH4,,scaled twin,Tier-1,all,9.041844335670438,0.0,0.0
-HIP67522b,CH4,,scaled twin,Tier-1,airs_only,9.041844335670438,0.0,0.0
-HIP67522b,H2O,,scaled twin,Tier-1,all,9.041844335670438,0.0,0.0
-HIP67522b,H2O,,scaled twin,Tier-1,airs_only,9.041844335670438,0.0,0.0
-HIP67522b,CO2,absent,scaled twin,Tier-1,all,9.041844335670438,0.265,0.345
-HIP67522b,CO2,absent,scaled twin,Tier-1,airs_only,9.041844335670438,1.0,0.0
-HIP67522b,NH3,,scaled twin,Tier-1,all,9.041844335670438,0.0,0.0
-HIP67522b,NH3,,scaled twin,Tier-1,airs_only,9.041844335670438,0.02,0.08
 HAT-P-12b,CH4,absent,twin,JWST,all,1.0,0.0,0.0
 HAT-P-12b,CH4,absent,twin,JWST,airs_only,1.0,0.0,0.0
 HAT-P-12b,H2O,present,twin,JWST,all,1.0,1.0,0.0

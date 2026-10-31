@@ -1,34 +1,34 @@
 planet,molecule,router,flagged_learners,learners_present,verdict,label,correct
-TOI-270d,CH4,none,0,1,absent,present,False
-TOI-270d,CH4,optical,0,1,absent,present,False
-TOI-270d,CH4,disagree,0,1,absent,present,False
-TOI-270d,CH4,either,0,1,absent,present,False
-TOI-270d,CH4,AIRS-only everywhere,4,2,split,present,
-TOI-270d,H2O,none,0,0,absent,,
-TOI-270d,H2O,optical,0,0,absent,,
-TOI-270d,H2O,disagree,0,0,absent,,
-TOI-270d,H2O,either,0,0,absent,,
-TOI-270d,H2O,AIRS-only everywhere,4,0,absent,,
+TOI-270d,CH4,none,0,2,split,present,
+TOI-270d,CH4,optical,0,2,split,present,
+TOI-270d,CH4,disagree,1,3,present,present,True
+TOI-270d,CH4,either,1,3,present,present,True
+TOI-270d,CH4,AIRS-only everywhere,4,3,present,present,True
+TOI-270d,H2O,none,0,1,absent,,
+TOI-270d,H2O,optical,0,1,absent,,
+TOI-270d,H2O,disagree,0,1,absent,,
+TOI-270d,H2O,either,0,1,absent,,
+TOI-270d,H2O,AIRS-only everywhere,4,1,absent,,
 TOI-270d,CO2,none,0,0,absent,present,False
 TOI-270d,CO2,optical,0,0,absent,present,False
 TOI-270d,CO2,disagree,0,0,absent,present,False
 TOI-270d,CO2,either,0,0,absent,present,False
 TOI-270d,CO2,AIRS-only everywhere,4,0,absent,present,False
-TOI-270d,NH3,none,0,0,absent,absent,True
-TOI-270d,NH3,optical,0,0,absent,absent,True
-TOI-270d,NH3,disagree,0,0,absent,absent,True
-TOI-270d,NH3,either,0,0,absent,absent,True
-TOI-270d,NH3,AIRS-only everywhere,4,0,absent,absent,True
+TOI-270d,NH3,none,0,2,split,absent,
+TOI-270d,NH3,optical,0,2,split,absent,
+TOI-270d,NH3,disagree,0,2,split,absent,
+TOI-270d,NH3,either,0,2,split,absent,
+TOI-270d,NH3,AIRS-only everywhere,4,2,split,absent,
 K2-18b,CH4,none,0,0,absent,present,False
 K2-18b,CH4,optical,4,4,present,present,True
 K2-18b,CH4,disagree,3,3,present,present,True
 K2-18b,CH4,either,4,4,present,present,True
 K2-18b,CH4,AIRS-only everywhere,4,4,present,present,True
-K2-18b,H2O,none,0,0,absent,absent,True
-K2-18b,H2O,optical,4,0,absent,absent,True
-K2-18b,H2O,disagree,0,0,absent,absent,True
-K2-18b,H2O,either,4,0,absent,absent,True
-K2-18b,H2O,AIRS-only everywhere,4,0,absent,absent,True
+K2-18b,H2O,none,0,0,absent,,
+K2-18b,H2O,optical,4,0,absent,,
+K2-18b,H2O,disagree,0,0,absent,,
+K2-18b,H2O,either,4,0,absent,,
+K2-18b,H2O,AIRS-only everywhere,4,0,absent,,
 K2-18b,CO2,none,0,0,absent,,
 K2-18b,CO2,optical,4,0,absent,,
 K2-18b,CO2,disagree,1,0,absent,,
@@ -44,11 +44,11 @@ K2-18b-alt,CH4,optical,4,3,present,present,True
 K2-18b-alt,CH4,disagree,0,1,absent,present,False
 K2-18b-alt,CH4,either,4,3,present,present,True
 K2-18b-alt,CH4,AIRS-only everywhere,4,3,present,present,True
-K2-18b-alt,H2O,none,0,0,absent,absent,True
-K2-18b-alt,H2O,optical,4,0,absent,absent,True
-K2-18b-alt,H2O,disagree,0,0,absent,absent,True
-K2-18b-alt,H2O,either,4,0,absent,absent,True
-K2-18b-alt,H2O,AIRS-only everywhere,4,0,absent,absent,True
+K2-18b-alt,H2O,none,0,0,absent,,
+K2-18b-alt,H2O,optical,4,0,absent,,
+K2-18b-alt,H2O,disagree,0,0,absent,,
+K2-18b-alt,H2O,either,4,0,absent,,
+K2-18b-alt,H2O,AIRS-only everywhere,4,0,absent,,
 K2-18b-alt,CO2,none,0,0,absent,,
 K2-18b-alt,CO2,optical,4,0,absent,,
 K2-18b-alt,CO2,disagree,0,0,absent,,
@@ -339,8 +339,8 @@ GJ1214b,NH3,optical,0,0,absent,,
 GJ1214b,NH3,disagree,0,0,absent,,
 GJ1214b,NH3,either,0,0,absent,,
 GJ1214b,NH3,AIRS-only everywhere,4,0,absent,,
-LTT3780c,CH4,none,0,0,absent,present,False
-LTT3780c,CH4,optical,0,0,absent,present,False
+LTT3780c,CH4,none,0,1,absent,present,False
+LTT3780c,CH4,optical,0,1,absent,present,False
 LTT3780c,CH4,disagree,4,4,present,present,True
 LTT3780c,CH4,either,4,4,present,present,True
 LTT3780c,CH4,AIRS-only everywhere,4,4,present,present,True

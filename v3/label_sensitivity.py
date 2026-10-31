@@ -14,7 +14,7 @@ DES = ["published", "no-optical", "AIRS-only", "shape flag", "haze-retrained", "
 BASE = lambda s: s.replace("-alt", "").replace("-hu", "").replace("-hm", "")
 T = pd.read_csv(os.path.join(OUT, "panel_tier1.csv"))
 frozen = {(r.planet, r.molecule): r.label for r in T[(T.design == "published") & (T.precision == "JWST") & T.label.notna()].itertuples()}
-OUT_REAL = [("TOI-270d", "NH3"), ("K2-18b", "H2O"), ("K2-18b-alt", "H2O")]; IN_REAL = {("HD209458b", "CO2"): "absent", ("WASP-52b", "NH3"): "absent"}
+OUT_REAL = [("TOI-270d", "NH3")]; IN_REAL = {("HD209458b", "CO2"): "absent", ("WASP-52b", "NH3"): "absent"}
 OUT_JUDGE = [("TOI-270d-hm", "NH3"), ("HAT-P-18b", "CO2"), ("L98-59d", "H2O"), ("L98-59d", "CH4"), ("L98-59d", "NH3"), ("WASP-17b", "H2O"), ("WASP-39b", "H2O")]; IN_JUDGE = {("WASP-52b", "CO2"): "absent"}
 assert all(k in frozen for k in OUT_REAL + OUT_JUDGE); assert not any(k in frozen for k in list(IN_REAL) + list(IN_JUDGE))
 corrected = {k: v for k, v in frozen.items() if k not in OUT_REAL}; corrected.update(IN_REAL)

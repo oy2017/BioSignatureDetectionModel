@@ -1,26 +1,25 @@
 Bootstrap of the muting factors (2000 resamples of the real depths with their per-bin errors); muting = clear twin / noise-corrected real dispersion
 planet      bins  muting   16th   84th max in prior P(muting > max in prior)
-TOI-270d      87    0.66   0.62   0.73         1.97                     0.00
+TOI-270d      87    0.61   0.57   0.66         1.97                     0.00
 K2-18b        99    0.72   0.66   0.83         2.62                     0.00
 K2-18b-alt    88    1.71   1.22   2.57         2.65                     0.25   (249 resamples with no excess over noise)
 TOI-421b      89    3.39   2.33   5.40         3.67                     0.48   (371 resamples with no excess over noise)
 HAT-P-18b     48    3.70   3.22   4.57         3.27                     0.82
-WASP-107b     54    4.45   4.35   4.55         2.19                     1.00
+WASP-107b     67    4.00   3.91   4.08         2.18                     1.00
 HD189733b     56    1.73   1.69   1.79         2.25                     0.00
-HAT-P-26b     35    5.32   5.13   5.55         2.37                     1.00
-GJ3470b       53    3.45   3.11   3.95         1.95                     1.00
-WASP-166b     90    3.07   2.66   3.86         1.78                     1.00
-WASP-39b     103    3.73   3.67   3.79         2.04                     1.00
-TOI-1231b     74    1.55   1.31   2.05         1.88                     0.24   (4 resamples with no excess over noise)
-K2-18b-hu     88    2.00   1.77   2.32         2.65                     0.03
-TOI-270d-hm   41    1.04   0.91   1.29         1.92                     0.01
-LTT3780c      97    0.97   0.76   1.47         2.69                     0.07   (83 resamples with no excess over noise)
-WASP-96b      88    1.49   1.39   1.61         1.94                     0.00
-WASP-17b      63    3.99   3.84   4.18         1.96                     1.00
-WASP-80b      49    2.89   2.48   3.71         1.66                     1.00   (2 resamples with no excess over noise)
+HAT-P-26b     35    5.32   5.12   5.56         2.37                     1.00
+GJ3470b       53    3.45   3.14   3.96         1.95                     1.00
+WASP-166b     90    3.07   2.65   3.81         1.78                     1.00
+WASP-39b     103    3.71   3.65   3.78         2.04                     1.00
+TOI-1231b     74    1.55   1.30   2.02         1.88                     0.23   (4 resamples with no excess over noise)
+K2-18b-hu     88    2.00   1.79   2.36         2.65                     0.03
+TOI-270d-hm   41    1.04   0.92   1.29         1.92                     0.02
+LTT3780c      97    0.99   0.77   1.45         2.69                     0.08   (98 resamples with no excess over noise)
+WASP-96b      88    1.49   1.39   1.63         1.94                     0.00
+WASP-17b      63    3.99   3.84   4.17         1.96                     1.00
+WASP-80b      49    2.89   2.52   3.63         1.66                     1.00
 HD209458b     58    2.35   2.28   2.44         1.33                     1.00
-WASP-52b      37    2.26   2.17   2.36         2.39                     0.10
-GJ9827d       50     inf   1.80   5.58         3.42                     0.76   (1257 resamples with no excess over noise)
-WASP-94Ab     83    3.30   3.09   3.55         1.47                     1.00
-HIP67522b     41    0.11   0.11   0.12         3.29                     0.00
-HAT-P-12b    103    5.34   4.94   5.83         1.98                     1.00
+WASP-52b      37    2.26   2.17   2.36         2.39                     0.09
+GJ9827d       50     inf   1.82   5.43         3.42                     0.77   (1266 resamples with no excess over noise)
+WASP-94Ab     83    3.30   3.09   3.59         1.47                     1.00
+HAT-P-12b    103    5.34   4.92   5.90         1.98                     1.00
