@@ -1,0 +1,50 @@
+Numba not installed, using numpy instead
+jwst freehaze 4 to retrieve
+LTT3780c 66.7 -93.97653637576272
+Numba not installed, using numpy instead
+TOI-270d 153.1 -369.5725958201092
+Numba not installed, using numpy instead
+Traceback (most recent call last):
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/nestle.py", line 1169, in __call__
+    return self.func(x, *self.args, **self.kwargs)
+  File "/Users/fanyang/BioSignatureDetectionModel/v3/identifiability_calibrate.py", line 126, in loglike
+    wn, d = tm.model()[:2]
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/model/simplemodel.py", line 525, in model
+    absorp, tau = self.path_integral(native_grid, False)
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/model/transmission.py", line 170, in path_integral
+    path_length = self.compute_path_length_old(dz)
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/model/transmission.py", line 118, in compute_path_length_old
+    k[1:] -= np.sqrt(
+  File "/Users/fanyang/BioSignatureDetectionModel/v3/identifiability_calibrate.py", line 92, in _alarm
+    raise TimeoutError(f"timeout after {timeout} s")
+TimeoutError: timeout after 10800 s
+Traceback (most recent call last):
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/nestle.py", line 1169, in __call__
+    return self.func(x, *self.args, **self.kwargs)
+  File "/Users/fanyang/BioSignatureDetectionModel/v3/identifiability_calibrate.py", line 126, in loglike
+    wn, d = tm.model()[:2]
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/model/simplemodel.py", line 522, in model
+    contrib.prepare(self, native_grid)
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/contributions/absorption.py", line 315, in prepare
+    for gas, sigma in self.prepare_each(model, wngrid):
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/contributions/absorption.py", line 285, in prepare_each
+    sigma_xsec[idx_layer] += (
+  File "/Users/fanyang/BioSignatureDetectionModel/v3/identifiability_calibrate.py", line 92, in _alarm
+    raise TimeoutError(f"timeout after {timeout} s")
+TimeoutError: timeout after 10800 s
+WASP-107b 180.0 None
+HIP67522b 180.0 None
+Numba not installed, using numpy instead
+Exception while calling loglikelihood function:
+  params: [ 5.47294365e+02  3.92481216e+00 -8.31560786e+00 -6.37164096e+00
+ -7.01248517e+00 -8.82882085e+00 -2.03312175e-03  7.71278429e+00]
+  args: []
+  kwargs: {}
+  exception:
+Numba not installed, using numpy instead
+Exception while calling loglikelihood function:
+  params: [ 8.53573395e+02  4.64428121e+00 -8.95507834e+00 -6.30010237e+00
+ -8.31234388e+00 -7.40176402e+00 -1.03271135e-03  4.51389613e+00]
+  args: []
+  kwargs: {}
+  exception:

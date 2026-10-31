@@ -1,0 +1,36 @@
+Numba not installed, using numpy instead
+tier1 freehaze 4 to retrieve
+LTT3780c 17.8 -64.89471198013992
+TOI-270d 17.8 -44.52315139496404
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+WASP-107b 90.9 -34.45465335716936
+Numba not installed, using numpy instead
+Traceback (most recent call last):
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/nestle.py", line 1169, in __call__
+    return self.func(x, *self.args, **self.kwargs)
+  File "/Users/fanyang/BioSignatureDetectionModel/v3/identifiability_calibrate.py", line 126, in loglike
+    wn, d = tm.model()[:2]
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/model/simplemodel.py", line 525, in model
+    absorp, tau = self.path_integral(native_grid, False)
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/model/transmission.py", line 185, in path_integral
+    contrib.contribute(
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/contributions/contribution.py", line 292, in contribute
+    contribute_tau(
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/contributions/contribution.py", line 102, in contribute_tau_numpy
+    tau[layer, :] += np.sum(_sigma * _path * _density, axis=0)
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/numpy/_core/fromnumeric.py", line 2466, in sum
+    return _wrapreduction(
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/numpy/_core/fromnumeric.py", line 70, in _wrapreduction
+    passkwargs = {k: v for k, v in kwargs.items()
+  File "/Users/fanyang/BioSignatureDetectionModel/v3/identifiability_calibrate.py", line 92, in _alarm
+    raise TimeoutError(f"timeout after {timeout} s")
+TimeoutError: timeout after 10800 s
+HIP67522b 180.0 None
+Numba not installed, using numpy instead
+Exception while calling loglikelihood function:
+  params: [ 8.29633909e+02  5.05590582e+00 -8.99202074e+00 -6.46797644e+00
+ -8.47588988e+00 -8.66041721e+00 -6.79352438e-04  6.74603909e+00]
+  args: []
+  kwargs: {}
+  exception:

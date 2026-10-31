@@ -1419,3 +1419,7 @@ Clean accuracy 84.2 against 81.2, recall 81 against 63; haze 3e7 80.5 against 63
 ### F45. Most of the decline gain was the gas mix; stratifying by call helps on grids and not on real labels (2026-10-31)
 
 Declining the least confident 30 % adds .075 to .117 pooled, .007 to .045 within gas, against .006 to .033 for the classifier's best rule. Calls on a gas's rarer answer sit near .5, so one cut declines most of them. Keeping 70 % of present and of absent calls separately adds .044 to .078 on the grids, +.034 to +.055 over the classifier's best stratified rule (5 of 6 intervals above zero), post hoc. On real labels it lowers balanced credit: JWST .788 to .754 (-.078,+.025), Tier-1 .682 to .643 (-.072,+.007). A lead for a prospective test, not a measured gain. `results/round3/round3_margin_stratified.txt`, `round3_margin_stratified_real.txt`; expectations W.
+
+### F46. The real panel retrieved after the corrections (2026-10-31)
+
+Under the training prior at the Tier-1 sigma, 64 labels: present 0 right, 9 undecided, 17 wrong, highest p_true .37; absent 37 of 38 right; score 38, level with calling every label absent and below the classifier's 39.6. Freeing the haze density: 63 labels, present 0/12/14, score 38. Of the classifier's 16 wrong labels 1 is recoverable (HIP 67522 b CO2), 6 undecidable, 9 misled. HIP 67522 b's free-density run reached the three-hour limit at both precisions and WASP-107 b's at JWST precision. `results/jwst_panel/panel_retrieval_summary.log`.

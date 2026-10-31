@@ -1,0 +1,59 @@
+Numba not installed, using numpy instead
+The real panel retrieved (panel_retrieval.py): for the labels the literature decides, the share the retrieval decides right (p_true > 0.95), leaves undecided, and decides wrong (p_true < 0.05); score counts p_true > 0.5 as right, on the labels with a posterior, and calling every such label absent is the baseline
+
+jwst   clear     64 labels, 26 reductions (26 completed, 1 at the call cap, median 51 min): decided right 39, undecided 2, decided wrong 23; present labels right/undecided/wrong 1/2/23 of 26; absent 38/0/0 of 38; median log Z -117.9
+       score (p_true > 0.5) 39 of 64, every label absent 38; on these labels re-implemented classifier 43.5, AIRS-only 50.0, method 52.0; retrieval minus re-implemented -4.5 [-9.5  0.5], retrieval minus method -13.0 [-19.2  -6.4]
+       of the re-implemented classifier's 16 wrong labels: recoverable 1, undecidable 2, misled 13; of those passing the mask control (5): recoverable 0, undecidable 1, misled 4
+jwst   freehaze  53 labels, 26 reductions (21 completed, 4 at the call cap, median 126 min): decided right 26, undecided 7, decided wrong 20; present labels right/undecided/wrong 1/5/19 of 25; absent 25/2/1 of 28; median log Z -102.1
+       score (p_true > 0.5) 29 of 53, every label absent 28; on these labels re-implemented classifier 34.5, AIRS-only 42.0, method 43.5; retrieval minus re-implemented -5.5 [-9.7 -2. ], retrieval minus method -14.5 [-19.1  -9.9]
+       of the re-implemented classifier's 14 wrong labels: recoverable 0, undecidable 4, misled 10; of those passing the mask control (5): recoverable 0, undecidable 3, misled 2
+tier1  clear     64 labels, 26 reductions (26 completed, 0 at the call cap, median 19 min): decided right 37, undecided 10, decided wrong 17; present labels right/undecided/wrong 0/9/17 of 26; absent 37/1/0 of 38; median log Z -26.0
+       score (p_true > 0.5) 38 of 64, every label absent 38; on these labels re-implemented classifier 39.6, AIRS-only 41.4, method 41.9; retrieval minus re-implemented -1.6 [-4.6  1.5], retrieval minus method -3.9 [-7.7 -0.1]
+       of the re-implemented classifier's 16 wrong labels: recoverable 1, undecidable 6, misled 9; of those passing the mask control (5): recoverable 0, undecidable 3, misled 2
+tier1  freehaze  63 labels, 26 reductions (25 completed, 1 at the call cap, median 26 min): decided right 35, undecided 14, decided wrong 14; present labels right/undecided/wrong 0/12/14 of 26; absent 35/2/0 of 37; median log Z -24.9
+       score (p_true > 0.5) 38 of 63, every label absent 37; on these labels re-implemented classifier 39.6, AIRS-only 41.4, method 41.9; retrieval minus re-implemented -1.6 [-4.8  1.3], retrieval minus method -3.9 [-7.8 -0.9]
+       of the re-implemented classifier's 15 wrong labels: recoverable 0, undecidable 8, misled 7; of those passing the mask control (5): recoverable 0, undecidable 4, misled 1
+
+methane labels, p_true per reduction
+precision    jwst          tier1         
+model       clear freehaze clear freehaze
+planet                                   
+GJ1214b      0.00     0.00  0.00     0.00
+K2-18b       0.00     0.00  0.12     0.15
+K2-18b-alt   0.07     0.06  0.20     0.36
+K2-18b-hu    0.00     0.89  0.03     0.65
+LTT3780c     0.00     0.00  0.32     0.35
+TOI-1231b    0.00     0.82  0.01     0.18
+TOI-270d     0.99     1.00  0.37     0.37
+TOI-270d-hm  0.08     0.09  0.31     0.31
+
+all present labels, p_true
+precision             jwst          tier1         
+model                clear freehaze clear freehaze
+planet      molecule                              
+GJ1214b     CH4       0.00     0.00  0.00     0.00
+            CO2       0.00     0.00  0.00     0.00
+GJ3470b     CO2       0.00     0.00  0.00     0.00
+            H2O       0.00     0.00  0.03     0.05
+GJ9827d     H2O       0.02     0.05  0.03     0.04
+HAT-P-12b   H2O       0.00     0.00  0.00     0.00
+HAT-P-26b   CO2       0.00     0.00  0.00     0.00
+            H2O       0.00     0.00  0.11     0.12
+K2-18b      CH4       0.00     0.00  0.12     0.15
+K2-18b-alt  CH4       0.07     0.06  0.20     0.36
+K2-18b-hu   CH4       0.00     0.89  0.03     0.65
+LTT3780c    CH4       0.00     0.00  0.32     0.35
+TOI-1231b   CH4       0.00     0.82  0.01     0.18
+            CO2       0.00     0.00  0.00     0.00
+TOI-270d    CH4       0.99     1.00  0.37     0.37
+            CO2       0.00     0.00  0.00     0.00
+TOI-270d-hm CH4       0.08     0.09  0.31     0.31
+            CO2       0.00     0.00  0.05     0.08
+WASP-107b   H2O       0.00      NaN  0.01     0.00
+WASP-166b   CO2       0.00     0.00  0.00     0.00
+            H2O       0.02     0.03  0.20     0.16
+WASP-17b    H2O       0.00     0.00  0.00     0.00
+WASP-39b    H2O       0.00     0.00  0.00     0.03
+WASP-80b    H2O       0.00     0.00  0.09     0.11
+WASP-94Ab   H2O       0.00     0.03  0.00     0.01
+WASP-96b    H2O       0.00     0.00  0.12     0.20
