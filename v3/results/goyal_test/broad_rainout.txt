@@ -1,0 +1,40 @@
+== JWST, all
+  AIRS-only              balanced 0.642  present 0.414  absent 0.871  false-present 0.099
+  B                      balanced 0.746  present 0.626  absent 0.865  false-present 0.114
+  B+bal                  balanced 0.762  present 0.689  absent 0.834  false-present 0.139
+  B+bal+ens              balanced 0.712  present 0.541  absent 0.883  false-present 0.077
+  haze+deck-retrained    balanced 0.658  present 0.398  absent 0.917  false-present 0.068
+  matched+amp            balanced 0.661  present 0.395  absent 0.927  false-present 0.054
+  published              balanced 0.582  present 0.178  absent 0.986  false-present 0.007
+  shape flag             balanced 0.637  present 0.382  absent 0.892  false-present 0.075
+  the method             balanced 0.641  present 0.379  absent 0.903  false-present 0.067
+== JWST, CO2
+  AIRS-only              balanced 0.695  present 0.444  absent 0.946  false-present 0.039
+  B                      balanced 0.744  present 0.543  absent 0.944  false-present 0.044
+  B+bal                  balanced 0.773  present 0.621  absent 0.926  false-present 0.056
+  B+bal+ens              balanced 0.742  present 0.555  absent 0.930  false-present 0.046
+  haze+deck-retrained    balanced 0.701  present 0.475  absent 0.926  false-present 0.063
+  matched+amp            balanced 0.599  present 0.221  absent 0.977  false-present 0.016
+  published              balanced 0.589  present 0.188  absent 0.990  false-present 0.005
+  shape flag             balanced 0.676  present 0.400  absent 0.953  false-present 0.027
+  the method             balanced 0.685  present 0.417  absent 0.952  false-present 0.029
+== Tier-1, all
+  AIRS-only              balanced 0.571  present 0.213  absent 0.928  false-present 0.046
+  B                      balanced 0.653  present 0.442  absent 0.864  false-present 0.101
+  B+bal                  balanced 0.673  present 0.553  absent 0.792  false-present 0.157
+  B+bal+ens              balanced 0.624  present 0.354  absent 0.895  false-present 0.043
+  haze+deck-retrained    balanced 0.570  present 0.184  absent 0.957  false-present 0.026
+  matched+amp            balanced 0.597  present 0.248  absent 0.947  false-present 0.033
+  published              balanced 0.532  present 0.076  absent 0.989  false-present 0.003
+  shape flag             balanced 0.564  present 0.176  absent 0.952  false-present 0.029
+  the method             balanced 0.565  present 0.176  absent 0.954  false-present 0.028
+== Tier-1, CO2
+  AIRS-only              balanced 0.561  present 0.148  absent 0.974  false-present 0.015
+  B                      balanced 0.650  present 0.380  absent 0.919  false-present 0.057
+  B+bal                  balanced 0.680  present 0.484  absent 0.876  false-present 0.091
+  B+bal+ens              balanced 0.619  present 0.302  absent 0.937  false-present 0.024
+  haze+deck-retrained    balanced 0.565  present 0.158  absent 0.971  false-present 0.018
+  matched+amp            balanced 0.545  present 0.109  absent 0.981  false-present 0.007
+  published              balanced 0.530  present 0.068  absent 0.991  false-present 0.002
+  shape flag             balanced 0.556  present 0.132  absent 0.979  false-present 0.012
+  the method             balanced 0.556  present 0.134  absent 0.978  false-present 0.013

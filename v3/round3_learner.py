@@ -25,7 +25,7 @@ OUT = os.path.join(RESULTS, "round3"); os.makedirs(OUT, exist_ok=True); GRIDS = 
 def population(cand):
     wl = np.load(os.path.join(DATA, "native_wl.npy")); e, _ = J.tier3_layout(); Xs, Ps = [], []
     for f, a in (("correlated", "correlated"), ("broad", "broad")):
-        if f == "broad" and not cand.startswith("C+B"): continue
+        if (f == "broad" and "B" not in cand.split("-")[0]) or (f == "correlated" and "C" not in cand.split("-")[0]): continue
         X = np.load(os.path.join(DATA, f, f"{a}_native.npy")).astype(float); P = pd.read_parquet(os.path.join(DATA, f, f"{a}_params.parquet")); ok = np.isfinite(X).all(1); Xs.append(bin_native(X[ok], wl, e)); Ps.append(P[ok][["modulation_5H"] + [f"atm {m}" for m in MOLS]])
     return np.vstack(Xs), pd.concat(Ps, ignore_index=True)
 
@@ -58,8 +58,14 @@ def fit_mlp(X, P, meas, e, md, noise, seed):
     return decide, dict(zip(MOLS, t))
 
 
-def fit_vote(X, P, meas, e, md, noise, seed):
-    rng = np.random.default_rng(seed); Z = draw(X, P["modulation_5H"].to_numpy(), meas, e, md, noise, rng); learners = {m: [mk().fit(Z, (P[f"atm {m}"] > -4).astype(int).to_numpy()) for mk in ML.MAKERS().values()] for m in MOLS}
+def fit_vote(X, P, meas, e, md, noise, seed, bal=False):
+    rng = np.random.default_rng(seed); Z = draw(X, P["modulation_5H"].to_numpy(), meas, e, md, noise, rng)
+    def fit(mk, y):
+        ix = np.arange(len(y))
+        if bal:
+            p, n = np.where(y == 1)[0], np.where(y == 0)[0]; ix = np.r_[ix, rng.choice(p if len(p) < len(n) else n, abs(len(p) - len(n)))]
+        return mk().fit(Z[ix], y[ix])
+    learners = {m: [fit(mk, (P[f"atm {m}"] > -4).astype(int).to_numpy()) for mk in ML.MAKERS().values()] for m in MOLS}
     def decide(Zt):
         out = {}
         for m in MOLS:
@@ -78,7 +84,7 @@ def independent():
 
 def run(j, i, prec, cand, X, P, grids):
     batch, pl, labs, x, err, filled, s, md = j; meas = ~filled; e = np.nan_to_num(err[meas]); e = np.sqrt(e ** 2 + s[meas] ** 2) if prec == "Tier-1" else e; noise = float(np.sqrt(np.mean(e ** 2))); seed = SEED + 5000 + 10 * i + (0 if prec == "JWST" else 3)
-    decide, t = (fit_mlp if cand.endswith("mlp") else fit_vote)(X, P, meas, e, md, noise, seed); votes, real = [], []
+    decide, t = fit_mlp(X, P, meas, e, md, noise, seed) if cand.endswith("mlp") else fit_vote(X, P, meas, e, md, noise, seed, "+bal" in cand); votes, real = [], []
     Xr = x[None, :] if prec == "JWST" else J.noise_draws(x, s, DRAWS, seed=405 + i); res = decide(ML.features(Xr, meas, noise, True))
     for m in MOLS:
         if labs.get(m) is None: continue
@@ -91,7 +97,7 @@ def run(j, i, prec, cand, X, P, grids):
 
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument("--cand", required=True, choices=["C-mlp", "C+B-mlp", "C-vote", "C+B-vote"]); ap.add_argument("--cond", nargs="*", default=["rainout"]); ap.add_argument("--jobs", type=int, default=6); a = ap.parse_args()
+    ap = argparse.ArgumentParser(); ap.add_argument("--cand", required=True, choices=["C-mlp", "C+B-mlp", "C-vote", "C+B-vote", "B+bal-vote", "C+bal-vote"]); ap.add_argument("--cond", nargs="*", default=["rainout"]); ap.add_argument("--jobs", type=int, default=6); a = ap.parse_args()
     X, P = population(a.cand); print(X.shape, flush=True); grids = {c: dict(np.load(os.path.join(GRIDS, f"grid_{c}.npz"))) for c in a.cond}; L = ML.jobs_list(); n = len(L); L = L + independent()
     task = [(j, i, "JWST") for i, j in enumerate(L)] + [(j, i, "Tier-1") for i, j in enumerate(L[:n])]; R = Parallel(n_jobs=a.jobs, verbose=5)(delayed(run)(j, i, p, a.cand, X, P, grids) for j, i, p in task)
     V = [v for r in R for v in r[0]]
