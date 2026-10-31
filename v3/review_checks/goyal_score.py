@@ -2,10 +2,10 @@
 import os, sys, numpy as np, pandas as pd
 os.chdir(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))); tag=sys.argv[1] if len(sys.argv)>1 else 'rainout'
 BASE=lambda s:s.replace('-alt','').replace('-hu','').replace('-hm','')
-V=pd.concat([pd.read_csv(f'results/goyal_test/votes_{k}_{tag}.csv.gz') for k in ('frozen','matched')]); Y=pd.read_csv(f'results/goyal_test/truth_{tag}.csv')
+import glob; V=pd.concat([pd.read_csv(f) for f in [f'results/goyal_test/votes_{k}_{tag}.csv.gz' for k in ('frozen','matched')]+sorted(glob.glob(f'results/round3/votes_*_{tag}.csv.gz'))]).drop(columns='prob',errors='ignore'); Y=pd.read_csv(f'results/goyal_test/truth_{tag}.csv')
 Yl=Y.melt(id_vars=['planet','row','T','g','met','co','haze','cloud'],value_vars=[f'v_{m}' for m in ('CH4','H2O','CO2','NH3')],var_name='molecule',value_name='v'); Yl['molecule']=Yl.molecule.str[2:]
 A=V.merge(Yl,on=['planet','row','molecule']); A['y']=A.v>-4; A['credit']=np.where(A.y,A.present,A.absent)+.5*(1-A.present-A.absent); A['u']=A.planet.map(BASE)
-DES=['published','AIRS-only','shape flag','haze+deck-retrained','the method','matched+amp']; rng=np.random.default_rng(405)
+DES=['published','AIRS-only','shape flag','haze+deck-retrained','the method','matched+amp']+sorted(set(V.design)-{'published','AIRS-only','shape flag','haze+deck-retrained','the method','matched+amp'}); rng=np.random.default_rng(405)
 def per(q):
     g=q.groupby(['u','design','y']).credit.mean().unstack('y'); return g
 def bal(q,idx=None):
