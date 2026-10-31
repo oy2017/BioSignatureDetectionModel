@@ -1,0 +1,10 @@
+JWST   all  routing method: called present, full 0.354, opacity removed 0.020, flips 0.946
+JWST   CH4  routing method: called present, full 0.628, opacity removed 0.000, flips 0.999
+JWST   H2O  routing method: called present, full 0.297, opacity removed 0.038, flips 0.874
+JWST   CO2  routing method: called present, full 0.303, opacity removed 0.004, flips 0.986
+JWST   NH3  routing method: called present, full 0.032, opacity removed 0.001, flips 0.963
+Tier-1 all  routing method: called present, full 0.136, opacity removed 0.015, flips 0.896
+Tier-1 CH4  routing method: called present, full 0.216, opacity removed 0.002, flips 0.989
+Tier-1 H2O  routing method: called present, full 0.146, opacity removed 0.028, flips 0.819
+Tier-1 CO2  routing method: called present, full 0.074, opacity removed 0.001, flips 0.987
+Tier-1 NH3  routing method: called present, full 0.018, opacity removed 0.013, flips 0.333
