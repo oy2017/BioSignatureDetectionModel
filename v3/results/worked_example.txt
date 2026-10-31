@@ -1,0 +1,18 @@
+51 planets have H2O more than a decade above 1e-4 and undecided at 0.95
+K2-260b: dchi2 2.339, p_true 0.923
+TOI-2570b: dchi2 1.199, p_true 0.863
+TIC88785435b: dchi2 0.510, p_true 0.664
+WASP-56b: dchi2 2.493, p_true 0.809
+TOI-4336Ab: dchi2 0.563, p_true 0.678
+TOI-6628b: dchi2 0.544, p_true 0.568
+TOI-5799c: dchi2 0.705, p_true 0.911
+TOI-1811b: dchi2 1.499, p_true 0.815
+TOI-2136b: dchi2 0.457, p_true 0.696
+TOI-2669b: dchi2 1.893, p_true 0.660
+WASP-110b: dchi2 1.984, p_true 0.783
+TOI-178d: dchi2 1.711, p_true 0.737
+
+Worked case: TOI-2136b, dchi2 0.457 over 104 bins, p_true 0.696
+true: T 332 K, cloud top 1.86e+03 Pa, CH4 -3.87, H2O -2.28, CO2 -6.65, NH3 -6.62
+opposite-label fit: T 359 K, cloud top 1.42e+04 Pa, CH4 -5.04, H2O -4.00, CO2 -8.04, NH3 -8.09
+largest difference 55 ppm, 0.29 sigma; median sigma 269 ppm
