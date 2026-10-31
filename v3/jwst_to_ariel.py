@@ -125,7 +125,14 @@ def align_offsets(segments, reference, min_overlap_points=5):
     inverse-variance-weighted mean difference over the wavelengths the modes share, propagating
     outward from the reference through the chain of overlaps. Returns {mode: offset} (reference: 0).
     This is the step Carter & May et al. 2024 did at the light-curve level; for products reduced
-    separately it has to be done here, and the fitted values are reported as part of the procedure."""
+    separately it has to be done here, and the fitted values are reported as part of the procedure.
+    NRS1 and NRS2 are two detectors of one grating and do not overlap, so they share one offset."""
+    if "NRS1" in segments and "NRS2" in segments:
+        a, b = segments["NRS1"], segments["NRS2"]; wl = np.r_[a["wl"], b["wl"]]; o = np.argsort(wl)
+        merged = dict(wl=wl[o], depth=np.r_[np.asarray(a["depth"], float), np.asarray(b["depth"], float)][o], err=np.r_[np.asarray(a["err"], float), np.asarray(b["err"], float)][o])
+        rest = {k: v for k, v in segments.items() if k not in ("NRS1", "NRS2")}; rest["NRS"] = merged
+        out = align_offsets(rest, "NRS" if reference in ("NRS1", "NRS2") else reference, min_overlap_points)
+        out["NRS1"] = out["NRS2"] = out.pop("NRS"); return out
     off = {reference: 0.0}
     pending = [m for m in segments if m != reference]
     while pending:

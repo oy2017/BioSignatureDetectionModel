@@ -31,8 +31,8 @@ P, A = "present", "absent"
 # consensus labels at 10^-4 (REVISION_EXPECTATIONS.md); None = ambiguous, not scored
 LABELS = {
     "TOI-270d": {"CH4": P, "H2O": None, "CO2": P, "NH3": A},
-    "K2-18b": {"CH4": P, "H2O": A, "CO2": None, "NH3": A},
-    "K2-18b-alt": {"CH4": P, "H2O": A, "CO2": None, "NH3": A},
+    "K2-18b": {"CH4": P, "H2O": None, "CO2": None, "NH3": A},   # H2O withdrawn: 95 % limit -3.06 lies above -4
+    "K2-18b-alt": {"CH4": P, "H2O": None, "CO2": None, "NH3": A},   # H2O withdrawn: 95 % limit -2.44 lies above -4
     "TOI-421b": {"CH4": A, "H2O": None, "CO2": A, "NH3": None},
     "HAT-P-18b": {"CH4": A, "H2O": None, "CO2": A, "NH3": A},
     "WASP-107b": {"CH4": A, "H2O": P, "CO2": None, "NH3": A},
@@ -115,9 +115,9 @@ def segments(root, planet):
     r = lambda *p: os.path.join(root, *p)
     if planet == "TOI-270d":
         d = r("TOI-270d", "Felix2025_zenodo15228454", "TOI-270d_transit_spectra")
-        return {"SOSS": seg(numeric_rows(f"{d}/native_NIRISS.dat"), 0, 1, 2, 1e-6, width=3),
-                "NRS1": seg(numeric_rows(f"{d}/native_NRS1.dat"), 0, 1, 2, 1e-6, width=3),
-                "NRS2": seg(numeric_rows(f"{d}/native_NRS2.dat"), 0, 1, 2, 1e-6, width=3)}, "Felix et al. 2025 reanalysis (Zenodo 15228454), native resolution"
+        return {"SOSS": seg(numeric_rows(f"{d}/native_NIRISS.dat"), 0, 1, 2, 1e-6),
+                "NRS1": seg(numeric_rows(f"{d}/native_NRS1.dat"), 0, 1, 2, 1e-6),
+                "NRS2": seg(numeric_rows(f"{d}/native_NRS2.dat"), 0, 1, 2, 1e-6)}, "Felix et al. 2025 reanalysis (Zenodo 15228454), native resolution"
     if planet == "K2-18b":
         o = r("K2-18b", "Madhusudhan2023_osf_36djh"); d = r("K2-18b", "Jaziri2025_zenodo16277833", "Spectra")
         return {"SOSS": seg(numeric_rows(f"{o}/K2-18b_niriss_soss_native.txt"), 0, 2, 3, halfwidth=1),
@@ -144,10 +144,10 @@ def segments(root, planet):
         return {"SOSS": seg(numeric_rows(r("HAT-P-18b", "Fu2022_vizier_J_ApJ_940_L35", "table1.dat")), 0, 1, 2, 1e-6)}, "Fu et al. 2022 (VizieR J/ApJ/940/L35), NIRISS SOSS"
     if planet == "WASP-107b":
         d = r("WASP-107b", "FinalResults", "FinalSpectra")
-        return {"F322W2": seg(numeric_rows(f"{d}/NIRCam_F322W2_Fiducial_Eureka_Spectrum.txt"), 0, 2, 3, width=1),
-                "F444W": seg(numeric_rows(f"{d}/NIRCam_F444W_Fiducial_Eureka_Spectrum.txt"), 0, 2, 3, width=1),
+        return {"F322W2": seg(numeric_rows(f"{d}/NIRCam_F322W2_Fiducial_Eureka_Spectrum.txt"), 0, 2, 3, halfwidth=1),
+                "F444W": seg(numeric_rows(f"{d}/NIRCam_F444W_Fiducial_Eureka_Spectrum.txt"), 0, 2, 3, halfwidth=1),
                 "G395H": seg(numeric_rows(r("WASP-107b", "Sing_2024_Fig2_WASP107b_transit_spec_data.csv"), ","), 0, 2, 3, halfwidth=1, rprs=True),
-                "MIRI": seg(numeric_rows(f"{d}/MIRI_LRS_Fiducial_Eureka_Spectrum.txt"), 0, 2, 3, width=1)}, "Welbanks et al. 2024 NIRCam + MIRI (Zenodo 10780448), Sing et al. 2024 G395H (Zenodo 10891400)"
+                "MIRI": seg(numeric_rows(f"{d}/MIRI_LRS_Fiducial_Eureka_Spectrum.txt"), 0, 2, 3, halfwidth=1)}, "Welbanks et al. 2024 NIRCam + MIRI (Zenodo 10780448), Sing et al. 2024 G395H (Zenodo 10891400)"
     if planet == "HD189733b":
         return {"NIRCam": seg(numeric_rows(r("HD189733b", "zenodo", "Data", "transit spectrum", "HD189733b_NIRCam_spectrum.txt")), 0, 2, 3, halfwidth=1)}, "Fu et al. 2024 (Zenodo 11459715), NIRCam"
     if planet == "HAT-P-26b":
