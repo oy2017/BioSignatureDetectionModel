@@ -2582,7 +2582,7 @@ JWST,HIP67522b,CH4,shape flag,,,0.0,0.0,1.0,0.0,0.0
 JWST,HIP67522b,CH4,haze-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,HIP67522b,CH4,haze+deck-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,HIP67522b,CH4,the method,,,0.0,0.0,1.0,0.0,0.0
-JWST,HIP67522b,CH4,"census, same haze design",,,0.0,1.0,0.0,0.0,0.0
+JWST,HIP67522b,CH4,"census, same haze design",,,0.0,0.0,1.0,0.0,0.0
 JWST,HIP67522b,CH4,knn -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
 JWST,HIP67522b,CH4,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
 JWST,HIP67522b,CH4,pca_recon -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
@@ -2596,7 +2596,7 @@ JWST,HIP67522b,H2O,shape flag,,,0.0,0.0,1.0,0.0,0.0
 JWST,HIP67522b,H2O,haze-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,HIP67522b,H2O,haze+deck-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,HIP67522b,H2O,the method,,,0.0,0.0,1.0,0.0,0.0
-JWST,HIP67522b,H2O,"census, same haze design",,,0.0,1.0,0.0,0.0,0.0
+JWST,HIP67522b,H2O,"census, same haze design",,,0.0,0.0,1.0,0.0,0.0
 JWST,HIP67522b,H2O,knn -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
 JWST,HIP67522b,H2O,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
 JWST,HIP67522b,H2O,pca_recon -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
@@ -2610,7 +2610,7 @@ JWST,HIP67522b,CO2,shape flag,absent,0.0,1.0,0.0,0.0,0.0,0.0
 JWST,HIP67522b,CO2,haze-retrained,absent,0.0,1.0,0.0,0.0,0.0,0.0
 JWST,HIP67522b,CO2,haze+deck-retrained,absent,0.0,1.0,0.0,0.0,0.0,0.0
 JWST,HIP67522b,CO2,the method,absent,0.0,1.0,0.0,0.0,0.0,0.0
-JWST,HIP67522b,CO2,"census, same haze design",absent,0.5,0.0,1.0,0.0,0.0,0.0
+JWST,HIP67522b,CO2,"census, same haze design",absent,0.0,1.0,0.0,0.0,0.0,0.0
 JWST,HIP67522b,CO2,knn -> AIRS-only,absent,0.0,1.0,0.0,0.0,0.0,0.0
 JWST,HIP67522b,CO2,mahalanobis -> AIRS-only,absent,0.0,1.0,0.0,0.0,0.0,0.0
 JWST,HIP67522b,CO2,pca_recon -> AIRS-only,absent,0.0,1.0,0.0,0.0,0.0,0.0
@@ -2624,7 +2624,7 @@ JWST,HIP67522b,NH3,shape flag,,,0.0,0.0,1.0,0.0,0.0
 JWST,HIP67522b,NH3,haze-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,HIP67522b,NH3,haze+deck-retrained,,,0.0,0.0,1.0,0.0,0.0
 JWST,HIP67522b,NH3,the method,,,0.0,0.0,1.0,0.0,0.0
-JWST,HIP67522b,NH3,"census, same haze design",,,0.0,1.0,0.0,0.0,0.0
+JWST,HIP67522b,NH3,"census, same haze design",,,0.0,0.0,1.0,0.0,0.0
 JWST,HIP67522b,NH3,knn -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
 JWST,HIP67522b,NH3,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
 JWST,HIP67522b,NH3,pca_recon -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
@@ -2638,7 +2638,7 @@ Tier-1,HIP67522b,CH4,shape flag,,,0.0,0.0,1.0,0.0,0.0
 Tier-1,HIP67522b,CH4,haze-retrained,,,0.0,0.0,1.0,0.0,0.0
 Tier-1,HIP67522b,CH4,haze+deck-retrained,,,0.0,0.0,1.0,0.0,0.0
 Tier-1,HIP67522b,CH4,the method,,,0.0,0.0,1.0,0.0,0.0
-Tier-1,HIP67522b,CH4,"census, same haze design",,,0.0,1.0,0.0,0.0,0.0
+Tier-1,HIP67522b,CH4,"census, same haze design",,,0.0,0.0,1.0,0.0,0.0
 Tier-1,HIP67522b,CH4,knn -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
 Tier-1,HIP67522b,CH4,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
 Tier-1,HIP67522b,CH4,pca_recon -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
@@ -2652,7 +2652,7 @@ Tier-1,HIP67522b,H2O,shape flag,,,0.0,0.0,1.0,0.0,0.0
 Tier-1,HIP67522b,H2O,haze-retrained,,,0.0,0.0,1.0,0.0,0.0
 Tier-1,HIP67522b,H2O,haze+deck-retrained,,,0.0,0.0,1.0,0.0,0.0
 Tier-1,HIP67522b,H2O,the method,,,0.0,0.0,1.0,0.0,0.0
-Tier-1,HIP67522b,H2O,"census, same haze design",,,0.0,1.0,0.0,0.0,0.0
+Tier-1,HIP67522b,H2O,"census, same haze design",,,0.0,0.0,1.0,0.0,0.0
 Tier-1,HIP67522b,H2O,knn -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
 Tier-1,HIP67522b,H2O,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
 Tier-1,HIP67522b,H2O,pca_recon -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
@@ -2666,7 +2666,7 @@ Tier-1,HIP67522b,CO2,shape flag,absent,0.004,0.992,0.008,0.0,0.0,0.0
 Tier-1,HIP67522b,CO2,haze-retrained,absent,0.0,1.0,0.0,0.0,0.0,0.0
 Tier-1,HIP67522b,CO2,haze+deck-retrained,absent,0.0,1.0,0.0,0.0,0.0,0.0
 Tier-1,HIP67522b,CO2,the method,absent,0.004,0.992,0.008,0.0,0.0,0.0
-Tier-1,HIP67522b,CO2,"census, same haze design",absent,0.5,0.0,1.0,0.0,0.0,0.0
+Tier-1,HIP67522b,CO2,"census, same haze design",absent,0.004,0.992,0.008,0.0,0.0,0.0
 Tier-1,HIP67522b,CO2,knn -> AIRS-only,absent,0.073,0.854,0.146,0.0,0.0,0.0
 Tier-1,HIP67522b,CO2,mahalanobis -> AIRS-only,absent,0.073,0.854,0.146,0.0,0.0,0.0
 Tier-1,HIP67522b,CO2,pca_recon -> AIRS-only,absent,0.073,0.854,0.146,0.0,0.0,0.0
@@ -2680,7 +2680,7 @@ Tier-1,HIP67522b,NH3,shape flag,,,0.01,0.118,0.872,0.0,0.0
 Tier-1,HIP67522b,NH3,haze-retrained,,,0.0,0.0,1.0,0.0,0.0
 Tier-1,HIP67522b,NH3,haze+deck-retrained,,,0.0,0.0,1.0,0.0,0.0
 Tier-1,HIP67522b,NH3,the method,,,0.01,0.118,0.872,0.0,0.0
-Tier-1,HIP67522b,NH3,"census, same haze design",,,0.0,1.0,0.0,0.0,0.0
+Tier-1,HIP67522b,NH3,"census, same haze design",,,0.01,0.118,0.872,0.0,0.0
 Tier-1,HIP67522b,NH3,knn -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
 Tier-1,HIP67522b,NH3,mahalanobis -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
 Tier-1,HIP67522b,NH3,pca_recon -> AIRS-only,,,0.0,0.0,1.0,0.0,0.0
@@ -2869,34 +2869,34 @@ Tier-1,WASP-39b,CH4,pca_recon -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.972,0.0
 Tier-1,WASP-39b,CH4,margin -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.972,0.0
 Tier-1,WASP-39b,CH4,ensemble -> AIRS-only,absent,1.0,0.0,0.0,1.0,0.972,0.0
 Tier-1,WASP-39b,CH4,"amplitude flag, AIRS-only elsewhere",absent,1.0,0.0,0.0,1.0,0.972,0.0
-Tier-1,WASP-39b,H2O,published,present,0.644,0.476,0.336,0.188,0.972,0.0
-Tier-1,WASP-39b,H2O,no-optical,present,0.931,0.88,0.102,0.018,0.972,0.0
-Tier-1,WASP-39b,H2O,AIRS-only,present,0.819,0.744,0.15,0.106,0.972,0.0
-Tier-1,WASP-39b,H2O,shape flag,present,0.745,0.622,0.246,0.132,0.972,0.0
-Tier-1,WASP-39b,H2O,haze-retrained,present,0.931,0.888,0.086,0.026,0.972,0.0
-Tier-1,WASP-39b,H2O,haze+deck-retrained,present,0.942,0.908,0.068,0.024,0.972,0.0
-Tier-1,WASP-39b,H2O,the method,present,0.926,0.878,0.096,0.026,0.972,0.0
-Tier-1,WASP-39b,H2O,"census, same haze design",present,0.931,0.888,0.086,0.026,0.972,0.0
-Tier-1,WASP-39b,H2O,knn -> AIRS-only,present,0.644,0.476,0.336,0.188,0.972,0.0
-Tier-1,WASP-39b,H2O,mahalanobis -> AIRS-only,present,0.644,0.474,0.34,0.186,0.972,0.0
-Tier-1,WASP-39b,H2O,pca_recon -> AIRS-only,present,0.69,0.544,0.292,0.164,0.972,0.0
-Tier-1,WASP-39b,H2O,margin -> AIRS-only,present,0.706,0.566,0.28,0.154,0.972,0.0
-Tier-1,WASP-39b,H2O,ensemble -> AIRS-only,present,0.714,0.602,0.224,0.174,0.972,0.0
-Tier-1,WASP-39b,H2O,"amplitude flag, AIRS-only elsewhere",present,0.929,0.884,0.09,0.026,0.972,0.0
-Tier-1,WASP-39b,CO2,published,,,0.008,0.026,0.966,0.972,0.0
-Tier-1,WASP-39b,CO2,no-optical,,,0.026,0.05,0.924,0.972,0.0
-Tier-1,WASP-39b,CO2,AIRS-only,,,0.056,0.08,0.864,0.972,0.0
-Tier-1,WASP-39b,CO2,shape flag,,,0.03,0.074,0.896,0.972,0.0
-Tier-1,WASP-39b,CO2,haze-retrained,,,0.054,0.078,0.868,0.972,0.0
-Tier-1,WASP-39b,CO2,haze+deck-retrained,,,0.076,0.078,0.846,0.972,0.0
-Tier-1,WASP-39b,CO2,the method,,,0.054,0.076,0.87,0.972,0.0
-Tier-1,WASP-39b,CO2,"census, same haze design",,,0.054,0.078,0.868,0.972,0.0
-Tier-1,WASP-39b,CO2,knn -> AIRS-only,,,0.008,0.026,0.966,0.972,0.0
-Tier-1,WASP-39b,CO2,mahalanobis -> AIRS-only,,,0.012,0.026,0.962,0.972,0.0
-Tier-1,WASP-39b,CO2,pca_recon -> AIRS-only,,,0.024,0.028,0.948,0.972,0.0
-Tier-1,WASP-39b,CO2,margin -> AIRS-only,,,0.016,0.052,0.932,0.972,0.0
-Tier-1,WASP-39b,CO2,ensemble -> AIRS-only,,,0.024,0.04,0.936,0.972,0.0
-Tier-1,WASP-39b,CO2,"amplitude flag, AIRS-only elsewhere",,,0.054,0.076,0.87,0.972,0.0
+Tier-1,WASP-39b,H2O,published,present,0.626,0.458,0.336,0.206,0.972,0.0
+Tier-1,WASP-39b,H2O,no-optical,present,0.93,0.88,0.1,0.02,0.972,0.0
+Tier-1,WASP-39b,H2O,AIRS-only,present,0.805,0.73,0.15,0.12,0.972,0.0
+Tier-1,WASP-39b,H2O,shape flag,present,0.723,0.602,0.242,0.156,0.972,0.0
+Tier-1,WASP-39b,H2O,haze-retrained,present,0.925,0.876,0.098,0.026,0.972,0.0
+Tier-1,WASP-39b,H2O,haze+deck-retrained,present,0.936,0.896,0.08,0.024,0.972,0.0
+Tier-1,WASP-39b,H2O,the method,present,0.92,0.866,0.108,0.026,0.972,0.0
+Tier-1,WASP-39b,H2O,"census, same haze design",present,0.925,0.876,0.098,0.026,0.972,0.0
+Tier-1,WASP-39b,H2O,knn -> AIRS-only,present,0.626,0.458,0.336,0.206,0.972,0.0
+Tier-1,WASP-39b,H2O,mahalanobis -> AIRS-only,present,0.627,0.458,0.338,0.204,0.972,0.0
+Tier-1,WASP-39b,H2O,pca_recon -> AIRS-only,present,0.674,0.524,0.3,0.176,0.972,0.0
+Tier-1,WASP-39b,H2O,margin -> AIRS-only,present,0.687,0.546,0.282,0.172,0.972,0.0
+Tier-1,WASP-39b,H2O,ensemble -> AIRS-only,present,0.7,0.59,0.22,0.19,0.972,0.0
+Tier-1,WASP-39b,H2O,"amplitude flag, AIRS-only elsewhere",present,0.923,0.872,0.102,0.026,0.972,0.0
+Tier-1,WASP-39b,CO2,published,,,0.008,0.032,0.96,0.972,0.0
+Tier-1,WASP-39b,CO2,no-optical,,,0.03,0.05,0.92,0.972,0.0
+Tier-1,WASP-39b,CO2,AIRS-only,,,0.068,0.086,0.846,0.972,0.0
+Tier-1,WASP-39b,CO2,shape flag,,,0.038,0.076,0.886,0.972,0.0
+Tier-1,WASP-39b,CO2,haze-retrained,,,0.05,0.094,0.856,0.972,0.0
+Tier-1,WASP-39b,CO2,haze+deck-retrained,,,0.082,0.094,0.824,0.972,0.0
+Tier-1,WASP-39b,CO2,the method,,,0.05,0.092,0.858,0.972,0.0
+Tier-1,WASP-39b,CO2,"census, same haze design",,,0.05,0.094,0.856,0.972,0.0
+Tier-1,WASP-39b,CO2,knn -> AIRS-only,,,0.008,0.032,0.96,0.972,0.0
+Tier-1,WASP-39b,CO2,mahalanobis -> AIRS-only,,,0.012,0.032,0.956,0.972,0.0
+Tier-1,WASP-39b,CO2,pca_recon -> AIRS-only,,,0.024,0.034,0.942,0.972,0.0
+Tier-1,WASP-39b,CO2,margin -> AIRS-only,,,0.024,0.046,0.93,0.972,0.0
+Tier-1,WASP-39b,CO2,ensemble -> AIRS-only,,,0.03,0.048,0.922,0.972,0.0
+Tier-1,WASP-39b,CO2,"amplitude flag, AIRS-only elsewhere",,,0.05,0.094,0.856,0.972,0.0
 Tier-1,WASP-39b,NH3,published,,,0.0,0.0,1.0,0.972,0.0
 Tier-1,WASP-39b,NH3,no-optical,,,0.0,0.0,1.0,0.972,0.0
 Tier-1,WASP-39b,NH3,AIRS-only,,,0.0,0.0,1.0,0.972,0.0

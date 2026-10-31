@@ -15,11 +15,11 @@ haze3e7         knn                               0.454
 haze3e7 mahalanobis                               0.446
 == share flagged among correct labels vs errors, haze3e7 (optical)
 optical fires on 99.8 % of hazed planets
-T 5.252590216963812 0.47174031107860787
+T 49.27333325369163 0.47174031107860787
 == simulation scored as the panel is: majority of four, split or withheld one half (%), mean over molecules
     case  published  AIRS  haze  method
-   clean      82.91 74.84 81.87   77.74
- haze3e7      61.99 74.42 73.69   73.27
+   clean      82.91 74.84 81.87   77.55
+ haze3e7      61.99 74.42 73.69   73.32
 white_x2      72.62 69.29 72.81   70.45
 white_x3      68.00 66.51 68.26   63.15
 clean Spearman vs JWST panel -0.71, vs Tier-1 panel -0.56

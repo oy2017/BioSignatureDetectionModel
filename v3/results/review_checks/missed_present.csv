@@ -1,5 +1,5 @@
 planet,molecule,verdict,twin,airs,method,cause
-TOI-270d,CH4,split,0.625,present,absent,"below 1.95 um, AIRS-only finds it"
+TOI-270d,CH4,split,0.625,present,present,"below 1.95 um, AIRS-only finds it"
 TOI-270d,CO2,absent,0.055,absent,absent,coverage
 K2-18b,CH4,absent,0.98,present,present,"below 1.95 um, AIRS-only finds it"
 K2-18b-alt,CH4,absent,1.0,present,present,"below 1.95 um, AIRS-only finds it"

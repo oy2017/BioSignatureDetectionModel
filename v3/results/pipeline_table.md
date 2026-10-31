@@ -1,21 +1,21 @@
 Designs on the real panel
-| Design | Right / wrong / split or withheld | Score of 66, JWST precision | Gain over published (95 % interval) | Score of 50, labels passing the mask control | Score of 66, Tier-1 noise | Gain over published (95 % interval) | Methane found of 8, JWST / Tier-1 |
+| Design | Right / wrong / split or withheld | Score of 64, JWST precision | Gain over published (95 % interval) | Score of 47, labels passing the mask control | Score of 64, Tier-1 noise | Gain over published (95 % interval) | Methane found of 8, JWST / Tier-1 |
 | :-- | :-- | --: | :-- | --: | --: | :-- | :-- |
-| Calling every label absent | 38 / 26 / 0 | 38.0 | −5.5 | 34.0 | 38.0 | −1.7 | 0 / 0 |
-| Published classifier, all inputs | 39 / 16 / 9 | 43.5 |  | 38.5 | 39.7 |  | 0 / 0.0 |
+| Calling every label absent | 38 / 26 / 0 | 38.0 | −5.5 | 34.0 | 38.0 | −1.6 | 0 / 0 |
+| Published classifier, all inputs | 39 / 16 / 9 | 43.5 |  | 38.5 | 39.6 |  | 0 / 0.0 |
 | No-optical input everywhere | 45 / 14 / 5 | 47.5 | +4.0 (−0.4 to 9.3) | 40.0 | 41.0 | +1.3 (0.3 to 2.6) | 0 / 0.1 |
-| AIRS-only input everywhere | 50 / 13 / 1 | 50.5 | +7.0 (0.5 to 13.0) | 43.5 | 41.4 | +1.7 (−0.3 to 3.8) | 7 / 1.7 |
+| AIRS-only input everywhere | 50 / 14 / 0 | 50.0 | +6.5 (0.0 to 12.5) | 43.0 | 41.4 | +1.7 (−0.3 to 3.8) | 7 / 1.7 |
 | Margin rule → AIRS-only input | 44 / 15 / 5 | 46.5 | +3.0 (0.0 to 6.2) | 40.0 | 39.7 | +0.1 (−0.4 to 0.5) | 1 / 0.2 |
 | Ensemble rule → AIRS-only input | 46 / 17 / 1 | 46.5 | +3.0 (0.4 to 6.2) | 40.0 | 40.3 | +0.7 (−0.1 to 1.5) | 2 / 0.8 |
 | k-NN distance rule → AIRS-only input | 42 / 16 / 6 | 45.0 | +1.5 (−1.5 to 5.4) | 40.5 | 40.7 | +1.1 (−0.4 to 2.7) | 3 / 1.5 |
-| Mahalanobis rule → AIRS-only input | 44 / 14 / 6 | 47.0 | +3.5 (0.0 to 7.7) | 42.0 | 40.9 | +1.2 (−0.3 to 2.9) | 5 / 1.6 |
+| Mahalanobis rule → AIRS-only input | 44 / 14 / 6 | 47.0 | +3.5 (0.0 to 7.7) | 42.0 | 40.8 | +1.2 (−0.3 to 3.0) | 5 / 1.6 |
 | PCA rule → AIRS-only input | 44 / 15 / 5 | 46.5 | +3.0 (−0.6 to 7.4) | 41.5 | 40.5 | +0.8 (−0.0 to 1.9) | 5 / 1.1 |
-| Shape flag → AIRS-only input | 47 / 12 / 5 | 49.5 | +6.0 (1.0 to 10.9) | 42.5 | 41.3 | +1.7 (0.3 to 3.2) | 5 / 1.3 |
-| Haze-retrained design everywhere | 47 / 14 / 3 | 48.5 | +5.0 (0.0 to 10.3) | 41.5 | 41.1 | +1.5 (0.1 to 2.8) | 2 / 0.3 |
-| Haze+deck-retrained design everywhere | 48 / 12 / 4 | 50.0 | +6.5 (1.1 to 12.1) | 42.0 | 41.6 | +2.0 (0.3 to 3.5) | 2 / 0.6 |
-| The routing method | 50 / 11 / 3 | 51.5 | +8.0 (2.2 to 13.7) | 43.5 | 41.9 | +2.3 (0.9 to 3.8) | 5 / 1.2 |
+| Shape flag → AIRS-only input | 47 / 11 / 6 | 50.0 | +6.5 (1.1 to 11.5) | 43.0 | 41.3 | +1.7 (0.3 to 3.2) | 6 / 1.3 |
+| Haze-retrained design everywhere | 46 / 14 / 4 | 48.0 | +4.5 (−0.6 to 10.1) | 41.0 | 41.1 | +1.5 (0.1 to 2.8) | 2 / 0.3 |
+| Haze+deck-retrained design everywhere | 48 / 11 / 5 | 50.5 | +7.0 (1.6 to 12.6) | 42.5 | 41.6 | +2.0 (0.3 to 3.5) | 2 / 0.6 |
+| The routing method | 50 / 10 / 4 | 52.0 | +8.5 (2.5 to 14.1) | 44.0 | 41.9 | +2.3 (0.9 to 3.8) | 6 / 1.2 |
 | Amplitude flag, AIRS-only input elsewhere | 52 / 12 / 0 | 52.0 | +8.5 (1.8 to 14.8) | 44.0 | 41.9 | +2.3 (0.4 to 4.2) | 7 / 1.6 |
-| Muting census in place of the amplitude flag | 51 / 8 / 5 | 53.5 | +10.0 (4.4 to 15.4) | 44.5 | 42.8 | +3.1 (1.5 to 5.0) | 6 / 1.3 |
+| Muting census in place of the amplitude flag | 51 / 9 / 4 | 53.0 | +9.5 (3.9 to 14.8) | 44.5 | 42.3 | +2.6 (1.1 to 4.3) | 6 / 1.3 |
 
 Designs in simulation
 | Design | Clean | Haze 3 × 10⁷ | Confined haze | Deck 10² Pa | Spots 20 % | Noise × 2 | Muted × 3 |
@@ -77,7 +77,7 @@ Table D1
 | WASP-94Ab | 83 | 8.87 | 5.85 | 0.48 | upper | 3.30 (3.09-3.59) | 1.47 | yes |
 | HIP67522b | 41 | 4.28 | 8.36 | 0.48 | none | no twin |  | no twin |
 | HAT-P-12b | 103 | 11.37 | 5.39 | 0.48 | upper | 5.34 (4.92-5.90) | 1.98 | yes |
-| WASP-39b | 103 | 6.94 | 5.23 | 0.47 | upper | 3.71 (3.65-3.78) | 2.04 | yes |
+| WASP-39b | 103 | 6.91 | 5.23 | 0.47 | upper | 3.71 (3.65-3.78) | 2.04 | yes |
 
 Table D2
 | Spectra | Optical-excess score | Input disagreement | First level of the nest | Second level of the nest | Shape flag | Amplitude flag, upper | Amplitude flag, lower |
@@ -115,16 +115,16 @@ Batches
                                       design  first  n_first  second  n_second  third  n_third
             Published classifier, all inputs   23.5       38    14.5        19    5.5        7
                  No-optical input everywhere   25.5       38    16.0        19    6.0        7
-                  AIRS-only input everywhere   29.5       38    16.0        19    5.0        7
+                  AIRS-only input everywhere   29.0       38    16.0        19    5.0        7
                Margin rule → AIRS-only input   26.0       38    15.5        19    5.0        7
              Ensemble rule → AIRS-only input   26.0       38    15.5        19    5.0        7
         k-NN distance rule → AIRS-only input   25.5       38    14.0        19    5.5        7
           Mahalanobis rule → AIRS-only input   26.0       38    15.5        19    5.5        7
                   PCA rule → AIRS-only input   26.0       38    15.5        19    5.0        7
-                Shape flag → AIRS-only input   28.5       38    16.0        19    5.0        7
-            Haze-retrained design everywhere   27.0       38    15.5        19    6.0        7
-       Haze+deck-retrained design everywhere   28.0       38    16.5        19    5.5        7
-                          The routing method   29.5       38    16.0        19    6.0        7
+                Shape flag → AIRS-only input   29.0       38    16.0        19    5.0        7
+            Haze-retrained design everywhere   26.5       38    15.5        19    6.0        7
+       Haze+deck-retrained design everywhere   28.0       38    17.0        19    5.5        7
+                          The routing method   30.0       38    16.0        19    6.0        7
    Amplitude flag, AIRS-only input elsewhere   30.0       38    16.0        19    6.0        7
-Muting census in place of the amplitude flag   30.5       38    16.5        19    6.5        7
+Muting census in place of the amplitude flag   30.5       38    16.5        19    6.0        7
 

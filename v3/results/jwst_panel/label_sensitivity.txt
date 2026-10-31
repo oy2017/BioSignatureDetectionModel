@@ -1,14 +1,14 @@
 Scores under the label audit; right 1, split or withheld 0.5, wrong 0; difference from the re-implemented classifier with a 95 % bootstrap over planets
 
 == frozen: 64 labels (38 absent, 26 present; calling everything absent scores 38)
-  JWST: published 43.5; no-optical 47.5 (+4.0; -0.4,+9.3); AIRS-only 50.0 (+6.5; +0.0,+12.5); shape flag 50.0 (+6.5; +1.1,+11.5); haze-retrained 48.0 (+4.5; -0.6,+10.1); haze+deck-retrained 50.5 (+7.0; +1.6,+12.6); the method 52.0 (+8.5; +2.5,+14.1); census, same haze design 53.5 (+10.0; +4.4,+15.4)
-  Tier-1: published 39.7; no-optical 41.0 (+1.3; +0.3,+2.6); AIRS-only 41.4 (+1.7; -0.2,+3.8); shape flag 41.3 (+1.7; +0.3,+3.2); haze-retrained 41.1 (+1.5; +0.1,+2.9); haze+deck-retrained 41.6 (+2.0; +0.3,+3.6); the method 41.9 (+2.3; +0.9,+3.8); census, same haze design 42.8 (+3.1; +1.5,+5.0)
+  JWST: published 43.5; no-optical 47.5 (+4.0; -0.4,+9.3); AIRS-only 50.0 (+6.5; +0.0,+12.5); shape flag 50.0 (+6.5; +1.1,+11.5); haze-retrained 48.0 (+4.5; -0.6,+10.1); haze+deck-retrained 50.5 (+7.0; +1.6,+12.6); the method 52.0 (+8.5; +2.5,+14.1); census, same haze design 53.0 (+9.5; +3.9,+14.8)
+  Tier-1: published 39.6; no-optical 41.0 (+1.3; +0.3,+2.6); AIRS-only 41.4 (+1.7; -0.2,+3.8); shape flag 41.3 (+1.7; +0.3,+3.2); haze-retrained 41.1 (+1.5; +0.1,+2.9); haze+deck-retrained 41.6 (+2.0; +0.3,+3.6); the method 41.9 (+2.3; +0.9,+3.8); census, same haze design 42.3 (+2.6; +1.1,+4.3)
 
 == corrected: 65 labels (39 absent, 26 present; calling everything absent scores 39)
-  JWST: published 45.0; no-optical 49.0 (+4.0; +0.0,+9.4); AIRS-only 51.0 (+6.0; -1.1,+12.6); shape flag 50.5 (+5.5; -0.6,+11.1); haze-retrained 49.5 (+4.5; -0.5,+10.1); haze+deck-retrained 51.0 (+6.0; +0.0,+12.1); the method 52.5 (+7.5; +0.6,+13.9); census, same haze design 54.0 (+9.0; +2.6,+15.1)
-  Tier-1: published 40.8; no-optical 42.1 (+1.3; +0.2,+2.5); AIRS-only 42.5 (+1.7; -0.5,+3.8); shape flag 42.4 (+1.6; +0.1,+3.1); haze-retrained 42.2 (+1.4; -0.1,+2.7); haze+deck-retrained 42.6 (+1.8; +0.0,+3.4); the method 43.0 (+2.2; +0.7,+3.7); census, same haze design 43.8 (+3.0; +1.2,+4.9)
+  JWST: published 45.0; no-optical 49.0 (+4.0; +0.0,+9.4); AIRS-only 51.0 (+6.0; -1.1,+12.6); shape flag 50.5 (+5.5; -0.6,+11.1); haze-retrained 49.5 (+4.5; -0.5,+10.1); haze+deck-retrained 51.0 (+6.0; +0.0,+12.1); the method 52.5 (+7.5; +0.6,+13.9); census, same haze design 53.5 (+8.5; +2.1,+14.6)
+  Tier-1: published 40.8; no-optical 42.1 (+1.3; +0.2,+2.6); AIRS-only 42.5 (+1.7; -0.5,+3.8); shape flag 42.4 (+1.6; +0.1,+3.1); haze-retrained 42.2 (+1.4; -0.1,+2.8); haze+deck-retrained 42.6 (+1.8; +0.1,+3.4); the method 43.0 (+2.2; +0.7,+3.7); census, same haze design 43.3 (+2.5; +0.8,+4.2)
 
 == strict: 59 labels (35 absent, 24 present; calling everything absent scores 35)
-  JWST: published 39.0; no-optical 43.0 (+4.0; +0.0,+9.2); AIRS-only 45.0 (+6.0; -1.2,+12.6); shape flag 44.5 (+5.5; -0.6,+11.2); haze-retrained 43.5 (+4.5; -0.5,+10.0); haze+deck-retrained 45.0 (+6.0; +0.0,+11.8); the method 46.5 (+7.5; +1.0,+13.9); census, same haze design 48.0 (+9.0; +2.6,+15.1)
-  Tier-1: published 35.5; no-optical 36.4 (+0.9; -0.0,+2.0); AIRS-only 37.4 (+1.9; -0.2,+3.9); shape flag 37.0 (+1.6; +0.1,+3.0); haze-retrained 36.5 (+1.0; -0.4,+2.3); haze+deck-retrained 36.9 (+1.4; -0.3,+3.0); the method 37.3 (+1.8; +0.4,+3.3); census, same haze design 38.1 (+2.6; +0.9,+4.5)
+  JWST: published 39.0; no-optical 43.0 (+4.0; +0.0,+9.2); AIRS-only 45.0 (+6.0; -1.2,+12.6); shape flag 44.5 (+5.5; -0.6,+11.2); haze-retrained 43.5 (+4.5; -0.5,+10.0); haze+deck-retrained 45.0 (+6.0; +0.0,+11.8); the method 46.5 (+7.5; +1.0,+13.9); census, same haze design 47.5 (+8.5; +2.0,+14.5)
+  Tier-1: published 35.5; no-optical 36.4 (+0.9; -0.0,+2.0); AIRS-only 37.4 (+1.9; -0.2,+3.9); shape flag 37.0 (+1.6; +0.1,+3.0); haze-retrained 36.5 (+1.0; -0.4,+2.3); haze+deck-retrained 36.9 (+1.4; -0.3,+3.0); the method 37.3 (+1.8; +0.4,+3.3); census, same haze design 37.6 (+2.1; +0.5,+3.7)
 

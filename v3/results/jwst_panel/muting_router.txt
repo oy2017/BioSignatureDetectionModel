@@ -1,53 +1,53 @@
 Prior-extension routing on the real panel (26 reductions): a planet muted beyond the training prior's most muted twin is sent to the retrained design
-  muting flag fires on 11 reductions (point estimate), 10 with P(beyond prior) > 0.95; retrained verdicts exist for 26 of 26
+  muting flag fires on 11 reductions (point estimate), 10 with P(beyond prior) > 0.95; retrained verdicts exist for 25 of 26
 
 router                                                      scored correct  on muting-flagged planets  on the giants   methane present/split/absent
-none                                                            42/59                21/26                22/27               0 / 1 / 7
-either -> AIRS-only                                             49/61                23/28                25/30               5 / 1 / 2
-muting -> retrained haze                                        48/63                27/30                28/31               0 / 1 / 7
-muting (strict) -> retrained haze                               48/63                27/30                28/31               0 / 1 / 7
-either, then muting -> retrained haze                           49/61                23/28                25/30               5 / 1 / 2
-muting -> retrained hazedeck                                    47/62                26/29                27/30               0 / 1 / 7
-muting (strict) -> retrained hazedeck                           47/62                26/29                27/30               0 / 1 / 7
-either, then muting -> retrained hazedeck                       49/61                23/28                25/30               5 / 1 / 2
-muting -> retrained union                                       48/63                27/30                28/31               0 / 1 / 7
-muting (strict) -> retrained union                              48/63                27/30                28/31               0 / 1 / 7
-either, then muting -> retrained union                          49/61                23/28                25/30               5 / 1 / 2
-proxy -> retrained hazedeck, else either -> AIRS-only           51/62                26/29                28/31               4 / 1 / 3
-proxy -> retrained haze, else either -> AIRS-only               52/63                27/30                29/32               4 / 1 / 3
-proxy (two-sided) -> retrained hazedeck, amplified -> withheld, else either -> AIRS-only      51/61                26/29                28/31               4 / 1 / 3
-retrained hazedeck everywhere                                   50/62                26/29                28/31               2 / 2 / 4
-muting -> retrained hazedeck, else either -> AIRS-only          52/62                26/29                28/31               5 / 1 / 2
-retrained hazedeck everywhere, either -> its AIRS-only          51/65                24/29                26/31               6 / 0 / 2
-retrained union everywhere                                      50/62                27/30                29/32               2 / 2 / 4
-muting -> retrained union, else either -> AIRS-only             53/63                27/30                29/32               5 / 1 / 2
-retrained union everywhere, either -> its AIRS-only             51/62                25/29                27/31               6 / 0 / 2
+none                                                            39/55                21/26                22/27               0 / 2 / 6
+either -> AIRS-only                                             47/58                23/28                25/30               6 / 1 / 1
+muting -> retrained haze                                        45/59                27/30                28/31               0 / 2 / 6
+muting (strict) -> retrained haze                               45/59                27/30                28/31               0 / 2 / 6
+either, then muting -> retrained haze                           47/58                23/28                25/30               6 / 1 / 1
+muting -> retrained hazedeck                                    44/58                26/29                27/30               0 / 2 / 6
+muting (strict) -> retrained hazedeck                           44/58                26/29                27/30               0 / 2 / 6
+either, then muting -> retrained hazedeck                       47/58                23/28                25/30               6 / 1 / 1
+muting -> retrained union                                       45/59                27/30                28/31               0 / 2 / 6
+muting (strict) -> retrained union                              45/59                27/30                28/31               0 / 2 / 6
+either, then muting -> retrained union                          47/58                23/28                25/30               6 / 1 / 1
+proxy -> retrained hazedeck, else either -> AIRS-only           47/58                23/28                25/30               6 / 1 / 1
+proxy -> retrained haze, else either -> AIRS-only               47/58                23/28                25/30               6 / 1 / 1
+proxy (two-sided) -> retrained hazedeck, amplified -> withheld, else either -> AIRS-only      47/58                23/28                25/30               6 / 1 / 1
+retrained hazedeck everywhere                                   48/59                26/29                28/31               2 / 3 / 3
+muting -> retrained hazedeck, else either -> AIRS-only          50/59                26/29                28/31               6 / 1 / 1
+retrained hazedeck everywhere, either -> its AIRS-only          49/62                24/29                26/31               6 / 1 / 1
+retrained union everywhere                                      48/59                27/30                29/32               2 / 3 / 3
+muting -> retrained union, else either -> AIRS-only             51/60                27/30                29/32               6 / 1 / 1
+retrained union everywhere, either -> its AIRS-only             49/59                25/29                27/31               6 / 1 / 1
 
-composition-free proxy = catalogue 5-scale-height modulation / real dispersion; population (own deck) median-90-95-99th-max 4.18/5.01/8.68/26.22, clear twins max 5.25 (the threshold used), 1st percentile 0.47
+composition-free proxy = catalogue 5-scale-height modulation / real dispersion; population (own deck) median-90-95-99th-max 4.18/5.03/8.72/49.53, clear twins max 49.27 (the threshold used), 1st percentile 0.47
 per planet: muting, max in prior, P(beyond prior), flag; proxy and its flag (PX, or AMP for the other direction); labels that change between 'none' and 'muting -> retrained hazedeck' [label]
-  TOI-270d     muting  0.66  prior max 1.97  P 0.00         proxy   3.08      -
+  TOI-270d     muting  0.61  prior max 1.97  P 0.00         proxy   2.84      -
   K2-18b       muting  0.72  prior max 2.62  P 0.00         proxy   1.49      -
   K2-18b-alt   muting  1.71  prior max 2.65  P 0.25         proxy   3.34      -
-  TOI-421b     muting  3.39  prior max 3.67  P 0.48         proxy   5.39 PX   -
-  HAT-P-18b    muting  3.70  prior max 3.27  P 0.82  FLAG   proxy   7.99 PX   -
-  WASP-107b    muting  4.45  prior max 2.19  P 1.00  FLAG*  proxy   9.31 PX   -
+  TOI-421b     muting  3.39  prior max 3.67  P 0.48         proxy   5.39      -
+  HAT-P-18b    muting  3.70  prior max 3.27  P 0.82  FLAG   proxy   7.99      -
+  WASP-107b    muting  4.00  prior max 2.18  P 1.00  FLAG*  proxy   8.77      -
   HD189733b    muting  1.73  prior max 2.25  P 0.00         proxy   5.09      -
-  HAT-P-26b    muting  5.32  prior max 2.37  P 1.00  FLAG*  proxy   5.71 PX   CO2: split -> present [present]
-  GJ3470b      muting  3.45  prior max 1.95  P 1.00  FLAG*  proxy  11.70 PX   CO2: split -> present [present]
-  WASP-166b    muting  3.07  prior max 1.78  P 1.00  FLAG*  proxy   6.20 PX   H2O: absent -> present [present]; CO2: absent -> present [present]
-  TOI-1231b    muting  1.55  prior max 1.88  P 0.24         proxy   5.44 PX   -
+  HAT-P-26b    muting  5.32  prior max 2.37  P 1.00  FLAG*  proxy   5.71      CO2: split -> present [present]
+  GJ3470b      muting  3.45  prior max 1.95  P 1.00  FLAG*  proxy  11.70      CO2: split -> present [present]
+  WASP-166b    muting  3.07  prior max 1.78  P 1.00  FLAG*  proxy   6.20      H2O: absent -> present [present]; CO2: absent -> present [present]
+  TOI-1231b    muting  1.55  prior max 1.88  P 0.23         proxy   5.44      -
   K2-18b-hu    muting  2.00  prior max 2.65  P 0.03         proxy   3.92      -
-  TOI-270d-hm  muting  1.04  prior max 1.92  P 0.01         proxy   5.48 PX   -
-  GJ9827d      muting   inf  prior max 3.42  P 0.76         proxy    inf      -
-  WASP-52b     muting  2.26  prior max 2.39  P 0.10         proxy   5.39 PX   -
+  TOI-270d-hm  muting  1.04  prior max 1.92  P 0.02         proxy   5.48      -
+  GJ9827d      muting   inf  prior max 3.42  P 0.77         proxy    inf      -
+  WASP-52b     muting  2.26  prior max 2.39  P 0.09         proxy   5.39      -
   L98-59d      muting   nan  prior max  nan  P  nan         proxy    nan      -
   GJ1214b      muting   nan  prior max  nan  P  nan         proxy    nan      -
-  LTT3780c     muting  0.97  prior max 2.69  P 0.07         proxy   2.08      -
-  WASP-80b     muting  2.89  prior max 1.66  P 1.00  FLAG*  proxy  11.93 PX   H2O: split -> present [present]
-  HD209458b    muting  2.35  prior max 1.33  P 1.00  FLAG*  proxy   8.12 PX   H2O: split -> present [amb.]
+  LTT3780c     muting  0.99  prior max 2.69  P 0.08         proxy   2.13      -
+  WASP-80b     muting  2.89  prior max 1.66  P 1.00  FLAG*  proxy  11.93      H2O: split -> present [present]
+  HD209458b    muting  2.35  prior max 1.33  P 1.00  FLAG*  proxy   8.12      H2O: split -> present [amb.]
   WASP-96b     muting  1.49  prior max 1.94  P 0.00         proxy   3.36      -
-  WASP-17b     muting  3.99  prior max 1.96  P 1.00  FLAG*  proxy   7.23 PX   -
-  WASP-94Ab    muting  3.30  prior max 1.47  P 1.00  FLAG*  proxy   8.87 PX   -
-  HIP67522b    muting  0.11  prior max 3.29  P 0.00         proxy   0.32 AMP  -
-  HAT-P-12b    muting  5.34  prior max 1.98  P 1.00  FLAG*  proxy  11.37 PX   -
-  WASP-39b     muting  3.73  prior max 2.04  P 1.00  FLAG*  proxy   6.94 PX   -
+  WASP-17b     muting  3.99  prior max 1.96  P 1.00  FLAG*  proxy   7.23      -
+  WASP-94Ab    muting  3.30  prior max 1.47  P 1.00  FLAG*  proxy   8.87      -
+  HIP67522b    muting   nan  prior max  nan  P  nan         proxy    nan      -
+  HAT-P-12b    muting  5.34  prior max 1.98  P 1.00  FLAG*  proxy  11.37      -
+  WASP-39b     muting  3.71  prior max 2.04  P 1.00  FLAG*  proxy   6.91      -

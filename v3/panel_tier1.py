@@ -74,7 +74,6 @@ def main(n=500):
                 for name in DESIGNS:
                     pr = votes[name] >= 3; ab = votes[name] <= 1; sp = ~(pr | ab)
                     if name in ("the method", "amplitude flag, AIRS-only elsewhere"): sp = sp | low; pr = pr & ~low; ab = ab & ~low
-                    if name.startswith("census") and pl == "HIP67522b": sp = np.ones_like(sp); pr = np.zeros_like(pr); ab = np.zeros_like(ab)   # the census's own reading: nine times more featured than its twin, withheld as the lower cut does
                     cr = np.nan if lab is None else float(np.mean((pr if lab == "present" else ab) + 0.5 * sp))
                     rows.append(dict(precision=prec, planet=pl, molecule=m, design=name, label=lab, credit=cr, present=float(pr.mean()), split=float(sp.mean()), absent=float(ab.mean()), up=float(up.mean()), low=float(low.mean())))
         print(pl, "done", flush=True)

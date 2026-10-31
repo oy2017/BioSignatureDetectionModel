@@ -42,12 +42,12 @@ def main():
     Tj = pd.read_csv(os.path.join(OUT, "panel_tier1.csv")); Tj = Tj[Tj.precision == "JWST"]
     def from_t1(d):
         q = Tj[Tj.design == d].set_index(["planet", "molecule"]); return pd.Series(np.where(q.present == 1, "present", np.where(q.absent == 1, "absent", "split")), index=q.index)
-    rows = [("Published classifier, all inputs", "published, all inputs", V["published"]), ("No-optical input everywhere", "no-optical everywhere", by_set("faithful", "no_optical")),
-            ("AIRS-only input everywhere", "AIRS-only everywhere", V["AIRS-only everywhere"]), ("Margin rule → AIRS-only input", "margin -> AIRS-only", from_t1("margin -> AIRS-only")), ("Ensemble rule → AIRS-only input", "ensemble -> AIRS-only", from_t1("ensemble -> AIRS-only")),
+    rows = [("Published classifier, all inputs", "published, all inputs", from_t1("published")), ("No-optical input everywhere", "no-optical everywhere", from_t1("no-optical")),
+            ("AIRS-only input everywhere", "AIRS-only everywhere", from_t1("AIRS-only")), ("Margin rule → AIRS-only input", "margin -> AIRS-only", from_t1("margin -> AIRS-only")), ("Ensemble rule → AIRS-only input", "ensemble -> AIRS-only", from_t1("ensemble -> AIRS-only")),
             ("k-NN distance rule → AIRS-only input", "knn -> AIRS-only", from_t1("knn -> AIRS-only")), ("Mahalanobis rule → AIRS-only input", "mahalanobis -> AIRS-only", from_t1("mahalanobis -> AIRS-only")), ("PCA rule → AIRS-only input", "pca_recon -> AIRS-only", from_t1("pca_recon -> AIRS-only")),
-            ("Shape flag → AIRS-only input", "shape flag -> AIRS-only", V["shape flag -> AIRS-only"]),
-            ("Haze-retrained design everywhere", "retrained (haze) everywhere", by_set("haze", "all")), ("Haze+deck-retrained design everywhere", "retrained (hazedeck) everywhere", by_set("hazedeck", "all")),
-            ("The routing method", "pipeline (haze, flag observed), two-sided", V[RULE]), ("Amplitude flag, AIRS-only input elsewhere", "amplitude flag, AIRS-only elsewhere", from_t1("amplitude flag, AIRS-only elsewhere")), ("Muting census in place of the amplitude flag", None, census)]
+            ("Shape flag → AIRS-only input", "shape flag -> AIRS-only", from_t1("shape flag")),
+            ("Haze-retrained design everywhere", "retrained (haze) everywhere", from_t1("haze-retrained")), ("Haze+deck-retrained design everywhere", "retrained (hazedeck) everywhere", from_t1("haze+deck-retrained")),
+            ("The routing method", "pipeline (haze, flag observed), two-sided", from_t1("the method")), ("Amplitude flag, AIRS-only input elsewhere", "amplitude flag, AIRS-only elsewhere", from_t1("amplitude flag, AIRS-only elsewhere")), ("Muting census in place of the amplitude flag", None, census)]
     lab = labels.notna(); idx = labels.index[lab]; plan = np.array([BASE(p) for p in idx.get_level_values(0)]); units = sorted(set(plan)); cnt = pd.Series(plan).value_counts().loc[units].to_numpy()
     rng = np.random.default_rng(405); res = rng.integers(0, len(units), (20000, len(units))); den = cnt[res].sum(1)
     credit = {name: (v.reindex(idx) == labels[lab]).astype(float).where(v.reindex(idx) != "split", 0.5) for name, _, v in rows}; ref = credit[rows[0][0]]; per = lambda c: c.groupby(plan).sum().loc[units].to_numpy()
@@ -58,7 +58,7 @@ def main():
     t1ch4 = T1[(T1.precision == "Tier-1") & (T1.molecule == "CH4") & T1.planet.isin(RR.METHANE)].groupby("design").present.sum(); passes = CTL.reindex(idx) == "passes"
     # the census row is like for like with the method: the same haze-retrained design and the shape flag elsewhere, with HIP 67522 b withheld (panel_tier1.py)
     credit[rows[-1][0]] = t1j["census, same haze design"].copy(); census_v = pd.Series(index=idx, dtype=object)
-    md.append("| Design | Right / wrong / split or withheld | Score of 66, JWST precision | Gain over published (95 % interval) | Score of 50, labels passing the mask control | Score of 66, Tier-1 noise | Gain over published (95 % interval) | Methane found of 8, JWST / Tier-1 |")
+    md.append("| Design | Right / wrong / split or withheld | Score of 64, JWST precision | Gain over published (95 % interval) | Score of 47, labels passing the mask control | Score of 64, Tier-1 noise | Gain over published (95 % interval) | Methane found of 8, JWST / Tier-1 |")
     md.append("| :-- | :-- | --: | :-- | --: | --: | :-- | :-- |")
     nabs = int((labels[lab] == "absent").sum()); nabsc = int(((labels[lab] == "absent") & passes).sum())
     md.append(f"| Calling every label absent | {nabs} / {len(idx) - nabs} / 0 | {nabs:.1f} | {nabs - credit[rows[0][0]].sum():+.1f} | {nabsc:.1f} | {nabs:.1f} | {nabs - t1[T1NAME[rows[0][0]]].sum():+.1f} | 0 / 0 |".replace("-", "−"))

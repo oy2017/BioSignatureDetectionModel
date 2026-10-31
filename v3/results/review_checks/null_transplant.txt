@@ -1,23 +1,15 @@
 Numba not installed, using numpy instead
 ['name', 'p_radius', 'p_mass', 'atm temperature', 's temperature', 's radius', 's mass', 'sma', 'tier1_transits', 'tier2_transits', 'tier3_transits', 't14_s', 'depth_pct', 'max_tier', 'atm base_pressure', 'atm top_pressure', 'co_ratio', 'mh', 'label_co', 'atm fill_gas', 'in_box', 'modulation_5H', 'sigma_tier2', 'atm H2O', 'atm CO', 'atm CO2', 'atm NH3', 'atm CH4', 'atm O3']
 NULL TRANSPLANT: CH4 votes (of 4) with bins below 1.95 um replaced by twin: real | twin with CH4 as published | twin with CH4=-7 (methane-free) 
-TOI-270d [1, 4, 3, 2]
+TOI-270d [2, 4, 3, 2]
 TOI-270d-hm [0, 4, 4, 0]
 K2-18b [0, 4, 0, 0]
 K2-18b-alt [1, 4, 1, 1]
 K2-18b-hu [1, 4, 2, 1]
 TOI-1231b [2, 4, 4, 3]
-LTT3780c [0, 4, 1, 0]
+LTT3780c [1, 4, 1, 1]
 repaired (>=3): published 7  methane-free 3  flat 1
 
 HIP 67522 b
-{'p_radius': np.float64(9.987201831), 'p_mass': np.float64(186.34), 'atm temperature': np.float64(1167.600791), 's radius': np.float64(1.38), 'tier1_transits': np.float64(3.0), 'modulation_5H': np.float64(0.00015768767787932765)}
-scale factor 9.04 real corrected ppm 497 twin ppm 55
-real {'all': {'CH4': 0, 'H2O': 0, 'CO2': 4, 'NH3': 0}, 'airs_only': {'CH4': 0, 'H2O': 0, 'CO2': 4, 'NH3': 2}}
-twin catalogue mass, noise-free {'all': {'CH4': 0, 'H2O': 0, 'CO2': 2, 'NH3': 0}, 'airs_only': {'CH4': 0, 'H2O': 1, 'CO2': 4, 'NH3': 0}}
-twin x scale, noise-free {'all': {'CH4': 0, 'H2O': 0, 'CO2': 2, 'NH3': 0}, 'airs_only': {'CH4': 0, 'H2O': 1, 'CO2': 4, 'NH3': 0}}
-twin catalogue mass, 200 draws real errors all CO2 majority freq 0.07 split 0.19
-twin catalogue mass, 200 draws real errors airs_only CO2 majority freq 0.41 split 0.17
-twin x scale, 200 draws real errors all CO2 majority freq 0.23 split 0.42
-twin x scale, 200 draws real errors airs_only CO2 majority freq 1.00 split 0.00
-catalogue p_mass value 186.34
+{'p_radius': np.float64(9.987201831), 'p_mass': np.float64(13.8), 'atm temperature': np.float64(1167.600791), 's radius': np.float64(1.38), 'tier1_transits': np.float64(3.0), 'modulation_5H': np.float64(0.0021292407171039068)}
+no clear twin renders at the corrected mass, 13.8 Earth masses: the atmosphere is not bound in the forward model
