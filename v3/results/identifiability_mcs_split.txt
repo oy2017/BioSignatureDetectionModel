@@ -1,0 +1,10 @@
+second  CH4  n=200 present 0.44 credit 0.812 calls present 0.58; errors 37.5, on undecidable 23.5 (0.63), on decidable 14.0; undecidable labels 0.190; balanced credit 0.831
+second  H2O  n=200 present 0.51 credit 0.762 calls present 0.42; errors 47.5, on undecidable 24.5 (0.52), on decidable 23.0; undecidable labels 0.235; balanced credit 0.763
+second  CO2  n=200 present 0.01 credit 0.973 calls present 0.01; errors 5.5, on undecidable 3.5 (0.64), on decidable 2.0; undecidable labels 0.140; balanced credit 0.615
+second  NH3  n=200 present 0.02 credit 0.965 calls present 0.03; errors 7.0, on undecidable 3.5 (0.50), on decidable 3.5; undecidable labels 0.070; balanced credit 0.737
+second  all  labels 800: accuracy 0.878; errors on undecidable 55.0, on decidable 42.5, share 0.56
+POP-I   CH4  n=197 present 0.36 credit 0.845 calls present 0.29; errors 30.5, on undecidable 28.5 (0.93), on decidable 2.0; undecidable labels 0.320; balanced credit 0.819
+POP-I   H2O  n=197 present 0.38 credit 0.782 calls present 0.17; errors 43.0, on undecidable 38.0 (0.88), on decidable 5.0; undecidable labels 0.574; balanced credit 0.722
+POP-I   CO2  n=197 present 0.43 credit 0.784 calls present 0.28; errors 42.5, on undecidable 40.0 (0.94), on decidable 2.5; undecidable labels 0.477; balanced credit 0.765
+POP-I   NH3  n=197 present 0.44 credit 0.840 calls present 0.31; errors 31.5, on undecidable 23.5 (0.75), on decidable 8.0; undecidable labels 0.299; balanced credit 0.825
+POP-I   all  labels 788: accuracy 0.813; errors on undecidable 130.0, on decidable 17.5, share 0.88
