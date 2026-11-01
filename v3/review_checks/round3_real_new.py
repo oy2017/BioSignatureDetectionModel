@@ -13,6 +13,6 @@ for p, bs in (('JWST', (('outside the panel', ('fourth', 'independent')), ('all'
         q = A[(A.precision == p) & A.batch.isin(b)]
         for d in ('the method', 'published'):
             n, a, c, g, lo, hi, np_, sd = diff(q, d)
-            need = (1.96 * sd / np.sqrt(n) / (g / n)) ** 2 * n if g > 0 else float('nan')
+            need = n * (1.96 * sd / g) ** 2 if g > 0 else float('nan')
             L.append(f'{p:<7}{tag:<18}n={n:<4}planets={np_:<3}{d:<11}ensemble {a:5.1f} this {c:5.1f} {g:+5.1f} ({lo:+.1f},{hi:+.1f}); labels needed for an interval just above zero if this gain per label is real: {need:.0f}')
 t = '\n'.join(L); open('results/round3/round3_real_new.txt', 'w').write(t + '\n'); print(t)

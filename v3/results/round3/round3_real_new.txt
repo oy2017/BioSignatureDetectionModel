@@ -1,8 +1,8 @@
-JWST   outside the panel n=41  planets=25 the method ensemble  35.0 this  29.5  +5.5 (+0.5,+10.5); labels needed for an interval just above zero if this gain per label is real: 1293
-JWST   outside the panel n=41  planets=25 published  ensemble  35.0 this  31.5  +3.5 (-3.5,+10.5); labels needed for an interval just above zero if this gain per label is real: 6601
-JWST   all               n=105 planets=48 the method ensemble  84.0 this  81.5  +2.5 (-6.5,+11.5); labels needed for an interval just above zero if this gain per label is real: 142036
-JWST   all               n=105 planets=48 published  ensemble  84.0 this  75.0  +9.0 (-3.5,+21.5); labels needed for an interval just above zero if this gain per label is real: 20994
-Tier-1 outside the panel n=24  planets=12 the method ensemble  16.9 this  15.9  +1.0 (-2.0,+4.2); labels needed for an interval just above zero if this gain per label is real: 5789
-Tier-1 outside the panel n=24  planets=12 published  ensemble  16.9 this  16.2  +0.7 (-3.9,+6.1); labels needed for an interval just above zero if this gain per label is real: 27546
-Tier-1 all               n=88  planets=35 the method ensemble  63.4 this  57.9  +5.6 (+0.7,+10.6); labels needed for an interval just above zero if this gain per label is real: 6051
-Tier-1 all               n=88  planets=35 published  ensemble  63.4 this  55.8  +7.6 (+0.8,+14.6); labels needed for an interval just above zero if this gain per label is real: 6506
+JWST   outside the panel n=41  planets=25 the method ensemble  35.0 this  29.5  +5.5 (+0.5,+10.5); labels needed for an interval just above zero if this gain per label is real: 32
+JWST   outside the panel n=41  planets=25 published  ensemble  35.0 this  31.5  +3.5 (-3.5,+10.5); labels needed for an interval just above zero if this gain per label is real: 161
+JWST   all               n=105 planets=48 the method ensemble  84.0 this  81.5  +2.5 (-6.5,+11.5); labels needed for an interval just above zero if this gain per label is real: 1353
+JWST   all               n=105 planets=48 published  ensemble  84.0 this  75.0  +9.0 (-3.5,+21.5); labels needed for an interval just above zero if this gain per label is real: 200
+Tier-1 outside the panel n=24  planets=12 the method ensemble  16.9 this  15.9  +1.0 (-2.0,+4.2); labels needed for an interval just above zero if this gain per label is real: 241
+Tier-1 outside the panel n=24  planets=12 published  ensemble  16.9 this  16.2  +0.7 (-3.9,+6.1); labels needed for an interval just above zero if this gain per label is real: 1148
+Tier-1 all               n=88  planets=35 the method ensemble  63.4 this  57.9  +5.6 (+0.7,+10.6); labels needed for an interval just above zero if this gain per label is real: 69
+Tier-1 all               n=88  planets=35 published  ensemble  63.4 this  55.8  +7.6 (+0.8,+14.6); labels needed for an interval just above zero if this gain per label is real: 74
