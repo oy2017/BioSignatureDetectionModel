@@ -4,3 +4,11 @@ H2O n=965 present 0.52: balanced credit ensemble 0.845 classifier 0.757; accurac
 CO2 n=965 present 0.02: balanced credit ensemble 0.663 classifier 0.521; accuracy 0.926 0.970; false-present 0.063 0.013; retrieved errors undecidable 7.0 3.0, decidable 6.0 1.0
 NH3 n=965 present 0.04: balanced credit ensemble 0.936 classifier 0.632; accuracy 0.951 0.941; false-present 0.047 0.033; retrieved errors undecidable 4.0 4.0, decidable 5.0 8.0
 retrieved errors: classifier undecidable 54.5 decidable 51.5; ensemble undecidable 52.0 decidable 25.0
+ten noise draws, mean +- sd, ensemble against classifier
+CH4 balanced credit 0.883 +- 0.003 0.839 +- 0.004; accuracy 0.876 0.832; false-present 0.231 0.291
+H2O balanced credit 0.853 +- 0.006 0.752 +- 0.006; accuracy 0.858 0.749; false-present 0.251 0.182
+CO2 balanced credit 0.731 +- 0.033 0.547 +- 0.022; accuracy 0.922 0.970; false-present 0.071 0.014
+NH3 balanced credit 0.920 +- 0.023 0.660 +- 0.034; accuracy 0.954 0.951; false-present 0.043 0.025
+retrieved 200, errors on decidable labels: ensemble 21.1 +- 2.6, classifier 43.3 +- 3.3
+retrieved 200, errors on undecidable labels: ensemble 58.1 +- 2.1, classifier 56.0 +- 2.4
+classifier minus ensemble, errors on decidable labels, draw 0: 20.0 (9.0,30.0)
