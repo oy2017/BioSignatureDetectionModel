@@ -1,0 +1,6 @@
+965 planets, 200 retrieved; thresholds {'CH4': np.float64(0.7), 'H2O': np.float64(0.73), 'CO2': np.float64(0.43), 'NH3': np.float64(0.54)}
+CH4 n=965 present 0.47: balanced credit ensemble 0.887 classifier 0.843; accuracy 0.881 0.835; false-present 0.224 0.295; retrieved errors undecidable 22.0 24.5, decidable 9.0 17.0
+H2O n=965 present 0.52: balanced credit ensemble 0.845 classifier 0.757; accuracy 0.850 0.753; false-present 0.259 0.174; retrieved errors undecidable 19.0 23.0, decidable 5.0 25.5
+CO2 n=965 present 0.02: balanced credit ensemble 0.663 classifier 0.521; accuracy 0.926 0.970; false-present 0.063 0.013; retrieved errors undecidable 7.0 3.0, decidable 6.0 1.0
+NH3 n=965 present 0.04: balanced credit ensemble 0.936 classifier 0.632; accuracy 0.951 0.941; false-present 0.047 0.033; retrieved errors undecidable 4.0 4.0, decidable 5.0 8.0
+retrieved errors: classifier undecidable 54.5 decidable 51.5; ensemble undecidable 52.0 decidable 25.0
