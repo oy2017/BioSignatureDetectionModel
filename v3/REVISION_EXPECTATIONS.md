@@ -249,3 +249,9 @@ Rule: within each gas and precision, keep the most confident 70 % of present cal
 Correction to W (written 2026-10-31, after the first run): the opening paragraph is wrong about the mechanism. The margin rule is distance of the probability from .5, not from the threshold (U1). Calls on the rarer answer sit near .5, so a single scale declines most of them; thresholds capped at 10 % false-present are not the stated cause.
 
 Results of W, seen grids, post hoc: W1 met in 6 of 6 (stratified adds .044 to .078, flat .007 to .045). W2 met in 5 of 6: difference from the classifier's best stratified rule +.034 to +.055; the photochemical grid at JWST precision has interval (-.007,+.055). W3 not yet tested.
+
+## X. Identifiability under the second population (written 2026-11-01)
+
+Seen before writing this: the run on 200 Mission Candidate Sample planets with FastChem equilibrium chemistry, clear, retrieved under the training prior, leaves 7-24 % of labels undecided against 30-57 % for POP-I on the same planets (`results/identifiability_mcs.txt`). The prevalence was run without a committed expectation.
+
+Written before running: the four re-implemented learners, majority at 10^-4, on the same 200 spectra at Tier-1 noise (one draw, seed fixed in the script). X1: classifier accuracy is at or above its 74-85 % range on POP-I labels only for CO2 and NH3, whose labels are almost all absent. X2: the share of its errors falling on undecidable labels is below POP-I's four fifths, between 40 and 70 %. X3: its errors on decidable labels therefore outnumber those on undecidable labels for CO2 or NH3 only if it calls them present, which I do not expect.

@@ -1,0 +1,5 @@
+n=197 same planets
+CH4 undecided: second population 0.193 (0.137,0.249), POP-I same planets 0.320; away from threshold 0.034 and 0.171; within half a decade 0.24 and 0.20; present 0.44 and 0.36; p_true above 0.5 0.949, below 0.05 0.000
+H2O undecided: second population 0.239 (0.178,0.294), POP-I same planets 0.574; away from threshold 0.068 and 0.481; within half a decade 0.25 and 0.21; present 0.50 and 0.38; p_true above 0.5 0.934, below 0.05 0.000
+CO2 undecided: second population 0.142 (0.096,0.193), POP-I same planets 0.477; away from threshold 0.124 and 0.361; within half a decade 0.02 and 0.21; present 0.01 and 0.43; p_true above 0.5 0.995, below 0.05 0.000
+NH3 undecided: second population 0.071 (0.036,0.107), POP-I same planets 0.299; away from threshold 0.042 and 0.193; within half a decade 0.04 and 0.18; present 0.02 and 0.44; p_true above 0.5 0.990, below 0.05 0.000
