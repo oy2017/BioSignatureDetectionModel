@@ -1,0 +1,17 @@
+Numba not installed, using numpy instead
+50 planets selected, 50 to retrieve, 9 jobs, 100 live points, cap 20000 calls
+  9/50  2492 s  median 28.6 min, 3831 calls per planet
+  18/50  4270 s  median 25.9 min, 3678 calls per planet
+  27/50  5687 s  median 27.4 min, 3987 calls per planet
+  36/50  6822 s  median 21.7 min, 4004 calls per planet
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+  45/50  8273 s  median 21.3 min, 3575 calls per planet
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+  50/50  8746 s  median 21.8 min, 4270 calls per planet
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead

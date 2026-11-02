@@ -1,0 +1,141 @@
+Numba not installed, using numpy instead
+50 planets selected, 50 to retrieve, 9 jobs, 400 live points, cap 80000 calls
+  9/50  10699 s  median 102.7 min, 14344 calls per planet
+Traceback (most recent call last):
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/nestle.py", line 1169, in __call__
+    return self.func(x, *self.args, **self.kwargs)
+  File "/Users/fanyang/BioSignatureDetectionModel/v3/identifiability_calibrate.py", line 126, in loglike
+    wn, d = tm.model()[:2]
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/model/simplemodel.py", line 522, in model
+    contrib.prepare(self, native_grid)
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/contributions/absorption.py", line 315, in prepare
+    for gas, sigma in self.prepare_each(model, wngrid):
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/contributions/absorption.py", line 286, in prepare_each
+    xsec.opacity(temperature, pressure, wngrid) * gas_mix[idx_layer]
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/opacity/opacity.py", line 104, in opacity
+    orig = self.compute_opacity(temperature, pressure, wngrid_filter)
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/opacity/interpolateopacity.py", line 295, in compute_opacity
+    *self.find_closest_index(temperature, logpressure),
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/opacity/interpolateopacity.py", line 78, in find_closest_index
+    def find_closest_index(
+  File "/Users/fanyang/BioSignatureDetectionModel/v3/identifiability_calibrate.py", line 92, in _alarm
+    raise TimeoutError(f"timeout after {timeout} s")
+TimeoutError: timeout after 10800 s
+Traceback (most recent call last):
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/nestle.py", line 1169, in __call__
+    return self.func(x, *self.args, **self.kwargs)
+  File "/Users/fanyang/BioSignatureDetectionModel/v3/identifiability_calibrate.py", line 126, in loglike
+    wn, d = tm.model()[:2]
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/model/simplemodel.py", line 525, in model
+    absorp, tau = self.path_integral(native_grid, False)
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/model/transmission.py", line 185, in path_integral
+    contrib.contribute(
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/contributions/contribution.py", line 292, in contribute
+    contribute_tau(
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/contributions/contribution.py", line 102, in contribute_tau_numpy
+    tau[layer, :] += np.sum(_sigma * _path * _density, axis=0)
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/numpy/_core/fromnumeric.py", line 2333, in _sum_dispatcher
+    def _sum_dispatcher(a, axis=None, dtype=None, out=None, keepdims=None,
+  File "/Users/fanyang/BioSignatureDetectionModel/v3/identifiability_calibrate.py", line 92, in _alarm
+    raise TimeoutError(f"timeout after {timeout} s")
+TimeoutError: timeout after 10800 s
+  18/50  16643 s  median 109.2 min, 13198 calls per planet
+Traceback (most recent call last):
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/nestle.py", line 1169, in __call__
+    return self.func(x, *self.args, **self.kwargs)
+  File "/Users/fanyang/BioSignatureDetectionModel/v3/identifiability_calibrate.py", line 126, in loglike
+    wn, d = tm.model()[:2]
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/model/simplemodel.py", line 525, in model
+    absorp, tau = self.path_integral(native_grid, False)
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/model/transmission.py", line 185, in path_integral
+    contrib.contribute(
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/contributions/contribution.py", line 292, in contribute
+    contribute_tau(
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/contributions/contribution.py", line 102, in contribute_tau_numpy
+    tau[layer, :] += np.sum(_sigma * _path * _density, axis=0)
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/numpy/_core/fromnumeric.py", line 2333, in _sum_dispatcher
+    def _sum_dispatcher(a, axis=None, dtype=None, out=None, keepdims=None,
+  File "/Users/fanyang/BioSignatureDetectionModel/v3/identifiability_calibrate.py", line 92, in _alarm
+    raise TimeoutError(f"timeout after {timeout} s")
+TimeoutError: timeout after 10800 s
+  27/50  26386 s  median 129.3 min, 13282 calls per planet
+Traceback (most recent call last):
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/nestle.py", line 1169, in __call__
+    return self.func(x, *self.args, **self.kwargs)
+  File "/Users/fanyang/BioSignatureDetectionModel/v3/identifiability_calibrate.py", line 126, in loglike
+    wn, d = tm.model()[:2]
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/model/simplemodel.py", line 525, in model
+    absorp, tau = self.path_integral(native_grid, False)
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/model/transmission.py", line 185, in path_integral
+    contrib.contribute(
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/contributions/contribution.py", line 292, in contribute
+    contribute_tau(
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/contributions/contribution.py", line 102, in contribute_tau_numpy
+    tau[layer, :] += np.sum(_sigma * _path * _density, axis=0)
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/numpy/_core/fromnumeric.py", line 2333, in _sum_dispatcher
+    def _sum_dispatcher(a, axis=None, dtype=None, out=None, keepdims=None,
+  File "/Users/fanyang/BioSignatureDetectionModel/v3/identifiability_calibrate.py", line 92, in _alarm
+    raise TimeoutError(f"timeout after {timeout} s")
+TimeoutError: timeout after 10800 s
+Traceback (most recent call last):
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/nestle.py", line 1169, in __call__
+    return self.func(x, *self.args, **self.kwargs)
+  File "/Users/fanyang/BioSignatureDetectionModel/v3/identifiability_calibrate.py", line 126, in loglike
+    wn, d = tm.model()[:2]
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/model/simplemodel.py", line 522, in model
+    contrib.prepare(self, native_grid)
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/contributions/absorption.py", line 315, in prepare
+    for gas, sigma in self.prepare_each(model, wngrid):
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/contributions/absorption.py", line 286, in prepare_each
+    xsec.opacity(temperature, pressure, wngrid) * gas_mix[idx_layer]
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/opacity/opacity.py", line 104, in opacity
+    orig = self.compute_opacity(temperature, pressure, wngrid_filter)
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/opacity/interpolateopacity.py", line 292, in compute_opacity
+    self.interp_bilinear_grid(
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/opacity/interpolateopacity.py", line 226, in interp_bilinear_grid
+    q_21 = self.xsecGrid[p_idx_max, t_idx_min][wngrid_filter].ravel()
+  File "/Users/fanyang/BioSignatureDetectionModel/v3/identifiability_calibrate.py", line 92, in _alarm
+    raise TimeoutError(f"timeout after {timeout} s")
+TimeoutError: timeout after 10800 s
+  36/50  34096 s  median 161.3 min, 14129 calls per planet
+Numba not installed, using numpy instead
+Exception while calling loglikelihood function:
+  params: [ 1.79378298e+03  3.22268957e+00 -5.47589988e+00 -3.99987589e+00
+ -4.32313576e+00 -5.37166666e+00  1.01098458e-04]
+  args: []
+  kwargs: {}
+  exception:
+Numba not installed, using numpy instead
+Exception while calling loglikelihood function:
+  params: [ 6.36263319e+02  4.99988425e+00 -2.91998977e+00 -2.87427332e+00
+ -2.32418258e+00 -3.71669818e+00 -3.28434365e-06]
+  args: []
+  kwargs: {}
+  exception:
+  45/50  40303 s  median 124.3 min, 16084 calls per planet
+Numba not installed, using numpy instead
+Exception while calling loglikelihood function:
+  params: [ 3.50775674e+02  4.90585772e+00 -3.61816907e+00 -5.14869878e+00
+ -2.69898591e+00 -5.66728466e+00  2.22484211e-05]
+  args: []
+  kwargs: {}
+  exception:
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+Exception while calling loglikelihood function:
+  params: [ 7.40234123e+02  4.73223131e+00 -4.84593830e+00 -2.14578222e+00
+ -3.76164457e+00 -3.58121337e+00 -1.14871355e-05]
+  args: []
+  kwargs: {}
+  exception:
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+  50/50  43431 s  median 96.0 min, 16115 calls per planet
+Numba not installed, using numpy instead
+Exception while calling loglikelihood function:
+  params: [ 1.55339194e+03  3.59185784e+00 -2.25495568e+00 -6.59696740e+00
+ -3.47922515e+00 -2.44303635e+00 -5.81458235e-06]
+  args: []
+  kwargs: {}
+  exception:
