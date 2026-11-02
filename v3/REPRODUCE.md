@@ -64,7 +64,7 @@ The real panel's dependent tables are rerun after a change of conversion in this
 | Selection and departures at Ariel coverage | `round3_ariel_tests.py` | `round3/round3_ariel_tests.txt` |
 | Real labels, and outside the routing panel | `review_checks/round3_real.py`, `review_checks/round3_real_new.py` | `round3/round3_real.txt`, `round3/round3_real_new.txt` |
 | Worked example | `worked_example.py` | `worked_example.txt` |
-| Second population: Mission Candidate Sample spectra | `mcs_testset.py` | `data/mcs/`, `ariel_mcs.txt` |
+| Second population: Mission Candidate Sample spectra | `mcs_testset.py --jobs 4` | `data/mcs/`, `ariel_mcs.txt` |
 | Second population: retrieval of 200 planets | `identifiability_calibrate.py --population mcs --random-sample --n 200 --jobs 9` | `identifiability_calibration_mcs.csv` |
 | Second population: undecided shares, error split, ensemble | `review_checks/mcs_identifiability.py`, `review_checks/mcs_error_split.py`, `review_checks/mcs_ensemble.py` | `identifiability_mcs.txt`, `identifiability_mcs_split.txt`, `identifiability_mcs_ensemble.txt` |
 | Free radius | `identifiability_calibrate.py --free-radius --random-sample --n 200 --jobs 9`, then `review_checks/free_radius_compare.py` | `identifiability_free_radius.txt` |
