@@ -1,0 +1,5 @@
+JWST   finished spectra                77 spectra, 32 planets: retrieval 0.567  ensemble 0.764  routing 0.627  ensemble - retrieval +0.197 (+0.128, +0.269)  routing - retrieval +0.060 (-0.010, +0.137)
+JWST   all 90, timeouts as no verdict  90 spectra, 34 planets: retrieval 0.554  ensemble 0.773  routing 0.636  ensemble - retrieval +0.219 (+0.154, +0.289)  routing - retrieval +0.082 (+0.020, +0.150)
+JWST   timed-out spectra only: 13, ensemble 0.847, routing 0.705
+Tier-1 finished spectra                90 spectra, 34 planets: retrieval 0.554  ensemble 0.649  routing 0.555  ensemble - retrieval +0.095 (+0.039, +0.150)  routing - retrieval +0.001 (-0.053, +0.051)
+Tier-1 all 90, timeouts as no verdict  90 spectra, 34 planets: retrieval 0.554  ensemble 0.649  routing 0.555  ensemble - retrieval +0.095 (+0.038, +0.147)  routing - retrieval +0.001 (-0.052, +0.055)

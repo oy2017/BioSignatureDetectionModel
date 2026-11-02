@@ -1,6 +1,6 @@
 """U7 of REVISION_EXPECTATIONS.md: a retrieval of photochemical-grid spectra through the real masks, beside the matched ensemble and the routing method on the same labels. Writes results/round3/grid_retrieval_<prec>.csv and grid_retrieval.txt.
 
-Usage: python grid_retrieval.py [jobs], and --summarize."""
+Usage: python grid_retrieval.py [jobs] [--tfix], and --summarize [--tfix]."""
 import os
 import sys
 import warnings
@@ -16,6 +16,7 @@ import identifiability_calibrate as IC  # noqa: E402
 import jwst_to_ariel as J  # noqa: E402
 import matched_learner as ML  # noqa: E402
 
+TFIX = "--tfix" in sys.argv; TAG = "_tp" if TFIX else ""   # U7b: centre the temperature prior on the catalogue temperature the grid spectrum was rescaled to
 OUT = os.path.join("results", "round3"); GR = os.path.join("results", "goyal_test"); N = 90; MOLS = ML.MOLS; AB = (-9.0, -1.0)
 
 
@@ -30,13 +31,13 @@ def pairs(Y):
 
 def main():
     if "--summarize" in sys.argv: return summarize()
-    jobs = int(sys.argv[1]) if len(sys.argv) > 1 else 5; Y = pd.read_csv(os.path.join(GR, "truth_crossfield.csv")); Z = np.load(os.path.join(GR, "grid_crossfield.npz")); L = {j[1]: (i, j) for i, j in enumerate(ML.jobs_list())}; M = pd.read_parquet(os.path.join(DATA, "mcs", "mcs_params.parquet")).drop_duplicates("name").set_index("name"); wl = np.load(os.path.join(DATA, "native_wl.npy")); edges, _ = J.tier3_layout(); P = pairs(Y)
+    jobs = int(next((a for a in sys.argv[1:] if a.isdigit()), 5)); Y = pd.read_csv(os.path.join(GR, "truth_crossfield.csv")); Z = np.load(os.path.join(GR, "grid_crossfield.npz")); L = {j[1]: (i, j) for i, j in enumerate(ML.jobs_list())}; M = pd.read_parquet(os.path.join(DATA, "mcs", "mcs_params.parquet")).drop_duplicates("name").set_index("name"); wl = np.load(os.path.join(DATA, "native_wl.npy")); edges, _ = J.tier3_layout(); P = pairs(Y)
     for prec in ("jwst", "tier1"):
-        out = os.path.join(OUT, f"grid_retrieval_{prec}.csv"); done = set(pd.read_csv(out).key) if os.path.exists(out) else set(); T = []
+        out = os.path.join(OUT, f"grid_retrieval{TAG}_{prec}.csv"); done = set(pd.read_csv(out).key) if os.path.exists(out) else set(); T = []
         for k, q in P.iterrows():
             key = f"{q.planet}:{q.row}"
             if key in done: continue
-            i, j = L[q.planet]; _, pl, _, _, err, filled, s, _ = j; meas = ~filled; e = np.nan_to_num(err); r_ = np.random.default_rng(SEED + 1700 + i + (0 if prec == "jwst" else 5000)); B = Z[pl].copy(); B[:, meas] += r_.normal(0, 1, (len(B), meas.sum())) * (e[meas] if prec == "jwst" else np.sqrt(e[meas] ** 2 + s[meas] ** 2)); x = B[q.row].copy(); x[filled] = x[meas].mean(); sig = np.where(filled, 1.0, e if prec == "jwst" else np.sqrt(e ** 2 + s ** 2)); t = Y[(Y.planet == pl) & (Y.row == q.row)].iloc[0]; r = M.loc[ML.BASE(pl)].to_dict(); r["name"] = key; r["T_p"] = float(t["T"]); r["cloud_pressure"] = 1e6; r["atm top_pressure"] = 1e-4; r["atm CO"] = -15.0; r["atm O3"] = -15.0
+            i, j = L[q.planet]; _, pl, _, _, err, filled, s, _ = j; meas = ~filled; e = np.nan_to_num(err); r_ = np.random.default_rng(SEED + 1700 + i + (0 if prec == "jwst" else 5000)); B = Z[pl].copy(); B[:, meas] += r_.normal(0, 1, (len(B), meas.sum())) * (e[meas] if prec == "jwst" else np.sqrt(e[meas] ** 2 + s[meas] ** 2)); x = B[q.row].copy(); x[filled] = x[meas].mean(); sig = np.where(filled, 1.0, e if prec == "jwst" else np.sqrt(e ** 2 + s ** 2)); t = Y[(Y.planet == pl) & (Y.row == q.row)].iloc[0]; r = M.loc[ML.BASE(pl)].to_dict(); r["name"] = key; r["T_p"] = float(r["atm temperature"]) if TFIX else float(t["T"]); r["cloud_pressure"] = 1e6; r["atm top_pressure"] = 1e-4; r["atm CO"] = -15.0; r["atm O3"] = -15.0
             for m in MOLS: r[f"atm {m}"] = float(t[f"v_{m}"])
             T.append((k, r, x, sig))
         print(prec, len(T), flush=True)
@@ -48,7 +49,7 @@ def main():
 def summarize():
     Y = pd.read_csv(os.path.join(GR, "truth_crossfield.csv")); P = pairs(Y); L = []; Vf = pd.read_csv(os.path.join(GR, "votes_frozen_crossfield.csv.gz")).query('design=="the method"'); Ve = pd.read_csv(os.path.join(OUT, "votes_C+B-mlp_crossfield.csv.gz"))
     for prec, pp in (("jwst", "JWST"), ("tier1", "Tier-1")):
-        f = os.path.join(OUT, f"grid_retrieval_{prec}.csv")
+        f = os.path.join(OUT, f"grid_retrieval{TAG}_{prec}.csv")
         if not os.path.exists(f): continue
         R = pd.read_csv(f); R = R[R[[f"{m}_p_present" for m in MOLS]].notna().all(1)]; R[["planet", "row"]] = R.key.str.split(":", expand=True); R["row"] = R.row.astype(int); rows = []
         for _, q in R.iterrows():
@@ -59,7 +60,7 @@ def summarize():
         L.append(f"{pp}: {len(R)} spectra, {len(A)} labels, {A.y.mean() * 100:.0f} % present; median {R.minutes.median():.1f} min per spectrum, {R.minutes.sum() / 60:.0f} core-hours")
         for n, g in (("retrieval", B), ("matched ensemble", E), ("routing method", F)):
             L.append(f"  {n:<18} balanced {bal(g):.3f}  present {g[g.y].c.mean():.3f}  false-present {g[~g.y].present.mean():.3f}"); L += [f"     {m} {bal(g[g.molecule == m]):.3f}" for m in MOLS if g[g.molecule == m].y.nunique() == 2]
-    t = "\n".join(L); open(os.path.join(OUT, "grid_retrieval.txt"), "w").write(t + "\n"); print(t)
+    t = "\n".join(L); open(os.path.join(OUT, f"grid_retrieval{TAG}.txt"), "w").write(t + "\n"); print(t)
 
 
 if __name__ == "__main__":
