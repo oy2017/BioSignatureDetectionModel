@@ -135,6 +135,32 @@ def runs(text):
     return out
 
 
+URL = re.compile(r"(https?://[^\s)]+[^\s).,;])")
+
+
+def _add_linked(p, text, bold=False, italic=False, script=None):
+    """Add text to a paragraph with every URL as a live hyperlink (JHSS: live-link DOIs)."""
+    from docx.oxml import OxmlElement
+    from docx.oxml.ns import qn
+    from docx.opc.constants import RELATIONSHIP_TYPE as RT
+    from docx.shared import RGBColor
+    for i, part in enumerate(URL.split(text)):
+        if not part:
+            continue
+        r = p.add_run(part)
+        r.bold, r.italic = bold, italic
+        _script(r, script)
+        if i % 2:
+            rid = p.part.relate_to(part, RT.HYPERLINK, is_external=True)
+            link = OxmlElement("w:hyperlink")
+            link.set(qn("r:id"), rid)
+            r.font.underline = True
+            r.font.color.rgb = RGBColor(0x05, 0x63, 0xC1)
+            p._p.remove(r._r)
+            link.append(r._r)
+            p._p.append(link)
+
+
 HEADNUM = re.compile(r"^(\d+(?:\.\d+)*\.?)(\s+)(.*)$")
 
 
@@ -259,9 +285,7 @@ def build_docx(blocks, dest):
             p.paragraph_format.left_indent = Inches(0.3)
             p.add_run(marker + " ")
             for t, b, it, sc in runs(txt):
-                r = p.add_run(t)
-                r.bold, r.italic = b, it
-                _script(r, sc)
+                _add_linked(p, t, b, it, sc)
         elif kind == "quote":
             p = doc.add_paragraph()
             p.paragraph_format.left_indent = Inches(0.35)
