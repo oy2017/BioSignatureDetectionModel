@@ -3,7 +3,7 @@ import os, sys
 import numpy as np, pandas as pd
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import matplotlib.pyplot as plt  # noqa: E402
-from style import INK2, SERIES, save  # noqa: E402
+from style import INK2, SERIES, panel_label, save  # noqa: E402
 V3 = os.path.dirname(os.path.dirname(os.path.abspath(__file__))); D = ["published", "AIRS-only", "haze+deck-retrained", "the method", "matched+amp", "C+B-mlp"]; LAB = ["Re-Implemented Classifier", "AIRS-Only Input", "Haze+Deck-Retrained", "Routing Method", "Per-Reduction", "Matched Ensemble"]; GR = [("local", "Local Condensation"), ("crossfield", "Photochemical")]; COL = ["#8a8a8a", SERIES[0], SERIES[2], SERIES[3], SERIES[4], "#111111"]; BASE = lambda s: s.replace("-alt", "").replace("-hu", "").replace("-hm", "")
 
 
@@ -17,10 +17,10 @@ def read(tag):
 
 def main():
     R = {t: read(t) for t, _ in GR}; fig, ax = plt.subplots(1, 2, figsize=(7.2, 3.2), sharey=True)
-    for a, prec, title in zip(ax, ("JWST", "Tier-1"), ("(a) JWST Precision", "(b) Tier-1 Noise")):
+    for a, prec, title in zip(ax, ("JWST", "Tier-1"), ("JWST Precision", "Tier-1 Noise")):
         for j, (d, lab) in enumerate(zip(D, LAB)):
             xs = np.arange(2) + (j - 2.5) * 0.13; v = np.array([R[t][(prec, d)] for t, _ in GR]); a.errorbar(xs, v[:, 0], yerr=[v[:, 0] - v[:, 1], v[:, 2] - v[:, 0]], fmt="o", ms=4.5, capsize=2.5, lw=1.1, color=COL[j], label=lab)
-        a.axhline(0.5, color=INK2, ls=":", lw=1); a.set_xticks(np.arange(2)); a.set_xticklabels([g for _, g in GR]); a.set_title(title, fontsize=9); a.set_ylim(0.47, 0.84); a.set_xlim(-0.55, 1.55)
+        a.axhline(0.5, color=INK2, ls=":", lw=1); a.set_xticks(np.arange(2)); a.set_xticklabels([g for _, g in GR]); a.set_title(title, fontsize=9); panel_label(a, "ab"[prec != "JWST"]); a.set_ylim(0.47, 0.84); a.set_xlim(-0.55, 1.55)
     ax[0].set_ylabel("Balanced Credit"); ax[1].legend(fontsize=6.3, loc="upper left", ncol=2, frameon=False); fig.tight_layout(); save(fig, "fig7_grids.png")
 
 
