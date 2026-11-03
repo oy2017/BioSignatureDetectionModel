@@ -2,7 +2,7 @@
 
 Manuscript: "Can a simulator-trained classifier for Ariel Tier-1 spectra be trusted?" (JHSS; revise and resubmit, 17 October 2026). Resubmitted as an original article under the title "Separating recoverable from irrecoverable errors in Ariel Tier-1 molecular classification: a new design tested on model grids and James Webb Space Telescope spectra".
 
-As the editor's message of 17 October asks, this file lists verbatim each comment of the reviewer's report (Part B) and each requirement of the editor's discussion message of 15 October (Part A). That message conveyed the reviewer's recommendations and is not part of the written review. Under each item the file describes how and where the revised manuscript addresses it. Section, table and figure numbers refer to the revised manuscript.
+As the editor's message of 17 October asks, this file lists verbatim each comment of the reviewer's report (Part B) and each requirement of the editor's discussion message of 15 October (Part A). That message conveyed the reviewer's recommendations and is not part of the written review. Under each item the file describes how and where the revised manuscript addresses it. Section, table and figure numbers refer to the revised manuscript. The revised paper is substantially different from the note that was reviewed: it was rebuilt around the requirements of Part A, the external validation, identifiability, the two error classes and a remedy with measured value. Many comments in Part B concern the note's earlier content, such as the trust framing, the second classifier and the decline rules. Each is still answered, and where that content was reduced, moved or removed, the response says where it now stands.
 
 ---
 
