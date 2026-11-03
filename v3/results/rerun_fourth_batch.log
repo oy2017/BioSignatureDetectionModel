@@ -1,0 +1,135 @@
+Numba not installed, using numpy instead
+TrES-4b
+HATS-6b
+TOI-5205b
+TOI-6894b
+TOI-199b
+LP791-18c
+NGTS-2b
+HAT-P-30b
+HAT-P-1b
+TOI-1130b
+Kepler-51d
+WASP-121b
+The frozen routing method on the fourth batch: 12 reductions; labels committed before this run; right 1, split or withheld 0.5, wrong 0
+
+            filled  measured  measured_optical  ratio    hi    lo
+planet                                                           
+TrES-4b         64        40                 0   5.77  8.30  0.48
+HATS-6b         12        92                 2   6.18  5.53  0.50
+TOI-5205b       13        91                 2   2.18  5.50  0.49
+TOI-6894b       16        88                 1   4.16  5.75  0.50
+TOI-199b        64        40                 0  10.33  8.24  0.49
+LP791-18c       20        84                 2   8.44  5.60  0.50
+NGTS-2b         64        40                 0   7.30  8.30  0.48
+HAT-P-30b       63        41                 0   6.37  8.27  0.49
+HAT-P-1b        69        35                 0   7.56  8.33  0.48
+TOI-1130b       17        87                 2   4.71  5.42  0.49
+Kepler-51d      18        86                 2  12.82  5.69  0.49
+WASP-121b       62        42                 0   6.10  8.44  0.49
+
+== JWST: 24 labels on 12 planets (16 absent, 8 present; calling every label absent scores 16)
+  published                  16.0   vs re-implemented  +0.0 ( +0.0, +0.0)   method minus this  +0.0 ( -3.5, +4.3)   present   0.0  absent  16.0
+  no-optical                 14.5   vs re-implemented  -1.5 ( -5.8, +3.1)   method minus this  +1.5 ( -0.7, +4.0)   present   1.5  absent  13.0
+  AIRS-only                  15.5   vs re-implemented  -0.5 ( -5.0, +5.1)   method minus this  +0.5 ( -1.3, +2.1)   present   3.0  absent  12.5
+  shape flag                 16.0   vs re-implemented  +0.0 ( -4.3, +5.4)   method minus this  +0.0 ( -1.7, +1.2)   present   3.0  absent  13.0
+  haze-retrained             15.5   vs re-implemented  -0.5 ( -4.2, +3.5)   method minus this  +0.5 ( -1.0, +2.7)   present   2.0  absent  13.5
+  haze+deck-retrained        16.5   vs re-implemented  +0.5 ( -2.9, +4.8)   method minus this  -0.5 ( -2.3, +1.3)   present   2.5  absent  14.0
+  the method                 16.0   vs re-implemented  +0.0 ( -3.5, +4.3)   method minus this  +0.0 ( +0.0, +0.0)   present   2.5  absent  13.5
+  knn -> AIRS-only           16.5   vs re-implemented  +0.5 ( -2.2, +4.2)   method minus this  -0.5 ( -3.6, +2.7)   present   1.5  absent  15.0
+  mahalanobis -> AIRS-only   17.5   vs re-implemented  +1.5 ( -1.8, +5.5)   method minus this  -1.5 ( -3.8, +0.9)   present   2.5  absent  15.0
+  pca_recon -> AIRS-only     16.0   vs re-implemented  +0.0 ( -4.0, +5.1)   method minus this  +0.0 ( -2.3, +1.8)   present   2.5  absent  13.5
+  margin -> AIRS-only        17.0   vs re-implemented  +1.0 ( +0.0, +3.0)   method minus this  -1.0 ( -3.8, +2.7)   present   1.0  absent  16.0
+  ensemble -> AIRS-only      13.5   vs re-implemented  -2.5 ( -6.4, +1.5)   method minus this  +2.5 ( +0.9, +5.1)   present   1.0  absent  12.5
+  amplitude flag, AIRS-only elsewhere   15.5   vs re-implemented  -0.5 ( -4.4, +4.0)   method minus this  +0.5 ( +0.0, +1.8)   present   2.5  absent  13.0
+
+== Tier-1: 24 labels on 12 planets (16 absent, 8 present; calling every label absent scores 16)
+  published                  16.2   vs re-implemented  +0.0 ( +0.0, +0.0)   method minus this  -0.2 ( -2.3, +2.0)   present   0.3  absent  15.9
+  no-optical                 15.9   vs re-implemented  -0.2 ( -1.7, +1.2)   method minus this  -0.0 ( -0.6, +0.8)   present   0.9  absent  15.1
+  AIRS-only                  15.7   vs re-implemented  -0.4 ( -2.6, +2.2)   method minus this  +0.2 ( -0.3, +0.7)   present   1.5  absent  14.2
+  shape flag                 15.9   vs re-implemented  -0.3 ( -2.3, +2.0)   method minus this  +0.0 ( -0.0, +0.1)   present   1.3  absent  14.6
+  haze-retrained             16.2   vs re-implemented  +0.1 ( -0.9, +1.3)   method minus this  -0.3 ( -1.5, +0.7)   present   1.0  absent  15.3
+  haze+deck-retrained        16.4   vs re-implemented  +0.2 ( -1.1, +2.0)   method minus this  -0.5 ( -1.4, +0.1)   present   1.3  absent  15.1
+  the method                 15.9   vs re-implemented  -0.2 ( -2.3, +2.0)   method minus this  +0.0 ( +0.0, +0.0)   present   1.3  absent  14.7
+  knn -> AIRS-only           15.0   vs re-implemented  -1.2 ( -2.7, +0.1)   method minus this  +1.0 ( -0.1, +2.4)   present   0.6  absent  14.3
+  mahalanobis -> AIRS-only   15.8   vs re-implemented  -0.4 ( -2.4, +1.8)   method minus this  +0.1 ( -0.1, +0.4)   present   1.3  absent  14.5
+  pca_recon -> AIRS-only     16.1   vs re-implemented  -0.0 ( -2.2, +2.3)   method minus this  -0.2 ( -0.5, +0.1)   present   1.3  absent  14.9
+  margin -> AIRS-only        16.4   vs re-implemented  +0.2 ( -0.1, +0.8)   method minus this  -0.5 ( -2.3, +1.3)   present   0.6  absent  15.8
+  ensemble -> AIRS-only      16.3   vs re-implemented  +0.1 ( -0.7, +1.3)   method minus this  -0.4 ( -1.7, +0.7)   present   0.9  absent  15.4
+  amplitude flag, AIRS-only elsewhere   15.8   vs re-implemented  -0.4 ( -2.5, +2.2)   method minus this  +0.1 ( -0.3, +0.5)   present   1.5  absent  14.3
+
+Mask control (all-input design on the clear twin through the same mask, at the real errors):
+    planet molecule   label  twin_found control
+   TrES-4b      CH4  absent        0.00  passes
+   TrES-4b      H2O present        0.00   fails
+   TrES-4b      CO2  absent        0.00  passes
+   HATS-6b      CH4  absent        0.00  passes
+   HATS-6b      H2O  absent        0.27  passes
+   HATS-6b      CO2  absent        0.00  passes
+   HATS-6b      NH3  absent        0.00  passes
+ TOI-5205b      H2O  absent        0.00  passes
+ TOI-5205b      CO2  absent        0.00  passes
+ TOI-5205b      NH3  absent        0.00  passes
+ TOI-6894b      CH4 present        1.00  passes
+ TOI-6894b      H2O present        0.00   fails
+ TOI-6894b      NH3 present        0.00   fails
+  TOI-199b      CH4 present        0.00   fails
+ LP791-18c      CH4 present        1.00  passes
+   NGTS-2b      CH4  absent        0.00  passes
+   NGTS-2b      NH3  absent        0.00  passes
+ HAT-P-30b      CH4  absent        0.00  passes
+ HAT-P-30b      NH3  absent        0.00  passes
+  HAT-P-1b      CH4  absent        0.00  passes
+  HAT-P-1b      H2O present        0.00   fails
+ TOI-1130b      H2O present        1.00  passes
+Kepler-51d      CH4  absent        0.00  passes
+ WASP-121b      CO2  absent        0.00  passes
+
+JWST, on the 19 labels passing the control: published 16.0, no-optical 14.5, AIRS-only 15.0, shape flag 15.5, haze-retrained 15.0, haze+deck-retrained 15.5, the method 15.5, knn -> AIRS-only 16.5, mahalanobis -> AIRS-only 17.5, pca_recon -> AIRS-only 16.0, margin -> AIRS-only 17.0, ensemble -> AIRS-only 13.5, amplitude flag, AIRS-only elsewhere 15.0
+Tier-1, on the 19 labels passing the control: published 16.1, no-optical 15.7, AIRS-only 15.3, shape flag 15.6, haze-retrained 16.0, haze+deck-retrained 16.1, the method 15.7, knn -> AIRS-only 14.7, mahalanobis -> AIRS-only 15.5, pca_recon -> AIRS-only 15.9, margin -> AIRS-only 16.3, ensemble -> AIRS-only 16.1, amplitude flag, AIRS-only elsewhere 15.4
+
+design                      published no-optical AIRS-only shape flag haze-retrained haze+deck-retrained the method knn -> AIRS-only mahalanobis -> AIRS-only pca_recon -> AIRS-only margin -> AIRS-only ensemble -> AIRS-only amplitude flag, AIRS-only elsewhere
+planet     molecule label                                                                                                                                                                                                                                         
+HAT-P-1b   CH4      absent     absent     absent    absent     absent         absent              absent     absent           absent                   absent                 absent              absent                absent                              absent
+           H2O      present    absent     absent    absent     absent         absent              absent     absent           absent                   absent                 absent              absent                absent                              absent
+HAT-P-30b  CH4      absent     absent     absent    absent     absent         absent              absent     absent           absent                   absent                 absent              absent                absent                              absent
+           NH3      absent     absent     absent    absent     absent         absent              absent     absent           absent                   absent                 absent              absent                absent                              absent
+HATS-6b    CH4      absent     absent    present   present    present        present             present    present           absent                   absent                present              absent               present                             present
+           CO2      absent     absent     absent    absent     absent         absent              absent     absent           absent                   absent                 absent              absent                absent                              absent
+           H2O      absent     absent    present     split      split         absent              absent     absent           absent                   absent                  split              absent                 split                              absent
+           NH3      absent     absent     absent    absent     absent         absent              absent     absent           absent                   absent                 absent              absent                absent                              absent
+Kepler-51d CH4      absent     absent     absent    absent     absent         absent              absent     absent           absent                   absent                 absent              absent                absent                              absent
+LP791-18c  CH4      present    absent     absent   present    present          split               split      split          present                  present                present              absent                absent                               split
+NGTS-2b    CH4      absent     absent     absent    absent     absent         absent              absent     absent           absent                   absent                 absent              absent                absent                              absent
+           NH3      absent     absent     absent    absent     absent         absent              absent     absent           absent                   absent                 absent              absent                absent                              absent
+TOI-1130b  H2O      present    absent      split     split      split         absent              absent      split            split                    split                  split              absent                absent                               split
+TOI-199b   CH4      present    absent     absent     split      split          split             present      split           absent                   absent                 absent              absent                absent                               split
+TOI-5205b  CO2      absent     absent     absent    absent     absent         absent              absent     absent           absent                   absent                 absent              absent                absent                              absent
+           H2O      absent     absent    present   present    present          split               split    present          present                  present                present              absent               present                             present
+           NH3      absent     absent     absent    absent     absent         absent              absent     absent           absent                   absent                 absent              absent                absent                              absent
+TOI-6894b  CH4      present    absent    present   present    present        present             present    present           absent                  present                present             present               present                             present
+           H2O      present    absent     absent    absent     absent         absent              absent     absent           absent                   absent                 absent              absent                absent                              absent
+           NH3      present    absent     absent    absent     absent         absent              absent     absent           absent                   absent                 absent              absent                absent                              absent
+TrES-4b    CH4      absent     absent     absent    absent     absent         absent              absent     absent           absent                   absent                 absent              absent                absent                              absent
+           CO2      absent     absent     absent    absent     absent         absent              absent     absent           absent                   absent                 absent              absent                absent                              absent
+           H2O      present    absent     absent    absent     absent         absent              absent     absent           absent                   absent                 absent              absent                absent                              absent
+WASP-121b  CO2      absent     absent     absent   present      split        present               split      split           absent                   absent                 absent              absent               present                             present
+
+the method against the re-implemented classifier, changed labels:
+   planet molecule   label published the method
+  HATS-6b      CH4  absent    absent    present
+LP791-18c      CH4 present    absent      split
+TOI-1130b      H2O present    absent      split
+ TOI-199b      CH4 present    absent      split
+TOI-5205b      H2O  absent    absent    present
+TOI-6894b      CH4 present    absent    present
+WASP-121b      CO2  absent    absent      split
+
+Expectations of section H:
+H1 method above the re-implemented classifier at JWST precision: +0.0
+H2 method within two labels of AIRS-only (+0.5) and of haze+deck-retrained (-0.5)
+H3 gain at Tier-1 (-0.2) smaller than at JWST precision (+0.0)
+H4 labels from right to wrong: 2
+H5, H6: read the tables above (giants by the catalogue mass above 0.1 Jupiter masses: TrES-4 b, HATS-6 b, TOI-5205 b, TOI-6894 b, TOI-199 b, NGTS-2 b, HAT-P-30 b, HAT-P-1 b and WASP-121 b)
+
+amplitude flag, share of Tier-1 draws above the threshold: TrES-4b 0.18, HATS-6b 0.19, TOI-5205b 0.01, TOI-6894b 0.03, TOI-199b 0.06, LP791-18c 0.13, NGTS-2b 0.08, HAT-P-30b 0.09, HAT-P-1b 0.18, TOI-1130b 0.15, Kepler-51d 0.57, WASP-121b 0.22

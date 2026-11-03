@@ -1,0 +1,12 @@
+[Parallel(n_jobs=4)]: Using backend LokyBackend with 4 concurrent workers.
+Numba not installed, using numpy instead
+[Parallel(n_jobs=4)]: Done  10 tasks      | elapsed:   42.0s
+[Parallel(n_jobs=4)]: Done  64 tasks      | elapsed:  2.6min
+[Parallel(n_jobs=4)]: Done 154 tasks      | elapsed:  5.5min
+[Parallel(n_jobs=4)]: Done 280 tasks      | elapsed:  9.7min
+[Parallel(n_jobs=4)]: Done 320 out of 320 | elapsed: 10.9min finished
+finite 7825 of 8000
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead

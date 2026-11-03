@@ -1,0 +1,26 @@
+Traceback (most recent call last):
+  File "/Users/fanyang/BioSignatureDetectionModel/v3/sensitivity.py", line 35, in <module>
+    from pipeline import make_xgb  # noqa: E402
+  File "/Users/fanyang/BioSignatureDetectionModel/v3/pipeline.py", line 32, in <module>
+    from xgboost import XGBClassifier
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/xgboost/__init__.py", line 6, in <module>
+    from . import tracker  # noqa
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/xgboost/tracker.py", line 9, in <module>
+    from .core import _LIB, _check_call, _deprecate_positional_args, make_jcargs
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/xgboost/core.py", line 309, in <module>
+    _LIB = _load_lib()
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/xgboost/core.py", line 273, in _load_lib
+    raise XGBoostError(f"""
+xgboost.core.XGBoostError: 
+XGBoost Library (libxgboost.dylib) could not be loaded.
+Likely causes:
+  * OpenMP runtime is not installed
+    - vcomp140.dll or libgomp-1.dll for Windows
+    - libomp.dylib for Mac OSX
+    - libgomp.so for Linux and other UNIX-like OSes
+    Mac OSX users: Run `brew install libomp` to install OpenMP runtime.
+
+  * You are running 32-bit Python on a 64-bit OS
+
+Error message(s): ["dlopen(/Users/fanyang/tfenv/lib/python3.10/site-packages/xgboost/lib/libxgboost.dylib, 0x0006): Library not loaded: @rpath/libomp.dylib\n  Referenced from: <1A0D8152-BF46-3BE0-B651-EE965C187777> /Users/fanyang/tfenv/lib/python3.10/site-packages/xgboost/lib/libxgboost.dylib\n  Reason: tried: '/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/Users/fanyang/.local/share/uv/python/cpython-3.10.22-macos-aarch64-none/lib/libomp.dylib' (no such file), '/Users/fanyang/.local/share/uv/python/cpython-3.10.22-macos-aarch64-none/lib/libomp.dylib' (no such file)"]
+

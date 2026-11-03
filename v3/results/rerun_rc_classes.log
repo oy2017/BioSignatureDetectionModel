@@ -1,0 +1,14 @@
+Numba not installed, using numpy instead
+955
+{'n_err': np.int64(2866), 'fn': np.int64(2149), 'fp': np.int64(717), 'dec95': np.int64(616), 'dec84': np.int64(1076), 'dec50': np.int64(2120), 'ret_right': np.int64(2120), 'ret_right_fn': np.int64(1504), 'ret_right_fp': np.int64(616), 'err_und': np.int64(2250), 'ret_right_und': np.int64(1504), 'ret_right_und_fn': np.int64(1102), 'fn_und': np.int64(1747), 'ret_right_und_fp': np.int64(402), 'fp_und': np.int64(503)}
+errors 2866 FN share 75.0 FP share 25.0
+dec95 share of errors with p_true above level: 21.5
+dec84 share of errors with p_true above level: 37.5
+dec50 share of errors with p_true above level: 74.0
+retrieval right on all errors 74.0; FN 70.0; FP 85.9
+on errors on undecidable labels: n 2250; retrieval right 66.8; FN (n 1747) 63.1; FP (n 503) 79.9
+CH4 recoverable at 0.95: 25.2; at 0.84: 38.4
+H2O recoverable at 0.95: 20.3; at 0.84: 37.2
+CO2 recoverable at 0.95: 19.6; at 0.84: 36.6
+NH3 recoverable at 0.95: 18.8; at 0.84: 35.4
+noisy realisation (n=200 planets): {'w': np.int64(590), 'fn': np.int64(442), 'fp': np.int64(148), 'r': np.int64(356), 'rfn': np.int64(252), 'rfp': np.int64(104)} right all 60.3 FN 57.0 FP 70.3

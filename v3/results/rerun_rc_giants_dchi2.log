@@ -1,0 +1,12 @@
+['index', 'name', 'molecule', 'log_true', 'label', 'dchi2', 'calls', 'seconds', 'cf_T', 'cf_logP'] 3820
+['GJ3470b', 'HAT-P-12b', 'HAT-P-26b', 'HD209458b', 'WASP-107b', 'WASP-166b', 'WASP-17b', 'WASP-39b', 'WASP-80b', 'WASP-94Ab'] 40
+population undecidable % {'CH4': 28.7, 'CO2': 41.2, 'H2O': 56.0, 'NH3': 28.9}
+population x3 undecidable % {'CH4': 65.2, 'CO2': 85.9, 'H2O': 87.0, 'NH3': 67.1}
+ten giants undecidable (their random POP-I abundances) % {'CH4': 0.0, 'CO2': 30.0, 'H2O': 20.0, 'NH3': 20.0} all 17.5
+ten giants, dchi2/M^2 undecidable % {'CH4': 20.0, 'CO2': 60.0, 'H2O': 60.0, 'NH3': 30.0} all 42.5
+name   GJ3470b  HAT-P-12b  HAT-P-26b  HD209458b  WASP-107b  WASP-166b  WASP-17b  WASP-39b  WASP-80b  WASP-94Ab
+dec        0.5        1.0       0.75        1.0       1.00       0.75       1.0      0.75      0.75       0.75
+dec_M      0.0        0.5       0.50        1.0       0.75       0.50       1.0      0.50      0.50       0.50
+median percentile of dchi2 for ten giants 87.5
+{'GJ3470b': 0.42, 'HAT-P-12b': 0.88, 'HAT-P-26b': 0.93, 'HD209458b': 0.98, 'WASP-107b': 0.99, 'WASP-166b': 0.78, 'WASP-17b': 0.96, 'WASP-39b': 0.9, 'WASP-80b': 0.59, 'WASP-94Ab': 0.83}
+median dchi2: population 1.45 giants 15.93

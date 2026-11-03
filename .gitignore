@@ -53,3 +53,5 @@ v3/results/wasp39/segments_*.npz
 v3/jhss/*.pdf
 v3/jhss/technical_note_*.docx
 v3/jhss/original_article_*.docx
+v3/jhss/cover_letter.docx
+v3/jhss/response_to_reviewer_comments.docx
