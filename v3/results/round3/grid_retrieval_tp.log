@@ -1,0 +1,256 @@
+Numba not installed, using numpy instead
+jwst 90
+LTT3780c:72 24.2
+HAT-P-18b:128 37.0
+LTT3780c:19 47.5
+WASP-94Ab:30 394.2
+TOI-421b:21 394.9
+L98-59d:71 395.3
+WASP-94Ab:12 395.3
+HATS-6b:164 361.2
+TOI-270d:78 21.0
+WASP-166b:156 396.2
+HD189733b:94 55.9
+HD189733b:62 67.0
+WASP-107b:166 68.5
+WASP-107b:199 65.7
+TOI-270d-hm:170 14.9
+K2-18b-hu:89 19.4
+HATS-6b:123 66.9
+TOI-270d:83 42.5
+Traceback (most recent call last):
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/nestle.py", line 1169, in __call__
+    return self.func(x, *self.args, **self.kwargs)
+  File "/Users/fanyang/BioSignatureDetectionModel/v3/identifiability_calibrate.py", line 126, in loglike
+    wn, d = tm.model()[:2]
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/model/simplemodel.py", line 522, in model
+    contrib.prepare(self, native_grid)
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/contributions/absorption.py", line 315, in prepare
+    for gas, sigma in self.prepare_each(model, wngrid):
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/contributions/absorption.py", line 286, in prepare_each
+    xsec.opacity(temperature, pressure, wngrid) * gas_mix[idx_layer]
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/opacity/opacity.py", line 104, in opacity
+    orig = self.compute_opacity(temperature, pressure, wngrid_filter)
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/opacity/interpolateopacity.py", line 292, in compute_opacity
+    self.interp_bilinear_grid(
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/opacity/interpolateopacity.py", line 182, in interp_bilinear_grid
+    self.debug(
+  File "/Users/fanyang/tfenv/lib/python3.10/site-packages/taurex/log/logger.py", line 75, in debug
+    def debug(self, message: str, *args: t.Any, **kwargs: t.Any) -> None:
+  File "/Users/fanyang/BioSignatureDetectionModel/v3/identifiability_calibrate.py", line 92, in _alarm
+    raise TimeoutError(f"timeout after {timeout} s")
+TimeoutError: timeout after 10800 s
+HIP67522b:91 486.9
+HAT-P-12b:135 62.9
+WASP-80b:183 71.4
+TOI-1231b:81 37.2
+LTT3780c:82 21.5
+TOI-1130b:108 25.6
+WASP-166b:70 67.0
+WASP-52b:107 68.3
+L98-59d:127 16.1
+HD189733b:114 65.8
+TrES-4b:125 66.3
+TrES-4b:91 66.7
+WASP-107b:78 61.6
+TOI-5205b:174 60.3
+TrES-4b:65 66.8
+L98-59d:8 45.2
+HAT-P-12b:119 59.4
+WASP-107b:162 65.7
+WASP-52b:21 71.1
+HD189733b:77 68.5
+TOI-6894b:174 61.7
+HD209458b:126 64.7
+WASP-107b:147 68.8
+HIP67522b:35 97.7
+WASP-52b:160 66.1
+L98-59d:196 66.9
+GJ3470b:127 51.1
+WASP-166b:61 68.9
+TOI-6894b:25 61.0
+GJ1214b:96 66.1
+HD209458b:178 65.5
+TOI-1130b:90 67.1
+TrES-4b:39 67.4
+LTT3780c:77 15.5
+L98-59d:132 93.7
+TOI-421b:157 67.5
+WASP-94Ab:72 67.4
+WASP-121b:9 70.6
+TOI-1130b:130 47.3
+WASP-52b:118 71.9
+WASP-166b:80 66.6
+NGTS-2b:40 66.5
+HIP67522b:53 68.9
+K2-18b:85 12.2
+WASP-166b:129 68.1
+WASP-39b:150 65.7
+WASP-94Ab:85 71.7
+HIP67522b:171 70.0
+WASP-166b:190 71.3
+HAT-P-26b:103 72.3
+WASP-17b:62 47.3
+NGTS-2b:193 72.2
+WASP-166b:97 36.2
+TOI-270d-hm:113 66.5
+GJ3470b:11 154.1
+WASP-17b:171 54.8
+HAT-P-1b:53 66.9
+WASP-52b:189 69.9
+TOI-199b:180 23.8
+GJ3470b:25 85.8
+TOI-1130b:67 23.4
+WASP-96b:70 23.3
+TOI-199b:176 10.7
+WASP-52b:130 74.5
+TOI-421b:105 16.9
+HAT-P-12b:1 72.6
+Numba not installed, using numpy instead
+TOI-5205b:49 67.4
+Numba not installed, using numpy instead
+Exception while calling loglikelihood function:
+  params: [ 8.29832349e+02  3.04123467e+00 -8.00529428e+00 -3.99261066e+00
+ -4.62399009e+00 -4.02078552e+00 -7.95420329e-04]
+  args: []
+  kwargs: {}
+  exception:
+TOI-5205b:40 67.3
+Numba not installed, using numpy instead
+TOI-1130b:30 61.4
+HAT-P-30b:101 65.6
+Numba not installed, using numpy instead
+WASP-52b:53 54.4
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+WASP-107b:43 128.5
+tier1 90
+LTT3780c:72 8.1
+LTT3780c:19 14.7
+L98-59d:71 16.8
+HAT-P-18b:128 22.6
+HATS-6b:164 16.0
+TOI-270d:78 13.3
+TOI-421b:21 48.2
+HD189733b:62 32.9
+WASP-94Ab:30 66.6
+WASP-94Ab:12 67.9
+WASP-107b:199 19.0
+HATS-6b:123 11.3
+WASP-107b:166 34.6
+WASP-166b:156 68.1
+K2-18b-hu:89 14.3
+TOI-270d:83 16.5
+TOI-270d-hm:170 11.4
+WASP-80b:183 29.4
+HAT-P-12b:135 28.3
+TOI-1231b:81 16.1
+HD189733b:94 68.2
+WASP-52b:107 25.4
+LTT3780c:82 11.0
+TrES-4b:125 19.6
+WASP-166b:70 30.3
+TOI-1130b:108 9.9
+HIP67522b:91 131.5
+L98-59d:127 11.1
+TOI-5205b:174 26.5
+L98-59d:8 11.6
+HD189733b:114 61.8
+TrES-4b:91 45.4
+TrES-4b:65 43.9
+WASP-52b:21 21.5
+WASP-107b:78 65.1
+TOI-6894b:174 30.5
+HAT-P-12b:119 60.1
+L98-59d:196 16.6
+WASP-107b:162 65.0
+HD209458b:126 50.4
+WASP-52b:160 24.9
+HD189733b:77 64.7
+HIP67522b:35 67.5
+GJ3470b:127 13.6
+L98-59d:132 10.2
+GJ1214b:96 13.2
+WASP-107b:147 64.9
+TOI-1130b:90 22.4
+TOI-421b:157 20.9
+TOI-6894b:25 36.0
+WASP-166b:61 47.0
+LTT3780c:77 8.4
+TrES-4b:39 33.3
+TOI-1130b:130 18.0
+WASP-52b:118 27.2
+NGTS-2b:40 19.9
+HD209458b:178 63.7
+WASP-121b:9 39.7
+WASP-94Ab:72 50.8
+K2-18b:85 7.9
+WASP-39b:150 25.6
+GJ3470b:11 22.8
+WASP-166b:80 66.9
+HIP67522b:53 54.3
+HAT-P-26b:103 25.6
+WASP-166b:190 26.4
+TOI-270d-hm:113 7.0
+NGTS-2b:193 17.4
+WASP-166b:129 65.2
+WASP-94Ab:85 66.8
+WASP-166b:97 23.7
+GJ3470b:25 21.4
+WASP-52b:189 23.2
+WASP-17b:62 37.2
+TOI-199b:180 9.0
+WASP-52b:130 14.7
+HIP67522b:171 70.2
+WASP-96b:70 11.7
+TOI-5205b:49 18.1
+TOI-199b:176 9.5
+WASP-17b:171 45.7
+HAT-P-12b:1 39.8
+TOI-421b:105 10.6
+HAT-P-1b:53 64.5
+TOI-1130b:67 41.9
+TOI-5205b:40 17.4
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+HAT-P-30b:101 14.9
+WASP-52b:53 15.0
+Numba not installed, using numpy instead
+TOI-1130b:30 15.6
+WASP-107b:43 53.5
+JWST: 89 spectra, 356 labels, 44 % present; median 66.5 min per spectrum, 120 core-hours
+  retrieval          balanced 0.540  present 0.373  false-present 0.293
+     CH4 0.591
+     H2O 0.343
+     CO2 0.599
+     NH3 0.325
+  matched ensemble   balanced 0.777  present 0.639  false-present 0.086
+     CH4 0.864
+     H2O 0.710
+     CO2 0.830
+     NH3 0.518
+  routing method     balanced 0.639  present 0.389  false-present 0.081
+     CH4 0.816
+     H2O 0.428
+     CO2 0.667
+     NH3 0.463
+Tier-1: 90 spectra, 360 labels, 44 % present; median 25.1 min per spectrum, 49 core-hours
+  retrieval          balanced 0.523  present 0.296  false-present 0.249
+     CH4 0.601
+     H2O 0.333
+     CO2 0.521
+     NH3 0.370
+  matched ensemble   balanced 0.649  present 0.428  false-present 0.129
+     CH4 0.762
+     H2O 0.547
+     CO2 0.601
+     NH3 0.500
+  routing method     balanced 0.555  present 0.179  false-present 0.045
+     CH4 0.611
+     H2O 0.470
+     CO2 0.533
+     NH3 0.503
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead

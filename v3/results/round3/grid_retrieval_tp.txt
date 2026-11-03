@@ -1,0 +1,32 @@
+JWST: 89 spectra, 356 labels, 44 % present; median 66.5 min per spectrum, 120 core-hours
+  retrieval          balanced 0.540  present 0.373  false-present 0.293
+     CH4 0.591
+     H2O 0.343
+     CO2 0.599
+     NH3 0.325
+  matched ensemble   balanced 0.777  present 0.639  false-present 0.086
+     CH4 0.864
+     H2O 0.710
+     CO2 0.830
+     NH3 0.518
+  routing method     balanced 0.639  present 0.389  false-present 0.081
+     CH4 0.816
+     H2O 0.428
+     CO2 0.667
+     NH3 0.463
+Tier-1: 90 spectra, 360 labels, 44 % present; median 25.1 min per spectrum, 49 core-hours
+  retrieval          balanced 0.523  present 0.296  false-present 0.249
+     CH4 0.601
+     H2O 0.333
+     CO2 0.521
+     NH3 0.370
+  matched ensemble   balanced 0.649  present 0.428  false-present 0.129
+     CH4 0.762
+     H2O 0.547
+     CO2 0.601
+     NH3 0.500
+  routing method     balanced 0.555  present 0.179  false-present 0.045
+     CH4 0.611
+     H2O 0.470
+     CO2 0.533
+     NH3 0.503
