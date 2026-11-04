@@ -1,4 +1,4 @@
-"""Check from the referee pass of 2026-10-30. Output saved as results/review_checks/routers.txt."""
+"""Check of 2026-10-30. Output saved as results/checks/routers.txt."""
 import os, sys, warnings, time
 warnings.filterwarnings('ignore')
 V3='/Users/fanyang/BioSignatureDetectionModel/v3'; os.chdir(V3); sys.path.insert(0,V3)
@@ -42,7 +42,7 @@ for pl,d in RR.PANEL.items():
             if bool(up.get(pl,False)): va=hv
             if bool(low.get(pl,False)): va='split'
             rows.append(dict(planet=pl,molecule=m,router=router,verdict=v,verdict_amp=va,label=lab))
-df=pd.DataFrame(rows); df.to_csv('results/review_checks/routers_verdicts.csv',index=False)
+df=pd.DataFrame(rows); df.to_csv('results/checks/routers_verdicts.csv',index=False)
 lab=df[df.label.notna()].copy()
 def credit(v,l): return 0.5 if v=='split' else float(v==l)
 lab['c']=[credit(v,l) for v,l in zip(lab.verdict,lab.label)]; lab['ca']=[credit(v,l) for v,l in zip(lab.verdict_amp,lab.label)]

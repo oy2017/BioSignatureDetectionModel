@@ -1,4 +1,4 @@
-"""Check from the referee pass of 2026-10-30. Output saved as results/review_checks/giants_dchi2.txt."""
+"""Check of 2026-10-30. Output saved as results/checks/giants_dchi2.txt."""
 import os, sys
 V3='/Users/fanyang/BioSignatureDetectionModel/v3'; os.chdir(V3)
 import numpy as np, pandas as pd

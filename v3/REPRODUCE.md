@@ -24,7 +24,7 @@ Every table and figure of `jhss/manuscript.md`, the script that writes it and th
 | Numbers with no table of their own | `misc_numbers.py`, `decidability_cheap.py` | `results/misc_numbers.txt`, `results/decidability_cheap.txt` |
 | Real panel retrieved | `panel_retrieval.py --jobs 9`, then `--summarize` | `results/jwst_panel/panel_retrieval*.csv`, `panel_retrieval.txt` |
 | Table {panelret} | `panel_retrieval.py`, `--summarize` | `results/jwst_panel/panel_retrieval.txt` |
-| Table {missed}, existing rules as routers, transplant specificity, prior reach, classes against levels | `review_checks/*.py` | `results/review_checks/` |
+| Table {missed}, existing rules as routers, transplant specificity, prior reach, classes against levels | `checks/*.py` | `results/checks/` |
 | Tables {panel4}, {fourth}: the independent test | `jwst_panel.FOURTH`, `fourth_batch.py`; survey `jwst_fourth_batch_survey.md` | `results/jwst_panel_fourth/`, `results/jwst_panel/fourth_batch_second_reader.csv` |
 The manuscript, the letters and the journal's Word files: `jhss/build_manuscript.py both`, `jhss/build_manuscript.py docx response_to_reviewer_comments.md`, `jhss/build_manuscript.py docx cover_letter.md`; separate JPEG figures: `jhss/export_figures.py`.
 
@@ -44,29 +44,29 @@ Order, each result under `results/`:
 | Rainout grid, older designs | `goyal_test.py --cond rainout` | `goyal_test/` |
 | Candidates | `round3_learner.py --cand C-mlp`, `--cand C+B-mlp`, `--cand B+bal-vote` | `round3/` |
 | Held-out grids | `goyal_test.py --cond local`, `crossfield_test.py --build`, `--score`, `round3_learner.py --cand C+B-mlp --cond rainout local crossfield` | `round3/`, `goyal_test/` |
-| Grid scores | `review_checks/goyal_score.py <cond>` | `goyal_test/goyal_<cond>.txt` |
+| Grid scores | `checks/goyal_score.py <cond>` | `goyal_test/goyal_<cond>.txt` |
 | Seeds | `round3_learner.py --cand C+B-mlp --cond rainout local crossfield --seed-offset 1`, `2` | `round3/seed1`, `seed2` |
-| Band removal | `band_control.py`, then `review_checks/round3_checks.py` | `round3/round3_checks.txt` |
+| Band removal | `band_control.py`, then `checks/round3_checks.py` | `round3/round3_checks.txt` |
 | Opacity removed | `crossfield_counterfactual.py` | `round3/counterfactual.txt` |
 | Ariel coverage, Table 21 | `round3_ariel.py` | `round3/round3_ariel.txt` |
-| Confidence | `review_checks/round3_confidence.py` | `round3/round3_confidence.txt` |
+| Confidence | `checks/round3_confidence.py` | `round3/round3_confidence.txt` |
 | Figure 6 | `plots/fig7_grids.py` | `figures/fig7_grids.png` |
-| Earlier forms | `matched_learner.py`, `matched_ariel.py`, `broad_learner.py`, `independent_test.py`, `review_checks/matched_score.py`, `review_checks/broad_score.py` | `matched_learner/`, `goyal_test/`, `independent_test/` |
+| Earlier forms | `matched_learner.py`, `matched_ariel.py`, `broad_learner.py`, `independent_test.py`, `checks/matched_score.py`, `checks/broad_score.py` | `matched_learner/`, `goyal_test/`, `independent_test/` |
 
-The real panel's dependent tables are rerun after a change of conversion in this order: `jwst_panel.py`, `alfnoor_retrain.py --panel` (remove `results/jwst_panel_{haze,hazedeck,union}` first; `WASP-39b_*` there comes from the benchmark assembly), `router_real.py`, `muting_router.py`, `amplitude_flag.py`, `panel_tier1.py`, `fourth_batch.py`, `jwst_muting_census.py`, `muting_bootstrap.py`, `jwst_controls.py`, `panel_mechanism.py`, `panel_control.py`, `label_sensitivity.py`, `pipeline_table.py`, `review_checks/*.py`.
+The real panel's dependent tables are rerun after a change of conversion in this order: `jwst_panel.py`, `alfnoor_retrain.py --panel` (remove `results/jwst_panel_{haze,hazedeck,union}` first; `WASP-39b_*` there comes from the benchmark assembly), `router_real.py`, `muting_router.py`, `amplitude_flag.py`, `panel_tier1.py`, `fourth_batch.py`, `jwst_muting_census.py`, `muting_bootstrap.py`, `jwst_controls.py`, `panel_mechanism.py`, `panel_control.py`, `label_sensitivity.py`, `pipeline_table.py`, `checks/*.py`.
 
 ## The diagnostic, the second population and the grid retrieval (Sections 2.4, 3.2, 3.6 and 3.7)
 
 | Result | Command | Output |
 |---|---|---|
 | The rules against the ensemble, Table D4 | `round3_rules.py`, `rule_comparison.py`, `round3_margin.py` | `round3/round3_rules.txt`, `round3/rule_comparison.txt`, `round3/round3_margin.txt` |
-| Declining within each gas, and stratified by call | `review_checks/round3_margin_within.py`, `review_checks/round3_margin_stratified.py`, `review_checks/round3_margin_stratified_real.py` | `round3/round3_margin_within.txt`, `round3/round3_margin_stratified.txt`, `round3/round3_margin_stratified_real.txt` |
+| Declining within each gas, and stratified by call | `checks/round3_margin_within.py`, `checks/round3_margin_stratified.py`, `checks/round3_margin_stratified_real.py` | `round3/round3_margin_within.txt`, `round3/round3_margin_stratified.txt`, `round3/round3_margin_stratified_real.txt` |
 | Selection and departures at Ariel coverage | `round3_ariel_tests.py` | `round3/round3_ariel_tests.txt` |
-| Real labels, and outside the routing panel | `review_checks/round3_real.py`, `review_checks/round3_real_new.py` | `round3/round3_real.txt`, `round3/round3_real_new.txt` |
+| Real labels, and outside the routing panel | `checks/round3_real.py`, `checks/round3_real_new.py` | `round3/round3_real.txt`, `round3/round3_real_new.txt` |
 | Worked example | `worked_example.py` | `worked_example.txt` |
 | Second population: Mission Candidate Sample spectra | `mcs_testset.py --jobs 4` | `data/mcs/`, `ariel_mcs.txt` |
 | Second population: retrieval of 200 planets | `identifiability_calibrate.py --population mcs --random-sample --n 200 --jobs 9` | `identifiability_calibration_mcs.csv` |
-| Second population: undecided shares, error split, ensemble | `review_checks/mcs_identifiability.py`, `review_checks/mcs_error_split.py`, `review_checks/mcs_ensemble.py` | `identifiability_mcs.txt`, `identifiability_mcs_split.txt`, `identifiability_mcs_ensemble.txt` |
-| Free radius | `identifiability_calibrate.py --free-radius --random-sample --n 200 --jobs 9`, then `review_checks/free_radius_compare.py` | `identifiability_free_radius.txt` |
+| Second population: undecided shares, error split, ensemble | `checks/mcs_identifiability.py`, `checks/mcs_error_split.py`, `checks/mcs_ensemble.py` | `identifiability_mcs.txt`, `identifiability_mcs_split.txt`, `identifiability_mcs_ensemble.txt` |
+| Free radius | `identifiability_calibrate.py --free-radius --random-sample --n 200 --jobs 9`, then `checks/free_radius_compare.py` | `identifiability_free_radius.txt` |
 | Sampler convergence | `identifiability_calibrate.py --random-sample --n 50 --seed-offset 1000 --tag seed2 --jobs 9`; `--random-sample --n 50 --npoints 400 --maxcall 80000 --tag np400 --jobs 9` | `identifiability_calibration_seed2.csv`, `identifiability_calibration_np400.csv` |
-| Retrieval on the photochemical grid | `grid_retrieval.py 7` (first run) and `grid_retrieval.py 7 --tfix` (prior centred on the catalogue temperature), each then `review_checks/grid_retrieval_intervals.py [--tfix]` | `round3/grid_retrieval[_tp]_{jwst,tier1}.csv`, `round3/grid_retrieval[_tp].txt`, `round3/grid_retrieval[_tp]_intervals.txt` |
+| Retrieval on the photochemical grid | `grid_retrieval.py 7` (first run) and `grid_retrieval.py 7 --tfix` (prior centred on the catalogue temperature), each then `checks/grid_retrieval_intervals.py [--tfix]` | `round3/grid_retrieval[_tp]_{jwst,tier1}.csv`, `round3/grid_retrieval[_tp].txt`, `round3/grid_retrieval[_tp]_intervals.txt` |

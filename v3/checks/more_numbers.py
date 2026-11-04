@@ -1,4 +1,4 @@
-"""Further numbers for the referee pass of 2026-10-30. Output saved as results/review_checks/more_numbers.txt."""
+"""Further numbers for the referee pass of 2026-10-30. Output saved as results/checks/more_numbers.txt."""
 import os, sys, re, warnings
 warnings.filterwarnings('ignore')
 V3='/Users/fanyang/BioSignatureDetectionModel/v3'; os.chdir(V3); sys.path.insert(0,V3)
@@ -32,7 +32,7 @@ for (pl,m),r in V[V.label=='present'].iterrows():
     t=tw.get((pl,m),np.nan)
     cause='no twin' if not np.isfinite(t) else ('coverage' if t<.5 else ('below 1.95 um, AIRS-only finds it' if r['AIRS-only everywhere']=='present' else 'not assigned'))
     tb.append(dict(planet=pl,molecule=m,verdict=r.published,twin=t,airs=r['AIRS-only everywhere'],method=r[rule],cause=cause))
-TB=pd.DataFrame(tb); print(TB.round(2).to_string(index=False)); print(TB.cause.value_counts().to_dict()); TB.to_csv('results/review_checks/missed_present.csv',index=False)
+TB=pd.DataFrame(tb); print(TB.round(2).to_string(index=False)); print(TB.cause.value_counts().to_dict()); TB.to_csv('results/checks/missed_present.csv',index=False)
 print('\n5. e3 budget, fifth hazed, f=20 %'); 
 E=pd.read_csv('results/e3_budget_freehaze.csv')
 for h in (.1,.2):

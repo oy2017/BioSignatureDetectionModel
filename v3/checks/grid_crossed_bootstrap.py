@@ -1,7 +1,7 @@
 """Crossed (planet x source-model) bootstrap of the ensemble-minus-routing gain on the held-out grids
 (REVISION_EXPECTATIONS.md, section AD, rows AD2 and AD3). Output: results/round3/grid_crossed_bootstrap.txt
 
-Credit as in review_checks/goyal_score.py and plots/fig7_grids.py: 1 right, 0.5 split or withheld, 0 wrong;
+Credit as in checks/goyal_score.py and plots/fig7_grids.py: 1 right, 0.5 split or withheld, 0 wrong;
 balanced credit = mean of the pooled credit on truly present (v > -4) and on truly absent labels.
 Intervals (95 %, 2,000 replicates, fixed seeds) on the difference C+B-mlp minus 'the method':
   (a) planets only: planets (suffixes -alt, -hu, -hm stripped) resampled with replacement;

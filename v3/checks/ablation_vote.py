@@ -1,5 +1,5 @@
 """AD5 (REVISION_EXPECTATIONS.md, section AD; post hoc): the frozen four-learner vote on the broad population with balanced
-classes (B+bal-vote), scored on the two held-out grids exactly as Table 13 (plots/fig7_grids.py, review_checks/goyal_score.py):
+classes (B+bal-vote), scored on the two held-out grids exactly as Table 13 (plots/fig7_grids.py, checks/goyal_score.py):
 balanced credit pooled over the four gases (right 1, split 1/2, wrong 0; mean of present and absent shares), with the
 credit on present labels and the false-present rate; 95 % bootstrap over planets (base planet, 4000 resamples, seed 405).
 First reproduces Table 13 for the routing method ("the method") and the matched ensemble (C+B-mlp).

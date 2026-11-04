@@ -1380,11 +1380,11 @@ Scaled twins: at JWST errors a twin scaled to the real dispersion is found as of
 
 ### F37. The real panel retrieved: the training prior reads real spectra as absent (2026-10-30)
 
-`panel_retrieval.py`. Tier-1 sigma, clear model: present labels 0 right, 9 undecided, 17 wrong; absent 37, 2, 1; score 39 of 66, below every-label-absent. Highest p_true of a present label 0.31. Free haze barely changes it. None of the classifier's 17 wrong labels is recoverable by the posterior definition under this prior. With the referee's check that the population reaches the giants' dispersion at low abundance (`review_checks/prior_reach.py`), this places much of the real-spectrum miss in the prior, shared by classifier and retrieval.
+`panel_retrieval.py`. Tier-1 sigma, clear model: present labels 0 right, 9 undecided, 17 wrong; absent 37, 2, 1; score 39 of 66, below every-label-absent. Highest p_true of a present label 0.31. Free haze barely changes it. None of the classifier's 17 wrong labels is recoverable by the posterior definition under this prior. With the referee's check that the population reaches the giants' dispersion at low abundance (`checks/prior_reach.py`), this places much of the real-spectrum miss in the prior, shared by classifier and retrieval.
 
 ### F38. Second referee's corrections (2026-10-30)
 
-`review_checks/`. An undecidable label is unsettled, not uninformative: the retrieval is right on 81-86 % of them; 74 % of clean errors have p_true above 0.5. Transplants are not specific: the bins below 1.95 um bring 10 of 37 absent labels to a majority. Existing rules as routers score 48.5-49.5 of 66; amplitude flag with AIRS-only elsewhere scores 55.0, above the rule. A population muted by three loses 54-61 CH4 and 93-114 H2O targets under every design. Across seven designs the clean simulated ranking runs opposite to the panel (Spearman -0.71).
+`checks/`. An undecidable label is unsettled, not uninformative: the retrieval is right on 81-86 % of them; 74 % of clean errors have p_true above 0.5. Transplants are not specific: the bins below 1.95 um bring 10 of 37 absent labels to a majority. Existing rules as routers score 48.5-49.5 of 66; amplitude flag with AIRS-only elsewhere scores 55.0, above the rule. A population muted by three loses 54-61 CH4 and 93-114 H2O targets under every design. Across seven designs the clean simulated ranking runs opposite to the panel (Spearman -0.71).
 
 ### What these add up to (2026-10-30, second revision)
 

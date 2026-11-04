@@ -1,4 +1,4 @@
-"""How much can the fourth batch say, and what does the method do on recall and false positives? Output saved as results/review_checks/how_conclusive.txt."""
+"""How much can the fourth batch say, and what does the method do on recall and false positives? Output saved as results/checks/how_conclusive.txt."""
 import os, numpy as np, pandas as pd
 os.chdir(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 BASE=lambda s:s.replace('-alt','').replace('-hu','').replace('-hm','')

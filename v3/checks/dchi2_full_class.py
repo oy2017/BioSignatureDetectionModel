@@ -15,7 +15,7 @@ Tier-1 radiometric sigma, the same planet set / edges / sigma as `identifiabilit
      first and Nelder-Mead returns its best point, full <= boundary(rerun) holds by construction.
 
 Writes results/dchi2_full_class.csv (one row per planet x molecule; resumable) and results/dchi2_full_class.txt.
-  OMP_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 /Users/fanyang/tfenv/bin/python review_checks/dchi2_full_class.py --jobs 3
+  OMP_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 /Users/fanyang/tfenv/bin/python checks/dchi2_full_class.py --jobs 3
 """
 import argparse
 import copy

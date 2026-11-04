@@ -16,7 +16,7 @@ through the shortcut operator for a like-for-like baseline. Designs: the matched
 seeds of round3_learner.run and checked against the stored votes), the routing method and the re-implemented classifier
 (panel_tier1.score as in goyal_test.run_frozen).
 
-Usage: OMP_NUM_THREADS=1 python review_checks/grid_full_operator.py [--jobs N] [--stage convert|ensemble|frozen|summary|all]
+Usage: OMP_NUM_THREADS=1 python checks/grid_full_operator.py [--jobs N] [--stage convert|ensemble|frozen|summary|all]
 Writes results/round3/grid_full_operator_{spectra.npz, votes.csv.gz, scores.csv, checks.csv, noise.csv} and grid_full_operator.txt
 """
 import argparse

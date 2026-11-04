@@ -1,4 +1,4 @@
-"""Check from the referee pass of 2026-10-30. Output saved as results/review_checks/flags_vs_classes.txt."""
+"""Check of 2026-10-30. Output saved as results/checks/flags_vs_classes.txt."""
 import os, sys, warnings
 warnings.filterwarnings('ignore')
 V3='/Users/fanyang/BioSignatureDetectionModel/v3'; os.chdir(V3); sys.path.insert(0,V3)
