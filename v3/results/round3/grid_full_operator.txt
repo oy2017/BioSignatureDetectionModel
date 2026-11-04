@@ -1,0 +1,122 @@
+The held-out grids through the full JWST-to-Ariel operator against the shortcut (mask + independent per-bin noise): 50 source models per reduction and grid (seeded subset), 20 noise draws per model and precision.
+Balanced credit = mean of the pooled credit on truly present (v > -4) and truly absent labels; right 1, split or withheld 0.5, wrong 0; draws averaged per label. 95 % planet-bootstrap percentile intervals (2000 replicates; planets = reductions with -alt/-hu/-hm stripped, resampled with replacement; differences paired within replicate).
+Full operator: native source model averaged over each JWST point's interval (jwst_to_ariel.sample_clean), Gaussian noise per point at its error, align_offsets with the pipeline's reference mode (most points; WASP-39 b: SOSS order 1 with MIRI levelled on the benchmark model), combine (overlap fraction x inverse variance), bins covered < 0.5 flat-filled at the measured mean; Tier-1: the payload sigma per bin added to the converted spectrum. The ensemble is refitted with round3_learner's seeds (checked below); routing and the re-implemented classifier use panel_tier1.score as goyal_test.run_frozen does.
+
+== 1. Reproduction checks
+  stored grid rows from the native source models (ML.bin_native on the model's own wavelength grid): max |diff| over all 3800 rows x 104 bins = 0.00e+00 (stored as float32; 0 = identical)
+  coverage mask through the full operator identical to the stored mask in all draws: 0 mismatching draws of 76000; combine's error vector vs stored err: max relative deviation 9.8e-13
+  ensemble vs stored votes_C+B-mlp_<grid>.csv.gz (stored grid, round3_learner.run's own draw): max |prob diff| 1.19e-04 (stored probabilities are rounded to 4 decimals), vote mismatches 0 of 232192 present/absent entries over 608 planet x precision x molecule x grid cells
+  reductions: 38; with more than one instrument mode: 19; with at least one fitted offset (non-reference mode, NRS1+NRS2 counted once): 17
+  rms noise on the measured bins (ppm), median over reductions: full 56, shortcut 55, stored err 55
+
+== 2. Scores (balanced credit) per grid x precision, shortcut operator vs full operator on the same subset
+== local grid, JWST: 7600 labels (2749 present, 4851 absent) on 38 reductions of 35 planets
+  design        shortcut      full  full-shortcut      95 % interval   false-present rate (shortcut / full)   split or withheld (shortcut / full)
+  C+B-mlp          0.706     0.697         -0.009 (-0.018,-0.000)               0.176 / 0.179                         0.000 / 0.000            
+  the method       0.573     0.572         -0.001 (-0.004,+0.002)               0.131 / 0.132                         0.070 / 0.070            
+  published        0.558     0.558         -0.000 (-0.003,+0.003)               0.031 / 0.030                         0.044 / 0.046            
+  ensemble minus routing, shortcut: +0.133 (+0.104,+0.154)   ensemble minus re-implemented: +0.147 (+0.122,+0.167)
+  ensemble minus routing, full    : +0.125 (+0.103,+0.140)   ensemble minus re-implemented: +0.138 (+0.119,+0.156)
+  change of the gain, full minus shortcut: -0.008 (-0.018,+0.002)
+    CH4  C+B-mlp 0.756->0.751  the method 0.682->0.681  published 0.571->0.570   gain +0.074->+0.070
+    H2O  C+B-mlp 0.702->0.690  the method 0.518->0.516  published 0.556->0.556   gain +0.185->+0.174
+    CO2  C+B-mlp 0.675->0.672  the method 0.585->0.583  published 0.562->0.560   gain +0.090->+0.088
+    NH3  C+B-mlp 0.661->0.639  the method 0.503->0.512  published 0.510->0.520   gain +0.157->+0.127
+
+== local grid, Tier-1: 7600 labels (2749 present, 4851 absent) on 38 reductions of 35 planets
+  design        shortcut      full  full-shortcut      95 % interval   false-present rate (shortcut / full)   split or withheld (shortcut / full)
+  C+B-mlp          0.631     0.625         -0.007 (-0.010,-0.003)               0.177 / 0.180                        -0.000 / -0.000           
+  the method       0.527     0.528         +0.001 (-0.001,+0.002)               0.056 / 0.056                         0.059 / 0.060            
+  published        0.521     0.521         +0.000 (-0.001,+0.002)               0.010 / 0.010                         0.034 / 0.035            
+  ensemble minus routing, shortcut: +0.104 (+0.088,+0.119)   ensemble minus re-implemented: +0.110 (+0.092,+0.129)
+  ensemble minus routing, full    : +0.096 (+0.080,+0.112)   ensemble minus re-implemented: +0.103 (+0.085,+0.122)
+  change of the gain, full minus shortcut: -0.008 (-0.012,-0.004)
+    CH4  C+B-mlp 0.702->0.699  the method 0.568->0.574  published 0.522->0.523   gain +0.134->+0.125
+    H2O  C+B-mlp 0.599->0.593  the method 0.482->0.482  published 0.514->0.512   gain +0.117->+0.111
+    CO2  C+B-mlp 0.600->0.597  the method 0.529->0.528  published 0.520->0.520   gain +0.071->+0.068
+    NH3  C+B-mlp 0.614->0.605  the method 0.509->0.510  published 0.505->0.508   gain +0.106->+0.095
+
+== crossfield grid, JWST: 7600 labels (3559 present, 4041 absent) on 38 reductions of 35 planets
+  design        shortcut      full  full-shortcut      95 % interval   false-present rate (shortcut / full)   split or withheld (shortcut / full)
+  C+B-mlp          0.771     0.767         -0.004 (-0.009,+0.002)               0.082 / 0.086                         0.000 / 0.000            
+  the method       0.653     0.651         -0.002 (-0.004,+0.000)               0.055 / 0.055                         0.077 / 0.076            
+  published        0.604     0.599         -0.005 (-0.008,-0.003)               0.011 / 0.011                         0.056 / 0.055            
+  ensemble minus routing, shortcut: +0.117 (+0.092,+0.135)   ensemble minus re-implemented: +0.167 (+0.136,+0.190)
+  ensemble minus routing, full    : +0.116 (+0.094,+0.131)   ensemble minus re-implemented: +0.168 (+0.140,+0.192)
+  change of the gain, full minus shortcut: -0.002 (-0.007,+0.004)
+    CH4  C+B-mlp 0.891->0.884  the method 0.819->0.817  published 0.629->0.619   gain +0.072->+0.067
+    H2O  C+B-mlp 0.672->0.674  the method 0.568->0.563  published 0.595->0.590   gain +0.104->+0.111
+    CO2  C+B-mlp 0.761->0.760  the method 0.610->0.610  published 0.586->0.584   gain +0.151->+0.150
+    NH3  C+B-mlp 0.552->0.558  the method 0.488->0.494  published 0.501->0.508   gain +0.064->+0.064
+
+== crossfield grid, Tier-1: 7600 labels (3559 present, 4041 absent) on 38 reductions of 35 planets
+  design        shortcut      full  full-shortcut      95 % interval   false-present rate (shortcut / full)   split or withheld (shortcut / full)
+  C+B-mlp          0.694     0.691         -0.003 (-0.007,+0.000)               0.113 / 0.117                         0.000 / -0.000           
+  the method       0.565     0.565         +0.000 (-0.001,+0.002)               0.030 / 0.031                         0.062 / 0.062            
+  published        0.542     0.542         -0.000 (-0.002,+0.001)               0.007 / 0.007                         0.038 / 0.037            
+  ensemble minus routing, shortcut: +0.129 (+0.117,+0.140)   ensemble minus re-implemented: +0.152 (+0.133,+0.169)
+  ensemble minus routing, full    : +0.125 (+0.114,+0.136)   ensemble minus re-implemented: +0.149 (+0.130,+0.168)
+  change of the gain, full minus shortcut: -0.004 (-0.008,+0.000)
+    CH4  C+B-mlp 0.830->0.826  the method 0.632->0.634  published 0.541->0.539   gain +0.198->+0.192
+    H2O  C+B-mlp 0.619->0.615  the method 0.528->0.526  published 0.541->0.540   gain +0.092->+0.090
+    CO2  C+B-mlp 0.611->0.610  the method 0.519->0.519  published 0.518->0.519   gain +0.092->+0.090
+    NH3  C+B-mlp 0.549->0.554  the method 0.500->0.505  published 0.502->0.505   gain +0.049->+0.050
+
+== 3. Noise structure of the full operator at JWST precision (noise = draw minus the per-model mean over draws; correlation over the 1,000 rows of each reduction and grid, averaged over pairs of measured bins at the lag)
+  lag 1: full operator median +0.117 (min +0.002, max +0.557; pair-weighted mean +0.212); shortcut median -0.000 (min -0.009, max +0.013)
+  lag 2: full median +0.002 (max +0.383); lag 5: full median +0.001 (max +0.356); shortcut lag 2 / 5 medians -0.001 / -0.000
+  reductions with lag-1 correlation above 0.1 (local grid): 23 of 38; above 0.3: 11; single-mode reductions median +0.097, multi-mode median +0.232
+  per reduction (local grid): WASP-39b +0.56, TOI-421b +0.50, LTT3780c +0.42, HATS-6b +0.39, K2-18b +0.38, TOI-270d +0.38, HD209458b +0.37, TOI-1130b +0.36, TrES-4b +0.36, GJ1214b +0.35, GJ9827d +0.34, L98-59d +0.26, K2-18b-alt +0.25, K2-18b-hu +0.23, TOI-1231b +0.20, HAT-P-12b +0.13, HD189733b +0.13, WASP-17b +0.13, WASP-166b +0.13, WASP-107b +0.11, Kepler-51d +0.11, WASP-94Ab +0.10, HAT-P-1b +0.10, LP791-18c +0.10, TOI-6894b +0.10, TOI-5205b +0.10, WASP-80b +0.09, GJ3470b +0.09, WASP-52b +0.05, HIP67522b +0.05, HAT-P-26b +0.05, HAT-P-30b +0.04, NGTS-2b +0.04, WASP-96b +0.04, WASP-121b +0.03, TOI-199b +0.02, HAT-P-18b +0.02, TOI-270d-hm +0.01
+  fitted-offset scatter across draws (ppm, modes in order; local grid): TOI-270d [SOSS+NRS1+NRS2] 0/61/61; K2-18b [SOSS+G395H+MIRI] 121/0/0; K2-18b-alt [SOSS-o1+SOSS-o2+NRS1+NRS2] 0/0/0/0; TOI-421b [SOSS+G395H] 0/0; WASP-107b [F322W2+F444W+G395H+MIRI] 16/20/0/0; GJ3470b [F322W2+F444W] 0/0; WASP-166b [SOSS+G395M] 0/0; TOI-1231b [SOSS-o1+SOSS-o2+NRS1+NRS2] 0/0/0/0; K2-18b-hu [SOSS-o1+SOSS-o2+G235H+G395H] 19/109/14/0; GJ9827d [SOSS-o2+SOSS-o1] 0/0; LTT3780c [SOSS+NRS1+NRS2+MIRI] 0/174/174/0; WASP-96b [SOSS+NRS1+NRS2] 0/0/0; WASP-17b [SOSS-o1+SOSS-o2+MIRI] 0/0/0; WASP-94Ab [SOSS+NRS1+NRS2] 0/0/0; HAT-P-12b [SOSS+G395M+MIRI] 0/0/0; WASP-39b [SOSS-o2+SOSS-o1+PRISM+NIRCam+NRS1+NRS2+MIRI] 0/0/33/36/36/36/216; TOI-1130b [SOSS-o1+SOSS-o2+NRS1+NRS2] 0/0/0/0
+
+== 4. Per-reduction checks (local grid)
+     planet  n_modes                                       modes reference  n_fitted_offsets           real_offsets_ppm  bin_reproduction_maxabs  mask_mismatch_draws  err_vector_max_rel_dev  rms_full_noise_ppm  rms_shortcut_noise_ppm  rms_stored_err_ppm
+   TOI-270d        3                              SOSS+NRS1+NRS2      SOSS                 2               +0/-198/-198                      0.0                    0            2.622307e-14           62.218682               46.721253           46.793276
+     K2-18b        3                             SOSS+G395H+MIRI     G395H                 2                  -92/+0/+0                      0.0                    0            6.712414e-13          107.733046               68.839315           68.778325
+ K2-18b-alt        4                   SOSS-o1+SOSS-o2+NRS1+NRS2   SOSS-o1                 3                +0/+0/+0/+0                      0.0                    0            8.895345e-13           63.974408               63.591161           63.917467
+   TOI-421b        2                                  SOSS+G395H      SOSS                 1                      +0/+0                      0.0                    0            8.443476e-13           56.570660               56.487189           56.506590
+  HAT-P-18b        1                                        SOSS      SOSS                 0                         +0                      0.0                    0            8.373326e-13          138.870579              138.308732          138.687605
+  WASP-107b        4                     F322W2+F444W+G395H+MIRI     G395H                 3            +106/+285/+0/+0                      0.0                    0            2.525947e-14           43.374497               42.524453           42.581014
+  HD189733b        1                                      NIRCam    NIRCam                 0                         +0                      0.0                    0            2.290411e-14           22.398761               22.419294           22.433720
+  HAT-P-26b        1                                       G395H     G395H                 0                         +0                      0.0                    0            2.409548e-14           37.122660               36.897051           37.029565
+    GJ3470b        2                                F322W2+F444W    F322W2                 1                      +0/+0                      0.0                    0            2.759348e-14           34.337489               34.560706           34.360141
+  WASP-166b        2                                  SOSS+G395M     G395M                 1                      +0/+0                      0.0                    0            8.858333e-13           55.572140               55.253639           55.709061
+  TOI-1231b        4                   SOSS-o1+SOSS-o2+NRS1+NRS2      NRS2                 2                +0/+0/+0/+0                      0.0                    0            2.759112e-14           39.439237               39.441970           39.472106
+  K2-18b-hu        4                 SOSS-o1+SOSS-o2+G235H+G395H     G395H                 3           +148/+193/+16/+0                      0.0                    0            2.634637e-14           29.941129               24.946974           25.046579
+TOI-270d-hm        1                                       G395H     G395H                 0                         +0                      0.0                    0            2.514481e-14           35.736338               35.523570           35.648925
+    GJ9827d        2                             SOSS-o2+SOSS-o1   SOSS-o1                 1                      +0/+0                      0.0                    0            9.194278e-13           54.939139               55.135495           55.177738
+   WASP-52b        2                                   NRS1+NRS2      NRS2                 0                      +0/+0                      0.0                    0            8.258851e-13           73.680120               74.154937           73.394256
+    L98-59d        1                                       G395H     G395H                 0                         +0                      0.0                    0            2.702696e-14           33.665229               33.799077           33.817381
+    GJ1214b        1                                       G395H     G395H                 0                         +0                      0.0                    0            2.071257e-14           25.488151               25.543818           25.534446
+   LTT3780c        4                         SOSS+NRS1+NRS2+MIRI      SOSS                 3              +0/-59/-59/+0                      0.0                    0            7.455776e-13          157.236727              109.752615          109.485000
+   WASP-80b        1                                      F322W2    F322W2                 0                         +0                      0.0                    0            2.169648e-13           69.157666               69.320083           69.375392
+  HD209458b        1                                      NIRCam    NIRCam                 0                         +0                      0.0                    0            2.422655e-14           25.028918               24.831052           24.966383
+   WASP-96b        3                              SOSS+NRS1+NRS2      SOSS                 2                   +0/+0/+0                      0.0                    0            7.246290e-13          132.253027              131.217692          132.067216
+   WASP-17b        3                        SOSS-o1+SOSS-o2+MIRI   SOSS-o1                 2                   +0/+0/+0                      0.0                    0            8.080883e-13          118.631404              118.814785          119.100390
+  WASP-94Ab        3                              SOSS+NRS1+NRS2      NRS2                 1                   +0/+0/+0                      0.0                    0            6.392332e-13           53.891367               53.906499           53.997126
+  HIP67522b        1                                       G395H     G395H                 0                         +0                      0.0                    0            8.531822e-13           92.704020               92.705608           92.852184
+  HAT-P-12b        3                             SOSS+G395M+MIRI      SOSS                 2                   +0/+0/+0                      0.0                    0            9.226016e-13           88.131015               88.082782           88.484311
+   WASP-39b        7 SOSS-o2+SOSS-o1+PRISM+NIRCam+NRS1+NRS2+MIRI   SOSS-o1                 6 +0/+0/-177/+122/-17/-17/+0                      0.0                    0            6.295579e-13           58.179209               53.210690           53.307255
+    TrES-4b        2                                   NRS1+NRS2      NRS2                 0                      +0/+0                      0.0                    0            2.358378e-14           54.928379               54.625822           54.869954
+    HATS-6b        1                                       PRISM     PRISM                 0                         +0                      0.0                    0            9.786905e-13          103.307244              103.439090          103.579249
+  TOI-5205b        1                                       PRISM     PRISM                 0                         +0                      0.0                    0            9.199235e-13          114.645561              114.578591          114.956214
+  TOI-6894b        1                                       PRISM     PRISM                 0                         +0                      0.0                    0            4.945645e-13          242.816041              242.074398          242.502368
+   TOI-199b        1                                       G395M     G395M                 0                         +0                      0.0                    0            5.177279e-13           86.515341               86.185645           86.178457
+  LP791-18c        1                                       PRISM     PRISM                 0                         +0                      0.0                    0            9.559482e-13          124.306391              125.001822          124.441906
+    NGTS-2b        1                                       G395H     G395H                 0                         +0                      0.0                    0            2.315951e-14           45.014081               44.526673           44.817148
+  HAT-P-30b        1                                       G395H     G395H                 0                         +0                      0.0                    0            3.114299e-13           53.436327               53.195924           53.419447
+   HAT-P-1b        1                                       G395H     G395H                 0                         +0                      0.0                    0            2.398342e-14           32.627280               32.555690           32.581444
+  TOI-1130b        4                   SOSS-o1+SOSS-o2+NRS1+NRS2   SOSS-o1                 3                +0/+0/+0/+0                      0.0                    0            2.703325e-14           31.499666               31.427054           31.547687
+ Kepler-51d        1                                       PRISM     PRISM                 0                         +0                      0.0                    0            7.777563e-13          168.056148              168.396754          168.334688
+  WASP-121b        1                                       G395H     G395H                 0                         +0                      0.0                    0            7.593792e-13           50.777818               50.889939           50.842560
+
+== 5. Ensemble reproduction, worst cells
+      grid    planet precision molecule   n  max_abs_prob_diff  vote_mismatch
+crossfield TOI-5205b      JWST      NH3 200           0.000119              0
+crossfield TOI-5205b      JWST      H2O 200           0.000100              0
+     local TOI-5205b      JWST      H2O 200           0.000091              0
+crossfield HD189733b      JWST      H2O 144           0.000089              0
+crossfield HD189733b      JWST      CO2 144           0.000088              0
+crossfield TOI-5205b      JWST      CO2 200           0.000083              0
+     local WASP-121b      JWST      CO2 200           0.000076              0
+     local   HATS-6b      JWST      CH4 200           0.000073              0
