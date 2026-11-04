@@ -1,5 +1,3 @@
-**Original article**
-
 # Separating recoverable from irrecoverable errors in Ariel Tier-1 molecular classification: a new design tested on model grids and James Webb Space Telescope spectra
 
 Owen Yang<sup>a</sup>
