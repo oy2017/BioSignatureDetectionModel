@@ -1,0 +1,73 @@
+=== ATMO local condensation: 30400 labels (7600 spectra), 35.9 % present under the stored truth
+  reproduction of stored v_<gas> from the profiles (all rows): max |diff| 3.55e-15 dex, exact (==) 89.1 %, labels identical 100.00 %
+  labels within 0.5 dex of 1e-4 under the baseline: 11.7 %
+  1-1e3 Pa             flips 3.68 % (1119), of which within 0.5 dex of 1e-4 in the baseline 71 %; present 34.1 %
+      by gas: CH4 1.7 % (128 P->A, 0 A->P), H2O 4.7 % (359 P->A, 0 A->P), CO2 3.9 % (14 P->A, 284 A->P), NH3 4.4 % (334 P->A, 0 A->P)
+  1e2-1e5 Pa           flips 4.47 % (1360), of which within 0.5 dex of 1e-4 in the baseline 55 %; present 38.0 %
+      by gas: CH4 1.7 % (0 P->A, 126 A->P), H2O 5.4 % (0 P->A, 408 A->P), CO2 4.8 % (353 P->A, 15 A->P), NH3 6.0 % (0 P->A, 458 A->P)
+  log-mean 10-1e4 Pa   flips 3.07 % (934), of which within 0.5 dex of 1e-4 in the baseline 82 %; present 32.8 %
+      by gas: CH4 1.6 % (122 P->A, 0 A->P), H2O 3.0 % (227 P->A, 0 A->P), CO2 3.3 % (251 P->A, 0 A->P), NH3 4.4 % (334 P->A, 0 A->P)
+
+=== photochemical (Crossfield): 27648 labels (6912 spectra), 46.5 % present under the stored truth
+  reproduction of stored v_<gas> from the profiles (all rows): max |diff| 3.55e-15 dex, exact (==) 90.4 %, labels identical 100.00 %
+  labels within 0.5 dex of 1e-4 under the baseline: 13.9 %
+  1-1e3 Pa             flips 1.96 % (542), of which within 0.5 dex of 1e-4 in the baseline 93 %; present 46.3 %
+      by gas: CH4 1.1 % (41 P->A, 35 A->P), H2O 0.7 % (50 P->A, 0 A->P), CO2 3.4 % (63 P->A, 172 A->P), NH3 2.6 % (146 P->A, 35 A->P)
+  1e2-1e5 Pa           flips 1.43 % (396), of which within 0.5 dex of 1e-4 in the baseline 95 %; present 45.9 %
+      by gas: CH4 1.7 % (99 P->A, 17 A->P), H2O 0.4 % (0 P->A, 28 A->P), CO2 1.9 % (82 P->A, 50 A->P), NH3 1.7 % (94 P->A, 26 A->P)
+  log-mean 10-1e4 Pa   flips 0.98 % (270), of which within 0.5 dex of 1e-4 in the baseline 85 %; present 45.5 %
+      by gas: CH4 1.0 % (70 P->A, 0 A->P), H2O 0.0 % (0 P->A, 0 A->P), CO2 1.3 % (90 P->A, 0 A->P), NH3 1.6 % (110 P->A, 0 A->P)
+
+=== Full-grid balanced credit (pooled labels; split/no-verdict = 0.5; interval = 2000 planet-bootstrap draws)
+  local      JWST   stored               present 35.9 %  ensemble 0.711  routing 0.574  gain +0.137 (+0.110,+0.157)  shift +0.000  ens false-present 0.173  ens recall 0.595
+  local      JWST   base 10-1e4 Pa       present 35.9 %  ensemble 0.711  routing 0.574  gain +0.137 (+0.112,+0.156)  shift +0.000  ens false-present 0.173  ens recall 0.595
+  local      JWST   1-1e3 Pa             present 34.1 %  ensemble 0.725  routing 0.576  gain +0.149 (+0.123,+0.168)  shift +0.013  ens false-present 0.171  ens recall 0.622
+  local      JWST   1e2-1e5 Pa           present 38.0 %  ensemble 0.690  routing 0.570  gain +0.120 (+0.090,+0.142)  shift -0.017  ens false-present 0.180  ens recall 0.560
+  local      JWST   log-mean 10-1e4 Pa   present 32.8 %  ensemble 0.724  routing 0.584  gain +0.140 (+0.111,+0.161)  shift +0.003  ens false-present 0.178  ens recall 0.625
+  local      Tier-1 stored               present 35.9 %  ensemble 0.636  routing 0.531  gain +0.105 (+0.089,+0.119)  shift +0.000  ens false-present 0.173  ens recall 0.445
+  local      Tier-1 base 10-1e4 Pa       present 35.9 %  ensemble 0.636  routing 0.531  gain +0.105 (+0.089,+0.118)  shift +0.000  ens false-present 0.173  ens recall 0.445
+  local      Tier-1 1-1e3 Pa             present 34.1 %  ensemble 0.640  routing 0.531  gain +0.109 (+0.094,+0.123)  shift +0.004  ens false-present 0.175  ens recall 0.455
+  local      Tier-1 1e2-1e5 Pa           present 38.0 %  ensemble 0.628  routing 0.531  gain +0.097 (+0.083,+0.111)  shift -0.007  ens false-present 0.173  ens recall 0.429
+  local      Tier-1 log-mean 10-1e4 Pa   present 32.8 %  ensemble 0.648  routing 0.535  gain +0.113 (+0.097,+0.128)  shift +0.008  ens false-present 0.173  ens recall 0.469
+  crossfield JWST   stored               present 46.5 %  ensemble 0.773  routing 0.658  gain +0.115 (+0.090,+0.136)  shift +0.000  ens false-present 0.081  ens recall 0.627
+  crossfield JWST   base 10-1e4 Pa       present 46.5 %  ensemble 0.773  routing 0.658  gain +0.115 (+0.088,+0.136)  shift +0.000  ens false-present 0.081  ens recall 0.627
+  crossfield JWST   1-1e3 Pa             present 46.3 %  ensemble 0.779  routing 0.661  gain +0.118 (+0.092,+0.139)  shift +0.003  ens false-present 0.077  ens recall 0.634
+  crossfield JWST   1e2-1e5 Pa           present 45.9 %  ensemble 0.770  routing 0.658  gain +0.112 (+0.087,+0.133)  shift -0.003  ens false-present 0.087  ens recall 0.627
+  crossfield JWST   log-mean 10-1e4 Pa   present 45.5 %  ensemble 0.777  routing 0.661  gain +0.117 (+0.090,+0.138)  shift +0.002  ens false-present 0.082  ens recall 0.637
+  crossfield Tier-1 stored               present 46.5 %  ensemble 0.700  routing 0.567  gain +0.133 (+0.120,+0.144)  shift +0.000  ens false-present 0.116  ens recall 0.516
+  crossfield Tier-1 base 10-1e4 Pa       present 46.5 %  ensemble 0.700  routing 0.567  gain +0.133 (+0.119,+0.145)  shift +0.000  ens false-present 0.116  ens recall 0.516
+  crossfield Tier-1 1-1e3 Pa             present 46.3 %  ensemble 0.703  routing 0.568  gain +0.135 (+0.122,+0.147)  shift +0.002  ens false-present 0.114  ens recall 0.520
+  crossfield Tier-1 1e2-1e5 Pa           present 45.9 %  ensemble 0.698  routing 0.567  gain +0.130 (+0.117,+0.142)  shift -0.003  ens false-present 0.120  ens recall 0.515
+  crossfield Tier-1 log-mean 10-1e4 Pa   present 45.5 %  ensemble 0.703  routing 0.569  gain +0.134 (+0.121,+0.147)  shift +0.001  ens false-present 0.117  ens recall 0.523
+
+=== Photochemical grid, four-gas retrieval on its 90 spectra (present when <gas>_p_present >= 0.5); finished spectra / all 90 with timeouts = 0.5
+  first run     JWST   finished 77 sp stored               present 45.1 %  retrieval 0.567  ensemble 0.764  routing 0.627  ens-ret +0.197 (+0.123,+0.273)  shift +0.000  ens-routing +0.137
+  first run     JWST   finished 77 sp base 10-1e4 Pa       present 45.1 %  retrieval 0.567  ensemble 0.764  routing 0.627  ens-ret +0.197 (+0.122,+0.268)  shift +0.000  ens-routing +0.137
+  first run     JWST   finished 77 sp 1-1e3 Pa             present 45.1 %  retrieval 0.573  ensemble 0.770  routing 0.627  ens-ret +0.197 (+0.126,+0.268)  shift -0.000  ens-routing +0.143
+  first run     JWST   finished 77 sp 1e2-1e5 Pa           present 43.8 %  retrieval 0.548  ensemble 0.760  routing 0.627  ens-ret +0.212 (+0.134,+0.287)  shift +0.015  ens-routing +0.133
+  first run     JWST   finished 77 sp log-mean 10-1e4 Pa   present 44.5 %  retrieval 0.564  ensemble 0.769  routing 0.630  ens-ret +0.204 (+0.131,+0.279)  shift +0.008  ens-routing +0.138
+  first run     JWST   all 90   90 sp stored               present 44.2 %  retrieval 0.554  ensemble 0.773  routing 0.636  ens-ret +0.219 (+0.148,+0.285)  shift +0.000  ens-routing +0.137
+  first run     JWST   all 90   90 sp base 10-1e4 Pa       present 44.2 %  retrieval 0.554  ensemble 0.773  routing 0.636  ens-ret +0.219 (+0.149,+0.291)  shift +0.000  ens-routing +0.137
+  first run     JWST   all 90   90 sp 1-1e3 Pa             present 43.9 %  retrieval 0.558  ensemble 0.781  routing 0.632  ens-ret +0.222 (+0.151,+0.290)  shift +0.003  ens-routing +0.149
+  first run     JWST   all 90   90 sp 1e2-1e5 Pa           present 43.1 %  retrieval 0.538  ensemble 0.771  routing 0.637  ens-ret +0.232 (+0.166,+0.303)  shift +0.013  ens-routing +0.134
+  first run     JWST   all 90   90 sp log-mean 10-1e4 Pa   present 43.3 %  retrieval 0.551  ensemble 0.780  routing 0.635  ens-ret +0.229 (+0.160,+0.298)  shift +0.010  ens-routing +0.145
+  first run     Tier-1 finished 90 sp stored               present 44.2 %  retrieval 0.554  ensemble 0.649  routing 0.555  ens-ret +0.095 (+0.039,+0.150)  shift +0.000  ens-routing +0.094
+  first run     Tier-1 finished 90 sp base 10-1e4 Pa       present 44.2 %  retrieval 0.554  ensemble 0.649  routing 0.555  ens-ret +0.095 (+0.039,+0.147)  shift +0.000  ens-routing +0.094
+  first run     Tier-1 finished 90 sp 1-1e3 Pa             present 43.9 %  retrieval 0.550  ensemble 0.645  routing 0.553  ens-ret +0.095 (+0.040,+0.151)  shift +0.000  ens-routing +0.092
+  first run     Tier-1 finished 90 sp 1e2-1e5 Pa           present 43.1 %  retrieval 0.549  ensemble 0.639  routing 0.552  ens-ret +0.090 (+0.033,+0.146)  shift -0.005  ens-routing +0.087
+  first run     Tier-1 finished 90 sp log-mean 10-1e4 Pa   present 43.3 %  retrieval 0.553  ensemble 0.649  routing 0.554  ens-ret +0.095 (+0.039,+0.149)  shift +0.000  ens-routing +0.094
+  T-prior rerun JWST   finished 89 sp stored               present 44.4 %  retrieval 0.540  ensemble 0.777  routing 0.639  ens-ret +0.236 (+0.162,+0.307)  shift +0.000  ens-routing +0.138
+  T-prior rerun JWST   finished 89 sp base 10-1e4 Pa       present 44.4 %  retrieval 0.540  ensemble 0.777  routing 0.639  ens-ret +0.236 (+0.165,+0.305)  shift +0.000  ens-routing +0.138
+  T-prior rerun JWST   finished 89 sp 1-1e3 Pa             present 44.1 %  retrieval 0.542  ensemble 0.785  routing 0.635  ens-ret +0.242 (+0.164,+0.310)  shift +0.006  ens-routing +0.150
+  T-prior rerun JWST   finished 89 sp 1e2-1e5 Pa           present 43.3 %  retrieval 0.525  ensemble 0.774  routing 0.639  ens-ret +0.249 (+0.172,+0.325)  shift +0.013  ens-routing +0.135
+  T-prior rerun JWST   finished 89 sp log-mean 10-1e4 Pa   present 43.5 %  retrieval 0.535  ensemble 0.784  routing 0.638  ens-ret +0.249 (+0.175,+0.317)  shift +0.012  ens-routing +0.146
+  T-prior rerun JWST   all 90   90 sp stored               present 44.2 %  retrieval 0.539  ensemble 0.773  routing 0.636  ens-ret +0.234 (+0.163,+0.302)  shift +0.000  ens-routing +0.137
+  T-prior rerun JWST   all 90   90 sp base 10-1e4 Pa       present 44.2 %  retrieval 0.539  ensemble 0.773  routing 0.636  ens-ret +0.234 (+0.160,+0.300)  shift +0.000  ens-routing +0.137
+  T-prior rerun JWST   all 90   90 sp 1-1e3 Pa             present 43.9 %  retrieval 0.541  ensemble 0.781  routing 0.632  ens-ret +0.240 (+0.171,+0.309)  shift +0.006  ens-routing +0.149
+  T-prior rerun JWST   all 90   90 sp 1e2-1e5 Pa           present 43.1 %  retrieval 0.524  ensemble 0.771  routing 0.637  ens-ret +0.246 (+0.167,+0.320)  shift +0.013  ens-routing +0.134
+  T-prior rerun JWST   all 90   90 sp log-mean 10-1e4 Pa   present 43.3 %  retrieval 0.534  ensemble 0.780  routing 0.635  ens-ret +0.246 (+0.176,+0.314)  shift +0.012  ens-routing +0.145
+  T-prior rerun Tier-1 finished 90 sp stored               present 44.2 %  retrieval 0.523  ensemble 0.649  routing 0.555  ens-ret +0.126 (+0.062,+0.188)  shift +0.000  ens-routing +0.094
+  T-prior rerun Tier-1 finished 90 sp base 10-1e4 Pa       present 44.2 %  retrieval 0.523  ensemble 0.649  routing 0.555  ens-ret +0.126 (+0.065,+0.187)  shift +0.000  ens-routing +0.094
+  T-prior rerun Tier-1 finished 90 sp 1-1e3 Pa             present 43.9 %  retrieval 0.525  ensemble 0.645  routing 0.553  ens-ret +0.120 (+0.058,+0.182)  shift -0.006  ens-routing +0.092
+  T-prior rerun Tier-1 finished 90 sp 1e2-1e5 Pa           present 43.1 %  retrieval 0.518  ensemble 0.639  routing 0.552  ens-ret +0.121 (+0.053,+0.185)  shift -0.005  ens-routing +0.087
+  T-prior rerun Tier-1 finished 90 sp log-mean 10-1e4 Pa   present 43.3 %  retrieval 0.528  ensemble 0.649  routing 0.554  ens-ret +0.120 (+0.063,+0.183)  shift -0.005  ens-routing +0.094

@@ -1,0 +1,62 @@
+AD5: B+bal-vote, frozen, on the held-out grids (Table 13 scoring). Balanced credit (present credit, false-present); 95 % bootstrap over planets.
+
+== local condensation, JWST: 30400 labels, 35 planets, 36 % present
+  routing method     0.574 (0.552 to 0.601)  present credit 0.309  false-present 0.130   Table 13 0.574 (0.31, 0.13) reproduced
+  matched ensemble   0.711 (0.695 to 0.724)  present credit 0.595  false-present 0.173   Table 13 0.711 (0.60, 0.17) reproduced
+  B+bal-vote         0.691 (0.668 to 0.717)  present credit 0.624  false-present 0.212
+  ensemble minus B+bal-vote  +0.019 (-0.006 to +0.039)
+  B+bal-vote minus routing   +0.117 (+0.100 to +0.135)
+  ensemble minus routing     +0.137 (+0.110 to +0.156)
+  per gas, balanced credit (routing / B+bal-vote / ensemble): CH4 0.688/0.765/0.743, H2O 0.512/0.703/0.579, CO2 0.591/0.685/0.670, NH3 0.510/0.670/0.614
+
+== local condensation, Tier-1: 30400 labels, 35 planets, 36 % present
+  routing method     0.531 (0.518 to 0.548)  present credit 0.141  false-present 0.054   Table 13 0.531 (0.14, 0.05) reproduced
+  matched ensemble   0.636 (0.615 to 0.657)  present credit 0.445  false-present 0.173   Table 13 0.636 (0.45, 0.17) NOT REPRODUCED
+  B+bal-vote         0.608 (0.585 to 0.633)  present credit 0.482  false-present 0.216
+  ensemble minus B+bal-vote  +0.028 (+0.009 to +0.043)
+  B+bal-vote minus routing   +0.076 (+0.062 to +0.092)
+  ensemble minus routing     +0.105 (+0.089 to +0.119)
+  per gas, balanced credit (routing / B+bal-vote / ensemble): CH4 0.582/0.712/0.674, H2O 0.485/0.604/0.531, CO2 0.532/0.607/0.587, NH3 0.509/0.612/0.537
+
+== photochemical, JWST: 27648 labels, 35 planets, 46 % present
+  routing method     0.658 (0.630 to 0.690)  present credit 0.399  false-present 0.055   Table 13 0.658 (0.40, 0.06) reproduced
+  matched ensemble   0.773 (0.753 to 0.791)  present credit 0.627  false-present 0.081   Table 13 0.773 (0.63, 0.08) reproduced
+  B+bal-vote         0.793 (0.770 to 0.819)  present credit 0.727  false-present 0.112
+  ensemble minus B+bal-vote  -0.020 (-0.047 to +0.002)
+  B+bal-vote minus routing   +0.135 (+0.116 to +0.156)
+  ensemble minus routing     +0.115 (+0.089 to +0.136)
+  per gas, balanced credit (routing / B+bal-vote / ensemble): CH4 0.811/0.880/0.906, H2O 0.578/0.684/0.609, CO2 0.619/0.777/0.723, NH3 0.492/0.550/0.528
+
+== photochemical, Tier-1: 27648 labels, 35 planets, 46 % present
+  routing method     0.567 (0.549 to 0.589)  present credit 0.183  false-present 0.030   Table 13 0.567 (0.18, 0.03) reproduced
+  matched ensemble   0.700 (0.674 to 0.728)  present credit 0.516  false-present 0.116   Table 13 0.700 (0.52, 0.12) reproduced
+  B+bal-vote         0.682 (0.659 to 0.709)  present credit 0.576  false-present 0.161
+  ensemble minus B+bal-vote  +0.018 (+0.006 to +0.029)
+  B+bal-vote minus routing   +0.115 (+0.102 to +0.129)
+  ensemble minus routing     +0.133 (+0.119 to +0.144)
+  per gas, balanced credit (routing / B+bal-vote / ensemble): CH4 0.630/0.828/0.815, H2O 0.535/0.632/0.550, CO2 0.519/0.618/0.600, NH3 0.501/0.552/0.494
+
+== rainout (development), JWST: 30400 labels, 35 planets, 43 % present
+  routing method     0.643 (0.620 to 0.669)  present credit 0.385  false-present 0.069   Table 13 0.643 (0.39, 0.07) reproduced
+  matched ensemble   0.765 (0.742 to 0.784)  present credit 0.638  false-present 0.107   Table 13 0.765 (0.64, 0.11) reproduced
+  B+bal-vote         0.763 (0.745 to 0.784)  present credit 0.683  false-present 0.131
+  ensemble minus B+bal-vote  +0.003 (-0.026 to +0.024)
+  B+bal-vote minus routing   +0.120 (+0.105 to +0.137)
+  ensemble minus routing     +0.123 (+0.092 to +0.149)
+  per gas, balanced credit (routing / B+bal-vote / ensemble): CH4 0.763/0.811/0.803, H2O 0.547/0.722/0.690, CO2 0.695/0.824/0.769, NH3 0.495/0.638/0.580
+
+== rainout (development), Tier-1: 30400 labels, 35 planets, 43 % present
+  routing method     0.566 (0.552 to 0.585)  present credit 0.182  false-present 0.031   Table 13 0.566 (0.18, 0.03) reproduced
+  matched ensemble   0.698 (0.676 to 0.719)  present credit 0.505  false-present 0.109   Table 13 0.698 (0.51, 0.11) reproduced
+  B+bal-vote         0.676 (0.655 to 0.700)  present credit 0.549  false-present 0.149
+  ensemble minus B+bal-vote  +0.023 (+0.002 to +0.039)
+  B+bal-vote minus routing   +0.109 (+0.098 to +0.121)
+  ensemble minus routing     +0.132 (+0.112 to +0.148)
+  per gas, balanced credit (routing / B+bal-vote / ensemble): CH4 0.623/0.764/0.747, H2O 0.517/0.646/0.603, CO2 0.567/0.707/0.680, NH3 0.505/0.609/0.520
+
+AD5 check (held-out grids): routing < B+bal-vote < ensemble, and ensemble - B+bal-vote >= 0.03
+  local condensation   JWST    routing 0.574  vote 0.691  ensemble 0.711  between: yes  gap +0.019 (-0.006 to +0.039) >= 0.03: no
+  local condensation   Tier-1  routing 0.531  vote 0.608  ensemble 0.636  between: yes  gap +0.028 (+0.009 to +0.043) >= 0.03: no
+  photochemical        JWST    routing 0.658  vote 0.793  ensemble 0.773  between: no  gap -0.020 (-0.047 to +0.002) >= 0.03: no
+  photochemical        Tier-1  routing 0.567  vote 0.682  ensemble 0.700  between: yes  gap +0.018 (+0.006 to +0.029) >= 0.03: no
+  between in 3 of 4; gap >= 0.03 in 0 of 4 -> AD5 not met

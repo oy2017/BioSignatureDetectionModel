@@ -1,0 +1,6 @@
+Classifier (four learners pooled, all bins) against the noisy retrieval posterior at p >= 0.5, on the same 200 noisy realisations (POP-III prior; a reference rule, not a bound)
+
+CH4  classifier error  14.4 %  reference error   7.5 %  excess   6.9 points (47.8 % of the classifier's error)  reference right on 66.1 % of the classifier's errors
+H2O  classifier error  25.6 %  reference error  16.0 %  excess   9.6 points (37.6 % of the classifier's error)  reference right on 56.6 % of the classifier's errors
+CO2  classifier error  16.9 %  reference error  10.5 %  excess   6.4 points (37.8 % of the classifier's error)  reference right on 57.8 % of the classifier's errors
+NH3  classifier error  16.9 %  reference error   9.0 %  excess   7.9 points (46.7 % of the classifier's error)  reference right on 63.7 % of the classifier's errors

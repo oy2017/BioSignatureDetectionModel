@@ -1,0 +1,41 @@
+AD7: recall of truly present labels at the routing method's false-present rate (per-gas thresholds on the matched ensemble's probability).
+
+== local condensation, JWST
+  gas    n pres  n abs | routing FP routing recall | ens FP (own t) ens recall (own t) | matched t  ens FP ens recall |   diff (95 %, rematched) (fixed t)
+  CH4      2000   5600 |      0.282          0.630 |          0.344              0.874 |    0.7749   0.282      0.802 | +0.172 (+0.086 to +0.238) (+0.032 to +0.293)
+  H2O      5359   2241 |      0.186          0.196 |          0.174              0.580 |    0.7061   0.186      0.592 | +0.396 (+0.206 to +0.547) (+0.257 to +0.514)
+  CO2      2330   5270 |      0.063          0.230 |          0.120              0.491 |    0.5901   0.063      0.376 | +0.146 (+0.078 to +0.210) (+0.075 to +0.213)
+  NH3      1221   6379 |      0.033          0.052 |          0.068              0.407 |    0.6404   0.033      0.265 | +0.214 (+0.122 to +0.290) (+0.106 to +0.279)
+  pooled  10910  19490 |      0.130          0.267 |          0.173              0.595 |       nan   0.130      0.548 | +0.281 (+0.186 to +0.350) (+0.198 to +0.348)
+
+== local condensation, Tier-1
+  gas    n pres  n abs | routing FP routing recall | ens FP (own t) ens recall (own t) | matched t  ens FP ens recall |   diff (95 %, rematched) (fixed t)
+  CH4      2000   5600 |      0.098          0.217 |          0.309              0.733 |    0.9017   0.098      0.271 | +0.054 (+0.006 to +0.108) (+0.007 to +0.101)
+  H2O      5359   2241 |      0.112          0.080 |          0.207              0.416 |    0.7887   0.112      0.272 | +0.192 (+0.079 to +0.285) (+0.141 to +0.243)
+  CO2      2330   5270 |      0.028          0.083 |          0.118              0.333 |    0.6634   0.028      0.131 | +0.048 (+0.015 to +0.093) (+0.015 to +0.079)
+  NH3      1221   6379 |      0.017          0.023 |          0.087              0.311 |    0.6877   0.017      0.080 | +0.057 (+0.028 to +0.091) (+0.027 to +0.087)
+  pooled  10910  19490 |      0.054          0.100 |          0.173              0.445 |       nan   0.054      0.220 | +0.121 (+0.059 to +0.169) (+0.095 to +0.149)
+
+== photochemical, JWST
+  gas    n pres  n abs | routing FP routing recall | ens FP (own t) ens recall (own t) | matched t  ens FP ens recall |   diff (95 %, rematched) (fixed t)
+  CH4      2858   4054 |      0.057          0.628 |          0.042              0.803 |    0.4565   0.057      0.861 | +0.233 (+0.117 to +0.343) (+0.098 to +0.355)
+  H2O      6145    767 |      0.150          0.297 |          0.215              0.582 |    0.8082   0.150      0.459 | +0.162 (+0.025 to +0.356) (+0.045 to +0.269)
+  CO2      2997   3915 |      0.081          0.303 |          0.127              0.682 |    0.5398   0.081      0.564 | +0.261 (+0.184 to +0.336) (+0.184 to +0.340)
+  NH3       849   6063 |      0.026          0.032 |          0.061              0.161 |    0.6515   0.026      0.075 | +0.044 (+0.017 to +0.073) (+0.009 to +0.067)
+  pooled  12849  14799 |      0.055          0.354 |          0.081              0.627 |       nan   0.055      0.547 | +0.193 (+0.124 to +0.300) (+0.121 to +0.255)
+
+== photochemical, Tier-1
+  gas    n pres  n abs | routing FP routing recall | ens FP (own t) ens recall (own t) | matched t  ens FP ens recall |   diff (95 %, rematched) (fixed t)
+  CH4      2858   4054 |      0.030          0.216 |          0.065              0.721 |    0.7987   0.030      0.527 | +0.311 (+0.185 to +0.455) (+0.248 to +0.362)
+  H2O      6145    767 |      0.085          0.146 |          0.261              0.524 |    0.8532   0.085      0.279 | +0.133 (+0.049 to +0.213) (+0.085 to +0.183)
+  CO2      2997   3915 |      0.039          0.074 |          0.155              0.391 |    0.6759   0.039      0.148 | +0.074 (+0.022 to +0.142) (+0.044 to +0.109)
+  NH3       849   6063 |      0.017          0.018 |          0.106              0.211 |    0.7271   0.017      0.045 | +0.027 (+0.000 to +0.039) (+0.003 to +0.041)
+  pooled  12849  14799 |      0.030          0.136 |          0.116              0.516 |       nan   0.030      0.288 | +0.152 (+0.095 to +0.207) (+0.123 to +0.176)
+
+AD7 check: at the routing method's false-present rate, ensemble recall > routing recall
+  local condensation   JWST    pooled FP 0.130 (ens 0.130)  recall routing 0.267  ensemble 0.548  diff +0.281 (+0.186 to +0.350)
+  local condensation   Tier-1  pooled FP 0.054 (ens 0.054)  recall routing 0.100  ensemble 0.220  diff +0.121 (+0.059 to +0.169)
+  photochemical        JWST    pooled FP 0.055 (ens 0.055)  recall routing 0.354  ensemble 0.547  diff +0.193 (+0.124 to +0.300)
+  photochemical        Tier-1  pooled FP 0.030 (ens 0.030)  recall routing 0.136  ensemble 0.288  diff +0.152 (+0.095 to +0.207)
+  pooled: ensemble higher in 4 of 4 (interval above zero in 4); per gas: higher in 16 of 16
+  AD7 met (pooled)

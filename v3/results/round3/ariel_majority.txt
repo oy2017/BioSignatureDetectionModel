@@ -1,0 +1,31 @@
+AD6: re-implemented classifier at Ariel coverage (104 bins, Tier-1 noise, POP-I, 955 planets), the noise draw of Table 16.
+Accuracy %, mean over four molecules. Majority: present if >= 3 of 4 learners, absent if <= 1, a 2-2 split one half (panel_tier1.py).
+
+case                         clean  haze2e6  haze3e7  plhaze29  cloud1e2  spots20  compound  white_x2  white_x3  mute3  Table 16 mean
+mean single learner           81.2     69.2     63.5      67.1      71.4     70.4      62.3      71.9      67.6   67.7           70.5
+  (pipeline_sim.csv, check)   81.2     69.2     63.5      67.1      71.4     70.4      62.3      71.9      67.6   67.7           70.5
+majority, split = 1/2         82.9     68.5     62.0      65.1      71.3     69.8      61.5      72.6      68.0   67.6           70.2
+majority, decided only        85.0     69.4     62.2      65.7      72.4     70.4      61.6      74.2      69.2   68.5           71.2
+split share                    6.2      4.2      1.6       3.2       4.9      2.8       0.6       6.6       6.1    5.2            4.4
+majority, 2-2 -> absent       82.1     66.7     61.2      63.6      69.8     68.7      61.2      70.9      66.3   66.2           68.9
+majority, 2-2 -> present      83.7     70.2     62.7      66.6      72.7     70.9      61.8      74.3      69.7   68.9           71.4
+best single learner           83.2     75.2     68.3      76.1      75.0     73.7      64.5      74.3      69.8   69.9           74.4
+matched ensemble              84.2     81.6     80.5      79.3      79.1     80.1      76.2      79.1      74.0   74.6           79.6
+
+majority (split 1/2) minus mean single learner: clean +1.66, haze2e6 -0.73, haze3e7 -1.48, plhaze29 -2.02, cloud1e2 -0.14, spots20 -0.59, compound -0.75, white_x2 +0.67, white_x3 +0.43, mute3 -0.16
+  largest |difference| over Table 16's cases: 2.0 points; within 2 points in 6 of 7
+matched ensemble minus majority (split 1/2): clean +1.3, haze2e6 +13.2, haze3e7 +18.5, plhaze29 +14.2, cloud1e2 +7.9, spots20 +10.3, compound +14.6, white_x2 +6.4, white_x3 +6.0, mute3 +7.1
+matched ensemble minus mean single learner: clean +2.9, haze2e6 +12.4, haze3e7 +17.0, plhaze29 +12.1, cloud1e2 +7.7, spots20 +9.7, compound +13.9, white_x2 +7.1, white_x3 +6.5, mute3 +6.9
+
+Per learner, mean over molecules:
+case     clean  haze2e6  haze3e7  plhaze29  cloud1e2  spots20  compound  white_x2  white_x3  mute3
+acc_KNN   78.0     75.2     68.3      76.1      75.0     73.7      64.5      72.3      68.3   69.9
+acc_MLP   83.0     65.9     61.2      62.7      70.9     69.5      61.2      74.3      69.8   69.2
+acc_RFC   80.8     68.0     63.2      64.3      68.9     68.7      62.2      69.2      64.8   64.9
+acc_SVC   83.2     67.6     61.2      65.3      70.9     69.7      61.2      72.0      67.4   66.8
+
+Per molecule, Table 16 cases (mean single / majority split 1/2 / split share):
+  CH4: clean 84.3/86.0/5, haze3e7 66.6/64.4/4, plhaze29 70.7/67.4/6, cloud1e2 75.1/74.6/7, spots20 74.6/74.1/3, white_x2 75.2/75.9/7, mute3 70.3/69.7/5
+  H2O: clean 75.3/77.6/7, haze3e7 62.1/61.9/0, plhaze29 64.0/63.4/1, cloud1e2 67.3/67.7/3, spots20 67.8/68.0/2, white_x2 69.2/70.1/6, mute3 65.8/66.6/4
+  CO2: clean 80.7/82.0/8, haze3e7 63.6/60.7/2, plhaze29 68.8/67.2/5, cloud1e2 73.5/73.6/7, spots20 70.3/69.0/5, white_x2 69.7/70.1/7, mute3 66.2/65.3/6
+  NH3: clean 84.6/86.0/5, haze3e7 61.6/61.0/0, plhaze29 65.0/62.5/1, cloud1e2 69.8/69.3/3, spots20 68.8/68.1/1, white_x2 73.7/74.5/5, mute3 68.7/68.6/5
