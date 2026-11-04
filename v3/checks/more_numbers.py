@@ -1,4 +1,4 @@
-"""Further numbers for the referee pass of 2026-10-30. Output saved as results/checks/more_numbers.txt."""
+"""Further numbers for the check of 2026-10-30. Output saved as results/checks/more_numbers.txt."""
 import os, sys, re, warnings
 warnings.filterwarnings('ignore')
 V3='/Users/fanyang/BioSignatureDetectionModel/v3'; os.chdir(V3); sys.path.insert(0,V3)
