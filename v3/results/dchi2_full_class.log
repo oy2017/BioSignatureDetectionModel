@@ -1,0 +1,154 @@
+Numba not installed, using numpy instead
+100 planets, 100 to do, 3 jobs
+  1/100 planets, 515 s; CoRoT-2b: boundary-full CH4 7.41e-06 H2O 0.0956 CO2 1.46e-05 NH3 8.63e-06
+  2/100 planets, 561 s; GJ1214b: boundary-full CH4 0 H2O 1.01e-05 CO2 4.68e-06 NH3 4.19e-06
+  3/100 planets, 645 s; Gaia-1b: boundary-full CH4 0.595 H2O 0 CO2 0.0523 NH3 0
+  4/100 planets, 1049 s; GJ486b: boundary-full CH4 5.07e-06 H2O 2.37e-06 CO2 1.21e-06 NH3 6.92e-06
+  5/100 planets, 1124 s; GJ3090b: boundary-full CH4 5.37e-06 H2O 3.35e-05 CO2 1.81e-05 NH3 2.01e-06
+  6/100 planets, 1210 s; HAT-P-16b: boundary-full CH4 7.59e-05 H2O 0.0171 CO2 1.06e-05 NH3 0.000486
+  7/100 planets, 1645 s; HAT-P-27b: boundary-full CH4 0.000374 H2O 3.08e-07 CO2 4.54e-06 NH3 4.25e-06
+  8/100 planets, 1746 s; HAT-P-38b: boundary-full CH4 4.27e-06 H2O 0.0497 CO2 4.24e-05 NH3 1.25
+  9/100 planets, 1905 s; HAT-P-39b: boundary-full CH4 1.31e-07 H2O 3.21e-06 CO2 0.00324 NH3 0.257
+  10/100 planets, 2200 s; HAT-P-58b: boundary-full CH4 1.28e-05 H2O 2.94e-05 CO2 0 NH3 2.97e-05
+  11/100 planets, 2472 s; HAT-P-64b: boundary-full CH4 3.5e-05 H2O 0.00165 CO2 0.0274 NH3 1.33e-05
+  12/100 planets, 2589 s; HATS-10b: boundary-full CH4 1.31e-06 H2O 0.0712 CO2 0.0902 NH3 1.49e-05
+  13/100 planets, 2898 s; HATS-3b: boundary-full CH4 0.000123 H2O 0 CO2 0 NH3 4e-07
+  14/100 planets, 2937 s; HATS-46b: boundary-full CH4 1.21e-05 H2O 4.48e-06 CO2 1.33e-06 NH3 4.4e-06
+  15/100 planets, 3195 s; HATS-50b: boundary-full CH4 2.02e-06 H2O 0.0134 CO2 0 NH3 2.17e-05
+  16/100 planets, 3560 s; HATS-52b: boundary-full CH4 0.151 H2O 0.000135 CO2 0 NH3 8.67e-07
+  17/100 planets, 3593 s; HATS-57b: boundary-full CH4 0.0017 H2O 0.00492 CO2 6.79e-05 NH3 0.0803
+  18/100 planets, 3828 s; HATS-58Ab: boundary-full CH4 8.01e-06 H2O 0.000618 CO2 4.33e-06 NH3 9.78e-06
+  19/100 planets, 4145 s; HATS-63b: boundary-full CH4 1.25e-05 H2O 4.67e-07 CO2 0.00162 NH3 0.00455
+  20/100 planets, 4228 s; HATS-66b: boundary-full CH4 0.0471 H2O 9.28e-06 CO2 2.66e-05 NH3 0.000607
+  21/100 planets, 4586 s; HATS-67b: boundary-full CH4 0.0794 H2O 0.00108 CO2 5.99e-05 NH3 5.67e-09
+  22/100 planets, 4704 s; HATS-71b: boundary-full CH4 8.43e-05 H2O 0.000883 CO2 5.01e-06 NH3 2.28e-06
+  23/100 planets, 4943 s; HATS-74Ab: boundary-full CH4 5.68e-05 H2O 0.0228 CO2 0.00188 NH3 0.000164
+  24/100 planets, 5221 s; HD106315c: boundary-full CH4 0.00453 H2O 0 CO2 0.0163 NH3 0.0978
+  25/100 planets, 5260 s; HD110067b: boundary-full CH4 8.92e-07 H2O 1.19e-05 CO2 5.82e-05 NH3 5.01e-07
+  26/100 planets, 8383 s; HD183579b: boundary-full CH4 2.18e-05 H2O 0 CO2 0.0348 NH3 2.32e-05
+  27/100 planets, 8511 s; HD235088b: boundary-full CH4 0.0422 H2O 1.47e-06 CO2 4.06e-07 NH3 0.0238
+  28/100 planets, 8585 s; HD191939b: boundary-full CH4 2.37e-05 H2O 1.13e-06 CO2 8.37e-06 NH3 1.01e-05
+  29/100 planets, 8990 s; HD73583b: boundary-full CH4 7.68e-06 H2O 8.57e-05 CO2 0.362 NH3 0.471
+  30/100 planets, 9102 s; HIP94235b: boundary-full CH4 2.54e-06 H2O 2.02e-05 CO2 0.00141 NH3 1.48e-07
+  31/100 planets, 9110 s; K2-140b: boundary-full CH4 0 H2O 0.00926 CO2 3.77e-06 NH3 3.31e-07
+  32/100 planets, 9566 s; K2-19b: boundary-full CH4 0.00649 H2O 0.00535 CO2 1.35e-05 NH3 0.0432
+  33/100 planets, 9588 s; K2-266d: boundary-full CH4 0.00555 H2O 0.0104 CO2 0.0154 NH3 1.98e-06
+  34/100 planets, 9647 s; K2-295b: boundary-full CH4 0 H2O 2.09e-06 CO2 1.19e-06 NH3 4.47e-05
+  35/100 planets, 10090 s; K2-32d: boundary-full CH4 2.22e-06 H2O 9.65e-07 CO2 8.32e-06 NH3 1.67e-06
+  36/100 planets, 10126 s; K2-329b: boundary-full CH4 2.52e-06 H2O 3.7e-06 CO2 5.93e-06 NH3 2.07e-05
+  37/100 planets, 10202 s; K2-87b: boundary-full CH4 3.79e-07 H2O 1.51e-05 CO2 1.27e-05 NH3 1.62e-06
+  38/100 planets, 10650 s; KELT-1b: boundary-full CH4 6.66e-06 H2O 0.146 CO2 4.33e-05 NH3 0.000191
+  39/100 planets, 10681 s; KELT-20b: boundary-full CH4 0.000202 H2O 1.83 CO2 0.000262 NH3 0.0204
+  40/100 planets, 10822 s; Kepler-221d: boundary-full CH4 3.03e-05 H2O 0.0521 CO2 0.109 NH3 0.00233
+  41/100 planets, 11224 s; KOI-12b: boundary-full CH4 7.73e-06 H2O 4.95e-07 CO2 4.31e-05 NH3 3.73e-06
+  42/100 planets, 11327 s; LHS1140c: boundary-full CH4 0 H2O 1.02e-05 CO2 6.51e-07 NH3 2.14e-07
+  43/100 planets, 11397 s; LHS1903c: boundary-full CH4 0.0395 H2O 0.00216 CO2 3.3e-06 NH3 1.05e-06
+  44/100 planets, 11749 s; LP791-18c: boundary-full CH4 0.017 H2O 4.58e-05 CO2 0.00332 NH3 4.68e-07
+  45/100 planets, 11845 s; NGTS-35b: boundary-full CH4 2.11e-06 H2O 2.62e-06 CO2 0.000107 NH3 1.06e-06
+  46/100 planets, 11990 s; NGTS-3Ab: boundary-full CH4 0.158 H2O 0.00773 CO2 8.04e-06 NH3 0
+  47/100 planets, 12377 s; SPECULOOS-3b: boundary-full CH4 0.847 H2O 0.00395 CO2 5.24e-06 NH3 1.4e-06
+  48/100 planets, 12411 s; Qatar-9b: boundary-full CH4 0.00535 H2O 0.00172 CO2 2.87e-07 NH3 5.52e-06
+  49/100 planets, 12684 s; TIC257060897b: boundary-full CH4 1.35e-06 H2O 0.000238 CO2 2.58e-06 NH3 0.212
+  50/100 planets, 12937 s; TIC434398831b: boundary-full CH4 6.07e-06 H2O 0.00139 CO2 0.000119 NH3 1.92e-05
+  51/100 planets, 13008 s; TOI-1135b: boundary-full CH4 1e-05 H2O 0.526 CO2 6.47e-06 NH3 0
+  52/100 planets, 13200 s; TOI-125b: boundary-full CH4 8.83e-06 H2O 6.11e-07 CO2 0 NH3 0
+  53/100 planets, 13568 s; TOI-1468b: boundary-full CH4 0.189 H2O 3.6e-06 CO2 4.14e-08 NH3 1.03
+  54/100 planets, 13596 s; TOI-1296b: boundary-full CH4 0.144 H2O 0.00754 CO2 0.000498 NH3 0.381
+  55/100 planets, 13844 s; TOI-1820b: boundary-full CH4 1.73 H2O 0.00293 CO2 1.21e-05 NH3 0.66
+  56/100 planets, 14112 s; TOI-1994b: boundary-full CH4 0.00104 H2O 0.0702 CO2 0.0268 NH3 0.0958
+  57/100 planets, 14157 s; TOI-201b: boundary-full CH4 0.0146 H2O 4.33e-05 CO2 3.24e-07 NH3 3.44e-05
+  58/100 planets, 14458 s; TOI-2120b: boundary-full CH4 7.38e-07 H2O 3.34e-07 CO2 0 NH3 3.61e-06
+  59/100 planets, 14667 s; TOI-2133b: boundary-full CH4 0.1 H2O 0.000122 CO2 1.86e-06 NH3 6.45e-07
+  60/100 planets, 14778 s; TOI-2134b: boundary-full CH4 2.83e-06 H2O 6.75e-05 CO2 0.0384 NH3 0.00353
+  61/100 planets, 14983 s; TOI-2236b: boundary-full CH4 0.00685 H2O 0.0488 CO2 2.6e-06 NH3 0.047
+  62/100 planets, 15246 s; TOI-2328b: boundary-full CH4 6.85e-05 H2O 0.000205 CO2 8.78e-07 NH3 0.595
+  63/100 planets, 15346 s; TOI-2587Ab: boundary-full CH4 3.65e-05 H2O 0.0316 CO2 0.00885 NH3 0.000349
+  64/100 planets, 15562 s; TOI-2989b: boundary-full CH4 0.0013 H2O 0.0041 CO2 3.7e-05 NH3 0.0949
+  65/100 planets, 15915 s; TOI-3071b: boundary-full CH4 0.0737 H2O 4.43e-06 CO2 1.27e-05 NH3 1.17e-05
+  66/100 planets, 15977 s; TOI-3288b: boundary-full CH4 0.00079 H2O 1.37e-05 CO2 0.000149 NH3 2.9e-05
+  67/100 planets, 16210 s; TOI-3321b: boundary-full CH4 0.0756 H2O 2.2e-05 CO2 0.0104 NH3 1.03e-05
+  68/100 planets, 16515 s; TOI-3362b: boundary-full CH4 0.0566 H2O 0.1 CO2 0.0271 NH3 0
+  69/100 planets, 16616 s; TOI-3568b: boundary-full CH4 0.176 H2O 0.0533 CO2 1.49e-05 NH3 0
+  70/100 planets, 16786 s; TOI-4137b: boundary-full CH4 0.000682 H2O 9.99e-07 CO2 6.58e-06 NH3 6.52e-05
+  71/100 planets, 17114 s; TOI-4201b: boundary-full CH4 9.04e-06 H2O 6.72e-05 CO2 8.34e-06 NH3 9.66e-06
+  72/100 planets, 17145 s; TOI-4377b: boundary-full CH4 8.37e-06 H2O 0 CO2 0.00468 NH3 2.93e-06
+  73/100 planets, 17395 s; TOI-4734b: boundary-full CH4 3.02e-06 H2O 4.46e-06 CO2 2.05e-06 NH3 0.00249
+  74/100 planets, 17709 s; TOI-4961b: boundary-full CH4 0.215 H2O 0.0841 CO2 0.0974 NH3 2.85e-05
+  75/100 planets, 17775 s; TOI-5126b: boundary-full CH4 1.54e-05 H2O 0.0266 CO2 1.92e-06 NH3 0.0208
+  76/100 planets, 17943 s; TOI-540b: boundary-full CH4 1.74e-06 H2O 6.32e-06 CO2 2.71e-06 NH3 7.44e-06
+  77/100 planets, 18312 s; TOI-6478b: boundary-full CH4 0.0115 H2O 3.7e-07 CO2 1.35e-05 NH3 0.000453
+  78/100 planets, 18473 s; TOI-544b: boundary-full CH4 21.5 H2O 0.000155 CO2 0.000148 NH3 0.000209
+  79/100 planets, 18613 s; TOI-833b: boundary-full CH4 0.0137 H2O 5.02e-06 CO2 0.00341 NH3 3.25e-07
+  80/100 planets, 18956 s; TOI-904b: boundary-full CH4 1.66e-06 H2O 0.0632 CO2 0.135 NH3 6.57e-07
+  81/100 planets, 18980 s; TRAPPIST-1b: boundary-full CH4 0.00769 H2O 7.21e-07 CO2 1.07e-06 NH3 0.00519
+  82/100 planets, 19130 s; TRAPPIST-1g: boundary-full CH4 8.86e-06 H2O 0.000893 CO2 0.00367 NH3 0.000971
+  83/100 planets, 19541 s; TRAPPIST-1h: boundary-full CH4 0.238 H2O 1.27e-05 CO2 0.00341 NH3 0.0218
+  84/100 planets, 19618 s; WASP-100b: boundary-full CH4 0.000402 H2O 0.0493 CO2 0.00228 NH3 0.896
+  85/100 planets, 19769 s; WASP-129b: boundary-full CH4 0.00445 H2O 0.00176 CO2 0.0102 NH3 0.000108
+  86/100 planets, 20091 s; WASP-130b: boundary-full CH4 8.09e-05 H2O 9.86e-05 CO2 1.4e-06 NH3 2.2e-05
+  87/100 planets, 20190 s; WASP-133b: boundary-full CH4 1.07e-06 H2O 0.0221 CO2 1.68e-05 NH3 0.000926
+  88/100 planets, 20334 s; WASP-150b: boundary-full CH4 3.43e-05 H2O 0 CO2 0 NH3 0.000232
+  89/100 planets, 20639 s; WASP-153b: boundary-full CH4 0.000162 H2O 4.63e-05 CO2 0.0157 NH3 3.47e-05
+  90/100 planets, 20880 s; WASP-163b: boundary-full CH4 0.00437 H2O 0.0111 CO2 0.282 NH3 4.14e-06
+  91/100 planets, 20928 s; WASP-164b: boundary-full CH4 2.89e-06 H2O 5.95e-06 CO2 2.85e-05 NH3 5.39e-06
+  92/100 planets, 21262 s; WASP-180Ab: boundary-full CH4 0.0689 H2O 0.0203 CO2 0.0219 NH3 0.000116
+  93/100 planets, 21467 s; WASP-186b: boundary-full CH4 0.583 H2O 3.75e-06 CO2 0.0257 NH3 0
+  94/100 planets, 21541 s; WASP-189b: boundary-full CH4 0.0561 H2O 0.00517 CO2 6.75 NH3 1.36e-05
+  95/100 planets, 21797 s; WASP-2b: boundary-full CH4 0 H2O 0.0411 CO2 1.99e-06 NH3 2.99e-06
+  96/100 planets, 22068 s; WASP-28b: boundary-full CH4 0.00427 H2O 0.0365 CO2 1.39e-05 NH3 1.58e-06
+  97/100 planets, 22299 s; WASP-71b: boundary-full CH4 0.000546 H2O 0.0681 CO2 0.000638 NH3 1.46
+  98/100 planets, 22356 s; WASP-80b: boundary-full CH4 6.52e-05 H2O 1.72e-06 CO2 0.684 NH3 0
+  99/100 planets, 22583 s; WASP-83b: boundary-full CH4 0.0129 H2O 1.02e-05 CO2 0.00113 NH3 0.294
+  100/100 planets, 22735 s; WASP-92b: boundary-full CH4 0.263 H2O 2.16e-05 CO2 1.53e-05 NH3 1.87e-05
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+Numba not installed, using numpy instead
+AD8: boundary vs full-opposite-class dchi2, POP-I clean, Tier-1 radiometric sigma, 100 planets (400 labels), selection seed 808
+
+== 1. reproduction of the stored boundary dchi2 (results/identifiability_none_tier1.csv), same starts
+  rerun - stored: median +0.00e+00, |diff| max 2.17e-05; |diff| < 1e-6 on 99.2 %, < 0.01 on 100.0 %, < 0.1 on 100.0 %; |rel| < 1 % on 100.0 %
+  Spearman(rerun, stored) 1.0000
+
+  largest |rerun - stored|:
+        name molecule  dchi2_stored  dchi2_boundary          diff
+    CoRoT-2b      CO2      0.901627        0.901606 -2.167932e-05
+    CoRoT-2b      H2O      0.231668        0.231652 -1.648188e-05
+    CoRoT-2b      NH3      0.045126        0.045118 -8.513859e-06
+    CoRoT-2b      CH4      0.001930        0.001930  1.477019e-08
+    TOI-544b      NH3   1688.986110     1688.986110  2.273737e-13
+
+== 2. boundary - full-class dchi2 (>= 0 by construction)
+  min 0  median 3.45e-05  mean 0.12  90th pct 0.0907  99th pct 1.46  max 21.5
+  fraction > 0.1: 8.8 %   > 1: 1.8 %   (AD8 expects > 0.1 on at most 10 %)
+  relative (boundary - full)/boundary: median 8.16e-05, > 10 % on 11.5 %
+  CH4  n 100  median 7.84e-05  max     21.5  > 0.1  14.0 %  > 1   2.0 %  | present > 0.1  10.8 %  absent > 0.1  15.9 %
+  H2O  n 100  median 9.22e-05  max     1.83  > 0.1   4.0 %  > 1   1.0 %  | present > 0.1   3.2 %  absent > 0.1   4.3 %
+  CO2  n 100  median 1.74e-05  max     6.75  > 0.1   6.0 %  > 1   1.0 %  | present > 0.1   2.1 %  absent > 0.1   9.4 %
+  NH3  n 100  median 1.9e-05  max     1.46  > 0.1  11.0 %  > 1   3.0 %  | present > 0.1   2.2 %  absent > 0.1  18.2 %
+  present (class [-9,-4])  n 160  median 4.4e-05  > 0.1   4.4 %  > 1   0.6 %
+  absent (class [-4,-2])   n 240  median 2.89e-05  > 0.1  11.7 %  > 1   2.5 %
+
+== 3. where the full-class optimum lies (|log10 X - (-4)|)
+  at the boundary (< 0.01 dex) 99.0 %   within 0.1 dex 99.8 %   interior > 0.5 dex 0.0 %   > 1 dex 0.0 %
+  among labels with boundary - full > 0.1: at boundary (<0.01) 100.0 %, median distance 0 dex
+  among labels with boundary - full > 0.1 whose optimum is at the boundary (gain from the extra nuisance search, not from moving X): 35
+  winning start: boundary_opt 321, true 56, rand0 13, rand1 10
+  CH4  at boundary  98.0 %   median distance 0 dex   max 0.0541 dex
+  H2O  at boundary 100.0 %   median distance 0 dex   max 0 dex
+  CO2  at boundary 100.0 %   median distance 0 dex   max 0 dex
+  NH3  at boundary  98.0 %   median distance 0 dex   max 0.163 dex
+
+== 4. verdict changes at the calibrated thresholds (decidable if dchi2 > thr: CH4 0.45, H2O 0.98, CO2 0.90, NH3 0.56)
+  boundary decidable 54.0 %, full-class decidable 53.2 %; changed 3 / 400 = 0.8 %  (AD8 expects at most 5 %); all changes are decidable -> undecidable: True
+  stored vs rerun boundary verdict changes (optimiser noise): 0 / 400
+  CH4  changed 1 / 100
+  H2O  changed 0 / 100
+  CO2  changed 1 / 100
+  NH3  changed 1 / 100
+  changed labels:
+             name molecule  label  log_true  dchi2_boundary  dchi2_full  full_logX
+         NGTS-3Ab      CH4      0 -5.328122        0.450884    0.292808       -4.0
+    TIC257060897b      NH3      0 -4.929270        0.727873    0.516002       -4.0
+         WASP-80b      CO2      1 -3.453232        0.975262    0.291198       -4.0
+
+== cost: median calls boundary 580, full 884; median s per label boundary 57, full 87; wall 6.32 h this session
