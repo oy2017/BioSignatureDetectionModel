@@ -290,3 +290,5 @@ Results of AD8 (written 2026-11-04). Met on both clauses: minimising over the fu
 ## AE. The reference rule under the population's own prior (written 2026-11-04, before running)
 
 AE1. The noisy-realisation retrieval of the same 200 planets, rerun under POP-I's own abundance prior (10⁻⁷ to 10⁻²) instead of POP-III's, read at p ≥ 0.5, still beats the re-implemented classifier on every gas; the classifier's excess error over it lies within 10 points of the 38-48 % found under POP-III's prior.
+
+Results of AE1 (written 2026-11-04). Met: under POP-I's own prior the noisy posterior at p ≥ 0.5 beats the classifier by 6.4-9.6 points on every gas (reference error 6.5, 16.0, 10.5 and 10.0 % for CH₄, H₂O, CO₂ and NH₃); the excess is 38-55 % of the classifier's error, against 38-48 % under POP-III's prior, within 10 points on every gas (`checks/excess_error_popprior.py`, `results/excess_error_popprior.txt`).
