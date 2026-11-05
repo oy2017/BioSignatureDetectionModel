@@ -1,0 +1,86 @@
+1. Clean spectra retrieved by both the clean model and the free-haze model: 27 planets, 108 labels
+   (free-haze runs: median 25.9 min, mean 31.0; clean-model runs of the same planets: median 24.6 min)
+   gas    agree    n   acc clean  acc FH   decid clean decid FH   mean dp_true median dp_true  flips (clean->FH: label, truth)
+   CH4   100.0%   27       92.6%   92.6%         66.7%    59.3%         -0.008         -0.000  -
+   H2O   100.0%   27       96.3%   96.3%         48.1%    55.6%         -0.000         +0.000  -
+   CO2    96.3%   27       96.3%   92.6%         70.4%    66.7%         -0.005         -0.001  GJ3470b (0->1, truth 0)
+   NH3    96.3%   27       92.6%   88.9%         77.8%    74.1%         -0.004         -0.000  GJ3470b (0->1, truth 0)
+   all    98.1%  108       94.4%   92.6%         65.7%    63.9%         -0.004         -0.000
+   decidable at 0.95 by the clean model but not by the free-haze model: 6 labels; the reverse: 4 labels
+   row AF4 asks for agreement >= 95 % of the 108 labels: met (106 of 108)
+   one-sided 95 % upper bound on the per-label disagreement rate (Clopper-Pearson, 27 planets): CH4 10.5 %, H2O 10.5 %, CO2 16.4 %, NH3 16.4 %
+
+2. Replay of e3_budget.py --fallback freehaze --q 0.1 0.2 0.5 --draws 20 (same seed and random-number order), q = 0.2, f = 20 %
+   population 954 planets (posteriors on 954 hazed and 955 clean spectra); 27 have a free-haze retrieval of the clean spectrum; 572 Tier-2 slots
+   == target CH4 (359 targets), q = 0.2, f = 20%: mean over 20 draws
+      per routed clean planet without a free-haze run, expected label flips = 0.000 (1 - agreement of step 1), 0.105 at the 95 % upper bound of the disagreement rate
+      ordering                           routed  hazed  clean  w/ FH  no FH | lost (oracle-assisted) lost (FH substituted) max |change| | known flips exp. flips no-FH at 95% UB  bound on lost
+      Random                              191.0   36.1  154.8    4.2  150.7 |         20.1 ±  3.6            20.1 ±  3.6            0     |        0.00              0.0      15.8  20.1 ± 0.0 (± 15.8 at the 95 % UB; worst ± 151)
+      Optical-excess score                191.0  184.8    6.2    0.1    6.0 |         12.6 ±  2.1            12.6 ±  2.1            0     |        0.00              0.0       0.6  12.6 ± 0.0 (± 0.6 at the 95 % UB; worst ± 6)
+      Input disagreement                  191.0   81.4  109.6    0.0  109.6 |         17.9 ±  2.6            17.9 ±  2.6            0     |        0.00              0.0      11.5  17.9 ± 0.0 (± 11.5 at the 95 % UB; worst ± 110)
+      Either (optical or disagreement)    191.0  184.8    6.2    0.1    6.0 |         12.6 ±  2.1            12.6 ±  2.1            0     |        0.00              0.0       0.6  12.6 ± 0.0 (± 0.6 at the 95 % UB; worst ± 6)
+      Band metric                         191.0   43.1  147.9    2.5  145.3 |         21.3 ±  3.1            21.3 ±  3.1            0     |        0.00              0.0      15.3  21.3 ± 0.0 (± 15.3 at the 95 % UB; worst ± 145)
+      Margin                              191.0    0.2  190.8    5.0  185.8 |         19.6 ±  3.5            19.6 ±  3.5            0     |        0.00              0.0      19.5  19.6 ± 0.0 (± 19.5 at the 95 % UB; worst ± 186)
+      Learner-spread                      191.0    1.8  189.2    3.3  185.9 |         22.2 ±  3.7            22.2 ±  3.7            0     |        0.00              0.0      19.5  22.2 ± 0.0 (± 19.5 at the 95 % UB; worst ± 186)
+      Mahalanobis                         191.0  139.0   52.0    0.9   51.1 |         12.6 ±  1.7            12.6 ±  1.7            0     |        0.00              0.0       5.4  12.6 ± 0.0 (± 5.4 at the 95 % UB; worst ± 51)
+      k-NN distance                       191.0  146.0   45.0    0.8   44.1 |         13.5 ±  2.0            13.5 ±  2.0            0     |        0.00              0.0       4.6  13.5 ± 0.0 (± 4.6 at the 95 % UB; worst ± 44)
+      PCA                                 191.0  127.1   63.9    1.7   62.2 |         14.3 ±  1.8            14.3 ±  1.8            0     |        0.00              0.0       6.5  14.3 ± 0.0 (± 6.5 at the 95 % UB; worst ± 62)
+      Haze oracle                         191.0  185.9    5.1    0.1    5.0 |         12.3 ±  1.9            12.3 ±  1.9            0     |        0.00              0.0       0.5  12.3 ± 0.0 (± 0.5 at the 95 % UB; worst ± 5)
+
+   == target H2O (364 targets), q = 0.2, f = 20%: mean over 20 draws
+      per routed clean planet without a free-haze run, expected label flips = 0.000 (1 - agreement of step 1), 0.105 at the 95 % upper bound of the disagreement rate
+      ordering                           routed  hazed  clean  w/ FH  no FH | lost (oracle-assisted) lost (FH substituted) max |change| | known flips exp. flips no-FH at 95% UB  bound on lost
+      Random                              191.0   37.4  153.6    4.5  149.2 |         58.1 ±  5.1            58.1 ±  5.1            0     |        0.00              0.0      15.7  58.1 ± 0.0 (± 15.7 at the 95 % UB; worst ± 149)
+      Optical-excess score                191.0  184.8    6.2    0.1    6.0 |         39.8 ±  2.6            39.8 ±  2.6            0     |        0.00              0.0       0.6  39.8 ± 0.0 (± 0.6 at the 95 % UB; worst ± 6)
+      Input disagreement                  191.0   81.4  109.6    0.0  109.6 |         54.4 ±  3.5            54.4 ±  3.5            0     |        0.00              0.0      11.5  54.4 ± 0.0 (± 11.5 at the 95 % UB; worst ± 110)
+      Either (optical or disagreement)    191.0  184.8    6.2    0.1    6.0 |         39.8 ±  2.6            39.8 ±  2.6            0     |        0.00              0.0       0.6  39.8 ± 0.0 (± 0.6 at the 95 % UB; worst ± 6)
+      Band metric                         191.0   43.1  147.9    2.5  145.3 |         57.9 ±  3.8            57.9 ±  3.8            0     |        0.00              0.0      15.3  57.9 ± 0.0 (± 15.3 at the 95 % UB; worst ± 145)
+      Margin                              191.0    0.2  190.8    5.0  185.8 |         61.0 ±  4.4            61.0 ±  4.4            0     |        0.00              0.0      19.5  61.0 ± 0.0 (± 19.5 at the 95 % UB; worst ± 186)
+      Learner-spread                      191.0    1.8  189.2    3.3  185.9 |         61.0 ±  4.5            61.0 ±  4.5            0     |        0.00              0.0      19.5  61.0 ± 0.0 (± 19.5 at the 95 % UB; worst ± 186)
+      Mahalanobis                         191.0  139.0   52.0    0.9   51.1 |         45.8 ±  3.0            45.8 ±  3.0            0     |        0.00              0.0       5.4  45.8 ± 0.0 (± 5.4 at the 95 % UB; worst ± 51)
+      k-NN distance                       191.0  146.0   45.0    0.8   44.1 |         46.6 ±  2.7            46.6 ±  2.7            0     |        0.00              0.0       4.6  46.6 ± 0.0 (± 4.6 at the 95 % UB; worst ± 44)
+      PCA                                 191.0  127.1   63.9    1.7   62.2 |         46.4 ±  4.0            46.4 ±  4.0            0     |        0.00              0.0       6.5  46.4 ± 0.0 (± 6.5 at the 95 % UB; worst ± 62)
+      Haze oracle                         191.0  185.9    5.1    0.1    5.0 |         39.5 ±  2.8            39.5 ±  2.8            0     |        0.00              0.0       0.5  39.5 ± 0.0 (± 0.5 at the 95 % UB; worst ± 5)
+
+   == target joint (576 targets), q = 0.2, f = 20%: mean over 20 draws
+      per routed clean planet without a free-haze run, expected label flips = 0.000 (1 - agreement of step 1, summed over CH4 and H2O), 0.210 at the 95 % upper bound of the disagreement rate
+      ordering                           routed  hazed  clean  w/ FH  no FH | lost (oracle-assisted) lost (FH substituted) max |change| | known flips exp. flips no-FH at 95% UB  bound on lost
+      Random                              191.0   40.1  150.8    4.1  146.8 |        108.0 ±  5.6           108.0 ±  5.6            0     |        0.00              0.0      30.8  108.0 ± 0.0 (± 30.8 at the 95 % UB; worst ± 147)
+      Optical-excess score                191.0  184.8    6.2    0.1    6.0 |         87.3 ±  3.5            87.3 ±  3.5            0     |        0.00              0.0       1.3  87.3 ± 0.0 (± 1.3 at the 95 % UB; worst ± 6)
+      Input disagreement                  191.0   81.4  109.6    0.0  109.6 |        101.8 ±  3.5           101.8 ±  3.5            0     |        0.00              0.0      23.0  101.8 ± 0.0 (± 23.0 at the 95 % UB; worst ± 110)
+      Either (optical or disagreement)    191.0  184.8    6.2    0.1    6.0 |         87.3 ±  3.5            87.3 ±  3.5            0     |        0.00              0.0       1.3  87.3 ± 0.0 (± 1.3 at the 95 % UB; worst ± 6)
+      Band metric                         191.0   43.1  147.9    2.5  145.3 |        112.8 ±  4.4           112.8 ±  4.4            0     |        0.00              0.0      30.5  112.8 ± 0.0 (± 30.5 at the 95 % UB; worst ± 145)
+      Margin                              191.0    0.2  190.8    5.0  185.8 |        107.5 ±  4.9           107.5 ±  4.9            0     |        0.00              0.0      39.0  107.5 ± 0.0 (± 39.0 at the 95 % UB; worst ± 186)
+      Learner-spread                      191.0    1.8  189.2    3.3  185.9 |        110.8 ±  5.8           110.8 ±  5.8            0     |        0.00              0.0      39.0  110.8 ± 0.0 (± 39.0 at the 95 % UB; worst ± 186)
+      Mahalanobis                         191.0  139.0   52.0    0.9   51.1 |         93.6 ±  3.4            93.6 ±  3.4            0     |        0.00              0.0      10.7  93.6 ± 0.0 (± 10.7 at the 95 % UB; worst ± 51)
+      k-NN distance                       191.0  146.0   45.0    0.8   44.1 |         95.0 ±  2.9            95.0 ±  2.9            0     |        0.00              0.0       9.3  95.0 ± 0.0 (± 9.3 at the 95 % UB; worst ± 44)
+      PCA                                 191.0  127.1   63.9    1.7   62.2 |         97.2 ±  3.1            97.2 ±  3.1            0     |        0.00              0.0      13.1  97.2 ± 0.0 (± 13.1 at the 95 % UB; worst ± 62)
+      Haze oracle                         191.0  185.9    5.1    0.1    5.0 |         87.1 ±  3.1            87.1 ±  3.1            0     |        0.00              0.0       1.1  87.1 ± 0.0 (± 1.1 at the 95 % UB; worst ± 5)
+
+   Reading: 'lost (FH substituted)' re-scores the routed clean planets that have a free-haze run by that run (the rest keep the clean-model
+   retrieval, as in Table 12). 'expected flips, no-FH' = routed clean planets without a free-haze run x (1 - agreement); each flip moves at
+   most one target in or out of the selection, so the operational number lies within 'lost (FH substituted)' ± that many targets in
+   expectation (± the 'at 95% UB' column at the one-sided 95 % upper bound of the disagreement rate that 27 planets allow), and within
+   ± the number of routed clean planets without a run in the worst case.
+
+3. Free-haze retrievals of clean spectra needed for the f = 20% column at q = 0.2 to be fully operational (every routed clean planet
+   scored by the free-haze retrieval of its clean spectrum), union over the 20 draws and the three targets; cost at the median of the
+   27 existing runs (25.9 min each on one core; the hazed free-haze runs took 34.1 min median)
+   ordering                           union of routed clean already run  missing core-hours
+   Random                                               954          27      927        400
+   Optical-excess score                                  24           1       23         10
+   Input disagreement                                   146           0      146         63
+   Either (optical or disagreement)                      25           1       24         10
+   Band metric                                          200           3      197         85
+   Margin                                               256           6      250        108
+   Learner-spread                                       254           7      247        107
+   Mahalanobis                                           76           2       74         32
+   k-NN distance                                         68           1       67         29
+   PCA                                                   93           2       91         39
+   Haze oracle                                          260           4      256        110
+   all orderings (union)                                954          27      927        400
+   every planet (a pipeline that cannot know h)                   954          27      927        400
+   per draw, the routed clean planets of all orderings together number 604 on average (min 581, max 635),
+   so a single draw would need about 604 runs (260 core-hours); the union over draws is
+   large because the random, margin and learner-spread orderings route different clean planets in every draw.
+   For comparison, the manuscript's 520 core-hours for the free-haze retrieval of every planet, and 127 for the budget.

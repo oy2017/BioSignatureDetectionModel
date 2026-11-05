@@ -1,0 +1,147 @@
+AF1 (REVISION_EXPECTATIONS.md, section AF): does the ensemble's lead over the four-gas retrieval on the 90 photochemical-grid
+spectra survive when the two are read at a common operating point?
+
+Scoring follows checks/grid_retrieval_intervals.py (finished spectra only; balanced credit = mean of the credit on truly present
+and on truly absent labels, pooled over the four gases or per gas). Four comparisons per run (first run, rerun with the
+temperature prior fix) and precision:
+  1. baseline        retrieval at p_present >= 0.5 against the ensemble at its own thresholds (reproduces the earlier numbers);
+  2. matched FP      per gas, the retrieval's threshold on p_present moved so that its false-present rate on truly absent labels
+                     equals the ensemble's on the same spectra (linear interpolation between the two bracketing achievable
+                     operating points, i.e. a randomised threshold), and the reverse: the ensemble's averaged probability
+                     thresholded to the retrieval's false-present rate at 0.5;
+  3. oracle          each design at its best per-gas threshold chosen on these test spectra, for that gas's balanced credit (3)
+                     and for the pooled balanced credit (3p; the pooled score is linear in each gas's recall and false-present
+                     rate, weighted by that gas's share of present and of absent labels, so the pooled optimum is also per gas;
+                     it is degenerate here, calling every H2O label present and every NH3 label absent, and is printed only as
+                     the formal upper bound). Beside the pooled score, 'macro' is the mean over the four gases of the per-gas
+                     balanced credit, the natural score for per-gas thresholds;
+  4. prior removed   the retrieval read at Bayes factor > 1 for present, i.e. posterior odds above the prior odds. The
+                     manuscript's Section 2.4 prior (log-uniform 10^-9 to 10^-2, label at 10^-4) gives 0.71 absent / 0.29 present,
+                     prior odds 5:2, so p_present > 2/7 = 0.286; the grid runs themselves (grid_retrieval.py, AB = (-9, -1)) use
+                     10^-9 to 10^-1, 0.625 / 0.375, p_present > 3/8. Both are reported.
+Intervals: 95 % bootstrap over planets (the reductions of one planet, -alt/-hu/-hm, resampled together), 2000 replicates,
+seed 411, with the matched and oracle thresholds re-chosen in every replicate; a per-gas interval ignores replicates in which
+that gas has no truly present (or no truly absent) label, and their number is printed. Writes results/round3/retrieval_operating_point.txt.
+
+=== first run, JWST: 77 finished spectra, 32 planets, 30 bootstrap units (base planets); present/absent labels CH4 27/50, H2O 64/13, CO2 39/38, NH3 9/68 ===
+  retrieval posterior saturation: share of absent labels with p_present >= 0.99 / of present labels with p_present <= 0.01: CH4 0.10/0.26, H2O 0.69/0.38, CO2 0.11/0.54, NH3 0.22/0.78
+  operating points (threshold, false-present rate on absent labels, recall of present labels):
+    ret_0.5     CH4: t=0.5            fp=0.100 rec=0.407  H2O: t=0.5            fp=0.692 rec=0.391  CO2: t=0.5            fp=0.105 rec=0.333  NH3: t=0.5            fp=0.279 rec=0.000
+    ens_own     CH4: t=own            fp=0.040 rec=0.778  H2O: t=own            fp=0.154 rec=0.500  CO2: t=own            fp=0.105 rec=0.769  NH3: t=own            fp=0.074 rec=0.111
+    ret_matched CH4: t=1              fp=0.040 rec=0.074  H2O: t=inf/1 w=0.40   fp=0.154 rec=0.044  CO2: t=0.0146         fp=0.105 rec=0.462  NH3: t=1              fp=0.074 rec=0.000
+    ens_matched CH4: t=0.276/0.143 w=0.50 fp=0.100 rec=0.981  H2O: t=0.0982         fp=0.692 rec=0.969  CO2: t=0.327          fp=0.105 rec=0.872  NH3: t=0.263          fp=0.279 rec=0.222
+    ret_oracle  CH4: t=2.14e-05       fp=0.260 rec=0.889  H2O: t=5.22e-87       fp=0.769 rec=0.953  CO2: t=0.000123       fp=0.158 rec=0.564  NH3: t=5.42e-92       fp=0.853 rec=1.000
+    ens_oracle  CH4: t=0.29           fp=0.060 rec=0.963  H2O: t=0.42           fp=0.231 rec=0.828  CO2: t=0.327          fp=0.105 rec=0.872  NH3: t=0.188          fp=0.338 rec=0.667
+    ret_poracle CH4: t=0.101          fp=0.120 rec=0.741  H2O: t=0              fp=1.000 rec=1.000  CO2: t=5.8e-12        fp=0.368 rec=0.744  NH3: t=inf            fp=0.000 rec=0.000
+    ens_poracle CH4: t=0.29           fp=0.060 rec=0.963  H2O: t=0.0982         fp=0.692 rec=0.969  CO2: t=0.208          fp=0.158 rec=0.923  NH3: t=0.634          fp=0.015 rec=0.111
+    ret_bf1_2/7 CH4: t=0.286          fp=0.100 rec=0.593  H2O: t=0.286          fp=0.692 rec=0.469  CO2: t=0.286          fp=0.105 rec=0.333  NH3: t=0.286          fp=0.279 rec=0.000
+    ret_bf1_3/8 CH4: t=0.375          fp=0.100 rec=0.556  H2O: t=0.375          fp=0.692 rec=0.453  CO2: t=0.375          fp=0.105 rec=0.333  NH3: t=0.375          fp=0.279 rec=0.000
+  1 baseline                                                 ensemble 0.764  retrieval 0.567  gap +0.197 (+0.125, +0.271)   macro: ensemble 0.723  retrieval 0.494  gap +0.229 (+0.157, +0.295)
+      per gas: CH4 ens 0.869 ret 0.654 gap +0.215 (+0.073, +0.369)  H2O ens 0.673 ret 0.349 gap +0.324 (+0.151, +0.461)  CO2 ens 0.832 ret 0.614 gap +0.218 (+0.121, +0.299)  NH3 ens 0.519 ret 0.360 gap +0.158 (+0.044, +0.327)
+  2a matched FP (retrieval moved to ensemble's rate)         ensemble 0.764  retrieval 0.544  gap +0.220 (+0.111, +0.288)   macro: ensemble 0.723  retrieval 0.526  gap +0.197 (+0.082, +0.262)
+      per gas: CH4 ens 0.869 ret 0.517 gap +0.352 (+0.000, +0.458)  H2O ens 0.673 ret 0.445 gap +0.228 (+0.138, +0.311)  CO2 ens 0.832 ret 0.678 gap +0.154 (+0.011, +0.347)  NH3 ens 0.519 ret 0.463 gap +0.056 (-0.000, +0.214)
+  2b matched FP (ensemble moved to retrieval's rate at 0.5)  ensemble 0.838  retrieval 0.567  gap +0.272 (+0.173, +0.316)   macro: ensemble 0.733  retrieval 0.494  gap +0.239 (+0.152, +0.321)
+      per gas: CH4 ens 0.941 ret 0.654 gap +0.287 (+0.176, +0.404)  H2O ens 0.638 ret 0.349 gap +0.289 (+0.217, +0.353)  CO2 ens 0.883 ret 0.614 gap +0.269 (-0.017, +0.344)  NH3 ens 0.471 ret 0.360 gap +0.111 (+0.000, +0.438)
+  3 oracle thresholds (both in-sample)                       ensemble 0.830  retrieval 0.660  gap +0.171 (+0.037, +0.255)   macro: ensemble 0.824  retrieval 0.671  gap +0.154 (+0.080, +0.198)
+      per gas: CH4 ens 0.951 ret 0.814 gap +0.137 (+0.043, +0.203)  H2O ens 0.799 ret 0.592 gap +0.207 (+0.046, +0.321)  CO2 ens 0.883 ret 0.703 gap +0.180 (+0.051, +0.283)  NH3 ens 0.664 ret 0.574 gap +0.091 (-0.008, +0.185)
+  3p pooled-credit oracle thresholds (both in-sample)        ensemble 0.893  retrieval 0.809  gap +0.085 (+0.044, +0.120)   macro: ensemble 0.755  retrieval 0.624  gap +0.131 (+0.058, +0.189)
+      per gas: CH4 ens 0.951 ret 0.810 gap +0.141 (+0.040, +0.226)  H2O ens 0.638 ret 0.500 gap +0.138 (-0.046, +0.346)  CO2 ens 0.883 ret 0.688 gap +0.195 (+0.051, +0.309)  NH3 ens 0.548 ret 0.500 gap +0.048 (+0.000, +0.197)
+  3' retrieval pooled oracle against ensemble's own          ensemble 0.764  retrieval 0.809  gap -0.045 (-0.138, +0.016)   macro: ensemble 0.723  retrieval 0.624  gap +0.099 (-0.003, +0.142)
+      per gas: CH4 ens 0.869 ret 0.810 gap +0.059 (-0.111, +0.175)  H2O ens 0.673 ret 0.500 gap +0.173 (-0.064, +0.254)  CO2 ens 0.832 ret 0.688 gap +0.144 (-0.016, +0.243)  NH3 ens 0.519 ret 0.500 gap +0.019 (-0.057, +0.161)
+  4 prior removed, p > 2/7 (manuscript 0.71/0.29)            ensemble 0.764  retrieval 0.603  gap +0.161 (+0.090, +0.238)   macro: ensemble 0.723  retrieval 0.527  gap +0.196 (+0.124, +0.262)
+      per gas: CH4 ens 0.869 ret 0.746 gap +0.123 (-0.008, +0.268)  H2O ens 0.673 ret 0.388 gap +0.285 (+0.108, +0.426)  CO2 ens 0.832 ret 0.614 gap +0.218 (+0.121, +0.299)  NH3 ens 0.519 ret 0.360 gap +0.158 (+0.044, +0.327)
+  4' prior removed, p > 3/8 (grid run's 10^-9 to 10^-1 prior) ensemble 0.764  retrieval 0.596  gap +0.168 (+0.096, +0.246)   macro: ensemble 0.723  retrieval 0.521  gap +0.203 (+0.131, +0.269)
+      per gas: CH4 ens 0.869 ret 0.728 gap +0.141 (+0.011, +0.289)  H2O ens 0.673 ret 0.380 gap +0.293 (+0.116, +0.436)  CO2 ens 0.832 ret 0.614 gap +0.218 (+0.121, +0.299)  NH3 ens 0.519 ret 0.360 gap +0.158 (+0.044, +0.327)
+
+=== first run, Tier-1: 90 finished spectra, 34 planets, 32 bootstrap units (base planets); present/absent labels CH4 32/58, H2O 75/15, CO2 43/47, NH3 9/81 ===
+  retrieval posterior saturation: share of absent labels with p_present >= 0.99 / of present labels with p_present <= 0.01: CH4 0.03/0.03, H2O 0.33/0.08, CO2 0.04/0.19, NH3 0.11/0.00
+  operating points (threshold, false-present rate on absent labels, recall of present labels):
+    ret_0.5     CH4: t=0.5            fp=0.086 rec=0.438  H2O: t=0.5            fp=0.400 rec=0.373  CO2: t=0.5            fp=0.213 rec=0.209  NH3: t=0.5            fp=0.284 rec=0.111
+    ens_own     CH4: t=own            fp=0.069 rec=0.594  H2O: t=own            fp=0.333 rec=0.427  CO2: t=own            fp=0.170 rec=0.372  NH3: t=own            fp=0.111 rec=0.111
+    ret_matched CH4: t=0.625          fp=0.069 rec=0.406  H2O: t=0.903          fp=0.333 rec=0.160  CO2: t=0.607          fp=0.170 rec=0.186  NH3: t=1              fp=0.111 rec=0.000
+    ens_matched CH4: t=0.603          fp=0.086 rec=0.656  H2O: t=0.719          fp=0.400 rec=0.413  CO2: t=0.323          fp=0.213 rec=0.651  NH3: t=0.366          fp=0.284 rec=0.333
+    ret_oracle  CH4: t=0.153          fp=0.259 rec=0.781  H2O: t=0.114          fp=0.600 rec=0.827  CO2: t=0.035          fp=0.511 rec=0.744  NH3: t=0.0127         fp=0.716 rec=1.000
+    ens_oracle  CH4: t=0.354          fp=0.241 rec=0.938  H2O: t=0.855          fp=0.067 rec=0.293  CO2: t=0.282          fp=0.255 rec=0.814  NH3: t=0.171          fp=0.654 rec=0.889
+    ret_poracle CH4: t=0.276          fp=0.155 rec=0.656  H2O: t=1.47e-10       fp=0.867 rec=1.000  CO2: t=0.035          fp=0.511 rec=0.744  NH3: t=inf            fp=0.000 rec=0.000
+    ens_poracle CH4: t=0.354          fp=0.241 rec=0.938  H2O: t=0.152          fp=0.867 rec=0.987  CO2: t=0.282          fp=0.255 rec=0.814  NH3: t=0.764          fp=0.000 rec=0.111
+    ret_bf1_2/7 CH4: t=0.286          fp=0.155 rec=0.625  H2O: t=0.286          fp=0.600 rec=0.600  CO2: t=0.286          fp=0.277 rec=0.349  NH3: t=0.286          fp=0.432 rec=0.111
+    ret_bf1_3/8 CH4: t=0.375          fp=0.138 rec=0.500  H2O: t=0.375          fp=0.600 rec=0.507  CO2: t=0.375          fp=0.234 rec=0.279  NH3: t=0.375          fp=0.383 rec=0.111
+  1 baseline                                                 ensemble 0.649  retrieval 0.554  gap +0.095 (+0.039, +0.149)   macro: ensemble 0.602  retrieval 0.519  gap +0.084 (+0.013, +0.143)
+      per gas: CH4 ens 0.762 ret 0.676 gap +0.087 (+0.000, +0.185)  H2O ens 0.547 ret 0.487 gap +0.060 (-0.089, +0.154)  CO2 ens 0.601 ret 0.498 gap +0.103 (+0.022, +0.180)  NH3 ens 0.500 ret 0.414 gap +0.086 (+0.021, +0.158)
+  2a matched FP (retrieval moved to ensemble's rate)         ensemble 0.649  retrieval 0.539  gap +0.110 (-0.063, +0.169)   macro: ensemble 0.602  retrieval 0.509  gap +0.094 (-0.023, +0.164)
+      per gas: CH4 ens 0.762 ret 0.669 gap +0.094 (-0.022, +0.238)  H2O ens 0.547 ret 0.413 gap +0.133 (-0.188, +0.225)  CO2 ens 0.601 ret 0.508 gap +0.093 (-0.053, +0.177)  NH3 ens 0.500 ret 0.444 gap +0.056 (-0.000, +0.214)
+  2b matched FP (ensemble moved to retrieval's rate at 0.5)  ensemble 0.652  retrieval 0.554  gap +0.097 (+0.001, +0.201)   macro: ensemble 0.634  retrieval 0.519  gap +0.115 (+0.006, +0.201)
+      per gas: CH4 ens 0.785 ret 0.676 gap +0.109 (-0.143, +0.219)  H2O ens 0.507 ret 0.487 gap +0.020 (-0.035, +0.206)  CO2 ens 0.719 ret 0.498 gap +0.221 (-0.024, +0.369)  NH3 ens 0.525 ret 0.414 gap +0.111 (+0.000, +0.278)
+  3 oracle thresholds (both in-sample)                       ensemble 0.600  retrieval 0.639  gap -0.039 (-0.081, +0.194)   macro: ensemble 0.714  retrieval 0.658  gap +0.056 (-0.001, +0.123)
+      per gas: CH4 ens 0.848 ret 0.761 gap +0.087 (+0.014, +0.144)  H2O ens 0.613 ret 0.613 gap +0.000 (-0.094, +0.132)  CO2 ens 0.779 ret 0.617 gap +0.163 (+0.031, +0.258)  NH3 ens 0.617 ret 0.642 gap -0.025 (-0.089, +0.120)
+  3p pooled-credit oracle thresholds (both in-sample)        ensemble 0.843  retrieval 0.788  gap +0.055 (+0.014, +0.093)   macro: ensemble 0.686  retrieval 0.608  gap +0.077 (+0.006, +0.139)
+      per gas: CH4 ens 0.848 ret 0.751 gap +0.098 (+0.000, +0.168)  H2O ens 0.560 ret 0.567 gap -0.007 (-0.125, +0.105)  CO2 ens 0.779 ret 0.617 gap +0.163 (+0.029, +0.271)  NH3 ens 0.556 ret 0.500 gap +0.056 (+0.000, +0.214)
+  3' retrieval pooled oracle against ensemble's own          ensemble 0.649  retrieval 0.788  gap -0.139 (-0.218, -0.077)   macro: ensemble 0.602  retrieval 0.608  gap -0.006 (-0.092, +0.077)
+      per gas: CH4 ens 0.762 ret 0.751 gap +0.012 (-0.073, +0.112)  H2O ens 0.547 ret 0.567 gap -0.020 (-0.167, +0.112)  CO2 ens 0.601 ret 0.617 gap -0.016 (-0.182, +0.101)  NH3 ens 0.500 ret 0.500 gap +0.000 (-0.082, +0.165)
+  4 prior removed, p > 2/7 (manuscript 0.71/0.29)            ensemble 0.649  retrieval 0.591  gap +0.059 (-0.001, +0.119)   macro: ensemble 0.602  retrieval 0.528  gap +0.075 (+0.008, +0.135)
+      per gas: CH4 ens 0.762 ret 0.735 gap +0.027 (-0.036, +0.110)  H2O ens 0.547 ret 0.500 gap +0.047 (-0.087, +0.160)  CO2 ens 0.601 ret 0.536 gap +0.065 (-0.044, +0.171)  NH3 ens 0.500 ret 0.340 gap +0.160 (+0.077, +0.244)
+  4' prior removed, p > 3/8 (grid run's 10^-9 to 10^-1 prior) ensemble 0.649  retrieval 0.564  gap +0.085 (+0.029, +0.145)   macro: ensemble 0.602  retrieval 0.505  gap +0.097 (+0.037, +0.155)
+      per gas: CH4 ens 0.762 ret 0.681 gap +0.081 (+0.010, +0.179)  H2O ens 0.547 ret 0.453 gap +0.093 (-0.038, +0.199)  CO2 ens 0.601 ret 0.523 gap +0.078 (-0.014, +0.169)  NH3 ens 0.500 ret 0.364 gap +0.136 (+0.067, +0.213)
+  replicates without a present or an absent label, left out of that gas's interval: NH3 1
+
+=== rerun (T prior fix), JWST: 89 finished spectra, 34 planets, 32 bootstrap units (base planets); present/absent labels CH4 32/57, H2O 74/15, CO2 43/46, NH3 9/80 ===
+  retrieval posterior saturation: share of absent labels with p_present >= 0.99 / of present labels with p_present <= 0.01: CH4 0.18/0.25, H2O 0.73/0.32, CO2 0.13/0.51, NH3 0.25/0.67
+  operating points (threshold, false-present rate on absent labels, recall of present labels):
+    ret_0.5     CH4: t=0.5            fp=0.193 rec=0.375  H2O: t=0.5            fp=0.733 rec=0.419  CO2: t=0.5            fp=0.174 rec=0.372  NH3: t=0.5            fp=0.350 rec=0.000
+    ens_own     CH4: t=own            fp=0.053 rec=0.781  H2O: t=own            fp=0.133 rec=0.554  CO2: t=own            fp=0.130 rec=0.791  NH3: t=own            fp=0.075 rec=0.111
+    ret_matched CH4: t=1/1 w=0.75     fp=0.053 rec=0.102  H2O: t=1/1 w=0.33     fp=0.133 rec=0.059  CO2: t=0.985          fp=0.130 rec=0.372  NH3: t=1/1 w=0.71     fp=0.075 rec=0.000
+    ens_matched CH4: t=0.0688         fp=0.193 rec=1.000  H2O: t=0.084          fp=0.733 rec=0.973  CO2: t=0.208          fp=0.174 rec=0.930  NH3: t=0.176          fp=0.350 rec=0.667
+    ret_oracle  CH4: t=0.0408         fp=0.211 rec=0.750  H2O: t=1.95e-37       fp=0.800 rec=0.959  CO2: t=1.22e-05       fp=0.283 rec=0.674  NH3: t=4.29e-18       fp=0.762 rec=1.000
+    ens_oracle  CH4: t=0.29           fp=0.070 rec=0.938  H2O: t=0.42           fp=0.200 rec=0.838  CO2: t=0.208          fp=0.174 rec=0.930  NH3: t=0.188          fp=0.325 rec=0.667
+    ret_poracle CH4: t=0.0408         fp=0.211 rec=0.750  H2O: t=0              fp=1.000 rec=1.000  CO2: t=1.22e-05       fp=0.283 rec=0.674  NH3: t=inf            fp=0.000 rec=0.000
+    ens_poracle CH4: t=0.29           fp=0.070 rec=0.938  H2O: t=0.0982         fp=0.667 rec=0.973  CO2: t=0.208          fp=0.174 rec=0.930  NH3: t=0.634          fp=0.013 rec=0.111
+    ret_bf1_2/7 CH4: t=0.286          fp=0.211 rec=0.469  H2O: t=0.286          fp=0.733 rec=0.486  CO2: t=0.286          fp=0.174 rec=0.372  NH3: t=0.286          fp=0.350 rec=0.000
+    ret_bf1_3/8 CH4: t=0.375          fp=0.193 rec=0.438  H2O: t=0.375          fp=0.733 rec=0.459  CO2: t=0.375          fp=0.174 rec=0.372  NH3: t=0.375          fp=0.350 rec=0.000
+  1 baseline                                                 ensemble 0.777  retrieval 0.540  gap +0.236 (+0.159, +0.310)   macro: ensemble 0.731  retrieval 0.464  gap +0.266 (+0.197, +0.327)
+      per gas: CH4 ens 0.864 ret 0.591 gap +0.273 (+0.138, +0.392)  H2O ens 0.710 ret 0.343 gap +0.368 (+0.143, +0.535)  CO2 ens 0.830 ret 0.599 gap +0.231 (+0.106, +0.348)  NH3 ens 0.518 ret 0.325 gap +0.193 (+0.093, +0.344)
+  2a matched FP (retrieval moved to ensemble's rate)         ensemble 0.777  retrieval 0.532  gap +0.245 (+0.168, +0.301)   macro: ensemble 0.731  retrieval 0.518  gap +0.213 (+0.147, +0.268)
+      per gas: CH4 ens 0.864 ret 0.524 gap +0.340 (+0.200, +0.441)  H2O ens 0.710 ret 0.463 gap +0.248 (+0.158, +0.319)  CO2 ens 0.830 ret 0.621 gap +0.209 (+0.012, +0.384)  NH3 ens 0.518 ret 0.463 gap +0.056 (-0.000, +0.201)
+  2b matched FP (ensemble moved to retrieval's rate at 0.5)  ensemble 0.828  retrieval 0.540  gap +0.288 (+0.206, +0.329)   macro: ensemble 0.765  retrieval 0.464  gap +0.300 (+0.187, +0.344)
+      per gas: CH4 ens 0.904 ret 0.591 gap +0.312 (+0.220, +0.385)  H2O ens 0.620 ret 0.343 gap +0.277 (+0.211, +0.338)  CO2 ens 0.878 ret 0.599 gap +0.279 (+0.031, +0.352)  NH3 ens 0.658 ret 0.325 gap +0.333 (+0.038, +0.500)
+  3 oracle thresholds (both in-sample)                       ensemble 0.833  retrieval 0.673  gap +0.160 (+0.041, +0.371)   macro: ensemble 0.825  retrieval 0.666  gap +0.159 (+0.093, +0.224)
+      per gas: CH4 ens 0.934 ret 0.770 gap +0.164 (+0.069, +0.250)  H2O ens 0.819 ret 0.580 gap +0.239 (+0.100, +0.355)  CO2 ens 0.878 ret 0.696 gap +0.182 (+0.047, +0.308)  NH3 ens 0.671 ret 0.619 gap +0.052 (-0.072, +0.208)
+  3p pooled-credit oracle thresholds (both in-sample)        ensemble 0.894  retrieval 0.801  gap +0.094 (+0.050, +0.130)   macro: ensemble 0.754  retrieval 0.616  gap +0.137 (+0.073, +0.204)
+      per gas: CH4 ens 0.934 ret 0.770 gap +0.164 (+0.066, +0.264)  H2O ens 0.653 ret 0.500 gap +0.153 (-0.036, +0.345)  CO2 ens 0.878 ret 0.696 gap +0.182 (+0.047, +0.324)  NH3 ens 0.549 ret 0.500 gap +0.049 (+0.000, +0.198)
+  3' retrieval pooled oracle against ensemble's own          ensemble 0.777  retrieval 0.801  gap -0.024 (-0.112, +0.030)   macro: ensemble 0.731  retrieval 0.616  gap +0.114 (+0.023, +0.156)
+      per gas: CH4 ens 0.864 ret 0.770 gap +0.095 (-0.024, +0.206)  H2O ens 0.710 ret 0.500 gap +0.210 (-0.031, +0.287)  CO2 ens 0.830 ret 0.696 gap +0.134 (-0.022, +0.269)  NH3 ens 0.518 ret 0.500 gap +0.018 (-0.061, +0.158)
+  4 prior removed, p > 2/7 (manuscript 0.71/0.29)            ensemble 0.777  retrieval 0.563  gap +0.214 (+0.140, +0.281)   macro: ensemble 0.731  retrieval 0.482  gap +0.248 (+0.177, +0.307)
+      per gas: CH4 ens 0.864 ret 0.629 gap +0.235 (+0.104, +0.351)  H2O ens 0.710 ret 0.377 gap +0.334 (+0.110, +0.495)  CO2 ens 0.830 ret 0.599 gap +0.231 (+0.106, +0.348)  NH3 ens 0.518 ret 0.325 gap +0.193 (+0.093, +0.344)
+  4' prior removed, p > 3/8 (grid run's 10^-9 to 10^-1 prior) ensemble 0.777  retrieval 0.556  gap +0.221 (+0.146, +0.291)   macro: ensemble 0.731  retrieval 0.477  gap +0.253 (+0.183, +0.312)
+      per gas: CH4 ens 0.864 ret 0.622 gap +0.242 (+0.114, +0.355)  H2O ens 0.710 ret 0.363 gap +0.347 (+0.124, +0.511)  CO2 ens 0.830 ret 0.599 gap +0.231 (+0.106, +0.348)  NH3 ens 0.518 ret 0.325 gap +0.193 (+0.093, +0.344)
+  replicates without a present or an absent label, left out of that gas's interval: NH3 2
+
+=== rerun (T prior fix), Tier-1: 90 finished spectra, 34 planets, 32 bootstrap units (base planets); present/absent labels CH4 32/58, H2O 75/15, CO2 43/47, NH3 9/81 ===
+  retrieval posterior saturation: share of absent labels with p_present >= 0.99 / of present labels with p_present <= 0.01: CH4 0.02/0.03, H2O 0.27/0.11, CO2 0.00/0.19, NH3 0.10/0.33
+  operating points (threshold, false-present rate on absent labels, recall of present labels):
+    ret_0.5     CH4: t=0.5            fp=0.172 rec=0.375  H2O: t=0.5            fp=0.667 rec=0.333  CO2: t=0.5            fp=0.191 rec=0.233  NH3: t=0.5            fp=0.259 rec=0.000
+    ens_own     CH4: t=own            fp=0.069 rec=0.594  H2O: t=own            fp=0.333 rec=0.427  CO2: t=own            fp=0.170 rec=0.372  NH3: t=own            fp=0.111 rec=0.111
+    ret_matched CH4: t=0.824          fp=0.069 rec=0.094  H2O: t=0.98           fp=0.333 rec=0.080  CO2: t=0.555          fp=0.170 rec=0.233  NH3: t=0.876          fp=0.111 rec=0.000
+    ens_matched CH4: t=0.499          fp=0.172 rec=0.750  H2O: t=0.46           fp=0.667 rec=0.867  CO2: t=0.365          fp=0.191 rec=0.512  NH3: t=0.376          fp=0.259 rec=0.333
+    ret_oracle  CH4: t=0.0457         fp=0.448 rec=0.938  H2O: t=6.02e-12       fp=0.867 rec=1.000  CO2: t=0.01           fp=0.489 rec=0.814  NH3: t=0.00722        fp=0.765 rec=0.889
+    ens_oracle  CH4: t=0.354          fp=0.241 rec=0.938  H2O: t=0.855          fp=0.067 rec=0.293  CO2: t=0.282          fp=0.255 rec=0.814  NH3: t=0.171          fp=0.654 rec=0.889
+    ret_poracle CH4: t=0.0457         fp=0.448 rec=0.938  H2O: t=6.02e-12       fp=0.867 rec=1.000  CO2: t=0.01           fp=0.489 rec=0.814  NH3: t=inf            fp=0.000 rec=0.000
+    ens_poracle CH4: t=0.354          fp=0.241 rec=0.938  H2O: t=0.152          fp=0.867 rec=0.987  CO2: t=0.282          fp=0.255 rec=0.814  NH3: t=0.764          fp=0.000 rec=0.111
+    ret_bf1_2/7 CH4: t=0.286          fp=0.207 rec=0.500  H2O: t=0.286          fp=0.733 rec=0.653  CO2: t=0.286          fp=0.255 rec=0.302  NH3: t=0.286          fp=0.395 rec=0.111
+    ret_bf1_3/8 CH4: t=0.375          fp=0.190 rec=0.438  H2O: t=0.375          fp=0.667 rec=0.533  CO2: t=0.375          fp=0.213 rec=0.256  NH3: t=0.375          fp=0.333 rec=0.111
+  1 baseline                                                 ensemble 0.649  retrieval 0.523  gap +0.126 (+0.064, +0.188)   macro: ensemble 0.602  retrieval 0.456  gap +0.146 (+0.078, +0.225)
+      per gas: CH4 ens 0.762 ret 0.601 gap +0.161 (+0.067, +0.276)  H2O ens 0.547 ret 0.333 gap +0.213 (+0.064, +0.330)  CO2 ens 0.601 ret 0.521 gap +0.080 (-0.000, +0.164)  NH3 ens 0.500 ret 0.370 gap +0.130 (+0.023, +0.306)
+  2a matched FP (retrieval moved to ensemble's rate)         ensemble 0.649  retrieval 0.495  gap +0.154 (+0.024, +0.205)   macro: ensemble 0.602  retrieval 0.465  gap +0.137 (+0.038, +0.199)
+      per gas: CH4 ens 0.762 ret 0.512 gap +0.250 (+0.106, +0.357)  H2O ens 0.547 ret 0.373 gap +0.173 (-0.029, +0.228)  CO2 ens 0.601 ret 0.531 gap +0.070 (-0.103, +0.170)  NH3 ens 0.500 ret 0.444 gap +0.056 (-0.000, +0.200)
+  2b matched FP (ensemble moved to retrieval's rate at 0.5)  ensemble 0.734  retrieval 0.523  gap +0.211 (+0.126, +0.296)   macro: ensemble 0.646  retrieval 0.456  gap +0.190 (+0.103, +0.289)
+      per gas: CH4 ens 0.789 ret 0.601 gap +0.188 (+0.092, +0.330)  H2O ens 0.600 ret 0.333 gap +0.267 (+0.155, +0.349)  CO2 ens 0.660 ret 0.521 gap +0.140 (-0.030, +0.348)  NH3 ens 0.537 ret 0.370 gap +0.167 (+0.000, +0.357)
+  3 oracle thresholds (both in-sample)                       ensemble 0.600  retrieval 0.657  gap -0.057 (-0.081, +0.254)   macro: ensemble 0.714  retrieval 0.634  gap +0.081 (+0.023, +0.150)
+      per gas: CH4 ens 0.848 ret 0.745 gap +0.103 (+0.012, +0.189)  H2O ens 0.613 ret 0.567 gap +0.047 (-0.020, +0.156)  CO2 ens 0.779 ret 0.662 gap +0.117 (-0.010, +0.238)  NH3 ens 0.617 ret 0.562 gap +0.056 (-0.045, +0.190)
+  3p pooled-credit oracle thresholds (both in-sample)        ensemble 0.843  retrieval 0.786  gap +0.057 (+0.012, +0.102)   macro: ensemble 0.686  retrieval 0.618  gap +0.067 (+0.006, +0.153)
+      per gas: CH4 ens 0.848 ret 0.745 gap +0.103 (+0.000, +0.266)  H2O ens 0.560 ret 0.567 gap -0.007 (-0.125, +0.102)  CO2 ens 0.779 ret 0.662 gap +0.117 (-0.012, +0.257)  NH3 ens 0.556 ret 0.500 gap +0.056 (+0.000, +0.200)
+  3' retrieval pooled oracle against ensemble's own          ensemble 0.649  retrieval 0.786  gap -0.137 (-0.220, -0.074)   macro: ensemble 0.602  retrieval 0.618  gap -0.016 (-0.094, +0.085)
+      per gas: CH4 ens 0.762 ret 0.745 gap +0.018 (-0.076, +0.227)  H2O ens 0.547 ret 0.567 gap -0.020 (-0.166, +0.114)  CO2 ens 0.601 ret 0.662 gap -0.061 (-0.216, +0.090)  NH3 ens 0.500 ret 0.500 gap +0.000 (-0.079, +0.157)
+  4 prior removed, p > 2/7 (manuscript 0.71/0.29)            ensemble 0.649  retrieval 0.582  gap +0.067 (+0.006, +0.134)   macro: ensemble 0.602  retrieval 0.497  gap +0.105 (+0.045, +0.165)
+      per gas: CH4 ens 0.762 ret 0.647 gap +0.116 (+0.023, +0.230)  H2O ens 0.547 ret 0.460 gap +0.087 (-0.062, +0.232)  CO2 ens 0.601 ret 0.524 gap +0.077 (-0.013, +0.167)  NH3 ens 0.500 ret 0.358 gap +0.142 (+0.054, +0.230)
+  4' prior removed, p > 3/8 (grid run's 10^-9 to 10^-1 prior) ensemble 0.649  retrieval 0.563  gap +0.086 (+0.026, +0.148)   macro: ensemble 0.602  retrieval 0.492  gap +0.111 (+0.047, +0.167)
+      per gas: CH4 ens 0.762 ret 0.624 gap +0.138 (+0.047, +0.248)  H2O ens 0.547 ret 0.433 gap +0.113 (-0.048, +0.237)  CO2 ens 0.601 ret 0.522 gap +0.079 (-0.008, +0.168)  NH3 ens 0.500 ret 0.389 gap +0.111 (+0.035, +0.193)
+

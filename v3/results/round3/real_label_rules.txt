@@ -1,0 +1,197 @@
+AF2: the matched ensemble against the routing method and the other designs on the real labels under alternative label sets.
+
+Sets: (a) committed 64 + 24 (+17); (b) the 65-label rule-consistent panel set of label_sensitivity.py plus the later batches;
+(c) its 59-label judgement-free set plus the later batches; (d) one uniform rule across all three batches: a label is scored only if
+every printed free-chemistry variant (label_sources.csv notes for the panel, fourth_batch_second_reader.csv for the fourth batch,
+independent_data_survey.md for the 17 further labels) lies on one side of 10^-4; variants are pooled per planet across reductions.
+A 1-sigma interval is one variant; a quoted limit (any level) is a variant where it is the reported constraint; a second level
+printed for the same posterior is not a separate variant. (d') the same, with limits that lie above 10^-4 treated as uninformative
+rather than crossing. The ensemble has stored verdicts only on the committed labels, so paired differences cover labels both designs
+have; labels that enter under a rule are scored for the baselines only. Writes results/round3/real_label_rules.txt.
+
+== (a) committed labels: 64 + 24 + 17 (reproduces results/round3/round3_real_new.txt and Table 15)
+  labels kept: panel 64, fourth 24, independent 17; 41 present, 64 absent
+  Tier-1 panel+fourth      n=88  planets=35 the method          ensemble  63.4  this  57.9  diff  +5.58 (+0.66,+10.59)  present 17.3 vs  7.1 of 34  absent 46.2 vs 50.7 of 54
+  Tier-1 panel+fourth      n=88  planets=35 published           ensemble  63.4  this  55.8  diff  +7.64 (+0.73,+14.71)  present 17.3 vs  3.3 of 34  absent 46.2 vs 52.5 of 54
+  Tier-1 panel+fourth      n=88  planets=35 haze+deck-retrained ensemble  63.4  this  58.0  diff  +5.40 (+0.37,+10.41)  present 17.3 vs  7.1 of 34  absent 46.2 vs 51.0 of 54
+  Tier-1 panel+fourth      n=88  planets=35 AIRS-only           ensemble  63.4  this  57.1  diff  +6.34 (+1.74,+11.06)  present 17.3 vs  7.7 of 34  absent 46.2 vs 49.4 of 54
+  Tier-1 panel             n=64  planets=23 the method          ensemble  46.6  this  41.9  diff  +4.62 (+0.80,+8.49)  present 13.6 vs  5.9 of 26  absent 33.0 vs 36.1 of 38
+  Tier-1 panel             n=64  planets=23 published           ensemble  46.6  this  39.6  diff  +6.92 (+2.20,+11.72)  present 13.6 vs  3.1 of 26  absent 33.0 vs 36.6 of 38
+  Tier-1 panel             n=64  planets=23 haze+deck-retrained ensemble  46.6  this  41.6  diff  +4.92 (+1.31,+8.43)  present 13.6 vs  5.8 of 26  absent 33.0 vs 35.8 of 38
+  Tier-1 panel             n=64  planets=23 AIRS-only           ensemble  46.6  this  41.4  diff  +5.20 (+1.53,+8.91)  present 13.6 vs  6.1 of 26  absent 33.0 vs 35.2 of 38
+  Tier-1 fourth            n=24  planets=12 the method          ensemble  16.9  this  15.9  diff  +0.96 (-1.99,+4.11)  present  3.7 vs  1.3 of 8  absent 13.2 vs 14.7 of 16
+  Tier-1 fourth            n=24  planets=12 published           ensemble  16.9  this  16.2  diff  +0.72 (-4.00,+6.00)  present  3.7 vs  0.3 of 8  absent 13.2 vs 15.9 of 16
+  Tier-1 fourth            n=24  planets=12 haze+deck-retrained ensemble  16.9  this  16.4  diff  +0.49 (-2.98,+3.99)  present  3.7 vs  1.3 of 8  absent 13.2 vs 15.1 of 16
+  Tier-1 fourth            n=24  planets=12 AIRS-only           ensemble  16.9  this  15.7  diff  +1.14 (-1.41,+3.90)  present  3.7 vs  1.5 of 8  absent 13.2 vs 14.2 of 16
+  JWST   all               n=105 planets=47 the method          ensemble  84.0  this  81.5  diff  +2.50 (-6.50,+11.50)  present 30.0 vs 22.5 of 41  absent 54.0 vs 59.0 of 64
+  JWST   all               n=105 planets=47 published           ensemble  84.0  this  75.0  diff  +9.00 (-3.00,+21.50)  present 30.0 vs 14.0 of 41  absent 54.0 vs 61.0 of 64
+  JWST   all               n=105 planets=47 haze+deck-retrained ensemble  84.0  this  83.0  diff  +1.00 (-8.50,+11.50)  present 30.0 vs 24.0 of 41  absent 54.0 vs 59.0 of 64
+  JWST   all               n=105 planets=47 AIRS-only           ensemble  84.0  this  76.5  diff  +7.50 (-3.00,+18.00)  present 30.0 vs 19.0 of 41  absent 54.0 vs 57.5 of 64
+  JWST   outside the panel n=41  planets=24 the method          ensemble  35.0  this  29.5  diff  +5.50 (+0.50,+10.50)  present 11.0 vs  6.5 of 15  absent 24.0 vs 23.0 of 26
+  JWST   outside the panel n=41  planets=24 published           ensemble  35.0  this  31.5  diff  +3.50 (-3.50,+10.00)  present 11.0 vs  7.0 of 15  absent 24.0 vs 24.5 of 26
+  JWST   outside the panel n=41  planets=24 haze+deck-retrained ensemble  35.0  this  32.5  diff  +2.50 (-3.00,+7.50)  present 11.0 vs  9.5 of 15  absent 24.0 vs 23.0 of 26
+  JWST   outside the panel n=41  planets=24 AIRS-only           ensemble  35.0  this  26.5  diff  +8.50 (+2.50,+14.50)  present 11.0 vs  4.0 of 15  absent 24.0 vs 22.5 of 26
+  JWST   panel             n=64  planets=23 the method          ensemble  49.0  this  52.0  diff  -3.00 (-10.00,+4.50)  present 19.0 vs 16.0 of 26  absent 30.0 vs 36.0 of 38
+  JWST   panel             n=64  planets=23 published           ensemble  49.0  this  43.5  diff  +5.50 (-4.50,+16.50)  present 19.0 vs  7.0 of 26  absent 30.0 vs 36.5 of 38
+  JWST   panel             n=64  planets=23 haze+deck-retrained ensemble  49.0  this  50.5  diff  -1.50 (-9.50,+7.50)  present 19.0 vs 14.5 of 26  absent 30.0 vs 36.0 of 38
+  JWST   panel             n=64  planets=23 AIRS-only           ensemble  49.0  this  50.0  diff  -1.00 (-9.00,+7.00)  present 19.0 vs 15.0 of 26  absent 30.0 vs 35.0 of 38
+
+== (b) 65-label rule-consistent panel set (label_sensitivity.py "corrected") + fourth batch + 17 further
+  labels kept: panel 65, fourth 24, independent 17; 41 present, 65 absent
+  Tier-1 panel+fourth      n=87  planets=35 the method          ensemble  63.1  this  57.1  diff  +5.95 (+0.90,+11.10)  present 17.3 vs  7.1 of 34  absent 45.8 vs 50.0 of 53; the method on all 89 labels incl. those without an ensemble verdict: 58.9
+  Tier-1 panel+fourth      n=87  planets=35 published           ensemble  63.1  this  55.0  diff  +8.07 (+0.95,+15.43)  present 17.3 vs  3.3 of 34  absent 45.8 vs 51.6 of 53; published on all 89 labels incl. those without an ensemble verdict: 57.0
+  Tier-1 panel+fourth      n=87  planets=35 haze+deck-retrained ensemble  63.1  this  57.2  diff  +5.85 (+0.59,+11.10)  present 17.3 vs  7.1 of 34  absent 45.8 vs 50.1 of 53; haze+deck-retrained on all 89 labels incl. those without an ensemble verdict: 59.0
+  Tier-1 panel+fourth      n=87  planets=35 AIRS-only           ensemble  63.1  this  56.6  diff  +6.42 (+1.83,+11.09)  present 17.3 vs  7.7 of 34  absent 45.8 vs 49.0 of 53; AIRS-only on all 89 labels incl. those without an ensemble verdict: 58.3
+  Tier-1 panel             n=63  planets=23 the method          ensemble  46.2  this  41.2  diff  +4.99 (+0.94,+9.14)  present 13.6 vs  5.9 of 26  absent 32.6 vs 35.3 of 37; the method on all 65 labels incl. those without an ensemble verdict: 43.0
+  Tier-1 panel             n=63  planets=23 published           ensemble  46.2  this  38.8  diff  +7.35 (+2.48,+12.31)  present 13.6 vs  3.1 of 26  absent 32.6 vs 35.8 of 37; published on all 65 labels incl. those without an ensemble verdict: 40.8
+  Tier-1 panel             n=63  planets=23 haze+deck-retrained ensemble  46.2  this  40.8  diff  +5.36 (+1.46,+9.23)  present 13.6 vs  5.8 of 26  absent 32.6 vs 35.0 of 37; haze+deck-retrained on all 65 labels incl. those without an ensemble verdict: 42.6
+  Tier-1 panel             n=63  planets=23 AIRS-only           ensemble  46.2  this  40.9  diff  +5.27 (+1.48,+9.12)  present 13.6 vs  6.1 of 26  absent 32.6 vs 34.8 of 37; AIRS-only on all 65 labels incl. those without an ensemble verdict: 42.5
+  Tier-1 fourth            n=24  planets=12 the method          ensemble  16.9  this  15.9  diff  +0.96 (-2.00,+4.14)  present  3.7 vs  1.3 of 8  absent 13.2 vs 14.7 of 16
+  Tier-1 fourth            n=24  planets=12 published           ensemble  16.9  this  16.2  diff  +0.72 (-3.90,+6.06)  present  3.7 vs  0.3 of 8  absent 13.2 vs 15.9 of 16
+  Tier-1 fourth            n=24  planets=12 haze+deck-retrained ensemble  16.9  this  16.4  diff  +0.49 (-2.90,+3.99)  present  3.7 vs  1.3 of 8  absent 13.2 vs 15.1 of 16
+  Tier-1 fourth            n=24  planets=12 AIRS-only           ensemble  16.9  this  15.7  diff  +1.14 (-1.35,+3.88)  present  3.7 vs  1.5 of 8  absent 13.2 vs 14.2 of 16
+  JWST   all               n=104 planets=47 the method          ensemble  83.0  this  81.0  diff  +2.00 (-7.00,+10.50)  present 30.0 vs 22.5 of 41  absent 53.0 vs 58.5 of 63; the method on all 106 labels incl. those without an ensemble verdict: 82.0
+  JWST   all               n=104 planets=47 published           ensemble  83.0  this  74.5  diff  +8.50 (-3.50,+21.00)  present 30.0 vs 14.0 of 41  absent 53.0 vs 60.5 of 63; published on all 106 labels incl. those without an ensemble verdict: 76.5
+  JWST   all               n=104 planets=47 haze+deck-retrained ensemble  83.0  this  82.0  diff  +1.00 (-9.00,+11.00)  present 30.0 vs 24.0 of 41  absent 53.0 vs 58.0 of 63; haze+deck-retrained on all 106 labels incl. those without an ensemble verdict: 83.5
+  JWST   all               n=104 planets=47 AIRS-only           ensemble  83.0  this  76.5  diff  +6.50 (-3.50,+16.00)  present 30.0 vs 19.0 of 41  absent 53.0 vs 57.5 of 63; AIRS-only on all 106 labels incl. those without an ensemble verdict: 77.5
+  JWST   outside the panel n=41  planets=24 the method          ensemble  35.0  this  29.5  diff  +5.50 (+0.50,+10.50)  present 11.0 vs  6.5 of 15  absent 24.0 vs 23.0 of 26
+  JWST   outside the panel n=41  planets=24 published           ensemble  35.0  this  31.5  diff  +3.50 (-3.50,+10.50)  present 11.0 vs  7.0 of 15  absent 24.0 vs 24.5 of 26
+  JWST   outside the panel n=41  planets=24 haze+deck-retrained ensemble  35.0  this  32.5  diff  +2.50 (-3.00,+7.50)  present 11.0 vs  9.5 of 15  absent 24.0 vs 23.0 of 26
+  JWST   outside the panel n=41  planets=24 AIRS-only           ensemble  35.0  this  26.5  diff  +8.50 (+3.00,+14.50)  present 11.0 vs  4.0 of 15  absent 24.0 vs 22.5 of 26
+  JWST   panel             n=63  planets=23 the method          ensemble  48.0  this  51.5  diff  -3.50 (-10.50,+3.00)  present 19.0 vs 16.0 of 26  absent 29.0 vs 35.5 of 37; the method on all 65 labels incl. those without an ensemble verdict: 52.5
+  JWST   panel             n=63  planets=23 published           ensemble  48.0  this  43.0  diff  +5.00 (-4.50,+15.00)  present 19.0 vs  7.0 of 26  absent 29.0 vs 36.0 of 37; published on all 65 labels incl. those without an ensemble verdict: 45.0
+  JWST   panel             n=63  planets=23 haze+deck-retrained ensemble  48.0  this  49.5  diff  -1.50 (-9.50,+7.50)  present 19.0 vs 14.5 of 26  absent 29.0 vs 35.0 of 37; haze+deck-retrained on all 65 labels incl. those without an ensemble verdict: 51.0
+  JWST   panel             n=63  planets=23 AIRS-only           ensemble  48.0  this  50.0  diff  -2.00 (-9.00,+5.00)  present 19.0 vs 15.0 of 26  absent 29.0 vs 35.0 of 37; AIRS-only on all 65 labels incl. those without an ensemble verdict: 51.0
+
+== (c) 59-label judgement-free panel set (label_sensitivity.py "strict") + fourth batch + 17 further
+  labels kept: panel 59, fourth 24, independent 17; 39 present, 61 absent
+  Tier-1 panel+fourth      n=80  planets=34 the method          ensemble  56.9  this  50.5  diff  +6.45 (+1.63,+11.49)  present 15.3 vs  5.3 of 32  absent 41.6 vs 45.1 of 48; the method on all 83 labels incl. those without an ensemble verdict: 53.2
+  Tier-1 panel+fourth      n=80  planets=34 published           ensemble  56.9  this  48.7  diff  +8.24 (+1.36,+15.48)  present 15.3 vs  2.0 of 32  absent 41.6 vs 46.7 of 48; published on all 83 labels incl. those without an ensemble verdict: 51.6
+  Tier-1 panel+fourth      n=80  planets=34 haze+deck-retrained ensemble  56.9  this  50.5  diff  +6.36 (+1.36,+11.43)  present 15.3 vs  5.3 of 32  absent 41.6 vs 45.3 of 48; haze+deck-retrained on all 83 labels incl. those without an ensemble verdict: 53.3
+  Tier-1 panel+fourth      n=80  planets=34 AIRS-only           ensemble  56.9  this  50.5  diff  +6.39 (+2.11,+10.80)  present 15.3 vs  6.3 of 32  absent 41.6 vs 44.2 of 48; AIRS-only on all 83 labels incl. those without an ensemble verdict: 53.1
+  Tier-1 panel             n=56  planets=22 the method          ensemble  40.0  this  34.5  diff  +5.49 (+1.89,+9.27)  present 11.6 vs  4.1 of 24  absent 28.4 vs 30.4 of 32; the method on all 59 labels incl. those without an ensemble verdict: 37.3
+  Tier-1 panel             n=56  planets=22 published           ensemble  40.0  this  32.5  diff  +7.52 (+2.93,+12.33)  present 11.6 vs  1.7 of 24  absent 28.4 vs 30.8 of 32; published on all 59 labels incl. those without an ensemble verdict: 35.5
+  Tier-1 panel             n=56  planets=22 haze+deck-retrained ensemble  40.0  this  34.1  diff  +5.88 (+2.44,+9.50)  present 11.6 vs  4.0 of 24  absent 28.4 vs 30.1 of 32; haze+deck-retrained on all 59 labels incl. those without an ensemble verdict: 36.9
+  Tier-1 panel             n=56  planets=22 AIRS-only           ensemble  40.0  this  34.8  diff  +5.25 (+1.94,+8.79)  present 11.6 vs  4.8 of 24  absent 28.4 vs 30.0 of 32; AIRS-only on all 59 labels incl. those without an ensemble verdict: 37.4
+  Tier-1 fourth            n=24  planets=12 the method          ensemble  16.9  this  15.9  diff  +0.96 (-1.99,+4.12)  present  3.7 vs  1.3 of 8  absent 13.2 vs 14.7 of 16
+  Tier-1 fourth            n=24  planets=12 published           ensemble  16.9  this  16.2  diff  +0.72 (-3.96,+5.99)  present  3.7 vs  0.3 of 8  absent 13.2 vs 15.9 of 16
+  Tier-1 fourth            n=24  planets=12 haze+deck-retrained ensemble  16.9  this  16.4  diff  +0.49 (-2.91,+4.04)  present  3.7 vs  1.3 of 8  absent 13.2 vs 15.1 of 16
+  Tier-1 fourth            n=24  planets=12 AIRS-only           ensemble  16.9  this  15.7  diff  +1.14 (-1.40,+3.87)  present  3.7 vs  1.5 of 8  absent 13.2 vs 14.2 of 16
+  JWST   all               n=97  planets=46 the method          ensemble  78.0  this  74.0  diff  +4.00 (-3.50,+12.00)  present 28.0 vs 20.5 of 39  absent 50.0 vs 53.5 of 58; the method on all 100 labels incl. those without an ensemble verdict: 76.0
+  JWST   all               n=97  planets=46 published           ensemble  78.0  this  67.5  diff +10.50 (-0.50,+21.50)  present 28.0 vs 12.0 of 39  absent 50.0 vs 55.5 of 58; published on all 100 labels incl. those without an ensemble verdict: 70.5
+  JWST   all               n=97  planets=46 haze+deck-retrained ensemble  78.0  this  75.0  diff  +3.00 (-5.50,+12.50)  present 28.0 vs 22.0 of 39  absent 50.0 vs 53.0 of 58; haze+deck-retrained on all 100 labels incl. those without an ensemble verdict: 77.5
+  JWST   all               n=97  planets=46 AIRS-only           ensemble  78.0  this  69.5  diff  +8.50 (-0.50,+17.50)  present 28.0 vs 17.0 of 39  absent 50.0 vs 52.5 of 58; AIRS-only on all 100 labels incl. those without an ensemble verdict: 71.5
+  JWST   outside the panel n=41  planets=24 the method          ensemble  35.0  this  29.5  diff  +5.50 (+0.50,+10.50)  present 11.0 vs  6.5 of 15  absent 24.0 vs 23.0 of 26
+  JWST   outside the panel n=41  planets=24 published           ensemble  35.0  this  31.5  diff  +3.50 (-3.50,+10.00)  present 11.0 vs  7.0 of 15  absent 24.0 vs 24.5 of 26
+  JWST   outside the panel n=41  planets=24 haze+deck-retrained ensemble  35.0  this  32.5  diff  +2.50 (-3.00,+7.50)  present 11.0 vs  9.5 of 15  absent 24.0 vs 23.0 of 26
+  JWST   outside the panel n=41  planets=24 AIRS-only           ensemble  35.0  this  26.5  diff  +8.50 (+2.50,+14.50)  present 11.0 vs  4.0 of 15  absent 24.0 vs 22.5 of 26
+  JWST   panel             n=56  planets=22 the method          ensemble  43.0  this  44.5  diff  -1.50 (-7.00,+4.50)  present 17.0 vs 14.0 of 24  absent 26.0 vs 30.5 of 32; the method on all 59 labels incl. those without an ensemble verdict: 46.5
+  JWST   panel             n=56  planets=22 published           ensemble  43.0  this  36.0  diff  +7.00 (-1.50,+16.00)  present 17.0 vs  5.0 of 24  absent 26.0 vs 31.0 of 32; published on all 59 labels incl. those without an ensemble verdict: 39.0
+  JWST   panel             n=56  planets=22 haze+deck-retrained ensemble  43.0  this  42.5  diff  +0.50 (-6.00,+8.50)  present 17.0 vs 12.5 of 24  absent 26.0 vs 30.0 of 32; haze+deck-retrained on all 59 labels incl. those without an ensemble verdict: 45.0
+  JWST   panel             n=56  planets=22 AIRS-only           ensemble  43.0  this  43.0  diff  +0.00 (-6.00,+6.00)  present 17.0 vs 13.0 of 24  absent 26.0 vs 30.0 of 32; AIRS-only on all 59 labels incl. those without an ensemble verdict: 45.0
+
+== (d) uniform rule, literal: every printed free-chemistry variant on one side of -4 (a limit above -4 counts as crossing): cell audit
+    leaves: panel TOI-270d CO2 (was present); variants not on the committed side: -3.95+0.72-0.90
+    leaves: panel TOI-270d NH3 (was absent); variants not on the committed side: -3.83+0.51-0.77, -3.21+0.38-0.55
+    leaves: panel K2-18b NH3 (was absent); variants not on the committed side: <-3.66
+    leaves: panel K2-18b-alt NH3 (was absent); variants not on the committed side: <-3.66
+    leaves: panel HAT-P-18b CO2 (was absent); variants not on the committed side: -4.19+0.4-0.4
+    leaves: panel WASP-107b H2O (was present); variants not on the committed side: -3.81+0.38-0.29
+    leaves: panel HAT-P-26b CO2 (was present); variants not on the committed side: -3.31+0.73-0.73
+    leaves: panel HAT-P-26b NH3 (was absent); variants not on the committed side: <-3.85
+    leaves: panel TOI-1231b CH4 (was present); variants not on the committed side: -3.78+0.40-0.33
+    leaves: panel TOI-1231b CO2 (was present); variants not on the committed side: -6.05+0.70-0.66
+    leaves: panel K2-18b-hu H2O (was absent); variants not on the committed side: <-3.06, <-3.21, <-3.49, <-3.59
+    leaves: panel K2-18b-hu NH3 (was absent); variants not on the committed side: <-3.66
+    leaves: panel TOI-270d-hm CO2 (was present); variants not on the committed side: -3.95+0.72-0.90
+    leaves: panel TOI-270d-hm NH3 (was absent); variants not on the committed side: -3.83+0.51-0.77, -3.21+0.38-0.55
+    enters: panel WASP-52b CO2 as absent (1-sigma top exactly -4.00 on one variant)
+    enters: panel WASP-52b NH3 as absent
+    leaves: panel L98-59d CH4 (was absent); variants not on the committed side: <-1.8, <-0.9
+    leaves: panel L98-59d H2O (was absent); variants not on the committed side: <-0.3, <-2.7, <-0.1
+    leaves: panel L98-59d NH3 (was absent); variants not on the committed side: <-1.6, <-0.4
+    enters: panel HD209458b CO2 as absent
+    leaves: panel WASP-96b CO2 (was absent); variants not on the committed side: -4.15+0.70-0.77, -4.34+0.35-0.38
+    leaves: panel WASP-96b NH3 (was absent); variants not on the committed side: <-3.91
+    leaves: panel WASP-17b H2O (was present); variants not on the committed side: -4.53+0.37-0.36, -4.75+0.33-0.29
+    kept as committed, rule not applicable: panel WASP-39b CH4 (absent): no free-chemistry value printed (3-sigma limit from equilibrium-model grids; Constantinou prints no number)
+    leaves: panel WASP-39b H2O (was present); variants not on the committed side: -5.28+0.37-0.36, -6.35+0.34-0.33, -4.15+0.49-0.38, -4.85+0.38-0.35
+
+== (d) uniform rule, literal: every printed free-chemistry variant on one side of -4 (a limit above -4 counts as crossing)
+  labels kept: panel 46, fourth 24, independent 17; 33 present, 54 absent
+  Tier-1 panel+fourth      n=67  planets=33 the method          ensemble  48.8  this  43.2  diff  +5.57 (+0.72,+10.74)  present 13.3 vs  4.9 of 26  absent 35.5 vs 38.3 of 41; the method on all 70 labels incl. those without an ensemble verdict: 46.0
+  Tier-1 panel+fourth      n=67  planets=33 published           ensemble  48.8  this  41.6  diff  +7.16 (+0.19,+14.63)  present 13.3 vs  1.8 of 26  absent 35.5 vs 39.8 of 41; published on all 70 labels incl. those without an ensemble verdict: 44.6
+  Tier-1 panel+fourth      n=67  planets=33 haze+deck-retrained ensemble  48.8  this  43.3  diff  +5.48 (+0.38,+10.74)  present 13.3 vs  4.8 of 26  absent 35.5 vs 38.4 of 41; haze+deck-retrained on all 70 labels incl. those without an ensemble verdict: 46.0
+  Tier-1 panel+fourth      n=67  planets=33 AIRS-only           ensemble  48.8  this  43.1  diff  +5.65 (+1.35,+10.27)  present 13.3 vs  5.6 of 26  absent 35.5 vs 37.5 of 41; AIRS-only on all 70 labels incl. those without an ensemble verdict: 45.7
+  Tier-1 panel             n=43  planets=21 the method          ensemble  31.9  this  27.3  diff  +4.61 (+0.92,+8.71)  present  9.6 vs  3.7 of 18  absent 22.3 vs 23.6 of 25; the method on all 46 labels incl. those without an ensemble verdict: 30.1
+  Tier-1 panel             n=43  planets=21 published           ensemble  31.9  this  25.4  diff  +6.44 (+1.65,+11.74)  present  9.6 vs  1.5 of 18  absent 22.3 vs 23.9 of 25; published on all 46 labels incl. those without an ensemble verdict: 28.4
+  Tier-1 panel             n=43  planets=21 haze+deck-retrained ensemble  31.9  this  26.9  diff  +4.99 (+1.50,+8.90)  present  9.6 vs  3.6 of 18  absent 22.3 vs 23.3 of 25; haze+deck-retrained on all 46 labels incl. those without an ensemble verdict: 29.6
+  Tier-1 panel             n=43  planets=21 AIRS-only           ensemble  31.9  this  27.4  diff  +4.51 (+1.19,+8.14)  present  9.6 vs  4.1 of 18  absent 22.3 vs 23.3 of 25; AIRS-only on all 46 labels incl. those without an ensemble verdict: 30.0
+  Tier-1 fourth            n=24  planets=12 the method          ensemble  16.9  this  15.9  diff  +0.96 (-1.98,+4.14)  present  3.7 vs  1.3 of 8  absent 13.2 vs 14.7 of 16
+  Tier-1 fourth            n=24  planets=12 published           ensemble  16.9  this  16.2  diff  +0.72 (-3.94,+6.01)  present  3.7 vs  0.3 of 8  absent 13.2 vs 15.9 of 16
+  Tier-1 fourth            n=24  planets=12 haze+deck-retrained ensemble  16.9  this  16.4  diff  +0.49 (-2.89,+3.98)  present  3.7 vs  1.3 of 8  absent 13.2 vs 15.1 of 16
+  Tier-1 fourth            n=24  planets=12 AIRS-only           ensemble  16.9  this  15.7  diff  +1.14 (-1.38,+3.87)  present  3.7 vs  1.5 of 8  absent 13.2 vs 14.2 of 16
+  JWST   all               n=84  planets=45 the method          ensemble  70.0  this  65.5  diff  +4.50 (-2.50,+11.50)  present 25.0 vs 19.0 of 33  absent 45.0 vs 46.5 of 51; the method on all 87 labels incl. those without an ensemble verdict: 67.5
+  JWST   all               n=84  planets=45 published           ensemble  70.0  this  59.5  diff +10.50 (-0.50,+22.00)  present 25.0 vs 11.0 of 33  absent 45.0 vs 48.5 of 51; published on all 87 labels incl. those without an ensemble verdict: 62.5
+  JWST   all               n=84  planets=45 haze+deck-retrained ensemble  70.0  this  66.0  diff  +4.00 (-4.00,+12.00)  present 25.0 vs 20.0 of 33  absent 45.0 vs 46.0 of 51; haze+deck-retrained on all 87 labels incl. those without an ensemble verdict: 68.5
+  JWST   all               n=84  planets=45 AIRS-only           ensemble  70.0  this  60.5  diff  +9.50 (+1.50,+17.50)  present 25.0 vs 15.0 of 33  absent 45.0 vs 45.5 of 51; AIRS-only on all 87 labels incl. those without an ensemble verdict: 62.5
+  JWST   outside the panel n=41  planets=24 the method          ensemble  35.0  this  29.5  diff  +5.50 (+1.00,+10.50)  present 11.0 vs  6.5 of 15  absent 24.0 vs 23.0 of 26
+  JWST   outside the panel n=41  planets=24 published           ensemble  35.0  this  31.5  diff  +3.50 (-3.50,+10.50)  present 11.0 vs  7.0 of 15  absent 24.0 vs 24.5 of 26
+  JWST   outside the panel n=41  planets=24 haze+deck-retrained ensemble  35.0  this  32.5  diff  +2.50 (-3.00,+7.50)  present 11.0 vs  9.5 of 15  absent 24.0 vs 23.0 of 26
+  JWST   outside the panel n=41  planets=24 AIRS-only           ensemble  35.0  this  26.5  diff  +8.50 (+3.00,+14.50)  present 11.0 vs  4.0 of 15  absent 24.0 vs 22.5 of 26
+  JWST   panel             n=43  planets=21 the method          ensemble  35.0  this  36.0  diff  -1.00 (-5.50,+3.50)  present 14.0 vs 12.5 of 18  absent 21.0 vs 23.5 of 25; the method on all 46 labels incl. those without an ensemble verdict: 38.0
+  JWST   panel             n=43  planets=21 published           ensemble  35.0  this  28.0  diff  +7.00 (-1.00,+16.00)  present 14.0 vs  4.0 of 18  absent 21.0 vs 24.0 of 25; published on all 46 labels incl. those without an ensemble verdict: 31.0
+  JWST   panel             n=43  planets=21 haze+deck-retrained ensemble  35.0  this  33.5  diff  +1.50 (-4.50,+7.50)  present 14.0 vs 10.5 of 18  absent 21.0 vs 23.0 of 25; haze+deck-retrained on all 46 labels incl. those without an ensemble verdict: 36.0
+  JWST   panel             n=43  planets=21 AIRS-only           ensemble  35.0  this  34.0  diff  +1.00 (-4.00,+6.00)  present 14.0 vs 11.0 of 18  absent 21.0 vs 23.0 of 25; AIRS-only on all 46 labels incl. those without an ensemble verdict: 36.0
+
+== (d') uniform rule, limits above -4 treated as uninformative rather than crossing: cell audit
+    leaves: panel TOI-270d CO2 (was present); variants not on the committed side: -3.95+0.72-0.90
+    leaves: panel TOI-270d NH3 (was absent); variants not on the committed side: -3.83+0.51-0.77, -3.21+0.38-0.55
+    leaves: panel HAT-P-18b CO2 (was absent); variants not on the committed side: -4.19+0.4-0.4
+    leaves: panel WASP-107b H2O (was present); variants not on the committed side: -3.81+0.38-0.29
+    leaves: panel HAT-P-26b CO2 (was present); variants not on the committed side: -3.31+0.73-0.73
+    leaves: panel TOI-1231b CH4 (was present); variants not on the committed side: -3.78+0.40-0.33
+    leaves: panel TOI-1231b CO2 (was present); variants not on the committed side: -6.05+0.70-0.66
+    leaves: panel TOI-270d-hm CO2 (was present); variants not on the committed side: -3.95+0.72-0.90
+    leaves: panel TOI-270d-hm NH3 (was absent); variants not on the committed side: -3.83+0.51-0.77, -3.21+0.38-0.55
+    enters: panel WASP-52b CO2 as absent (1-sigma top exactly -4.00 on one variant)
+    enters: panel WASP-52b NH3 as absent
+    enters: panel HD209458b CO2 as absent
+    leaves: panel WASP-96b CO2 (was absent); variants not on the committed side: -4.15+0.70-0.77, -4.34+0.35-0.38
+    leaves: panel WASP-17b H2O (was present); variants not on the committed side: -4.53+0.37-0.36, -4.75+0.33-0.29
+    kept as committed, rule not applicable: panel WASP-39b CH4 (absent): no free-chemistry value printed (3-sigma limit from equilibrium-model grids; Constantinou prints no number)
+    leaves: panel WASP-39b H2O (was present); variants not on the committed side: -5.28+0.37-0.36, -6.35+0.34-0.33, -4.15+0.49-0.38, -4.85+0.38-0.35
+
+== (d') uniform rule, limits above -4 treated as uninformative rather than crossing
+  labels kept: panel 55, fourth 24, independent 17; 33 present, 63 absent
+  Tier-1 panel+fourth      n=76  planets=34 the method          ensemble  56.7  this  52.0  diff  +4.74 (+0.02,+9.65)  present 13.3 vs  4.9 of 26  absent 43.4 vs 47.0 of 50; the method on all 79 labels incl. those without an ensemble verdict: 54.7
+  Tier-1 panel+fourth      n=76  planets=34 published           ensemble  56.7  this  50.5  diff  +6.20 (-0.49,+13.46)  present 13.3 vs  1.8 of 26  absent 43.4 vs 48.7 of 50; published on all 79 labels incl. those without an ensemble verdict: 53.5
+  Tier-1 panel+fourth      n=76  planets=34 haze+deck-retrained ensemble  56.7  this  52.1  diff  +4.64 (-0.29,+9.52)  present 13.3 vs  4.8 of 26  absent 43.4 vs 47.2 of 50; haze+deck-retrained on all 79 labels incl. those without an ensemble verdict: 54.8
+  Tier-1 panel+fourth      n=76  planets=34 AIRS-only           ensemble  56.7  this  51.7  diff  +5.02 (+0.90,+9.43)  present 13.3 vs  5.6 of 26  absent 43.4 vs 46.1 of 50; AIRS-only on all 79 labels incl. those without an ensemble verdict: 54.3
+  Tier-1 panel             n=52  planets=22 the method          ensemble  39.8  this  36.0  diff  +3.78 (+0.34,+7.58)  present  9.6 vs  3.7 of 18  absent 30.2 vs 32.4 of 34; the method on all 55 labels incl. those without an ensemble verdict: 38.8
+  Tier-1 panel             n=52  planets=22 published           ensemble  39.8  this  34.3  diff  +5.48 (+0.96,+10.48)  present  9.6 vs  1.5 of 18  absent 30.2 vs 32.8 of 34; published on all 55 labels incl. those without an ensemble verdict: 37.3
+  Tier-1 panel             n=52  planets=22 haze+deck-retrained ensemble  39.8  this  35.7  diff  +4.15 (+0.81,+7.68)  present  9.6 vs  3.6 of 18  absent 30.2 vs 32.1 of 34; haze+deck-retrained on all 55 labels incl. those without an ensemble verdict: 38.4
+  Tier-1 panel             n=52  planets=22 AIRS-only           ensemble  39.8  this  35.9  diff  +3.87 (+0.73,+7.42)  present  9.6 vs  4.1 of 18  absent 30.2 vs 31.9 of 34; AIRS-only on all 55 labels incl. those without an ensemble verdict: 38.5
+  Tier-1 fourth            n=24  planets=12 the method          ensemble  16.9  this  15.9  diff  +0.96 (-1.97,+4.08)  present  3.7 vs  1.3 of 8  absent 13.2 vs 14.7 of 16
+  Tier-1 fourth            n=24  planets=12 published           ensemble  16.9  this  16.2  diff  +0.72 (-3.98,+5.99)  present  3.7 vs  0.3 of 8  absent 13.2 vs 15.9 of 16
+  Tier-1 fourth            n=24  planets=12 haze+deck-retrained ensemble  16.9  this  16.4  diff  +0.49 (-2.92,+4.00)  present  3.7 vs  1.3 of 8  absent 13.2 vs 15.1 of 16
+  Tier-1 fourth            n=24  planets=12 AIRS-only           ensemble  16.9  this  15.7  diff  +1.14 (-1.38,+3.91)  present  3.7 vs  1.5 of 8  absent 13.2 vs 14.2 of 16
+  JWST   all               n=93  planets=46 the method          ensemble  77.0  this  74.5  diff  +2.50 (-5.00,+9.50)  present 25.0 vs 19.0 of 33  absent 52.0 vs 55.5 of 60; the method on all 96 labels incl. those without an ensemble verdict: 76.5
+  JWST   all               n=93  planets=46 published           ensemble  77.0  this  68.5  diff  +8.50 (-2.00,+19.00)  present 25.0 vs 11.0 of 33  absent 52.0 vs 57.5 of 60; published on all 96 labels incl. those without an ensemble verdict: 71.5
+  JWST   all               n=93  planets=46 haze+deck-retrained ensemble  77.0  this  75.0  diff  +2.00 (-6.00,+10.00)  present 25.0 vs 20.0 of 33  absent 52.0 vs 55.0 of 60; haze+deck-retrained on all 96 labels incl. those without an ensemble verdict: 77.5
+  JWST   all               n=93  planets=46 AIRS-only           ensemble  77.0  this  69.5  diff  +7.50 (-1.00,+16.00)  present 25.0 vs 15.0 of 33  absent 52.0 vs 54.5 of 60; AIRS-only on all 96 labels incl. those without an ensemble verdict: 71.5
+  JWST   outside the panel n=41  planets=24 the method          ensemble  35.0  this  29.5  diff  +5.50 (+0.50,+10.50)  present 11.0 vs  6.5 of 15  absent 24.0 vs 23.0 of 26
+  JWST   outside the panel n=41  planets=24 published           ensemble  35.0  this  31.5  diff  +3.50 (-3.50,+10.00)  present 11.0 vs  7.0 of 15  absent 24.0 vs 24.5 of 26
+  JWST   outside the panel n=41  planets=24 haze+deck-retrained ensemble  35.0  this  32.5  diff  +2.50 (-3.00,+7.50)  present 11.0 vs  9.5 of 15  absent 24.0 vs 23.0 of 26
+  JWST   outside the panel n=41  planets=24 AIRS-only           ensemble  35.0  this  26.5  diff  +8.50 (+2.50,+14.00)  present 11.0 vs  4.0 of 15  absent 24.0 vs 22.5 of 26
+  JWST   panel             n=52  planets=22 the method          ensemble  42.0  this  45.0  diff  -3.00 (-8.00,+2.00)  present 14.0 vs 12.5 of 18  absent 28.0 vs 32.5 of 34; the method on all 55 labels incl. those without an ensemble verdict: 47.0
+  JWST   panel             n=52  planets=22 published           ensemble  42.0  this  37.0  diff  +5.00 (-2.50,+13.00)  present 14.0 vs  4.0 of 18  absent 28.0 vs 33.0 of 34; published on all 55 labels incl. those without an ensemble verdict: 40.0
+  JWST   panel             n=52  planets=22 haze+deck-retrained ensemble  42.0  this  42.5  diff  -0.50 (-6.50,+6.00)  present 14.0 vs 10.5 of 18  absent 28.0 vs 32.0 of 34; haze+deck-retrained on all 55 labels incl. those without an ensemble verdict: 45.0
+  JWST   panel             n=52  planets=22 AIRS-only           ensemble  42.0  this  43.0  diff  -1.00 (-7.00,+5.00)  present 14.0 vs 11.0 of 18  absent 28.0 vs 32.0 of 34; AIRS-only on all 55 labels incl. those without an ensemble verdict: 45.0
+
+== notes
+  The ensemble (results/round3/real_C+B-mlp.csv) carries verdicts only on the committed labels, so a label that enters under a rule is scored for the baselines alone and is left out of every paired difference; the baselines' full-set scores are printed beside.
+  Variants are pooled per planet across reductions and papers, as the fourth batch did ("any printed free-chemistry variant on the planet's JWST data"); the panel's committed-unscored cells not listed above stay unscored under both readings (straddles or limit above -4 or molecule not reported or literature disagrees across -4).
+  The 17 further labels: the variant lists come from independent_data_survey.md (Tables A1 and B3), not from results/independent_test/, whose SOURCES.md repeats only the V1298 Tau c and HAT-P-14 b values; the survey warns that seven single-planet HST papers were not read, so those cells are kept on the population-study values alone.
+  Bootstrap: 20,000 resamples of planet units (reductions of one planet kept together), seed 407, sum of per-unit paired differences, as in checks/round3_real_new.py; unlike that script, the HST and JWST reductions of V1298 Tau c form one unit here (47 units over all, not 48), which moves no interval by more than 0.1.
+  (d') relaxes only the leaving of committed labels; it lets no further cell enter (otherwise the withdrawn K2-18 b H2O labels of the Madhusudhan and Schmidt reductions would re-enter on the Hu reduction's 1-sigma limit alone). The Hu reduction's own H2O label leaves under (d) because the AURA limits in the same paper, -3.52 and -3.57 at 2 sigma, are its reported constraints and lie above -4; it stays under (d').
