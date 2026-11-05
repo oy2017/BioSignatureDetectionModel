@@ -260,6 +260,8 @@ def build_docx(blocks, dest):
     for kind, payload in blocks:
         if kind == "h":
             lvl, txt = payload
+            if txt.startswith("Abbreviations"):
+                doc.add_page_break()   # JHSS: the abbreviation and notation list on its own page before the references
             p = doc.add_paragraph()
             p.style = doc.styles["Title" if lvl == 1 else f"Heading {min(lvl - 1, 4)}"]
             for t, b, it in heading_parts(lvl, txt):
