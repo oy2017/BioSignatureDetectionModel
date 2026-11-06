@@ -1,0 +1,63 @@
+Transfer grid with the normalised MLP added, configuration ariel
+48 shift cases shared by all 7 pipelines
+
+Spearman correlation of the per-case accuracy loss, all pairs:
+          norm_xgb  norm_rf  norm_mlp  pca_xgb  pca_rf  raw_xgb  raw_rf
+norm_xgb     1.000    0.962     0.973    0.881   0.888    0.855   0.829
+norm_rf      0.962    1.000     0.978    0.927   0.907    0.826   0.815
+norm_mlp     0.973    0.978     1.000    0.932   0.907    0.842   0.784
+pca_xgb      0.881    0.927     0.932    1.000   0.965    0.818   0.763
+pca_rf       0.888    0.907     0.907    0.965   1.000    0.841   0.802
+raw_xgb      0.855    0.826     0.842    0.818   0.841    1.000   0.905
+raw_rf       0.829    0.815     0.784    0.763   0.802    0.905   1.000
+
+same representation    n= 5  mean rho 0.957  range 0.905-0.978
+    norm_rf   norm_mlp  0.978
+    norm_xgb  norm_mlp  0.973
+    pca_xgb   pca_rf    0.965
+    norm_xgb  norm_rf   0.962
+    raw_xgb   raw_rf    0.905
+same model family      n= 6  mean rho 0.846  range 0.802-0.907
+    norm_rf   pca_rf    0.907
+    norm_xgb  pca_xgb   0.881
+    norm_xgb  raw_xgb   0.855
+    pca_xgb   raw_xgb   0.818
+    norm_rf   raw_rf    0.815
+    pca_rf    raw_rf    0.802
+sharing neither        n=10  mean rho 0.854  range 0.763-0.932
+    norm_mlp  pca_xgb   0.932
+    norm_rf   pca_xgb   0.927
+    norm_mlp  pca_rf    0.907
+    norm_xgb  pca_rf    0.888
+    norm_mlp  raw_xgb   0.842
+    pca_rf    raw_xgb   0.841
+    norm_xgb  raw_rf    0.829
+    norm_rf   raw_xgb   0.826
+    norm_mlp  raw_rf    0.784
+    pca_xgb   raw_rf    0.763
+
+same representation vs all other pairs:   one-sided Mann-Whitney p = 0.0006
+same representation vs same model family: p = 0.0043
+same model family vs sharing neither:     p = 0.7189
+
+The MLP against each other pipeline:
+    norm_mlp vs norm_xgb  rho 0.973
+    norm_mlp vs norm_rf   rho 0.978
+    norm_mlp vs pca_xgb   rho 0.932
+    norm_mlp vs pca_rf    rho 0.907
+    norm_mlp vs raw_xgb   rho 0.842
+    norm_mlp vs raw_rf    rho 0.784
+
+Accuracy change (points) under eight shifts, every pipeline; clean accuracy in %:
+pipeline                                  norm_xgb  norm_rf  norm_mlp  pca_xgb  pca_rf  raw_xgb  raw_rf
+clean                                         90.3     89.1      90.1     83.9    80.7     72.6    72.2
+Independent RT code (Exo-Transmit)            -2.4     -1.1      -1.1     -2.8    -2.7     -2.1    -2.1
+Alternative opacities, 3 non-label gases      -1.7     -1.4      -1.8     -3.5    -2.0     -1.9    -1.2
+and the label-bearing (O3) line list too     -15.5    -14.6     -17.1    -13.9    -9.8     -5.6    -3.5
+Haze, 3e7 m^-3                               -28.8    -19.8     -34.8     -6.1    -3.3    -13.0    -8.9
+Cloud deck, 1e3 Pa                           -11.6    -11.9     -13.3     -7.9    -7.0     -5.3    -3.7
+Stellar spots, 20% coverage                  -25.9    -21.9     -28.5    -11.9    -9.0     -9.6    -7.5
+White noise, SNR 5                           -13.5    -24.3     -30.1    -14.5    -8.0     -3.5    -1.5
+Correlated noise, SNR 5                      -20.9    -27.7     -30.9    -20.9   -12.5     -6.4    -5.3
+
+On the 28 cases costing some pipeline at least 5 points, the same shift costs a median 10.3x more for one pipeline than another.
