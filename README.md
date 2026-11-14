@@ -1,7 +1,11 @@
-# When can a simulator-trained classifier be trusted?
+# Papers
 
-> **The current paper and its supplementary material are in [`ariel_tier1_trust/`](ariel_tier1_trust/).**
-> Start there. Everything else in this repository is the development history that led to it.
+- **[Did your model learn the physics or the simulator? Intervening on a generative process, one ingredient at a time](papers/ML4PS2026_Did_your_model_learn_the_physics_or_the_simulator.pdf)** — Machine Learning and the Physical Sciences workshop (ML4PS 2026), accepted; camera-ready version. Code: branch [`ml4ps-benchmark`](https://github.com/oy2017/BioSignatureDetectionModel/tree/ml4ps-benchmark).
+- **[Separating recoverable from irrecoverable errors in Ariel Tier-1 molecular classification: a new design tested on model grids and James Webb Space Telescope spectra](papers/JHSS_Separating_recoverable_from_irrecoverable_errors_in_Ariel_Tier-1_molecular_classification.pdf)** — full manuscript, under review at the Journal of High School Science; code and results in [`v3/`](v3/).
+
+Everything else in this repository is the development history behind these two papers.
+
+## Development history: the earlier stress-test study
 
 **TL;DR.** Machine-learning classifiers have been proposed to sort the thousand planets of
 Ariel's quick-look survey by composition. They are trained and tested on simulated spectra,
